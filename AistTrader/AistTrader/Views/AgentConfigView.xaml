@@ -1,0 +1,83 @@
+﻿<Window x:Class="AistTrader.AgentConfigView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="AddConfigWindow"
+        Title="Аист Трейдер - Добавить конфигурацию"  
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:commands="clr-namespace:AistTrader.Commands"
+		Height="202.78"
+        Width="270.192"
+        
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Allows a KeyBinding to be associated with a command defined in the View Model  -->
+        <commands:CommandReference x:Key="ExitCommandReference" Command="{Binding ExitCommand}" />
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Key="X" Modifiers="Control" Command="{StaticResource ExitCommandReference}" />
+    </Window.InputBindings>
+
+
+    <Grid Margin="9,9,9,9">
+
+        <Grid.Resources>
+            <Style TargetType="{x:Type ComboBox}">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="true">
+                        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
+        <Label Content="Выберете алгоритм"
+               Height="25"
+               HorizontalContentAlignment="Left"
+               Margin="9,10,98,0" 
+               VerticalAlignment="Top" />
+        <ComboBox Height="23"
+                  HorizontalAlignment="Left"
+                  Margin="13,35,0,0"
+                  Name="AlgorithmComboBox"
+                  VerticalAlignment="Top"
+                  Width="174"
+                  Text="{Binding Path=AlgorithmName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                  TabIndex="0"
+                  x:FieldModifier="private" 
+                  Style="{StaticResource {x:Type ComboBox}}"/>
+        <Button IsTabStop="False"
+                Margin="198,32,0,0"
+                IsEnabled="False"          
+                TabIndex="1"
+                Width="32"
+                Height="32"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+            <Image Source="/Resources/Images\Settings.ico"/>
+        </Button>
+        <Button Content="ОК"
+                Height="23"
+                HorizontalAlignment="Left"
+                Margin="75,120,0,0"
+                VerticalAlignment="Top"
+                Width="75"
+                TabIndex="2"
+                IsDefault="True"/>
+        <Button Content="Отмена"
+                Height="23"
+                HorizontalAlignment="Left"
+                Margin="155,120,0,0"
+                VerticalAlignment="Top"
+                Width="75"
+                TabIndex="3" 
+                Click="ButtonBase_OnClick"
+          
+                
+                />
+    </Grid>
+</Window>

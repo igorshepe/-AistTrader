@@ -1,0 +1,302 @@
+﻿<Window x:Class="AistTrader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="772"
+        Width="1755"
+        Title="AistTrader"
+        x:Name="MainFrm" 
+        Icon="Resources/Images/mainIcon.ico" 
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized" 
+        
+        xmlns:toggleSwitch="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
+        >
+
+
+
+
+    <Grid Margin="0,0,0,0" Height="290" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23"/>
+            <RowDefinition Height="700*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Height="23" VerticalAlignment="Top" Margin="1,1,-1,0">
+            <MenuItem Header="Скрипты">
+            </MenuItem>
+            <MenuItem Header="Счета">
+            </MenuItem>
+            <MenuItem Header="Агенты">
+                <MenuItem Name="AgentAddConfigMenuItem" Header="Добавление конфигурации" Click="AgentAddConfigMenuItem_OnClick" ></MenuItem>
+                <MenuItem Name="AgentManagerMenuItem" Header="Управление агентами" Click="AgentManagerMenuItem_OnClick" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Портфели">
+                <MenuItem Name="PortfolioManagerMenuItem" Header="Управление портфелями" Click="PortfolioMenuItem_OnClick" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Настройки">
+            </MenuItem>
+            <MenuItem Header="Управление поставщиками">
+                <MenuItem Name="ProviderManagerMenuItem" Header="Управление подключениями" Click="ProviderManagerMenuItem_OnClick" ></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <TabControl Grid.Row="1" Margin="0,0,0,-335" Name="TabCtr" SelectionChanged="TabCtr_OnSelectionChanged" >
+
+            <TabItem Header="Агенты" x:Name="AgentItem" Margin="0,0,0,0" >
+                <Grid Name="AgentItemGrid" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1080*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="AgentListView" SelectionChanged="AgentListView_OnSelectionChanged" ItemsSource="{Binding ElementName=MainFrm, Path=AgentCollectionView}" IsSynchronizedWithCurrentItem="True"  
+                        x:FieldModifier="private" Loaded="AgentListView_Loaded" Grid.Column="0">
+                        <!--<ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </ListView.ItemContainerStyle>-->
+                        <ListView.Resources>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            </Style>
+                        </ListView.Resources>
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <GridViewColumn Width="175" Header=" Имя" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Name}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="490" Header=" Количество подключений" DisplayMemberBinding="{Binding Path=_Agent.ConnectionCount}" />
+                                <GridViewColumn Width="160" Header=" Контракты" DisplayMemberBinding="{Binding Path=_Agent.Contracts}" />
+                                <GridViewColumn Width="70">
+                                    <CheckBox   Name="ChkBoxSelectAll" Content=" " FlowDirection="RightToLeft" IsChecked="True" ></CheckBox>
+                                    <GridViewColumn.CellTemplate >
+                                        <DataTemplate >
+                                            <StackPanel>
+                                                <CheckBox IsChecked="True">
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Expander IsExpanded="True">
+                                                        <Expander.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock Text="{Binding Path= Name}"  Foreground="Black"  VerticalAlignment="Bottom" />
+                                                                <TextBlock Text="{Binding ItemCount}"  Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
+                                                            </StackPanel>
+                                                        </Expander.Header>
+                                                        <ItemsPresenter />
+                                                    </Expander>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+                    </ListView>
+                    <GroupBox Grid.Column="1" Margin="5,0,0,0">
+                        <Grid HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
+                            <Button Content="Добавить" Click="AddAgentConfigBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Редактировать" Name="EditSingleOrGroupItemBtn" Click="EditAgentConfigBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Удалить" Click="DeleteAgentBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Создать группу" Name="CreateGroupItemBtn" IsEnabled="False" Click="AddAgentConfigGroupBtnClick" HorizontalAlignment="Center" Margin="12,89,8,0" VerticalAlignment="Top" Width="100"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Подключения" x:Name="ProviderItem" Margin="0,0,0,0" >
+                <Grid Name="ProviderItemGrid" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1080*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView x:Name="ProviderListView" IsSynchronizedWithCurrentItem="True"  
+                        x:FieldModifier="private" Loaded="AgentManagerDetails_Loaded" Grid.Column="0">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <GridViewColumn Width="175" Header="Имя" DisplayMemberBinding="{Binding Path=Connection.Name}"  />
+                                <GridViewColumn Width="175" Header="Код" DisplayMemberBinding="{Binding Path=Connection.Code}" />
+                                <GridViewColumn Width="175" Header="Средства" DisplayMemberBinding="{Binding Path=Connection.Funds}"/>
+                                <GridViewColumn Width="175" Header="Вариационная маржа" DisplayMemberBinding="{Binding Path=Connection.VariationMargin}"/>
+                                <GridViewColumn Width="175" Header="Чистая стоимость" DisplayMemberBinding="{Binding Path=Connection.NetValue}"/>
+                                <GridViewColumn Width="200" Header="Состояние" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <toggleSwitch:HorizontalToggleSwitch Name="ConnectionStateSwitch"  HorizontalAlignment="Right" IsManipulationEnabled="True"  Checked="ConnectionStateSwitch_OnClick" Unchecked="ConnectionStateSwitch_OnClick"   IsChecked="{Binding Path= Connection.IsActive}" ></toggleSwitch:HorizontalToggleSwitch>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="200" Header="СостояниеNEw" >
+                                </GridViewColumn>
+                                <GridViewColumn Width="130" Header="Операция">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="OperationBtnClick" MinWidth="100"  HorizontalAlignment="Right" Margin="0,0,0,0">Подключить</Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <GroupBox Grid.Column="1" Margin="5,0,0,0">
+                        <Grid HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
+                            <Button Content="Добавить" Name="AddConnectionBtn" Click="AddAgentConnectionBtnClick" Margin="0,6,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
+                            <Button Content="Редактировать" Click="EditAgentConnectionBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Удалить" Click="DelAgentConnectionBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Портфели" x:Name="PortfolioItem" Margin="0,0,0,0" >
+                <Grid Name="PortfolioItemGrid" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1080*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView x:Name="PortfolioListView" IsSynchronizedWithCurrentItem="True"  
+                        x:FieldModifier="private" Loaded="AgentManagerDetails_Loaded" Grid.Column="0">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <GridViewColumn Width="175" Header="Имя" DisplayMemberBinding="{Binding Path=Name}"  />
+                                <GridViewColumn Width="175" Header="Код" DisplayMemberBinding="{Binding Path=AgentConnection.Connection.Code}" />
+                                <GridViewColumn Width="175" Header="Средства" DisplayMemberBinding="{Binding Path=AgentConnection.Connection.Funds}"/>
+                                <GridViewColumn Width="175" Header="Вариационная маржа" DisplayMemberBinding="{Binding Path=AgentConnection.Connection.VariationMargin}"/>
+                                <GridViewColumn Width="175" Header="Чистая стоимость" DisplayMemberBinding="{Binding Path=AgentConnection.Connection.NetValue}"/>
+                                <GridViewColumn Width="175" Header="Количество алгоритмов" DisplayMemberBinding="{Binding Path=AgentConnection.Connection.AlgorithmCount}" />
+                                <GridViewColumn Width="175" Header="Контракты" DisplayMemberBinding="{Binding Path=AgentConnection.Connection.Contracts}" />
+                                <GridViewColumn Width="70"  >
+                                    <CheckBox Name="ChkBoxSelectAllPortfolios" IsChecked="True" ></CheckBox>
+                                    <GridViewColumn.CellTemplate >
+                                        <DataTemplate >
+                                            <StackPanel>
+                                                <CheckBox IsChecked="True">
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <GroupBox Grid.Column="1" Margin="5,0,0,0">
+                        <Grid HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
+                            <Button Content="Добавить" Name="AddPortfolioBtn" Click="AddAgentPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Редактировать" Click="EditPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Удалить" Click="DelPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Управление Агентами" x:Name="AgentManagerItem" Margin="0,0,0,0" >
+                <Grid Name="AgentManagerItemGrid" Margin="0,0,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1080*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView x:Name="AgentManagerListView" ItemsSource="{Binding ElementName=AddAgentsWnd, Path=AgentManagerStorage}" IsSynchronizedWithCurrentItem="True"  
+                        x:FieldModifier="private" Grid.Column="0">
+
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <GridViewColumn Width="175" Header="Имя" DisplayMemberBinding="{Binding Path= Name}"  />
+                                <GridViewColumn Width="175" Header="Код" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Account.AgentAccount.Code}" />
+                                <GridViewColumn Width="175" Header="Агент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.AgentOrGroup}" />
+                                <GridViewColumn Width="175" Header="Инструмент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Tool}" />
+                                <GridViewColumn Width="175" Header="Позиции(лоты)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Position}" />
+                                <GridViewColumn Width="175" Header="П/У(сделка)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Transaction}" />
+                                <GridViewColumn Width="175" Header="П/У(итоговый)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.FinalTransaction}" />
+                                <GridViewColumn Width="175" Header="Состояние" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Account.AgentAccount.IsActive}" />
+                                <GridViewColumn Width="70"  >
+                                    <CheckBox Name="CheckkBoxSelectAll" IsChecked="True" ></CheckBox>
+                                    <GridViewColumn.CellTemplate >
+                                        <DataTemplate >
+                                            <StackPanel>
+                                                <CheckBox IsChecked="True">
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Expander IsExpanded="True">
+                                                        <Expander.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock Text="{Binding Path= Name}"  Foreground="Black"  VerticalAlignment="Bottom" />
+                                                                <TextBlock Text="{Binding ItemCount}"  Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
+                                                            </StackPanel>
+                                                        </Expander.Header>
+                                                        <ItemsPresenter />
+                                                    </Expander>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+
+                    </ListView>
+
+                    <GroupBox Grid.Column="1" Margin="5,0,0,0">
+                        <Grid HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
+                            <Button Content="Добавить" Click="AddAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Редактировать" Click="EditAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Удалить" Click="DeleteAgentBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+
+
+        </TabControl>
+
+    </Grid>
+</Window>

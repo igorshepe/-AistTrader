@@ -1,0 +1,64 @@
+﻿<Application x:Class="AistTrader.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib"
+             
+             xmlns:entities="clr-namespace:Common.Entities;assembly=Common"
+             xmlns:settings1="clr-namespace:Common.Settings;assembly=Common"
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+
+
+
+
+
+
+
+
+
+
+        <!--<ControlTemplate x:Key="ComboBoxValidationErrorTamplate">
+            <DockPanel>
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder />
+                </Border>
+            </DockPanel>
+        </ControlTemplate>-->
+        <ObjectDataProvider x:Key="StrategiesData"
+                    MethodName="GetValues" 
+                    ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="settings1:PickedStrategy" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="TerminalData"
+                    MethodName="GetValues" 
+                    ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="settings1:TerminalType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <!--<Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <TextBlock DockPanel.Dock="Right" Foreground="Red" FontSize="14" FontWeight="Bold">*</TextBlock>
+                            <Border BorderBrush="Red" BorderThickness="1">
+                                <AdornedElementPlaceholder></AdornedElementPlaceholder>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>-->
+            
+    </Application.Resources>
+</Application>
