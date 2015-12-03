@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Repository\AistTrader\AistTrader\obj\Debug\
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\Debug\
 AistTrader
 none
 false
 DEBUG;TRACE
-C:\Repository\AistTrader\AistTrader\App.xaml
+C:\Repository\-AistTrader\AistTrader\AistTrader\App.xaml
 81685624260
 
 25-179139737
-29-810033974
+291423277372
 MainWindow.xaml;AgentConfig.xaml;AgentConnectionAddition.xaml;AgentGroupAddition.xaml;AgentManagerAddition.xaml;AgentPortfolioAddition.xaml;StrategiesSettingsWindow.xaml;Views\AgentConfigView.xaml;
 
 False

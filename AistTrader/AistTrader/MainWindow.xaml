@@ -8,13 +8,8 @@
         Icon="Resources/Images/mainIcon.ico" 
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized" 
-        
         xmlns:toggleSwitch="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
         >
-
-
-
-
     <Grid Margin="0,0,0,0" Height="290" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="23"/>
@@ -37,6 +32,9 @@
             </MenuItem>
             <MenuItem Header="Управление поставщиками">
                 <MenuItem Name="ProviderManagerMenuItem" Header="Управление подключениями" Click="ProviderManagerMenuItem_OnClick" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Что нового?">
+                <MenuItem Name="WhatsNewItem" Header="Показать новые фичи" Click="WhatsNewItem_OnClick" ></MenuItem>
             </MenuItem>
         </Menu>
 

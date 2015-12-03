@@ -36,12 +36,6 @@ namespace AistTrader
     //    }
     //}
 
-    enum AgentValidationError
-    {
-        SelectNone,
-        NameAndSettingsAlreadyExist
-    }
-
 
     public partial class AgentConfig : IDataErrorInfo
     {
@@ -51,7 +45,6 @@ namespace AistTrader
         private int EditIndex { get; set; }
         public string ItemSource { get; set; }
         private bool AlreadyExist;
-
         public List<string> BadProperty { get; set; }
 
         public AgentConfig()

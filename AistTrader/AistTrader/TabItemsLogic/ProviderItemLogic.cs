@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -12,6 +13,8 @@ using Common.Settings;
 using Ecng.Common;
 using Ecng.Xaml;
 using IniParser;
+using StockSharp.Algo.Storages;
+using StockSharp.BusinessEntities;
 using StockSharp.Plaza;
 using ToggleSwitch;
 
@@ -22,6 +25,7 @@ namespace AistTrader
         public ObservableCollection<AgentConnection> ProviderStorage { get; private set; }
         public PlazaTrader _PlazaTrader;
         const string Localhost = "127.0.0.1:4001";
+        public List<Security> SecuritiesList = new List<Security>();
 
 
         private void LoadProviderTabItemData()
@@ -172,40 +176,86 @@ namespace AistTrader
             else
                 ipEndPoint = agent.Connection.ConnectionSettings.IpEndPoint;
 
-            _PlazaTrader = new PlazaTrader
+            var Trader  = new PlazaTrader();
+            Trader.Address = ipEndPoint.To<IPEndPoint>();
+            Trader.IsCGate = true;
+            Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
+
+
+
+            Trader.NewSecurities += securities =>
             {
-                UseLocalProtocol = true,
-                Address = ipEndPoint.To<IPEndPoint>()
+                this.GuiAsync(() => SecuritiesList.AddRange(securities) /*agent.AgentAccount.Tools.AddRange(securities)*/   );
             };
+
+            Trader.Connected += () =>
+            {
+                
+                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
+            };
+
+
+            Trader.Disconnected += () =>
+            {
+                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
+                Trader.Dispose();
+            };
+            Trader.ConnectionError += error => this.GuiAsync(() =>
+            {
+                var x = error;
+                ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
+                Trader.Dispose();
+            });
+
+
+
+
+           Trader.Connect();
+
+
+
+
+
+
+
+
+
+
+
+            //_PlazaTrader = new PlazaTrader
+            //{
+            //    UseLocalProtocol = true,
+            //    Address = ipEndPoint.To<IPEndPoint>()
+            //};
 
             //_PlazaTrader.NewPortfolios += portfolios =>
             //{
             //    this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ PortfoliosList.AddRange(portfolios));
             //};
 
-            _PlazaTrader.NewSecurities += securities =>
-            {
-                //this.GuiAsync(() => SecuritiesList.AddRange(securities) /*agent.AgentAccount.Tools.AddRange(securities)*/   );
-            };
+            //_PlazaTrader.NewSecurities += securities =>
+            //{
+            //    //this.GuiAsync(() => SecuritiesList.AddRange(securities) /*agent.AgentAccount.Tools.AddRange(securities)*/   );
+            //};
 
-            _PlazaTrader.ReConnectionSettings.Interval = TimeSpan.FromSeconds(5);
-            //_PlazaTrader.ReConnectionSettings.Connectio += () => this.GuiAsync(() => MessageBox.Show(this, "Соединение восстановлено."));
-            _PlazaTrader.Connected += () =>
-            {
-              //  _PlazaTrader.StartExport();
-                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
-            };
-            _PlazaTrader.Disconnected += () =>
-            {
-                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
-                _PlazaTrader.Dispose();
-            };
-            _PlazaTrader.ConnectionError += error => this.GuiAsync(() =>
-            {
-                ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
-                _PlazaTrader.Dispose();
-            });
-            _PlazaTrader.Connect();
+            //_PlazaTrader.ReConnectionSettings.Interval = TimeSpan.FromSeconds(5);
+            ////_PlazaTrader.ReConnectionSettings.Connectio += () => this.GuiAsync(() => MessageBox.Show(this, "Соединение восстановлено."));
+            //_PlazaTrader.Connected += () =>
+            //{
+            //  //  _PlazaTrader.StartExport();
+            //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
+            //};
+            //_PlazaTrader.Disconnected += () =>
+            //{
+            //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
+            //    _PlazaTrader.Dispose();
+            //};
+            //_PlazaTrader.ConnectionError += error => this.GuiAsync(() =>
+            //{
+            //    ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
+            //    _PlazaTrader.Dispose();
+            //});
+            //_PlazaTrader.Connect();
         }
         public static string ReadPlazaPersonalSettings(string plazaPath)
         {
@@ -235,5 +285,13 @@ namespace AistTrader
         }
 
 
+        private void WhatsNewItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+            //открытие окна, где можно посмотреть, что нового
+
+        }
     }
+
+
 }

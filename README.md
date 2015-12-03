@@ -1,1 +1,1 @@
-# -AistTrader
+# AistTrader
