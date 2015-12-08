@@ -42,6 +42,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Abt.Controls.SciChart.Wpf.dll" size="2539520">
+      <assemblyIdentity name="Abt.Controls.SciChart.Wpf" version="3.4.1.6431" publicKeyToken="B55DD9EFE817E823" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vWuSP3Ga4G3yVyUx4ZJS2fKv/WDkiRHUS/XlBu95Q6s=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ActiproSoftware.Docking.Wpf.dll" size="625664">
       <assemblyIdentity name="ActiproSoftware.Docking.Wpf" version="11.2.555.0" publicKeyToken="36FF2196AB5654B9" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -150,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="508936">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="512008">
       <assemblyIdentity name="AistTrader" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hLVB6Pe44E5ncplLllHifpi2rjWmSHwwH6wc8+Pl6VU=</dsig:DigestValue>
+        <dsig:DigestValue>r8Z0O4744WOco5rK7gpmz2CNcxQsgyhJscHwo5JtKqw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -186,6 +198,42 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AWSSDK.Core.dll" size="525824">
+      <assemblyIdentity name="AWSSDK.Core" version="3.1.0.0" publicKeyToken="885C28607F98E604" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>PvoYzPzVEz2sy83gnqqprZx1JEogvB1J3aHTH4XqW34=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AWSSDK.S3.dll" size="361472">
+      <assemblyIdentity name="AWSSDK.S3" version="3.1.0.0" publicKeyToken="885C28607F98E604" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>D1O+SFRCU6+E09IwUzyg/7kXL+g044a5qw1TmcvD4lU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClrPatch.dll" size="2048">
+      <assemblyIdentity name="ClrPatch" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>lSlxHwmO8AeJ7z0deJpEUFVuko2lYJMAWjmmLMc2tyo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="16384">
       <assemblyIdentity name="Common" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -193,7 +241,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0buFiLhZJZNuJgUoqBByTsO7R39DtS8Epbt1lYd+fCU=</dsig:DigestValue>
+        <dsig:DigestValue>9AXASrrw3P7RkOS/n9wutHKp0yub0JtCQsZt/cnvB1w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -266,6 +314,30 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>yMp1kCVAGI8iANPkeMX5mPo0bwF3FN7Bx3ns8NYlAMY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ecng.Data.dll" size="77312">
+      <assemblyIdentity name="Ecng.Data" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>gIOKc0yXDzLnZsJ42sgieodSY5cU6HmksO/LgvVricI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ecng.Data.Providers.dll" size="2177536">
+      <assemblyIdentity name="Ecng.Data.Providers" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>C2hh5w2MxFwyiW+aED3KdrSyey9nPA4/sKXzVkpAcwU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -458,6 +530,30 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>vjg0+umCG5SxAeXcM5wjuAi7kGU7zVnZSOASRcOmizk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="301056">
+      <assemblyIdentity name="log4net" version="1.2.13.0" publicKeyToken="669E0DDF0BB1AA2A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>zm7k/ceDpb+QXyQBeKyW6ut+3iL/4GoGuhec0aBEK9M=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MathNet.Numerics.dll" size="1011712">
+      <assemblyIdentity name="MathNet.Numerics" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>YDEYEHqBK1/0dybOnvbU+Y6+6e3i7LPPokyzSSj/WLM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -666,6 +762,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="StockSharp.Xaml.Charting.dll" size="320000">
+      <assemblyIdentity name="StockSharp.Xaml.Charting" version="4.3.13.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>XU1EqX+kYty+Im3KGAQL8BltINU/WM2zYAh3cD1tnNk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strategies.dll" size="21504">
       <assemblyIdentity name="Strategies" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -673,7 +781,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/GLpoc0DXjncVEHGNeGxuA7sHykIfGZfnKiRRtEGVg4=</dsig:DigestValue>
+        <dsig:DigestValue>qvjtyOv0E10J8sG7WNjv8cT9nFZwuVzsu/mkAelbQ7k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -713,13 +821,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="AistTrader.exe.config" size="187">
+  <file name="AistTrader.exe.config" size="186">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ji8aT6+d4QyGsLkWKNdTYyE7mNtRXIN9y+Xmyl/UOJU=</dsig:DigestValue>
+      <dsig:DigestValue>E5pe1Moh3SVgq+7c6PIBn640UkkP2CXKbE7OhyMoiNs=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

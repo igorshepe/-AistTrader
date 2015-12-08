@@ -1,0 +1,1721 @@
+2015-12-08 13:21:58.205;p2syslog;;Use async writing mode; msg_pool_size: 2048; logthread_affinity 0x0;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;Registered default p2 logger cgate.env.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;Registered default p2 logger cgate.user.;TID 14560
+2015-12-08 13:21:58.205;p2mq-cli;;MQ library started.;TID 14560
+2015-12-08 13:21:58.205;p2repl-cli;;Client replication library started;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New conn impl registered: p2tcp.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New conn impl registered: p2lrpcq.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New conn impl registered: p2sys.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New listener impl registered: p2sys.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New publisher impl registered: p2sys.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New publisher impl registered: p2mq.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New listener impl registered: p2repl.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New listener impl registered: p2mqreply.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New listener impl registered: p2ordbook.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New conn impl registered: timer.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New listener impl registered: interval_timer.;TID 14560
+2015-12-08 13:21:58.205;cgate.env;;New listener impl registered: cron_timer.;TID 14560
+2015-12-08 13:21:58.205;cgate.user;;Cgate version: 1.3.12;TID 14560
+2015-12-08 13:21:58.205;cgate.user;;OS version: Microsoft Windows 7 Ultimate Edition Service Pack 1 (build 7601), 64-bit;TID 14560
+2015-12-08 13:21:58.205;cgate.user;;P2 version: 203.;TID 14560
+2015-12-08 13:21:58.205;cgate.user;;Current work path: C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug;TID 14560
+2015-12-08 13:21:58.205;cgate.user;;cg_env_open settings: ini=StockSharp.Plaza.CGate.ini;key=11111111;TID 14560
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=TESTName_1;TID 14560
+2015-12-08 13:21:58.206;cgate.env;;Registered default p2 logger cgate.connection.p2.;TID 14560
+2015-12-08 13:21:58.206;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=TESTName_1;name=noname1 @cee{name: , obj: 0x1B150040, thread: 14560};TID 14560
+2015-12-08 13:21:58.206;cgate.env;;New connection was registered: noname1.;TID 14560
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=TESTName_3;TID 620
+2015-12-08 13:21:58.206;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=TESTName_3;name=noname2 @cee{name: , obj: 0x1B1502D0, thread: 620};TID 620
+2015-12-08 13:21:58.206;cgate.env;;New connection was registered: noname2.;TID 620
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=TESTName_2;TID 15400
+2015-12-08 13:21:58.206;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=TESTName_2;name=noname3 @cee{name: , obj: 0x1B14FDB0, thread: 15400};TID 15400
+2015-12-08 13:21:58.206;cgate.env;;New connection was registered: noname3.;TID 15400
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=TESTName_4;TID 5912
+2015-12-08 13:21:58.206;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=TESTName_4;name=noname4 @cee{name: , obj: 0x1B150560, thread: 5912};TID 5912
+2015-12-08 13:21:58.206;cgate.env;;New connection was registered: noname4.;TID 5912
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open: 1B1505B0;TID 5912
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open settings: ;TID 5912
+2015-12-08 13:21:58.206;cgate.connection.p2;;open: connection open. @cee{name: noname4, obj: 0x1B150560, thread: 5912};TID 5912
+2015-12-08 13:21:58.206;cgate.connection.p2;;P2MQ connection string: appName=TESTName_4;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;
+ @cee{name: noname4, obj: 0x1B150560, thread: 5912};TID 5912
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open: 1B150090;TID 14560
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open settings: ;TID 14560
+2015-12-08 13:21:58.206;cgate.connection.p2;;open: connection open. @cee{name: noname1, obj: 0x1B150040, thread: 14560};TID 14560
+2015-12-08 13:21:58.206;cgate.connection.p2;;P2MQ connection string: appName=TESTName_1;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;
+ @cee{name: noname1, obj: 0x1B150040, thread: 14560};TID 14560
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=TESTName_0;TID 6540
+2015-12-08 13:21:58.206;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=TESTName_0;name=noname5 @cee{name: , obj: 0x1B1507F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open: 1B14FE00;TID 15400
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open: 1B150320;TID 620
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open settings: ;TID 15400
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open settings: ;TID 620
+2015-12-08 13:21:58.206;cgate.connection.p2;;open: connection open. @cee{name: noname2, obj: 0x1B1502D0, thread: 620};TID 620
+2015-12-08 13:21:58.206;cgate.connection.p2;;P2MQ connection string: appName=TESTName_3;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;
+ @cee{name: noname2, obj: 0x1B1502D0, thread: 620};TID 620
+2015-12-08 13:21:58.206;cgate.connection.p2;;open: connection open. @cee{name: noname3, obj: 0x1B14FDB0, thread: 15400};TID 15400
+2015-12-08 13:21:58.206;cgate.connection.p2;;P2MQ connection string: appName=TESTName_2;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;
+ @cee{name: noname3, obj: 0x1B14FDB0, thread: 15400};TID 15400
+2015-12-08 13:21:58.206;cgate.env;;New connection was registered: noname5.;TID 6540
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open: 1B150840;TID 6540
+2015-12-08 13:21:58.206;cgate.user;;cg_conn_open settings: ;TID 6540
+2015-12-08 13:21:58.206;cgate.connection.p2;;open: connection open. @cee{name: noname5, obj: 0x1B1507F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.206;cgate.connection.p2;;P2MQ connection string: appName=TESTName_0;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;
+ @cee{name: noname5, obj: 0x1B1507F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.206;p2mq-cli;;Connection 0x1B05C210 connected; mq-conn 0x4; router state 'connected'; 'appName=TESTName_4;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;';TID 5912
+2015-12-08 13:21:58.206;p2mq-cli;;Connection 0x1BC37F90 connected; mq-conn 0x3; router state 'connected'; 'appName=TESTName_2;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;';TID 15400
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname4, obj: 0x1B150560, thread: 5912};TID 5912
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname3, obj: 0x1B14FDB0, thread: 15400};TID 15400
+2015-12-08 13:21:58.206;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname3, obj: 0x1B14FDB0, thread: 15400};TID 15400
+2015-12-08 13:21:58.206;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname4, obj: 0x1B150560, thread: 5912};TID 5912
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname3, obj: 0x1B14FDB0, thread: 15400};TID 15400
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname4, obj: 0x1B150560, thread: 5912};TID 5912
+2015-12-08 13:21:58.206;p2mq-cli;;Connection 0x1BCBE0D0 connected; mq-conn 0x2; router state 'connected'; 'appName=TESTName_3;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;';TID 620
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname2, obj: 0x1B1502D0, thread: 620};TID 620
+2015-12-08 13:21:58.206;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname2, obj: 0x1B1502D0, thread: 620};TID 620
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname2, obj: 0x1B1502D0, thread: 620};TID 620
+2015-12-08 13:21:58.206;p2mq-cli;;Connection 0x1BBF93A0 connected; mq-conn 0x1; router state 'connected'; 'appName=TESTName_1;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;';TID 14560
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname1, obj: 0x1B150040, thread: 14560};TID 14560
+2015-12-08 13:21:58.206;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname1, obj: 0x1B150040, thread: 14560};TID 14560
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname1, obj: 0x1B150040, thread: 14560};TID 14560
+2015-12-08 13:21:58.206;p2mq-cli;;Connection 0x1BD45200 connected; mq-conn 0x5; router state 'connected'; 'appName=TESTName_0;host=127.0.0.1;port=4001;timeout=3000;localTimeout=30000;';TID 6540
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname5, obj: 0x1B1507F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.206;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname5, obj: 0x1B1507F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.206;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname5, obj: 0x1B1507F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_000000001B150090;timeout=10000;scheme=noscheme;TID 14560
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_000000001B150320;timeout=10000;scheme=noscheme;TID 620
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_000000001B1505B0;timeout=10000;scheme=noscheme;TID 5912
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_000000001B14FE00;timeout=10000;scheme=noscheme;TID 15400
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_000000001B150840;timeout=10000;scheme=noscheme;TID 6540
+2015-12-08 13:21:58.226;cgate.env;;Registered default p2 logger cgate.publisher.p2mq.;TID 620
+2015-12-08 13:21:58.226;cgate.env;;Registered default p2 logger scheme.;TID 14560
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.226;cgate.env;;New publisher was registered: certlistner_000000001B150320.;TID 620
+2015-12-08 13:21:58.226;cgate.env;;New publisher was registered: certlistner_000000001B150090.;TID 14560
+2015-12-08 13:21:58.226;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B150320;scheme=noscheme;TID 620
+2015-12-08 13:21:58.226;cgate.env;;New publisher was registered: certlistner_000000001B14FE00.;TID 15400
+2015-12-08 13:21:58.226;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B150090;scheme=noscheme;TID 14560
+2015-12-08 13:21:58.226;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B14FE00;scheme=noscheme;TID 15400
+2015-12-08 13:21:58.226;cgate.env;;New publisher was registered: certlistner_000000001B1505B0.;TID 5912
+2015-12-08 13:21:58.226;cgate.env;;Registered default p2 logger cgate.listener.p2mqreply.;TID 620
+2015-12-08 13:21:58.226;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B1505B0;scheme=noscheme;TID 5912
+2015-12-08 13:21:58.226;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B150320;scheme=noscheme;name=noname6. @cee{name: , obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.226;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B14FE00;scheme=noscheme;name=noname7. @cee{name: , obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.226;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B150090;scheme=noscheme;name=noname8. @cee{name: , obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.226;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B1505B0;scheme=noscheme;name=noname9. @cee{name: , obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.226;cgate.env;;New listener was registered: noname6.;TID 620
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_open: 1BADC848;TID 620
+2015-12-08 13:21:58.226;cgate.env;;New listener was registered: noname7.;TID 15400
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_open: 1BADC2E8;TID 15400
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.226;cgate.env;;New listener was registered: noname8.;TID 14560
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.226;cgate.env;;New listener was registered: noname9.;TID 5912
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_open: 1BADD058;TID 14560
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_open: 1BADC598;TID 5912
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.226;cgate.env;;New publisher was registered: certlistner_000000001B150840.;TID 6540
+2015-12-08 13:21:58.226;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B150840;scheme=noscheme;TID 6540
+2015-12-08 13:21:58.226;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_000000001B150840;scheme=noscheme;name=noname10. @cee{name: , obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.226;cgate.env;;New listener was registered: noname10.;TID 6540
+2015-12-08 13:21:58.226;cgate.user;;cg_pub_open: 1BADCDA8;TID 6540
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.226;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.246;cgate.user;;cg_lsn_open: 1B02EA38;TID 14560
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;Open (null) @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;open: (null). @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.246;cgate.user;;cg_lsn_open: 1B02E898;TID 15400
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;Open (null) @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;open: (null). @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;addHandler: 0x000000001B02E970. @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;addHandler: 0x000000001B02EB10. @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.246;cgate.user;;cg_lsn_open: 1B02E3B8;TID 620
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;Open (null) @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;open: (null). @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;addHandler: 0x000000001B02E490. @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.246;cgate.user;;cg_lsn_open: 1B02ED78;TID 6540
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;Open (null) @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;open: (null). @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;addHandler: 0x000000001B02EE50. @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.246;cgate.user;;cg_lsn_open: 1B02E558;TID 5912
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;Open (null) @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;open: (null). @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.246;cgate.publisher.p2mq;;addHandler: 0x000000001B02E630. @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.246;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.276;cgate.connection.p2;;Response from cert service was received. @cee{name: noname1, obj: 0x1B150040, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname1, obj: 0x1B150040, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.user;;cg_pub_destroy: 1BADD058;TID 14560
+2015-12-08 13:21:58.276;cgate.publisher.p2mq;;Close @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.publisher.p2mq;;close. @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_000000001B150090 is done @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.listener.p2mqreply;;Close @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.listener.p2mqreply;;close. @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.publisher.p2mq;;removeHandler: 0x000000001B02EB10. @cee{name: certlistner_000000001B150090, obj: 0x1BADD000, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.env;;Publisher was unregistered: 0x1BADD058.;TID 14560
+2015-12-08 13:21:58.276;cgate.user;;cg_lsn_destroy: 1B02EA38;TID 14560
+2015-12-08 13:21:58.276;cgate.listener.p2mqreply;;Done @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname8, obj: 0x1B02E9E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.276;cgate.env;;Listener was unregistered: 0x1B02EA38.;TID 14560
+2015-12-08 13:21:58.276;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme;TID 14560
+2015-12-08 13:21:58.286;cgate.env;;Registered default p2 logger cgate.listener.p2repl.;TID 14560
+2015-12-08 13:21:58.286;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme;name=noname11. @cee{name: , obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:21:58.286;cgate.connection.p2;;Response from cert service was received. @cee{name: noname3, obj: 0x1B14FDB0, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname3, obj: 0x1B14FDB0, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.connection.p2;;Response from cert service was received. @cee{name: noname4, obj: 0x1B150560, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.user;;cg_pub_destroy: 1BADC2E8;TID 15400
+2015-12-08 13:21:58.286;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname4, obj: 0x1B150560, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;Close @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.user;;cg_pub_destroy: 1BADC598;TID 5912
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;Close @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;close. @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;close. @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.connection.p2;;Response from cert service was received. @cee{name: noname5, obj: 0x1B1507F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;p2repl-cli;;Stream created;strm 0x1BE51730;TID 14560
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_000000001B14FE00 is done @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Close @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname5, obj: 0x1B1507F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.user;;cg_pub_destroy: 1BADCDA8;TID 6540
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;close. @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;Close @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_000000001B1505B0 is done @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;removeHandler: 0x000000001B02E970. @cee{name: certlistner_000000001B14FE00, obj: 0x1BADC290, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;close. @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Close @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;close. @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;removeHandler: 0x000000001B02E630. @cee{name: certlistner_000000001B1505B0, obj: 0x1BADC540, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.env;;New listener was registered: noname11.;TID 14560
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_000000001B150840 is done @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.env;;Publisher was unregistered: 0x1BADC598.;TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Close @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_destroy: 1B02E558;TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Done @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.env;;Publisher was unregistered: 0x1BADC2E8.;TID 15400
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname9, obj: 0x1B02E500, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;close. @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_destroy: 1B02E898;TID 15400
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;removeHandler: 0x000000001B02EE50. @cee{name: certlistner_000000001B150840, obj: 0x1BADCD50, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Done @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname7, obj: 0x1B02E840, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;cgate.env;;Listener was unregistered: 0x1B02E558.;TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.env;;Listener was unregistered: 0x1B02E898.;TID 15400
+2015-12-08 13:21:58.286;cgate.env;;Publisher was unregistered: 0x1BADCDA8.;TID 6540
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_destroy: 1B02ED78;TID 6540
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Done @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname10, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.env;;Listener was unregistered: 0x1B02ED78.;TID 6540
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTTRADE_REPL.ini|CustReplScheme;TID 15400
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme;TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme;name=noname13. @cee{name: , obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:21:58.286;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTTRADE_REPL.ini|CustReplScheme;name=noname12. @cee{name: , obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;p2repl-cli;;Stream created;strm 0x1BE4F750;TID 5912
+2015-12-08 13:21:58.286;p2repl-cli;;Stream created;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:21:58.286;cgate.env;;New listener was registered: noname13.;TID 5912
+2015-12-08 13:21:58.286;cgate.env;;New listener was registered: noname12.;TID 15400
+2015-12-08 13:21:58.286;cgate.connection.p2;;Response from cert service was received. @cee{name: noname2, obj: 0x1B1502D0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname2, obj: 0x1B1502D0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.user;;cg_pub_destroy: 1BADC848;TID 620
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;Close @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;close. @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_000000001B150320 is done @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Close @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;close. @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;removeHandler: 0x000000001B02E490. @cee{name: certlistner_000000001B150320, obj: 0x1BADC7F0, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.env;;Publisher was unregistered: 0x1BADC848.;TID 620
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_destroy: 1B02E3B8;TID 620
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;Done @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname6, obj: 0x1B02E360, thread: 620};TID 620
+2015-12-08 13:21:58.286;cgate.env;;Listener was unregistered: 0x1B02E3B8.;TID 620
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_new settings: p2repl://RTS_INDEX_REPL;scheme=|FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme;TID 620
+2015-12-08 13:21:58.286;cgate.listener.p2repl;;init: init listener: p2repl://RTS_INDEX_REPL;scheme=|FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme;name=noname14. @cee{name: , obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:21:58.286;p2repl-cli;;Stream created;strm 0x1BE575F0;TID 620
+2015-12-08 13:21:58.286;cgate.env;;New listener was registered: noname14.;TID 620
+2015-12-08 13:21:58.286;cgate.user;;cg_pub_new settings: p2mq://FORTS_SRV;category=FORTS_MSG;name=pub_127_0_0_1_4001_TESTName_0;timeout=5000;scheme=|FILE|StockSharp.Plaza.Messages.ini|message;TID 6540
+2015-12-08 13:21:58.286;cgate.env;;Registered default p2 logger cgate.publisher.p2mq.;TID 6540
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1BADD560, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.env;;New publisher was registered: pub_127_0_0_1_4001_TESTName_0.;TID 6540
+2015-12-08 13:21:58.286;cgate.user;;cg_pub_open: 1BADD5B8;TID 6540
+2015-12-08 13:21:58.286;cgate.user;;cg_pub_new settings: ;TID 6540
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;open: . @cee{name: pub_127_0_0_1_4001_TESTName_0, obj: 0x1BADD560, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: pub_127_0_0_1_4001_TESTName_0, obj: 0x1BADD560, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;scheme;;Scheme::make: URL: |FILE|StockSharp.Plaza.Messages.ini|message @cee{name: , obj: 0x1BADD5F0, thread: 6540};TID 6540
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTTRADE_REPL.ini|CustReplScheme;TID 15400
+2015-12-08 13:21:58.286;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTTRADE_REPL.ini|CustReplScheme;name=noname15. @cee{name: , obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:21:58.286;p2repl-cli;;Stream created;strm 0x1BE62E40;TID 15400
+2015-12-08 13:21:58.286;cgate.env;;New listener was registered: noname15.;TID 15400
+2015-12-08 13:21:58.286;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme;TID 14560
+2015-12-08 13:21:58.286;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme;name=noname16. @cee{name: , obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:21:58.296;p2repl-cli;;Stream created;strm 0x1BE66910;TID 14560
+2015-12-08 13:21:58.296;cgate.env;;New listener was registered: noname16.;TID 14560
+2015-12-08 13:21:58.296;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme;TID 14560
+2015-12-08 13:21:58.296;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme;name=noname17. @cee{name: , obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:21:58.296;p2repl-cli;;Stream created;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:21:58.296;cgate.env;;New listener was registered: noname17.;TID 14560
+2015-12-08 13:21:58.296;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme;TID 14560
+2015-12-08 13:21:58.296;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme;name=noname18. @cee{name: , obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:21:58.296;p2repl-cli;;Stream created;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:21:58.296;cgate.env;;New listener was registered: noname18.;TID 14560
+2015-12-08 13:21:58.296;cgate.user;;cg_lsn_new settings: p2repl://FORTS_PART_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme;TID 14560
+2015-12-08 13:21:58.296;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_PART_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme;name=noname19. @cee{name: , obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:21:58.296;p2repl-cli;;Stream created;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:21:58.296;cgate.env;;New listener was registered: noname19.;TID 14560
+2015-12-08 13:21:58.296;cgate.user;;cg_lsn_new settings: p2repl://FORTS_POS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme;TID 14560
+2015-12-08 13:21:58.296;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_POS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme;name=noname20. @cee{name: , obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:21:58.296;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme;TID 5912
+2015-12-08 13:21:58.296;p2repl-cli;;Stream created;strm 0x1BE6F770;TID 14560
+2015-12-08 13:21:58.296;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme;name=noname21. @cee{name: , obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:21:58.296;cgate.env;;New listener was registered: noname20.;TID 14560
+2015-12-08 13:21:58.296;p2repl-cli;;Stream created;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:21:58.296;cgate.user;;cg_lsn_new settings: p2repl://FORTS_DEALS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme;TID 14560
+2015-12-08 13:21:58.296;cgate.env;;New listener was registered: noname21.;TID 5912
+2015-12-08 13:21:58.296;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_DEALS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme;name=noname22. @cee{name: , obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:21:58.296;p2repl-cli;;Stream created;strm 0x24FD72C0;TID 14560
+2015-12-08 13:21:58.296;cgate.env;;New listener was registered: noname22.;TID 14560
+2015-12-08 13:21:58.296;cgate.publisher.p2mq;;initScheme: init publisher scheme. @cee{name: pub_127_0_0_1_4001_TESTName_0, obj: 0x1BADD560, thread: 6540};TID 6540
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA775D8;TID 15400
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 15400
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA77388;TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA77828;TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme @cee{name: , obj: 0x243AE020, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme @cee{name: , obj: 0x2412E1E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA77A78;TID 620
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 620
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme @cee{name: , obj: 0x23A6E100, thread: 620};TID 620
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTTRADE_REPL.ini|CustReplScheme @cee{name: , obj: 0x2422DC40, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x1BD574B0;strm 0x1BD574B0;TID 14560
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x1BD57690;strm 0x1BD57690;TID 5912
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x1BC782E0;strm 0x1BC782E0;TID 620
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x1BC784C0;strm 0x1BC784C0;TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA78AA8;TID 5912
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA77F18;TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 5912
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme @cee{name: , obj: 0x243AE020, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme @cee{name: , obj: 0x2412E1E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x1BC78380;strm 0x1BC78380;TID 14560
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x1B1DC790;strm 0x1B1DC790;TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA77CC8;TID 15400
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 15400
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA78168;TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme @cee{name: , obj: 0x2412E1E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTTRADE_REPL.ini|CustReplScheme @cee{name: , obj: 0x2422DC40, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x1B1DD190;strm 0x1B1DD190;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA783B8;TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme @cee{name: , obj: 0x2412E1E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x25020260;strm 0x25020260;TID 15400
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x25020300;strm 0x25020300;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA78608;TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme @cee{name: , obj: 0x2412E1E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x250203A0;strm 0x250203A0;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA78858;TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme @cee{name: , obj: 0x2412E1E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x25020440;strm 0x25020440;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open: 1BA78CF8;TID 14560
+2015-12-08 13:21:58.316;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme @cee{name: , obj: 0x2412E1E0, thread: 14560};TID 14560
+2015-12-08 13:21:58.316;P2ReplStorage;;Basic policy created;policy 0x250204E0;strm 0x250204E0;TID 14560
+2015-12-08 13:21:58.316;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:21:58.330;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: pub_127_0_0_1_4001_TESTName_0, obj: 0x1BADD560, thread: 6540};TID 6540
+2015-12-08 13:21:58.330;cgate.user;;cg_lsn_new settings: p2mqreply://;name=lis_127_0_0_1_4001_TESTName_0;ref=pub_127_0_0_1_4001_TESTName_0;TID 6540
+2015-12-08 13:21:58.330;cgate.env;;Registered default p2 logger cgate.listener.p2mqreply.;TID 6540
+2015-12-08 13:21:58.330;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;name=lis_127_0_0_1_4001_TESTName_0;ref=pub_127_0_0_1_4001_TESTName_0. @cee{name: , obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.330;cgate.env;;New listener was registered: lis_127_0_0_1_4001_TESTName_0.;TID 6540
+2015-12-08 13:21:58.330;cgate.user;;cg_lsn_open: 1B02ED78;TID 6540
+2015-12-08 13:21:58.330;cgate.listener.p2mqreply;;Open (null) @cee{name: lis_127_0_0_1_4001_TESTName_0, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.330;cgate.listener.p2mqreply;;open: (null). @cee{name: lis_127_0_0_1_4001_TESTName_0, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.330;cgate.publisher.p2mq;;addHandler: 0x000000001B02EE50. @cee{name: pub_127_0_0_1_4001_TESTName_0, obj: 0x1BADD560, thread: 6540};TID 6540
+2015-12-08 13:21:58.333;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: lis_127_0_0_1_4001_TESTName_0, obj: 0x1B02ED20, thread: 6540};TID 6540
+2015-12-08 13:21:58.343;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTTRADE_REPL';srv_addr 'FINTER_FORTS3.inter_futtrade';strm 0x1BE4FF30;TID 15400
+2015-12-08 13:21:58.345;p2repl-cli;;Stream opening started;type 0x1;name 'RTS_INDEX_REPL';srv_addr 'FINTER_FORTS3.inter_rtsindex';strm 0x1BE575F0;TID 620
+2015-12-08 13:21:58.345;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTCOMMON_REPL';srv_addr 'FINTER_FORTS3.inter_futcommon';strm 0x1BE51730;TID 14560
+2015-12-08 13:21:58.345;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTAGGR5_REPL';srv_addr 'FINTER_FORTS3.inter_futaggr5';strm 0x1BE4F750;TID 5912
+2015-12-08 13:21:58.346;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTCOMMON_REPL';srv_addr 'FINTER_FORTS3.inter_optcommon';strm 0x1BE66910;TID 14560
+2015-12-08 13:21:58.346;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTAGGR5_REPL';srv_addr 'FINTER_FORTS3.inter_optaggr5';strm 0x24FD5EE0;TID 5912
+2015-12-08 13:21:58.346;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTINFO_REPL';srv_addr 'FINTER_FORTS3.inter_info';strm 0x1BE69FD0;TID 14560
+2015-12-08 13:21:58.346;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTTRADE_REPL';srv_addr 'FINTER_FORTS3.inter_opttrade';strm 0x1BE62E40;TID 15400
+2015-12-08 13:21:58.346;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTINFO_REPL';srv_addr 'FINTER_FORTS3.inter_info';strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:21:58.346;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_PART_REPL';srv_addr 'FINTER_FORTS3.inter_part';strm 0x1BE6DF90;TID 14560
+2015-12-08 13:21:58.346;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_POS_REPL';srv_addr 'FINTER_FORTS3.inter_pos';strm 0x1BE6F770;TID 14560
+2015-12-08 13:21:58.346;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_DEALS_REPL';srv_addr 'FINTER_FORTS3.inter_ordLog';strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.876;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.876;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.876;p2repl-cli;;Stream opened;chan 0x39ECA2C7D40;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.876;p2repl-cli;;Stream opened;chan 0x13FBB955A42;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.876;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:22:00.876;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:22:00.876;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.876;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.876;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.876;p2repl-cli;;Stream opened;chan 0x19DE5BBA6BFE5;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.876;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:22:00.876;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.876;p2repl-cli;;Current life nums;name 'RTS_INDEX_REPL';cli lifenum 0;srv lifenum 2720;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.876;p2repl-cli;;Current life nums;name 'FORTS_FUTAGGR5_REPL';cli lifenum 0;srv lifenum 6329;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.876;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.876;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'RTS_INDEX_REPL';cli lifenum 0;srv lifenum 2720;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'common' (idx 0);fldIdx 5;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_FUTAGGR5_REPL';cli lifenum 0;srv lifenum 6329;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_FUTCOMMON_REPL';cli lifenum 0;srv lifenum 2128161;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_FUTCOMMON_REPL';cli lifenum 0;srv lifenum 2128161;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x98BB94F7FB;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_OPTAGGR5_REPL';cli lifenum 0;srv lifenum 6329;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_OPTAGGR5_REPL';cli lifenum 0;srv lifenum 6329;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x19B9CBBA94400;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'common' (idx 0);fldIdx 5;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_OPTCOMMON_REPL';cli lifenum 0;srv lifenum 2128161;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_OPTCOMMON_REPL';cli lifenum 0;srv lifenum 2128161;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x220178BB53586C;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'opt_sess_contents' (idx 0);fldIdx 5;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_OPTINFO_REPL';cli lifenum 0;srv lifenum 130423;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_OPTINFO_REPL';cli lifenum 0;srv lifenum 130423;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x19D75BB93D0A5;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'part' (idx 0);fldIdx 5;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x5B99EE8474B;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_PART_REPL';cli lifenum 0;srv lifenum 15061;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_PART_REPL';cli lifenum 0;srv lifenum 15061;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x571BBAE1E5D;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'position' (idx 0);fldIdx 6;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_POS_REPL';cli lifenum 0;srv lifenum 40200;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_POS_REPL';cli lifenum 0;srv lifenum 40200;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'deal' (idx 0);fldIdx 3;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'orders_log' (idx 1);fldIdx 5;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_FUTTRADE_REPL';cli lifenum 0;srv lifenum 40200;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 2;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_FUTTRADE_REPL';cli lifenum 0;srv lifenum 40200;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x777BB37F898;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'deal' (idx 0);fldIdx 3;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'orders_log' (idx 1);fldIdx 5;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_OPTTRADE_REPL';cli lifenum 0;srv lifenum 40200;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 2;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_OPTTRADE_REPL';cli lifenum 0;srv lifenum 40200;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x220179BB53586C;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'fut_sess_contents' (idx 0);fldIdx 8;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'session' (idx 1);fldIdx 4;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_FUTINFO_REPL';cli lifenum 0;srv lifenum 130423;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 2;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_FUTINFO_REPL';cli lifenum 0;srv lifenum 130423;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Negotiated protocol version 14;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Stream opened;chan 0x97646551FD;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.886;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;warning;Not optimal scheme;tbl 'deal' (idx 0);fldIdx 3;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Current life nums;name 'FORTS_DEALS_REPL';cli lifenum 0;srv lifenum 40200;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.886;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Life number changed notification triggered;name 'FORTS_DEALS_REPL';cli lifenum 0;srv lifenum 40200;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.886;p2repl-cli;;Scheme setting started;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:22:00.906;p2repl-cli;;Scheme is set;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.906;p2repl-cli;;Statistics module for table 'rts_index' was successfully registered;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.906;p2repl-cli;;Statistics was registered;stream name RTS_INDEX_REPL;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:22:00.906;P2ReplStorage;;Revs were inited;cnt 1;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.906;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.906;P2ReplStorage;;Send revs;cnt 1;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.906;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.906;p2repl-cli;;Data reqd;chan 0x39ECA2C7D40;sess 0;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Scheme is set;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Statistics module for table 'common' was successfully registered;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Statistics was registered;stream name FORTS_FUTCOMMON_REPL;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:22:00.906;P2ReplStorage;;Revs were inited;cnt 1;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.906;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.906;P2ReplStorage;;Send revs;cnt 1;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.906;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Data reqd;chan 0x19DE5BBA6BFE5;sess 0;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Scheme is set;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Statistics module for table 'common' was successfully registered;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Statistics was registered;stream name FORTS_OPTCOMMON_REPL;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:22:00.906;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:22:00.906;P2ReplStorage;;Revs were inited;cnt 1;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.906;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.906;P2ReplStorage;;Send revs;cnt 1;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.906;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Data reqd;chan 0x19B9CBBA94400;sess 0;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.906;p2repl-cli;;Scheme is set;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'orders_aggr' was successfully registered;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_FUTAGGR5_REPL;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 1;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 1;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x13FBB955A42;sess 0;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:22:00.916;p2repl-cli;;Scheme is set;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'orders_aggr' was successfully registered;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_OPTAGGR5_REPL;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 1;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 1;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x98BB94F7FB;sess 0;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Scheme is set;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'opt_sess_contents' was successfully registered;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_OPTINFO_REPL;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 1;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 1;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x220178BB53586C;sess 0;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Scheme is set;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'position' was successfully registered;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_POS_REPL;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Scheme is set;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 1;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 1;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'deal' was successfully registered;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'orders_log' was successfully registered;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_OPTTRADE_REPL;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x571BBAE1E5D;sess 0;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Scheme is set;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 2;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 2;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'part' was successfully registered;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_PART_REPL;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x777BB37F898;sess 0;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 1;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 1;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x19D75BB93D0A5;sess 0;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Scheme is set;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'deal' was successfully registered;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_DEALS_REPL;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 1;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 1;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x97646551FD;sess 0;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Scheme is set;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'deal' was successfully registered;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'orders_log' was successfully registered;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_FUTTRADE_REPL;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Scheme is set;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'fut_sess_contents' was successfully registered;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics module for table 'session' was successfully registered;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Statistics was registered;stream name FORTS_FUTINFO_REPL;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 2;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 2;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x5B99EE8474B;sess 0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:00.916;cgate.listener.p2repl;;State changed OPENING -> ACTIVE @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Revs were inited;cnt 2;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;Send revs;cnt 2;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.916;p2repl-cli;;Data reqd;chan 0x220179BB53586C;sess 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:00.946;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.946;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 1;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.946;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.946;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:22:00.976;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:00.976;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.976;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 1;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.976;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.976;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:22:00.976;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.976;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 1;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.976;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:00.976;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:22:00.996;p2repl-cli;;<DATA;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:00.996;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.996;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 1;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.996;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:00.996;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:22:01.016;P2ReplStorage;;Change revs (C);strm 0x1BE51730;TID 14560
+2015-12-08 13:22:01.016;P2ReplStorage;;	tbl 0;revs 0-24179872;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:01.016;p2repl-cli;;Stream is on-line;strm 0x1BE51730;TID 14560
+2015-12-08 13:22:01.016;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname11, obj: 0x1BA77330, thread: 14560};TID 14560
+2015-12-08 13:22:01.056;p2repl-cli;;<DATA;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:01.056;P2ReplStorage;;Change revs (C);strm 0x1BE66910;TID 14560
+2015-12-08 13:22:01.056;P2ReplStorage;;	tbl 0;revs 0-17170753;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:01.056;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:01.056;P2ReplStorage;;	tbl 0;revs 0-603428878;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:01.056;p2repl-cli;;Stream is on-line;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:01.056;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname14, obj: 0x1BA77A20, thread: 620};TID 620
+2015-12-08 13:22:01.116;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:01.116;p2repl-cli;;<DATA;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:01.116;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:01.116;P2ReplStorage;;	tbl 0;revs 0-21332611;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:01.116;p2repl-cli;;Stream is on-line;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:01.116;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname13, obj: 0x1BA777D0, thread: 5912};TID 5912
+2015-12-08 13:22:01.116;p2repl-cli;;<CLEAR_DELETED;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:01.116;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 1;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:01.116;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:01.116;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:22:04.360;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;p2repl-cli;;<CLOSE;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:04.360;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:04.360;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;	tbl 0;revs 603428879-603428882;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;p2repl-cli;;Stream is being closed by server;reason 0xA00F-'REPL:REDIRECT_TO_SNAPSHOT_SERVER';strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:04.360;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;	tbl 0;revs 603428883-603428900;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;	tbl 0;revs 603428901-603428908;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;	tbl 0;revs 603428909-603428910;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;	tbl 0;revs 603428911-603428914;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;	tbl 0;revs 603428915-603428918;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;P2ReplStorage;;	tbl 0;revs 603428919-603428924;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:04.360;cgate.listener.p2repl;;ReplCallback: notify error state. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:04.360;cgate.listener.p2repl;;switchMode: switch to snapshot. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:04.360;p2repl-cli;;Stream created;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:04.360;P2ReplStorage;;Basic policy created;policy 0x1BD56A10;strm 0x1BD56A10;TID 15400
+2015-12-08 13:22:04.360;P2ReplStorage;;Basic policy deleted;policy 0x1BC784C0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:04.360;p2repl-cli;;Statistics module was unregistered, module name Datastream@ReplClient;TID 15400
+2015-12-08 13:22:04.360;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 15400
+2015-12-08 13:22:04.360;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 15400
+2015-12-08 13:22:04.370;P2ReplStorage;;Change revs (C);strm 0x1BE66910;TID 14560
+2015-12-08 13:22:04.370;P2ReplStorage;;	tbl 0;revs 17170754-17171356;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:04.370;p2repl-cli;;<CLOSE;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:04.370;p2repl-cli;;<DATA;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:04.370;p2repl-cli;;Stream is being closed by server;reason 0xA00F-'REPL:REDIRECT_TO_SNAPSHOT_SERVER';strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:04.370;cgate.listener.p2repl;;ReplCallback: notify error state. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:04.370;cgate.listener.p2repl;;switchMode: switch to snapshot. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:04.370;p2repl-cli;;Stream created;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:04.370;P2ReplStorage;;Basic policy created;policy 0x1B1DD370;strm 0x1B1DD370;TID 15400
+2015-12-08 13:22:04.370;P2ReplStorage;;Basic policy deleted;policy 0x25020260;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:04.370;p2repl-cli;;Statistics module was unregistered, module name Datastream@ReplClient;TID 15400
+2015-12-08 13:22:04.370;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 15400
+2015-12-08 13:22:04.370;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 15400
+2015-12-08 13:22:04.390;p2repl-cli;;Stream opening started;type 0x201;name 'FORTS_FUTTRADE_REPL_SNAPSHOT';srv_addr 'FINTER_FORTS3.inter_futtrade_snap';strm 0x2513BD20;TID 15400
+2015-12-08 13:22:04.400;p2repl-cli;;Stream opening started;type 0x201;name 'FORTS_OPTTRADE_REPL_SNAPSHOT';srv_addr 'FINTER_FORTS3.inter_opttrade_snap';strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.126;p2repl-cli;;Negotiated protocol version 14;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 0;revs 603428925-603428926;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.126;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.126;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 0;revs 603428927-603428932;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.126;p2repl-cli;;Stream opened;chan 0x15CC3CCEE7D7E;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Desired schema is equal to prev schema (lifenum ignored);strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 0;revs 0-19267854;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.126;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.126;p2repl-cli;warning;Not optimal scheme;tbl 'deal' (idx 0);fldIdx 3;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;warning;Not optimal scheme;tbl 'orders_log' (idx 1);fldIdx 5;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Current life nums;name 'FORTS_FUTTRADE_REPL_SNAPSHOT';cli lifenum 0;srv lifenum 40200;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;Revs were cleared after lifenum change;cnt 2;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Life number changed notification triggered;name 'FORTS_FUTTRADE_REPL_SNAPSHOT';cli lifenum 0;srv lifenum 40200;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Scheme setting started;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;warning;Stream state was changed, currState 20,prev state 15;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Negotiated protocol version 14;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Stream opened;chan 0x2EDCCF56DF5;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Desired schema is equal to prev schema (lifenum ignored);strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;warning;Not optimal scheme;tbl 'deal' (idx 0);fldIdx 3;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;warning;Not optimal scheme;tbl 'orders_log' (idx 1);fldIdx 5;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Current life nums;name 'FORTS_OPTTRADE_REPL_SNAPSHOT';cli lifenum 0;srv lifenum 40200;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;Revs were cleared after lifenum change;cnt 2;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Life number changed notification triggered;name 'FORTS_OPTTRADE_REPL_SNAPSHOT';cli lifenum 0;srv lifenum 40200;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;;Scheme setting started;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;p2repl-cli;warning;Stream state was changed, currState 20,prev state 15;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.126;P2ReplStorage;;Change revs (C);strm 0x1BE66910;TID 14560
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 0;revs 17171357-17346913;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:05.126;p2repl-cli;;Stream is on-line;strm 0x1BE66910;TID 14560
+2015-12-08 13:22:05.126;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname16, obj: 0x1BA77EC0, thread: 14560};TID 14560
+2015-12-08 13:22:05.126;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.126;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 1;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.126;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.126;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname17, obj: 0x1BA78110, thread: 14560};TID 14560
+2015-12-08 13:22:05.126;p2repl-cli;;<DATA;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.146;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.146;P2ReplStorage;;	tbl 0;revs 19267855-19503674;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.146;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 19503675-20041645;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Stream is on-line;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname21, obj: 0x1BA78A50, thread: 5912};TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041646-20041646;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332612-21332612;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041647-20041647;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332613-21332616;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041648-20041654;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332617-21332621;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041655-20041657;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332622-21332624;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332625-21332625;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332626-21332626;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041658-20041658;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041659-20041659;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332627-21332632;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041660-20041663;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332633-21332637;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332638-21332638;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332639-21332640;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332641-21332641;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332642-21332642;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041664-20041665;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041666-20041667;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041668-20041673;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332643-21332643;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041674-20041677;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041678-20041678;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332644-21332644;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332645-21332645;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332646-21332646;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041679-20041679;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041680-20041681;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041682-20041682;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041683-20041683;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041684-20041684;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332647-21332648;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041685-20041685;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332649-21332649;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332650-21332650;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332651-21332651;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332652-21332654;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332655-21332656;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041686-20041687;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332657-21332657;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041688-20041688;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041689-20041689;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332658-21332659;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332660-21332660;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332661-21332661;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041690-20041691;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041692-20041692;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041693-20041693;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332662-21332663;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332664-21332664;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041694-20041694;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041695-20041695;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332665-21332665;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041696-20041704;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332666-21332668;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041705-20041709;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332669-21332669;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041710-20041723;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332670-21332673;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041724-20041730;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332674-21332678;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332679-21332679;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041731-20041731;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332680-21332680;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041732-20041732;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332681-21332681;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041733-20041733;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332682-21332682;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041734-20041734;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332683-21332683;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332684-21332685;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332686-21332687;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332688-21332688;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041735-20041735;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332689-21332689;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332690-21332691;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041736-20041736;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332692-21332692;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041737-20041737;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332693-21332695;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041738-20041738;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332696-21332697;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332698-21332698;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332699-21332701;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041739-20041739;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332702-21332704;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332705-21332705;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041740-20041740;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332706-21332706;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041741-20041744;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332707-21332707;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041745-20041751;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332708-21332708;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041752-20041752;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041753-20041755;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041756-20041756;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041757-20041757;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041758-20041758;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041759-20041759;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332709-21332709;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041760-20041761;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332710-21332710;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041762-20041763;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332711-21332711;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332712-21332715;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332716-21332716;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332717-21332718;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041764-20041764;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332719-21332719;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041765-20041765;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332720-21332720;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041766-20041766;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332721-21332721;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332722-21332722;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332723-21332724;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332725-21332725;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332726-21332726;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041767-20041767;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041768-20041768;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332727-21332728;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041769-20041769;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Scheme is set;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041770-20041770;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041771-20041771;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Statistics module for table 'deal' was successfully registered;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041772-20041773;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Statistics module for table 'orders_log' was successfully registered;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332729-21332729;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Statistics was registered;stream name FORTS_OPTTRADE_REPL_SNAPSHOT;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041774-20041774;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Revs were inited;cnt 2;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;Send revs;cnt 2;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332730-21332733;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Data reqd;chan 0x2EDCCF56DF5;sess 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041775-20041775;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332734-21332734;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Scheme is set;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332735-21332736;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Statistics module for table 'deal' was successfully registered;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332737-21332737;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Statistics module for table 'orders_log' was successfully registered;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Statistics was registered;stream name FORTS_FUTTRADE_REPL_SNAPSHOT;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332738-21332738;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Revs were inited;cnt 2;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;Send revs;cnt 2;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332739-21332739;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332740-21332740;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332741-21332742;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;Data reqd;chan 0x15CC3CCEE7D7E;sess 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332743-21332744;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332745-21332745;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332746-21332746;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332747-21332747;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332748-21332748;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332749-21332749;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332750-21332750;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041776-20041776;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332751-21332751;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041777-20041778;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332752-21332752;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041779-20041779;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332753-21332753;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041780-20041780;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 21332754-21332754;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;P2ReplStorage;;	tbl 0;revs 20041781-20041783;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.156;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332755-21332761;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041784-20041788;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332762-21332764;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041789-20041798;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332765-21332765;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041799-20041803;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041804-20041808;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332766-21332766;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332767-21332770;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041809-20041814;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332771-21332773;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041815-20041818;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332774-21332775;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041819-20041819;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332776-21332778;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332779-21332779;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041820-20041820;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332780-21332781;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332782-21332782;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332783-21332788;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332789-21332789;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332790-21332792;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332793-21332794;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041821-20041821;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041822-20041823;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332795-21332797;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332798-21332799;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041824-20041827;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332800-21332801;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041828-20041828;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332802-21332804;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041829-20041829;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041830-20041830;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332805-21332807;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332808-21332814;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041831-20041836;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332815-21332816;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041837-20041837;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041838-20041838;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 20041839-20041839;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332817-21332817;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.166;P2ReplStorage;;	tbl 0;revs 21332818-21332818;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.176;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.176;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.176;P2ReplStorage;;	tbl 0;revs 21332819-21332819;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.176;P2ReplStorage;;Change revs (C);strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.176;P2ReplStorage;;	tbl 0;revs 0-124829;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.176;p2repl-cli;;<DATA;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.176;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.176;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.176;P2ReplStorage;;	tbl 0;revs 21332820-21332820;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.186;p2repl-cli;;<CLEAR_DELETED;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 2;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 2;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.186;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.186;p2repl-cli;;<CLEAR_DELETED;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 2;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 2;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.186;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:05.186;P2ReplStorage;;Change revs (C);strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.186;P2ReplStorage;;	tbl 0;revs 124830-125164;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.186;p2repl-cli;;<DATA;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.196;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.196;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.196;P2ReplStorage;;	tbl 0;revs 21332821-21332821;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.196;P2ReplStorage;;Change revs (C);strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.196;P2ReplStorage;;	tbl 0;revs 125165-125499;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.196;p2repl-cli;;<DATA;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.196;p2repl-cli;;<DATA;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.196;p2repl-cli;;Stream is on-line;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.196;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.196;cgate.listener.p2repl;;switchMode: switch to online. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.196;***TP***;;data: 1.28 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 15400
+2015-12-08 13:22:05.196;p2repl-cli;;CLOSE msg post;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.196;p2repl-cli;;Statistics module was unregistered, module name Datastream@ReplClient;TID 15400
+2015-12-08 13:22:05.196;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 15400
+2015-12-08 13:22:05.196;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 15400
+2015-12-08 13:22:05.196;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 15400
+2015-12-08 13:22:05.196;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 15400
+2015-12-08 13:22:05.196;P2ReplStorage;;Basic policy created;policy 0x1BC2F0B0;strm 0x1BC2F0B0;TID 15400
+2015-12-08 13:22:05.196;P2ReplStorage;;Basic policy deleted;policy 0x1B1DD370;strm 0x1B1CFDF0;TID 15400
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332822-21332823;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332824-21332824;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 603428933-603428934;strm 0x1BE575F0;TID 620
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 20041840-20041840;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332825-21332825;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 20041841-20041841;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTTRADE_REPL';srv_addr 'FINTER_FORTS3.inter_opttrade';strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332826-21332827;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.661;p2repl-cli;;Stream is on-line;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:05.661;cgate.listener.p2repl;;switchMode: switch to online. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332828-21332828;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332829-21332829;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332830-21332830;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;***TP***;;data: 4.17 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 15400
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332831-21332831;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;CLOSE msg post;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332832-21332832;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332833-21332834;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332835-21332835;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;Statistics module was unregistered, module name Datastream@ReplClient;TID 15400
+2015-12-08 13:22:05.661;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 15400
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332836-21332836;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 15400
+2015-12-08 13:22:05.661;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 15400
+2015-12-08 13:22:05.661;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 15400
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 21332837-21332837;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 20041842-20041842;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;	tbl 0;revs 20041843-20041843;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.661;P2ReplStorage;;Basic policy created;policy 0x1BC2F6F0;strm 0x1BC2F6F0;TID 15400
+2015-12-08 13:22:05.661;P2ReplStorage;;Basic policy deleted;policy 0x1BD56A10;strm 0x2513BD20;TID 15400
+2015-12-08 13:22:05.681;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.681;p2repl-cli;;Stream opened;chan 0x778BB37F898;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.681;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.681;p2repl-cli;;Using prev custom schema (resume mode);strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.681;p2repl-cli;;Desired schema is equal to prev schema (lifenum ignored);strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.681;p2repl-cli;warning;Not optimal scheme;tbl 'deal' (idx 0);fldIdx 3;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.681;p2repl-cli;warning;Not optimal scheme;tbl 'orders_log' (idx 1);fldIdx 5;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.681;p2repl-cli;;Current life nums;name 'FORTS_OPTTRADE_REPL';cli lifenum 40200;srv lifenum 40200;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.681;p2repl-cli;;Scheme setting started;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.691;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.691;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTTRADE_REPL';srv_addr 'FINTER_FORTS3.inter_futtrade';strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.691;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.691;P2ReplStorage;;	tbl 0;revs 21332838-21332838;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.701;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;p2repl-cli;;Scheme is set;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 0;revs 21332839-21332841;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 0;revs 21332842-21332842;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;p2repl-cli;;<DATA;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;Change revs (C);strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 0;revs 20041844-20041844;strm 0x24FD5EE0;TID 5912
+2015-12-08 13:22:05.901;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 0;revs 21332843-21332843;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 0;revs 21332844-21332844;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 0;revs 21332845-21332845;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.901;p2repl-cli;;Statistics module for table 'deal' was successfully registered;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Statistics module for table 'orders_log' was successfully registered;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Statistics was registered;stream name FORTS_OPTTRADE_REPL;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.901;P2ReplStorage;;Revs were inited;cnt 2;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 0;cur_rev 1262067109;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 1;cur_rev 1262072297;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;P2ReplStorage;;Send revs;cnt 2;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 0;cur_rev 1262067109;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;P2ReplStorage;;	tbl 1;cur_rev 1262072297;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Data reqd;chan 0x778BB37F898;sess 0;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Negotiated protocol version 14;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Stream opened;chan 0x5BA9EE8474B;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.901;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Using prev custom schema (resume mode);strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Desired schema is equal to prev schema (lifenum ignored);strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;warning;Not optimal scheme;tbl 'deal' (idx 0);fldIdx 3;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;warning;Not optimal scheme;tbl 'orders_log' (idx 1);fldIdx 5;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Current life nums;name 'FORTS_FUTTRADE_REPL';cli lifenum 40200;srv lifenum 40200;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.901;p2repl-cli;;Scheme setting started;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.911;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.911;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.911;P2ReplStorage;;	tbl 0;revs 21332846-21332846;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.911;P2ReplStorage;;Change revs (C);strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;	tbl 0;revs 125500-125834;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;Send revs;cnt 1;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;	tbl 0;cur_rev 125835;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;ACK msg post;strm 0x1BE69FD0;TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;<CLOSE;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;Stream is being closed by server;reason 0xA00F-'REPL:REDIRECT_TO_SNAPSHOT_SERVER';strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:05.911;cgate.listener.p2repl;;ReplCallback: notify error state. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:22:05.911;cgate.listener.p2repl;;switchMode: switch to snapshot. @cee{name: noname22, obj: 0x1BA78CA0, thread: 14560};TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;Stream created;strm 0x2513BD20;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;Basic policy created;policy 0x1BD56A10;strm 0x1BD56A10;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;Basic policy deleted;policy 0x250204E0;strm 0x24FD72C0;TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;Statistics module was unregistered, module name Datastream@ReplClient;TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;Statistics module was unregistered, module name Table@Datastream;TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 2;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 2;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;	tbl 1;cur_rev 0;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:05.911;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname18, obj: 0x1BA78360, thread: 14560};TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 1;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6DF90;TID 14560
+2015-12-08 13:22:05.911;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname19, obj: 0x1BA785B0, thread: 14560};TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;Revs adjustment due to CLEAR_DELETED;cnt 1;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:05.911;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1BE6F770;TID 14560
+2015-12-08 13:22:05.911;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname20, obj: 0x1BA78800, thread: 14560};TID 14560
+2015-12-08 13:22:05.911;p2repl-cli;;<DATA;strm 0x1BE6A7B0;TID 14560
+2015-12-08 13:22:05.921;p2repl-cli;;<DATA;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.921;P2ReplStorage;;Change revs (C);strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.921;P2ReplStorage;;	tbl 0;revs 21332847-21332847;strm 0x1BE4F750;TID 5912
+2015-12-08 13:22:05.921;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.921;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.931;p2repl-cli;;<DATA;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.931;p2repl-cli;;Stream is on-line;strm 0x1BE62E40;TID 15400
+2015-12-08 13:22:05.931;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname15, obj: 0x1BA77C70, thread: 15400};TID 15400
+2015-12-08 13:22:05.931;p2repl-cli;;Scheme is set;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;p2repl-cli;;Statistics module for table 'deal' was successfully registered;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;p2repl-cli;;Statistics module for table 'orders_log' was successfully registered;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;p2repl-cli;;Statistics was registered;stream name FORTS_FUTTRADE_REPL;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:05.931;P2ReplStorage;;Revs were inited;cnt 2;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;P2ReplStorage;;	tbl 0;cur_rev 1262072246;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;P2ReplStorage;;	tbl 1;cur_rev 1262072329;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;P2ReplStorage;;Send revs;cnt 2;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;P2ReplStorage;;	tbl 0;cur_rev 1262072246;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;P2ReplStorage;;	tbl 1;cur_rev 1262072329;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:05.931;p2repl-cli;;Data reqd;chan 0x5BA9EE8474B;sess 0;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:06.081;p2repl-cli;;<CLEAR_DELETED;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:06.081;cgate.listener.p2repl;;ReplCallback: clear deleted. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400
+2015-12-08 13:22:06.081;p2repl-cli;;<DATA;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:06.081;p2repl-cli;;Stream is on-line;strm 0x1BE4FF30;TID 15400
+2015-12-08 13:22:06.081;cgate.listener.p2repl;;ReplCallback: online. @cee{name: noname12, obj: 0x1BA77580, thread: 15400};TID 15400

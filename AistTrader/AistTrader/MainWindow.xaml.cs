@@ -154,5 +154,13 @@ namespace AistTrader
         {
             TabCtr.SelectedItem = PortfolioItem;
         }
+        
+        private void WhatsNewItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+            //открытие окна, где можно посмотреть, что нового
+            var form = new WhatsNew().ShowDialog();
+
+        }
     }
 }

@@ -15,6 +15,7 @@ using Ecng.Xaml;
 using IniParser;
 using StockSharp.Algo.Storages;
 using StockSharp.BusinessEntities;
+using StockSharp.Localization;
 using StockSharp.Plaza;
 using ToggleSwitch;
 
@@ -23,7 +24,7 @@ namespace AistTrader
     public partial class MainWindow
     {
         public ObservableCollection<AgentConnection> ProviderStorage { get; private set; }
-        public PlazaTrader _PlazaTrader;
+        public readonly PlazaTrader Trader = new PlazaTrader();
         const string Localhost = "127.0.0.1:4001";
         public List<Security> SecuritiesList = new List<Security>();
 
@@ -175,12 +176,35 @@ namespace AistTrader
             }
             else
                 ipEndPoint = agent.Connection.ConnectionSettings.IpEndPoint;
-
-            var Trader  = new PlazaTrader();
+            
+            Trader.AppName = "TESTName";
             Trader.Address = ipEndPoint.To<IPEndPoint>();
             Trader.IsCGate = true;
-            Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
+            Trader.Login = string.Empty;
+            Trader.Password = string.Empty;
+            
+            //только в боевоей версии
+            //Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
 
+
+            Trader.ReConnectionSettings.AttemptCount = -1;
+            //what it is?
+            Trader.Restored += () => this.GuiAsync(() => MessageBox.Show(this, LocalizedStrings.Str2958));
+
+            // подписываемся на событие успешного соединения
+            Trader.Connected += () =>
+            {
+                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
+            };
+
+            // подписываемся на событие разрыва соединения
+            Trader.ConnectionError += error => this.GuiAsync(() =>
+            {
+                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
+            });
+
+            // подписываемся на событие успешного отключения
+            //Trader.Disconnected += () => this.GuiAsync(() => ChangeConnectStatus(false));
 
 
             Trader.NewSecurities += securities =>
@@ -202,23 +226,11 @@ namespace AistTrader
             };
             Trader.ConnectionError += error => this.GuiAsync(() =>
             {
-                var x = error;
                 ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
-                Trader.Dispose();
             });
 
 
-
-
            Trader.Connect();
-
-
-
-
-
-
-
-
 
 
 
@@ -285,12 +297,7 @@ namespace AistTrader
         }
 
 
-        private void WhatsNewItem_OnClick(object sender, RoutedEventArgs e)
-        {
-            
-            //открытие окна, где можно посмотреть, что нового
 
-        }
     }
 
 

@@ -77,7 +77,7 @@ namespace AistTrader
         {
             List<string> list = new List<string>();
             //var directories = Directory.EnumerateDirectories(@"C:\").Where(i => i.Contains("P2FORTSGate")).ToList();
-            var directories = Directory.EnumerateDirectories(@"C:\Moscow Exchange\").Where(i => i.Contains("SpectraCGate")).ToList();
+            var directories = Directory.EnumerateDirectories(@"C:\").Where(i => i.Contains("SpectraCGate")).ToList();
             if (IsAdditionMode)
             {
                 
