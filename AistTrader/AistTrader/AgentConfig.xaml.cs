@@ -199,9 +199,8 @@ namespace AistTrader
             var pickedAlgorithm = (PickedStrategy)Enum.Parse(typeof(PickedStrategy), selectedAlgorithmStr);
             var agent = new AlgorithmSettings(pickedAlgorithm, -1, true, -1, AgentSettings, selectedAlgorithmStr, null);
             MainWindow.Instance.AddNewAgent(new Agent(algorithm, agent), EditIndex);
-            LoadSettings();
             Close();
-            
+            MainWindow.Instance.LoadAgentSettings(); 
         }
 
 

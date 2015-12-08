@@ -55,12 +55,13 @@
                   ItemsSource="{Binding Source={StaticResource TerminalData}}" TabIndex="0" 
                   x:FieldModifier="private"/>
         <ComboBox Height="22"
-                  Text="{Binding Path=DynamicAccount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                  Margin="5,93,5,0"
+                  Margin="5,94,5,0"
                   x:Name="AccountComboBox"
                   VerticalAlignment="Top"
+                  ItemsSource="{Binding Path= DynamicAccount, Mode=TwoWay}"
                   TabIndex="1"
                   SelectionChanged="AccountComboBoxSelectionChanged"
+                  Loaded="AccountComboBox_OnLoaded"
                   x:FieldModifier="private"/>
         <TextBox Margin="5,145,5,0"
                  x:Name="PortfolioNameTxtBox"
@@ -69,6 +70,7 @@
                  VerticalAlignment="Top"
                  TabIndex="2"
                  x:FieldModifier="private"
+                 
                  />
         <Button Content="ОК"
                 Name="OkPortfolioBtn" 

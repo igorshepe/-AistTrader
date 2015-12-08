@@ -1,5 +1,9 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using AistTrader.Properties;
+using Common.Entities;
+using MoreLinq;
 
 namespace AistTrader
 {
@@ -7,7 +11,7 @@ namespace AistTrader
     {
 
         public static MainWindow Instance { get; private set; }
-
+        //public List<Security> SecuritiesList { get; set; } 
 
         public MainWindow()
         {
@@ -17,6 +21,7 @@ namespace AistTrader
 
 
             Instance = this;
+            var x = Settings.Default;
             SetConnectionValuesToDefault();
 
         }
@@ -96,9 +101,9 @@ namespace AistTrader
         {
             //ToDo:обнуление на неактивное
 
-            //if (Settings.Default.AgentConnection != null)
-            //    Settings.Default.AgentConnection.Cast<AgentConnection>().ForEach(i => i.Connection.IsActive = false);
-            //Settings.Default.Save();
+            if (Settings.Default.AgentConnection != null)
+                Settings.Default.AgentConnection.Cast<AgentConnection>().ForEach(i => i.Connection.IsActive = false);
+            Settings.Default.Save();
 
         }
 

@@ -39,11 +39,23 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ecng.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Ecng.ComponentModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Ecng.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Ecng.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.ComponentModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Ecng.ComponentModel.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
-    <Reference Include="StockSharp.BusinessEntities, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="StockSharp.Messages, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="StockSharp.BusinessEntities, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\StockSharp.BusinessEntities.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Messages, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\StockSharp.Messages.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,8 +79,11 @@
     <Compile Include="Settings\TerminalSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Strategies\Strategies\Strategies.csproj">
-      <Project>{A4EB3F81-1328-48CD-A8E3-CD8211F88633}</Project>
+      <Project>{a4eb3f81-1328-48cd-a8e3-cd8211f88633}</Project>
       <Name>Strategies</Name>
     </ProjectReference>
   </ItemGroup>

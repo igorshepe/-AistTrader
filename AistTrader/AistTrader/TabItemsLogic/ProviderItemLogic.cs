@@ -13,7 +13,6 @@ using Common.Settings;
 using Ecng.Common;
 using Ecng.Xaml;
 using IniParser;
-using StockSharp.Algo.Storages;
 using StockSharp.BusinessEntities;
 using StockSharp.Localization;
 using StockSharp.Plaza;
@@ -27,6 +26,7 @@ namespace AistTrader
         public readonly PlazaTrader Trader = new PlazaTrader();
         const string Localhost = "127.0.0.1:4001";
         public List<Security> SecuritiesList = new List<Security>();
+        public List<Portfolio> PortfoliosList = new List<Portfolio>();
 
 
         private void LoadProviderTabItemData()
@@ -45,15 +45,15 @@ namespace AistTrader
         {
             bool status = false;
             //TODO: при выводе сообщений добавлять инфу о том какое именно соеднение..
-            if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Connected)
-            {
-                Instance.GuiAsync(() => MessageBox.Show(Instance, "Соединение установленно"));
-                status = true;
-            }
-            else if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Disconnected)
-                Instance.GuiAsync(() => MessageBox.Show(Instance, "Соединение отключено"));
-            else if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.ConnectionError)
-                Instance.GuiAsync(() => MessageBox.Show(Instance, "Ошибка соединения"));
+            //if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Connected)
+            //{
+            //    //Instance.GuiAsync(() => MessageBox.Show(Instance, "Соединение установленно"));
+            //    status = true;
+            //}
+            //else if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Disconnected)
+            //    Instance.GuiAsync(() => MessageBox.Show(Instance, "Соединение отключено"));
+            //else if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.ConnectionError)
+            //    Instance.GuiAsync(() => MessageBox.Show(Instance, "Ошибка соединения"));
             var rowItem = Instance.ProviderStorage.FirstOrDefault(i => i == item);
             rowItem.Connection.IsActive = status;
             ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
@@ -177,12 +177,11 @@ namespace AistTrader
             else
                 ipEndPoint = agent.Connection.ConnectionSettings.IpEndPoint;
             
-            Trader.AppName = "TESTName";
+            Trader.AppName = "TestCGateConnection";
             Trader.Address = ipEndPoint.To<IPEndPoint>();
             Trader.IsCGate = true;
-            Trader.Login = string.Empty;
-            Trader.Password = string.Empty;
-            
+//            Trader.CGateKey = null;
+    
             //только в боевоей версии
             //Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
 
@@ -212,8 +211,15 @@ namespace AistTrader
                 this.GuiAsync(() => SecuritiesList.AddRange(securities) /*agent.AgentAccount.Tools.AddRange(securities)*/   );
             };
 
+
+            Trader.NewPortfolios += portfolios =>
+            {
+                this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ PortfoliosList.AddRange(portfolios));
+            };
+
             Trader.Connected += () =>
             {
+                
                 
                 this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
             };
@@ -226,6 +232,7 @@ namespace AistTrader
             };
             Trader.ConnectionError += error => this.GuiAsync(() =>
             {
+                var x = error;
                 ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
             });
 

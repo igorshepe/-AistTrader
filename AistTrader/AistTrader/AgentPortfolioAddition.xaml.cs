@@ -29,13 +29,8 @@ namespace AistTrader
             set { _registeredProvider = value; }
 
         }
-        private string _dynamicAccount;
-        public string DynamicAccount
-        {
-            get { return _dynamicAccount; }
-            set { _dynamicAccount = value; }
-
-        }
+        private List<string> _dynamicAccount;
+        public List<string> DynamicAccount { get; set; }
         private Dictionary<string, bool> validPortflolioProperties = new Dictionary<string, bool>();
 
         public AgentPortfolioAddition()
@@ -49,6 +44,9 @@ namespace AistTrader
         private void LoadParams()
         {
             ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Select(i => i.Name + " (" + i.Connection.Code + ")").ToList();
+//            _dynamicAccount = MainWindow.Instance.PortfoliosList.Select(i => i.Name).ToList();
+            
+            
             //TODO:Загрузка счёта
         }
         public AgentPortfolioAddition(AgentPortfolio portfolio, int editIndex)
@@ -66,6 +64,9 @@ namespace AistTrader
             AccountComboBox.ItemsSource = portfolio.Connection.Connection.Accounts;
             //AccountComboBox.SelectedItem = 
             PortfolioNameTxtBox.Text = portfolio.Name;
+
+
+            DynamicAccount = new List<string> { "Allem", "Vinny" };
         }
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
@@ -94,7 +95,7 @@ namespace AistTrader
                 connectionProvider = connectionProvider.Substring(0, connectionProvider.IndexOf(" (", StringComparison.Ordinal));
 
             var agentItem = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider.ToString());
-            agentItem.Connection.SelectedAccount = (Portfolio)selectedAccount;
+            agentItem.Connection.SelectedAccount = selectedAccount as Portfolio;
             MainWindow.Instance.AddNewAgentPortfolio(new AgentPortfolio(PortfolioNameTxtBox.Text, agentItem), EditIndex);
             Close();
         }
@@ -152,21 +153,21 @@ namespace AistTrader
                     case "PortfolioName":
                         validationResult = ValidatePortfolioName();
                         break;
-                    case "RegisteredProvider":
-                        validationResult = ValidateRegisteredProvider();
-                        break;
+                    //case "RegisteredProvider":
+                    //    validationResult = ValidateRegisteredProvider();
+                    //    break;
                     case "DynamicAccount":
                         validationResult = ValidateDynamicAccount();
                         break;
                     //case "ProviderPath":
                     //    validationResult = ValidateProviderPath();
                     //    break;
-                    default:
-                        throw new ApplicationException("Unknown Property being validated on Product.");
+                    //default:
+                    //    throw new ApplicationException("Unknown Property being validated on Product.");
                 }
                 string error = validationResult;
                 validPortflolioProperties[columnName] = String.IsNullOrEmpty(error) ? true : false;
-                if (validPortflolioProperties.Count == 3)
+                if (validPortflolioProperties.Count == 2)
                     OkPortfolioBtn.IsEnabled = validPortflolioProperties.Values.All(isValid => isValid);
                 return validationResult;
             }
@@ -183,8 +184,10 @@ namespace AistTrader
         }
         private string ValidateDynamicAccount()
         {
-            if (String.IsNullOrEmpty(this.RegisteredProvider))//TODO: вот тут подтянуть указатель на соединение которое используется для получения данного счёта
-                return "Счёт не получен, соединение не активно";
+            //if (this.DynamicAccount.Count==0)//TODO: вот тут подтянуть указатель на соединение которое используется для получения данного счёта
+            //    return "Счёт не получен, соединение не активно";
+            //if (AccountComboBox.SelectedItem==null)
+            //    return "Не выбран счёт";
             return String.Empty;
         }
         private string ValidatePortfolioName()
@@ -201,5 +204,9 @@ namespace AistTrader
 
         public string Error { get; private set; }
 
+        private void AccountComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            AccountComboBox.ItemsSource = MainWindow.Instance.PortfoliosList.Select(i => i.Name).ToList();
+        }
     }
 }

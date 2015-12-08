@@ -190,7 +190,7 @@ namespace AistTrader
             
         }
 
-        private void LoadAgentSettings()
+        public void LoadAgentSettings()
         {
             if (Settings.Default.Agents == null) return;
             try

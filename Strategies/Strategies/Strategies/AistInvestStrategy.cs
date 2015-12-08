@@ -4,7 +4,6 @@ using Ecng.Common;
 using Ecng.ComponentModel;
 using StockSharp.Algo.Candles;
 using StockSharp.Algo.Strategies;
-using StockSharp.BusinessEntities;
 using StockSharp.Logging;
 using Strategies.Common;
 using Strategies.Settings;
