@@ -70,22 +70,22 @@ namespace AistTrader
         }
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
-            if (ConnectionProviderComboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show(this, @"Не выбран поставщик.");
-                return;
-            }
-            if (AccountComboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show(this, @"Не выбран счёт.");
-                return;
-            }
+            //if (ConnectionProviderComboBox.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show(this, @"Не выбран поставщик.");
+            //    return;
+            //}
+            //if (AccountComboBox.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show(this, @"Не выбран счёт.");
+            //    return;
+            //}
 
-            if (PortfolioNameTxtBox.Text.Length <= 0)
-            {
-                MessageBox.Show(this, @"Не задано имя портфеля.");
-                return;
-            }
+            //if (PortfolioNameTxtBox.Text.Length <= 0)
+            //{
+            //    MessageBox.Show(this, @"Не задано имя портфеля.");
+            //    return;
+            //}
             //var connection = new ConnectionSettings(connectionType, LoginTxtBox.Text, PasswordTxtBox.Password, QuikPath.Text, Trans2QuikName.Text, PathToRouter.Text);
             //var agentPortfolio = new AgentAccountSettings(ClienNameTxtBox.Text, ClienTxtBox.Text, LoginTxtBox.Text, PasswordTxtBox.Password, connection, false);
             var selectedAccount = AccountComboBox.SelectedItem;

@@ -87,7 +87,7 @@ namespace AistTrader
             catch (Exception)
             {
                 MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.Robots.Clear();
+                Settings.Default.AistTrader.Clear();
             }
         }
 
@@ -200,7 +200,7 @@ namespace AistTrader
             var agent = new AlgorithmSettings(pickedAlgorithm, -1, true, -1, AgentSettings, selectedAlgorithmStr, null);
             MainWindow.Instance.AddNewAgent(new Agent(algorithm, agent), EditIndex);
             Close();
-            MainWindow.Instance.LoadAgentSettings(); 
+            
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using StockSharp.BusinessEntities;
 
 namespace Common.Settings
@@ -49,5 +50,14 @@ namespace Common.Settings
             ConnectionError
             //TODO:дополнить по необходимости тем, что надо
         }
+        
     }
+
+
+    [TypeConverter]
+    public enum TerminalType
+    {
+        [Description("Plaza")]
+        Plaza
+    };
 }

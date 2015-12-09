@@ -451,7 +451,7 @@ namespace AistTrader
             catch (Exception)
             {
                 MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.Robots.Clear();
+                Settings.Default.AistTrader.Clear();
             }
         }
     }

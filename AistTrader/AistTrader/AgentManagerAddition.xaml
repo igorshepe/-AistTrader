@@ -84,6 +84,7 @@
                   Margin="5,137,5,0"
                   x:Name="ToolComboBox" 
                   VerticalAlignment="Top"
+                  Loaded="ToolComboBox_OnLoaded"
                   TabIndex="4"  
                   x:FieldModifier="private"/>
         <xaml:UnitEditor HorizontalAlignment="Left" 
@@ -93,6 +94,7 @@
                          TextWrapping="Wrap"
                          VerticalAlignment="Top"
                          Width="115"
+                         
                          Name="AmountTextBox"
                          KeyUp="AmountTextBox_KeyUp"
                          Style="{StaticResource {x:Type xaml:UnitEditor}}"

@@ -162,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="511488">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="511496">
       <assemblyIdentity name="AistTrader" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BNUdIIyKiGX2hHfc0GoUqBekTSL/vWfdOikFIN3cQAg=</dsig:DigestValue>
+        <dsig:DigestValue>mH0eHx/IERhnr/t0rN2esY4KpxB/8Kx3MIVJ3OWHa5g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -241,7 +241,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>h4YVOFSFBUoJZkoYD83iU1G+asfkhT+fh1XlMciO5Z0=</dsig:DigestValue>
+        <dsig:DigestValue>RaUDNSMwvlPBNgfs/o9mtKiz1NYL075Y2AC9FfdjIyk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -781,7 +781,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ST44uHfiF/cXlL+dYcLjAzUcAkPGPFQPyzKPMjjr8Sg=</dsig:DigestValue>
+        <dsig:DigestValue>NaGDNA2JhF+Rwtsw8gfRaVtpasy3Z/Bz97Y2JBt3fHs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -821,13 +821,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="AistTrader.exe.config" size="900">
+  <file name="AistTrader.exe.config" size="1374">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>d/r00AKmY2txnXqy5LGeU4PRttb5D/RNgBFuOP4abNc=</dsig:DigestValue>
+      <dsig:DigestValue>T1zVCmnukqmZpFOzQQbyBddYYmuJ+d8epQhW6DyD4Ew=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

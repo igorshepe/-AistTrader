@@ -5,7 +5,6 @@ using Common.Entities;
 
 namespace Common.Settings
 {
-    //[XmlInclude(typeof(Account))]
     [XmlInclude(typeof(Agent))]
     [XmlInclude(typeof(AgentConnection))]
     [XmlInclude(typeof(AgentPortfolio))]
@@ -17,13 +16,4 @@ namespace Common.Settings
         // ReSharper restore UnusedMember.Global
         public SettingsArrayList(ICollection c) : base(c) { }
     }
-
-
-
-    [TypeConverter]
-    public enum TerminalType
-    {
-        [Description("Plaza")]
-        Plaza
-    };
 }

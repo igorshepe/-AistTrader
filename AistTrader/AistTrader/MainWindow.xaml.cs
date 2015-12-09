@@ -20,6 +20,23 @@ namespace AistTrader
             //Agents
 
 
+
+            //Settings.Default.AistTrader.Clear();
+            //Settings.Default.AgentConnection.Clear();
+            //Settings.Default.AgentManager.Clear();
+            //Settings.Default.AgentPortfolio.Clear();
+            //Settings.Default.Agents.Clear();
+
+
+
+
+
+
+
+
+
+
+
             Instance = this;
             var x = Settings.Default;
             SetConnectionValuesToDefault();

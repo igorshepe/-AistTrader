@@ -93,21 +93,21 @@ namespace AistTrader
         }
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
         {
-            if (AccountComboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show(this, @"Не выбран cчёт");
-                return;
-            }
-            if (GroupOrSingleAgentComboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show(this, @"Не выбран агент или группа агентов");
-                return;
-            }
-            if (AmountTextBox.Visibility == Visibility.Visible && AmountTextBox.Text == "")
-            {
-                MessageBox.Show(this, @"Не заполнен объем");
-                return;
-            }
+            //if (AccountComboBox.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show(this, @"Не выбран cчёт");
+            //    return;
+            //}
+            //if (GroupOrSingleAgentComboBox.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show(this, @"Не выбран агент или группа агентов");
+            //    return;
+            //}
+            //if (AmountTextBox.Visibility == Visibility.Visible && AmountTextBox.Text == "")
+            //{
+            //    MessageBox.Show(this, @"Не заполнен объем");
+            //    return;
+            //}
             //if (ToolComboBox.SelectedIndex == -1)
             //{
             //    MessageBox.Show(this, @"Не выбран инструмент");
@@ -123,7 +123,7 @@ namespace AistTrader
             }
             else
                 setting = new AgentManagerSettings(agentPortfolio, agent.Name);
-            //AgentManagerForm.Instance.AddAgent(new AgentManager(setting.Account.Name, setting, "has yet to be", AmountTextBox.Value), EditIndex);
+            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Account.Name , setting, "has yet to be", AmountTextBox.Value), EditIndex);
             Close();
         }
 
@@ -148,7 +148,7 @@ namespace AistTrader
         private void AccountComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedPortfolio = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == (string)AccountComboBox.SelectedItem);
-            if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
+            //if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
         }
 
         private void AmountTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -241,5 +241,11 @@ namespace AistTrader
         }
 
         public string Error { get; private set; }
+
+        private void ToolComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            ToolComboBox.ItemsSource = MainWindow.Instance.SecuritiesList.Select(i => i.Id).ToList();
+
+        }
     }
 }

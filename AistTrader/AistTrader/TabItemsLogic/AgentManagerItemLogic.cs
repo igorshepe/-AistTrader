@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Data;
 using AistTrader.Properties;
 using Common.Entities;
+using Common.Settings;
+using Ecng.Common;
 
 namespace AistTrader
 {
@@ -71,7 +73,20 @@ namespace AistTrader
             }
 
         }
-
+        public void AddNewAgentManager(AgentManager settings, int editIndex)
+        {
+            if (editIndex >= 0 && editIndex < AgentManagerStorage.Count)
+                AgentManagerStorage[editIndex] = settings;
+            else
+                AgentManagerStorage.Add(settings);
+            SaveAgentManagerSettings();
+        }
+        private void SaveAgentManagerSettings()
+        {
+            var sortedList = AgentManagerStorage.OrderBy(set => "{0}-{1}".Put(set.Name, set.Name.ToString())).ToList();
+            Settings.Default.AgentManager = new SettingsArrayList(sortedList);
+            Settings.Default.Save();
+        }
 
 
     }

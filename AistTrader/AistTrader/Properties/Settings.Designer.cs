@@ -7,7 +7,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
 using System.CodeDom.Compiler;
 using System.Configuration;
 using System.Diagnostics;
@@ -17,11 +16,11 @@ using Common.Settings;
 namespace AistTrader.Properties {
     
     
-    [CompilerGenerated()]
-    [GeneratedCode("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
-    internal sealed partial class Settings : ApplicationSettingsBase {
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static Settings defaultInstance = ((Settings)(Synchronized(new Settings())));
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
         public static Settings Default {
             get {
@@ -29,110 +28,69 @@ namespace AistTrader.Properties {
             }
         }
         
-        [ApplicationScopedSetting()]
-        [DebuggerNonUserCode()]
-        [DefaultSettingValue("")]
-        public string Setting {
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public SettingsArrayList AistTrader
+        {
             get {
-                return ((string)(this["Setting"]));
+                return ((SettingsArrayList)(this["AistTrader"]));
+            }
+            set {
+                this["AistTrader"] = value;
             }
         }
-        [UserScopedSetting()]
-        [DebuggerNonUserCode()]
-        public SettingsArrayList Robots
-        {
-            get
-            {
-                return ((SettingsArrayList)(this["Robots"]));
-            }
-            set
-            {
-                this["Robots"] = value;
-            }
-        }
-
-        [UserScopedSetting()]
-        [DebuggerNonUserCode()]
-        [DefaultSettingValue("")]
-        public string WorkingPath
-        {
-            get
-            {
-                return ((string)(this["WorkingPath"]));
-            }
-            set
-            {
-                this["WorkingPath"] = value;
-            }
-        }
-
-        [UserScopedSetting()]
-        [DebuggerNonUserCode()]
-        [DefaultSettingValue("False")]
-        public bool DropBoxEnabled
-        {
-            get
-            {
-                return ((bool)(this["DropBoxEnabled"]));
-            }
-            set
-            {
-                this["DropBoxEnabled"] = value;
-            }
-        }
-
-        [UserScopedSetting()]
-        [DebuggerNonUserCode()]
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public SettingsArrayList Agents
         {
-            get
-            {
+            get {
                 return ((SettingsArrayList)(this["Agents"]));
             }
-            set
-            {
+            set {
                 this["Agents"] = value;
             }
         }
-        [UserScopedSetting()]
-        [DebuggerNonUserCode()]
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public SettingsArrayList AgentConnection
         {
-            get
-            {
+            get {
                 return ((SettingsArrayList)(this["AgentConnection"]));
             }
-            set
-            {
+            set {
                 this["AgentConnection"] = value;
             }
         }
-        [UserScopedSetting()]
-        [DebuggerNonUserCode()]
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public SettingsArrayList AgentPortfolio
         {
-            get
-            {
+            get {
                 return ((SettingsArrayList)(this["AgentPortfolio"]));
             }
-            set
-            {
+            set {
                 this["AgentPortfolio"] = value;
             }
         }
-        [UserScopedSetting()]
-        [DebuggerNonUserCode()]
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public SettingsArrayList AgentManager
         {
-            get
-            {
+            get {
                 return ((SettingsArrayList)(this["AgentManager"]));
             }
-            set
-            {
+            set {
                 this["AgentManager"] = value;
             }
         }
-
     }
 }

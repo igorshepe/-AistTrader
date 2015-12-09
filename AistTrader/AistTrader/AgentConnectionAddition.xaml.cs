@@ -209,7 +209,7 @@ namespace AistTrader
                 catch (Exception)
                 {
                     MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                    Settings.Default.Agents.Clear();
+                    Settings.Default.AistTrader.Clear();
                 }
 
             return list;

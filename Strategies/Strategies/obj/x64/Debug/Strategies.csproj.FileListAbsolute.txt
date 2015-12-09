@@ -7,10 +7,12 @@ C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Algo.dl
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.BusinessEntities.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Logging.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Messages.dll
+C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\MoreLinq.dll
+C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Reflection.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Collections.dll
+C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Configuration.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Xceed.Wpf.Toolkit.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Data.dll
-C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Reflection.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\AWSSDK.Core.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\AWSSDK.S3.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\MathNet.Numerics.dll
@@ -19,8 +21,6 @@ C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Interop.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NCalc.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Abt.Controls.SciChart.Wpf.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Localization.dll
-C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\MoreLinq.dll
-C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Configuration.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Net.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Serialization.FieldFactories.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\log4net.dll
@@ -42,13 +42,13 @@ C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Algo.xm
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.BusinessEntities.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Logging.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Messages.xml
+C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\MoreLinq.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\AWSSDK.Core.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\AWSSDK.S3.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\MathNet.Numerics.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Abt.Controls.SciChart.Wpf.pdb
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Abt.Controls.SciChart.Wpf.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Localization.xml
-C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\MoreLinq.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\log4net.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NPOI.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NPOI.OOXML.xml

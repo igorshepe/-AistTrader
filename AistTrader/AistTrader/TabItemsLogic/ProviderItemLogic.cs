@@ -43,7 +43,7 @@ namespace AistTrader
         //}
         public static void ConnectionStatus(ConnectionsSettings.AgentConnectionStatus agentConnStatus, AgentConnection item)
         {
-            bool status = false;
+            //bool status = false;
             //TODO: при выводе сообщений добавлять инфу о том какое именно соеднение..
             //if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Connected)
             //{
@@ -55,7 +55,7 @@ namespace AistTrader
             //else if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.ConnectionError)
             //    Instance.GuiAsync(() => MessageBox.Show(Instance, "Ошибка соединения"));
             var rowItem = Instance.ProviderStorage.FirstOrDefault(i => i == item);
-            rowItem.Connection.IsActive = status;
+            rowItem.Connection.IsActive = true;
             ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
             view.Refresh();
         }
@@ -219,7 +219,6 @@ namespace AistTrader
 
             Trader.Connected += () =>
             {
-                
                 
                 this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
             };
