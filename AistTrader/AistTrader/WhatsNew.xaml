@@ -16,12 +16,12 @@
         <StackPanel>
             <!--Динамически подтягивать имя сборки-->
             <Expander Margin="5" IsExpanded="True" Padding="5" Header="Version..взять из номера сборки" >
-                <TextBlock TextWrapping="Wrap">
-                        *Тут сделать детальное описание, того, что вошло в версию
+                <TextBlock TextWrapping="Wrap" Height="169">
+                        <!--*Настроено взаимодействие форм
                         <LineBreak/>
                         *Детальное указание того, что было сделано
                         <LineBreak/>
-                        *Второе детальное указание
+                        *Второе детальное указание-->
                 </TextBlock>
             </Expander>
         </StackPanel>

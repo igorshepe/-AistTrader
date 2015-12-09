@@ -65,7 +65,7 @@ namespace AistTrader
         {
             var agentSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
             Settings.Default.Agents = new SettingsArrayList(agentSettings);
-            Settings.Default.Save();
+            //Settings.Default.Save();
         }
 
         public void DeleteAgentBtnClick(object sender, RoutedEventArgs e)

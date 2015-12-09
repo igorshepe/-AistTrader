@@ -173,11 +173,7 @@ namespace AistTrader
 
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
         {
-            if (AlgorithmComboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show(this, @"Не выбран алгоритм");
-                return;
-            }
+
             if (AgentSettings == null && AgentSettingsButton.IsEnabled)
             {
                 //TODO: добавить поток при вызове окна, занулить после обработки
@@ -200,7 +196,6 @@ namespace AistTrader
             var agent = new AlgorithmSettings(pickedAlgorithm, -1, true, -1, AgentSettings, selectedAlgorithmStr, null);
             MainWindow.Instance.AddNewAgent(new Agent(algorithm, agent), EditIndex);
             Close();
-            
         }
 
 

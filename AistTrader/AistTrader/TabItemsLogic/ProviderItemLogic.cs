@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
@@ -15,6 +16,7 @@ using Ecng.Xaml;
 using IniParser;
 using StockSharp.BusinessEntities;
 using StockSharp.Localization;
+using StockSharp.Messages;
 using StockSharp.Plaza;
 using ToggleSwitch;
 
@@ -32,7 +34,16 @@ namespace AistTrader
         private void LoadProviderTabItemData()
         {
             ProviderStorage = new ObservableCollection<AgentConnection>();
+            ProviderStorage.CollectionChanged+=ProviderStorageOnCollectionChanged;
             LoadProviderSettings();
+        }
+
+        private void ProviderStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+        {
+            if (ProviderStorage.Count == 1)
+                AddConnectionBtn.IsEnabled = false;
+            else
+                AddConnectionBtn.IsEnabled = true;
         }
 
         //private void ChangeConnectionNotice(PlazaTrader trader)
@@ -73,6 +84,8 @@ namespace AistTrader
                 ProviderStorage[editIndex] = settings;
             else
                 ProviderStorage.Add(settings);
+
+
             SaveProviderSettings();
         }
         private void SaveProviderSettings()
@@ -156,8 +169,14 @@ namespace AistTrader
             else
             {
                 //OFF
-                //if (_PlazaTrader != null && _PlazaTrader.IsConnected)
-                //    _PlazaTrader.Disconnect();
+                if (Trader != null && Trader.ConnectionState == ConnectionStates.Connected)
+                {
+                    Trader.Disconnect();
+                    //set to null all collectionzzzZZzzz
+                    SecuritiesList.Clear();
+                    PortfoliosList.Clear();
+                }
+                
                 var item = (sender as FrameworkElement).DataContext;
                 var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
                 rowItem.Connection.IsActive = false;

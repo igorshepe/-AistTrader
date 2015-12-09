@@ -97,7 +97,7 @@ namespace AistTrader
             //{
             //    MessageBox.Show(this, @"Не выбран cчёт");
             //    return;
-            //}
+            //} 
             //if (GroupOrSingleAgentComboBox.SelectedIndex == -1)
             //{
             //    MessageBox.Show(this, @"Не выбран агент или группа агентов");
