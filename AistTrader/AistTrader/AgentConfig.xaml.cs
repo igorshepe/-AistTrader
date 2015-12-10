@@ -87,7 +87,7 @@ namespace AistTrader
             catch (Exception)
             {
                 MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.AistTrader.Clear();
+                Settings.Default.Agents.Clear();
             }
         }
 

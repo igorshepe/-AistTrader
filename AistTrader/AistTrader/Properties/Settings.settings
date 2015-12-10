@@ -2,19 +2,22 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AistTrader.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="AistTrader" Type="System.String" Scope="User">
+    <Setting Name="AistTrader" Type="Common.Settings.SettingsArrayList" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Agents" Type="System.String" Scope="User">
+    <Setting Name="Agents" Type="Common.Settings.SettingsArrayList" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="AgentConnection" Type="System.String" Scope="User">
+    <Setting Name="AgentConnection" Type="Common.Settings.SettingsArrayList" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="AgentPortfolio" Type="System.String" Scope="User">
+    <Setting Name="AgentPortfolio" Type="Common.Settings.SettingsArrayList" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="AgentManager" Type="System.String" Scope="User">
+    <Setting Name="AgentManager" Type="Common.Settings.SettingsArrayList" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="test" Type="Common.Settings.SettingsArrayList" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

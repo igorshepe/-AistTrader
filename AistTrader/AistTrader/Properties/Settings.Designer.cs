@@ -7,11 +7,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.CodeDom.Compiler;
-using System.Configuration;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using Common.Settings;
 
 namespace AistTrader.Properties {
     
@@ -27,27 +22,13 @@ namespace AistTrader.Properties {
                 return defaultInstance;
             }
         }
+       
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public SettingsArrayList AistTrader
-        {
+        public global::Common.Settings.SettingsArrayList Agents {
             get {
-                return ((SettingsArrayList)(this["AistTrader"]));
-            }
-            set {
-                this["AistTrader"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public SettingsArrayList Agents
-        {
-            get {
-                return ((SettingsArrayList)(this["Agents"]));
+                return ((global::Common.Settings.SettingsArrayList)(this["Agents"]));
             }
             set {
                 this["Agents"] = value;
@@ -56,11 +37,9 @@ namespace AistTrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public SettingsArrayList AgentConnection
-        {
+        public global::Common.Settings.SettingsArrayList AgentConnection {
             get {
-                return ((SettingsArrayList)(this["AgentConnection"]));
+                return ((global::Common.Settings.SettingsArrayList)(this["AgentConnection"]));
             }
             set {
                 this["AgentConnection"] = value;
@@ -69,11 +48,9 @@ namespace AistTrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public SettingsArrayList AgentPortfolio
-        {
+        public global::Common.Settings.SettingsArrayList AgentPortfolio {
             get {
-                return ((SettingsArrayList)(this["AgentPortfolio"]));
+                return ((global::Common.Settings.SettingsArrayList)(this["AgentPortfolio"]));
             }
             set {
                 this["AgentPortfolio"] = value;
@@ -82,15 +59,14 @@ namespace AistTrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public SettingsArrayList AgentManager
-        {
+        public global::Common.Settings.SettingsArrayList AgentManager {
             get {
-                return ((SettingsArrayList)(this["AgentManager"]));
+                return ((global::Common.Settings.SettingsArrayList)(this["AgentManager"]));
             }
             set {
                 this["AgentManager"] = value;
             }
         }
+       
     }
 }
