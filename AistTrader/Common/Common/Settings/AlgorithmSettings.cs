@@ -8,7 +8,7 @@ namespace Common.Settings
     public class AlgorithmSettings
     {
         public AlgorithmSettings() { }
-        public AlgorithmSettings(PickedStrategy algorithm, int connectionCount, bool isChecked, int contracts, SerializableDictionary<string, object> settingsStorage, string agentName, Unit amount)
+        public AlgorithmSettings(PickedStrategy algorithm, int connectionCount, bool isChecked, int contracts, SerializableDictionary<string, object> settingsStorage, string agentName, decimal amount)
         {
             Algorithm = algorithm;
             ConnectionCount = connectionCount;
@@ -17,7 +17,7 @@ namespace Common.Settings
             Contracts = contracts;
             AgentName = agentName;
             GroupName = "Without Group";
-            Amount = amount ?? new Unit(1);
+            Amount = amount ;
         }
 
         public string AgentName { get; set; }
@@ -27,6 +27,7 @@ namespace Common.Settings
         public bool IsChecked { get; set; }
         public int Contracts { get; set; }
         public string GroupName { get; set; }
-        public Unit Amount { get; set; }
+        //public Unit Amount { get; set; }
+        public decimal Amount { get; set; }
     }
 }

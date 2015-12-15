@@ -29,19 +29,9 @@ namespace AistTrader
             //Settings.Default.Agents.Clear();
 
 
-
-
-
-
-
-
-
-
-
             Instance = this;
             var x = Settings.Default;
             SetConnectionValuesToDefault();
-
         }
 
 

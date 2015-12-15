@@ -6,15 +6,6 @@
              StartupUri="MainWindow.xaml">
 
     <Application.Resources>
-
-
-
-
-
-
-
-
-
         <!--<ControlTemplate x:Key="ComboBoxValidationErrorTamplate">
             <DockPanel>
                 <Border BorderBrush="Red" BorderThickness="2">

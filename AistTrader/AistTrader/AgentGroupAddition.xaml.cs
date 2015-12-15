@@ -394,7 +394,7 @@ namespace AistTrader
                             foreach (var rs in AgentsStorage.Where(a => a.Name == algorithmName && a._Agent.GroupName == "Without Group"))
                             {
                                 var newAgent = (Agent)rs.Clone();
-                                newAgent._Agent.Amount = amount;
+                                newAgent._Agent.Amount = amount.Value;
                                 newAgent._Agent.GroupName = groupName;
                                 MainWindow.Instance.AddNewAgent(newAgent, -1);
                             }

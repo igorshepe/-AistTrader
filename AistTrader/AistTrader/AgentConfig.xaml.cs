@@ -193,7 +193,7 @@ namespace AistTrader
             var selectedAlgorithmStr = AlgorithmComboBox.SelectedItem.ToString();
             var algorithm = HelperStrategies.GetStrategyFriendlyName(selectedAlgorithmStr, AgentSettings);
             var pickedAlgorithm = (PickedStrategy)Enum.Parse(typeof(PickedStrategy), selectedAlgorithmStr);
-            var agent = new AlgorithmSettings(pickedAlgorithm, -1, true, -1, AgentSettings, selectedAlgorithmStr, null);
+            var agent = new AlgorithmSettings(pickedAlgorithm, -1, true, -1, AgentSettings, selectedAlgorithmStr, 10);
             MainWindow.Instance.AddNewAgent(new Agent(algorithm, agent), EditIndex);
             Close();
         }

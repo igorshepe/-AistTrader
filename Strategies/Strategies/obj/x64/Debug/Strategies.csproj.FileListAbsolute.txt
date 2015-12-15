@@ -56,3 +56,4 @@ C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Newtonsoft.Json.xm
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NPOI.OpenXml4Net.xml
 C:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.dll
 C:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.pdb
+C:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.csprojResolveAssemblyReference.cache
