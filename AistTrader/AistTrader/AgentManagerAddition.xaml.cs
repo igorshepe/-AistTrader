@@ -10,6 +10,9 @@ using AistTrader.Properties;
 using Common.Entities;
 using Common.Settings;
 using Ecng.Common;
+using StockSharp.Algo;
+using StockSharp.Algo.Storages;
+using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 
 namespace AistTrader
@@ -58,6 +61,16 @@ namespace AistTrader
             DataContext = this;
             EditIndex = int.MinValue;
             LoadParams();
+
+
+            var x = SecurityPicker;
+            x.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.Trader);
+
+
+
+            //workin'
+            //SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
+
         }
         public AgentManagerAddition(AgentManager agent, int editIndex)
         {
@@ -220,10 +233,10 @@ namespace AistTrader
         {
             //добавить уведомление если инструменты не получены, так как соединение не активно
             
-            if (ToolComboBox.SelectedItem == null)
-            {
-                return "Не выбран инструмент";
-            }
+            //if (ToolComboBox.SelectedItem == null)
+            //{
+            //    return "Не выбран инструмент";
+            //}
             return String.Empty;
         }
         private string ValidateAmount()
@@ -244,7 +257,26 @@ namespace AistTrader
 
         private void ToolComboBox_OnLoaded(object sender, RoutedEventArgs e)
         {
-            ToolComboBox.ItemsSource = MainWindow.Instance.SecuritiesList.Select(i => i.Id).ToList();
+            //ToolComboBox.ItemsSource = MainWindow.Instance.SecuritiesList.Select(i => i.Id).ToList();
+
+        }
+
+
+        private void ToolComboBox_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+
+
+
+
+
+            SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
+            ShowDialog();
 
         }
     }

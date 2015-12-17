@@ -132,3 +132,5 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe.man
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.application
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.pdb
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\SecuritiesSelectorWindow.baml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\SecuritiesSelectorWindow.g.cs

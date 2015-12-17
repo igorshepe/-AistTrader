@@ -8,12 +8,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:xaml="http://schemas.stocksharp.com/xaml"
-		Height="295.207"
+		Height="323.565"
         Width="285"
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen"
+        xmlns:sx="clr-namespace:StockSharp.Xaml;assembly=StockSharp.Xaml"
         >
-    <Grid Margin="1">
+    <Grid Margin="1,1,1,11">
         <Grid.Resources>
             <Style TargetType="{x:Type ComboBox}">
                 <Style.Triggers>
@@ -30,7 +31,7 @@
                 </Style.Triggers>
             </Style>
         </Grid.Resources>
-        
+
         <Label Content="Выберете портфель"
                Height="25"
                HorizontalContentAlignment="Left"
@@ -53,13 +54,13 @@
         <Label Content="Объем"
                Height="25"
                HorizontalContentAlignment="Left"
-               Margin="1,165,0,0"
+               Margin="1,171,0,0"
                VerticalAlignment="Top"
                HorizontalAlignment="Left"
                Name="AmountLbl" />
         <Label x:Name="UnitVolumeLabel"
                HorizontalAlignment="Left"
-               Margin="120,190,0,0"
+               Margin="125,196,0,0"
                VerticalAlignment="Top"
                Width="116"
                Height="26"/>
@@ -79,18 +80,24 @@
                   VerticalAlignment="Top"
                   TabIndex="4"  
                   x:FieldModifier="private"/>
-        <ComboBox Height="22"
+        <!--<ComboBox Height="22"
                   Text="{Binding Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                   Margin="5,137,5,0"
-                  x:Name="ToolComboBox" 
+                  x:Name="ToolComboBox"
+                  MouseDown="ToolComboBox_OnMouseDown"
                   VerticalAlignment="Top"
                   Loaded="ToolComboBox_OnLoaded"
                   TabIndex="4"  
-                  x:FieldModifier="private"/>
+                  x:FieldModifier="private"/>-->
+        <sx:SecurityEditor
+            Name="SecurityPicker"
+            Margin="5,132,5,0" Height="28" VerticalAlignment="Top"
+                           
+            />
         <xaml:UnitEditor HorizontalAlignment="Left" 
                          Height="22" 
                          Text="{Binding Path=Amount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                         Margin="5,190,0,0" 
+                         Margin="5,196,0,0" 
                          TextWrapping="Wrap"
                          VerticalAlignment="Top"
                          Width="115"
