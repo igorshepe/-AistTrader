@@ -102,6 +102,7 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Newtonsoft.Json.xm
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\ActiproSoftware.Text.LLParser.Wpf.xml
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NPOI.OpenXml4Net.xml
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.csprojResolveAssemblyReference.cache
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\SecuritiesSelectorWindow.baml
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\WhatsNew.baml
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\MainWindow.baml
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AgentConfig.baml
@@ -111,6 +112,7 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AgentManagerAdditi
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AgentPortfolioAddition.baml
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\StrategiesSettingsWindow.baml
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\App.baml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\SecuritiesSelectorWindow.g.cs
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\WhatsNew.g.cs
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\MainWindow.g.cs
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AgentConfig.g.cs
@@ -132,5 +134,3 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe.man
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.application
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.pdb
-C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\SecuritiesSelectorWindow.baml
-C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\SecuritiesSelectorWindow.g.cs

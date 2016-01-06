@@ -17,7 +17,7 @@ namespace AistTrader
         public MainWindow()
         {
 
-
+            
             //Agents
 
 

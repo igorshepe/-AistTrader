@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Xml;
+using System.Xml.Serialization;
 using Common.Settings;
 
 namespace Common.Entities
@@ -7,7 +9,7 @@ namespace Common.Entities
     public class Agent : ICloneable
     {
         public Agent() { }
-
+        
         public Agent(string name, AlgorithmSettings algorithm)
         {
             Name = name;
@@ -17,6 +19,7 @@ namespace Common.Entities
 
         // ReSharper disable MemberCanBePrivate.Global
         public string Name { get; set; }
+        [XmlArray("Agents")]
         public AlgorithmSettings _Agent { get; set; }
         // ReSharper restore MemberCanBePrivate.Global
 

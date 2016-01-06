@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Xml;
+using System.Xml.Serialization;
 using AistTrader.Properties;
 using Common.Entities;
 using Common.Settings;
 using Ecng.Common;
+
 
 namespace AistTrader
 {
@@ -16,7 +21,7 @@ namespace AistTrader
     {
         public CollectionView AgentCollectionView { get; set; }
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
-
+        public static string SettingsPath = "AistTraderSettings.xml";
         private void AgentListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = AgentListView.SelectedItem as Agent;
@@ -42,7 +47,7 @@ namespace AistTrader
         }
         private void AddAgentConfigBtnClick(object sender, RoutedEventArgs e)
         {
-
+                
             //AgentConfigView newAgentConfigView = new AgentConfigView();
             //AistTrader.Models.AgentConfigModel newConfigModel = new Models.AgentConfigModel();
             //newAgentConfigView.DataContext = new ViewModels.AgentConfigViewModel(newConfigModel);
@@ -53,8 +58,9 @@ namespace AistTrader
             var form = new AgentConfig();
             form.ShowDialog();
             form = null;
-            SaveAgentSettings();
             
+//            LoadAgentSettings();
+
             
             //var form = new AgentConfig();
             //form.ShowDialog();
@@ -63,6 +69,17 @@ namespace AistTrader
         }
         private void SaveAgentSettings()
         {
+            //var AistTraderSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
+            
+            XmlSerializer x = new XmlSerializer(typeof(Agent));
+            TextWriter WriteFileStream = new StreamWriter(SettingsPath);//path
+            
+            
+            List<Agent> obj = AgentsStorage.Select(a=>a).ToList();
+            x.Serialize(WriteFileStream,obj);
+            WriteFileStream.Close();
+
+            //StreamReader reader = new StreamReader(path);
             var agentSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
             Settings.Default.Agents = new SettingsArrayList(agentSettings);
             Settings.Default.Save();
@@ -127,6 +144,9 @@ namespace AistTrader
                 CreateGroupItemBtn.IsEnabled = true;
             else
                 CreateGroupItemBtn.IsEnabled = false;
+            
+            //AgentCollectionView.Refresh();
+
         }
 
         private void EditAgentConfigBtnClick(object sender, RoutedEventArgs e)
@@ -192,6 +212,20 @@ namespace AistTrader
 
         public void LoadAgentSettings()
         {
+
+            //XmlSerializer xmlSerializer = new XmlSerializer(typeof(Agent));
+            //StreamReader sr = new StreamReader(SettingsPath);
+            //var agents = (Agent) xmlSerializer.Deserialize(sr);
+
+
+
+
+
+            //XmlSerializer xSerializer = new XmlSerializer(typeof(Agent));
+            //FileStream fs = new FileStream(@"C:\test.xml",FileMode.Open);
+            //XmlReader reader = XmlReader.Create(fs);
+
+
             if (Settings.Default.Agents == null) return;
             try
             {
