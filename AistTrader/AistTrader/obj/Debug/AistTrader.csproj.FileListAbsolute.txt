@@ -472,3 +472,5 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\obj\Debug\AistTrader.exe.manifes
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\Debug\AistTrader.application
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\Debug\AistTrader.exe
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\Debug\AistTrader.pdb
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\Debug\SecuritiesSelectorWindow.baml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\Debug\SecuritiesSelectorWindow.g.cs

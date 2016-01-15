@@ -246,3 +246,13 @@ C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\NPOI.OpenXml4Net.xm
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\Debug\Common.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\Debug\Common.pdb
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\Ecng.Common.dll
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\Ecng.ComponentModel.dll
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\StockSharp.BusinessEntities.dll
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\StockSharp.Messages.dll
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\Ecng.Serialization.FieldFactories.dll
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\log4net.dll
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\StockSharp.BusinessEntities.xml
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\StockSharp.Messages.xml
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\StockSharp.Logging.xml
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\log4net.xml

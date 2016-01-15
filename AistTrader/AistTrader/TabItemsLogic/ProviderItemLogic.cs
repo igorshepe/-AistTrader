@@ -236,11 +236,11 @@ namespace AistTrader
                 this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ PortfoliosList.AddRange(portfolios));
             };
 
-            Trader.Connected += () =>
-            {
+            //Trader.Connected += () =>
+            //{
                 
-                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
-            };
+            //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
+            //};
 
 
             Trader.Disconnected += () =>

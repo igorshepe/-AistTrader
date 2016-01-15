@@ -71,13 +71,13 @@ namespace AistTrader
         {
             //var AistTraderSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
             
-            XmlSerializer x = new XmlSerializer(typeof(Agent));
-            TextWriter WriteFileStream = new StreamWriter(SettingsPath);//path
+            //XmlSerializer x = new XmlSerializer(typeof(Agent));
+            //TextWriter WriteFileStream = new StreamWriter(SettingsPath);//path
             
             
-            List<Agent> obj = AgentsStorage.Select(a=>a).ToList();
-            x.Serialize(WriteFileStream,obj);
-            WriteFileStream.Close();
+            //List<Agent> obj = AgentsStorage.Select(a=>a).ToList();
+            //x.Serialize(WriteFileStream,obj);
+            //WriteFileStream.Close();
 
             //StreamReader reader = new StreamReader(path);
             var agentSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
