@@ -19,6 +19,8 @@ using StockSharp.Localization;
 using StockSharp.Messages;
 using StockSharp.Plaza;
 using ToggleSwitch;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace AistTrader
 {
@@ -90,21 +92,47 @@ namespace AistTrader
         }
         private void SaveProviderSettings()
         {
-            var sortedList = ProviderStorage.OrderBy(set => "{0}-{1}".Put(set.Connection.Code, set.Connection.ToString())).ToList();
-            Settings.Default.AgentConnection = new SettingsArrayList(sortedList);
-            Settings.Default.Save();
+            List<AgentConnection> obj = ProviderStorage.Select(a => a).ToList();
+            var fStream = new FileStream("ProviderSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None);
+            var xmlSerializer = new XmlSerializer(typeof(List<AgentConnection>), new Type[] { typeof(AgentConnection) });
+            xmlSerializer.Serialize(fStream, obj);
+            fStream.Close();
+
+
+
+            //var sortedList = ProviderStorage.OrderBy(set => "{0}-{1}".Put(set.Connection.Code, set.Connection.ToString())).ToList();
+            //Settings.Default.AgentConnection = new SettingsArrayList(sortedList);
+            //Settings.Default.Save();
         }
         private void LoadProviderSettings()
         {
-            if (Settings.Default.AgentConnection == null) return;
+
+
+            var xmlSerializer = new XmlSerializer(typeof(List<AgentConnection>), new Type[] { typeof(AgentConnection) });
+            StreamReader sr = new StreamReader("ProviderSettings.xml");
+            var connections = (List<AgentConnection>)xmlSerializer.Deserialize(sr);
+            sr.Close();
+            if (connections == null) return;
             try
             {
-                foreach (var rs in Settings.Default.AgentConnection.Cast<AgentConnection>())
+                foreach (var rs in connections)
                 {
                     ProviderStorage.Add(rs);
                 }
                 ProviderListView.ItemsSource = ProviderStorage;
             }
+
+
+
+            //if (Settings.Default.AgentConnection == null) return;
+            //try
+            //{
+            //    foreach (var rs in Settings.Default.AgentConnection.Cast<AgentConnection>())
+            //    {
+            //        ProviderStorage.Add(rs);
+            //    }
+            //    ProviderListView.ItemsSource = ProviderStorage;
+            //}
             catch (Exception)
             {
                 MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
