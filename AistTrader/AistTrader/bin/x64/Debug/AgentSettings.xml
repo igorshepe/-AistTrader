@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<ArrayOfAgent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Agent>
+    <Name>AistInvestStrategy 1111 - 1666</Name>
+    <_Agent>
+      <AgentName>AistInvestStrategy</AgentName>
+      <ConnectionCount>-1</ConnectionCount>
+      <Algorithm>AistInvestStrategy</Algorithm>
+      <SettingsStorage>
+        <item>
+          <key>
+            <string>TimeFrame</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:string">00:15:00</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>StopLong</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">1111</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>StopShort</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">1666</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Const</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">123</anyType>
+          </value>
+        </item>
+      </SettingsStorage>
+      <IsChecked>true</IsChecked>
+      <Contracts>-1</Contracts>
+      <GroupName>Without Group</GroupName>
+      <Amount>10</Amount>
+    </_Agent>
+  </Agent>
+  <Agent>
+    <Name>AistInvestStrategy 1111 - 1666</Name>
+    <_Agent>
+      <AgentName>AistInvestStrategy</AgentName>
+      <ConnectionCount>-1</ConnectionCount>
+      <Algorithm>AistInvestStrategy</Algorithm>
+      <SettingsStorage>
+        <item>
+          <key>
+            <string>TimeFrame</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:string">00:15:00</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>StopLong</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">1111</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>StopShort</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">1666</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Const</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">123</anyType>
+          </value>
+        </item>
+      </SettingsStorage>
+      <IsChecked>true</IsChecked>
+      <Contracts>-1</Contracts>
+      <GroupName>Without Group</GroupName>
+      <Amount>10</Amount>
+    </_Agent>
+  </Agent>
+</ArrayOfAgent>

@@ -19,7 +19,6 @@ namespace Common.Entities
 
         // ReSharper disable MemberCanBePrivate.Global
         public string Name { get; set; }
-        [XmlArray("Agents")]
         public AlgorithmSettings _Agent { get; set; }
         // ReSharper restore MemberCanBePrivate.Global
 

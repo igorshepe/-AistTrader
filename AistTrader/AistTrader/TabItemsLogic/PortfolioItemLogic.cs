@@ -6,6 +6,9 @@ using AistTrader.Properties;
 using Common.Entities;
 using Common.Settings;
 using Ecng.Common;
+using System.Xml.Serialization;
+using System.IO;
+using System.Collections.Generic;
 
 namespace AistTrader
 {
@@ -16,7 +19,9 @@ namespace AistTrader
         private void LoadPortfolioTabItemData()
         {
             AgentPortfolioStorage = new ObservableCollection<AgentPortfolio>();
-            LoadPortfolioSettings();
+
+            if (File.Exists("PortfolioSettings.xml"))
+                LoadPortfolioSettings();
         }
 
         public void AddNewAgentPortfolio(AgentPortfolio settings, int editIndex)
@@ -29,21 +34,63 @@ namespace AistTrader
         }
         private void SavePortfolioSettings()
         {
-            var sortedList = AgentPortfolioStorage.OrderBy(set => "{0}-{1}".Put(set.Connection.Name, set.Connection.ToString())).ToList();
-            Settings.Default.AgentPortfolio = new SettingsArrayList(sortedList);
-            Settings.Default.Save();
+            List<AgentPortfolio> obj = AgentPortfolioStorage.Select(a => a).ToList();
+            var fStream = new FileStream("PortfolioSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None);
+            var xmlSerializer = new XmlSerializer(typeof(List<AgentPortfolio>), new Type[] { typeof(AgentPortfolio) });
+            xmlSerializer.Serialize(fStream, obj);
+            fStream.Close();
+
+            //var sortedList = AgentPortfolioStorage.OrderBy(set => "{0}-{1}".Put(set.Connection.Name, set.Connection.ToString())).ToList();
+            //Settings.Default.AgentPortfolio = new SettingsArrayList(sortedList);
+            //Settings.Default.Save();
         }
         private void LoadPortfolioSettings()
         {
-            if (Settings.Default.AgentPortfolio == null) return;
+            StreamReader sr = new StreamReader("PortfolioSettings.xml");
             try
             {
-                foreach (var rs in Settings.Default.AgentPortfolio.Cast<AgentPortfolio>())
+                var xmlSerializer = new XmlSerializer(typeof(List<AgentPortfolio>), new Type[] { typeof(AgentPortfolio) });
+                var portfolios = (List<AgentPortfolio>)xmlSerializer.Deserialize(sr);
+                sr.Close();
+                if (portfolios == null) return;
+                try
                 {
-                    AgentPortfolioStorage.Add(rs);
+                    foreach (var rs in portfolios)
+                    {
+                        AgentPortfolioStorage.Add(rs);
+                    }
+
                 }
-                PortfolioListView.ItemsSource = AgentPortfolioStorage;
+
+
+
+            catch (Exception e)
+            {
+                    sr.Close();
+                    if (e.InnerException.Message == "Root element is missing.")
+                        try
+                        {
+                            System.IO.File.WriteAllText("PortfolioSettings.xml", string.Empty);
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                }
+
+            PortfolioListView.ItemsSource = AgentPortfolioStorage;
             }
+
+
+            //if (Settings.Default.AgentPortfolio == null) return;
+            //try
+            //{
+            //    foreach (var rs in Settings.Default.AgentPortfolio.Cast<AgentPortfolio>())
+            //    {
+            //        AgentPortfolioStorage.Add(rs);
+            //    }
+            //    PortfolioListView.ItemsSource = AgentPortfolioStorage;
+            //}
             catch (Exception)
             {
                 MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");

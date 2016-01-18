@@ -19,6 +19,8 @@ using StockSharp.Localization;
 using StockSharp.Messages;
 using StockSharp.Plaza;
 using ToggleSwitch;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace AistTrader
 {
@@ -35,7 +37,8 @@ namespace AistTrader
         {
             ProviderStorage = new ObservableCollection<AgentConnection>();
             ProviderStorage.CollectionChanged+=ProviderStorageOnCollectionChanged;
-            LoadProviderSettings();
+            if (File.Exists("ProviderSettings.xml"))
+                LoadProviderSettings();
         }
 
         private void ProviderStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
@@ -84,32 +87,47 @@ namespace AistTrader
                 ProviderStorage[editIndex] = settings;
             else
                 ProviderStorage.Add(settings);
-
-
             SaveProviderSettings();
         }
         private void SaveProviderSettings()
         {
-            var sortedList = ProviderStorage.OrderBy(set => "{0}-{1}".Put(set.Connection.Code, set.Connection.ToString())).ToList();
-            Settings.Default.AgentConnection = new SettingsArrayList(sortedList);
-            Settings.Default.Save();
+            List<AgentConnection> obj = ProviderStorage.Select(a => a).ToList();
+            var fStream = new FileStream("ProviderSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None);
+            var xmlSerializer = new XmlSerializer(typeof(List<AgentConnection>), new Type[] { typeof(AgentConnection) });
+            xmlSerializer.Serialize(fStream, obj);
+            fStream.Close();
         }
         private void LoadProviderSettings()
         {
-            if (Settings.Default.AgentConnection == null) return;
+            StreamReader sr = new StreamReader("ProviderSettings.xml");
             try
             {
-                foreach (var rs in Settings.Default.AgentConnection.Cast<AgentConnection>())
+                var xmlSerializer = new XmlSerializer(typeof(List<AgentConnection>), new Type[] { typeof(AgentConnection) });
+                var connections = (List<AgentConnection>)xmlSerializer.Deserialize(sr);
+                sr.Close();
+                if (connections == null) return;
+                foreach (var rs in connections)
                 {
                     ProviderStorage.Add(rs);
                 }
                 ProviderListView.ItemsSource = ProviderStorage;
+
+
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.AgentConnection.Clear();
+                sr.Close();
+                if (e.InnerException.Message == "Root element is missing.")
+                    try
+                    {
+                        System.IO.File.WriteAllText("ProviderSettings.xml", string.Empty);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
             }
+           
         }
         private void AddAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {

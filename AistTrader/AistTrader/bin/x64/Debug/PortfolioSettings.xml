@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ArrayOfAgentPortfolio xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AgentPortfolio>
+    <Name>fsdfdsfsdf</Name>
+    <Connection>
+      <Name>fddkfjksd</Name>
+      <Connection>
+        <ConnectionSettings>
+          <Type>Plaza</Type>
+          <Path>C:\SpectraCGate</Path>
+        </ConnectionSettings>
+        <Name>fddkfjksd</Name>
+        <Code>dsfjhfjksdhf</Code>
+        <IsActive>false</IsActive>
+        <Funds>-1</Funds>
+        <AlgorithmCount>-1</AlgorithmCount>
+        <Contracts>-1</Contracts>
+        <NetValue>-1</NetValue>
+        <VariationMargin>-1</VariationMargin>
+        <Tools />
+        <Accounts />
+      </Connection>
+    </Connection>
+  </AgentPortfolio>
+</ArrayOfAgentPortfolio>
