@@ -1,7 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using AistTrader.Properties;
 using Common.Entities;
 using MoreLinq;
@@ -14,26 +16,36 @@ namespace AistTrader
         public static MainWindow Instance { get; private set; }
         //public List<Security> SecuritiesList { get; set; } 
 
+        //Agents
+
+        public CollectionView AgentCollectionView { get; set; }
+        public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public MainWindow()
         {
-
-            
+            Instance = this;
+            //Agents
+            AgentsStorage = new ObservableCollection<Agent>();
+            AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
             //Agents
 
 
 
-            //Settings.Default.AistTrader.Clear();
-            //Settings.Default.AgentConnection.Clear();
-            //Settings.Default.AgentManager.Clear();
-            //Settings.Default.AgentPortfolio.Clear();
-            //Settings.Default.Agents.Clear();
 
 
-            Instance = this;
-            var x = Settings.Default;
-            SetConnectionValuesToDefault();
+
+
+          //  InitiateCollections();
+
+            //SetConnectionValuesToDefault();
         }
 
+        public void InitiateCollections()
+        {
+            InitiateAgentSettings();
+
+
+
+        }
 
         //*Shit hits the fan time coding bitch
 

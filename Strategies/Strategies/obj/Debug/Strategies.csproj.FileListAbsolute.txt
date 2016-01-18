@@ -186,4 +186,3 @@ C:\Repository\-AistTrader\Strategies\Strategies\bin\Debug\StockSharp.BusinessEnt
 C:\Repository\-AistTrader\Strategies\Strategies\bin\Debug\StockSharp.Logging.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\Debug\StockSharp.Messages.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\Debug\log4net.xml
-C:\Repository\-AistTrader\Strategies\Strategies\obj\Debug\Strategies.csprojResolveAssemblyReference.cache
