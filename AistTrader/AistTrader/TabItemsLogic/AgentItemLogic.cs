@@ -69,20 +69,17 @@ namespace AistTrader
         }
         private void SaveAgentSettings()
         {
-            //var AistTraderSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
-            
-            //XmlSerializer x = new XmlSerializer(typeof(Agent));
-            //TextWriter WriteFileStream = new StreamWriter(SettingsPath);//path
-            
-            
-            //List<Agent> obj = AgentsStorage.Select(a=>a).ToList();
-            //x.Serialize(WriteFileStream,obj);
-            //WriteFileStream.Close();
+            List<Agent> obj = AgentsStorage.Select(a => a).ToList();
+            var fStream = new FileStream("AgentSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None);
+            var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+            xmlSerializer.Serialize(fStream, obj);
+            fStream.Close();
 
-            //StreamReader reader = new StreamReader(path);
-            var agentSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
-            Settings.Default.Agents = new SettingsArrayList(agentSettings);
-            Settings.Default.Save();
+
+            //obsolete
+            //var agentSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
+            //Settings.Default.Agents = new SettingsArrayList(agentSettings);
+            //Settings.Default.Save();
         }
 
         public void DeleteAgentBtnClick(object sender, RoutedEventArgs e)
@@ -123,7 +120,8 @@ namespace AistTrader
         {
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
-            LoadAgentSettings();
+            if (File.Exists("AgentSettings.xml"))
+                LoadAgentSettings();
         }
 
         public void DelAgentConfigBtnClick(Agent agent)
@@ -212,40 +210,37 @@ namespace AistTrader
 
         public void LoadAgentSettings()
         {
-
-            //XmlSerializer xmlSerializer = new XmlSerializer(typeof(Agent));
-            //StreamReader sr = new StreamReader(SettingsPath);
-            //var agents = (Agent) xmlSerializer.Deserialize(sr);
-
-
-
-
-
-            //XmlSerializer xSerializer = new XmlSerializer(typeof(Agent));
-            //FileStream fs = new FileStream(@"C:\test.xml",FileMode.Open);
-            //XmlReader reader = XmlReader.Create(fs);
-
-
-            if (Settings.Default.Agents == null) return;
+            StreamReader sr = new StreamReader("AgentSettings.xml");
             try
             {
-                foreach (var rs in Settings.Default.Agents.Cast<Agent>())
+                var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+                var agents = (List<Agent>)xmlSerializer.Deserialize(sr);
+                sr.Close();
+                if (agents == null) return;
+
+                foreach (var rs in agents)
                 {
                     AgentsStorage.Add(rs);
                 }
                 AgentListView.ItemsSource = AgentsStorage;
-
-
                 AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
                 AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.Agents.Clear();
+                sr.Close();
+                //MessageBox.Show(this, e.InnerException.Message);
+                if(e.InnerException.Message == "Root element is missing.")
+                    try
+                    {
+                        System.IO.File.WriteAllText("AgentSettings.xml", string.Empty);
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
             }
         }
-
         private void OperationBtnClick(object sender, RoutedEventArgs e)
         {
             //throw new NotImplementedException();
