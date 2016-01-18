@@ -23,7 +23,7 @@ namespace AistTrader
         public MainWindow()
         {
             Instance = this;
-            //Agents
+            //Agents    
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
             //Agents

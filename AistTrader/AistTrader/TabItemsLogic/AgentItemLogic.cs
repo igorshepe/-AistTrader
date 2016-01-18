@@ -19,9 +19,7 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
-        public CollectionView AgentCollectionView { get; set; }
-        public ObservableCollection<Agent> AgentsStorage { get; private set; }
-        public static string SettingsPath = "AistTraderSettings.xml";
+        public bool IsAgentSettingsLoaded;
         private void AgentListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = AgentListView.SelectedItem as Agent;
@@ -35,10 +33,13 @@ namespace AistTrader
         }
         private void AgentListView_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!IsAgentSettingsLoaded && (File.Exists("AgentSettings.xml")))
+                InitiateAgentSettings();
             if (AgentsStorage.Count > 0)
                 EditSingleOrGroupItemBtn.IsEnabled = true;
             else
                 EditSingleOrGroupItemBtn.IsEnabled = false;
+
         }
         private void AddAgentConfigGroupBtnClick(object sender, RoutedEventArgs e)
         {
@@ -52,20 +53,10 @@ namespace AistTrader
             //AistTrader.Models.AgentConfigModel newConfigModel = new Models.AgentConfigModel();
             //newAgentConfigView.DataContext = new ViewModels.AgentConfigViewModel(newConfigModel);
             //newAgentConfigView.Show();
-
-
-
             var form = new AgentConfig();
             form.ShowDialog();
             form = null;
             
-//            LoadAgentSettings();
-
-            
-            //var form = new AgentConfig();
-            //form.ShowDialog();
-            //form = null;
-            //SaveAgentSettings();
         }
         private void SaveAgentSettings()
         {
@@ -74,12 +65,6 @@ namespace AistTrader
             var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
             xmlSerializer.Serialize(fStream, obj);
             fStream.Close();
-
-
-            //obsolete
-            //var agentSettings = AgentsStorage.OrderBy(s => "{0}-{1}".Put(s.Name, s._Agent.ToString())).ToList();
-            //Settings.Default.Agents = new SettingsArrayList(agentSettings);
-            //Settings.Default.Save();
         }
 
         public void DeleteAgentBtnClick(object sender, RoutedEventArgs e)
@@ -118,9 +103,9 @@ namespace AistTrader
 
         private void LoadAgentTabItemData()
         {
-            AgentsStorage = new ObservableCollection<Agent>();
-            AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
-            LoadAgentSettings();
+            //AgentsStorage = new ObservableCollection<Agent>();
+            //AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
+            //LoadAgentSettings();
         }
 
         public void DelAgentConfigBtnClick(Agent agent)
@@ -204,10 +189,16 @@ namespace AistTrader
             else
                 AgentsStorage.Add(settings);
             SaveAgentSettings();
-            
+            UpdateAgentListView();
         }
 
-        public void LoadAgentSettings()
+
+        public void UpdateAgentListView()
+        {
+            AgentListView.ItemsSource = AgentsStorage;
+            AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
+        }
+        public void InitiateAgentSettings()
         {
             var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
             StreamReader sr = new StreamReader("AgentSettings.xml");
@@ -216,6 +207,7 @@ namespace AistTrader
             if (agents == null) return;
             try
             {
+                AgentsStorage.Clear();
                 foreach (var rs in agents)
                 {
                     AgentsStorage.Add(rs);
@@ -223,25 +215,16 @@ namespace AistTrader
                 AgentListView.ItemsSource = AgentsStorage;
                 AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
                 AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
+                IsAgentSettingsLoaded = true;
             }
-            //obsolete
-            //if (Settings.Default.Agents == null) return;
-            //try
-            //{
-            //    foreach (var rs in Settings.Default.Agents.Cast<Agent>())
-            //    {
-            //        AgentsStorage.Add(rs);
-            //    }
-            //    AgentListView.ItemsSource = AgentsStorage;
 
-
-            //    AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
-            //    AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
-            //}
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.Agents.Clear();
+                IsAgentSettingsLoaded = false;
+                sr.Close();
+                //MessageBox.Show(this, e.InnerException.Message);
+                if (e.InnerException.Message == "Root element is missing.")
+                    IsAgentSettingsLoaded = false;
             }
         }
 

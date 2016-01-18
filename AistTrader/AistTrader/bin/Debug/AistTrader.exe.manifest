@@ -162,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="509448">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="508936">
       <assemblyIdentity name="AistTrader" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+rzLa48OZU8m0ek4STLnf/I7WGVv6hT+19IKVrkTZFU=</dsig:DigestValue>
+        <dsig:DigestValue>lIeRBSQKRhNDuCUT5Z0OpCzoC5Y5+b1+g/kimSpxN+c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -241,7 +241,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0FFaphZAhkn3vgcUQPVkvGLN1kqWL7/vMuiV2EeYJ3A=</dsig:DigestValue>
+        <dsig:DigestValue>nPxFfAfOFnLjQrhTtU9S7tZE30ctbIbUMhfOiUPHGhM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -781,7 +781,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cmiwBlKTpvhPauUTmW5Vf4WRCaP0SyGz91EANneeO1k=</dsig:DigestValue>
+        <dsig:DigestValue>iKZvWoKYd9owsdBVtzTh4XVIAESsSuVu3NefJcJQNUY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

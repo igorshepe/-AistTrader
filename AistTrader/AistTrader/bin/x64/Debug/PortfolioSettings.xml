@@ -22,4 +22,70 @@
       </Connection>
     </Connection>
   </AgentPortfolio>
+  <AgentPortfolio>
+    <Name>fsdfsdfsdf</Name>
+    <Connection>
+      <Name>gfdgfdg</Name>
+      <Connection>
+        <ConnectionSettings>
+          <Type>Plaza</Type>
+          <Path>C:\SpectraCGate</Path>
+        </ConnectionSettings>
+        <Name>gfdgfdg</Name>
+        <Code>gdfgfd</Code>
+        <IsActive>false</IsActive>
+        <Funds>-1</Funds>
+        <AlgorithmCount>-1</AlgorithmCount>
+        <Contracts>-1</Contracts>
+        <NetValue>-1</NetValue>
+        <VariationMargin>-1</VariationMargin>
+        <Tools />
+        <Accounts />
+      </Connection>
+    </Connection>
+  </AgentPortfolio>
+  <AgentPortfolio>
+    <Name>dsxvcxvcccccccc</Name>
+    <Connection>
+      <Name>gfdgfdg</Name>
+      <Connection>
+        <ConnectionSettings>
+          <Type>Plaza</Type>
+          <Path>C:\SpectraCGate</Path>
+        </ConnectionSettings>
+        <Name>gfdgfdg</Name>
+        <Code>gdfgfd</Code>
+        <IsActive>false</IsActive>
+        <Funds>-1</Funds>
+        <AlgorithmCount>-1</AlgorithmCount>
+        <Contracts>-1</Contracts>
+        <NetValue>-1</NetValue>
+        <VariationMargin>-1</VariationMargin>
+        <Tools />
+        <Accounts />
+      </Connection>
+    </Connection>
+  </AgentPortfolio>
+  <AgentPortfolio>
+    <Name>fsffffffffffffffffffffffffff</Name>
+    <Connection>
+      <Name>gfdgfdg</Name>
+      <Connection>
+        <ConnectionSettings>
+          <Type>Plaza</Type>
+          <Path>C:\SpectraCGate</Path>
+        </ConnectionSettings>
+        <Name>gfdgfdg</Name>
+        <Code>gdfgfd</Code>
+        <IsActive>false</IsActive>
+        <Funds>-1</Funds>
+        <AlgorithmCount>-1</AlgorithmCount>
+        <Contracts>-1</Contracts>
+        <NetValue>-1</NetValue>
+        <VariationMargin>-1</VariationMargin>
+        <Tools />
+        <Accounts />
+      </Connection>
+    </Connection>
+  </AgentPortfolio>
 </ArrayOfAgentPortfolio>
