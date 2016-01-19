@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Xml.Serialization;
 using AistTrader.Properties;
 using Common.Entities;
 using Common.Settings;
@@ -441,17 +443,28 @@ namespace AistTrader
         }
         private void LoadSettings()
         {
+            StreamReader sr = new StreamReader("AgentSettings.xml");
             try
             {
-                foreach (var rs in Settings.Default.Agents.Cast<Agent>())
+                var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+                var connections = (List<Agent>)xmlSerializer.Deserialize(sr);
+                sr.Close();
+                foreach (var rs in connections.Cast<Agent>())
                 {
                     AgentsStorage.Add(rs);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.Agents.Clear();
+                sr.Close();
+                //if (e.InnerException.Message == "Root element is missing.")
+                //    try
+                //    {
+                //        System.IO.File.WriteAllText("AgentSettings.xml", string.Empty);
+                //    }
+                //    catch (Exception)
+                //    {
+                //    }
             }
         }
     }

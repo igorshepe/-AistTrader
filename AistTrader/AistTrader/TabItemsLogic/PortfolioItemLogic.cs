@@ -21,7 +21,7 @@ namespace AistTrader
             AgentPortfolioStorage = new ObservableCollection<AgentPortfolio>();
 
             if (File.Exists("PortfolioSettings.xml"))
-                LoadPortfolioSettings();
+                InitiatePortfolioSettings();
         }
 
         public void AddNewAgentPortfolio(AgentPortfolio settings, int editIndex)
@@ -40,11 +40,8 @@ namespace AistTrader
             xmlSerializer.Serialize(fStream, obj);
             fStream.Close();
 
-            //var sortedList = AgentPortfolioStorage.OrderBy(set => "{0}-{1}".Put(set.Connection.Name, set.Connection.ToString())).ToList();
-            //Settings.Default.AgentPortfolio = new SettingsArrayList(sortedList);
-            //Settings.Default.Save();
         }
-        private void LoadPortfolioSettings()
+        private void InitiatePortfolioSettings()
         {
             StreamReader sr = new StreamReader("PortfolioSettings.xml");
             try
@@ -53,48 +50,17 @@ namespace AistTrader
                 var portfolios = (List<AgentPortfolio>)xmlSerializer.Deserialize(sr);
                 sr.Close();
                 if (portfolios == null) return;
-                try
+                foreach (var rs in portfolios)
                 {
-                    foreach (var rs in portfolios)
-                    {
-                        AgentPortfolioStorage.Add(rs);
-                    }
-
+                    AgentPortfolioStorage.Add(rs);
                 }
-
-
-
+                PortfolioListView.ItemsSource = AgentPortfolioStorage;
+            }
             catch (Exception e)
             {
-                    sr.Close();
-                    if (e.InnerException.Message == "Root element is missing.")
-                        try
-                        {
-                            System.IO.File.WriteAllText("PortfolioSettings.xml", string.Empty);
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                }
-
-            PortfolioListView.ItemsSource = AgentPortfolioStorage;
-            }
-
-
-            //if (Settings.Default.AgentPortfolio == null) return;
-            //try
-            //{
-            //    foreach (var rs in Settings.Default.AgentPortfolio.Cast<AgentPortfolio>())
-            //    {
-            //        AgentPortfolioStorage.Add(rs);
-            //    }
-            //    PortfolioListView.ItemsSource = AgentPortfolioStorage;
-            //}
-            catch (Exception)
-            {
-                MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.AgentPortfolio.Clear();
+                sr.Close();
+                if (e.InnerException.Message == "Root element is missing.")
+                    System.IO.File.WriteAllText("PortfolioSettings.xml", string.Empty);
             }
         }
         private void AddAgentPortfolioBtnClick(object sender, RoutedEventArgs e)

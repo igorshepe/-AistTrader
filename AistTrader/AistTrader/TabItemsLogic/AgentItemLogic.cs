@@ -200,13 +200,15 @@ namespace AistTrader
         }
         public void InitiateAgentSettings()
         {
-            var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
             StreamReader sr = new StreamReader("AgentSettings.xml");
-            var agents = (List<Agent>)xmlSerializer.Deserialize(sr);
-            sr.Close();
-            if (agents == null) return;
+            
             try
             {
+                var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+                var agents = (List<Agent>)xmlSerializer.Deserialize(sr);
+                sr.Close();
+                if (agents == null) return;
+
                 AgentsStorage.Clear();
                 foreach (var rs in agents)
                 {
@@ -228,9 +230,6 @@ namespace AistTrader
             }
         }
 
-        private void OperationBtnClick(object sender, RoutedEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
+
     }
 }

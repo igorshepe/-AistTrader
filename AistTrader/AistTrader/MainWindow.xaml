@@ -150,7 +150,7 @@
                                 <GridViewColumn Width="130" Header="Операция">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Click="OperationBtnClick" MinWidth="100"  HorizontalAlignment="Right" Margin="0,0,0,0">Подключить</Button>
+                                            <Button Click="OperationBtnClick" MinWidth="100" Content="{Binding Path= Connection.IsActive}"  HorizontalAlignment="Right" Margin="0,0,0,0"></Button>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

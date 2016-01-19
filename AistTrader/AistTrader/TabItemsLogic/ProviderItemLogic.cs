@@ -21,6 +21,8 @@ using StockSharp.Plaza;
 using ToggleSwitch;
 using System.Xml.Serialization;
 using System.IO;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 
 namespace AistTrader
 {
@@ -38,7 +40,7 @@ namespace AistTrader
             ProviderStorage = new ObservableCollection<AgentConnection>();
             ProviderStorage.CollectionChanged+=ProviderStorageOnCollectionChanged;
             if (File.Exists("ProviderSettings.xml"))
-                LoadProviderSettings();
+                InitiateProviderSettings();
         }
 
         private void ProviderStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
@@ -97,7 +99,7 @@ namespace AistTrader
             xmlSerializer.Serialize(fStream, obj);
             fStream.Close();
         }
-        private void LoadProviderSettings()
+        private void InitiateProviderSettings()
         {
             StreamReader sr = new StreamReader("ProviderSettings.xml");
             try
@@ -111,8 +113,6 @@ namespace AistTrader
                     ProviderStorage.Add(rs);
                 }
                 ProviderListView.ItemsSource = ProviderStorage;
-
-
             }
             catch (Exception e)
             {
@@ -124,10 +124,8 @@ namespace AistTrader
                     }
                     catch (Exception)
                     {
-
                     }
             }
-           
         }
         private void AddAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {
@@ -182,7 +180,7 @@ namespace AistTrader
                 var item = (sender as FrameworkElement).DataContext;
                 ProviderListView.SelectedItems.Clear();
                 ProviderListView.SelectedItems.Add(item);
-                ConnectAccount(item as AgentConnection);
+               // ConnectAccount(item as AgentConnection);
             }
             else
             {
@@ -339,9 +337,33 @@ namespace AistTrader
             throw new Exception("Local IP Address Not Found!");
         }
 
+        private void OperationBtnClick(object sender, RoutedEventArgs e)
+        {
 
+            if ((sender as System.Windows.Controls.Button).Content.ToString() == "Подключить")
+            {
+                //ON
+                var item = (sender as FrameworkElement).DataContext;
+                ProviderListView.SelectedItems.Clear();
+                ProviderListView.SelectedItems.Add(item);
+                // ConnectAccount(item as AgentConnection);
 
+            }
+            else
+            {
+                //OFF
+                //if (Trader != null && Trader.ConnectionState == ConnectionStates.Connected)
+                //{
+                //    Trader.Disconnect();
+                //    //set to null all collectionzzzZZzzz
+                //    SecuritiesList.Clear();
+                //    PortfoliosList.Clear();
+                //}
+
+                //var item = (sender as FrameworkElement).DataContext;
+                //var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
+                //rowItem.Connection.IsActive = false;
+            }
+        }
     }
-
-
 }
