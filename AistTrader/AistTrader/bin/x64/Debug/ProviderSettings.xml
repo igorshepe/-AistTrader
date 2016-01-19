@@ -1,20 +1,22 @@
 <?xml version="1.0"?>
 <ArrayOfAgentConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AgentConnection>
-    <Name>Олег-Тестим</Name>
+    <Name>gggff</Name>
     <Connection>
       <ConnectionSettings>
         <Type>Plaza</Type>
         <Path>C:\SpectraCGate</Path>
       </ConnectionSettings>
-      <Name>Олег-Тестим</Name>
-      <Code>ОТ</Code>
+      <Name>gggff</Name>
+      <Code>ggg</Code>
       <IsActive>false</IsActive>
+      <Command>Connect</Command>
       <Funds>-1</Funds>
       <AlgorithmCount>-1</AlgorithmCount>
       <Contracts>-1</Contracts>
       <NetValue>-1</NetValue>
       <VariationMargin>-1</VariationMargin>
+      <ConnectionStatus>Connected</ConnectionStatus>
     </Connection>
   </AgentConnection>
 </ArrayOfAgentConnection>

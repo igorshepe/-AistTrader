@@ -123,7 +123,8 @@ namespace AistTrader
                 var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
                 connectionProvider = connectionProvider.Substring(0, connectionProvider.IndexOf(" (", StringComparison.Ordinal));
                 var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
-                if (agent.Connection.Accounts != null) AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
+                //if (agent.Connection.Accounts != null) 
+                    //AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
                 //TODO: уточнить что делать если данных нет    
             }
         }

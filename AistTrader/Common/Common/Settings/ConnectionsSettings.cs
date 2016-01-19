@@ -19,6 +19,7 @@ namespace Common.Settings
             Contracts = -1;
             NetValue = -1;
             VariationMargin = -1;
+
         }
 
         public ConnectionsSettings()
@@ -30,6 +31,7 @@ namespace Common.Settings
         public string Login { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
+        public OperationCommand Command { get; set; }
         //TODO: уточнить типы данных
         public double Funds { get; set; }
         public int AlgorithmCount { get; set; }
@@ -41,13 +43,15 @@ namespace Common.Settings
         public List<Security> Tools { get; set; }
         public List<Portfolio> Accounts { get; set; }
         public Portfolio SelectedAccount { get; set; }
+        public AgentConnectionStatus ConnectionStatus { get; set; }
 
 
         public enum AgentConnectionStatus
         {
             Connected,
             Disconnected,
-            ConnectionError
+            ConnectionError,
+            Authentication
             //TODO:дополнить по необходимости тем, что надо
         }
         
@@ -55,6 +59,11 @@ namespace Common.Settings
 
 
     [TypeConverter]
+    public enum OperationCommand
+    {
+        Connect,
+        Disconnect
+    };
     public enum TerminalType
     {
         [Description("Plaza")]

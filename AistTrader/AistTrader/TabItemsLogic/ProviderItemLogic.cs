@@ -33,14 +33,11 @@ namespace AistTrader
         const string Localhost = "127.0.0.1:4001";
         public List<Security> SecuritiesList = new List<Security>();
         public List<Portfolio> PortfoliosList = new List<Portfolio>();
+        public bool IsProviderSettingsLoaded;
 
 
         private void LoadProviderTabItemData()
         {
-            ProviderStorage = new ObservableCollection<AgentConnection>();
-            ProviderStorage.CollectionChanged+=ProviderStorageOnCollectionChanged;
-            if (File.Exists("ProviderSettings.xml"))
-                InitiateProviderSettings();
         }
 
         private void ProviderStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
@@ -59,21 +56,21 @@ namespace AistTrader
         //}
         public static void ConnectionStatus(ConnectionsSettings.AgentConnectionStatus agentConnStatus, AgentConnection item)
         {
-            //bool status = false;
-            //TODO: при выводе сообщений добавлять инфу о том какое именно соеднение..
-            //if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Connected)
-            //{
-            //    //Instance.GuiAsync(() => MessageBox.Show(Instance, "Соединение установленно"));
-            //    status = true;
-            //}
-            //else if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Disconnected)
-            //    Instance.GuiAsync(() => MessageBox.Show(Instance, "Соединение отключено"));
-            //else if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.ConnectionError)
-            //    Instance.GuiAsync(() => MessageBox.Show(Instance, "Ошибка соединения"));
-            var rowItem = Instance.ProviderStorage.FirstOrDefault(i => i == item);
-            rowItem.Connection.IsActive = true;
+            if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Connected)
+            {
+                item.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Connected;
+            }
+            if (agentConnStatus == ConnectionsSettings.AgentConnectionStatus.Disconnected)
+            {
+                item.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected;
+            }
             ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
             view.Refresh();
+
+
+            //var rowItem = Instance.ProviderStorage.FirstOrDefault(i => i == item);
+            //rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Authentication;
+            //TODO: при выводе сообщений добавлять инфу о том какое именно соеднение..
         }
         //private void OrdersFailed(IEnumerable<OrderFail> fails)
         //{
@@ -113,18 +110,14 @@ namespace AistTrader
                     ProviderStorage.Add(rs);
                 }
                 ProviderListView.ItemsSource = ProviderStorage;
+                IsProviderSettingsLoaded = true;
             }
             catch (Exception e)
             {
+                IsProviderSettingsLoaded = false;
                 sr.Close();
                 if (e.InnerException.Message == "Root element is missing.")
-                    try
-                    {
-                        System.IO.File.WriteAllText("ProviderSettings.xml", string.Empty);
-                    }
-                    catch (Exception)
-                    {
-                    }
+                   System.IO.File.WriteAllText("ProviderSettings.xml", string.Empty);
             }
         }
         private void AddAgentConnectionBtnClick(object sender, RoutedEventArgs e)
@@ -180,7 +173,7 @@ namespace AistTrader
                 var item = (sender as FrameworkElement).DataContext;
                 ProviderListView.SelectedItems.Clear();
                 ProviderListView.SelectedItems.Add(item);
-               // ConnectAccount(item as AgentConnection);
+                ConnectAccount(item as AgentConnection);
             }
             else
             {
@@ -205,18 +198,18 @@ namespace AistTrader
             if (agent.Connection.ConnectionSettings.IpEndPoint == null)
             {
                 ipEndPoint = ReadPlazaPersonalSettings(agent.Connection.ConnectionSettings.Path);
-                var item = Settings.Default.AgentConnection.Cast<AgentConnection>().Where(i => i.Connection.ConnectionSettings.Path == agent.Connection.ConnectionSettings.Path)
+                var item = ProviderStorage.Cast<AgentConnection>().Where(i => i.Connection.ConnectionSettings.Path == agent.Connection.ConnectionSettings.Path)
                         .Select(i => i).FirstOrDefault();
                 item.Connection.ConnectionSettings.IpEndPoint = ipEndPoint;
             }
             else
                 ipEndPoint = agent.Connection.ConnectionSettings.IpEndPoint;
-            
+
             Trader.AppName = "TestCGateConnection";
             Trader.Address = ipEndPoint.To<IPEndPoint>();
             Trader.IsCGate = true;
-//            Trader.CGateKey = null;
-    
+            //            Trader.CGateKey = null;
+
             //только в боевоей версии
             //Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
 
@@ -254,7 +247,7 @@ namespace AistTrader
 
             //Trader.Connected += () =>
             //{
-                
+
             //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
             //};
 
@@ -271,7 +264,7 @@ namespace AistTrader
             });
 
 
-           Trader.Connect();
+            Trader.Connect();
 
 
 
@@ -340,30 +333,54 @@ namespace AistTrader
         private void OperationBtnClick(object sender, RoutedEventArgs e)
         {
 
-            if ((sender as System.Windows.Controls.Button).Content.ToString() == "Подключить")
+            if ((sender as System.Windows.Controls.Button).Content.ToString() == "Connect")
             {
                 //ON
                 var item = (sender as FrameworkElement).DataContext;
                 ProviderListView.SelectedItems.Clear();
                 ProviderListView.SelectedItems.Add(item);
-                // ConnectAccount(item as AgentConnection);
+
+
+                var rowItem = Instance.ProviderStorage.FirstOrDefault(i => i == item);
+                //на время попытки подключения ставим Disconnect
+                rowItem.Connection.Command = OperationCommand.Disconnect;
+                rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Authentication;
+                ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
+                view.Refresh();
+
+                ConnectAccount(item as AgentConnection);
 
             }
             else
             {
                 //OFF
-                //if (Trader != null && Trader.ConnectionState == ConnectionStates.Connected)
-                //{
-                //    Trader.Disconnect();
-                //    //set to null all collectionzzzZZzzz
-                //    SecuritiesList.Clear();
-                //    PortfoliosList.Clear();
-                //}
+                if (Trader != null /*&& Trader.ConnectionState == ConnectionStates.Connected*/)
+                {
+                    Trader.Disconnect();
+                    //set to null all collectionzzzZZzzz
+                    SecuritiesList.Clear();
+                    PortfoliosList.Clear();
+                }
 
-                //var item = (sender as FrameworkElement).DataContext;
-                //var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
-                //rowItem.Connection.IsActive = false;
+                var item = (sender as FrameworkElement).DataContext;
+                var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
+                rowItem.Connection.Command = OperationCommand.Connect;
+                rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected;
+                ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
+                view.Refresh();
             }
         }
+
+        private void ProviderListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!IsProviderSettingsLoaded && (File.Exists("ProviderSettings.xml")))
+                InitiateProviderSettings();
+            //if (AgentsStorage.Count > 0)
+            //    EditSingleOrGroupItemBtn.IsEnabled = true;
+            //else
+            //    EditSingleOrGroupItemBtn.IsEnabled = false;
+        }
+
+
     }
 }

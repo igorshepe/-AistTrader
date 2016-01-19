@@ -125,7 +125,7 @@
                     </Grid.ColumnDefinitions>
 
                     <ListView x:Name="ProviderListView" IsSynchronizedWithCurrentItem="True"  
-                        x:FieldModifier="private" Loaded="AgentManagerDetails_Loaded" Grid.Column="0">
+                        x:FieldModifier="private" Loaded="ProviderListView_Loaded" Grid.Column="0">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -145,12 +145,12 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Width="200" Header="СостояниеNEw" >
+                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path=Connection.ConnectionStatus}" Header="Состояние соединения" >
                                 </GridViewColumn>
                                 <GridViewColumn Width="130" Header="Операция">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Click="OperationBtnClick" MinWidth="100" Content="{Binding Path= Connection.IsActive}"  HorizontalAlignment="Right" Margin="0,0,0,0"></Button>
+                                            <Button Click="OperationBtnClick" MinWidth="100" Content="{Binding Path= Connection.Command}"  HorizontalAlignment="Right" Margin="0,0,0,0"></Button>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -175,7 +175,7 @@
                     </Grid.ColumnDefinitions>
 
                     <ListView x:Name="PortfolioListView" IsSynchronizedWithCurrentItem="True"  
-                        x:FieldModifier="private" Loaded="AgentManagerDetails_Loaded" Grid.Column="0">
+                        x:FieldModifier="private" Loaded="PortfolioListView_Loaded" Grid.Column="0">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />

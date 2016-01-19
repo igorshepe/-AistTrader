@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
 <ArrayOfAgentPortfolio xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AgentPortfolio>
-    <Name>fsdfdsfsdf</Name>
+    <Name>ttttttttt</Name>
     <Connection>
-      <Name>fddkfjksd</Name>
+      <Name>gggff</Name>
       <Connection>
         <ConnectionSettings>
           <Type>Plaza</Type>
           <Path>C:\SpectraCGate</Path>
         </ConnectionSettings>
-        <Name>fddkfjksd</Name>
-        <Code>dsfjhfjksdhf</Code>
+        <Name>gggff</Name>
+        <Code>ggg</Code>
         <IsActive>false</IsActive>
+        <Command>Connect</Command>
         <Funds>-1</Funds>
         <AlgorithmCount>-1</AlgorithmCount>
         <Contracts>-1</Contracts>
@@ -19,21 +20,23 @@
         <VariationMargin>-1</VariationMargin>
         <Tools />
         <Accounts />
+        <ConnectionStatus>Connected</ConnectionStatus>
       </Connection>
     </Connection>
   </AgentPortfolio>
   <AgentPortfolio>
-    <Name>fsdfsdfsdf</Name>
+    <Name>trggtggg</Name>
     <Connection>
-      <Name>gfdgfdg</Name>
+      <Name>gggff</Name>
       <Connection>
         <ConnectionSettings>
           <Type>Plaza</Type>
           <Path>C:\SpectraCGate</Path>
         </ConnectionSettings>
-        <Name>gfdgfdg</Name>
-        <Code>gdfgfd</Code>
+        <Name>gggff</Name>
+        <Code>ggg</Code>
         <IsActive>false</IsActive>
+        <Command>Connect</Command>
         <Funds>-1</Funds>
         <AlgorithmCount>-1</AlgorithmCount>
         <Contracts>-1</Contracts>
@@ -41,50 +44,7 @@
         <VariationMargin>-1</VariationMargin>
         <Tools />
         <Accounts />
-      </Connection>
-    </Connection>
-  </AgentPortfolio>
-  <AgentPortfolio>
-    <Name>dsxvcxvcccccccc</Name>
-    <Connection>
-      <Name>gfdgfdg</Name>
-      <Connection>
-        <ConnectionSettings>
-          <Type>Plaza</Type>
-          <Path>C:\SpectraCGate</Path>
-        </ConnectionSettings>
-        <Name>gfdgfdg</Name>
-        <Code>gdfgfd</Code>
-        <IsActive>false</IsActive>
-        <Funds>-1</Funds>
-        <AlgorithmCount>-1</AlgorithmCount>
-        <Contracts>-1</Contracts>
-        <NetValue>-1</NetValue>
-        <VariationMargin>-1</VariationMargin>
-        <Tools />
-        <Accounts />
-      </Connection>
-    </Connection>
-  </AgentPortfolio>
-  <AgentPortfolio>
-    <Name>fsffffffffffffffffffffffffff</Name>
-    <Connection>
-      <Name>gfdgfdg</Name>
-      <Connection>
-        <ConnectionSettings>
-          <Type>Plaza</Type>
-          <Path>C:\SpectraCGate</Path>
-        </ConnectionSettings>
-        <Name>gfdgfdg</Name>
-        <Code>gdfgfd</Code>
-        <IsActive>false</IsActive>
-        <Funds>-1</Funds>
-        <AlgorithmCount>-1</AlgorithmCount>
-        <Contracts>-1</Contracts>
-        <NetValue>-1</NetValue>
-        <VariationMargin>-1</VariationMargin>
-        <Tools />
-        <Accounts />
+        <ConnectionStatus>Connected</ConnectionStatus>
       </Connection>
     </Connection>
   </AgentPortfolio>

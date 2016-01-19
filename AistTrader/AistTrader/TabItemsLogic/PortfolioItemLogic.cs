@@ -9,19 +9,18 @@ using Ecng.Common;
 using System.Xml.Serialization;
 using System.IO;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Windows.Data;
 
 namespace AistTrader
 {
     public partial class MainWindow
     {
         public ObservableCollection<AgentPortfolio> AgentPortfolioStorage { get; private set; }
+        public bool IsPortfolioSettingsLoaded;
 
         private void LoadPortfolioTabItemData()
         {
-            AgentPortfolioStorage = new ObservableCollection<AgentPortfolio>();
-
-            if (File.Exists("PortfolioSettings.xml"))
-                InitiatePortfolioSettings();
         }
 
         public void AddNewAgentPortfolio(AgentPortfolio settings, int editIndex)
@@ -31,6 +30,14 @@ namespace AistTrader
             else
                 AgentPortfolioStorage.Add(settings);
             SavePortfolioSettings();
+
+            //UpdatePortfolioListView();
+        }
+
+        public void UpdatePortfolioListView()
+        {
+            PortfolioListView.ItemsSource = AgentPortfolioStorage;
+            PortfolioCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(PortfolioListView.ItemsSource);
         }
         private void SavePortfolioSettings()
         {
@@ -55,9 +62,11 @@ namespace AistTrader
                     AgentPortfolioStorage.Add(rs);
                 }
                 PortfolioListView.ItemsSource = AgentPortfolioStorage;
+                IsPortfolioSettingsLoaded = true;
             }
             catch (Exception e)
             {
+                IsPortfolioSettingsLoaded = false;
                 sr.Close();
                 if (e.InnerException.Message == "Root element is missing.")
                     System.IO.File.WriteAllText("PortfolioSettings.xml", string.Empty);
@@ -93,6 +102,18 @@ namespace AistTrader
                 AgentPortfolioStorage.Remove(item);
                 SavePortfolioSettings();
             }
+        }
+        private void PortfolioListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!IsPortfolioSettingsLoaded && (File.Exists("PortfolioSettings.xml")))
+                InitiatePortfolioSettings();
+            //if (AgentPortfolioStorage.Count > 0)
+            //    EditSingleOrGroupItemBtn.IsEnabled = true;
+            //else
+            //    EditSingleOrGroupItemBtn.IsEnabled = false;
+        }
+        private void AgentPortfolioStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+        {
         }
     }
 }

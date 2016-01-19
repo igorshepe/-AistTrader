@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -19,6 +21,7 @@ namespace AistTrader
         //Agents
 
         public CollectionView AgentCollectionView { get; set; }
+        public CollectionView PortfolioCollectionView { get; set; }
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public MainWindow()
         {
@@ -28,24 +31,28 @@ namespace AistTrader
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
             //Agents
 
+            ProviderStorage = new ObservableCollection<AgentConnection>();
+            ProviderStorage.CollectionChanged += ProviderStorageOnCollectionChanged;
+
+            AgentPortfolioStorage = new ObservableCollection<AgentPortfolio>();
+            AgentPortfolioStorage.CollectionChanged += AgentPortfolioStorageOnCollectionChanged; ;
 
 
 
-
-
-
-          //  InitiateCollections();
+            //  InitiateCollections();
 
             //SetConnectionValuesToDefault();
         }
 
-        public void InitiateCollections()
-        {
-            InitiateAgentSettings();
+
+
+        //public void InitiateCollections()
+        //{
+        //    InitiateAgentSettings();
 
 
 
-        }
+        //}
 
         //*Shit hits the fan time coding bitch
 
