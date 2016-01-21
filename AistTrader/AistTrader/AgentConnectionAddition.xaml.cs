@@ -81,6 +81,8 @@ namespace AistTrader
             if (IsAdditionMode)
             {
                 
+
+                //TODO: переписать
                 if (!Settings.Default.AgentConnection.IsNull())
                 {
                     var alreadyUsedPlazaRouters = Settings.Default.AgentConnection.Cast<AgentConnection>().ToList();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -34,10 +35,11 @@ namespace AistTrader
         public List<Security> SecuritiesList = new List<Security>();
         public List<Portfolio> PortfoliosList = new List<Portfolio>();
         public bool IsProviderSettingsLoaded;
-
+        public readonly AistTraderConnnectionManager ConnectionManager;
 
         private void LoadProviderTabItemData()
         {
+            
         }
 
         private void ProviderStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
@@ -205,66 +207,79 @@ namespace AistTrader
             else
                 ipEndPoint = agent.Connection.ConnectionSettings.IpEndPoint;
 
-            Trader.AppName = "TestCGateConnection";
-            Trader.Address = ipEndPoint.To<IPEndPoint>();
-            Trader.IsCGate = true;
-            //            Trader.CGateKey = null;
 
-            //только в боевоей версии
-            //Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
+            //var pTrader = new AistTraderConnnection(agent.Name,ipEndPoint.To<IPEndPoint>());
 
 
-            Trader.ReConnectionSettings.AttemptCount = -1;
-            //what it is?
-            Trader.Restored += () => this.GuiAsync(() => MessageBox.Show(this, LocalizedStrings.Str2958));
 
-            // подписываемся на событие успешного соединения
-            Trader.Connected += () =>
-            {
-                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
-            };
-
-            // подписываемся на событие разрыва соединения
-            Trader.ConnectionError += error => this.GuiAsync(() =>
-            {
-                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
-            });
-
-            // подписываемся на событие успешного отключения
-            //Trader.Disconnected += () => this.GuiAsync(() => ChangeConnectStatus(false));
+            var pTrader = new PlazaTrader() { IsCGate = true, Address = ipEndPoint.To< IPEndPoint>(),AppName = "testConnection"};
+            pTrader.Connect();
 
 
-            Trader.NewSecurities += securities =>
-            {
-                this.GuiAsync(() => SecuritiesList.AddRange(securities) /*agent.AgentAccount.Tools.AddRange(securities)*/   );
-            };
+
+            ConnectionManager.Add(pTrader);
+
+            //Trader.AppName = "TestCGateConnection";
+            //Trader.Address = ipEndPoint.To<IPEndPoint>();
+            //Trader.IsCGate = true;
+            ////            Trader.CGateKey = null;
+
+            ////только в боевоей версии
+            ////Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
 
 
-            Trader.NewPortfolios += portfolios =>
-            {
-                this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ PortfoliosList.AddRange(portfolios));
-            };
+            //Trader.ReConnectionSettings.AttemptCount = -1;
+            ////what it is?
+            //Trader.Restored += () => this.GuiAsync(() => MessageBox.Show(this, LocalizedStrings.Str2958));
 
+            //// подписываемся на событие успешного соединения
             //Trader.Connected += () =>
             //{
-
             //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
             //};
 
+            //// подписываемся на событие разрыва соединения
+            //Trader.ConnectionError += error => this.GuiAsync(() =>
+            //{
+            //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
+            //});
 
-            Trader.Disconnected += () =>
-            {
-                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
-                Trader.Dispose();
-            };
-            Trader.ConnectionError += error => this.GuiAsync(() =>
-            {
-                var x = error;
-                ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
-            });
+            //// подписываемся на событие успешного отключения
+            ////Trader.Disconnected += () => this.GuiAsync(() => ChangeConnectStatus(false));
 
 
-            Trader.Connect();
+            //Trader.NewSecurities += securities =>
+            //{
+            //    this.GuiAsync(() => SecuritiesList.AddRange(securities) /*agent.AgentAccount.Tools.AddRange(securities)*/   );
+            //};
+
+
+            //Trader.NewPortfolios += portfolios =>
+            //{
+            //    this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ PortfoliosList.AddRange(portfolios));
+            //    //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
+            //};
+
+            ////Trader.Connected += () =>
+            ////{
+
+            ////    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
+            ////};
+
+
+            //Trader.Disconnected += () =>
+            //{
+            //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
+            //    Trader.Dispose();
+            //};
+            //Trader.ConnectionError += error => this.GuiAsync(() =>
+            //{
+            //    var x = error;
+            //    ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
+            //});
+
+
+            //Trader.Connect();
 
 
 
@@ -361,7 +376,8 @@ namespace AistTrader
                     SecuritiesList.Clear();
                     PortfoliosList.Clear();
                 }
-
+                //ConnectionManager.Connections[0].Disconnect();
+                
                 var item = (sender as FrameworkElement).DataContext;
                 var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
                 rowItem.Connection.Command = OperationCommand.Connect;
@@ -382,5 +398,104 @@ namespace AistTrader
         }
 
 
+    }
+
+    //public class AistTraderConnnection : PlazaTrader
+    //{
+
+
+
+    //    public AistTraderConnnection(string name,IPEndPoint ipEndPoint)
+    //    {
+    //        AistTraderConnectionName = name;
+    //        Address = ipEndPoint;
+    //        IsCGate = true;
+    //    }
+
+    //    public string AistTraderConnectionName { get; set; }
+    //}
+
+    public class AistTraderConnnectionManager : IList<PlazaTrader>,IDisposable
+    {
+        public List<PlazaTrader> Connections = new List<PlazaTrader>();
+
+
+
+
+
+        
+
+        
+
+        //public AistTraderConnnection(string name, IPEndPoint ipEndPoint)
+        //{
+        //    AistTraderConnectionName = name;
+        //    Address = ipEndPoint;
+        //    IsCGate = true;
+        //}
+
+        //public string AistTraderConnectionName { get; set; }
+        public IEnumerator<PlazaTrader> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Add(PlazaTrader item)
+        {
+            Connections.Add(item);
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(PlazaTrader item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(PlazaTrader[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(PlazaTrader item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Count { get; }
+        public bool IsReadOnly { get; }
+        public int IndexOf(PlazaTrader item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(int index, PlazaTrader item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAt(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PlazaTrader this[int index]
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

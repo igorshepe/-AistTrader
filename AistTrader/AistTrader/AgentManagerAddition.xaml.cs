@@ -83,25 +83,25 @@ namespace AistTrader
         }
         private void LoadParams()
         {
-            List<string> resultsList = Settings.Default.Agents.Cast<Agent>().Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name).ToList();
-            var results = Settings.Default.Agents.Cast<Agent>().Where(i => i._Agent.GroupName != "Without Group").Select(i => i._Agent.GroupName).Distinct().ToList();
+            List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name).ToList();
+            var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName != "Without Group").Select(i => i._Agent.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList;
 
             //var agents = Settings.Default.AgentManager.Cast<AgentManager>().Select(i => i.Name).ToList();
             //var accounts = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().Select(i =>i).Except(agents).ToList();
-            var accounts = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().Select(i => i.Name).ToList();
+            var accounts = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().Select(i => i.Name).ToList();
             AccountComboBox.ItemsSource = accounts;
         }
         private void InitFields(AgentManager agent)
         {
-            List<string> resultsList = Settings.Default.Agents.Cast<Agent>().Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name).ToList();
-            var results = Settings.Default.Agents.Cast<Agent>().Where(i => i._Agent.GroupName != "Without Group").Select(i => i._Agent.GroupName).Distinct().ToList();
+            List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name).ToList();
+            var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName != "Without Group").Select(i => i._Agent.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList;
             GroupOrSingleAgentComboBox.SelectedItem = agent.AgentManagerSettings.AgentOrGroup;
 
-            AccountComboBox.ItemsSource = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().Select(i => i.Name).ToList();
+            AccountComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().Select(i => i.Name).ToList();
             AccountComboBox.SelectedItem = agent.Name;
         }
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
@@ -127,11 +127,11 @@ namespace AistTrader
             //    return;
             //}
             AgentManagerSettings setting;
-            var agentPortfolio = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == AccountComboBox.SelectedItem.ToString());
-            var agent = Settings.Default.Agents.Cast<Agent>().FirstOrDefault(i => i.Name == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+            var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == AccountComboBox.SelectedItem.ToString());
+            var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Name == GroupOrSingleAgentComboBox.SelectedItem.ToString());
             if (agent == null)
             {
-                agent = Settings.Default.Agents.Cast<Agent>().FirstOrDefault(i => i._Agent.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+                agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i._Agent.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
                 setting = new AgentManagerSettings(agentPortfolio, agent._Agent.GroupName);
             }
             else
@@ -143,7 +143,7 @@ namespace AistTrader
 
         private void GroupOrSingleAgentComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var result = Settings.Default.Agents.Cast<Agent>().Any
+            var result = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any
                 (i => i._Agent.GroupName != "Without Group" && i._Agent.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
             if (result)
             {
@@ -160,7 +160,7 @@ namespace AistTrader
 
         private void AccountComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedPortfolio = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == (string)AccountComboBox.SelectedItem);
+            var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == (string)AccountComboBox.SelectedItem);
             //if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
         }
 

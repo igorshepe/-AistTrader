@@ -37,6 +37,7 @@ namespace AistTrader
             AgentPortfolioStorage = new ObservableCollection<AgentPortfolio>();
             AgentPortfolioStorage.CollectionChanged += AgentPortfolioStorageOnCollectionChanged; ;
 
+            ConnectionManager = new AistTraderConnnectionManager();
 
 
             //  InitiateCollections();
