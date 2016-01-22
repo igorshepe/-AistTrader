@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using AistTrader.Properties;
 using Common.Entities;
-using MoreLinq;
+using NLog;
 
 namespace AistTrader
 {
     public partial class MainWindow
     {
 
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
+
+
+
+
         public static MainWindow Instance { get; private set; }
+        
+        
+        
+        
         //public List<Security> SecuritiesList { get; set; } 
 
         //Agents
@@ -25,7 +30,10 @@ namespace AistTrader
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public MainWindow()
         {
+            
+
             Instance = this;
+
             //Agents    
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;

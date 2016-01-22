@@ -4,26 +4,23 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
-using AistTrader.Properties;
+using System.Xml.Serialization;
 using Common.Entities;
 using Common.Settings;
 using Ecng.Common;
-using Ecng.Xaml;
 using IniParser;
+using NLog;
 using StockSharp.BusinessEntities;
-using StockSharp.Localization;
 using StockSharp.Messages;
 using StockSharp.Plaza;
 using ToggleSwitch;
-using System.Xml.Serialization;
-using System.IO;
-using System.Windows.Forms;
-using MessageBox = System.Windows.MessageBox;
 
 namespace AistTrader
 {
@@ -118,8 +115,10 @@ namespace AistTrader
             {
                 IsProviderSettingsLoaded = false;
                 sr.Close();
+                logger.Log(LogLevel.Error, e.Message);
+                logger.Log(LogLevel.Error, e.InnerException.Message);
                 if (e.InnerException.Message == "Root element is missing.")
-                   System.IO.File.WriteAllText("ProviderSettings.xml", string.Empty);
+                   File.WriteAllText("ProviderSettings.xml", string.Empty);
             }
         }
         private void AddAgentConnectionBtnClick(object sender, RoutedEventArgs e)
@@ -348,7 +347,7 @@ namespace AistTrader
         private void OperationBtnClick(object sender, RoutedEventArgs e)
         {
 
-            if ((sender as System.Windows.Controls.Button).Content.ToString() == "Connect")
+            if ((sender as Button).Content.ToString() == "Connect")
             {
                 //ON
                 var item = (sender as FrameworkElement).DataContext;

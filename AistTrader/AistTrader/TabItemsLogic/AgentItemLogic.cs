@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Xml;
 using System.Xml.Serialization;
-using AistTrader.Properties;
 using Common.Entities;
 using Common.Settings;
-using Ecng.Common;
-
+using NLog;
 
 namespace AistTrader
 {
@@ -192,16 +188,14 @@ namespace AistTrader
             UpdateAgentListView();
         }
 
-
         public void UpdateAgentListView()
         {
             AgentListView.ItemsSource = AgentsStorage;
             AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
         }
         public void InitiateAgentSettings()
-        {
+         {
             StreamReader sr = new StreamReader("AgentSettings.xml");
-            
             try
             {
                 var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
@@ -224,12 +218,11 @@ namespace AistTrader
             {
                 IsAgentSettingsLoaded = false;
                 sr.Close();
-                //MessageBox.Show(this, e.InnerException.Message);
+                logger.Log(LogLevel.Error,  e.Message);
+                logger.Log(LogLevel.Error, e.InnerException.Message);
                 if (e.InnerException.Message == "Root element is missing.")
                     IsAgentSettingsLoaded = false;
             }
         }
-
-
     }
 }

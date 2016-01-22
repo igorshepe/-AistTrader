@@ -162,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="507912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="508424">
       <assemblyIdentity name="AistTrader" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wk7Aj3xfIq47hAkO9jhcVYgzSG8wltMId/G2FH1TMqU=</dsig:DigestValue>
+        <dsig:DigestValue>Da5Vhy4Pg93U9ETglcGX54YW2kMscQ/Z3uCglgJbzT8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -241,7 +241,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mDMvINm2suiV3k9JuXddLnmEXUOL8IaUFfPjjTrm4SI=</dsig:DigestValue>
+        <dsig:DigestValue>+Ay6NOkKDOQBtkFBdeisRb9XJH2BKT7WJd1vWXRS7+E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -594,6 +594,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NLog.dll" size="500736">
+      <assemblyIdentity name="NLog" version="4.0.0.0" publicKeyToken="5120E14C03D0593C" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>pOdgDCqcvAzxIzT9XjE+5H9h9mnj0/ywmJaNM9n7BSE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NPOI.dll" size="1606656">
       <assemblyIdentity name="NPOI" version="2.1.3.1" publicKeyToken="0DF73EC7942B34E1" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -781,7 +793,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LJSm5upz9T0UnXfKZUc+/rp8VdbIuq4aoJK+dP6wdxw=</dsig:DigestValue>
+        <dsig:DigestValue>dx5f8aaFzCa1QqvgaTU06N/9gckx0iO2kdk3L3BbHO8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -828,6 +840,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>z/Il7+SwXRWOEa4q6M++B55+uIGwS3kC2VDwil9BEBg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="NLog.config" size="1562">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>NlY3rz5iasnopdd+yvfipbf3LjvYJbyeNQR9oqQbET0=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

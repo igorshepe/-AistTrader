@@ -1,5 +1,4 @@
 ﻿using System;
-using StockSharp.Messages;
 using Strategies.Common;
 
 namespace Common.Settings

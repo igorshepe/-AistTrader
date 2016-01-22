@@ -1,16 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Windows;
-using AistTrader.Properties;
-using Common.Entities;
-using Common.Settings;
-using Ecng.Common;
-using System.Xml.Serialization;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Windows.Data;
+using System.Xml.Serialization;
+using Common.Entities;
+using NLog;
 
 namespace AistTrader
 {
@@ -68,8 +66,10 @@ namespace AistTrader
             {
                 IsPortfolioSettingsLoaded = false;
                 sr.Close();
+                logger.Log(LogLevel.Error, e.Message);
+                logger.Log(LogLevel.Error, e.InnerException.Message);
                 if (e.InnerException.Message == "Root element is missing.")
-                    System.IO.File.WriteAllText("PortfolioSettings.xml", string.Empty);
+                    File.WriteAllText("PortfolioSettings.xml", string.Empty);
             }
         }
         private void AddAgentPortfolioBtnClick(object sender, RoutedEventArgs e)

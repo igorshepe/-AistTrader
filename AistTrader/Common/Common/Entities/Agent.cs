@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Xml;
-using System.Xml.Serialization;
 using Common.Settings;
 
 namespace Common.Entities

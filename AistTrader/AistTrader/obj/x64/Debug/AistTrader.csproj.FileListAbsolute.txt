@@ -134,3 +134,7 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe.man
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.application
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.pdb
+C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.config
+C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.dll
+C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.xml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader_Content.g.cs

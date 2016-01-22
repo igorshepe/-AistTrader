@@ -8,7 +8,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Xml.Serialization;
-using AistTrader.Properties;
 using Common.Entities;
 using Common.Settings;
 using Ecng.Common;

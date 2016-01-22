@@ -6,12 +6,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AistTrader.Properties;
 using Common.Entities;
 using Common.Settings;
 using Ecng.Common;
-using StockSharp.Algo;
-using StockSharp.Algo.Storages;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 
