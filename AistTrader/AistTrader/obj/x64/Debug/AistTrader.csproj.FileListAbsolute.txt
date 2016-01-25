@@ -1,3 +1,4 @@
+C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.config
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.config
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.manifest
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.application
@@ -13,6 +14,7 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Ecng.Serialization
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Ecng.Xaml.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\INIFileParser.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\MoreLinq.dll
+C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\StockSharp.Algo.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\StockSharp.BusinessEntities.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\StockSharp.Licensing.dll
@@ -71,6 +73,7 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Strategies.pdb
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Common.pdb
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\INIFileParser.xml
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\MoreLinq.xml
+C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.xml
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\StockSharp.Algo.xml
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\StockSharp.BusinessEntities.xml
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\StockSharp.Licensing.xml
@@ -123,6 +126,7 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AgentPortfolioAddi
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\StrategiesSettingsWindow.g.cs
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\Views\AgentConfigView.g.cs
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\App.g.cs
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader_Content.g.cs
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader_MarkupCompile.cache
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader_MarkupCompile.lref
@@ -134,7 +138,3 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe.man
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.application
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.pdb
-C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.config
-C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.dll
-C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.xml
-C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader_Content.g.cs

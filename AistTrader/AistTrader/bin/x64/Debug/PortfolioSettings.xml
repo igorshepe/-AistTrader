@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <ArrayOfAgentPortfolio xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AgentPortfolio>
-    <Name>Gjhnatkm</Name>
+    <Name>AllenTest</Name>
     <Connection>
-      <Name>Allen's TEstconnection</Name>
+      <Name>Allen's TEstconnection!</Name>
       <Connection>
         <ConnectionSettings>
           <Type>Plaza</Type>
           <Path>C:\SpectraCGate</Path>
         </ConnectionSettings>
-        <Name>Allen's TEstconnection</Name>
-        <Code>ATC</Code>
+        <Name>Allen's TEstconnection!</Name>
+        <Code>ATC_Z</Code>
         <IsActive>false</IsActive>
         <Command>Connect</Command>
         <Funds>-1</Funds>

@@ -276,5 +276,5 @@ namespace AistTrader
             ShowDialog();
 
         }
-    }
+    } 
 }

@@ -15,9 +15,11 @@ using System.Xml.Serialization;
 using Common.Entities;
 using Common.Settings;
 using Ecng.Common;
+using Ecng.Xaml;
 using IniParser;
 using NLog;
 using StockSharp.BusinessEntities;
+using StockSharp.Localization;
 using StockSharp.Messages;
 using StockSharp.Plaza;
 using ToggleSwitch;
@@ -41,7 +43,7 @@ namespace AistTrader
 
         private void ProviderStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
-            if (ProviderStorage.Count == 1)
+            if (ProviderStorage.Count == 2)
                 AddConnectionBtn.IsEnabled = false;
             else
                 AddConnectionBtn.IsEnabled = true;
@@ -218,67 +220,68 @@ namespace AistTrader
 
             ConnectionManager.Add(pTrader);
 
-            //Trader.AppName = "TestCGateConnection";
-            //Trader.Address = ipEndPoint.To<IPEndPoint>();
-            //Trader.IsCGate = true;
-            ////            Trader.CGateKey = null;
+            Trader.AppName = "TestCGateConnection";
+            Trader.Address = ipEndPoint.To<IPEndPoint>();
+            Trader.IsCGate = true;
+            //            Trader.CGateKey = null;
 
-            ////только в боевоей версии
-            ////Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
+            //только в боевоей версии
+            //Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
 
 
-            //Trader.ReConnectionSettings.AttemptCount = -1;
-            ////what it is?
-            //Trader.Restored += () => this.GuiAsync(() => MessageBox.Show(this, LocalizedStrings.Str2958));
+            Trader.ReConnectionSettings.AttemptCount = -1;
+            //what it is?
+            Trader.Restored += () => this.GuiAsync(() => MessageBox.Show(this, LocalizedStrings.Str2958));
 
-            //// подписываемся на событие успешного соединения
+            // подписываемся на событие успешного соединения
+            Trader.Connected += () =>
+            {
+                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
+                var x = Trader.CurrentTime;
+            };
+
+            // подписываемся на событие разрыва соединения
+            Trader.ConnectionError += error => this.GuiAsync(() =>
+            {
+                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
+            });
+
+            // подписываемся на событие успешного отключения
+            //Trader.Disconnected += () => this.GuiAsync(() => ChangeConnectStatus(false));
+
+
+            Trader.NewSecurities += securities =>
+            {
+                this.GuiAsync(() => SecuritiesList.AddRange(securities) /*agent.AgentAccount.Tools.AddRange(securities)*/   );
+            };
+
+
+            Trader.NewPortfolios += portfolios =>
+            {
+                this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ PortfoliosList.AddRange(portfolios));
+                //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
+            };
+
             //Trader.Connected += () =>
             //{
+
             //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
             //};
 
-            //// подписываемся на событие разрыва соединения
-            //Trader.ConnectionError += error => this.GuiAsync(() =>
-            //{
-            //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
-            //});
 
-            //// подписываемся на событие успешного отключения
-            ////Trader.Disconnected += () => this.GuiAsync(() => ChangeConnectStatus(false));
-
-
-            //Trader.NewSecurities += securities =>
-            //{
-            //    this.GuiAsync(() => SecuritiesList.AddRange(securities) /*agent.AgentAccount.Tools.AddRange(securities)*/   );
-            //};
+            Trader.Disconnected += () =>
+            {
+                this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
+                Trader.Dispose();
+            };
+            Trader.ConnectionError += error => this.GuiAsync(() =>
+            {
+                var x = error;
+                ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
+            });
 
 
-            //Trader.NewPortfolios += portfolios =>
-            //{
-            //    this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ PortfoliosList.AddRange(portfolios));
-            //    //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
-            //};
-
-            ////Trader.Connected += () =>
-            ////{
-
-            ////    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Connected, agent));
-            ////};
-
-
-            //Trader.Disconnected += () =>
-            //{
-            //    this.GuiAsync(() => ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.Disconnected, agent));
-            //    Trader.Dispose();
-            //};
-            //Trader.ConnectionError += error => this.GuiAsync(() =>
-            //{
-            //    var x = error;
-            //    ConnectionStatus(ConnectionsSettings.AgentConnectionStatus.ConnectionError, agent);
-            //});
-
-
-            //Trader.Connect();
+            Trader.Connect();
 
 
 

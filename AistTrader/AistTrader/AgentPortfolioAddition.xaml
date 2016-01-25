@@ -51,8 +51,7 @@
                   Margin="5,35,5,0"
                   x:Name="ConnectionProviderComboBox"
                   VerticalAlignment="Top"
-                  SelectionChanged="ConnectionProviderComboBox_OnSelectionChanged"
-                  ItemsSource="{Binding Source={StaticResource TerminalData}}" TabIndex="0" 
+                  SelectedItem="{Binding Path= SelectedRegisteredProvider, Mode=TwoWay, ValidatesOnDataErrors=False, UpdateSourceTrigger=PropertyChanged }"
                   x:FieldModifier="private"/>
         <ComboBox Height="22"
                   Margin="5,94,5,0"

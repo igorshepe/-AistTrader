@@ -59,4 +59,3 @@ C:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.pdb
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NLog.config
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NLog.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NLog.xml
-C:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.csprojResolveAssemblyReference.cache

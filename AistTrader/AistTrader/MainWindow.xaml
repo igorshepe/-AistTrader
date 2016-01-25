@@ -12,11 +12,12 @@
         >
     <Grid Margin="0,0,0,0" Height="290" VerticalAlignment="Top">
         <Grid.RowDefinitions>
-            <RowDefinition Height="23"/>
-            <RowDefinition Height="700*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Height="23" VerticalAlignment="Top" Margin="1,1,-1,0">
+        <Menu Grid.Row="0" Height="23" VerticalAlignment="Top" Margin="1,0,-1,0">
             <MenuItem Header="Скрипты">
             </MenuItem>
             <MenuItem Header="Счета">
@@ -38,10 +39,10 @@
             </MenuItem>
         </Menu>
 
-        <TabControl Grid.Row="1" Margin="0,0,0,-335" Name="TabCtr" SelectionChanged="TabCtr_OnSelectionChanged" >
+        <TabControl Margin="0,19,0,0" Name="TabCtr" SelectionChanged="TabCtr_OnSelectionChanged" Grid.RowSpan="3" >
 
-            <TabItem Header="Агенты" x:Name="AgentItem" Margin="0,0,0,0" >
-                <Grid Name="AgentItemGrid" Margin="0,0,0,0">
+            <TabItem Header="Агенты" x:Name="AgentItem" Margin="-2,0,0,0" >
+                <Grid Name="AgentItemGrid" Margin="-4,-2,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1080*"/>
                         <ColumnDefinition Width="90*"/>
@@ -157,7 +158,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <GroupBox Grid.Column="1" Margin="5,0,0,0">
+                    <GroupBox Grid.Column="1" Margin="5,0,0,0" HorizontalAlignment="Center">
                         <Grid HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
                             <Button Content="Добавить" Name="AddConnectionBtn" Click="AddAgentConnectionBtnClick" Margin="0,6,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
                             <Button Content="Редактировать" Click="EditAgentConnectionBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>

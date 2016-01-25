@@ -5,13 +5,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using Common.Entities;
+using Ecng.Collections;
 using StockSharp.BusinessEntities;
 
 namespace AistTrader
 {
     public partial class AgentPortfolioAddition : IDataErrorInfo
     {
+
+        //TODO: убрать лишнее, как будет проверяться динамика получаемая во время коннекта
+
         private int EditIndex { get; set; }
         public ObservableCollection<Agent> AgentPortfolioStorage { get; private set; }
 
@@ -22,6 +27,7 @@ namespace AistTrader
             set { _portfolioName = value; }
 
         }
+        
         private string _registeredProvider;
         public string RegisteredProvider
         {
@@ -29,6 +35,15 @@ namespace AistTrader
             set { _registeredProvider = value; }
 
         }
+
+        private string _selectedRegisteredProvider;
+        public string SelectedRegisteredProvider
+        {
+            get { return _selectedRegisteredProvider; }
+            set { _selectedRegisteredProvider = value; }
+
+        }
+
         private List<string> _dynamicAccount;
         public List<string> DynamicAccount { get; set; }
         private Dictionary<string, bool> validPortflolioProperties = new Dictionary<string, bool>();
@@ -60,10 +75,37 @@ namespace AistTrader
         private void InitFields(AgentPortfolio portfolio)
         {
             ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Select(i => i.Name).ToList();
-            ConnectionProviderComboBox.SelectedItem = portfolio.Connection.Name;
+            var items= ConnectionProviderComboBox.ItemsSource;
+            //var index= MainWindow.Instance.ProviderStorage.ToList().FindIndex(i => i.Name == portfolio.Connection.Name);
+            
+            foreach (var i in items)
+            {
+                if (i.ToString() == portfolio.Connection.Name)
+                {
+                    var selectedProvider = i;
+                    _selectedRegisteredProvider = selectedProvider.ToString();
+                    break;
+                }
+                
+            }
+
+
+
+            //ConnectionProviderComboBox.SelectedItem= items;
+
+
+            //int index = MainWindow.Instance.ProviderStorage.Where<AgentConnection>(x => x.Name == portfolio.Connection.Name).Select<AgentConnection, int>(x => MainWindow.Instance.ProviderStorage.IndexOf(x)).Single<int>();
+
+
+
+
+
+
+            //portfolio.Connection.Name;
+            //Todo: переделать под динамику
+
             AccountComboBox.ItemsSource = portfolio.Connection.Connection.Accounts;
-            //AccountComboBox.SelectedItem = 
-            PortfolioNameTxtBox.Text = portfolio.Name;
+            _portfolioName = portfolio.Name;
 
 
             DynamicAccount = new List<string> { "Allem", "Vinny" };
@@ -109,25 +151,25 @@ namespace AistTrader
         {
         }
 
-        private void ConnectionProviderComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (EditIndex != int.MinValue)
-            {
-                var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
-                var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
-                if (agent.Connection.Accounts != null) AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
-                //AccountComboBox.SelectedItem = AgentPortfolioStorage.Select()
-            }
-            else
-            {
-                var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
-                connectionProvider = connectionProvider.Substring(0, connectionProvider.IndexOf(" (", StringComparison.Ordinal));
-                var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
-                //if (agent.Connection.Accounts != null) 
-                    //AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
-                //TODO: уточнить что делать если данных нет    
-            }
-        }
+        //private void ConnectionProviderComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (EditIndex != int.MinValue)
+        //    {
+        //        var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
+        //        var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
+        //        if (agent.Connection.Accounts != null) AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
+        //        //AccountComboBox.SelectedItem = AgentPortfolioStorage.Select()
+        //    }
+        //    else
+        //    {
+        //        var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
+        //        connectionProvider = connectionProvider.Substring(0, connectionProvider.IndexOf(" (", StringComparison.Ordinal));
+        //        var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
+        //        //if (agent.Connection.Accounts != null) 
+        //        //AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
+        //        //TODO: уточнить что делать если данных нет    
+        //    }
+        //}
 
 
 
