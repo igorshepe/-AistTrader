@@ -61,7 +61,8 @@ namespace AistTrader
 
 
             var x = SecurityPicker;
-            x.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.Trader);
+            //TODO:указывать источник- подключение, для загрузки параметров
+            x.SecurityProvider = new FilterableSecurityProvider(/*MainWindow.Instance.Trader*/);
 
 
 

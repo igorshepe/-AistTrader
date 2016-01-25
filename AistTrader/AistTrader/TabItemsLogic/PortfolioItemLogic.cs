@@ -17,9 +17,7 @@ namespace AistTrader
         
         public bool IsPortfolioSettingsLoaded;
 
-        private void LoadPortfolioTabItemData()
-        {
-        }
+
 
         public void AddNewAgentPortfolio(AgentPortfolio settings, int editIndex)
         {

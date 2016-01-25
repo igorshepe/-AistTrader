@@ -40,6 +40,8 @@ namespace AistTrader
 
     public partial class AgentConfig : IDataErrorInfo
     {
+
+        //Todo - подключить алгоритм верификации
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public SerializableDictionary<string, object> AgentSettings { get; set; }
         public StrategyDefaultSettings StrategySettings { get; set; }
@@ -99,12 +101,12 @@ namespace AistTrader
 
 
                 var selectedStrategy = AlgorithmComboBox.SelectedItem.ToString();
-                if (Settings.Default.Agents != null)
+                if (MainWindow.Instance.AgentsStorage != null)
                 {
-                    var algorithmNameInCollection = Settings.Default.Agents.Cast<Agent>().Any(i => i.Name.StartsWith(selectedStrategy));
+                    var algorithmNameInCollection = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any(i => i.Name.StartsWith(selectedStrategy));
                     if (algorithmNameInCollection)
                     {
-                        foreach (var strategy in Settings.Default.Agents.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
+                        foreach (var strategy in MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
                         {
                             if (strategy._Agent.SettingsStorage.SequenceEqual(AgentSettings))
                             {
@@ -203,10 +205,10 @@ namespace AistTrader
             if (Settings.Default.Agents != null)
             {
 
-                var algorithmNameInCollection = Settings.Default.Agents.Cast<Agent>().Any(i => i.Name.StartsWith(selectedStrategy));
+                var algorithmNameInCollection = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any(i => i.Name.StartsWith(selectedStrategy));
                 if (algorithmNameInCollection)
                 {
-                    foreach (var strategy in Settings.Default.Agents.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
+                    foreach (var strategy in MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
                     {
                         if (strategy._Agent.SettingsStorage.SequenceEqual(sd))
                             AlreadyExist = true;

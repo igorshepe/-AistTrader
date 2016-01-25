@@ -12,10 +12,10 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
-        private void LoadAgentManagerTabItemData()
-        {
-            LoadAgentManagerSettings();
-        }
+        //private void LoadAgentManagerTabItemData()
+        //{
+        //    LoadAgentManagerSettings();
+        //}
 
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {

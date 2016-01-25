@@ -87,9 +87,7 @@ namespace AistTrader
                 }
             }
         }
-        private void LoadAgentTabItemData()
-        {
-        }
+  
         public void DelAgentConfigBtnClick(Agent agent)
         {
             AgentsStorage.Remove(agent);

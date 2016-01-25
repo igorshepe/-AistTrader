@@ -22,14 +22,14 @@
     </Connection>
   </AgentConnection>
   <AgentConnection>
-    <Name>2ndConnection</Name>
+    <Name>gggggggggggg</Name>
     <Connection>
       <ConnectionSettings>
         <Type>Plaza</Type>
         <Path>C:\SpectraCGate</Path>
       </ConnectionSettings>
-      <Name>2ndConnection</Name>
-      <Code>2k</Code>
+      <Name>gggggggggggg</Name>
+      <Code>ggg</Code>
       <IsActive>false</IsActive>
       <Command>Connect</Command>
       <Funds>-1</Funds>

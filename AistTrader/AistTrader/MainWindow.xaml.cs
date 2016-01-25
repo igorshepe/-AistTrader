@@ -44,20 +44,15 @@ namespace AistTrader
         {
             if (e.OriginalSource is TabControl && AgentItem != null && AgentItem.IsSelected)
             {
-                //todo: можем ли убрать вообще эти методы?
-                LoadAgentTabItemData();
             }
             if (e.OriginalSource is TabControl && ProviderItem != null && ProviderItem.IsSelected)
             {
-                LoadProviderTabItemData();
             }
             if (e.OriginalSource is TabControl && PortfolioItem != null && PortfolioItem.IsSelected)
             {
-                LoadPortfolioTabItemData();
             }
             if (e.OriginalSource is TabControl && AgentManagerItem != null && AgentManagerItem.IsSelected)
             {
-                LoadAgentManagerTabItemData();
             }
         }
         private void AgentAddConfigMenuItem_OnClick(object sender, RoutedEventArgs e)
