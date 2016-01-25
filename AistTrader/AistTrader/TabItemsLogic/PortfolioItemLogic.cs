@@ -14,7 +14,7 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
-        public ObservableCollection<AgentPortfolio> AgentPortfolioStorage { get; private set; }
+        
         public bool IsPortfolioSettingsLoaded;
 
         private void LoadPortfolioTabItemData()
@@ -66,8 +66,8 @@ namespace AistTrader
             {
                 IsPortfolioSettingsLoaded = false;
                 sr.Close();
-                logger.Log(LogLevel.Error, e.Message);
-                logger.Log(LogLevel.Error, e.InnerException.Message);
+                Logger.Log(LogLevel.Error, e.Message);
+                Logger.Log(LogLevel.Error, e.InnerException.Message);
                 if (e.InnerException.Message == "Root element is missing.")
                     File.WriteAllText("PortfolioSettings.xml", string.Empty);
             }

@@ -28,14 +28,12 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
-        public ObservableCollection<AgentConnection> ProviderStorage { get; private set; }
         public readonly PlazaTrader Trader = new PlazaTrader();
         const string Localhost = "127.0.0.1:4001";
         public List<Security> SecuritiesList = new List<Security>();
         public List<Portfolio> PortfoliosList = new List<Portfolio>();
         public bool IsProviderSettingsLoaded;
         public readonly AistTraderConnnectionManager ConnectionManager;
-
         private void LoadProviderTabItemData()
         {
             
@@ -117,8 +115,8 @@ namespace AistTrader
             {
                 IsProviderSettingsLoaded = false;
                 sr.Close();
-                logger.Log(LogLevel.Error, e.Message);
-                logger.Log(LogLevel.Error, e.InnerException.Message);
+                Logger.Log(LogLevel.Error, e.Message);
+                Logger.Log(LogLevel.Error, e.InnerException.Message);
                 if (e.InnerException.Message == "Root element is missing.")
                    File.WriteAllText("ProviderSettings.xml", string.Empty);
             }
@@ -130,7 +128,6 @@ namespace AistTrader
             form = null;
             //Todo:save settings
         }
-
         private void DelAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {
             foreach (var item in ProviderListView.SelectedItems.Cast<AgentConnection>().ToList())
@@ -388,46 +385,29 @@ namespace AistTrader
                 view.Refresh();
             }
         }
-
         private void ProviderListView_Loaded(object sender, RoutedEventArgs e)
         {
             if (!IsProviderSettingsLoaded && (File.Exists("ProviderSettings.xml")))
                 InitiateProviderSettings();
-            //if (AgentsStorage.Count > 0)
-            //    EditSingleOrGroupItemBtn.IsEnabled = true;
-            //else
-            //    EditSingleOrGroupItemBtn.IsEnabled = false;
         }
-
-
     }
+
+    #region Aist Trader Connection Manager
 
     //public class AistTraderConnnection : PlazaTrader
     //{
-
-
-
     //    public AistTraderConnnection(string name,IPEndPoint ipEndPoint)
     //    {
     //        AistTraderConnectionName = name;
     //        Address = ipEndPoint;
     //        IsCGate = true;
     //    }
-
     //    public string AistTraderConnectionName { get; set; }
     //}
 
-    public class AistTraderConnnectionManager : IList<PlazaTrader>,IDisposable
+    public class AistTraderConnnectionManager : IList<PlazaTrader>, IDisposable
     {
         public List<PlazaTrader> Connections = new List<PlazaTrader>();
-
-
-
-
-
-        
-
-        
 
         //public AistTraderConnnection(string name, IPEndPoint ipEndPoint)
         //{
@@ -472,8 +452,8 @@ namespace AistTrader
             throw new NotImplementedException();
         }
 
-        public int Count { get; }
-        public bool IsReadOnly { get; }
+        public int Count { get; set; }
+        public bool IsReadOnly { get; set; }
         public int IndexOf(PlazaTrader item)
         {
             throw new NotImplementedException();
@@ -500,4 +480,6 @@ namespace AistTrader
             throw new NotImplementedException();
         }
     }
+
+    #endregion
 }

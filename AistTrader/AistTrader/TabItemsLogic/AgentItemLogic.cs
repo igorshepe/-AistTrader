@@ -23,7 +23,6 @@ namespace AistTrader
                 EditSingleOrGroupItemBtn.IsEnabled = false;
             else
                 EditSingleOrGroupItemBtn.IsEnabled = true;
-
             if (AgentsStorage.Count == 0)
                 EditSingleOrGroupItemBtn.IsEnabled = false;
         }
@@ -35,7 +34,6 @@ namespace AistTrader
                 EditSingleOrGroupItemBtn.IsEnabled = true;
             else
                 EditSingleOrGroupItemBtn.IsEnabled = false;
-
         }
         private void AddAgentConfigGroupBtnClick(object sender, RoutedEventArgs e)
         {
@@ -44,15 +42,9 @@ namespace AistTrader
         }
         private void AddAgentConfigBtnClick(object sender, RoutedEventArgs e)
         {
-                
-            //AgentConfigView newAgentConfigView = new AgentConfigView();
-            //AistTrader.Models.AgentConfigModel newConfigModel = new Models.AgentConfigModel();
-            //newAgentConfigView.DataContext = new ViewModels.AgentConfigViewModel(newConfigModel);
-            //newAgentConfigView.Show();
             var form = new AgentConfig();
             form.ShowDialog();
             form = null;
-            
         }
         private void SaveAgentSettings()
         {
@@ -62,7 +54,6 @@ namespace AistTrader
             xmlSerializer.Serialize(fStream, obj);
             fStream.Close();
         }
-
         public void DeleteAgentBtnClick(object sender, RoutedEventArgs e)
         {
             var items = AgentListView.SelectedItems.Cast<Agent>().ToList();
@@ -96,14 +87,9 @@ namespace AistTrader
                 }
             }
         }
-
         private void LoadAgentTabItemData()
         {
-            //AgentsStorage = new ObservableCollection<Agent>();
-            //AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
-            //LoadAgentSettings();
         }
-
         public void DelAgentConfigBtnClick(Agent agent)
         {
             AgentsStorage.Remove(agent);
@@ -111,22 +97,11 @@ namespace AistTrader
         }
         private void AgentSettingsStorageChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (!(AgentListView.View is GridView))
-                return;
-            var gridView = AgentListView.View as GridView;
-            foreach (var column in gridView.Columns)
-            {
-                //ResizeGridViewColumn(column);
-            }
-            if (AgentsStorage.Count > 1)
+            if(AgentsStorage.Count > 1)
                 CreateGroupItemBtn.IsEnabled = true;
             else
                 CreateGroupItemBtn.IsEnabled = false;
-            
-            //AgentCollectionView.Refresh();
-
         }
-
         private void EditAgentConfigBtnClick(object sender, RoutedEventArgs e)
         {
             if (AgentListView.SelectedItem == null)
@@ -177,7 +152,6 @@ namespace AistTrader
                 }
             }
         }
-
         public void AddNewAgent(Agent settings, int editIndex)
         {
             if (editIndex >= 0 && editIndex < AgentsStorage.Count)
@@ -187,7 +161,6 @@ namespace AistTrader
             SaveAgentSettings();
             UpdateAgentListView();
         }
-
         public void UpdateAgentListView()
         {
             AgentListView.ItemsSource = AgentsStorage;
@@ -218,8 +191,8 @@ namespace AistTrader
             {
                 IsAgentSettingsLoaded = false;
                 sr.Close();
-                logger.Log(LogLevel.Error,  e.Message);
-                logger.Log(LogLevel.Error, e.InnerException.Message);
+                Logger.Log(LogLevel.Error,  e.Message);
+                Logger.Log(LogLevel.Error, e.InnerException.Message);
                 if (e.InnerException.Message == "Root element is missing.")
                     IsAgentSettingsLoaded = false;
             }

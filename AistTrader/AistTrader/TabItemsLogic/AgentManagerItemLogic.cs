@@ -12,13 +12,8 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
-        public ObservableCollection<AgentManager> AgentManagerStorage { get; private set; }
-        public CollectionView AgentManagerView { get; set; }
-
-
         private void LoadAgentManagerTabItemData()
         {
-            AgentManagerStorage = new ObservableCollection<AgentManager>();
             LoadAgentManagerSettings();
         }
 
@@ -48,8 +43,8 @@ namespace AistTrader
                     AgentManagerStorage.Add(rs);
                 }
                 AgentManagerListView.ItemsSource = AgentManagerStorage;
-                AgentManagerView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-                AgentManagerView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
+                AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+                AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
             }
             catch (Exception)
             {

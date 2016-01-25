@@ -12,6 +12,7 @@ using Strategies.Settings;
 
 namespace AistTrader
 {
+    #region Garbage
     //public class AgentValidationRule : ValidationRule
     //{
     //    public override ValidationResult Validate(object value, CultureInfo cultureInfo)
@@ -22,20 +23,20 @@ namespace AistTrader
     //        //если ничего не выбрано
     //        if (value == null)
     //        {
-                
+
     //            return new ValidationResult(false, "Выберете алгоритм");
-                
+
     //        }
-            
+
     //        if (string.Equals(value,AgentValidationError.NameAndSettingsAlreadyExist))
     //        {
     //            return new ValidationResult(false, "Стратегий с таким именем и настройками уже зарегестрирована");
     //        }
-            
+
     //        return new ValidationResult(false, null);
     //    }
     //}
-
+    #endregion
 
     public partial class AgentConfig : IDataErrorInfo
     {
@@ -43,10 +44,7 @@ namespace AistTrader
         public SerializableDictionary<string, object> AgentSettings { get; set; }
         public StrategyDefaultSettings StrategySettings { get; set; }
         private int EditIndex { get; set; }
-        public string ItemSource { get; set; }
         private bool AlreadyExist;
-        public List<string> BadProperty { get; set; }
-
         public AgentConfig()
         {
             DataContext = this;
@@ -54,7 +52,6 @@ namespace AistTrader
             InitializeComponent();
             EditIndex = int.MinValue;
         }
-
         public AgentConfig(Agent agent, int editIndex)
         {
             AgentsStorage = new ObservableCollection<Agent>();
@@ -63,37 +60,13 @@ namespace AistTrader
             EditIndex = editIndex;
             AgentSettings = agent._Agent.SettingsStorage;
         }
-
         private void InitFields(Agent agent)
         {
             AlgorithmComboBox.ItemsSource = HelperStrategies.GetStrategies().Select(type => type.Name).ToList();
             AlgorithmComboBox.SelectedItem = agent._Agent.Algorithm.ToString();
-
-            BadProperty = new List<string>{"Allem", "Vinny"};
-
-
         }
-
-        private void LoadSettings()
-        {
-            if (Settings.Default.Agents == null) return;
-            try
-            {
-                foreach (var rs in Settings.Default.Agents.Cast<Agent>())
-                {
-                    AgentsStorage.Add(rs);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.Agents.Clear();
-            }
-        }
-
         private void AlgorithmComboBoxSelectionChanged(object sender, RoutedEventArgs e)
         {
-
             //todo:вынести логику в отдельный класс
             if (AlgorithmComboBox.SelectedItem == null)
             {
@@ -105,7 +78,6 @@ namespace AistTrader
                 AgentSettingsButton.IsEnabled = false;
                 return;
             }
-
             var hasSetting = HelperStrategies.StrategyHasParams(AlgorithmComboBox.SelectedItem.ToString());
             AgentSettingsButton.IsEnabled = hasSetting;
             if (hasSetting)
@@ -158,10 +130,7 @@ namespace AistTrader
             }
             //if (AlgorithmComboBox.SelectedItem != null&& AlreadyExist)
             //    AlgorithmOkBtn.IsEnabled = true;
-
         }
-
-
         private void AlgorithmComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             if (AlgorithmComboBox.SelectedItem == null)
@@ -170,7 +139,6 @@ namespace AistTrader
                 AlgorithmOkBtn.IsEnabled = false;
             }
         }
-
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
         {
 
@@ -197,9 +165,6 @@ namespace AistTrader
             MainWindow.Instance.AddNewAgent(new Agent(algorithm, agent), EditIndex);
             Close();
         }
-
-
-
         private void AgentSettingsButtonClick(object sender, RoutedEventArgs e)
         {
             if (AlgorithmComboBox.SelectedIndex == -1)
@@ -220,7 +185,6 @@ namespace AistTrader
                 UniqueStrategyNameReCheckAfterSettingsAltering(AgentSettings);
                 //триппер тайм!
                 int currentIndex = AlgorithmComboBox.SelectedIndex;
-
 
                 //TODO: попробовать это
                 //BindingExpression binding = txtWindowTitle.GetBindingExpression(TextBox.TextProperty);
@@ -250,9 +214,6 @@ namespace AistTrader
                             //vError.Validate(AgentValidationError.NameAndSettingsAlreadyExist, CultureInfo.CurrentCulture);
                         else
                             AlreadyExist = false;
-
-
-
                         //нельзя добавить одинаковый алгоритм
                         //todo: добавить рамку и выводить сообщение о том, что добавление невозможно
                         //else
@@ -264,22 +225,12 @@ namespace AistTrader
                     AlreadyExist = false;
                     
                 }
-
-                
-
-
-
             }
-
         }
-
-
         public string this[string columnName]
         {
-
             get
             {
-
                 string validationResult = null;
                 switch (columnName)
                 {
@@ -292,7 +243,6 @@ namespace AistTrader
                 return validationResult;
             }
         }
-
         private string ValidateName()
         {
             if (AlgorithmComboBox.SelectedItem == null)
@@ -304,18 +254,14 @@ namespace AistTrader
                 AlreadyExist = false;
                 AlgorithmOkBtn.IsEnabled = false;
                 return "Стратегий с таким именем и настройками уже зарегестрирована";
-
             }
-
             //if (String.IsNullOrEmpty(AlgorithmComboBox.SelectedItem.ToString()))
-
             //else if (this.AlgorithmName.Length < 5)
             //    return "Product Name should have more than 5 letters.";
             //else
             AlgorithmOkBtn.IsEnabled = true;
             return String.Empty;
         }
-
         public string Error { get; private set; }
     }
 }

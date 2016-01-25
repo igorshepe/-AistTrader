@@ -1,7 +1,9 @@
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.config
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Common.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Common.pdb
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.Common.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.ComponentModel.dll
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.BusinessEntities.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Messages.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Strategies.dll
@@ -40,6 +42,7 @@ C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.Web.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NPOI.OpenXmlFormats.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NPOI.OpenXml4Net.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Strategies.pdb
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.BusinessEntities.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Messages.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Algo.xml
@@ -59,6 +62,3 @@ C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NPOI.OpenXml4Ne
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\x64\Debug\Common.csprojResolveAssemblyReference.cache
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\x64\Debug\Common.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\x64\Debug\Common.pdb
-C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.config
-C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.dll
-C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.xml
