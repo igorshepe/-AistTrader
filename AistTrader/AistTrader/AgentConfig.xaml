@@ -37,7 +37,7 @@
                   Loaded="AlgorithmComboBox_Loaded"
                   SelectionChanged="AlgorithmComboBoxSelectionChanged"
        
-                  Text="{Binding Path=ItemSource, ValidatesOnDataErrors=True,ValidatesOnExceptions=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  Text="{Binding Path=Strategy, ValidatesOnDataErrors=True,ValidatesOnExceptions=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                   Style="{StaticResource {x:Type ComboBox}}"
                   >
         </ComboBox>

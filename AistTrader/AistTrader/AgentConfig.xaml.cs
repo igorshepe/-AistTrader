@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -40,23 +38,20 @@ namespace AistTrader
 
     public partial class AgentConfig : IDataErrorInfo
     {
-
-        //Todo - подключить алгоритм верификации
-        public ObservableCollection<Agent> AgentsStorage { get; private set; }
+        #region Fields
+        public string Strategy { get; set; }
         public SerializableDictionary<string, object> AgentSettings { get; set; }
-        public StrategyDefaultSettings StrategySettings { get; set; }
         private int EditIndex { get; set; }
-        private bool AlreadyExist;
+        private bool _alreadyExist;
+        #endregion
         public AgentConfig()
         {
             DataContext = this;
-            AgentsStorage = new ObservableCollection<Agent>();
             InitializeComponent();
             EditIndex = int.MinValue;
         }
         public AgentConfig(Agent agent, int editIndex)
         {
-            AgentsStorage = new ObservableCollection<Agent>();
             InitializeComponent();
             InitFields(agent);
             EditIndex = editIndex;
@@ -84,7 +79,6 @@ namespace AistTrader
             AgentSettingsButton.IsEnabled = hasSetting;
             if (hasSetting)
             {
-                //TODO: добавить поток при вызове окна, занулить после обработки
                 var type = HelperStrategies.GetStrategySettingsType(AlgorithmComboBox.SelectedItem.ToString());
                 object settingsClassInstance = Activator.CreateInstance(type);
                 var strategyDs = (StrategyDefaultSettings)settingsClassInstance;
@@ -92,14 +86,10 @@ namespace AistTrader
                 strategySw.Settings.Load(AgentSettings);
                 AgentSettings = strategySw.Settings.Save();
                 type = null;
-
-                //todo:сделать уведомления в всплывающем окне с анимацией
+                //todo:сделать уведомления в всплывающем окне с анимацией/запись лога
                 //MessageBox.Show(this, @"Применены дефолтные настройки для выбранного алгоритма");
-
                 strategySw.Close();
                 strategySw = null;
-
-
                 var selectedStrategy = AlgorithmComboBox.SelectedItem.ToString();
                 if (MainWindow.Instance.AgentsStorage != null)
                 {
@@ -110,20 +100,20 @@ namespace AistTrader
                         {
                             if (strategy._Agent.SettingsStorage.SequenceEqual(AgentSettings))
                             {
-                                AlreadyExist = true;
+                                _alreadyExist = true;
                             }
                             //todo: добавить рамку и выводить сообщение о том, что добавление невозможно
                         }
                     }
                     else
                     {
-                        AlreadyExist = false;
+                        _alreadyExist = false;
                     }
                     
                 }
                 else
                 {
-                    AlreadyExist = false;
+                    _alreadyExist = false;
                 }
             }
             else
@@ -143,7 +133,6 @@ namespace AistTrader
         }
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
         {
-
             if (AgentSettings == null && AgentSettingsButton.IsEnabled)
             {
                 //TODO: добавить поток при вызове окна, занулить после обработки
@@ -200,43 +189,39 @@ namespace AistTrader
         private void UniqueStrategyNameReCheckAfterSettingsAltering(SerializableDictionary<string, object> sd)
         {
             //передать в форму
-            AlreadyExist = false;
+            _alreadyExist = false;
             var selectedStrategy = AlgorithmComboBox.SelectedItem.ToString();
             if (Settings.Default.Agents != null)
             {
-
                 var algorithmNameInCollection = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any(i => i.Name.StartsWith(selectedStrategy));
                 if (algorithmNameInCollection)
                 {
                     foreach (var strategy in MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
                     {
                         if (strategy._Agent.SettingsStorage.SequenceEqual(sd))
-                            AlreadyExist = true;
-                            //var errorMassage = "Стратегий с таким именем и настройками уже зарегестрирована";
-                            //vError.Validate(AgentValidationError.NameAndSettingsAlreadyExist, CultureInfo.CurrentCulture);
+                            _alreadyExist = true;
+                        #region used to be like..
+                        //var errorMassage = "Стратегий с таким именем и настройками уже зарегестрирована";
+                        //vError.Validate(AgentValidationError.NameAndSettingsAlreadyExist, CultureInfo.CurrentCulture);
+                        #endregion
                         else
-                            AlreadyExist = false;
-                        //нельзя добавить одинаковый алгоритм
-                        //todo: добавить рамку и выводить сообщение о том, что добавление невозможно
-                        //else
-                        //    // в данном случае- все круто, добавление возможно
+                            _alreadyExist = false;
                     }
                 }
                 else
                 {
-                    AlreadyExist = false;
-                    
+                    _alreadyExist = false;
                 }
             }
         }
         public string this[string columnName]
         {
             get
-            {
+            {   
                 string validationResult = null;
                 switch (columnName)
                 {
-                    case "ItemSource":
+                    case "Strategy":
                         validationResult = ValidateName();
                         break;
                     default:
@@ -251,9 +236,9 @@ namespace AistTrader
             {
                 return "Не выбран алгоритм";
             }
-            if (AlreadyExist)
+            if (_alreadyExist)
             {
-                AlreadyExist = false;
+                _alreadyExist = false;
                 AlgorithmOkBtn.IsEnabled = false;
                 return "Стратегий с таким именем и настройками уже зарегестрирована";
             }

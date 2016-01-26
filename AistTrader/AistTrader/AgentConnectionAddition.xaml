@@ -82,7 +82,6 @@
                   ItemsSource="{Binding Source={StaticResource TerminalData}}"
                   Text="{Binding Path=Provider, ValidatesOnDataErrors=False, UpdateSourceTrigger=PropertyChanged}"
                   TabIndex="2"
-                  SelectionChanged="TerminalComboBoxSelectionChanged"
                   x:FieldModifier="private"
                   HorizontalAlignment="Left"
                   Width="129"

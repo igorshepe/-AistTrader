@@ -21,23 +21,4 @@
       <ConnectionStatus>Connected</ConnectionStatus>
     </Connection>
   </AgentConnection>
-  <AgentConnection>
-    <Name>gggggggggggg</Name>
-    <Connection>
-      <ConnectionSettings>
-        <Type>Plaza</Type>
-        <Path>C:\SpectraCGate</Path>
-      </ConnectionSettings>
-      <Name>gggggggggggg</Name>
-      <Code>ggg</Code>
-      <IsActive>false</IsActive>
-      <Command>Connect</Command>
-      <Funds>-1</Funds>
-      <AlgorithmCount>-1</AlgorithmCount>
-      <Contracts>-1</Contracts>
-      <NetValue>-1</NetValue>
-      <VariationMargin>-1</VariationMargin>
-      <ConnectionStatus>Connected</ConnectionStatus>
-    </Connection>
-  </AgentConnection>
 </ArrayOfAgentConnection>

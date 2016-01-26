@@ -2,7 +2,6 @@
 using System.Linq;
 using Ecng.Common;
 using Ecng.ComponentModel;
-using StockSharp.Algo;
 using StockSharp.Algo.Candles;
 using StockSharp.Algo.Strategies;
 using StockSharp.Logging;
