@@ -1,9 +1,14 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Common.Entities;
+using Common.Settings;
+using MoreLinq;
 using NLog;
+using StockSharp.BusinessEntities;
 
 namespace AistTrader
 {
@@ -40,6 +45,17 @@ namespace AistTrader
             AgentManagerStorage = new ObservableCollection<AgentManager>();
             #endregion
         }
+
+        private void SetConnectionCommandStatus()
+        {
+            Instance.ProviderStorage.ForEach(i=>i.Connection.Command= OperationCommand.Connect);
+            Instance.ProviderStorage.ForEach(i => i.Connection.Accounts = new List<Portfolio>() );
+            Instance.ProviderStorage.ForEach(i => i.Connection.Tools = new List<Security>());
+        }
+
+
+
+
         private void TabCtr_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.OriginalSource is TabControl && AgentItem != null && AgentItem.IsSelected)

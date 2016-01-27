@@ -24,4 +24,28 @@
       </Connection>
     </Connection>
   </AgentPortfolio>
+  <AgentPortfolio>
+    <Name>ggfgdfgfdg</Name>
+    <Connection>
+      <Name>Allen's TEstconnection!</Name>
+      <Connection>
+        <ConnectionSettings>
+          <Type>Plaza</Type>
+          <Path>C:\SpectraCGate</Path>
+        </ConnectionSettings>
+        <Name>Allen's TEstconnection!</Name>
+        <Code>ATC_Z</Code>
+        <IsActive>false</IsActive>
+        <Command>Connect</Command>
+        <Funds>-1</Funds>
+        <AlgorithmCount>-1</AlgorithmCount>
+        <Contracts>-1</Contracts>
+        <NetValue>-1</NetValue>
+        <VariationMargin>-1</VariationMargin>
+        <Tools />
+        <Accounts />
+        <ConnectionStatus>Connected</ConnectionStatus>
+      </Connection>
+    </Connection>
+  </AgentPortfolio>
 </ArrayOfAgentPortfolio>

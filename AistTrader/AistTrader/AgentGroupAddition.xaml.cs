@@ -19,6 +19,9 @@ namespace AistTrader
     /// TODO: как делать рефреш rows?
     public partial class AgentGroupAddition
     {
+        //TODO: добавитть верификацию и реджекс на ввод данных в динамических полях
+
+
         public int RowSetter;
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public Agent AgentItem;

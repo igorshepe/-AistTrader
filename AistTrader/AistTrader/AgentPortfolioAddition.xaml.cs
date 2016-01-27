@@ -13,19 +13,16 @@ namespace AistTrader
     public partial class AgentPortfolioAddition : IDataErrorInfo
     {
 
-        //TODO: убрать лишнее, как будет проверяться динамика получаемая во время коннекта
-
+        #region Fields
         private int EditIndex { get; set; }
         public ObservableCollection<Agent> AgentPortfolioStorage { get; private set; }
-
         private string _portfolioName;
         public string PortfolioName
         {
             get { return _portfolioName; }
             set { _portfolioName = value; }
-
         }
-        
+
         private string _registeredProvider;
         public string RegisteredProvider
         {
@@ -41,14 +38,14 @@ namespace AistTrader
             set { _selectedRegisteredProvider = value; }
 
         }
-
         private List<string> _dynamicAccount;
         public List<string> DynamicAccount { get; set; }
         private Dictionary<string, bool> validPortflolioProperties = new Dictionary<string, bool>();
+        #endregion
+        //TODO: убрать лишнее, как будет проверяться динамика получаемая во время коннекта
 
         public AgentPortfolioAddition()
         {
-            
             InitializeComponent();
             DataContext = this;
             EditIndex = int.MinValue;
@@ -58,13 +55,10 @@ namespace AistTrader
         {
             ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Select(i => i.Name + " (" + i.Connection.Code + ")").ToList();
 //            _dynamicAccount = MainWindow.Instance.PortfoliosList.Select(i => i.Name).ToList();
-            
-            
             //TODO:Загрузка счёта
         }
         public AgentPortfolioAddition(AgentPortfolio portfolio, int editIndex)
         {
-            
             InitializeComponent();
             DataContext = this;
             EditIndex = editIndex;
@@ -75,7 +69,6 @@ namespace AistTrader
             ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Select(i => i.Name).ToList();
             var items= ConnectionProviderComboBox.ItemsSource;
             //var index= MainWindow.Instance.ProviderStorage.ToList().FindIndex(i => i.Name == portfolio.Connection.Name);
-            
             foreach (var i in items)
             {
                 if (i.ToString() == portfolio.Connection.Name)
@@ -84,52 +77,18 @@ namespace AistTrader
                     _selectedRegisteredProvider = selectedProvider.ToString();
                     break;
                 }
-                
             }
-
-
-
             //ConnectionProviderComboBox.SelectedItem= items;
-
-
             //int index = MainWindow.Instance.ProviderStorage.Where<AgentConnection>(x => x.Name == portfolio.Connection.Name).Select<AgentConnection, int>(x => MainWindow.Instance.ProviderStorage.IndexOf(x)).Single<int>();
-
-
-
-
-
-
             //portfolio.Connection.Name;
             //Todo: переделать под динамику
-
             AccountComboBox.ItemsSource = portfolio.Connection.Connection.Accounts;
             _portfolioName = portfolio.Name;
-
-
             DynamicAccount = new List<string> { "Allem", "Vinny" };
         }
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
-            //if (ConnectionProviderComboBox.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show(this, @"Не выбран поставщик.");
-            //    return;
-            //}
-            //if (AccountComboBox.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show(this, @"Не выбран счёт.");
-            //    return;
-            //}
-
-            //if (PortfolioNameTxtBox.Text.Length <= 0)
-            //{
-            //    MessageBox.Show(this, @"Не задано имя портфеля.");
-            //    return;
-            //}
-            //var connection = new ConnectionSettings(connectionType, LoginTxtBox.Text, PasswordTxtBox.Password, QuikPath.Text, Trans2QuikName.Text, PathToRouter.Text);
-            //var agentPortfolio = new AgentAccountSettings(ClienNameTxtBox.Text, ClienTxtBox.Text, LoginTxtBox.Text, PasswordTxtBox.Password, connection, false);
             var selectedAccount = AccountComboBox.SelectedItem;
-
             var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
             if (EditIndex == int.MinValue)
                 connectionProvider = connectionProvider.Substring(0, connectionProvider.IndexOf(" (", StringComparison.Ordinal));
@@ -174,18 +133,9 @@ namespace AistTrader
 
         public string this[string columnName]
         {
-
             //имя уникальное всегда
-
             //ограничений на использование поставщика нет, можно много портфелей на одного поставщика подключать
-
-            // если мы уже используем в фортфеле динамический счёт, который был получен и задействован- мы его не отображаем вообще
-
-
-
-
-
-
+            // если мы уже используем в портфеле динамический счёт, который был получен и задействован- мы его не отображаем вообще
             get
             {
                 string validationResult = null;
@@ -213,10 +163,6 @@ namespace AistTrader
                 return validationResult;
             }
         }
-
-
-
-        
         private string ValidateRegisteredProvider()
         {
             if (String.IsNullOrEmpty(this.RegisteredProvider))
@@ -241,8 +187,6 @@ namespace AistTrader
             //    return "Данное имя уже используется";
             return String.Empty;
         }
-
-
         public string Error { get; private set; }
 
         private void AccountComboBox_OnLoaded(object sender, RoutedEventArgs e)

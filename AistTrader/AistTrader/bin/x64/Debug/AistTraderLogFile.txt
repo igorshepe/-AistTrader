@@ -5,3 +5,29 @@
 2016-01-26 01:21:45.1533|INFO|AistTrader.MainWindow|?????? ? ???? ??? ??????????-Allen's TEstconnection! ??????? ????????
 2016-01-26 01:26:07.3153|INFO|AistTrader.MainWindow|??????? ????????? IP ? ?????? ????? ????? ???????????-Allen's TEstconnection!
 2016-01-26 01:26:11.3146|INFO|AistTrader.MainWindow|?????? ? ???? ??? ??????????-Allen's TEstconnection! ??????? ????????
+2016-01-27 14:55:51.1825|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-Allen's TEstconnection!
+2016-01-27 14:56:03.8993|INFO|AistTrader.MainWindow|Адресс и порт для соединения-Allen's TEstconnection! успешно получены
+2016-01-27 15:23:04.2909|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-Allen's TEstconnection!
+2016-01-27 15:23:04.3309|INFO|AistTrader.MainWindow|Адресс и порт для соединения-Allen's TEstconnection! успешно получены
+2016-01-27 15:24:33.7101|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-Allen's TEstconnection!
+2016-01-27 15:24:33.7471|INFO|AistTrader.MainWindow|Адресс и порт для соединения-Allen's TEstconnection! успешно получены
+2016-01-27 15:25:47.0412|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-Allen's TEstconnection!
+2016-01-27 15:25:47.0872|INFO|AistTrader.MainWindow|Адресс и порт для соединения-Allen's TEstconnection! успешно получены
+2016-01-27 15:30:44.8813|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-Allen's TEstconnection!
+2016-01-27 15:30:44.9263|INFO|AistTrader.MainWindow|Адресс и порт для соединения-Allen's TEstconnection! успешно получены
+2016-01-27 15:36:31.4631|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-Allen's TEstconnection!
+2016-01-27 15:36:31.5021|INFO|AistTrader.MainWindow|Адресс и порт для соединения-Allen's TEstconnection! успешно получены
+2016-01-27 15:43:37.5245|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-Allen's TEstconnection!
+2016-01-27 15:43:48.3991|INFO|AistTrader.MainWindow|Адресс и порт для соединения-Allen's TEstconnection! успешно получены
+2016-01-27 16:14:42.8212|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-Allen's TEstconnection!
+2016-01-27 16:14:45.7803|INFO|AistTrader.MainWindow|Адресс и порт для соединения-Allen's TEstconnection! успешно получены
+2016-01-27 16:16:14.3724|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-SecondConnect
+2016-01-27 16:16:19.5597|INFO|AistTrader.MainWindow|Адресс и порт для соединения-SecondConnect успешно получены
+2016-01-27 16:19:18.1979|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-SecondConnect
+2016-01-27 16:19:18.2309|INFO|AistTrader.MainWindow|Адресс и порт для соединения-SecondConnect успешно получены
+2016-01-27 16:52:29.5788|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-SecondConnect
+2016-01-27 16:52:33.9091|INFO|AistTrader.MainWindow|Адресс и порт для соединения-SecondConnect успешно получены
+2016-01-27 17:14:32.8055|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-SecondConnect
+2016-01-27 17:14:32.8495|INFO|AistTrader.MainWindow|Адресс и порт для соединения-SecondConnect успешно получены
+2016-01-27 17:15:14.6499|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-SecondConnect
+2016-01-27 17:15:14.6849|INFO|AistTrader.MainWindow|Адресс и порт для соединения-SecondConnect успешно получены

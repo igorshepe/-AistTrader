@@ -197,10 +197,10 @@
     <Compile Include="StrategiesSettingsWindow.xaml.cs">
       <DependentUpon>StrategiesSettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TabItemsLogic\AgentItemLogic.cs" />
-    <Compile Include="TabItemsLogic\AgentManagerItemLogic.cs" />
-    <Compile Include="TabItemsLogic\PortfolioItemLogic.cs" />
-    <Compile Include="TabItemsLogic\ProviderItemLogic.cs" />
+    <Compile Include="Tabs\AgentItemLogic.cs" />
+    <Compile Include="Tabs\AgentManagerItemLogic.cs" />
+    <Compile Include="Tabs\PortfolioItemLogic.cs" />
+    <Compile Include="Tabs\ProviderItemLogic.cs" />
     <Compile Include="ViewModels\AgentConfigViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AgentConfigView.xaml.cs">
