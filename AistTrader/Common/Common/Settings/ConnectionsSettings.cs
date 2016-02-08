@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using StockSharp.BusinessEntities;
+using StockSharp.Plaza;
 
 namespace Common.Settings
 {
@@ -13,7 +15,7 @@ namespace Common.Settings
             Name = name;
             Code = code;
             ConnectionSettings = connectiong;
-            IsActive = isActive;
+            IsConnected = isActive;
             Funds = -1;
             AlgorithmCount = -1;
             Contracts = -1;
@@ -30,7 +32,7 @@ namespace Common.Settings
         public string Code { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsConnected { get; set; }
         public OperationCommand Command { get; set; }
         //TODO: уточнить типы данных
         public double Funds { get; set; }

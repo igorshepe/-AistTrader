@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Common.Entities;
 using StockSharp.BusinessEntities;
+using StockSharp.Messages;
 
 namespace AistTrader
 {
@@ -14,9 +15,11 @@ namespace AistTrader
     {
 
         #region Fields
+
         private int EditIndex { get; set; }
         public ObservableCollection<Agent> AgentPortfolioStorage { get; private set; }
         private string _portfolioName;
+
         public string PortfolioName
         {
             get { return _portfolioName; }
@@ -24,6 +27,7 @@ namespace AistTrader
         }
 
         private string _registeredProvider;
+
         public string RegisteredProvider
         {
             get { return _registeredProvider; }
@@ -32,16 +36,18 @@ namespace AistTrader
         }
 
         private string _selectedRegisteredProvider;
+
         public string SelectedRegisteredProvider
         {
             get { return _selectedRegisteredProvider; }
             set { _selectedRegisteredProvider = value; }
-
         }
-        private List<string> _dynamicAccount;
-        public List<string> DynamicAccount { get; set; }
+
+        public List<Portfolio> DynamicAccount { get; set; }
         private Dictionary<string, bool> validPortflolioProperties = new Dictionary<string, bool>();
+
         #endregion
+
         //TODO: убрать лишнее, как будет проверяться динамика получаемая во время коннекта
 
         public AgentPortfolioAddition()
@@ -51,12 +57,20 @@ namespace AistTrader
             EditIndex = int.MinValue;
             LoadParams();
         }
+
         private void LoadParams()
         {
-            ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Select(i => i.Name + " (" + i.Connection.Code + ")").ToList();
+            ConnectionProviderComboBox.ItemsSource =
+                MainWindow.Instance.ProviderStorage.Where(i => i.Connection.IsConnected)
+                    .Select(i => i.Name + " (" + i.Connection.Code + ")")
+                    .ToList();
+            //если 0 то ошибка- "нет активных подключений"
+            //если > 0 то ошибка- 
+            //#Oldie# ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Select(i => i.Name + " (" + i.Connection.Code + ")").ToList();
 //            _dynamicAccount = MainWindow.Instance.PortfoliosList.Select(i => i.Name).ToList();
             //TODO:Загрузка счёта
         }
+
         public AgentPortfolioAddition(AgentPortfolio portfolio, int editIndex)
         {
             InitializeComponent();
@@ -64,10 +78,19 @@ namespace AistTrader
             EditIndex = editIndex;
             InitFields(portfolio);
         }
+
         private void InitFields(AgentPortfolio portfolio)
         {
-            ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Select(i => i.Name).ToList();
-            var items= ConnectionProviderComboBox.ItemsSource;
+            //выбирать либо напрямую с менеджера подключений либо/ибо из айтема, где предавариельно ставим, что данный объект активен
+            ConnectionProviderComboBox.ItemsSource =
+                MainWindow.Instance.ConnectionManager.Connections.Where(
+                    i => i.ConnectionState == ConnectionStates.Connected).Select(i => i.Name).ToList();
+            //или
+            //ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Where(i=>i.Connection.).Select(i => i.Name).ToList();
+
+
+
+            var items = ConnectionProviderComboBox.ItemsSource;
             //var index= MainWindow.Instance.ProviderStorage.ToList().FindIndex(i => i.Name == portfolio.Connection.Name);
             foreach (var i in items)
             {
@@ -82,22 +105,26 @@ namespace AistTrader
             //int index = MainWindow.Instance.ProviderStorage.Where<AgentConnection>(x => x.Name == portfolio.Connection.Name).Select<AgentConnection, int>(x => MainWindow.Instance.ProviderStorage.IndexOf(x)).Single<int>();
             //portfolio.Connection.Name;
             //Todo: переделать под динамику
-            AccountComboBox.ItemsSource = portfolio.Connection.Connection.Accounts;
+            //AccountComboBox.ItemsSource = portfolio.Connection.Connection.Accounts;
             _portfolioName = portfolio.Name;
-            DynamicAccount = new List<string> { "Allem", "Vinny" };
+            //DynamicAccount = new List<string> {"Allem", "Vinny"};
         }
+
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
             var selectedAccount = AccountComboBox.SelectedItem;
             var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
             if (EditIndex == int.MinValue)
-                connectionProvider = connectionProvider.Substring(0, connectionProvider.IndexOf(" (", StringComparison.Ordinal));
+                connectionProvider = connectionProvider.Substring(0,
+                    connectionProvider.IndexOf(" (", StringComparison.Ordinal));
 
-            var agentItem = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider.ToString());
+            var agentItem =
+                MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider.ToString());
             agentItem.Connection.SelectedAccount = selectedAccount as Portfolio;
             MainWindow.Instance.AddNewAgentPortfolio(new AgentPortfolio(PortfolioNameTxtBox.Text, agentItem), EditIndex);
             Close();
         }
+
         //private static AgentConnection GetEditedItem(int index)
         //{
         //    if (index < 0 || index >= ProviderManagerForm.Instance.AgentAccountStorage.Count) return null;
@@ -108,25 +135,26 @@ namespace AistTrader
         {
         }
 
-        //private void ConnectionProviderComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    if (EditIndex != int.MinValue)
-        //    {
-        //        var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
-        //        var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
-        //        if (agent.Connection.Accounts != null) AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
-        //        //AccountComboBox.SelectedItem = AgentPortfolioStorage.Select()
-        //    }
-        //    else
-        //    {
-        //        var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
-        //        connectionProvider = connectionProvider.Substring(0, connectionProvider.IndexOf(" (", StringComparison.Ordinal));
-        //        var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
-        //        //if (agent.Connection.Accounts != null) 
-        //        //AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
-        //        //TODO: уточнить что делать если данных нет    
-        //    }
-        //}
+        private void ConnectionProviderComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (EditIndex != int.MinValue)
+            {
+                var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
+                var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
+                if (agent.Connection.Accounts != null) AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
+                //AccountComboBox.SelectedItem = AgentPortfolioStorage.Select()
+            }
+            else
+            {
+                var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
+                connectionProvider = connectionProvider.Substring(0,
+                    connectionProvider.IndexOf(" (", StringComparison.Ordinal));
+                var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
+                //if (agent.Connection.Accounts != null) 
+                //AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
+                //TODO: уточнить что делать если данных нет    
+            }
+        }
 
 
 
@@ -144,9 +172,9 @@ namespace AistTrader
                     case "PortfolioName":
                         validationResult = ValidatePortfolioName();
                         break;
-                    //case "RegisteredProvider":
-                    //    validationResult = ValidateRegisteredProvider();
-                    //    break;
+                    case "RegisteredProvider":
+                        validationResult = ValidateRegisteredProvider();
+                        break;
                     case "DynamicAccount":
                         validationResult = ValidateDynamicAccount();
                         break;
@@ -163,12 +191,20 @@ namespace AistTrader
                 return validationResult;
             }
         }
+
         private string ValidateRegisteredProvider()
         {
-            if (String.IsNullOrEmpty(this.RegisteredProvider))
+            if (String.IsNullOrEmpty(this.RegisteredProvider) & ConnectionProviderComboBox.Items.Count > 0)
+            {
                 return "Не выбран поставщик";
+            }
+            if (ConnectionProviderComboBox.Items.Count == 0)
+            {
+                return "Нет активных подключений";
+            }
             return String.Empty;
         }
+
         private string ValidateDynamicAccount()
         {
             //if (this.DynamicAccount.Count==0)//TODO: вот тут подтянуть указатель на соединение которое используется для получения данного счёта
@@ -177,6 +213,7 @@ namespace AistTrader
             //    return "Не выбран счёт";
             return String.Empty;
         }
+
         private string ValidatePortfolioName()
         {
             if (String.IsNullOrEmpty(this.PortfolioName))
@@ -187,11 +224,29 @@ namespace AistTrader
             //    return "Данное имя уже используется";
             return String.Empty;
         }
+
         public string Error { get; private set; }
 
-        private void AccountComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        //private void AccountComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        //{
+
+        //    AccountComboBox.ItemsSource = MainWindow.Instance.PortfoliosList.Select(i => i.Name).ToList();
+        //}
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AccountComboBox.ItemsSource = MainWindow.Instance.PortfoliosList.Select(i => i.Name).ToList();
+            //throw new NotImplementedException();
+
+            var item = ConnectionProviderComboBox.SelectedItem.ToString();
+            item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
+            var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == item);
+            var accounts = agent.Connection.Accounts;
+            List<Portfolio> portfolios = new List<Portfolio>();
+            foreach (var i in accounts)
+            {
+                portfolios.Add(i);
+            }
+            DynamicAccount = portfolios.ToList();
+
         }
     }
 }

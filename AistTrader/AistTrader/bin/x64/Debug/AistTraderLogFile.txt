@@ -31,3 +31,11 @@
 2016-01-27 17:14:32.8495|INFO|AistTrader.MainWindow|Адресс и порт для соединения-SecondConnect успешно получены
 2016-01-27 17:15:14.6499|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-SecondConnect
 2016-01-27 17:15:14.6849|INFO|AistTrader.MainWindow|Адресс и порт для соединения-SecondConnect успешно получены
+2016-02-08 09:25:10.6223|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-aaaaaa
+2016-02-08 09:25:10.6703|INFO|AistTrader.MainWindow|Адресс и порт для соединения-aaaaaa успешно получены
+2016-02-08 09:37:56.0751|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-bbbbbbb
+2016-02-08 09:37:56.1421|INFO|AistTrader.MainWindow|Адресс и порт для соединения-bbbbbbb успешно получены
+2016-02-08 09:44:17.4319|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-bbbbbbb
+2016-02-08 09:44:17.4749|INFO|AistTrader.MainWindow|Адресс и порт для соединения-bbbbbbb успешно получены
+2016-02-08 09:46:20.0429|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-cccccccccccc
+2016-02-08 09:46:20.0429|INFO|AistTrader.MainWindow|Адресс и порт для соединения-cccccccccccc успешно получены

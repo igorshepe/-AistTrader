@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <ArrayOfAgentConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AgentConnection>
-    <Name>Allen's TEstconnection!</Name>
+    <Name>bbbbbbb</Name>
     <Connection>
       <ConnectionSettings>
         <Type>Plaza</Type>
         <Path>C:\SpectraCGate</Path>
         <IpEndPoint>127.0.0.1:4001</IpEndPoint>
       </ConnectionSettings>
-      <Name>Allen's TEstconnection!</Name>
-      <Code>ATC_Z</Code>
+      <Name>bbbbbbb</Name>
+      <Code>bb</Code>
       <IsActive>false</IsActive>
       <Command>Disconnect</Command>
       <Funds>-1</Funds>
@@ -26,7 +26,7 @@
           <VariationMargin>0</VariationMargin>
           <Commission>0</Commission>
           <LastChangeTime />
-          <LocalTime>2016-01-27T16:15:10.5583447+03:00</LocalTime>
+          <LocalTime>2016-02-08T09:44:20.1637496+03:00</LocalTime>
           <Name>FZ00D80</Name>
           <Leverage>1</Leverage>
           <Currency xsi:nil="true" />
@@ -276,14 +276,14 @@
     </Connection>
   </AgentConnection>
   <AgentConnection>
-    <Name>SecondConnect</Name>
+    <Name>cccccccccccc</Name>
     <Connection>
       <ConnectionSettings>
         <Type>Plaza</Type>
         <Path>C:\SpectraCGate2nd</Path>
       </ConnectionSettings>
-      <Name>SecondConnect</Name>
-      <Code>SC</Code>
+      <Name>cccccccccccc</Name>
+      <Code>cc</Code>
       <IsActive>false</IsActive>
       <Command>Connect</Command>
       <Funds>-1</Funds>

@@ -36,7 +36,7 @@ namespace AistTrader
         public string Tools
         {
             get { return _tools; }
-            set { _tools = value; }
+            set { _tools = value; } 
 
         }
         private string _amount;
