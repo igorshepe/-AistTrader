@@ -39,3 +39,27 @@
 2016-02-08 09:44:17.4749|INFO|AistTrader.MainWindow|Адресс и порт для соединения-bbbbbbb успешно получены
 2016-02-08 09:46:20.0429|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-cccccccccccc
 2016-02-08 09:46:20.0429|INFO|AistTrader.MainWindow|Адресс и порт для соединения-cccccccccccc успешно получены
+2016-02-09 11:53:35.5954|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-aaaaaaaaaa
+2016-02-09 11:53:35.6494|INFO|AistTrader.MainWindow|Адресс и порт для соединения-aaaaaaaaaa успешно получены
+2016-02-09 11:58:40.7439|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-aaaaaaaaaa
+2016-02-09 11:58:40.7789|INFO|AistTrader.MainWindow|Адресс и порт для соединения-aaaaaaaaaa успешно получены
+2016-02-09 11:59:22.3262|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-aaaaaaaaaa
+2016-02-09 11:59:22.3802|INFO|AistTrader.MainWindow|Адресс и порт для соединения-aaaaaaaaaa успешно получены
+2016-02-09 12:03:13.4285|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-aaaaaaaaaa
+2016-02-09 12:03:13.4915|INFO|AistTrader.MainWindow|Адресс и порт для соединения-aaaaaaaaaa успешно получены
+2016-02-09 12:42:27.2371|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-aaaaaaaaaa
+2016-02-09 12:42:27.2751|INFO|AistTrader.MainWindow|Адресс и порт для соединения-aaaaaaaaaa успешно получены
+2016-02-09 12:52:25.3363|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-aaaaaaaaaa
+2016-02-09 12:52:25.3713|INFO|AistTrader.MainWindow|Адресс и порт для соединения-aaaaaaaaaa успешно получены
+2016-02-09 13:48:50.7649|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-aaaaaaaa
+2016-02-09 13:48:54.0561|INFO|AistTrader.MainWindow|Адресс и порт для соединения-aaaaaaaa успешно получены
+2016-02-09 13:50:01.5690|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-bbbbbbb
+2016-02-09 13:50:01.5760|INFO|AistTrader.MainWindow|Адресс и порт для соединения-bbbbbbb успешно получены
+2016-02-09 14:32:11.1947|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-bbbbbbb
+2016-02-09 14:32:11.2477|INFO|AistTrader.MainWindow|Адресс и порт для соединения-bbbbbbb успешно получены
+2016-02-09 14:36:41.5781|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-bbbbbbb
+2016-02-09 14:36:41.6141|INFO|AistTrader.MainWindow|Адресс и порт для соединения-bbbbbbb успешно получены
+2016-02-09 14:47:21.0587|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-bbbbbbb
+2016-02-09 14:47:21.1047|INFO|AistTrader.MainWindow|Адресс и порт для соединения-bbbbbbb успешно получены
+2016-02-09 19:54:47.2258|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-тестовое подключение
+2016-02-09 19:54:47.2998|INFO|AistTrader.MainWindow|Адресс и порт для соединения-тестовое подключение успешно получены

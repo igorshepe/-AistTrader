@@ -114,7 +114,7 @@
                 Click="AddConfigBtnClick"
                 TabIndex="7" 
                 IsDefault="True" Height="23" VerticalAlignment="Bottom" 
-                IsEnabled="False"
+                IsEnabled="True"
                 />
         <Button Content="Отмена" 
                 HorizontalAlignment="Right"

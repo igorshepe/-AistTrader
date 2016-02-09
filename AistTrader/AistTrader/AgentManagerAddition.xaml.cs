@@ -159,6 +159,32 @@ namespace AistTrader
         private void AccountComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == (string)AccountComboBox.SelectedItem);
+
+
+
+
+
+
+            ////имя счета
+            //var item = AccountComboBox.SelectedItem.ToString();
+            
+            //var portfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == item);
+
+
+
+            //item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
+
+
+
+
+            //var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == item);
+            //var securities = selectedPortfolio.Connection.Connection.Tools;
+            //List<Security> portfoliosList = new List<Security>();
+            //foreach (var i in securities)
+            //{
+            //    portfoliosList.Add(i);
+            //}
+            SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.Connection.Tools);
             //if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
         }
 
@@ -267,11 +293,6 @@ namespace AistTrader
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            
-
-
-
-
 
             SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
             ShowDialog();

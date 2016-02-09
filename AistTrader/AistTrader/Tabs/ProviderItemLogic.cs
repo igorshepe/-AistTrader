@@ -196,19 +196,32 @@ namespace AistTrader
             //TODO: посмотри примеры того как идет динамический апдейт, а потом уже подписывай события на то что будет апдейтится
 
             agent.Connection.Accounts = new List<Portfolio>();
+            agent.Connection.Tools = new List<Security>();
+
+            agent.Connection.IsRegistredConnection=true;
             connection.NewPortfolios += portfolios =>
             {
                 this.GuiAsync(() => agent.Connection.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
             };
+            connection.NewSecurities += securities =>
+            {
+                this.GuiAsync(() => agent.Connection.Tools.AddRange(securities))/* PortfoliosList.AddRange(portfolios))*/;
+                //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
+            };
             connection.Connected += () =>
             {
                 this.GuiAsync(() => agent.Connection.IsConnected = true);
+                this.GuiAsync(()=> agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Connected);
+                this.GuiAsync(UpdateListView);
             };
             connection.Disconnected += () =>
             {
                 this.GuiAsync(() => agent.Connection.IsConnected = false);
+                this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected);
+                this.GuiAsync(UpdateListView);
             };
+
 
             //TODO: Добавить все эвенты по аналогии с портфелями
 
@@ -316,6 +329,13 @@ namespace AistTrader
             #endregion
             ConnectionManager.Add(connection);
         }
+
+        public void UpdateListView()
+        {
+            ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
+            view.Refresh();
+        }
+
         public static string GetPlazaConnectionIpPort(string plazaPath)
         {
             //TODO: исключить статику если потребуются
@@ -347,14 +367,20 @@ namespace AistTrader
                 var item = (sender as FrameworkElement).DataContext;
                 ProviderListView.SelectedItems.Clear();
                 ProviderListView.SelectedItems.Add(item);
-
                 var rowItem = Instance.ProviderStorage.FirstOrDefault(i => i == item);
-                //на время попытки подключения ставим Disconnect
+                int index = ConnectionManager.Connections.FindIndex(i => i.Name == rowItem.Name);
                 rowItem.Connection.Command = OperationCommand.Disconnect;
-                rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Authentication;
-                ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
-                view.Refresh();
-                ConnectAccount(item as AgentConnection);
+                if (rowItem.Connection.IsRegistredConnection)
+                {
+                    ConnectionManager.Connections[index].Connect();
+                }
+                else
+                {
+                    ConnectAccount(item as AgentConnection);
+                }
+                UpdateListView();
+                //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
+                //view.Refresh();
             }
             else
             {
@@ -368,19 +394,15 @@ namespace AistTrader
                 //}
                 //ConnectionManager.Connections[0].Disconnect();
                 var item = (sender as FrameworkElement).DataContext;
-
-
-
                 var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
                 int index = ConnectionManager.Connections.FindIndex(i => i.Name == rowItem.Name);
                 ConnectionManager.Connections[index].Disconnect();
-
-
-
                 rowItem.Connection.Command = OperationCommand.Connect;
-                rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected;
-                ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
-                view.Refresh();
+                //rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected;
+
+                UpdateListView();
+                //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
+                //view.Refresh();
             }
         }
         private void ProviderListView_Loaded(object sender, RoutedEventArgs e)

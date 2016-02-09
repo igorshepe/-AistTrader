@@ -21,6 +21,7 @@ namespace Common.Settings
             Contracts = -1;
             NetValue = -1;
             VariationMargin = -1;
+            ConnectionStatus = AgentConnectionStatus.Disconnected;
 
         }
 
@@ -40,6 +41,7 @@ namespace Common.Settings
         public int Contracts { get; set; }
         public double NetValue { get; set; }
         public double VariationMargin { get; set; }
+        public bool IsRegistredConnection { get; set; }
 
         //TODO: подключить с новыми исходниками
         public List<Security> Tools { get; set; }

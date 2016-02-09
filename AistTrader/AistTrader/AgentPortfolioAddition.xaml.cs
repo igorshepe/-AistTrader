@@ -165,7 +165,7 @@ namespace AistTrader
             //ограничений на использование поставщика нет, можно много портфелей на одного поставщика подключать
             // если мы уже используем в портфеле динамический счёт, который был получен и задействован- мы его не отображаем вообще
             get
-            {
+         {
                 string validationResult = null;
                 switch (columnName)
                 {
@@ -245,7 +245,7 @@ namespace AistTrader
             {
                 portfolios.Add(i);
             }
-            DynamicAccount = portfolios.ToList();
+            AccountComboBox.ItemsSource = portfolios.ToList();
 
         }
     }

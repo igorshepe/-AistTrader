@@ -139,13 +139,6 @@
                                 <GridViewColumn Width="175" Header="Средства" DisplayMemberBinding="{Binding Path=Connection.Funds}"/>
                                 <GridViewColumn Width="175" Header="Вариационная маржа" DisplayMemberBinding="{Binding Path=Connection.VariationMargin}"/>
                                 <GridViewColumn Width="175" Header="Чистая стоимость" DisplayMemberBinding="{Binding Path=Connection.NetValue}"/>
-                                <GridViewColumn Width="200" Header="Состояние" >
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <toggleSwitch:HorizontalToggleSwitch Name="ConnectionStateSwitch"  HorizontalAlignment="Right" IsManipulationEnabled="True"  Checked="ConnectionStateSwitch_OnClick" Unchecked="ConnectionStateSwitch_OnClick"   IsChecked="{Binding Path= Connection.IsActive}" ></toggleSwitch:HorizontalToggleSwitch>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
                                 <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path=Connection.ConnectionStatus}" Header="Состояние соединения" >
                                 </GridViewColumn>
                                 <GridViewColumn Width="130" Header="Операция">
