@@ -68,6 +68,7 @@ namespace AistTrader
             else
                 ProviderStorage.Add(settings);
             SaveProviderSettings();
+            UpdateProviderListView();
         }
         private void SaveProviderSettings()
         {
@@ -213,13 +214,13 @@ namespace AistTrader
             {
                 this.GuiAsync(() => agent.Connection.IsConnected = true);
                 this.GuiAsync(()=> agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Connected);
-                this.GuiAsync(UpdateListView);
+                this.GuiAsync(UpdateProviderListView);
             };
             connection.Disconnected += () =>
             {
                 this.GuiAsync(() => agent.Connection.IsConnected = false);
                 this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected);
-                this.GuiAsync(UpdateListView);
+                this.GuiAsync(UpdateProviderListView);
             };
 
 
@@ -330,10 +331,13 @@ namespace AistTrader
             ConnectionManager.Add(connection);
         }
 
-        public void UpdateListView()
+        public void UpdateProviderListView()
         {
-            ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
-            view.Refresh();
+            ProviderListView.ItemsSource = ProviderStorage;
+            ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
+            ProviderCollectionView.Refresh();
+            //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
+            //view.Refresh();
         }
 
         public static string GetPlazaConnectionIpPort(string plazaPath)
@@ -378,7 +382,7 @@ namespace AistTrader
                 {
                     ConnectAccount(item as AgentConnection);
                 }
-                UpdateListView();
+                UpdateProviderListView();
                 //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
                 //view.Refresh();
             }
@@ -400,14 +404,14 @@ namespace AistTrader
                 rowItem.Connection.Command = OperationCommand.Connect;
                 //rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected;
 
-                UpdateListView();
+                UpdateProviderListView();
                 //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
                 //view.Refresh();
             }
         }
         private void ProviderListView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!IsProviderSettingsLoaded && (File.Exists("ProviderSettings.xml")))
+            if (!IsProviderSettingsLoaded & (File.Exists("ProviderSettings.xml")) & ProviderStorage.Count == 0)
                 InitiateProviderSettings();
         }
     }

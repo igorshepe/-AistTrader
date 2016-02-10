@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <ArrayOfAgentConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AgentConnection>
-    <Name>тестовое подключение</Name>
+    <Name>ffffff</Name>
     <Connection>
       <ConnectionSettings>
         <Type>Plaza</Type>
         <Path>C:\SpectraCGate</Path>
       </ConnectionSettings>
-      <Name>тестовое подключение</Name>
-      <Code>тп</Code>
+      <Name>ffffff</Name>
+      <Code>ffff</Code>
       <IsConnected>false</IsConnected>
       <Command>Connect</Command>
       <Funds>-1</Funds>

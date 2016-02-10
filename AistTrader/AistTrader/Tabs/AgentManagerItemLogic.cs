@@ -18,7 +18,6 @@ namespace AistTrader
 
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
-
             var form = new AgentManagerAddition();
             form.ShowDialog();
             form = null;

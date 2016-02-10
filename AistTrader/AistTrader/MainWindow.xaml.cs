@@ -24,6 +24,7 @@ namespace AistTrader
         public ObservableCollection<AgentManager> AgentManagerStorage { get; private set; }
 
         public CollectionView AgentCollectionView { get; set; }
+        public CollectionView ProviderCollectionView { get; set; }
         public CollectionView PortfolioCollectionView { get; set; }
         public CollectionView AgentManagerCollectionView { get; set; }
         

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <ArrayOfAgent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Agent>
-    <Name>SS</Name>
+    <Name>AistInvestStrategy 1111 - 1666</Name>
     <_Agent>
-      <AgentName>StrategyScript</AgentName>
+      <AgentName>AistInvestStrategy</AgentName>
       <ConnectionCount>-1</ConnectionCount>
-      <Algorithm>StrategyScript</Algorithm>
+      <Algorithm>AistInvestStrategy</Algorithm>
       <SettingsStorage>
         <item>
           <key>
@@ -29,6 +29,14 @@
           </key>
           <value>
             <anyType xsi:type="xsd:decimal">1666</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Const</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">123</anyType>
           </value>
         </item>
       </SettingsStorage>

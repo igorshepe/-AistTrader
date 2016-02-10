@@ -22,7 +22,7 @@ namespace AistTrader
                 AgentPortfolioStorage.Add(settings);
             SavePortfolioSettings();
 
-            //UpdatePortfolioListView();
+            UpdatePortfolioListView();
         }
 
         public void UpdatePortfolioListView()
@@ -99,7 +99,7 @@ namespace AistTrader
         }
         private void PortfolioListView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!IsPortfolioSettingsLoaded && (File.Exists("PortfolioSettings.xml")))
+            if (!IsPortfolioSettingsLoaded & (File.Exists("PortfolioSettings.xml")) & AgentPortfolioStorage.Count == 0)
                 InitiatePortfolioSettings();
             //if (AgentPortfolioStorage.Count > 0)
             //    EditSingleOrGroupItemBtn.IsEnabled = true;
