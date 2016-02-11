@@ -28,7 +28,7 @@ namespace AistTrader
         }
         private void AgentListView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!IsAgentSettingsLoaded && (File.Exists("AgentSettings.xml")))
+            if (!IsAgentSettingsLoaded & (File.Exists("AgentSettings.xml")))
                 InitiateAgentSettings();
             if (AgentsStorage.Count > 0)
                 EditSingleOrGroupItemBtn.IsEnabled = true;
@@ -163,6 +163,8 @@ namespace AistTrader
         {
             AgentListView.ItemsSource = AgentsStorage;
             AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
+            if(AgentCollectionView.GroupDescriptions.Count ==0)
+                AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
         }
         public void InitiateAgentSettings()
          {
@@ -181,7 +183,8 @@ namespace AistTrader
                 }
                 AgentListView.ItemsSource = AgentsStorage;
                 AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
-                AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
+                if (AgentCollectionView.GroupDescriptions.Count == 0)
+                    AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
                 IsAgentSettingsLoaded = true;
             }
 

@@ -23,7 +23,7 @@ namespace AistTrader
 
 
         public int RowSetter;
-        public ObservableCollection<Agent> AgentsStorage { get; private set; }
+       // public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public Agent AgentItem;
         public string OldGroupName;
         private int EditIndex { get; set; }
@@ -37,16 +37,16 @@ namespace AistTrader
             InitializeComponent();
             EditIndex = int.MinValue;
             WorkMode = AgentWorkMode.Group;
-            AgentsStorage = new ObservableCollection<Agent>();
-            LoadSettings();
+            //AgentsStorage = new ObservableCollection<Agent>();
+            //LoadSettings();
         }
 
         public AgentGroupAddition(Agent agent, int editIndex, AgentWorkMode editMode)
         {
-            AgentsStorage = new ObservableCollection<Agent>();
+            //AgentsStorage = new ObservableCollection<Agent>();
             AgentItem = agent;
             InitializeComponent();
-            LoadSettings();
+            //LoadSettings();
             IsEditMode = true;
             IsEnabledConfigBtn = true;
             WorkMode = editMode;
@@ -59,7 +59,7 @@ namespace AistTrader
             if (editMode == AgentWorkMode.Group)
             {
                 OldGroupName = agent._Agent.GroupName;
-                var itemsToEdit = AgentsStorage.Where(i => i._Agent.GroupName == agent._Agent.GroupName).Select(i => i).ToList();
+                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i._Agent.GroupName == agent._Agent.GroupName).Select(i => i).ToList();
                 ItemCounter = itemsToEdit.Count;
                 GroupNameTxtBox.IsEnabled = true;
                 foreach (var i in itemsToEdit)
@@ -92,7 +92,7 @@ namespace AistTrader
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Width = 180,
                     Margin = new Thickness {Left = 10, Top = 5, Right = 0, Bottom = 0},
-                    ItemsSource = AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),
+                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),
                     SelectedItem = AgentItem.Name,
                     Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter),
                     IsEnabled = false,
@@ -165,7 +165,7 @@ namespace AistTrader
                     Width = 180,
                     Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                     //TODO: дополнить условие выбора.важно после выбора алгоритма
-                    ItemsSource = AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),
+                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),
                     SelectedItem = AgentItem.Name,
                     Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
                 };
@@ -243,7 +243,7 @@ namespace AistTrader
                 Width = 180,
                 Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                 //TODO: дополнить условие выбора.важно после выбора алгоритма
-                ItemsSource = AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
+                ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
                 Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
             };
             cb.SelectionChanged += cb_SelectionChanged;
@@ -382,7 +382,7 @@ namespace AistTrader
 
             if (WorkMode == AgentWorkMode.Group)
             {
-                foreach (var item in AgentsStorage.Where(a => a._Agent.GroupName == OldGroupName/*GroupNameTxtBox.Text*/).ToList())
+                foreach (var item in MainWindow.Instance.AgentsStorage.Where(a => a._Agent.GroupName == OldGroupName/*GroupNameTxtBox.Text*/).ToList())
                 {
                     MainWindow.Instance.DelAgentConfigBtnClick(item);
                 }
@@ -395,7 +395,7 @@ namespace AistTrader
                             Unit amount = ue.Text.ToUnit();
                             string algorithmName = cb.Text;
                             var groupName = GroupNameTxtBox.Text;
-                            foreach (var rs in AgentsStorage.Where(a => a.Name == algorithmName && a._Agent.GroupName == "Without Group"))
+                            foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a._Agent.GroupName == "Without Group"))
                             {
                                 var newAgent = (Agent)rs.Clone();
                                 newAgent._Agent.Amount = amount.Value;
@@ -416,11 +416,11 @@ namespace AistTrader
                             //Unit amount = ue.Value;
                             string algorithmName = cb.Text;
                             var groupName = GroupNameTxtBox.Text;
-                            var items = AgentsStorage.Where(a => a.Name == algorithmName && a._Agent.GroupName == groupName).ToList();
+                            var items = MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a._Agent.GroupName == groupName).ToList();
                             int itemIndex = -1;
                             foreach (var i in items)
-                                itemIndex = AgentsStorage.IndexOf(i);
-                            var itemToEdit = AgentsStorage[itemIndex];
+                                itemIndex = MainWindow.Instance.AgentsStorage.IndexOf(i);
+                            var itemToEdit = MainWindow.Instance.AgentsStorage[itemIndex];
                             //itemToEdit._Agent.Amount = amount;
                             itemToEdit._Agent.GroupName = groupName;
                             itemToEdit.Name = algorithmName;
@@ -443,31 +443,31 @@ namespace AistTrader
             else
                 CreateGroupeBtn.IsEnabled = true;
         }
-        private void LoadSettings()
-        {
-            StreamReader sr = new StreamReader("AgentSettings.xml");
-            try
-            {
-                var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
-                var connections = (List<Agent>)xmlSerializer.Deserialize(sr);
-                sr.Close();
-                foreach (var rs in connections.Cast<Agent>())
-                {
-                    AgentsStorage.Add(rs);
-                }
-            }
-            catch (Exception e)
-            {
-                sr.Close();
-                //if (e.InnerException.Message == "Root element is missing.")
-                //    try
-                //    {
-                //        System.IO.File.WriteAllText("AgentSettings.xml", string.Empty);
-                //    }
-                //    catch (Exception)
-                //    {
-                //    }
-            }
-        }
+        //private void LoadSettings()
+        //{
+        //    StreamReader sr = new StreamReader("AgentSettings.xml");
+        //    try
+        //    {
+        //        var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+        //        var connections = (List<Agent>)xmlSerializer.Deserialize(sr);
+        //        sr.Close();
+        //        foreach (var rs in connections.Cast<Agent>())
+        //        {
+        //            AgentsStorage.Add(rs);
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        sr.Close();
+        //        //if (e.InnerException.Message == "Root element is missing.")
+        //        //    try
+        //        //    {
+        //        //        System.IO.File.WriteAllText("AgentSettings.xml", string.Empty);
+        //        //    }
+        //        //    catch (Exception)
+        //        //    {
+        //        //    }
+        //    }
+        //}
     }
 }
