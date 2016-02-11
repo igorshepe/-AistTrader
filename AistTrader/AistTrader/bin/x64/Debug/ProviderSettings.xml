@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ArrayOfAgentConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AgentConnection>
+    <Name>allen</Name>
+    <Connection>
+      <ConnectionSettings>
+        <Type>Plaza</Type>
+        <Path>C:\SpectraCGate</Path>
+      </ConnectionSettings>
+      <Name>allen</Name>
+      <Code>dsf</Code>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
+      <Funds>-1</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>-1</NetValue>
+      <VariationMargin>-1</VariationMargin>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <ConnectionStatus>Disconnected</ConnectionStatus>
+    </Connection>
+  </AgentConnection>
+</ArrayOfAgentConnection>

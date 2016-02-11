@@ -124,6 +124,9 @@ namespace AistTrader
             //    MessageBox.Show(this, @"Не выбран инструмент");
             //    return;
             //}
+
+
+            var s =  SecurityPicker.SelectedSecurity;
             AgentManagerSettings setting;
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == AccountComboBox.SelectedItem.ToString());
             var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Name == GroupOrSingleAgentComboBox.SelectedItem.ToString());

@@ -156,6 +156,7 @@
                             <Button Content="Добавить" Name="AddConnectionBtn" Click="AddAgentConnectionBtnClick" Margin="0,6,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
                             <Button Content="Редактировать" Click="EditAgentConnectionBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
                             <Button Content="Удалить" Click="DelAgentConnectionBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Запуск стратегии" Click="TestStrategyStartBtnClick" HorizontalAlignment="Center" Margin="12,88,8,0" VerticalAlignment="Top" Width="100"/>
                         </Grid>
                     </GroupBox>
                 </Grid>

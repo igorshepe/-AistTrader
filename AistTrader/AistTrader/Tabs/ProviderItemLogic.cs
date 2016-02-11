@@ -21,6 +21,7 @@ using StockSharp.BusinessEntities;
 using StockSharp.Localization;
 using StockSharp.Messages;
 using StockSharp.Plaza;
+using Strategies.Strategies;
 using ToggleSwitch;
 
 namespace AistTrader
@@ -413,6 +414,15 @@ namespace AistTrader
         {
             if (!IsProviderSettingsLoaded & (File.Exists("ProviderSettings.xml")) & ProviderStorage.Count == 0)
                 InitiateProviderSettings();
+        }
+
+        private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
+        {
+            var strategy = new AistInvestStrategy();
+            strategy.Portfolio = ConnectionManager.Connections[0].Portfolios.First();
+            strategy.Security = ConnectionManager.Connections[0].Securities.First(i => i.Code=="SiH6");
+            strategy.Connector = ConnectionManager.Connections.First();
+            strategy.Start();
         }
     }
 
