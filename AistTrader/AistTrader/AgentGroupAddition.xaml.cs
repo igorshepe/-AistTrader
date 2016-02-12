@@ -395,12 +395,18 @@ namespace AistTrader
                             Unit amount = ue.Text.ToUnit();
                             string algorithmName = cb.Text;
                             var groupName = GroupNameTxtBox.Text;
+                            List<Agent> list = new List<Agent>();
                             foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a._Agent.GroupName == "Without Group"))
                             {
                                 var newAgent = (Agent)rs.Clone();
                                 newAgent._Agent.Amount = amount.Value;
                                 newAgent._Agent.GroupName = groupName;
-                                MainWindow.Instance.AddNewAgent(newAgent, -1);
+                                list.Add(newAgent);
+                                //MainWindow.Instance.AddNewAgent(newAgent, -1);
+                            }
+                            foreach (var i in list)
+                            {
+                                MainWindow.Instance.AddNewAgent(i,-1);
                             }
                         }
                 }
