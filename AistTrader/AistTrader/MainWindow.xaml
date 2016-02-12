@@ -75,7 +75,7 @@
                                     <GridViewColumn.CellTemplate >
                                         <DataTemplate >
                                             <StackPanel>
-                                                <CheckBox IsChecked="True">
+                                                <CheckBox IsChecked= "{Binding IsChecked, ElementName= ChkBoxSelectAll, Mode = OneWay }" >
                                                 </CheckBox>
                                             </StackPanel>
                                         </DataTemplate>
