@@ -190,7 +190,7 @@
                                     <GridViewColumn.CellTemplate >
                                         <DataTemplate >
                                             <StackPanel>
-                                                <CheckBox IsChecked="True">
+                                                <CheckBox IsChecked= "{Binding IsChecked, ElementName= ChkBoxSelectAllPortfolios, Mode = OneWay }" >
                                                 </CheckBox>
                                             </StackPanel>
                                         </DataTemplate>
@@ -241,7 +241,7 @@
                                     <GridViewColumn.CellTemplate >
                                         <DataTemplate >
                                             <StackPanel>
-                                                <CheckBox IsChecked="True">
+                                                <CheckBox IsChecked= "{Binding IsChecked, ElementName= CheckkBoxSelectAll, Mode = OneWay }" >
                                                 </CheckBox>
                                             </StackPanel>
                                         </DataTemplate>
