@@ -48,11 +48,21 @@ namespace AistTrader
         }
         private void SaveAgentSettings()
         {
-            List<Agent> obj = AgentsStorage.Select(a => a).ToList();
-            var fStream = new FileStream("AgentSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None);
-            var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
-            xmlSerializer.Serialize(fStream, obj);
-            fStream.Close();
+            try
+            {
+                List<Agent> obj = AgentsStorage.Select(a => a).ToList();
+                using (var fStream = new FileStream("AgentSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+                    xmlSerializer.Serialize(fStream, obj);
+                    fStream.Close();
+                }
+                Logger.Info("Successfully saved agents");
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(LogLevel.Error, ex.Message);
+            }
         }
         public void DeleteAgentBtnClick(object sender, RoutedEventArgs e)
         {
@@ -64,7 +74,15 @@ namespace AistTrader
                 {
                     foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
                     {
-                        AgentsStorage.Remove(item);
+                        try
+                        {
+                            AgentsStorage.Remove(item);
+                            Logger.Info("Agent {0} has been deleted", item.Name);
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Log(LogLevel.Error, ex.Message);
+                        }
                     }
                     SaveAgentSettings();
                 }
@@ -80,14 +98,21 @@ namespace AistTrader
                     {
                         foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
                         {
-                            AgentsStorage.Remove(item);
+                            try
+                            {
+                                AgentsStorage.Remove(item);
+                                Logger.Info("Agent {0} has been deleted", item.Name);
+                            }
+                            catch (Exception ex)
+                            {
+                                Logger.Log(LogLevel.Error, ex.Message);
+                            }
                         }
                         SaveAgentSettings();
                     }
                 }
             }
         }
-  
         public void DelAgentConfigBtnClick(Agent agent)
         {
             AgentsStorage.Remove(agent);
@@ -155,7 +180,15 @@ namespace AistTrader
             if (editIndex >= 0 && editIndex < AgentsStorage.Count)
                 AgentsStorage[editIndex] = settings;
             else
-                AgentsStorage.Add(settings);
+                try
+                {
+                    AgentsStorage.Add(settings);
+                    Logger.Info("Successfully added an agent -{0}", settings.Name);
+                }
+                catch (Exception)
+                {
+                    Logger.Info("Error adding agent -{0}", settings.Name);
+                }
             SaveAgentSettings();
             UpdateAgentListView();
         }
@@ -187,7 +220,6 @@ namespace AistTrader
                     AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
                 IsAgentSettingsLoaded = true;
             }
-
             catch (Exception e)
             {
                 IsAgentSettingsLoaded = false;
