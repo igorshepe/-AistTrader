@@ -333,7 +333,7 @@ namespace AistTrader
         }
 
         public void UpdateProviderListView()
-        {
+       {
             ProviderListView.ItemsSource = ProviderStorage;
             ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
             ProviderCollectionView.Refresh();

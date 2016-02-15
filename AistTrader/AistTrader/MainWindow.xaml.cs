@@ -51,6 +51,7 @@ namespace AistTrader
         {
             Instance.ProviderStorage.ForEach(i=>i.Connection.Command= OperationCommand.Connect);
             Instance.ProviderStorage.ForEach(i => i.Connection.IsConnected = false);
+            Instance.ProviderStorage.ForEach(i => i.Connection.IsRegistredConnection = false);
             Instance.ProviderStorage.ForEach(i => i.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected);
             Instance.ProviderStorage.ForEach(i => i.Connection.Accounts = new List<Portfolio>() );
             Instance.ProviderStorage.ForEach(i => i.Connection.Tools = new List<Security>());

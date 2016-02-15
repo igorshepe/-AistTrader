@@ -170,7 +170,7 @@ namespace AistTrader
 
             ////имя счета
             //var item = AccountComboBox.SelectedItem.ToString();
-            
+
             //var portfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == item);
 
 
@@ -189,9 +189,21 @@ namespace AistTrader
             //}
 
             //todo: добавить обновление вверх по иерархии на этапе обработки эвентов
+            //добавить выборку, берем имя, по имени обращемся к коллекции
 
-            if (selectedPortfolio.Connection.Connection.IsConnected)
-                SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.Connection.Tools);    
+            var connection =  MainWindow.Instance.ConnectionManager.Connections.Find(i=>i.Name == selectedPortfolio.Connection.Name);
+
+
+
+
+             
+                
+            if (connection.ConnectionState == ConnectionStates.Connected)
+            {
+                SecurityPicker.SecurityProvider.Securities.Clear();
+                SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.Connection.Tools);
+            }
+            
             else
                 SecurityPicker.SecurityProvider.Securities.Clear();    
             
