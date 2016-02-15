@@ -8,3 +8,13 @@
 2016-02-11 14:47:04.4108|INFO|AistTrader.MainWindow|Адресс и порт для соединения-allen успешно получены
 2016-02-11 14:50:20.4260|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-allen
 2016-02-11 14:50:20.4810|INFO|AistTrader.MainWindow|Адресс и порт для соединения-allen успешно получены
+2016-02-15 10:35:11.4270|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-allen
+2016-02-15 10:35:11.4600|INFO|AistTrader.MainWindow|Адресс и порт для соединения-allen успешно получены
+2016-02-15 10:49:43.3790|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-15 10:50:14.0268|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-15 10:50:58.3013|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-15 11:04:47.6687|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-15 11:05:21.1556|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-allen
+2016-02-15 11:05:26.8070|INFO|AistTrader.MainWindow|Адресс и порт для соединения-allen успешно получены
+2016-02-15 11:15:12.1794|INFO|AistTrader.MainWindow|Попытка получения IP и номера порта плаза подключения-testt
+2016-02-15 11:15:12.1794|INFO|AistTrader.MainWindow|Адресс и порт для соединения-testt успешно получены
