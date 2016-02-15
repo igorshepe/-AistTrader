@@ -187,7 +187,14 @@ namespace AistTrader
             //{
             //    portfoliosList.Add(i);
             //}
-            SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.Connection.Tools);
+
+            //todo: добавить обновление вверх по иерархии на этапе обработки эвентов
+
+            if (selectedPortfolio.Connection.Connection.IsConnected)
+                SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.Connection.Tools);    
+            else
+                SecurityPicker.SecurityProvider.Securities.Clear();    
+            
             //if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
         }
 
