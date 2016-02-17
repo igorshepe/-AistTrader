@@ -47,25 +47,18 @@ namespace AistTrader
 
         }
 
-
         public ObservableCollection<AgentManager> AgentManagerStorage { get; private set; }
         private int EditIndex { get; set; }
         public AgentManagerAddition()
         {
-            
             AgentManagerStorage = new ObservableCollection<AgentManager>();
             InitializeComponent();
             DataContext = this;
             EditIndex = int.MinValue;
             LoadParams();
-
-
             var x = SecurityPicker;
             //TODO:указывать источник- подключение, для загрузки параметров
             x.SecurityProvider = new FilterableSecurityProvider(/*MainWindow.Instance.Trader*/);
-
-
-
             //workin'
             //SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
 
@@ -163,23 +156,10 @@ namespace AistTrader
         {
             var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == (string)AccountComboBox.SelectedItem);
 
-
-
-
-
-
             ////имя счета
             //var item = AccountComboBox.SelectedItem.ToString();
-            
             //var portfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == item);
-
-
-
             //item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
-
-
-
-
             //var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == item);
             //var securities = selectedPortfolio.Connection.Connection.Tools;
             //List<Security> portfoliosList = new List<Security>();
