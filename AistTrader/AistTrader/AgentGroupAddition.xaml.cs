@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -106,6 +107,7 @@ namespace AistTrader
                     Margin = new Thickness { Left = 0, Top = 5, Right = 0, Bottom = 0 },
                     Name = string.Format("{0}_{1}", "AmountTextBox", RowSetter)
                 };
+                amount.KeyUp += Amount_KeyUp;
 
                 if (IsEditMode && !AgentItem._Agent.Amount.IsNull())
                     amount.Text = AgentItem._Agent.Amount.ToString();
@@ -180,6 +182,7 @@ namespace AistTrader
                     Name = string.Format("{0}_{1}", "AmountTextBox", RowSetter)
 
                 };
+                amount.KeyUp += Amount_KeyUp;
                 if (IsEditMode && !AgentItem._Agent.Amount.IsNull())
                     amount.Text = AgentItem._Agent.Amount.ToString();
                 if (IsEditMode && !AgentItem._Agent.GroupName.IsEmpty())
@@ -223,6 +226,16 @@ namespace AistTrader
                 CreateGroupBtnHelper();
             }
         }
+
+        private void Amount_KeyUp(object sender, KeyEventArgs e)
+       {
+            var editor= sender as UnitEditor;
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Key.ToString(), @"^[0-9]+$%"))
+            {
+                //editor.Text = editor.Text.Substring(0, editor.Text.Length - 1);
+                //editor.Select(editor.Text.Length, 0);
+            }
+        }
         //TODO: check that method
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
         {
@@ -258,8 +271,8 @@ namespace AistTrader
                 Width = 40,
                 Margin = new Thickness { Left = 0, Top = 5, Right = 0, Bottom = 0 },
                 Name = string.Format("{0}_{1}", "AmountTextBox", RowSetter)
-
             };
+            amount.KeyUp += Amount_KeyUp; ;
             if (IsEditMode && !AgentItem._Agent.GroupName.IsEmpty())
                 GroupNameTxtBox.Text = AgentItem._Agent.GroupName;
             var addDelControl = new Label
@@ -313,7 +326,7 @@ namespace AistTrader
                         count++;
                     if (count == 1)
                     {
-                        MessageBox.Show("Нельзя добавить одиновый алгоритм!");
+                        MessageBox.Show("Нельзя добавить одинакоый алгоритм!");
                         cbox.SelectedIndex = -1;
                         break;
                     }
