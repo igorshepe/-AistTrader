@@ -217,7 +217,7 @@
                         <ColumnDefinition Width="90*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListView x:Name="AgentManagerListView" ItemsSource="{Binding ElementName=AddAgentsWnd, Path=AgentManagerStorage}" IsSynchronizedWithCurrentItem="True"  
+                    <ListView x:Name="AgentManagerListView" Loaded="AgentManagerListView_OnLoaded" ItemsSource="{Binding ElementName=AddAgentsWnd, Path=AgentManagerStorage}" IsSynchronizedWithCurrentItem="True"  
                         x:FieldModifier="private" Grid.Column="0">
 
                         <ListView.ItemContainerStyle>

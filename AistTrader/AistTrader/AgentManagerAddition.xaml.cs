@@ -151,17 +151,13 @@ namespace AistTrader
             }
         }
 
-
         private void AccountComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == (string)AccountComboBox.SelectedItem);
 
             ////имя счета
             //var item = AccountComboBox.SelectedItem.ToString();
-<<<<<<< HEAD
 
-=======
->>>>>>> 6626e82170895f9f8d5bd7e89d65a2d4f3d38c02
             //var portfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == item);
             //item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
             //var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == item);
