@@ -1,27 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Xml.Serialization;
 using AistTrader.Properties;
 using Common.Entities;
 using Common.Settings;
 using Ecng.Common;
+using NLog;
 
 namespace AistTrader
 {
     public partial class MainWindow
     {
-        //private void LoadAgentManagerTabItemData()
-        //{
-        //    LoadAgentManagerSettings();
-        //}
-
+        public bool IsAgentManagerSettingsLoaded;
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var form = new AgentManagerAddition();
             form.ShowDialog();
             form = null;
-            SaveAgentSettings();
+            SaveAgentManagerSettings();
         }
         public void DelAgentBtnClick(object sender, RoutedEventArgs e)
         {
@@ -29,29 +29,39 @@ namespace AistTrader
             {
                 AgentManagerStorage.Remove(item);
             }
-            //SaveSettings();
+            SaveAgentManagerSettings();
         }
-        private void LoadAgentManagerSettings()
+        private void InitiateAgentManagerSettings()
         {
-            if (Settings.Default.AgentManager == null) return;
+            StreamReader sr = new StreamReader("AgentManagerSettings.xml");
             try
             {
-                foreach (var rs in Settings.Default.AgentManager.Cast<AgentManager>())
+                var xmlSerializer = new XmlSerializer(typeof(List<AgentManager>), new Type[] { typeof(AgentManager) });
+                var agents = (List<AgentManager>)xmlSerializer.Deserialize(sr);
+                sr.Close();
+                if (agents == null) return;
+
+                AgentsStorage.Clear();
+                foreach (var rs in agents)
                 {
                     AgentManagerStorage.Add(rs);
                 }
-                AgentManagerListView.ItemsSource = AgentManagerStorage;
+                AgentListView.ItemsSource = AgentManagerStorage;
                 AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-                AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
+                if (AgentManagerCollectionView.GroupDescriptions.Count == 0)
+                    AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
+                IsAgentManagerSettingsLoaded = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show(this, @"Не удалось прочитать настройки. Задайте заново.");
-                Settings.Default.AgentManager.Clear();
+                IsAgentSettingsLoaded = false;
+                sr.Close();
+                Logger.Log(LogLevel.Error, e.Message);
+                Logger.Log(LogLevel.Error, e.InnerException.Message);
+                if (e.InnerException.Message == "Root element is missing.")
+                    IsAgentManagerSettingsLoaded = false;
             }
         }
-
-
         private void EditAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var listToEdit = AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList();
@@ -64,7 +74,6 @@ namespace AistTrader
                 addQuikWindow.ShowDialog();
                 //SaveSettings();
             }
-
         }
         public void AddNewAgentManager(AgentManager settings, int editIndex)
         {
@@ -76,11 +85,26 @@ namespace AistTrader
         }
         private void SaveAgentManagerSettings()
         {
-            var sortedList = AgentManagerStorage.OrderBy(set => "{0}-{1}".Put(set.Name, set.Name.ToString())).ToList();
-            Settings.Default.AgentManager = new SettingsArrayList(sortedList);
-            Settings.Default.Save();
+            try
+            {
+                List<AgentManager> obj = AgentManagerStorage.Select(a => a).ToList();
+                using (var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    var xmlSerializer = new XmlSerializer(typeof(List<AgentManager>), new Type[] { typeof(AgentManager) });
+                    xmlSerializer.Serialize(fStream, obj);
+                    fStream.Close();
+                }
+                Logger.Info("Successfully saved manager agent items");
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(LogLevel.Error, ex.Message);
+            }
         }
-
-
+        private void AgentManagerListView_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (!IsAgentManagerSettingsLoaded & (File.Exists("AgentManagerSettings.xml")))
+                InitiateAgentManagerSettings();
+        }
     }
 }
