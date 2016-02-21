@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Threading;
 using Common.Entities;
 using Common.Settings;
 using MoreLinq;
@@ -33,7 +35,12 @@ namespace AistTrader
         {
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
+
             #region Initialize collections
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                this.TimeTextBlock.Text = String.Format("{0:G}( тоже Local )", DateTime.Now);
+            },this.Dispatcher);
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
 
@@ -56,10 +63,6 @@ namespace AistTrader
             Instance.ProviderStorage.ForEach(i => i.Connection.Accounts = new List<Portfolio>() );
             Instance.ProviderStorage.ForEach(i => i.Connection.Tools = new List<Security>());
         }
-
-
-
-
         private void TabCtr_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.OriginalSource is TabControl && AgentItem != null && AgentItem.IsSelected)
