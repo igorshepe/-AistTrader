@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized" 
         xmlns:toggleSwitch="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
-        >
+        xmlns:controls="clr-namespace:Common.Controls;assembly=Common">
 
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom" Margin="0,0,0,-0" Height="28">
@@ -23,7 +23,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="143*"/>
             <RowDefinition Height="490*"/>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="180*"/>
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" Height="23" VerticalAlignment="Top" Margin="1,0,-1,0">
@@ -300,9 +300,11 @@
         </TabControl>
         <GridSplitter Grid.Row="1"  Height="5" Background="DarkGray"
                   VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
+            <GroupBox Grid.Row="2" Header="Message Log">
+                <controls:NlogViewer x:Name="logCtrl" TimeWidth="AUTO" LoggerNameWidth="0" LevelWidth="auto" ExceptionWidth="auto" MessageWidth="auto" />
+            </GroupBox>
 
-        
-    </Grid>
+        </Grid>
     </DockPanel>
     
 </Window>
