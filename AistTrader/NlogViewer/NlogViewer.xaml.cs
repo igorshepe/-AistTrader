@@ -44,7 +44,6 @@ namespace NlogViewer
         [TypeConverterAttribute(typeof(LengthConverter))]
         public double ExceptionWidth { get; set; }
 
-
         public NlogViewer()
         {
             IsTargetConfigured = false;
@@ -61,12 +60,11 @@ namespace NlogViewer
                 }
             }
         }
-
         protected void LogReceived(NLog.Common.AsyncLogEventInfo log)
         {
             LogEventViewModel vm = new LogEventViewModel(log.LogEvent);
 
-            Dispatcher.BeginInvoke(new Action(() =>
+            Dispatcher.Invoke(new Action(() =>
             {
                 //if (LogEntries.Count >= 50)
                 //    LogEntries.RemoveAt(0);

@@ -18,7 +18,7 @@ namespace NlogViewer
             FormattedMessage = logEventInfo.FormattedMessage;
             Exception = logEventInfo.Exception;
             LoggerName = logEventInfo.LoggerName;
-            Time = logEventInfo.TimeStamp.ToString(CultureInfo.InvariantCulture);
+            Time = logEventInfo.TimeStamp.TimeOfDay.ToString();
 
             SetupColors(logEventInfo);
         }

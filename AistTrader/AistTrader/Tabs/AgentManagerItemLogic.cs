@@ -94,7 +94,7 @@ namespace AistTrader
                     xmlSerializer.Serialize(fStream, obj);
                     fStream.Close();
                 }
-                Logger.Info("Successfully saved manager agent items");
+                Logger.Info("Successfully saved manager agent Items");
             }
             catch (Exception ex)
             {

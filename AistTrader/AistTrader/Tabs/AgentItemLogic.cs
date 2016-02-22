@@ -77,7 +77,7 @@ namespace AistTrader
                         try
                         {
                             AgentsStorage.Remove(item);
-                            Logger.Info("Agent {0} has been deleted", item.Name);
+                            Logger.Info("Agent {0} Has been deleted", item.Name);
                         }
                         catch (Exception ex)
                         {
@@ -101,7 +101,7 @@ namespace AistTrader
                             try
                             {
                                 AgentsStorage.Remove(item);
-                                Logger.Info("Agent {0} has been deleted", item.Name);
+                                Logger.Info("Agent {0} Has been deleted", item.Name);
                             }
                             catch (Exception ex)
                             {
@@ -177,27 +177,13 @@ namespace AistTrader
         }
         public void AddNewAgent(Agent settings, int editIndex)
         {
-
-            Logger log = NLog.LogManager.GetCurrentClassLogger();
-
-            LogLevel level = LogLevel.Debug;
-            log.Log(level, "ТЕСТ");
-
-
-
-
-
-            //Logger log = NLog.LogManager.GetLogger("button");
-            //log.Log(LogLevel.Trace, "TEst");
-
-
             if (editIndex >= 0 && editIndex < AgentsStorage.Count)
                 AgentsStorage[editIndex] = settings;
             else
                 try
                 {
                     AgentsStorage.Add(settings);
-                    Logger.Info("Successfully added an agent -{0}", settings.Name);
+                    Logger.Info("Successfully added agent -{0}", settings.Name);
                 }
                 catch (Exception)
                 {

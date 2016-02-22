@@ -12,7 +12,6 @@ namespace NlogViewer
     public class NlogViewerTarget : Target
     {
         public event Action<AsyncLogEventInfo> LogReceived;
-
         protected override void Write(NLog.Common.AsyncLogEventInfo logEvent)
         {
             base.Write(logEvent);

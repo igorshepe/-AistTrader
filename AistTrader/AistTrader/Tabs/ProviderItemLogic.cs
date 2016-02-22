@@ -179,9 +179,9 @@ namespace AistTrader
             {
                 try
                 {
-                    Logger.Info("Попытка получения IP и номера порта плаза подключения-{0}",agent.Name.ToString());
+                    Logger.Info("Trying to get the ip,port of plaza connection -{0}...",agent.Name.ToString());
                     ipEndPoint = GetPlazaConnectionIpPort(agent.Connection.ConnectionSettings.Path);
-                    Logger.Info("Адресс и порт для соединения-{0} успешно получены", agent.Name.ToString());
+                    Logger.Info("IP and port of -{0} connection were successfully acquired", agent.Name.ToString());
                 }
                 catch (Exception e)
                 {
