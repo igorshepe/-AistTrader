@@ -49,3 +49,110 @@
 2016-02-22 09:58:28.9381|DEBUG|AistTrader.MainWindow|????
 2016-02-22 09:58:36.8625|INFO|AistTrader.MainWindow|Successfully added an agent -AistInvestStrategy 1106 - 1666
 2016-02-22 09:58:40.7267|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 10:08:27.5023|DEBUG|button|????
+2016-02-22 11:49:37.5912|DEBUG|button|????
+2016-02-22 11:50:00.6935|DEBUG|AistTrader.MainWindow|????
+2016-02-22 11:50:02.4856|INFO|AistTrader.MainWindow|Successfully added an agent -AistInvestStrategy 1115 - 1666
+2016-02-22 11:50:04.0327|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 11:52:52.5243|DEBUG|button|????
+2016-02-22 11:55:25.7571|DEBUG|button|????
+2016-02-22 11:55:54.6818|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 11:55:56.3909|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 11:56:06.0514|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 11:56:06.6675|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 11:56:25.1355|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1106 - 1666 has been deleted
+2016-02-22 11:56:26.7296|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 11:56:30.0368|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1115 - 1666 has been deleted
+2016-02-22 11:56:30.7228|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 11:56:37.7952|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1111 - 1666 has been deleted
+2016-02-22 11:56:38.4223|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:28:02.5719|DEBUG|button|????
+2016-02-22 13:28:29.9845|DEBUG|button|????
+2016-02-22 13:28:37.7550|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:29:00.8523|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 13:29:15.7631|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:29:33.0061|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:29:39.0975|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 13:29:40.6326|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:31:03.1753|DEBUG|button|????
+2016-02-22 13:31:10.3467|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:31:15.3020|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 13:31:18.2341|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:31:39.4273|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:31:41.9505|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 13:31:43.0776|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:33:18.6560|DEBUG|button|????
+2016-02-22 13:36:22.3265|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1109 - 1666 has been deleted
+2016-02-22 13:36:30.4260|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:36:33.2492|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 13:36:33.2492|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:36:33.4782|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 13:36:33.5032|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:36:33.8062|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 13:36:33.8062|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:36:33.9822|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 13:36:33.9822|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:36:36.1463|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 13:36:36.1463|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:36:44.8908|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:36:44.8908|INFO|AistTrader.MainWindow|Successfully added an agent -AistInvestStrategy 1111 - 1666
+2016-02-22 13:36:44.9018|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:36:52.0412|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:36:52.0412|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 13:36:52.0612|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:38:59.2985|DEBUG|button|????
+2016-02-22 13:39:03.7018|INFO|AistTrader.MainWindow|??????? ????????? IP ? ?????? ????? ????? ???????????-dsfdsfsd
+2016-02-22 13:39:03.7158|INFO|AistTrader.MainWindow|?????? ? ???? ??? ??????????-dsfdsfsd ??????? ????????
+2016-02-22 13:39:27.3471|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:39:27.3471|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 13:39:27.3651|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:45:25.3676|DEBUG|button|????
+2016-02-22 13:46:03.9048|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:46:03.9048|INFO|AistTrader.MainWindow|Successfully added an agent -AistInvestStrategy 1105 - 1666
+2016-02-22 13:46:03.9228|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:49:36.0279|DEBUG|button|????
+2016-02-22 13:49:54.8410|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:49:54.8410|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 13:49:54.8570|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:53:57.6839|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:53:57.7019|INFO|AistTrader.MainWindow|Successfully added an agent -AistInvestStrategy 1104 - 1666
+2016-02-22 13:53:57.7019|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 13:57:42.1547|DEBUG|AistTrader.MainWindow|????
+2016-02-22 13:57:42.1737|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 13:57:42.1737|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:05:12.4325|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 14:05:12.4635|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:05:17.5498|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1104 - 1666 has been deleted
+2016-02-22 14:05:17.5608|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:05:24.5552|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 14:05:24.5672|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:05:26.0243|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1105 - 1666 has been deleted
+2016-02-22 14:05:26.0363|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:06:03.9374|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1111 - 1666 has been deleted
+2016-02-22 14:06:03.9674|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:07:30.9604|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 14:08:52.0010|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 14:08:56.3053|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:09:13.2673|INFO|AistTrader.MainWindow|Agent SS has been deleted
+2016-02-22 14:09:41.8619|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:13:45.6298|DEBUG|AistTrader.MainWindow|????
+2016-02-22 14:13:45.6488|INFO|AistTrader.MainWindow|Successfully added an agent -AistInvestStrategy 1111 - 1666
+2016-02-22 14:13:45.8439|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:14:20.0958|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1111 - 1666 has been deleted
+2016-02-22 14:14:20.1278|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:16:14.3623|DEBUG|AistTrader.MainWindow|????
+2016-02-22 14:16:14.3813|INFO|AistTrader.MainWindow|Successfully added an agent -AistInvestStrategy 1111 - 1666
+2016-02-22 14:16:14.5584|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:19:19.0429|ERROR|AistTrader.MainWindow|????
+2016-02-22 14:19:19.0619|INFO|AistTrader.MainWindow|Successfully added an agent -SS
+2016-02-22 14:19:19.0769|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:27:55.1564|INFO|AistTrader.MainWindow|Agent AistInvestStrategy 1111 - 1666 has been deleted
+2016-02-22 14:27:55.1884|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 14:29:03.8734|INFO|AistTrader.MainWindow|Successfully Added An Agent -SS
+2016-02-22 14:29:03.9044|INFO|AistTrader.MainWindow|Successfully Saved Agents
+2016-02-22 14:29:47.2668|INFO|AistTrader.MainWindow|Agent SS Has Been Deleted
+2016-02-22 14:29:47.2968|INFO|AistTrader.MainWindow|Successfully Saved Agents
+2016-02-22 14:29:55.3533|INFO|AistTrader.MainWindow|Successfully Added Agent -SS
+2016-02-22 14:29:55.3533|INFO|AistTrader.MainWindow|Successfully Saved Agents
+2016-02-22 14:30:14.8714|INFO|AistTrader.MainWindow|Trying To Get The IP,Port Of Plaza Connection -ddddddddddd
+2016-02-22 14:30:14.8864|INFO|AistTrader.MainWindow|IP And Port Of -ddddddddddd Connection Were Successfully Acquired

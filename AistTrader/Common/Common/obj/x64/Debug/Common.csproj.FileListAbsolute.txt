@@ -1,3 +1,4 @@
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Localization.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Common.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Common.pdb
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.Common.dll
@@ -57,7 +58,6 @@ C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\AWSSDK.S3.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\MathNet.Numerics.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Abt.Controls.SciChart.Wpf.pdb
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Abt.Controls.SciChart.Wpf.xml
-C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Localization.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\log4net.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\INIFileParser.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Licensing.xml
