@@ -49,7 +49,7 @@ namespace NlogViewer
         {
             IsTargetConfigured = false;
             LogEntries = new ObservableCollection<LogEventViewModel>();
-
+            
             InitializeComponent();
 
             if (!DesignerProperties.GetIsInDesignMode(this))
@@ -68,10 +68,10 @@ namespace NlogViewer
 
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                if (LogEntries.Count >= 50)
-                    LogEntries.RemoveAt(0);
+                //if (LogEntries.Count >= 50)
+                //    LogEntries.RemoveAt(0);
                 
-                LogEntries.Add(vm);
+                LogEntries.Insert(0,vm);
             }));
         }
     }
