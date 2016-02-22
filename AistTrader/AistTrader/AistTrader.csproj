@@ -279,7 +279,6 @@
     <None Include="AistTrader_TemporaryKey.pfx" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -305,6 +304,10 @@
     <ProjectReference Include="..\Common\Common\Common.csproj">
       <Project>{85CC6248-717D-4B40-B90F-36C0629FC8AE}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NlogViewer\NlogViewer.csproj">
+      <Project>{c04e879d-287e-49b5-9933-42fc2eff75f0}</Project>
+      <Name>NlogViewer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,37 +1,14 @@
 <?xml version="1.0"?>
 <ArrayOfAgentConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AgentConnection>
-    <Name>allen</Name>
+    <Name>fgfdgfd</Name>
     <Connection>
       <ConnectionSettings>
         <Type>Plaza</Type>
         <Path>C:\SpectraCGate</Path>
-        <IpEndPoint>127.0.0.1:4001</IpEndPoint>
       </ConnectionSettings>
-      <Name>allen</Name>
-      <Code>dsf</Code>
-      <IsConnected>false</IsConnected>
-      <Command>Connect</Command>
-      <Funds>-1</Funds>
-      <AlgorithmCount>-1</AlgorithmCount>
-      <Contracts>-1</Contracts>
-      <NetValue>-1</NetValue>
-      <VariationMargin>-1</VariationMargin>
-      <IsRegistredConnection>false</IsRegistredConnection>
-      <Tools />
-      <Accounts />
-      <ConnectionStatus>Disconnected</ConnectionStatus>
-    </Connection>
-  </AgentConnection>
-  <AgentConnection>
-    <Name>tttttt</Name>
-    <Connection>
-      <ConnectionSettings>
-        <Type>Plaza</Type>
-        <Path>C:\SpectraCGate2nd</Path>
-      </ConnectionSettings>
-      <Name>tttttt</Name>
-      <Code>tttt</Code>
+      <Name>fgfdgfd</Name>
+      <Code>gfdgfdg</Code>
       <IsConnected>false</IsConnected>
       <Command>Connect</Command>
       <Funds>-1</Funds>

@@ -177,6 +177,20 @@ namespace AistTrader
         }
         public void AddNewAgent(Agent settings, int editIndex)
         {
+
+            Logger log = NLog.LogManager.GetCurrentClassLogger();
+
+            LogLevel level = LogLevel.Debug;
+            log.Log(level, "ТЕСТ");
+
+
+
+
+
+            //Logger log = NLog.LogManager.GetLogger("button");
+            //log.Log(LogLevel.Trace, "TEst");
+
+
             if (editIndex >= 0 && editIndex < AgentsStorage.Count)
                 AgentsStorage[editIndex] = settings;
             else

@@ -1,8 +1,7 @@
 ﻿<Application x:Class="AistTrader.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib"
-             
-             xmlns:settings="clr-namespace:Common.Settings;assembly=Common"
+
              StartupUri="MainWindow.xaml">
 
     <Application.Resources>
@@ -13,7 +12,9 @@
                 </Border>
             </DockPanel>
         </ControlTemplate>-->
-        <ObjectDataProvider x:Key="StrategiesData"
+        
+        
+        <!--<ObjectDataProvider x:Key="StrategiesData"
                     MethodName="GetValues" 
                     ObjectType="{x:Type system:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -27,7 +28,7 @@
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="settings:TerminalType" />
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+        </ObjectDataProvider>-->
 
         <!--<Style TargetType="{x:Type ComboBox}">
             <Setter Property="Validation.ErrorTemplate">

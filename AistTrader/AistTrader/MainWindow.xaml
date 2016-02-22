@@ -7,9 +7,8 @@
         x:Name="MainFrm" 
         Icon="Resources/Images/mainIcon.ico" 
         WindowStartupLocation="CenterScreen" 
-        WindowState="Maximized" 
-        xmlns:toggleSwitch="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
-        xmlns:controls="clr-namespace:Common.Controls;assembly=Common">
+        xmlns:nlog ="clr-namespace:NlogViewer;assembly=NlogViewer"
+        WindowState="Maximized">
 
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom" Margin="0,0,0,-0" Height="28">
@@ -301,9 +300,8 @@
         <GridSplitter Grid.Row="1"  Height="5" Background="DarkGray"
                   VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
             <GroupBox Grid.Row="2" Header="Message Log">
-                <controls:NlogViewer x:Name="logCtrl" TimeWidth="AUTO" LoggerNameWidth="0" LevelWidth="auto" ExceptionWidth="auto" MessageWidth="auto" />
+                <nlog:NlogViewer x:Name="logCtrl" TimeWidth="AUTO" LoggerNameWidth="0" LevelWidth="auto" ExceptionWidth="auto" MessageWidth="auto" />
             </GroupBox>
-
         </Grid>
     </DockPanel>
     

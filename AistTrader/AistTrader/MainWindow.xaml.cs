@@ -35,6 +35,14 @@ namespace AistTrader
         {
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
+            Logger log = NLog.LogManager.GetLogger("button");
+
+            LogLevel level = LogLevel.Debug;
+            log.Log(level, "ТЕСТ");
+
+
+
+
 
             #region Initialize collections
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate

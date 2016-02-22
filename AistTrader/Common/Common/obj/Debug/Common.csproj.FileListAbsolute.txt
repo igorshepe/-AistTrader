@@ -256,3 +256,7 @@ C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\StockSharp.Business
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\StockSharp.Messages.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\StockSharp.Logging.xml
 C:\Repository\-AistTrader\AistTrader\Common\Common\bin\Debug\log4net.xml
+C:\Repository\-AistTrader\AistTrader\Common\Common\obj\Debug\Controls\NlogViewer.g.cs
+C:\Repository\-AistTrader\AistTrader\Common\Common\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Repository\-AistTrader\AistTrader\Common\Common\obj\Debug\Common_MarkupCompile.cache
+C:\Repository\-AistTrader\AistTrader\Common\Common\obj\Debug\Common_MarkupCompile.lref
