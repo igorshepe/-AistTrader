@@ -156,3 +156,11 @@
 2016-02-22 14:29:55.3533|INFO|AistTrader.MainWindow|Successfully Saved Agents
 2016-02-22 14:30:14.8714|INFO|AistTrader.MainWindow|Trying To Get The IP,Port Of Plaza Connection -ddddddddddd
 2016-02-22 14:30:14.8864|INFO|AistTrader.MainWindow|IP And Port Of -ddddddddddd Connection Were Successfully Acquired
+2016-02-22 16:20:50.1830|INFO|AistTrader.MainWindow|Successfully added agent -AistInvestStrategy 1111 - 1666
+2016-02-22 16:20:50.2190|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-22 16:21:04.3528|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -ddddddddddd...
+2016-02-22 16:21:04.3668|INFO|AistTrader.MainWindow|IP and port of -ddddddddddd connection were successfully acquired
+2016-02-22 16:22:12.4767|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -ddddddddddd...
+2016-02-22 16:22:12.5327|INFO|AistTrader.MainWindow|IP and port of -ddddddddddd connection were successfully acquired
+2016-02-22 16:22:32.7319|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -cdsfdsfdsf...
+2016-02-22 16:22:32.7319|INFO|AistTrader.MainWindow|IP and port of -cdsfdsfdsf connection were successfully acquired

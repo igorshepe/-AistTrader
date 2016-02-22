@@ -163,14 +163,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="536064">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="529928">
       <assemblyIdentity name="AistTrader" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HB+ltbgS+Ds3Av0QgJhU57xxrasJ1hSqydeDJaXS02U=</dsig:DigestValue>
+        <dsig:DigestValue>z6kwEBwCj5gtztM8s3znRGqqtsygOfXBz/L8W14BxvU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -235,14 +235,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="16384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="14848">
       <assemblyIdentity name="Common" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xdFfmHiAaXZHUdQkJ+/UG3n2GGQujkPG43yS6pIqNEo=</dsig:DigestValue>
+        <dsig:DigestValue>8OFY0zEnMs6IYhoKEYx+2dlsGLZ5lAJYlPGWV34tEFE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -607,14 +607,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NlogViewer.dll" size="16896">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NlogViewer.dll" size="16384">
       <assemblyIdentity name="NlogViewer" version="0.6.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>66EyuL89MpsSL/N63bNOIph/K+ynwI2yVZsaADjcuGw=</dsig:DigestValue>
+        <dsig:DigestValue>um8eZVeMlpvD4hPvzxi4bkYcdl/7gNCNAYjoA+5KYDc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -799,14 +799,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strategies.dll" size="20992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strategies.dll" size="20480">
       <assemblyIdentity name="Strategies" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cUR7FAfx4ev//atCC/yG6zvHihdXqVZtLdXv1znltQ8=</dsig:DigestValue>
+        <dsig:DigestValue>8aF/v2KvknQpemAXaXqTCnI5IF0MEWO08+TrUvMTdUE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -855,13 +855,13 @@
       <dsig:DigestValue>z/Il7+SwXRWOEa4q6M++B55+uIGwS3kC2VDwil9BEBg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="NLog.config" size="1670">
+  <file name="NLog.config" size="1626">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>hNX0n/Mpfm9hFh8LfIMzIdMy3s2UbSosDLFYqwct7yQ=</dsig:DigestValue>
+      <dsig:DigestValue>AbHnucsdYASwqzNCaUX+ibRQl3wYcU2iLnZWOdSQsvw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\Images\mainIcon.ico" size="15086">
