@@ -41,12 +41,12 @@ namespace AistTrader
                 sr.Close();
                 if (agents == null) return;
 
-                AgentsStorage.Clear();
+                AgentManagerStorage.Clear();
                 foreach (var rs in agents)
                 {
                     AgentManagerStorage.Add(rs);
                 }
-                AgentListView.ItemsSource = AgentManagerStorage;
+                AgentManagerListView.ItemsSource = AgentManagerStorage;
                 AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
                 if (AgentManagerCollectionView.GroupDescriptions.Count == 0)
                     AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
