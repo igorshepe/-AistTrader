@@ -20,6 +20,7 @@ namespace AistTrader
         public static MainWindow Instance { get; private set; }
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
+        private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public ObservableCollection<AgentConnection> ProviderStorage { get; private set; }
         public ObservableCollection<AgentPortfolio> AgentPortfolioStorage { get; private set; }
@@ -35,7 +36,7 @@ namespace AistTrader
         {
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
-
+            
             #region Initialize collections
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
