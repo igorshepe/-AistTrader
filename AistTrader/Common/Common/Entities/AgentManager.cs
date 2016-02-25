@@ -8,7 +8,7 @@ namespace Common.Entities
     public class AgentManager
     {
         AgentManager() { }
-        public AgentManager(string name, AgentManagerSettings agentManager, string tool, Unit amount)
+        public AgentManager(string name, AgentManagerSettings agentManager, string tool, decimal amount)
         {
             Name = name;
             AgentManagerSettings = agentManager;
@@ -17,7 +17,8 @@ namespace Common.Entities
         }
         public string Name { get; set; }
         public string Tool { get; set; }
-        public Unit Amount { get; set; }
+        //public Unit Amount { get; set; }
+        public decimal Amount { get; set; }
         public AgentManagerSettings AgentManagerSettings { get; set; }
     }
 }

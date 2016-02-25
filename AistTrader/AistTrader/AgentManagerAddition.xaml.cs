@@ -47,11 +47,9 @@ namespace AistTrader
 
         }
 
-        public ObservableCollection<AgentManager> AgentManagerStorage { get; private set; }
         private int EditIndex { get; set; }
         public AgentManagerAddition()
         {
-            AgentManagerStorage = new ObservableCollection<AgentManager>();
             InitializeComponent();
             DataContext = this;
             EditIndex = int.MinValue;
@@ -65,8 +63,6 @@ namespace AistTrader
         }
         public AgentManagerAddition(AgentManager agent, int editIndex)
         {
-            
-            AgentManagerStorage = new ObservableCollection<AgentManager>();
             InitializeComponent();
             DataContext = this;
             InitFields(agent);
@@ -117,8 +113,6 @@ namespace AistTrader
             //    MessageBox.Show(this, @"Не выбран инструмент");
             //    return;
             //}
-
-
             var s =  SecurityPicker.SelectedSecurity;
             AgentManagerSettings setting;
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == AccountComboBox.SelectedItem.ToString());
@@ -130,7 +124,7 @@ namespace AistTrader
             }
             else
                 setting = new AgentManagerSettings(agentPortfolio, agent.Name);
-            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Account.Name , setting, "has yet to be", AmountTextBox.Value), EditIndex);
+            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Account.Name , setting, "has yet to be",/* AmountTextBox.Value*/ 10), EditIndex);
             Close();
         }
 
@@ -172,18 +166,11 @@ namespace AistTrader
             //добавить выборку, берем имя, по имени обращемся к коллекции
 
             var connection =  MainWindow.Instance.ConnectionManager.Connections.Find(i=>i.Name == selectedPortfolio.Connection.Name);
-
-
-
-
-             
-                
             if (connection.ConnectionState == ConnectionStates.Connected)
             {
                 SecurityPicker.SecurityProvider.Securities.Clear();
                 SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.Connection.Tools);
             }
-            
             else
                 SecurityPicker.SecurityProvider.Securities.Clear();    
             
@@ -278,7 +265,6 @@ namespace AistTrader
         {
             return validManagerProperties.Values.All(isValid => isValid);
         }
-
         public string Error { get; private set; }
 
         private void ToolComboBox_OnLoaded(object sender, RoutedEventArgs e)
@@ -287,7 +273,6 @@ namespace AistTrader
 
         }
 
-
         private void ToolComboBox_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             throw new NotImplementedException();
@@ -295,10 +280,8 @@ namespace AistTrader
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-
             SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
             ShowDialog();
-
         }
     } 
 }

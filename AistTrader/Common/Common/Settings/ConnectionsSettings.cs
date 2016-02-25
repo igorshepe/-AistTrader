@@ -36,11 +36,11 @@ namespace Common.Settings
         public bool IsConnected { get; set; }
         public OperationCommand Command { get; set; }
         //TODO: уточнить типы данных
-        public double Funds { get; set; }
+        public decimal Funds { get; set; }
         public int AlgorithmCount { get; set; }
         public int Contracts { get; set; }
-        public double NetValue { get; set; }
-        public double VariationMargin { get; set; }
+        public decimal NetValue { get; set; }
+        public decimal VariationMargin { get; set; }
         public bool IsRegistredConnection { get; set; }
 
         //TODO: подключить с новыми исходниками

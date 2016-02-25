@@ -172,6 +172,28 @@ namespace AistTrader
             //    rowItem.Connection.IsActive = false;
             //}
         }
+
+        public void UpdateProviderListView()
+        {
+            ProviderListView.ItemsSource = ProviderStorage;
+            ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
+            ProviderCollectionView.Refresh();
+            //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
+            //view.Refresh();
+        }
+        public void UpdateProviderGridListView(AgentConnection agentConnection)
+        {
+            var item = ProviderStorage.FirstOrDefault(i => i.Name == agentConnection.Name);
+            item.Connection.VariationMargin = item.Connection.Accounts.FirstOrDefault().VariationMargin;
+            item.Connection.Funds = item.Connection.Accounts.FirstOrDefault().CurrentValue;
+            item.Connection.NetValue= item.Connection.Accounts.FirstOrDefault().CurrentPrice;
+
+
+            ProviderListView.ItemsSource = ProviderStorage;
+            ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
+            ProviderCollectionView.Refresh();
+        }
+
         public void ConnectAccount(AgentConnection agent)
         {
             string ipEndPoint = "";
@@ -195,12 +217,41 @@ namespace AistTrader
             else
                 ipEndPoint = agent.Connection.ConnectionSettings.IpEndPoint;
             var connection = new AistTraderConnnectionWrapper(agent.Name) {Address = ipEndPoint.To<IPEndPoint>(), IsCGate = true};
+
+
+            //Trader = new PlazaTrader();
+            //Trader.Address = ipEndPoint.To<IPEndPoint>();
+            //Trader.IsCGate = true;
+            //Trader.Name = "пох";
+
+            //Trader.Connect();
+
+            //Trader.NewSecurities += securities =>
+            //{
+            //    this.GuiAsync(() => agent.Connection.Tools.AddRange(securities))/* PortfoliosList.AddRange(portfolios))*/;
+            //    //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
+            //};
+            //Trader.Connected += () =>
+            //{
+            //    //this.GuiAsync(() => agent.Connection.IsConnected = true);
+            //    //this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Connected);
+            //    this.GuiAsync(UpdateProviderListView);
+            //};
+            //Trader.NewPortfolios += portfolios =>
+            //{
+            //    this.GuiAsync(() => agent.Connection.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
+
+            //    //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
+            //};
+            //Trader.Connect();
+
+
             //TODO: посмотри примеры того как идет динамический апдейт, а потом уже подписывай события на то что будет апдейтится
 
             agent.Connection.Accounts = new List<Portfolio>();
             agent.Connection.Tools = new List<Security>();
 
-            agent.Connection.IsRegistredConnection=true;
+            agent.Connection.IsRegistredConnection = true;
             connection.NewPortfolios += portfolios =>
             {
                 this.GuiAsync(() => agent.Connection.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
@@ -214,15 +265,16 @@ namespace AistTrader
             connection.Connected += () =>
             {
                 this.GuiAsync(() => agent.Connection.IsConnected = true);
-                this.GuiAsync(()=> agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Connected);
-                this.GuiAsync(UpdateProviderListView);
+                this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Connected);
+                this.GuiAsync(() => UpdateProviderListView());
             };
             connection.Disconnected += () =>
             {
                 this.GuiAsync(() => agent.Connection.IsConnected = false);
                 this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected);
-                this.GuiAsync(UpdateProviderListView);
+                this.GuiAsync(() => UpdateProviderListView());
             };
+
 
 
             //TODO: Добавить все эвенты по аналогии с портфелями
@@ -326,20 +378,13 @@ namespace AistTrader
             ////    _PlazaTrader.Dispose();
             ////});
             ////_PlazaTrader.Connect();
-            
+
 
             #endregion
             ConnectionManager.Add(connection);
         }
 
-        public void UpdateProviderListView()
-       {
-            ProviderListView.ItemsSource = ProviderStorage;
-            ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
-            ProviderCollectionView.Refresh();
-            //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
-            //view.Refresh();
-        }
+
 
         public static string GetPlazaConnectionIpPort(string plazaPath)
         {
