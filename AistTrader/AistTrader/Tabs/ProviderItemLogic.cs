@@ -245,7 +245,6 @@ namespace AistTrader
             //};
             //Trader.Connect();
 
-
             //TODO: посмотри примеры того как идет динамический апдейт, а потом уже подписывай события на то что будет апдейтится
 
             agent.Connection.Accounts = new List<Portfolio>();
@@ -256,6 +255,8 @@ namespace AistTrader
             {
                 this.GuiAsync(() => agent.Connection.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
+                this.GuiAsync(() => UpdateProviderGridListView(agent));
+                TimeHelper.SyncMarketTime();
             };
             connection.NewSecurities += securities =>
             {
@@ -274,13 +275,8 @@ namespace AistTrader
                 this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected);
                 this.GuiAsync(() => UpdateProviderListView());
             };
-
-
-
             //TODO: Добавить все эвенты по аналогии с портфелями
-
             //нужна ли динамика в отображениии данных, которые должны быть в табе соединений?
-
             connection.Connect();
             #region Trash
 
@@ -383,8 +379,6 @@ namespace AistTrader
             #endregion
             ConnectionManager.Add(connection);
         }
-
-
 
         public static string GetPlazaConnectionIpPort(string plazaPath)
         {

@@ -121,7 +121,7 @@ namespace AistTrader
             var agentItem =
                 MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider.ToString());
             agentItem.Connection.SelectedAccount = selectedAccount as Portfolio;
-            MainWindow.Instance.AddNewAgentPortfolio(new AgentPortfolio(PortfolioNameTxtBox.Text, agentItem), EditIndex);
+            MainWindow.Instance.AddNewAgentPortfolio(new AgentPortfolio(PortfolioNameTxtBox.Text, agentItem, selectedAccount.ToString()), EditIndex);
             Close();
         }
 

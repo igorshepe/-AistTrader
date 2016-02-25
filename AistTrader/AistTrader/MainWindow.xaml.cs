@@ -8,9 +8,11 @@ using System.Windows.Data;
 using System.Windows.Threading;
 using Common.Entities;
 using Common.Settings;
+using Ecng.Common;
 using MoreLinq;
 using NLog;
 using StockSharp.BusinessEntities;
+using StockSharp.Plaza;
 
 namespace AistTrader
 {
@@ -19,7 +21,7 @@ namespace AistTrader
         #region Fields
         public static MainWindow Instance { get; private set; }
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-
+        
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public ObservableCollection<AgentConnection> ProviderStorage { get; private set; }
@@ -36,11 +38,11 @@ namespace AistTrader
         {
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
-            
+
             #region Initialize collections
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
-                this.TimeTextBlock.Text = String.Format("{0:G}( тоже Local )", DateTime.Now);
+                this.TimeTextBlock.Text = String.Format("{0:G}( тоже Local )", TimeHelper.Now);
             },this.Dispatcher);
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
