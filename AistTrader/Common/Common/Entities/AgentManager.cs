@@ -1,5 +1,6 @@
 ﻿using System;
 using Common.Settings;
+using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 
 namespace Common.Entities
@@ -8,7 +9,7 @@ namespace Common.Entities
     public class AgentManager
     {
         AgentManager() { }
-        public AgentManager(string name, AgentManagerSettings agentManager, string tool, decimal amount)
+        public AgentManager(string name, AgentManagerSettings agentManager, Security tool, int amount)
         {
             Name = name;
             AgentManagerSettings = agentManager;
@@ -16,9 +17,9 @@ namespace Common.Entities
             Amount = amount;
         }
         public string Name { get; set; }
-        public string Tool { get; set; }
+        public StockSharp.BusinessEntities.Security Tool { get; set; }
         //public Unit Amount { get; set; }
-        public decimal Amount { get; set; }
+        public int Amount { get; set; }
         public AgentManagerSettings AgentManagerSettings { get; set; }
     }
 }
