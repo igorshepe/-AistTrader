@@ -11,6 +11,7 @@ using Common.Settings;
 using Ecng.Common;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
+using StockSharp.Xaml;
 
 namespace AistTrader
 {
@@ -18,11 +19,25 @@ namespace AistTrader
     {
         private Dictionary<string, bool> validManagerProperties = new Dictionary<string, bool>();
 
+        private string _selectedPortfolio;
+        public string SelectedPortfolio
+        {
+            get { return _selectedPortfolio; }
+            set { _selectedPortfolio = value; }
+
+        }
         private string _portfolio; 
         public string Portfolio 
         {
             get { return _portfolio; }
             set { _portfolio = value; } 
+
+        }
+        private string _selectedGroupOrSingleAgent;
+        public string SelectedGroupOrSingleAgent
+        {
+            get { return _selectedGroupOrSingleAgent; }
+            set { _selectedGroupOrSingleAgent = value; }
 
         }
         private string _groupOrSingleAgent;
@@ -39,8 +54,8 @@ namespace AistTrader
             set { _tools = value; } 
 
         }
-        private string _amount;
-        public string Amount
+        private int _amount;
+        public int Amount
         {
             get { return _amount; }
             set { _amount = value; }
@@ -57,6 +72,7 @@ namespace AistTrader
             var x = SecurityPicker;
             //TODO:указывать источник- подключение, для загрузки параметров
             x.SecurityProvider = new FilterableSecurityProvider(/*MainWindow.Instance.Trader*/);
+            
             //workin'
             //SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
 
@@ -78,18 +94,25 @@ namespace AistTrader
             //var agents = Settings.Default.AgentManager.Cast<AgentManager>().Select(i => i.Name).ToList();
             //var accounts = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().Select(i =>i).Except(agents).ToList();
             var accounts = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().Select(i => i.Name).ToList();
-            AccountComboBox.ItemsSource = accounts;
+            PortfolioComboBox.ItemsSource = accounts;
+            AmountTextBox.Text = "";
+
         }
         private void InitFields(AgentManager agent)
         {
+            PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().Select(i => i.Name).ToList();
+            _selectedPortfolio = agent.Name;
+
             List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name).ToList();
             var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName != "Without Group").Select(i => i._Agent.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList;
-            GroupOrSingleAgentComboBox.SelectedItem = agent.AgentManagerSettings.AgentOrGroup;
+            _selectedGroupOrSingleAgent = agent.AgentManagerSettings.AgentOrGroup;
 
-            AccountComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().Select(i => i.Name).ToList();
-            AccountComboBox.SelectedItem = agent.Name;
+
+
+            SecurityPicker.SelectedSecurity = agent.Tool;
+            AmountTextBox.Text = agent.Amount.ToString();
         }
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
         {
@@ -115,16 +138,16 @@ namespace AistTrader
             //}
             var s =  SecurityPicker.SelectedSecurity;
             AgentManagerSettings setting;
-            var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == AccountComboBox.SelectedItem.ToString());
+            var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == PortfolioComboBox.SelectedItem.ToString());
             var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Name == GroupOrSingleAgentComboBox.SelectedItem.ToString());
             if (agent == null)
             {
                 agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i._Agent.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-                setting = new AgentManagerSettings(agentPortfolio, agent._Agent.GroupName);
+                setting = new AgentManagerSettings(agentPortfolio, agent._Agent.GroupName, SecurityPicker.SelectedSecurity);
             }
             else
-                setting = new AgentManagerSettings(agentPortfolio, agent.Name);
-            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Account.Name , setting, "has yet to be",/* AmountTextBox.Value*/ 10), EditIndex);
+                setting = new AgentManagerSettings(agentPortfolio, agent.Name, SecurityPicker.SelectedSecurity);
+            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Account.Name , setting, setting.Tool,/* AmountTextBox.Value*/ 10), EditIndex);
             Close();
         }
 
@@ -147,7 +170,7 @@ namespace AistTrader
 
         private void AccountComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == (string)AccountComboBox.SelectedItem);
+            var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == (string)PortfolioComboBox.SelectedItem);
 
             ////имя счета
             //var item = AccountComboBox.SelectedItem.ToString();
@@ -166,14 +189,20 @@ namespace AistTrader
             //добавить выборку, берем имя, по имени обращемся к коллекции
 
             var connection =  MainWindow.Instance.ConnectionManager.Connections.Find(i=>i.Name == selectedPortfolio.Connection.Name);
-            if (connection.ConnectionState == ConnectionStates.Connected)
+            if (connection != null)
             {
-                SecurityPicker.SecurityProvider.Securities.Clear();
-                SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.Connection.Tools);
+                if (connection.ConnectionState == ConnectionStates.Connected)
+                {
+                    if (SecurityPicker.SecurityProvider != null)
+                    {
+                        SecurityPicker.SecurityProvider.Securities.Clear();
+                        SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.Connection.Tools);
+                    }
+                    
+                }
+                else
+                    SecurityPicker.SecurityProvider.Securities.Clear();
             }
-            else
-                SecurityPicker.SecurityProvider.Securities.Clear();    
-            
             //if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
         }
 
@@ -256,7 +285,7 @@ namespace AistTrader
         {
             //TODO: добавить обработку на знаки, которые не допустимы в данном поле
             //так же обработка случая, когда форма скрыта
-            if(String.IsNullOrEmpty(Amount))
+            if(String.IsNullOrEmpty(Amount.ToString()))
                 return "Не указан объем";
             return String.Empty;
         }

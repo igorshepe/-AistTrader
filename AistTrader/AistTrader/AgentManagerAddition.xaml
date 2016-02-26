@@ -30,8 +30,15 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <Style TargetType="{x:Type xaml:SecurityEditor}">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="true">
+                        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </Grid.Resources>
-
+        
         <Label Content="Выберете портфель"
                Height="25"
                HorizontalContentAlignment="Left"
@@ -67,17 +74,20 @@
         <ComboBox Height="22"
                   Text="{Binding Path=Portfolio, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                   Margin="5,25,5,0" 
-                  Name="AccountComboBox" 
+                  Name="PortfolioComboBox" 
                   VerticalAlignment="Top" 
                   TabIndex="4" 
                   SelectionChanged="AccountComboBox_OnSelectionChanged"
-                  x:FieldModifier="private"/>
+                  x:FieldModifier="private"
+                  SelectedItem="{Binding Path=SelectedPortfolio}"
+                  />
         <ComboBox Height="22"
                   Text="{Binding Path=GroupOrSingleAgent, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                   Margin="5,79,5,0"
                   x:Name="GroupOrSingleAgentComboBox"
                   SelectionChanged="GroupOrSingleAgentComboBox_OnSelectionChanged"
                   VerticalAlignment="Top"
+                  SelectedItem="{Binding Path=SelectedGroupOrSingleAgent}"
                   TabIndex="4"  
                   x:FieldModifier="private"/>
         <!--<ComboBox Height="22"
@@ -92,12 +102,13 @@
         <sx:SecurityEditor
             Name="SecurityPicker"
             Margin="5,132,5,0" Height="28" VerticalAlignment="Top"
+            SelectedSecurity="{Binding Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                            
             />
         <xaml:UnitEditor HorizontalAlignment="Left" 
                          Height="22" 
-                         Text="{Binding Path=Amount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                         Margin="5,196,0,0" 
+                         Value="{Binding Path=Amount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="5,197,0,0" 
                          TextWrapping="Wrap"
                          VerticalAlignment="Top"
                          Width="115"

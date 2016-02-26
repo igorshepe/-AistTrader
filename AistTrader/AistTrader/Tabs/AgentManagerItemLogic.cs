@@ -21,13 +21,20 @@ namespace AistTrader
             var form = new AgentManagerAddition();
             form.ShowDialog();
             form = null;
-            SaveAgentManagerSettings();
         }
-        public void DelAgentBtnClick(object sender, RoutedEventArgs e)
+        public void DelAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             foreach (var item in AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList())
             {
-                AgentManagerStorage.Remove(item);
+                try
+                {
+                    AgentManagerStorage.Remove(item);
+                    Logger.Info("Agent manager item *{0}* has been deleted", item.Name);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Log(LogLevel.Error, ex.Message);
+                }
             }
             SaveAgentManagerSettings();
         }
@@ -79,9 +86,18 @@ namespace AistTrader
         {
             if (editIndex >= 0 && editIndex < AgentManagerStorage.Count)
                 AgentManagerStorage[editIndex] = settings;
+
             else
-                AgentManagerStorage.Add(settings);
-            SaveAgentManagerSettings();
+                try
+                {
+                    AgentManagerStorage.Add(settings);
+                    Logger.Info("Successfully added agent manager - {0}", settings.Name);
+                }
+                catch (Exception)
+                {
+                    Logger.Info("Error adding agent - {0}", settings.Name);
+                }
+                SaveAgentManagerSettings();
         }
         private void SaveAgentManagerSettings()
         {

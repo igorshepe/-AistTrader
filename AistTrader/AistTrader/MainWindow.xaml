@@ -287,7 +287,7 @@
                         <Grid HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
                             <Button Content="Добавить" Click="AddAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
                             <Button Content="Редактировать" Click="EditAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
-                            <Button Content="Удалить" Click="DeleteAgentBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Удалить" Click="DelAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
                         </Grid>
                     </GroupBox>
 

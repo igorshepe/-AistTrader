@@ -10,6 +10,9 @@ using Common.Entities;
 using NLog;
 
 namespace AistTrader
+
+    //todo: идентификаторы портфеля тоже в кеше
+
 {
     public partial class MainWindow
     {
@@ -111,3 +114,4 @@ namespace AistTrader
         }
     }
 }
+    
