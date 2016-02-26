@@ -48,6 +48,10 @@
     <Reference Include="Ecng.Serialization">
       <HintPath>..\..\AistTrader\References\Ecng.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\AistTrader\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="StockSharp.Algo">
       <HintPath>..\..\AistTrader\References\StockSharp.Algo.dll</HintPath>
     </Reference>
@@ -75,15 +79,26 @@
     <Compile Include="Common\SerializableDictionary.cs" />
     <Compile Include="Common\HelperStrategies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\ChStrategySettings.cs" />
     <Compile Include="Settings\IOptionalSettings.cs" />
     <Compile Include="Settings\StrategyDefaultSettings.cs" />
     <Compile Include="Settings\NewStrategySettings.cs" />
     <Compile Include="Settings\StrategyScriptSettings.cs" />
     <Compile Include="Settings\AistInvestStrategySettings.cs" />
     <Compile Include="Strategies\AistInvestStrategy.cs" />
+    <Compile Include="Strategies\ChStrategy.cs" />
     <Compile Include="Strategies\NewStrategy.cs" />
     <Compile Include="Strategies\StrategyScript.cs" />
     <Compile Include="Strategies\StrategyNoParam.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
