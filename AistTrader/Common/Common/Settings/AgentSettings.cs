@@ -46,7 +46,8 @@ namespace Common.Settings
     {
         StrategyScript,
         StrategyNoParam,
-        AistInvestStrategy
+        AistInvestStrategy,
+        ChStrategy
         //, NewStrategy
     }
 
