@@ -457,7 +457,7 @@ namespace AistTrader
 
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
         {
-            var strategy = new AistInvestStrategy();
+            var strategy = new ChStrategy();
             strategy.Portfolio = ConnectionManager.Connections[0].Portfolios.First();
             strategy.Security = ConnectionManager.Connections[0].Securities.First(i => i.Code=="SiH6");
             strategy.Connector = ConnectionManager.Connections.First();
