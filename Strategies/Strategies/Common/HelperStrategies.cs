@@ -58,5 +58,12 @@ namespace Strategies.Common
             }
             return instance.Name;
         }
+        public static Type GetRegistredStrategiesTest(string strategyName)
+        {
+            var baseType = typeof(BaseStrategy);
+            Assembly assembly = Assembly.LoadFrom(Assembly.GetExecutingAssembly().GetName().Name + ".dll");
+            return assembly.GetTypes().FirstOrDefault(type => type.IsSubclassOf(baseType) && type.Name.StartsWith(strategyName));
+        }
+
     }
 }
