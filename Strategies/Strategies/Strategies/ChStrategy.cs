@@ -21,6 +21,9 @@ namespace Strategies.Strategies
         private CandleManager _candleManager;
         private readonly MedianPrice _medianPrice = new MedianPrice {};
         private BaseStrategy _baseStrategy;
+
+        public ChStrategy (){}
+
         private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage
         {
             Length = 100
