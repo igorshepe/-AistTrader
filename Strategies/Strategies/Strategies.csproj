@@ -49,8 +49,8 @@
       <HintPath>..\..\AistTrader\References\Ecng.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\..\AistTrader\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AistTrader\References\NLog.dll</HintPath>
     </Reference>
     <Reference Include="StockSharp.Algo">
       <HintPath>..\..\AistTrader\References\StockSharp.Algo.dll</HintPath>
@@ -94,7 +94,6 @@
   <ItemGroup>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
