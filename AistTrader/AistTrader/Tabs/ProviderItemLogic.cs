@@ -265,7 +265,7 @@ namespace AistTrader
                 //todo: поменять..уточниить про кол-во инструментов и особенностях получения
                 this.GuiAsync(() =>
                 {
-                    this.GuiAsync(() => agent.Connection.Tools.AddRange(securities))/* PortfoliosList.AddRange(portfolios))*/;
+                    agent.Connection.Tools.AddRange(securities)/* PortfoliosList.AddRange(portfolios))*/;
                     if (agent.Connection.Tools.Count > 1144)
                     {
                         Logger.Info("Securities were loaded");
@@ -467,14 +467,7 @@ namespace AistTrader
                 InitiateProviderSettings();
         }
 
-        private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
-        {
-            var strategy = new ChStrategy();
-            strategy.Portfolio = ConnectionManager.Connections[0].Portfolios.First();
-            strategy.Security = ConnectionManager.Connections[0].Securities.First(i => i.Code=="SiH6");
-            strategy.Connector = ConnectionManager.Connections.First();
-            strategy.Start();
-        }
+
     }
 
     #region Aist Trader Connection Manager

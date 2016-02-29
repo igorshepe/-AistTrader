@@ -163,7 +163,7 @@
                             <Button Content="Добавить" Name="AddConnectionBtn" Click="AddAgentConnectionBtnClick" Margin="0,6,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
                             <Button Content="Редактировать" Click="EditAgentConnectionBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
                             <Button Content="Удалить" Click="DelAgentConnectionBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
-                            <Button Content="Запуск стратегии" Click="TestStrategyStartBtnClick" HorizontalAlignment="Center" Margin="12,88,8,0" VerticalAlignment="Top" Width="100"/>
+                            <!--<Button Content="Запуск стратегии" Click="TestStrategyStartBtnClick" HorizontalAlignment="Center" Margin="12,88,8,0" VerticalAlignment="Top" Width="100"/>-->
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -210,7 +210,7 @@
                         <Grid HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
                             <Button Content="Добавить" Name="AddPortfolioBtn" Click="AddAgentPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
                             <Button Content="Редактировать" Click="EditPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
-                            <Button Content="Удалить" Click="DelPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Удалить" Click="TestStrategyStartBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -288,7 +288,7 @@
                             <Button Content="Добавить" Click="AddAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
                             <Button Content="Редактировать" Click="EditAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
                             <Button Content="Удалить" Click="DelAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
-                                <Button Content="Запустить" Click="DelAgentManagerBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Запустить" Click="TestStrategyStartBtnClick" HorizontalAlignment="Center" Margin="10,88,10,0" VerticalAlignment="Top" Width="100"/>
                             </Grid>
                     </GroupBox>
 
