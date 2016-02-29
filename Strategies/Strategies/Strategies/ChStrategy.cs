@@ -177,9 +177,7 @@ namespace Strategies.Strategies
         {
             return "ChStrategy {0} - {1} - {2} - {3}".Put(_indicatorFastSma, _indicatorSlowSma, _indicatorHighest, _indicatorLowest);
         }
-
-         
         
-        }
     }
+}
 

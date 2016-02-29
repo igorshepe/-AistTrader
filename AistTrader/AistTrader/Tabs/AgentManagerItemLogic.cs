@@ -14,6 +14,7 @@ using NLog;
 using StockSharp.Algo.Strategies;
 using StockSharp.BusinessEntities;
 using Strategies.Common;
+using Strategies.Strategies;
 
 namespace AistTrader
 {
@@ -128,24 +129,26 @@ namespace AistTrader
         }
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
         {
-            var item = AgentManagerListView.SelectedItem as AgentManager;
-            var strategyName =item.AgentManagerSettings.AgentOrGroup.Split(null);
-            var connectionName = item.AgentManagerSettings.Account.Connection.Name;
-            Strategy strategy = null;
-            var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
+            //var item = AgentManagerListView.SelectedItem as AgentManager;
+            //var strategyName =item.AgentManagerSettings.AgentOrGroup.Split(null);
+            //var connectionName = item.AgentManagerSettings.Account.Connection.Name;
+            //Strategy strategy = null;
+            //var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
 
-            strategy = (Strategy)Activator.CreateInstance(strategyType);
-            {
-                strategy.Security = item.AgentManagerSettings.Tool;
-                strategy.Portfolio = item.AgentManagerSettings.Account.Connection.Connection.Accounts.FirstOrDefault(); //todo: переделать структуру портфеля и добавить короткие оригинальные имена стратегий и подумать как будет запускаться группа
-                strategy.Connector =ConnectionManager.Connections.FirstOrDefault(i=> i.Name == connectionName);
-            }
-            strategy.Start();
-
-            //var strategy = new ChStrategy();
-            //strategy.Security = ConnectionManager.Connections[0].Securities.First(i => i.Code == "SiH6");
-            //strategy.Connector = ConnectionManager.Connections.First();
+            //strategy =  (Strategy)Activator.CreateInstance(strategyType);
+            //{
+            //    strategy.Security = item.AgentManagerSettings.Tool;
+            //    strategy.Portfolio = item.AgentManagerSettings.Account.Connection.Connection.Accounts.FirstOrDefault(); //todo: переделать структуру портфеля и добавить короткие оригинальные имена стратегий и подумать как будет запускаться группа
+            //    strategy.Connector =ConnectionManager.Connections.FirstOrDefault(i=> i.Name == connectionName);
+            //}
             //strategy.Start();
+
+            var strategytest = new ChStrategy
+            {
+                Security = ConnectionManager.Connections[0].Securities.First(i => i.Code == "SiH6"),
+                Connector = ConnectionManager.Connections.First()
+            };
+            strategytest.Start();
         }
     }
 }

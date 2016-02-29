@@ -174,3 +174,67 @@
 2016-02-29 11:42:49.3010|INFO|AistTrader.MainWindow|Successfully added agent manager - Тестовый портфель
 2016-02-29 11:42:49.6430|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
 2016-02-29 11:43:04.4328|INFO|AistTrader.MainWindow|Connection - Allen is not active now
+2016-02-29 12:51:20.6635|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 12:51:20.7175|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 12:55:10.6987|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 12:55:10.7797|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 13:04:01.7591|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 13:04:01.8291|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 13:06:51.4978|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 13:06:51.5468|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 13:07:23.0976|INFO|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 13:07:23.4126|INFO|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 13:07:25.6287|INFO|AistTrader.MainWindow|Securities were loaded
+2016-02-29 13:09:39.5704|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 13:09:39.6164|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 13:09:42.4285|WARN|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 13:09:42.6796|WARN|AistTrader.MainWindow|Securities were loaded
+2016-02-29 13:09:42.6976|WARN|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 13:10:07.6030|INFO|AistTrader.MainWindow|Connection - Allen is not active now
+2016-02-29 13:10:11.9002|WARN|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 13:10:20.1357|INFO|AistTrader.MainWindow|Connection - Allen is not active now
+2016-02-29 13:10:22.8809|WARN|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 13:15:45.8133|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 13:15:45.8663|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 13:15:48.7855|WARN|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 13:15:49.1585|WARN|AistTrader.MainWindow|Securities were loaded
+2016-02-29 13:15:49.1765|WARN|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 13:46:45.9797|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 13:46:46.0237|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 13:46:48.7369|INFO|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 13:46:49.4369|INFO|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 13:46:49.7299|INFO|AistTrader.MainWindow|Securities were loaded
+2016-02-29 13:49:14.9982|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 13:49:15.0863|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 13:49:18.4494|INFO|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 13:49:18.6115|INFO|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 13:49:19.4525|INFO|AistTrader.MainWindow|Securities were loaded
+2016-02-29 14:17:00.1655|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 14:17:00.2185|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 14:17:02.3616|INFO|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 14:17:02.9516|INFO|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 14:17:03.4137|INFO|AistTrader.MainWindow|Securities were loaded
+2016-02-29 14:20:09.0293|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 14:20:09.0663|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 14:20:11.2904|INFO|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 14:20:11.4674|INFO|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 14:20:12.2625|INFO|AistTrader.MainWindow|Securities were loaded
+2016-02-29 14:21:23.2685|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 14:21:23.3255|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 14:21:25.4017|INFO|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 14:21:25.6037|INFO|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 14:21:26.1247|INFO|AistTrader.MainWindow|Securities were loaded
+2016-02-29 14:22:19.4137|INFO|TradesLogger|start strategy 00:05:00, ChStrategy SMA 20 - SMA 100 - Highest 20 - Lowest 20, RUPMI@FORTS
+2016-02-29 15:03:18.5474|INFO|AistTrader.MainWindow|Agent ChStrategy SMA 20 - SMA 100 - Highest 20 - Lowest 20 Has been deleted
+2016-02-29 15:03:18.5924|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-29 15:03:22.9627|INFO|AistTrader.MainWindow|Successfully added agent -ChStrategy SMA 20 - SMA 100 - Highest 20 - Lowest 20
+2016-02-29 15:03:22.9797|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-29 15:04:15.8227|INFO|AistTrader.MainWindow|Agent manager item *Тестовый портфель* has been deleted
+2016-02-29 15:04:15.9137|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-02-29 15:04:30.0005|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -allen...
+2016-02-29 15:04:30.0225|INFO|AistTrader.MainWindow|IP and port of -allen connection were successfully acquired
+2016-02-29 15:04:32.3186|INFO|AistTrader.MainWindow|Connection - allen is active now
+2016-02-29 15:04:32.8167|INFO|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 15:04:33.1857|INFO|AistTrader.MainWindow|Securities were loaded
+2016-02-29 15:05:27.3248|INFO|AistTrader.MainWindow|Successfully added agent manager - jkhjhj
+2016-02-29 15:05:27.6478|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
