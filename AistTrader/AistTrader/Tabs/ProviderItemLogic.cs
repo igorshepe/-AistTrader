@@ -256,11 +256,21 @@ namespace AistTrader
                 this.GuiAsync(() => agent.Connection.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
                 this.GuiAsync(() => UpdateProviderGridListView(agent));
+                this.GuiAsync(() => Logger.Info("Portfolios were loaded"));
                 TimeHelper.SyncMarketTime();
             };
             connection.NewSecurities += securities =>
             {
-                this.GuiAsync(() => agent.Connection.Tools.AddRange(securities))/* PortfoliosList.AddRange(portfolios))*/;
+                //this.GuiAsync(() => agent.Connection.Tools.AddRange(securities))/* PortfoliosList.AddRange(portfolios))*/;
+                //todo: поменять..уточниить про кол-во инструментов и особенностях получения
+                this.GuiAsync(() =>
+                {
+                    this.GuiAsync(() => agent.Connection.Tools.AddRange(securities))/* PortfoliosList.AddRange(portfolios))*/;
+                    if (agent.Connection.Tools.Count > 1144)
+                    {
+                        Logger.Info("Securities were loaded");
+                    }
+                });
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
             };
             connection.Connected += () =>
@@ -268,12 +278,14 @@ namespace AistTrader
                 this.GuiAsync(() => agent.Connection.IsConnected = true);
                 this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Connected);
                 this.GuiAsync(() => UpdateProviderListView());
+                this.GuiAsync(() => Logger.Info("Connection - {0} is active now", connection.Name));
             };
             connection.Disconnected += () =>
             {
                 this.GuiAsync(() => agent.Connection.IsConnected = false);
                 this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected);
                 this.GuiAsync(() => UpdateProviderListView());
+                this.GuiAsync(() => Logger.Info("Connection - {0} is not active now", connection.Name));
             };
             //TODO: Добавить все эвенты по аналогии с портфелями
             //нужна ли динамика в отображениии данных, которые должны быть в табе соединений?
