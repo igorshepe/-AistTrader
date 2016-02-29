@@ -69,3 +69,6 @@ C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NPOI.OpenXml4Ne
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\x64\Debug\Common.csprojResolveAssemblyReference.cache
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\x64\Debug\Common.dll
 C:\Repository\-AistTrader\AistTrader\Common\Common\obj\x64\Debug\Common.pdb
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.config
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.dll
+C:\Repository\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.xml

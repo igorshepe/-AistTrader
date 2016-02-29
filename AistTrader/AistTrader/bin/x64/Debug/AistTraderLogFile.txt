@@ -164,3 +164,13 @@
 2016-02-22 16:22:12.5327|INFO|AistTrader.MainWindow|IP and port of -ddddddddddd connection were successfully acquired
 2016-02-22 16:22:32.7319|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -cdsfdsfdsf...
 2016-02-22 16:22:32.7319|INFO|AistTrader.MainWindow|IP and port of -cdsfdsfdsf connection were successfully acquired
+2016-02-29 11:42:03.0843|INFO|AistTrader.MainWindow|Successfully added agent -ChStrategy SMA 20 - SMA 100 - Highest 20 - Lowest 20
+2016-02-29 11:42:03.1273|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-02-29 11:42:16.9501|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -Allen...
+2016-02-29 11:42:16.9861|INFO|AistTrader.MainWindow|IP and port of -Allen connection were successfully acquired
+2016-02-29 11:42:19.4272|INFO|AistTrader.MainWindow|Connection - Allen is active now
+2016-02-29 11:42:19.7893|INFO|AistTrader.MainWindow|Securities were loaded
+2016-02-29 11:42:19.8103|INFO|AistTrader.MainWindow|Portfolios were loaded
+2016-02-29 11:42:49.3010|INFO|AistTrader.MainWindow|Successfully added agent manager - Тестовый портфель
+2016-02-29 11:42:49.6430|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-02-29 11:43:04.4328|INFO|AistTrader.MainWindow|Connection - Allen is not active now
