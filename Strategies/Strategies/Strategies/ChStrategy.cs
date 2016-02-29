@@ -20,7 +20,7 @@ namespace Strategies.Strategies
         private CandleSeries _candleSeries;
         private CandleManager _candleManager;
         private readonly MedianPrice _medianPrice = new MedianPrice {};
-
+        private BaseStrategy _baseStrategy;
         private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage
         {
             Length = 100
@@ -113,7 +113,9 @@ namespace Strategies.Strategies
                 //Если значение Roc меньше нуля//при пересечении цены закрытия свечи и скользящей
                 if (_indicatorSlowSma.GetCurrentValue() > _indicatorFastSma.GetCurrentValue() && candle.LowPrice <= _indicatorLowest.GetCurrentValue())
                 {
-                    RegisterOrder(this.SellAtLimit(_indicatorLowest.GetCurrentValue(), Volume));
+                    //RegisterOrder(this.SellAtLimit(_indicatorLowest.GetCurrentValue(), Volume));
+                    SellStrategyVolumeAtMarket();
+                    _baseStrategy.RegisterOrder(this.SellAtLimit(_indicatorLowest.GetCurrentValue(), Volume));
                     //RegisterOrder(this.SellAtMarket());
                     //MakeMarketOrder(Sides.Sell);
                     //MakeLimitOrder(Sides.Sell, _indicatorLowest.GetCurrentValue());
@@ -123,7 +125,9 @@ namespace Strategies.Strategies
                 //Пересечение цены закрытия и линии боллинджера вверх
                 else if (_indicatorSlowSma.GetCurrentValue() < _indicatorFastSma.GetCurrentValue() && candle.HighPrice >= _indicatorHighest.GetCurrentValue())
                 {
-                    RegisterOrder(this.BuyAtLimit(_indicatorHighest.GetCurrentValue(), Volume));
+                    //RegisterOrder(this.BuyAtLimit(_indicatorHighest.GetCurrentValue(), Volume));
+                   BuyStrategyVolumeAtMarket();
+                    _baseStrategy.RegisterOrder(this.BuyAtLimit(_indicatorHighest.GetCurrentValue(), Volume)); 
                     //RegisterOrder(this.BuyAtMarket());
                     //MakeMarketOrder(Sides.Buy);
                     //MakeLimitOrder(Sides.Buy, _indicatorHighest.GetCurrentValue());
