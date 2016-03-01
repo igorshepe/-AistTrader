@@ -34,7 +34,7 @@ namespace AistTrader
                 try
                 {
                     AgentManagerStorage.Remove(item);
-                    Logger.Info("Agent manager item *{0}* has been deleted", item.Name);
+                    Logger.Info("Agent manager item \"{0}\" has been deleted", item.Name);
                 }
                 catch (Exception ex)
                 {
@@ -96,7 +96,7 @@ namespace AistTrader
                 try
                 {
                     AgentManagerStorage.Add(settings);
-                    Logger.Info("Successfully added agent manager - {0}", settings.Name);
+                    Logger.Info("Successfully added agent manager - \"{0}\"", settings.Name);
                 }
                 catch (Exception)
                 {

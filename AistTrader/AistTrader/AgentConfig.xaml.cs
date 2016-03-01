@@ -55,12 +55,12 @@ namespace AistTrader
             InitializeComponent();
             InitFields(agent);
             EditIndex = editIndex;
-            AgentSettings = agent._Agent.SettingsStorage;
+            AgentSettings = agent.Params.SettingsStorage;
         }
         private void InitFields(Agent agent)
         {
             AlgorithmComboBox.ItemsSource = HelperStrategies.GetStrategies().Select(type => type.Name).ToList();
-            AlgorithmComboBox.SelectedItem = agent._Agent.Algorithm.ToString();
+            AlgorithmComboBox.SelectedItem = agent.Params.FriendlyName.ToString();
         }
         private void AlgorithmComboBoxSelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -98,7 +98,7 @@ namespace AistTrader
                     {
                         foreach (var strategy in MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
                         {
-                            if (strategy._Agent.SettingsStorage.SequenceEqual(AgentSettings))
+                            if (strategy.Params.SettingsStorage.SequenceEqual(AgentSettings))
                             {
                                 _alreadyExist = true;
                             }
@@ -109,7 +109,6 @@ namespace AistTrader
                     {
                         _alreadyExist = false;
                     }
-                    
                 }
                 else
                 {
@@ -118,6 +117,9 @@ namespace AistTrader
             }
             else
             {
+
+                //todo: узнать про стратегии с вшитыми параметрами, дописать логику валидации под них сюда
+
 
             }
             //if (AlgorithmComboBox.SelectedItem != null&& AlreadyExist)
@@ -149,11 +151,9 @@ namespace AistTrader
                 strategySw.Close();
                 strategySw = null;
             }
-            var selectedAlgorithmStr = AlgorithmComboBox.SelectedItem.ToString();
-            var algorithm = HelperStrategies.GetStrategyFriendlyName(selectedAlgorithmStr, AgentSettings);
-            var pickedAlgorithm = (PickedStrategy)Enum.Parse(typeof(PickedStrategy), selectedAlgorithmStr);
-            var agent = new AlgorithmSettings(pickedAlgorithm, -1, true, -1, AgentSettings, selectedAlgorithmStr, 10);
-            MainWindow.Instance.AddNewAgent(new Agent(algorithm, agent), EditIndex);
+            var strategy = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
+            var agentParams = new AgentParams(strategy, -1, true, -1, AgentSettings, AlgorithmComboBox.SelectedItem.ToString(), 10);
+            MainWindow.Instance.AddNewAgent(new Agent(AlgorithmComboBox.SelectedItem.ToString(), agentParams), EditIndex);
             Close();
         }
         private void AgentSettingsButtonClick(object sender, RoutedEventArgs e)
@@ -198,7 +198,7 @@ namespace AistTrader
                 {
                     foreach (var strategy in MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
                     {
-                        if (strategy._Agent.SettingsStorage.SequenceEqual(sd))
+                        if (strategy.Params.SettingsStorage.SequenceEqual(sd))
                             _alreadyExist = true;
                         #region used to be like..
                         //var errorMassage = "Стратегий с таким именем и настройками уже зарегестрирована";

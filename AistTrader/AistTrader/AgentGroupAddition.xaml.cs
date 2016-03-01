@@ -59,8 +59,8 @@ namespace AistTrader
         {
             if (editMode == AgentWorkMode.Group)
             {
-                OldGroupName = agent._Agent.GroupName;
-                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i._Agent.GroupName == agent._Agent.GroupName).Select(i => i).ToList();
+                OldGroupName = agent.Params.GroupName;
+                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agent.Params.GroupName).Select(i => i).ToList();
                 ItemCounter = itemsToEdit.Count;
                 GroupNameTxtBox.IsEnabled = true;
                 foreach (var i in itemsToEdit)
@@ -93,7 +93,7 @@ namespace AistTrader
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Width = 180,
                     Margin = new Thickness {Left = 10, Top = 5, Right = 0, Bottom = 0},
-                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),
+                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Name),
                     SelectedItem = AgentItem.Name,
                     Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter),
                     IsEnabled = false,
@@ -109,10 +109,10 @@ namespace AistTrader
                 };
                 amount.KeyUp += Amount_KeyUp;
 
-                if (IsEditMode && !AgentItem._Agent.Amount.IsNull())
-                    amount.Text = AgentItem._Agent.Amount.ToString();
-                if (IsEditMode && !AgentItem._Agent.GroupName.IsEmpty())
-                    GroupNameTxtBox.Text = AgentItem._Agent.GroupName;
+                if (IsEditMode && !AgentItem.Params.Amount.IsNull())
+                    amount.Text = AgentItem.Params.Amount.ToString();
+                if (IsEditMode && !AgentItem.Params.GroupName.IsEmpty())
+                    GroupNameTxtBox.Text = AgentItem.Params.GroupName;
                 var addDelControl = new Label
                 {
                     Foreground = Brushes.Red,
@@ -167,7 +167,7 @@ namespace AistTrader
                     Width = 180,
                     Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                     //TODO: дополнить условие выбора.важно после выбора алгоритма
-                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),
+                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Name),
                     SelectedItem = AgentItem.Name,
                     Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
                 };
@@ -183,10 +183,10 @@ namespace AistTrader
 
                 };
                 amount.KeyUp += Amount_KeyUp;
-                if (IsEditMode && !AgentItem._Agent.Amount.IsNull())
-                    amount.Text = AgentItem._Agent.Amount.ToString();
-                if (IsEditMode && !AgentItem._Agent.GroupName.IsEmpty())
-                    GroupNameTxtBox.Text = AgentItem._Agent.GroupName;
+                if (IsEditMode && !AgentItem.Params.Amount.IsNull())
+                    amount.Text = AgentItem.Params.Amount.ToString();
+                if (IsEditMode && !AgentItem.Params.GroupName.IsEmpty())
+                    GroupNameTxtBox.Text = AgentItem.Params.GroupName;
                 var addDelControl = new Label
                 {
                     Foreground = Brushes.Red,
@@ -256,7 +256,7 @@ namespace AistTrader
                 Width = 180,
                 Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                 //TODO: дополнить условие выбора.важно после выбора алгоритма
-                ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
+                ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Name),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
                 Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
             };
             cb.SelectionChanged += cb_SelectionChanged;
@@ -273,8 +273,8 @@ namespace AistTrader
                 Name = string.Format("{0}_{1}", "AmountTextBox", RowSetter)
             };
             amount.KeyUp += Amount_KeyUp; ;
-            if (IsEditMode && !AgentItem._Agent.GroupName.IsEmpty())
-                GroupNameTxtBox.Text = AgentItem._Agent.GroupName;
+            if (IsEditMode && !AgentItem.Params.GroupName.IsEmpty())
+                GroupNameTxtBox.Text = AgentItem.Params.GroupName;
             var addDelControl = new Label
             {
                 Foreground = Brushes.Red,
@@ -395,7 +395,7 @@ namespace AistTrader
 
             if (WorkMode == AgentWorkMode.Group)
             {
-                foreach (var item in MainWindow.Instance.AgentsStorage.Where(a => a._Agent.GroupName == OldGroupName/*GroupNameTxtBox.Text*/).ToList())
+                foreach (var item in MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName/*GroupNameTxtBox.Text*/).ToList())
                 {
                     MainWindow.Instance.DelAgentConfigBtnClick(item);
                 }
@@ -409,11 +409,11 @@ namespace AistTrader
                             string algorithmName = cb.Text;
                             var groupName = GroupNameTxtBox.Text;
                             List<Agent> list = new List<Agent>();
-                            foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a._Agent.GroupName == "Without Group"))
+                            foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a.Params.GroupName == "ungrouped agents"))
                             {
                                 var newAgent = (Agent)rs.Clone();
-                                newAgent._Agent.Amount = amount.Value;
-                                newAgent._Agent.GroupName = groupName;
+                                newAgent.Params.Amount = amount.Value;
+                                newAgent.Params.GroupName = groupName;
                                 list.Add(newAgent);
                                 //MainWindow.Instance.AddNewAgent(newAgent, -1);
                             }
@@ -435,13 +435,13 @@ namespace AistTrader
                             //Unit amount = ue.Value;
                             string algorithmName = cb.Text;
                             var groupName = GroupNameTxtBox.Text;
-                            var items = MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a._Agent.GroupName == groupName).ToList();
+                            var items = MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a.Params.GroupName == groupName).ToList();
                             int itemIndex = -1;
                             foreach (var i in items)
                                 itemIndex = MainWindow.Instance.AgentsStorage.IndexOf(i);
                             var itemToEdit = MainWindow.Instance.AgentsStorage[itemIndex];
                             //itemToEdit._Agent.Amount = amount;
-                            itemToEdit._Agent.GroupName = groupName;
+                            itemToEdit.Params.GroupName = groupName;
                             itemToEdit.Name = algorithmName;
                             MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
                         }

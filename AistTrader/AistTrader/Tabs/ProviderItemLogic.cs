@@ -197,6 +197,8 @@ namespace AistTrader
         public void ConnectAccount(AgentConnection agent)
         {
             string ipEndPoint = "";
+            bool sLoaded=false;
+
             if (agent.Connection.ConnectionSettings.IpEndPoint == null)
             {
                 try
@@ -257,7 +259,7 @@ namespace AistTrader
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
                 this.GuiAsync(() => UpdateProviderGridListView(agent));
                 this.GuiAsync(() => Logger.Info("Portfolios were loaded"));
-                TimeHelper.SyncMarketTime();
+                //TimeHelper.SyncMarketTime();
             };
             connection.NewSecurities += securities =>
             {
@@ -266,10 +268,13 @@ namespace AistTrader
                 this.GuiAsync(() =>
                 {
                     agent.Connection.Tools.AddRange(securities)/* PortfoliosList.AddRange(portfolios))*/;
-                    if (agent.Connection.Tools.Count > 1144)
+                    if (agent.Connection.Tools.Count > 1000 && !sLoaded)
                     {
+                        sLoaded = true;
                         Logger.Info("Securities were loaded");
+                        
                     }
+
                 });
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
             };
@@ -279,6 +284,7 @@ namespace AistTrader
                 this.GuiAsync(() => agent.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Connected);
                 this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - {0} is active now", connection.Name));
+                var c = connection.Securities;
             };
             connection.Disconnected += () =>
             {
@@ -429,6 +435,7 @@ namespace AistTrader
                 if (rowItem.Connection.IsRegistredConnection)
                 {
                     ConnectionManager.Connections[index].Connect();
+            
                 }
                 else
                 {
@@ -453,7 +460,9 @@ namespace AistTrader
                 var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
                 int index = ConnectionManager.Connections.FindIndex(i => i.Name == rowItem.Name);
                 ConnectionManager.Connections[index].Disconnect();
+               // ConnectionManager.Connections.RemoveAt(index);
                 rowItem.Connection.Command = OperationCommand.Connect;
+                rowItem.Connection.IsRegistredConnection = false;
                 //rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected;
 
                 UpdateProviderListView();
@@ -504,7 +513,7 @@ namespace AistTrader
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            Connections.Clear();
         }
 
         public bool Contains(AistTraderConnnectionWrapper item)
@@ -519,7 +528,7 @@ namespace AistTrader
 
         public bool Remove(AistTraderConnnectionWrapper item)
         {
-            throw new NotImplementedException();
+            return Connections.Remove(item);
         }
 
         public int Count { get; set; }
@@ -547,7 +556,6 @@ namespace AistTrader
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 

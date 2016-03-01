@@ -86,8 +86,8 @@ namespace AistTrader
         }
         private void LoadParams()
         {
-            List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name).ToList();
-            var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName != "Without Group").Select(i => i._Agent.GroupName).Distinct().ToList();
+            List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName).ToList();
+            var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName != "ungrouped agents").Select(i => i.Params.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList;
 
@@ -103,8 +103,8 @@ namespace AistTrader
             PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().Select(i => i.Name).ToList();
             _selectedPortfolio = agent.Name;
 
-            List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName == "Without Group").Select(i => i.Name).ToList();
-            var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i._Agent.GroupName != "Without Group").Select(i => i._Agent.GroupName).Distinct().ToList();
+            List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Name).ToList();
+            var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName != "ungrouped agents").Select(i => i.Params.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList;
             _selectedGroupOrSingleAgent = agent.AgentManagerSettings.AgentOrGroup;
@@ -139,14 +139,14 @@ namespace AistTrader
             var s =  SecurityPicker.SelectedSecurity;
             AgentManagerSettings setting;
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<AgentPortfolio>().FirstOrDefault(i => i.Name == PortfolioComboBox.SelectedItem.ToString());
-            var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Name == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+            var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
             if (agent == null)
             {
-                agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i._Agent.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-                setting = new AgentManagerSettings(agentPortfolio, agent._Agent.GroupName, SecurityPicker.SelectedSecurity);
+                agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+                setting = new AgentManagerSettings(agentPortfolio, agent.Params.GroupName, SecurityPicker.SelectedSecurity);
             }
             else
-                setting = new AgentManagerSettings(agentPortfolio, agent.Name, SecurityPicker.SelectedSecurity);
+                setting = new AgentManagerSettings(agentPortfolio, agent.Params.FriendlyName, SecurityPicker.SelectedSecurity);
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Account.Name , setting, setting.Tool,/* AmountTextBox.Value*/ 10), EditIndex);
             Close();
         }
@@ -155,7 +155,7 @@ namespace AistTrader
         private void GroupOrSingleAgentComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var result = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any
-                (i => i._Agent.GroupName != "Without Group" && i._Agent.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+                (i => i.Params.GroupName != "ungrouped agents" && i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
             if (result)
             {
                 AmountTextBox.Visibility = Visibility.Collapsed;

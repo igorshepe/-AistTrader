@@ -19,7 +19,7 @@ namespace AistTrader
         private void AgentListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = AgentListView.SelectedItem as Agent;
-            if (item != null && item._Agent.GroupName == "Without Group")
+            if (item != null && item.Params.GroupName == "ungrouped agents")
                 EditSingleOrGroupItemBtn.IsEnabled = false;
             else
                 EditSingleOrGroupItemBtn.IsEnabled = true;
@@ -70,14 +70,14 @@ namespace AistTrader
             foreach (var i in items)
             {
                 var agent = i;
-                if (agent._Agent.GroupName != "Without Group")
+                if (agent.Params.GroupName != "ungrouped agents")
                 {
                     foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
                     {
                         try
                         {
                             AgentsStorage.Remove(item);
-                            Logger.Info("Agent {0} Has been deleted", item.Name);
+                            Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name);
                         }
                         catch (Exception ex)
                         {
@@ -89,7 +89,7 @@ namespace AistTrader
                 else
                 {
                     var result = AgentListView.Items.Cast<Agent>().ToList();
-                    var isUsedinAnyOtherGroup = result.Where(a => a.Name == agent.Name && a._Agent.GroupName != "Without Group").Select(a => a).Any();
+                    var isUsedinAnyOtherGroup = result.Where(a => a.Name == agent.Name && a.Params.GroupName != "ungrouped agents").Select(a => a).Any();
                     if (isUsedinAnyOtherGroup)
                     {
                         MessageBox.Show("Нельзя удалить, используется в группе");
@@ -101,7 +101,8 @@ namespace AistTrader
                             try
                             {
                                 AgentsStorage.Remove(item);
-                                Logger.Info("Agent {0} Has been deleted", item.Name);
+                                Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name);
+
                             }
                             catch (Exception ex)
                             {
@@ -130,7 +131,7 @@ namespace AistTrader
             if (AgentListView.SelectedItem == null)
                 return;
             var items = AgentListView.SelectedItems.Cast<Agent>().ToList();
-            var item = items.Where(a => a._Agent.GroupName == "Without Group").Select(a => a).Any();
+            var item = items.Where(a => a.Params.GroupName == "ungrouped agents").Select(a => a).Any();
             if (item)
             {
                 var listToEdit = AgentListView.SelectedItems.Cast<Agent>().ToList();
@@ -175,19 +176,19 @@ namespace AistTrader
                 }
             }
         }
-        public void AddNewAgent(Agent settings, int editIndex)
+        public void AddNewAgent(Agent agent, int editIndex)
         {
             if (editIndex >= 0 && editIndex < AgentsStorage.Count)
-                AgentsStorage[editIndex] = settings;
+                AgentsStorage[editIndex] = agent;
             else
                 try
                 {
-                    AgentsStorage.Add(settings);
-                    Logger.Info("Successfully added agent -{0}", settings.Name);
+                    AgentsStorage.Add(agent);
+                    Logger.Info("Successfully added agent - \"{0}\"", agent.Params.FriendlyName);
                 }
                 catch (Exception)
                 {
-                    Logger.Info("Error adding agent -{0}", settings.Name);
+                    Logger.Info("Error adding agent - \"{0}\"", agent.Params.FriendlyName);
                 }
             SaveAgentSettings();
             UpdateAgentListView();
@@ -197,7 +198,7 @@ namespace AistTrader
             AgentListView.ItemsSource = AgentsStorage;
             AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
             if(AgentCollectionView.GroupDescriptions.Count ==0)
-                AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
+                AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
         }
         public void InitiateAgentSettings()
          {
@@ -217,7 +218,7 @@ namespace AistTrader
                 AgentListView.ItemsSource = AgentsStorage;
                 AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
                 if (AgentCollectionView.GroupDescriptions.Count == 0)
-                    AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("_Agent.GroupName"));
+                    AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
                 IsAgentSettingsLoaded = true;
             }
             catch (Exception e)

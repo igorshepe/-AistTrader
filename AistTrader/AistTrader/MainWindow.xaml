@@ -68,15 +68,15 @@
                         </ListView.Resources>
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
-                                <GridViewColumn Width="175" Header=" Имя" >
+                                <GridViewColumn Width="350" Header=" Имя" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Path=Name}" TextAlignment="Right" />
+                                                <TextBlock Text="{Binding Path=Params.FriendlyName}" TextAlignment="Right" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Width="490" Header=" Количество подключений" DisplayMemberBinding="{Binding Path=_Agent.ConnectionCount}" />
-                                <GridViewColumn Width="160" Header=" Контракты" DisplayMemberBinding="{Binding Path=_Agent.Contracts}" />
+                                <GridViewColumn Width="490" Header=" Количество подключений" DisplayMemberBinding="{Binding Path=Params.ConnectionCount}" />
+                                    <GridViewColumn Width="160" Header=" Контракты" DisplayMemberBinding="{Binding Path=Params.Contracts}" />
                                 <GridViewColumn Width="70">
                                     <CheckBox   Name="ChkBoxSelectAll" Content=" " FlowDirection="RightToLeft" IsChecked="True" ></CheckBox>
                                     <GridViewColumn.CellTemplate >
@@ -101,7 +101,7 @@
                                                         <Expander.Header>
                                                             <StackPanel Orientation="Horizontal">
                                                                 <TextBlock Text="{Binding Path= Name}"  Foreground="Black"  VerticalAlignment="Bottom" />
-                                                                <TextBlock Text="{Binding ItemCount}"  Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
+                                                                <TextBlock Text="{Binding ItemCount}"  Foreground="Black"  FontStyle="Normal" Margin="10,0,0,0" VerticalAlignment="Bottom" />
                                                             </StackPanel>
                                                         </Expander.Header>
                                                         <ItemsPresenter />
@@ -237,7 +237,7 @@
                             <GridView AllowsColumnReorder="False">
                                 <GridViewColumn Width="175" Header="Имя" DisplayMemberBinding="{Binding Path= Name}"  />
                                 <GridViewColumn Width="175" Header="Код" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Account.AgentAccount.Code}" />
-                                <GridViewColumn Width="175" Header="Агент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.AgentOrGroup}" />
+                                <GridViewColumn Width="350" Header="Агент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.AgentOrGroup}" />
                                 <GridViewColumn Width="175" Header="Инструмент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Tool}" />
                                 <GridViewColumn Width="175" Header="Позиции(лоты)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Position}" />
                                 <GridViewColumn Width="175" Header="П/У(сделка)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Transaction}" />
@@ -301,7 +301,7 @@
         <GridSplitter Grid.Row="1"  Height="5" Background="DarkGray"
                   VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
             <GroupBox Grid.Row="2" Header="Message Log">
-                <nlog:NlogViewer x:Name="logCtrl" TimeWidth="AUTO" LoggerNameWidth="0" LevelWidth="auto" ExceptionWidth="600" MessageWidth="500" />
+                <nlog:NlogViewer x:Name="logCtrl" TimeWidth="AUTO" LoggerNameWidth="0" LevelWidth="auto" ExceptionWidth="600" MessageWidth="900" />
             </GroupBox>
         </Grid>
     </DockPanel>

@@ -14,7 +14,7 @@ namespace NlogViewer
             this.logEventInfo = logEventInfo;
 
             ToolTip = logEventInfo.FormattedMessage;
-            Level = logEventInfo.Level.ToString();
+            Level = logEventInfo.Level.ToString();  
             FormattedMessage = logEventInfo.FormattedMessage;
             Exception = logEventInfo.Exception;
             LoggerName = logEventInfo.LoggerName;
