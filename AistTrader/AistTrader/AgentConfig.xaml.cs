@@ -35,7 +35,6 @@ namespace AistTrader
     //    }
     //}
     #endregion
-
     public partial class AgentConfig : IDataErrorInfo
     {
         #region Fields
@@ -154,6 +153,7 @@ namespace AistTrader
             var strategy = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
             var agentParams = new AgentParams(strategy, -1, true, -1, AgentSettings, AlgorithmComboBox.SelectedItem.ToString(), 10);
             MainWindow.Instance.AddNewAgent(new Agent(AlgorithmComboBox.SelectedItem.ToString(), agentParams), EditIndex);
+
             Close();
         }
         private void AgentSettingsButtonClick(object sender, RoutedEventArgs e)

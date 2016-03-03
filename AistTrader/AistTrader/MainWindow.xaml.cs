@@ -102,5 +102,14 @@ namespace AistTrader
             var form = new WhatsNew().ShowDialog();
             form = null;
         }
+
+        private void HidLogBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //todo: по аналогии с тс, графика без текста
+            if (mainGrid.RowDefinitions[2].Height.Value == 0)
+                mainGrid.RowDefinitions[2].Height = new GridLength(180);
+            else
+                mainGrid.RowDefinitions[2].Height = new GridLength(0);    
+        }
     }
 }

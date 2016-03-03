@@ -259,7 +259,14 @@ namespace AistTrader
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
                 this.GuiAsync(() => UpdateProviderGridListView(agent));
                 this.GuiAsync(() => Logger.Info("Portfolios were loaded"));
-                //TimeHelper.SyncMarketTime();
+                try
+                {
+                    TimeHelper.SyncMarketTime();
+                }
+                catch (Exception)
+                {
+                }
+                
             };
             connection.NewSecurities += securities =>
             {
@@ -272,9 +279,7 @@ namespace AistTrader
                     {
                         sLoaded = true;
                         Logger.Info("Securities were loaded");
-                        
                     }
-
                 });
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
             };
