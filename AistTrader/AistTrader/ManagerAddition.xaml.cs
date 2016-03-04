@@ -175,7 +175,7 @@ namespace AistTrader
 
             //var portfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == item);
             //item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
-            //var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == item);
+            //var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Name == item);
             //var securities = selectedPortfolio.Connection.Connection.Tools;
             //List<Security> portfoliosList = new List<Security>();
             //foreach (var i in securities)

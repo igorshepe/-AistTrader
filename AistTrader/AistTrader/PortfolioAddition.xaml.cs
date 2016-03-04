@@ -62,12 +62,12 @@ namespace AistTrader
         private void LoadParams()
         {
             ConnectionProviderComboBox.ItemsSource =
-                MainWindow.Instance.ProviderStorage.Where(i => i.ConnectionParams.IsConnected)
+                MainWindow.Instance.ConnectionsStorage.Where(i => i.ConnectionParams.IsConnected)
                     .Select(i => i.Name + " (" + i.ConnectionParams.Code + ")")
                     .ToList();
             //если 0 то ошибка- "нет активных подключений"
             //если > 0 то ошибка- 
-            //#Oldie# ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Select(i => i.Name + " (" + i.Connection.Code + ")").ToList();
+            //#Oldie# ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ConnectionsStorage.Select(i => i.Name + " (" + i.Connection.Code + ")").ToList();
 //            _dynamicAccount = MainWindow.Instance.PortfoliosList.Select(i => i.Name).ToList();
             //TODO:Загрузка счёта
         }
@@ -87,12 +87,12 @@ namespace AistTrader
                 MainWindow.Instance.ConnectionManager.Connections.Where(
                     i => i.ConnectionState == ConnectionStates.Connected).Select(i => i.Name).ToList();
             //или
-            //ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ProviderStorage.Where(i=>i.Connection.).Select(i => i.Name).ToList();
+            //ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ConnectionsStorage.Where(i=>i.Connection.).Select(i => i.Name).ToList();
 
 
 
             var items = ConnectionProviderComboBox.ItemsSource;
-            //var index= MainWindow.Instance.ProviderStorage.ToList().FindIndex(i => i.Name == portfolio.Connection.Name);
+            //var index= MainWindow.Instance.ConnectionsStorage.ToList().FindIndex(i => i.Name == portfolio.Connection.Name);
             foreach (var i in items)
             {
                 if (i.ToString() == portfolio.Connection.Name)
@@ -103,7 +103,7 @@ namespace AistTrader
                 }
             }
             //ConnectionProviderComboBox.SelectedItem= items;
-            //int index = MainWindow.Instance.ProviderStorage.Where<AgentConnection>(x => x.Name == portfolio.Connection.Name).Select<AgentConnection, int>(x => MainWindow.Instance.ProviderStorage.IndexOf(x)).Single<int>();
+            //int index = MainWindow.Instance.ConnectionsStorage.Where<AgentConnection>(x => x.Name == portfolio.Connection.Name).Select<AgentConnection, int>(x => MainWindow.Instance.ConnectionsStorage.IndexOf(x)).Single<int>();
             //portfolio.Connection.Name;
             //Todo: переделать под динамику
             //AccountComboBox.ItemsSource = portfolio.Connection.Connection.Accounts;
@@ -120,7 +120,7 @@ namespace AistTrader
                     connectionProvider.IndexOf(" (", StringComparison.Ordinal));
 
             var agentItem =
-                MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider.ToString());
+                MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Name == connectionProvider.ToString());
             agentItem.ConnectionParams.SelectedAccount = selectedAccount as StockSharp.BusinessEntities.Portfolio;
             MainWindow.Instance.AddNewAgentPortfolio(new Common.Entities.Portfolio(PortfolioNameTxtBox.Text, agentItem, selectedAccount.ToString()), EditIndex);
             Close();
@@ -141,7 +141,7 @@ namespace AistTrader
             if (EditIndex != int.MinValue)
             {
                 var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
-                var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
+                var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Name == connectionProvider);
                 if (agent.ConnectionParams.Accounts != null) AccountComboBox.ItemsSource = agent.ConnectionParams.Accounts.ToList();
                 //AccountComboBox.SelectedItem = AgentPortfolioStorage.Select()
             }
@@ -150,7 +150,7 @@ namespace AistTrader
                 var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
                 connectionProvider = connectionProvider.Substring(0,
                     connectionProvider.IndexOf(" (", StringComparison.Ordinal));
-                var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == connectionProvider);
+                var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Name == connectionProvider);
                 //if (agent.Connection.Accounts != null) 
                 //AccountComboBox.ItemsSource = agent.Connection.Accounts.ToList();
                 //TODO: уточнить что делать если данных нет    
@@ -239,7 +239,7 @@ namespace AistTrader
 
             var item = ConnectionProviderComboBox.SelectedItem.ToString();
             item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
-            var agent = MainWindow.Instance.ProviderStorage.FirstOrDefault(i => i.Name == item);
+            var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Name == item);
             var accounts = agent.ConnectionParams.Accounts;
             List<StockSharp.BusinessEntities. Portfolio> portfolios = new List<StockSharp.BusinessEntities. Portfolio>();
             foreach (var i in accounts)

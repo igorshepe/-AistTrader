@@ -62,9 +62,9 @@ namespace AistTrader
             var directories = Directory.EnumerateDirectories(@"C:\").Where(i => i.Contains("SpectraCGate")).ToList();
             if (IsAdditionMode)
             {
-                if (!MainWindow.Instance.ProviderStorage.IsNull())
+                if (!MainWindow.Instance.ConnectionsStorage.IsNull())
                 {
-                    var alreadyUsedPlazaRouters = MainWindow.Instance.ProviderStorage.Cast<Connection>().ToList();
+                    var alreadyUsedPlazaRouters = MainWindow.Instance.ConnectionsStorage.Cast<Connection>().ToList();
                     var result = directories.Where(i => alreadyUsedPlazaRouters.All(i2 => i2.ConnectionParams.PlazaConnectionParams.Path != i)).ToList();
                     return result;
                 }
