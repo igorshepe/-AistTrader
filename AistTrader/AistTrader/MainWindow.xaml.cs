@@ -23,7 +23,7 @@ namespace AistTrader
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
         private  readonly Logger LogView;
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
-        public ObservableCollection<Connection> ProviderStorage { get; private set; }
+        public ObservableCollection<Connection> ConnectionsStorage { get; private set; }
         public ObservableCollection<Common.Entities.Portfolio> AgentPortfolioStorage { get; private set; }
         public ObservableCollection<AgentManager> AgentManagerStorage { get; private set; }
 
@@ -46,8 +46,8 @@ namespace AistTrader
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
 
-            ProviderStorage = new ObservableCollection<Connection>();
-            ProviderStorage.CollectionChanged += ProviderStorageOnCollectionChanged;
+            ConnectionsStorage = new ObservableCollection<Connection>();
+            ConnectionsStorage.CollectionChanged += ProviderStorageOnCollectionChanged;
 
             AgentPortfolioStorage = new ObservableCollection<Common.Entities.Portfolio>();
             AgentPortfolioStorage.CollectionChanged += AgentPortfolioStorageOnCollectionChanged; 
@@ -60,12 +60,12 @@ namespace AistTrader
 
         private void SetConnectionCommandStatus()
         {
-            Instance.ProviderStorage.ForEach(i=>i.ConnectionParams.Command= OperationCommand.Connect);
-            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.IsConnected = false);
-            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.IsRegistredConnection = false);
-            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);
-            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>() );
-            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.Tools = new List<Security>());
+            Instance.ConnectionsStorage.ForEach(i=>i.ConnectionParams.Command= OperationCommand.Connect);
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.IsConnected = false);
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.IsRegistredConnection = false);
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>() );
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Tools = new List<Security>());
         }
         private void TabCtr_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {

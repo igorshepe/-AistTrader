@@ -31,7 +31,7 @@ namespace AistTrader
         public  AistTraderConnnectionManager ConnectionManager;
         private void ProviderStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
-            if (ProviderStorage.Count == 2)
+            if (ConnectionsStorage.Count == 2)
                 AddConnectionBtn.IsEnabled = false;
             else
                 AddConnectionBtn.IsEnabled = true;
@@ -54,22 +54,22 @@ namespace AistTrader
             }
             ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
             view.Refresh();
-            //var rowItem = Instance.ProviderStorage.FirstOrDefault(i => i == item);
+            //var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
             //rowItem.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Authentication;
             //TODO: при выводе сообщений добавлять инфу о том какое именно соеднение..
         }
         public void AddNewAgentConnection(Connection settings, int editIndex)
         {
-            if (editIndex >= 0 && editIndex < ProviderStorage.Count)
-                ProviderStorage[editIndex] = settings;
+            if (editIndex >= 0 && editIndex < ConnectionsStorage.Count)
+                ConnectionsStorage[editIndex] = settings;
             else
-                ProviderStorage.Add(settings);
+                ConnectionsStorage.Add(settings);
             SaveProviderSettings();
             UpdateProviderListView();
         }
         private void SaveProviderSettings()
         {
-            List<Connection> obj = ProviderStorage.Select(a => a).ToList();
+            List<Connection> obj = ConnectionsStorage.Select(a => a).ToList();
             var fStream = new FileStream("Connections.xml", FileMode.Create, FileAccess.Write, FileShare.None);
             var xmlSerializer = new XmlSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
             xmlSerializer.Serialize(fStream, obj);
@@ -86,9 +86,9 @@ namespace AistTrader
                 if (connections == null) return;
                 foreach (var rs in connections)
                 {
-                    ProviderStorage.Add(rs);
+                    ConnectionsStorage.Add(rs);
                 }
-                ProviderListView.ItemsSource = ProviderStorage;
+                ProviderListView.ItemsSource = ConnectionsStorage;
                 IsProviderSettingsLoaded = true;
             }
             catch (Exception e)
@@ -117,7 +117,7 @@ namespace AistTrader
                     MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
                     return;
                 }
-                ProviderStorage.Remove(item);
+                ConnectionsStorage.Remove(item);
                 SaveProviderSettings();
             }
             //foreach (var item in ProviderListView.SelectedItems.Cast<AgentPortfolio>().ToList())
@@ -130,7 +130,7 @@ namespace AistTrader
             var listToEdit = ProviderListView.SelectedItems.Cast<Connection>().ToList();
             //TODO: переделать
             foreach (var connectionEditWindow in from agentSettings in listToEdit
-                                                 let index = ProviderStorage.IndexOf(agentSettings)
+                                                 let index = ConnectionsStorage.IndexOf(agentSettings)
                                                  where index != -1
                                                  select new ConnectionAddition(agentSettings, index))
             {
@@ -164,14 +164,14 @@ namespace AistTrader
             //        PortfoliosList.Clear();
             //    }
             //    var item = (sender as FrameworkElement).DataContext;
-            //    var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
+            //    var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
             //    rowItem.Connection.IsActive = false;
             //}
         }
 
         public void UpdateProviderListView()
         {
-            ProviderListView.ItemsSource = ProviderStorage;
+            ProviderListView.ItemsSource = ConnectionsStorage;
             ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
             ProviderCollectionView.Refresh();
             //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
@@ -179,13 +179,13 @@ namespace AistTrader
         }
         public void UpdateProviderGridListView(Connection agentConnection)
         {
-            var item = ProviderStorage.FirstOrDefault(i => i.Name == agentConnection.Name);
+            var item = ConnectionsStorage.FirstOrDefault(i => i.Name == agentConnection.Name);
             item.ConnectionParams.VariationMargin = item.ConnectionParams.Accounts.FirstOrDefault().VariationMargin;
             item.ConnectionParams.Funds = item.ConnectionParams.Accounts.FirstOrDefault().CurrentValue;
             item.ConnectionParams.NetValue= item.ConnectionParams.Accounts.FirstOrDefault().CurrentPrice;
 
 
-            ProviderListView.ItemsSource = ProviderStorage;
+            ProviderListView.ItemsSource = ConnectionsStorage;
             ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
             ProviderCollectionView.Refresh();
         }
@@ -208,7 +208,7 @@ namespace AistTrader
                     Logger.Log(LogLevel.Error, e.Message);
                     Logger.Log(LogLevel.Error, e.InnerException.Message);
                 }
-                var item = ProviderStorage.Cast<Connection>().Where(i => i.ConnectionParams.PlazaConnectionParams.Path == agent.ConnectionParams.PlazaConnectionParams.Path)
+                var item = ConnectionsStorage.Cast<Connection>().Where(i => i.ConnectionParams.PlazaConnectionParams.Path == agent.ConnectionParams.PlazaConnectionParams.Path)
                         .Select(i => i).FirstOrDefault();
                 item.ConnectionParams.PlazaConnectionParams.IpEndPoint = ipEndPoint;
             }
@@ -430,7 +430,7 @@ namespace AistTrader
                 var item = (sender as FrameworkElement).DataContext;
                 ProviderListView.SelectedItems.Clear();
                 ProviderListView.SelectedItems.Add(item);
-                var rowItem = Instance.ProviderStorage.FirstOrDefault(i => i == item);
+                var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
                 int index = ConnectionManager.Connections.FindIndex(i => i.Name == rowItem.Name);
                 rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
                 if (rowItem.ConnectionParams.IsRegistredConnection)
@@ -458,7 +458,7 @@ namespace AistTrader
                 //}
                 //ConnectionManager.Connections[0].Disconnect();
                 var item = (sender as FrameworkElement).DataContext;
-                var rowItem = ProviderStorage.FirstOrDefault(i => i == item);
+                var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
                 int index = ConnectionManager.Connections.FindIndex(i => i.Name == rowItem.Name);
                 ConnectionManager.Connections[index].Disconnect();
                // ConnectionManager.Connections.RemoveAt(index);
@@ -473,7 +473,7 @@ namespace AistTrader
         }
         private void ProviderListView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!IsProviderSettingsLoaded & (File.Exists("Connections.xml")) & ProviderStorage.Count == 0)
+            if (!IsProviderSettingsLoaded & (File.Exists("Connections.xml")) & ConnectionsStorage.Count == 0)
                 InitiateProviderSettings();
         }
 
