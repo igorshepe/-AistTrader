@@ -6,7 +6,7 @@
         Width="1349"
         Title="AistTrader"
         x:Name="MainFrm" 
-        Icon="Resources/Images/mainIcon.ico" 
+        Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized">
 
@@ -79,11 +79,11 @@
                                 <GridViewColumn Width="490" Header=" Количество подключений" DisplayMemberBinding="{Binding Path=Params.ConnectionCount}" />
                                     <GridViewColumn Width="160" Header=" Контракты" DisplayMemberBinding="{Binding Path=Params.Contracts}" />
                                 <GridViewColumn Width="70">
-                                    <CheckBox   Name="ChkBoxSelectAll" Content=" " FlowDirection="RightToLeft" IsChecked="True" ></CheckBox>
+                                    <CheckBox   Name="ChkBoxSelectAllAgents" Content=" " FlowDirection="RightToLeft" IsChecked="False" ></CheckBox>
                                     <GridViewColumn.CellTemplate >
                                         <DataTemplate >
                                             <StackPanel>
-                                                <CheckBox IsChecked= "{Binding IsChecked, ElementName= ChkBoxSelectAll, Mode = OneWay }" >
+                                                    <CheckBox IsChecked= "{Binding IsChecked, ElementName= ChkBoxSelectAllAgents, Mode = OneWay }" >
                                                 </CheckBox>
                                             </StackPanel>
                                         </DataTemplate>
@@ -194,7 +194,7 @@
                                     <GridViewColumn Width="175" Header="Количество алгоритмов" DisplayMemberBinding="{Binding Path=Connection.Connection.AlgorithmCount}" />
                                     <GridViewColumn Width="175" Header="Контракты" DisplayMemberBinding="{Binding Path=Connection.Connection.Contracts}" />
                                 <GridViewColumn Width="70"  >
-                                    <CheckBox Name="ChkBoxSelectAllPortfolios" IsChecked="True" ></CheckBox>
+                                    <CheckBox Name="ChkBoxSelectAllPortfolios" IsChecked="False" ></CheckBox>
                                     <GridViewColumn.CellTemplate >
                                         <DataTemplate >
                                             <StackPanel>
@@ -245,11 +245,11 @@
                                 <GridViewColumn Width="175" Header="П/У(итоговый)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.FinalTransaction}" />
                                 <GridViewColumn Width="175" Header="Состояние" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Account.AgentAccount.IsActive}" />
                                 <GridViewColumn Width="70"  >
-                                    <CheckBox Name="CheckkBoxSelectAll" IsChecked="True" ></CheckBox>
+                                    <CheckBox Name="CheckkBoxSelectAllManagerAgents" IsChecked="False" ></CheckBox>
                                     <GridViewColumn.CellTemplate >
                                         <DataTemplate >
                                             <StackPanel>
-                                                <CheckBox IsChecked= "{Binding IsChecked, ElementName= CheckkBoxSelectAll, Mode = OneWay }" >
+                                                    <CheckBox IsChecked= "{Binding IsChecked, ElementName= CheckkBoxSelectAllManagerAgents, Mode = OneWay }" >
                                                 </CheckBox>
                                             </StackPanel>
                                         </DataTemplate>
@@ -302,10 +302,13 @@
         <GridSplitter Grid.Row="1"  Height="5" Background="DarkGray"
                   VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
             <GroupBox Grid.Row="2" Header="Message Log">
-                <!--<nlog:NlogViewer x:Name="LogCrtl"></nlog:NlogViewer>-->
+                
                 <nlogViewer:NlogViewer x:Name="logCtrl" TimeWidth="AUTO" LoggerNameWidth="0" LevelWidth="auto" ExceptionWidth="600" MessageWidth="900" />
             </GroupBox>
         </Grid>
     </DockPanel>
     
 </Window>
+
+
+

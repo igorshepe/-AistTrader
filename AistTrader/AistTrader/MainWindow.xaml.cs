@@ -21,6 +21,7 @@ namespace AistTrader
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
+        private  readonly Logger LogView;
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public ObservableCollection<Connection> ProviderStorage { get; private set; }
         public ObservableCollection<Common.Entities.Portfolio> AgentPortfolioStorage { get; private set; }
@@ -52,6 +53,8 @@ namespace AistTrader
             AgentPortfolioStorage.CollectionChanged += AgentPortfolioStorageOnCollectionChanged; 
 
             AgentManagerStorage = new ObservableCollection<AgentManager>();
+
+
             #endregion
         }
 
