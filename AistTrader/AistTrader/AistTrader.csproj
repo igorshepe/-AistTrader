@@ -178,36 +178,28 @@
     <Compile Include="WhatsNew.xaml.cs">
       <DependentUpon>WhatsNew.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentConfig.xaml.cs">
-      <DependentUpon>AgentConfig.xaml</DependentUpon>
+    <Compile Include="AgentAddition.xaml.cs">
+      <DependentUpon>AgentAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentConnectionAddition.xaml.cs">
-      <DependentUpon>AgentConnectionAddition.xaml</DependentUpon>
+    <Compile Include="ConnectionAddition.xaml.cs">
+      <DependentUpon>ConnectionAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentGroupAddition.xaml.cs">
-      <DependentUpon>AgentGroupAddition.xaml</DependentUpon>
+    <Compile Include="GroupAddition.xaml.cs">
+      <DependentUpon>GroupAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentManagerAddition.xaml.cs">
-      <DependentUpon>AgentManagerAddition.xaml</DependentUpon>
+    <Compile Include="ManagerAddition.xaml.cs">
+      <DependentUpon>ManagerAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentPortfolioAddition.xaml.cs">
-      <DependentUpon>AgentPortfolioAddition.xaml</DependentUpon>
+    <Compile Include="PortfolioAddition.xaml.cs">
+      <DependentUpon>PortfolioAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\CommandReference.cs" />
-    <Compile Include="Commands\DelegateCommand.cs" />
-    <Compile Include="Models\AgentConfigModel.cs" />
     <Compile Include="StrategiesSettingsWindow.xaml.cs">
       <DependentUpon>StrategiesSettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tabs\AgentItemLogic.cs" />
-    <Compile Include="Tabs\AgentManagerItemLogic.cs" />
-    <Compile Include="Tabs\PortfolioItemLogic.cs" />
-    <Compile Include="Tabs\ProviderItemLogic.cs" />
-    <Compile Include="ViewModels\AgentConfigViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\AgentConfigView.xaml.cs">
-      <DependentUpon>AgentConfigView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Tabs\AgentItem.cs" />
+    <Compile Include="Tabs\AgentManagerItem.cs" />
+    <Compile Include="Tabs\PortfolioItem.cs" />
+    <Compile Include="Tabs\ConnectionItem.cs" />
     <Page Include="SecuritiesSelectorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -228,33 +220,29 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="AgentConfig.xaml">
+    <Page Include="AgentAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AgentConnectionAddition.xaml">
+    <Page Include="ConnectionAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AgentGroupAddition.xaml">
+    <Page Include="GroupAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AgentManagerAddition.xaml">
+    <Page Include="ManagerAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AgentPortfolioAddition.xaml">
+    <Page Include="PortfolioAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="StrategiesSettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AgentConfigView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -265,11 +253,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -283,18 +266,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="On to Refactoring\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Strategies\Strategies\Strategies.csproj">
       <Project>{a4eb3f81-1328-48cd-a8e3-cd8211f88633}</Project>
@@ -305,7 +282,7 @@
       <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\NlogViewer\NlogViewer.csproj">
-      <Project>{c04e879d-287e-49b5-9933-42fc2eff75f0}</Project>
+      <Project>{C04E879D-287E-49B5-9933-42FC2EFF75F0}</Project>
       <Name>NlogViewer</Name>
     </ProjectReference>
   </ItemGroup>

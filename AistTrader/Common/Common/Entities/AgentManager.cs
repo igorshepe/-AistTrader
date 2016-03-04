@@ -1,7 +1,6 @@
 ﻿using System;
-using Common.Settings;
+using Common.Params;
 using StockSharp.BusinessEntities;
-using StockSharp.Messages;
 
 namespace Common.Entities
 {
@@ -9,17 +8,23 @@ namespace Common.Entities
     public class AgentManager
     {
         AgentManager() { }
-        public AgentManager(string name, AgentManagerSettings agentManager, Security tool, int amount)
+        public AgentManager(string name, ManagerParams agentManager, Security tool, int amount)
         {
             Name = name;
             AgentManagerSettings = agentManager;
             Tool = tool;
             Amount = amount;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
         public string Name { get; set; }
         public StockSharp.BusinessEntities.Security Tool { get; set; }
         //public Unit Amount { get; set; }
         public int Amount { get; set; }
-        public AgentManagerSettings AgentManagerSettings { get; set; }
+        public ManagerParams AgentManagerSettings { get; set; }
     }
 }

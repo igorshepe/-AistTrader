@@ -84,20 +84,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Agent.cs" />
-    <Compile Include="Entities\AgentPortfolio.cs" />
+    <Compile Include="Entities\Portfolio.cs" />
     <Compile Include="Entities\AgentManager.cs" />
-    <Compile Include="Entities\AgentConnection.cs" />
-    <Compile Include="Helpers.cs" />
+    <Compile Include="Entities\Connection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\AgentManagerSettings.cs" />
-    <Compile Include="Settings\AgentSettings.cs" />
-    <Compile Include="Settings\AlgorithmSettings.cs" />
-    <Compile Include="Settings\ConnectionsSettings.cs" />
-    <Compile Include="Settings\SettingsArrayList.cs" />
-    <Compile Include="Settings\TerminalSettings.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Compile Include="Params\ManagerParams.cs" />
+    <Compile Include="Params\AgentParams.cs" />
+    <Compile Include="Params\ConnectionParams.cs" />
+    <Compile Include="Params\PlazaConnectionParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Strategies\Strategies\Strategies.csproj">

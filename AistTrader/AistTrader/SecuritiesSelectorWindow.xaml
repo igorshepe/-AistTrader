@@ -10,6 +10,7 @@
 		xmlns:xaml="http://schemas.stocksharp.com/xaml"
 		Height="562.207"
         Width="466"
+        FontFamily="Consolas"
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen"
         >

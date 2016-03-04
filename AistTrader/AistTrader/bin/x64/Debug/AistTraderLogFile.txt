@@ -238,3 +238,17 @@
 2016-02-29 15:04:33.1857|INFO|AistTrader.MainWindow|Securities were loaded
 2016-02-29 15:05:27.3248|INFO|AistTrader.MainWindow|Successfully added agent manager - jkhjhj
 2016-02-29 15:05:27.6478|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-03-03 14:23:17.4959|INFO|AistTrader.MainWindow|Successfully added agent - "AistInvestStrategy 1111 - 1666"
+2016-03-03 14:23:17.6501|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-03-03 14:23:27.3930|INFO|AistTrader.MainWindow|Successfully added agent - "AistInvestStrategy 1109 - 1666"
+2016-03-03 14:23:27.3930|INFO|AistTrader.MainWindow|Successfully saved agents
+2016-03-04 01:43:48.8082|INFO|AistTrader.MainWindow|Successfully added agent - "AistInvestStrategy 1099 - 1666"
+2016-03-04 01:43:48.8642|INFO|AistTrader.MainWindow|Agent collection been updated
+2016-03-04 01:47:34.1665|INFO|AistTrader.MainWindow|Agent "AistInvestStrategy 1111 - 1666" has been deleted.  Strategies class name: AistInvestStrategy.cs
+2016-03-04 01:47:34.2015|INFO|AistTrader.MainWindow|Agent collection been updated
+2016-03-04 01:47:34.8979|INFO|AistTrader.MainWindow|Agent "AistInvestStrategy 1109 - 1666" has been deleted.  Strategies class name: AistInvestStrategy.cs
+2016-03-04 01:47:34.9409|INFO|AistTrader.MainWindow|Agent collection been updated
+2016-03-04 01:47:36.6940|INFO|AistTrader.MainWindow|Agent "AistInvestStrategy 1099 - 1666" has been deleted.  Strategies class name: AistInvestStrategy.cs
+2016-03-04 01:47:36.6940|INFO|AistTrader.MainWindow|Agent collection been updated
+2016-03-04 04:18:25.3766|INFO|AistTrader.MainWindow|Successfully added agent - "AistInvestStrategy 1111 - 1666"
+2016-03-04 04:18:25.5369|INFO|AistTrader.MainWindow|Agent collection been updated

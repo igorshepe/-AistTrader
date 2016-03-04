@@ -5,6 +5,7 @@
         x:Name="StratSettings"
         Title="Настройки стратегии"
         Height="316"
+        FontFamily="Consolas"
         Width="258"
         ResizeMode="NoResize"
         Icon="Resources/Images/mainIcon.ico">

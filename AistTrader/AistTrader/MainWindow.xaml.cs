@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Threading;
 using Common.Entities;
-using Common.Settings;
+using Common.Params;
 using Ecng.Common;
 using MoreLinq;
 using NLog;
 using StockSharp.BusinessEntities;
-using StockSharp.Plaza;
 
 namespace AistTrader
 {
@@ -24,8 +22,8 @@ namespace AistTrader
         
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
-        public ObservableCollection<AgentConnection> ProviderStorage { get; private set; }
-        public ObservableCollection<AgentPortfolio> AgentPortfolioStorage { get; private set; }
+        public ObservableCollection<Connection> ProviderStorage { get; private set; }
+        public ObservableCollection<Common.Entities.Portfolio> AgentPortfolioStorage { get; private set; }
         public ObservableCollection<AgentManager> AgentManagerStorage { get; private set; }
 
         public CollectionView AgentCollectionView { get; set; }
@@ -47,10 +45,10 @@ namespace AistTrader
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
 
-            ProviderStorage = new ObservableCollection<AgentConnection>();
+            ProviderStorage = new ObservableCollection<Connection>();
             ProviderStorage.CollectionChanged += ProviderStorageOnCollectionChanged;
 
-            AgentPortfolioStorage = new ObservableCollection<AgentPortfolio>();
+            AgentPortfolioStorage = new ObservableCollection<Common.Entities.Portfolio>();
             AgentPortfolioStorage.CollectionChanged += AgentPortfolioStorageOnCollectionChanged; 
 
             AgentManagerStorage = new ObservableCollection<AgentManager>();
@@ -59,12 +57,12 @@ namespace AistTrader
 
         private void SetConnectionCommandStatus()
         {
-            Instance.ProviderStorage.ForEach(i=>i.Connection.Command= OperationCommand.Connect);
-            Instance.ProviderStorage.ForEach(i => i.Connection.IsConnected = false);
-            Instance.ProviderStorage.ForEach(i => i.Connection.IsRegistredConnection = false);
-            Instance.ProviderStorage.ForEach(i => i.Connection.ConnectionStatus = ConnectionsSettings.AgentConnectionStatus.Disconnected);
-            Instance.ProviderStorage.ForEach(i => i.Connection.Accounts = new List<Portfolio>() );
-            Instance.ProviderStorage.ForEach(i => i.Connection.Tools = new List<Security>());
+            Instance.ProviderStorage.ForEach(i=>i.ConnectionParams.Command= OperationCommand.Connect);
+            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.IsConnected = false);
+            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.IsRegistredConnection = false);
+            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);
+            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>() );
+            Instance.ProviderStorage.ForEach(i => i.ConnectionParams.Tools = new List<Security>());
         }
         private void TabCtr_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {

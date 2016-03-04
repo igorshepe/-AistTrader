@@ -1,5 +1,5 @@
 ﻿using System;
-using Common.Settings;
+using Common.Params;
 
 namespace Common.Entities
 {
