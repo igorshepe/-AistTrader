@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -197,8 +198,10 @@ namespace AistTrader
         {
             AgentListView.ItemsSource = AgentsStorage;
             AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
-            if(AgentCollectionView.GroupDescriptions.Count ==0)
+            if (AgentCollectionView.GroupDescriptions.Count == 0)
                 AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
+
+
         }
         public void InitiateAgentSettings()
          {

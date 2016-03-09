@@ -10,7 +10,36 @@
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized">
 
+    
+    <Window.Resources>
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Height" Value="12" />
+            <Setter Property="Width" Value="12" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Image x:Name="img" Source="Resources/Images/Collapse.png" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="img" Property="Source" Value="Resources/Images/Expand.png" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    
     <DockPanel >
+        
+        
+        
+        
+        
         <StatusBar FontFamily="Consolas" DockPanel.Dock="Bottom" Margin="0,0,0,-0" Height="28">
             Disconnected
             <Separator />
@@ -69,7 +98,7 @@
                         </ListView.Resources>
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
-                                <GridViewColumn Width="350" Header=" Имя" >
+                                <GridViewColumn Width="370" Header=" Имя" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                                 <TextBlock Text="{Binding Path=Params.FriendlyName}" TextAlignment="Right" />
@@ -78,8 +107,8 @@
                                 </GridViewColumn>
                                 <GridViewColumn Width="490" Header=" Количество подключений" DisplayMemberBinding="{Binding Path=Params.ConnectionCount}" />
                                     <GridViewColumn Width="160" Header=" Контракты" DisplayMemberBinding="{Binding Path=Params.Contracts}" />
-                                <GridViewColumn Width="70">
-                                    <CheckBox   Name="ChkBoxSelectAllAgents" Content=" " FlowDirection="RightToLeft" IsChecked="False" ></CheckBox>
+                                <GridViewColumn Width="28">
+                                    <CheckBox   Name="ChkBoxSelectAllAgents" Content="" FlowDirection="RightToLeft" IsChecked="False" ></CheckBox>
                                     <GridViewColumn.CellTemplate >
                                         <DataTemplate >
                                             <StackPanel>
