@@ -17,7 +17,18 @@
             <TextBlock Name="TimeTextBlock"/>
             
             <Separator />
-            <Button Name="HidLogBtn" Content="Hide log window" Height="23" Width="133" Click="HidLogBtn_Click"/>
+            <StackPanel Name="StackPanelInStatusBar"  Margin="0,-6,0,0" >
+                <Image Name="ImageInStackPanelOfStatusBar" ToolTip="Show log window" Source="Resources/Images/hide.png" Height="35" Width="35" MouseDown="UIElement_OnMouseDown"  RenderTransformOrigin="0.95,0.032" />
+            </StackPanel>
+
+
+            <!--<Button Name="HidLogBtn" Click="HidLogBtn_Click"  Height="23" Width="133" >
+                <StackPanel>
+                    <Image Source="Resources/Images/show.png" Height="23" Width="277" />
+                </StackPanel>
+
+            </Button>-->
+                
         </StatusBar>
         <Grid Name="mainGrid"  Margin="0,0,0,-1">
         <Grid.RowDefinitions>
@@ -238,8 +249,23 @@
                             <GridView AllowsColumnReorder="False">
                                 <GridViewColumn Width="175" Header="Имя" DisplayMemberBinding="{Binding Path= Name}"  />
                                 <GridViewColumn Width="175" Header="Код" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Account.AgentAccount.Code}" />
-                                <GridViewColumn Width="350" Header="Агент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.AgentOrGroup}" />
-                                <GridViewColumn Width="175" Header="Инструмент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Tool}" />
+                                <!--<GridViewColumn Width="350" Header="Агент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.AgentOrGroup}" />-->
+
+                                    <GridViewColumn Width="350" Header="Агент" >
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <TextBlock HorizontalAlignment="Left" Text="{Binding Path=AgentManagerSettings.AgentOrGroup}" Margin="-5,0,0,0"> </TextBlock>
+                                                    <Button Click="OperationBtnClick" HorizontalAlignment="Right" Content="ТГ"  Margin="0,0,-10,0"></Button>
+                                                </StackPanel>
+                                                
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+
+
+
+                                    <GridViewColumn Width="175" Header="Инструмент" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Tool}" />
                                 <GridViewColumn Width="175" Header="Позиции(лоты)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Position}" />
                                 <GridViewColumn Width="175" Header="П/У(сделка)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.Transaction}" />
                                 <GridViewColumn Width="175" Header="П/У(итоговый)" DisplayMemberBinding="{Binding Path=AgentManagerSettings.FinalTransaction}" />
