@@ -91,7 +91,7 @@ namespace AistTrader
 
             //var agents = Settings.Default.AgentManager.Cast<AgentManager>().Select(i => i.Name).ToList();
             //var accounts = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().Select(i =>i).Except(agents).ToList();
-            var accounts = MainWindow.Instance.AgentPortfolioStorage.Cast<StockSharp.BusinessEntities.Portfolio>().Select(i => i.Name).ToList();
+            var accounts = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             PortfolioComboBox.ItemsSource = accounts;
             AmountTextBox.Text = "";
 
