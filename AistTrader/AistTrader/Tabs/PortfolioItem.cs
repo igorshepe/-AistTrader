@@ -5,6 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 using Common.Entities;
 using NLog;
@@ -40,7 +43,6 @@ namespace AistTrader
             var xmlSerializer = new XmlSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
             xmlSerializer.Serialize(fStream, obj);
             fStream.Close();
-
         }
         private void InitiatePortfolioSettings()
         {
@@ -90,8 +92,6 @@ namespace AistTrader
                 portfolioEditkWindow.Close();
             }
         }
-
-
         private void DelPortfolioBtnClick(object sender, RoutedEventArgs e)
         {
             foreach (var item in PortfolioListView.SelectedItems.Cast<Common.Entities.Portfolio>().ToList())
@@ -111,6 +111,19 @@ namespace AistTrader
         }
         private void AgentPortfolioStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
+        }
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (mainGrid.RowDefinitions[2].Height.Value == 0)
+            {
+                mainGrid.RowDefinitions[2].Height = new GridLength(180);
+                MainFrm.ImageInStackPanelOfStatusBar.Source = new BitmapImage(new Uri("Resources/Images/hide.png", UriKind.Relative));
+            }
+            else
+            {
+                mainGrid.RowDefinitions[2].Height = new GridLength(0);
+                MainFrm.ImageInStackPanelOfStatusBar.Source = new BitmapImage(new Uri("Resources/Images/show.png", UriKind.Relative));
+            }
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace Common.Entities
 {
     [Serializable]
+    [XmlType(Namespace = "Common.Entities", TypeName = "Common.Entities.Portfolio")]
     public class Portfolio
     {
         Portfolio() { }
