@@ -255,13 +255,13 @@ namespace AistTrader
                 //this.GuiAsync(() => /*agent.AgentAccount.Accounts.AddRange(portfolios)*/ MainWindow.Instance.AgentPortfolioStorage.(portfolios));
                 this.GuiAsync(() => UpdateProviderGridListView(agent));
                 this.GuiAsync(() => Logger.Info("Portfolios were loaded"));
-                try
-                {
-                    TimeHelper.SyncMarketTime();
-                }
-                catch (Exception)
-                {
-                }
+                //try
+                //{
+                //    TimeHelper.SyncMarketTime();
+                //}
+                //catch (Exception)
+                //{
+                //}
                 
             };
             connection.NewSecurities += securities =>

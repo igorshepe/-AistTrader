@@ -31,13 +31,13 @@ namespace AistTrader
         public CollectionView ProviderCollectionView { get; set; }
         public CollectionView PortfolioCollectionView { get; set; }
         public CollectionView AgentManagerCollectionView { get; set; }
-        
+        private GridLength LogWindowPreviousHight;
         #endregion
+
         public MainWindow()
         {
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
-
             #region Initialize collections
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
@@ -57,7 +57,6 @@ namespace AistTrader
 
             #endregion
         }
-
         private void SetConnectionCommandStatus()
         {
             Instance.ConnectionsStorage.ForEach(i=>i.ConnectionParams.Command= OperationCommand.Connect);
@@ -102,15 +101,6 @@ namespace AistTrader
         {
             var form = new WhatsNew().ShowDialog();
             form = null;
-        }
-
-        private void HidLogBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //todo: по аналогии с тс, графика без текста
-            if (mainGrid.RowDefinitions[2].Height.Value == 0)
-                mainGrid.RowDefinitions[2].Height = new GridLength(180);
-            else
-                mainGrid.RowDefinitions[2].Height = new GridLength(0);    
         }
     }
 }

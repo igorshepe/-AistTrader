@@ -172,9 +172,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ManagerAdditionTradeSettings.xaml.cs">
-      <DependentUpon>ManagerAdditionTradeSettings.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SecuritiesSelectorWindow.xaml.cs">
       <DependentUpon>SecuritiesSelectorWindow.xaml</DependentUpon>
     </Compile>
@@ -203,10 +200,6 @@
     <Compile Include="Tabs\AgentManagerItem.cs" />
     <Compile Include="Tabs\PortfolioItem.cs" />
     <Compile Include="Tabs\ConnectionItem.cs" />
-    <Page Include="ManagerAdditionTradeSettings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="SecuritiesSelectorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

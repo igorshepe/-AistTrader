@@ -12,10 +12,7 @@ using System.Xml.Serialization;
 using Common.Entities;
 using NLog;
 
-namespace AistTrader
-
-    //todo: идентификаторы портфеля тоже в кеше
-
+namespace AistTrader //todo: идентификаторы портфеля тоже в кеше
 {
     public partial class MainWindow
     {
@@ -30,7 +27,6 @@ namespace AistTrader
 
             UpdatePortfolioListView();
         }
-
         public void UpdatePortfolioListView()
         {
             PortfolioListView.ItemsSource = AgentPortfolioStorage;
@@ -112,15 +108,16 @@ namespace AistTrader
         private void AgentPortfolioStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
         }
-        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        private void StasusBarLogImage_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (mainGrid.RowDefinitions[2].Height.Value == 0)
             {
-                mainGrid.RowDefinitions[2].Height = new GridLength(180);
+                mainGrid.RowDefinitions[2].Height = new GridLength(LogWindowPreviousHight.Value);
                 MainFrm.ImageInStackPanelOfStatusBar.Source = new BitmapImage(new Uri("Resources/Images/hide.png", UriKind.Relative));
             }
             else
             {
+                LogWindowPreviousHight = mainGrid.RowDefinitions[2].Height;
                 mainGrid.RowDefinitions[2].Height = new GridLength(0);
                 MainFrm.ImageInStackPanelOfStatusBar.Source = new BitmapImage(new Uri("Resources/Images/show.png", UriKind.Relative));
             }

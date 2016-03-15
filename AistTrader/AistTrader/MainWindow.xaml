@@ -15,20 +15,10 @@
             Disconnected
             <Separator />
             <TextBlock Name="TimeTextBlock"/>
-            
             <Separator />
             <StackPanel Name="StackPanelInStatusBar"  Margin="0,-6,0,0" >
-                <Image Name="ImageInStackPanelOfStatusBar" ToolTip="Show log window" Source="Resources/Images/hide.png" Height="35" Width="35" MouseDown="UIElement_OnMouseDown"  RenderTransformOrigin="0.95,0.032" />
+                <Image Name="ImageInStackPanelOfStatusBar" ToolTip="Show log window" Source="Resources/Images/hide.png" Height="35" Width="35" MouseDown="StasusBarLogImage_OnMouseDown"  RenderTransformOrigin="0.95,0.032" />
             </StackPanel>
-
-
-            <!--<Button Name="HidLogBtn" Click="HidLogBtn_Click"  Height="23" Width="133" >
-                <StackPanel>
-                    <Image Source="Resources/Images/show.png" Height="23" Width="277" />
-                </StackPanel>
-
-            </Button>-->
-                
         </StatusBar>
         <Grid Name="mainGrid"  Margin="0,0,0,-1">
         <Grid.RowDefinitions>
@@ -62,7 +52,7 @@
             <TabControl Margin="0,19,0,0" Name="TabCtr" FontFamily="Consolas" SelectionChanged="TabCtr_OnSelectionChanged" Grid.RowSpan="2" >
                 <TabItem Header="Агенты" x:Name="AgentItem" Margin="-2,0,0,0"  >
                 <Grid Name="AgentItemGrid" Margin="-4,-2,0,0">
-                    <Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>    
                         <ColumnDefinition Width="1080*"/>
                         <ColumnDefinition Width="90*"/>
                     </Grid.ColumnDefinitions>
@@ -197,13 +187,13 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
-                                <GridViewColumn Width="175" Header="Имя" DisplayMemberBinding="{Binding Path=Name}"  />
-                                    <GridViewColumn Width="175" Header="Код" DisplayMemberBinding="{Binding Path=Code}" />
-                                    <GridViewColumn Width="175" Header="Средства" DisplayMemberBinding="{Binding Path=Connection.Connection.Funds}"/>
-                                    <GridViewColumn Width="175" Header="Вариационная маржа" DisplayMemberBinding="{Binding Path=Connection.Connection.VariationMargin}"/>
-                                    <GridViewColumn Width="175" Header="Чистая стоимость" DisplayMemberBinding="{Binding Path=Connection.Connection.NetValue}"/>
-                                    <GridViewColumn Width="175" Header="Количество алгоритмов" DisplayMemberBinding="{Binding Path=Connection.Connection.AlgorithmCount}" />
-                                    <GridViewColumn Width="175" Header="Контракты" DisplayMemberBinding="{Binding Path=Connection.Connection.Contracts}" />
+                                <GridViewColumn  Width="auto" Header="Имя" DisplayMemberBinding="{Binding Path=Name}"  />
+                                    <GridViewColumn Width="auto" Header="Код" DisplayMemberBinding="{Binding Path=Code}" />
+                                    <GridViewColumn Width="auto" Header="Средства" DisplayMemberBinding="{Binding Path=Connection.ConnectionParams.Funds}"/>
+                                    <GridViewColumn Width="175" Header="Вариационная маржа" DisplayMemberBinding="{Binding Path=Connection.ConnectionParams.VariationMargin}"/>
+                                    <GridViewColumn Width="175" Header="Чистая стоимость" DisplayMemberBinding="{Binding Path=Connection.ConnectionParams.NetValue}"/>
+                                    <GridViewColumn Width="175" Header="Количество алгоритмов" DisplayMemberBinding="{Binding Path=Connection.ConnectionParams.AlgorithmCount}" />
+                                    <GridViewColumn Width="175" Header="Контракты" DisplayMemberBinding="{Binding Path=Connection.ConnectionParams.Contracts}" />
                                 <GridViewColumn Width="70"  >
                                     <CheckBox Name="ChkBoxSelectAllPortfolios" IsChecked="False" ></CheckBox>
                                     <GridViewColumn.CellTemplate >
