@@ -6,75 +6,199 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
+using System.Windows.Data;
+using System.Windows.Forms;
+using System.Windows.Media;
 using AistTrader.Properties;
 using Common.Entities;
 using Common.Params;
 using Ecng.Common;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace AistTrader
 {
-    public partial class ManagerAdditionTradeSettings : IDataErrorInfo
+    [TypeConverter(typeof(PropertySort))]//
+    public class TradeSettingPGrid
     {
-        #region Fields
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Исполнять входы сразу"),
+            PropertyOrder(1)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool DirectIns
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Исполнять выходы сразу"),
+            PropertyOrder(2)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool DirectOuts
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Действия автоотрытия(баров)"),
+            PropertyOrder(3)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public string AutoOpenBarAction
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Действия автозакрытия(баров)"),
+            PropertyOrder(4)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public string AutoCloseBarAction
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Игнорировать позиции вне истории"),
+            PropertyOrder(5)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool IgnorePositionOutOfHistory
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Увед. о проп. входах"),
+            PropertyOrder(6)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool NotifyOnMissedIns
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Не открывать, есть есть пропуск выхо.."),
+            PropertyOrder(7)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool NotOpenIfGap
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Не уведом. пересчет"),
+            PropertyOrder(8)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool NotifyOnRecount
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Виртуальная позиция макс. свечей"),
+            PropertyOrder(9)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public int VirtualCandleMax
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Ждать исполнения выхода"),
+            PropertyOrder(10)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public int WaitOnSuccessfulOut
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Ждать исполнения входа"),
+            PropertyOrder(11)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public int WaitOnSuccessfulIn
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Исполнение агента"),
+        DisplayName("Имит. очередность позиций"),
+            PropertyOrder(12)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool SimulatePositionSequence
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("Выставление заявок"),
+        DisplayName("Проскальз. в шагах"),
+            PropertyOrder(1)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public int SlippingInSteps
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Выставление заявок"),
+        DisplayName("Проскальз. в %"),
+            PropertyOrder(2)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public int SlippingInPercent
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Выставление заявок"),
+        DisplayName("Take profit без проскальзывания"),
+            PropertyOrder(3)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool TakeProfitWithNoSlipping
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Выставление заявок"),
+        DisplayName("Открытие лимитными заявками"),
+            PropertyOrder(4)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool OpeningWithLimitingOrders
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Выставление заявок"),
+        DisplayName("\"По рынку\" с фикс. ценой"),
+            PropertyOrder(5)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool ByMarketWithFixedPrice
+        {
+            get;
+            set;
+        }
+        [CategoryAttribute("Выставление заявок"),
+        DisplayName("\"Плохие\" заявки по рынку"),
+            PropertyOrder(6)]
+        //DescriptionAttribute("Test Description")] todo: запросить описание
+        public bool BadOrdersByMarket
+        {
+            get;
+            set;
+        }
+    }
+    public partial class ManagerAdditionTradeSettings
+    {
         private int EditIndex { get; set; }
-        private string _connectionName;
-        private string _code;
-        private string _providerPath;
-        private string _selectedPath;
-        public string ConnectionName
-        {
-            get { return _connectionName; }
-            set { _connectionName = value; }
-        }
-        public string Code
-        {
-            get { return _code; }
-            set { _code = value; }
-        }
-        public string ProviderPath
-        {
-            get { return _providerPath; }
-            set { _providerPath = value; }
-        }
-        private Dictionary<string, bool> validProperties = new Dictionary<string, bool>();
-        public string SelectedPath
-        {
-            get { return _selectedPath; }
-            set { _selectedPath = value; }
-        }
-        public bool IsAdditionMode;
-        public string Provider { get; set; }
-        public bool NameAlredyInUse;
-        public ObservableCollection<Agent> AgentStorage { get; private set; }
-        #endregion
         public ManagerAdditionTradeSettings()
         {
-            IsAdditionMode = true;
             DataContext = this;
             InitializeComponent();
             EditIndex = int.MinValue;
-            AllPlazaDirectoriesComboBox.ItemsSource = GetAllPlazaDirectories();
-        }
-        private List<string> GetAllPlazaDirectories()
-        {
-            List<string> list = new List<string>();
-            var directories = Directory.EnumerateDirectories(@"C:\").Where(i => i.Contains("SpectraCGate")).ToList();
-            if (IsAdditionMode)
-            {
-                if (!MainWindow.Instance.ConnectionsStorage.IsNull())
-                {
-                    var alreadyUsedPlazaRouters = MainWindow.Instance.ConnectionsStorage.Cast<Connection>().ToList();
-                    var result = directories.Where(i => alreadyUsedPlazaRouters.All(i2 => i2.ConnectionParams.PlazaConnectionParams.Path != i)).ToList();
-                    return result;
-                }
-            }
-            list.AddRange(directories);
-            return list; 
+            TradeSettingPGrid traderSettingPGrid = new TradeSettingPGrid();
+            PropertyGridControl.SelectedObject = traderSettingPGrid;
         }
         public ManagerAdditionTradeSettings(Connection account, int editIndex)
         {
-            IsAdditionMode = false;
             InitializeComponent();
             InitFields(account);
             DataContext = this;
@@ -82,140 +206,9 @@ namespace AistTrader
         }
         private void InitFields(Connection account)
         {
-            _connectionName = account.ConnectionParams.Name;
-            _code = account.ConnectionParams.Code;
-            //Provider = account.ConnectionParams.PlazaConnectionParams.Type.ToString();
-            //_providerPath= GetAllPlazaDirectories();
-            AllPlazaDirectoriesComboBox.ItemsSource = GetAllPlazaDirectories();
-            //AllPlazaDirectoriesComboBox.SelectedItem = account.Connection.ConnectionSettings.Path.ToString();
-            _selectedPath = account.ConnectionParams.PlazaConnectionParams.Path;
         }
         private void OkBtnClick(object sender, RoutedEventArgs e)
-        {
-            //    if (!File.Exists(AllPlazaDirectoriesComboBox.SelectedItem + @"\client_router.ini"))
-            //    {
-            //        //TODO: проверка на наличие роутера
-            //        MessageBox.Show(this, @"В выбранной дериктории нет ini файла: {0}.".Put(AllPlazaDirectoriesComboBox.SelectedItem));
-            //        return;
-            //    }
-            var terminalConnSettings = new PlazaConnectionParams(AllPlazaDirectoriesComboBox.SelectedItem.ToString());
-            var agent = new ConnectionParams(ClienNameTxtBox.Text, ClienCodeTxtBox.Text, terminalConnSettings, false);
-            MainWindow.Instance.AddNewAgentConnection(new Connection(ClienNameTxtBox.Text, agent), EditIndex);
-            Close();
-        }
-        private void ClienNameTxtBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            //string result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(ClienNameTxtBox.Text);
-            //ClienNameTxtBox.Text = result;
-            //ClienNameTxtBox.SelectionStart = ClienNameTxtBox.Text.Length;
-        }
-        private void BtnSelectPath_OnClick(object sender, RoutedEventArgs e)
-        {
-            //using (var dlg = new FolderBrowserDialog())
-            //{
-            //    if(!PathToRouter.Text.IsEmpty())
-            //        dlg.SelectedPath = PathToRouter.Text;
-            //    else
-            //        dlg.SelectedPath = @"C:\P2FORTSGate\";
-
-            //    if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //    {
-            //        PathToRouter.Text = dlg.SelectedPath;
-            //    }
-            //}
-        }
-        private void ClienNameTxtBox_OnKeyUp(object sender, KeyEventArgs e)
-        {
-            //ЗАЧЕМ ЭТО?
-            //var has = Settings.Default.AgentConnection.Cast<AgentConnection>().Any(i => i.Name == ClienNameTxtBox.Text);
-        }
-        public string this[string columnName]
-        {
-            get
-            {
-                string validationResult = null;
-                switch (columnName)
-                {
-                    case "ConnectionName":
-                        validationResult = ValidateName();
-                        break;
-                    case "Code":
-                        validationResult = ValidateCode();
-                        break;
-                    //case "Provider":
-                    //    validationResult = ValidateProvider();
-                    //    break;
-                    case "ProviderPath":
-                        validationResult = ValidateProviderPath();
-                        break;
-                    default:
-                        throw new ApplicationException("Unknown Property being validated on Product.");
-                }
-                string error = validationResult;
-                validProperties[columnName] = String.IsNullOrEmpty(error) ? true : false;
-                if (validProperties.Count == 3)
-                    OkAgentConnectionBtn.IsEnabled = validProperties.Values.All(isValid => isValid);    
-                return validationResult;
-            }
-        }
-        private string ValidateName()
-        {
-            if (String.IsNullOrEmpty(this.ConnectionName))
-                return "Задайте имя";
-            else if (this.ConnectionName.Length < 5)
-                return "Имя должно содержать не меньше 5 символов.";
-            else if (NameAlredyInUse)
-                return "Данное имя уже используется";
-            else
-                return String.Empty;
-        }
-        private string ValidateCode()
-        {
-            if (String.IsNullOrEmpty(this.Code))
-                return "Задайте код";
-            else if (this.Code.Length < 2)
-                return "Код должен содержать не меньше 2х символов";
-            else
-                return String.Empty;
-        }
-        //private string ValidateProvider()
-        //{
-        //    //if (ConnectionTypeComboBox.SelectedItem == null)
-        //    //{
-        //    //    return "Не выбран поставщик";
-        //    //}
-        //    //return String.Empty;
-        //}
-        private string ValidateProviderPath()
-        {
-            if (AllPlazaDirectoriesComboBox.SelectedItem == null)
-            {
-                return "Не выбран путь к роутеру";
-            }
-            if (AllPlazaDirectoriesComboBox != null)
-            {
-                if (!File.Exists(AllPlazaDirectoriesComboBox.SelectedItem + @"\client_router.ini"))
-                {
-                    return  string.Format("В выбранной дериктории нет ini файла: {0}".Put(AllPlazaDirectoriesComboBox.SelectedItem)) ;
-                }    
-            }
-            return String.Empty;
-        }
-        private bool ValidateProperties()
-        {
-            return validProperties.Values.All(isValid => isValid);
-        }
-        public string Error { get; private set; }
-        //todo: проверить что делает этот метод, поменять ресурс 
-        private void ClienNameTxtBox_OnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (IsAdditionMode)
-            {
-                var text = ClienNameTxtBox.Text;
-                //todo: проработать логику
-                //if (Settings.Default.AgentConnection != null)
-                //    NameAlredyInUse = Settings.Default.AgentConnection.Cast<Connection>().Any(i => i.Name == text);    
-            }
+        { 
         }
     }
 }
