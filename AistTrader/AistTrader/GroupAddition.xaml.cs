@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -89,8 +90,8 @@ namespace AistTrader
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Width = 180,
                     Margin = new Thickness {Left = 10, Top = 5, Right = 0, Bottom = 0},
-                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Name),
-                    SelectedItem = AgentItem.Name,
+                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName),
+                    SelectedItem = AgentItem.Params.FriendlyName,
                     Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter),
                     IsEnabled = false,
                 };
@@ -163,8 +164,8 @@ namespace AistTrader
                     Width = 180,
                     Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                     //TODO: дополнить условие выбора.важно после выбора алгоритма
-                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Name),
-                    SelectedItem = AgentItem.Name,
+                    ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName),
+                    SelectedItem = AgentItem.Params.FriendlyName,
                     Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
                 };
                 cb.SelectionChanged += cb_SelectionChanged;
@@ -203,7 +204,8 @@ namespace AistTrader
                 if (IsEditMode)
                     AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
                 CreateGroupeBtn.Content = "Сохранить";
-                addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
+                if (RowSetter!=0)
+                    addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
                 DynamicGrid.RegisterName(amount.Name, amount);
 
                 Grid.SetRow(cb, RowSetter);
@@ -222,14 +224,28 @@ namespace AistTrader
                 CreateGroupBtnHelper();
             }
         }
-
         private void Amount_KeyUp(object sender, KeyEventArgs e)
-       {
-            var editor= sender as UnitEditor;
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Key.ToString(), @"^[0-9]+$%"))
+        {
+            Regex regex = new Regex(@"^[0-9]+$");
+            var editor = sender as UnitEditor;
+            if (editor.Text.EndsWith("%"))
             {
-                //editor.Text = editor.Text.Substring(0, editor.Text.Length - 1);
-                //editor.Select(editor.Text.Length, 0);
+                string[] line = editor.Text.Split('%');
+                if (!regex.IsMatch(line.First()))
+                {
+                    MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+                    editor.Text = "";
+                    editor.Select(editor.Text.Length, 0);
+                }
+            }
+            if (!editor.Text.EndsWith("%"))
+            {
+                if (!regex.IsMatch(editor.Text))
+                {
+                    MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+                    editor.Text = "";
+                    editor.Select(editor.Text.Length, 0);
+                }
             }
         }
         //TODO: check that method
@@ -252,14 +268,10 @@ namespace AistTrader
                 Width = 180,
                 Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                 //TODO: дополнить условие выбора.важно после выбора алгоритма
-                ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Name),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
+                ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
                 Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
             };
             cb.SelectionChanged += cb_SelectionChanged;
-
-
-            var x = new UnitEditor();
-
             var amount = new UnitEditor
             {
                 FontSize = 12,
@@ -291,7 +303,8 @@ namespace AistTrader
             if (IsEditMode)
                 AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
             CreateGroupeBtn.Content = "Сохранить";
-            addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
+            if (RowSetter!=0)
+                addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
             DynamicGrid.RegisterName(amount.Name, amount);
 
             Grid.SetRow(cb, RowSetter);
@@ -401,14 +414,15 @@ namespace AistTrader
                     if (cbID != "")
                         foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                         {
-                            Unit amount = ue.Text.ToUnit();
+
+                            var amount = ue.Text;
                             string algorithmName = cb.Text;
                             var groupName = GroupNameTxtBox.Text;
                             List<Agent> list = new List<Agent>();
-                            foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a.Params.GroupName == "ungrouped agents"))
+                            foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents"))
                             {
                                 var newAgent = (Agent)rs.Clone();
-                                newAgent.Params.Amount = amount.Value;
+                                newAgent.Params.Amount = amount;
                                 newAgent.Params.GroupName = groupName;
                                 list.Add(newAgent);
                                 //MainWindow.Instance.AddNewAgent(newAgent, -1);
@@ -428,15 +442,15 @@ namespace AistTrader
                     if (cbID != "")
                         foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                         {
-                            //Unit amount = ue.Value;
+                            var amount = ue.Text;
                             string algorithmName = cb.Text;
                             var groupName = GroupNameTxtBox.Text;
-                            var items = MainWindow.Instance.AgentsStorage.Where(a => a.Name == algorithmName && a.Params.GroupName == groupName).ToList();
+                            var items = MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == groupName).ToList();
                             int itemIndex = -1;
                             foreach (var i in items)
                                 itemIndex = MainWindow.Instance.AgentsStorage.IndexOf(i);
                             var itemToEdit = MainWindow.Instance.AgentsStorage[itemIndex];
-                            //itemToEdit._Agent.Amount = amount;
+                            itemToEdit.Params.Amount = amount;
                             itemToEdit.Params.GroupName = groupName;
                             itemToEdit.Name = algorithmName;
                             MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
@@ -458,31 +472,5 @@ namespace AistTrader
             else
                 CreateGroupeBtn.IsEnabled = true;
         }
-        //private void LoadSettings()
-        //{
-        //    StreamReader sr = new StreamReader("AgentSettings.xml");
-        //    try
-        //    {
-        //        var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
-        //        var connections = (List<Agent>)xmlSerializer.Deserialize(sr);
-        //        sr.Close();
-        //        foreach (var rs in connections.Cast<Agent>())
-        //        {
-        //            AgentsStorage.Add(rs);
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        sr.Close();
-        //        //if (e.InnerException.Message == "Root element is missing.")
-        //        //    try
-        //        //    {
-        //        //        System.IO.File.WriteAllText("AgentSettings.xml", string.Empty);
-        //        //    }
-        //        //    catch (Exception)
-        //        //    {
-        //        //    }
-        //    }
-        //}
     }
 }
