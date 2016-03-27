@@ -235,7 +235,8 @@ namespace AistTrader
                 {
                     MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
                     editor.Text = "";
-                    editor.Select(editor.Text.Length, 0);
+                    return;
+                   // editor.Select(editor.Text.Length, 0);
                 }
             }
             if (!editor.Text.EndsWith("%"))
@@ -244,7 +245,8 @@ namespace AistTrader
                 {
                     MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
                     editor.Text = "";
-                    editor.Select(editor.Text.Length, 0);
+                    return;
+                    //editor.Select(editor.Text.Length, 0);
                 }
             }
         }
