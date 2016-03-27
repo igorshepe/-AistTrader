@@ -70,7 +70,7 @@
                         </ListView.Resources>
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
-                                <GridViewColumn Width="350" Header=" Имя" >
+                                <GridViewColumn Width="370" Header=" Имя" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                                 <TextBlock Text="{Binding Path=Params.FriendlyName}" TextAlignment="Right" />
@@ -80,11 +80,11 @@
                                 <GridViewColumn Width="490" Header=" Количество подключений" DisplayMemberBinding="{Binding Path=Params.ConnectionCount}" />
                                     <GridViewColumn Width="160" Header=" Контракты" DisplayMemberBinding="{Binding Path=Params.Contracts}" />
                                 <GridViewColumn Width="70">
-                                    <CheckBox   Name="ChkBoxSelectAllAgents" Content=" " FlowDirection="RightToLeft" IsChecked="False" ></CheckBox>
+                                    <CheckBox   Name="ChkBoxSelectAllAgents" Click="ChkBoxSelectAllAgents_OnClick" Content=" " FlowDirection="RightToLeft" IsChecked="False" ></CheckBox>
                                     <GridViewColumn.CellTemplate >
                                         <DataTemplate >
                                             <StackPanel>
-                                                    <CheckBox IsChecked= "{Binding IsChecked, ElementName= ChkBoxSelectAllAgents, Mode = OneWay }" >
+                                                    <CheckBox IsChecked= "{Binding Path= Params.IsChecked, Mode = TwoWay }" >
                                                 </CheckBox>
                                             </StackPanel>
                                         </DataTemplate>
@@ -244,10 +244,15 @@
                                     <GridViewColumn Width="350" Header="Агент" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                                    <TextBlock HorizontalAlignment="Left" Text="{Binding Path=AgentManagerSettings.AgentOrGroup}" Margin="-5,0,0,0"> </TextBlock>
-                                                    <Button Click="OperationBtnClick" HorizontalAlignment="Right" Content="ТГ"  Margin="0,0,-10,0"></Button>
-                                                </StackPanel>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock  HorizontalAlignment="Left" Text="{Binding Path=AgentManagerSettings.AgentOrGroup}" > </TextBlock>
+                                                    <Button Grid.Column="1"  Click="OpenTradeSettingsWindowBtn_OnClick"  Content="ТГ" ></Button>
+                                                    <!--<Image Source="/Resources/Images\Settings.ico" Height="18" Width="18" HorizontalAlignment="Right"></Image>--> 
+                                                </Grid>
                                                 
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
