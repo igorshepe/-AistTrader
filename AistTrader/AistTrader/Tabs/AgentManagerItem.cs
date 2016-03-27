@@ -143,5 +143,13 @@ namespace AistTrader
             };
             strategytest.Start();
         }
+
+
+        private void OpenTradeSettingsWindowBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            var form = new ManagerAdditionTradeSettings();
+            form.ShowDialog();
+            form = null;
+        }
     }
 }
