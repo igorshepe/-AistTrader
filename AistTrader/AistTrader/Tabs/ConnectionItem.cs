@@ -119,6 +119,8 @@ namespace AistTrader
                 }
                 ConnectionsStorage.Remove(item);
                 SaveProviderSettings();
+
+                //todo: если уже задействован в менеджере агентов -  про освобожадем ресурсы.
             }
             //foreach (var item in ProviderListView.SelectedItems.Cast<AgentPortfolio>().ToList())
             //{

@@ -60,7 +60,6 @@ namespace AistTrader
                     xmlSerializer.Serialize(fStream, obj);
                     fStream.Close();
                 }
-                Logger.Info("Agent collection been updated");
             }
             catch (Exception ex)
             {
