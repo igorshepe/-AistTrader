@@ -41,10 +41,10 @@ namespace AistTrader
             set;
         }
         [CategoryAttribute("Исполнение агента"),
-        DisplayName("Действия автоотрытия(баров)"),
+        DisplayName("Действия автооткрытия(баров)"),
             PropertyOrder(3)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public string AutoOpenBarAction
+        public int AutoOpenBarAction
         {
             get;
             set;
@@ -53,7 +53,7 @@ namespace AistTrader
         DisplayName("Действия автозакрытия(баров)"),
             PropertyOrder(4)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public string AutoCloseBarAction
+        public int AutoCloseBarAction
         {
             get;
             set;
@@ -208,7 +208,9 @@ namespace AistTrader
         {
         }
         private void OkBtnClick(object sender, RoutedEventArgs e)
-        { 
+        {
+            var x = PropertyGridControl;
+            var res= x.SelectedObject;
         }
     }
 }

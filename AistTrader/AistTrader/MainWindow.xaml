@@ -313,11 +313,8 @@
                             <Button Content="Запустить" Click="TestStrategyStartBtnClick" HorizontalAlignment="Center" Margin="10,88,10,0" VerticalAlignment="Top" Width="100"/>
                             </Grid>
                     </GroupBox>
-
                 </Grid>
-
             </TabItem>
-
 
         </TabControl>
         <GridSplitter Grid.Row="1"  Height="5" Background="DarkGray"

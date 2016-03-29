@@ -13,7 +13,7 @@
         FontFamily="Consolas"
         WindowStartupLocation="CenterScreen"
         Icon="Resources/Images/mainIcon.ico"
-        x:Name="Window">
+        x:Name="Window">    
 
     <Grid Margin="1,1,1,1" Name="AgentConnectionGrid">
         <xctk:PropertyGrid x:Name="PropertyGridControl"

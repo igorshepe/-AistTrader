@@ -145,7 +145,7 @@ namespace AistTrader
             }
             else
                 setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPicker.SelectedSecurity);
-            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,/* AmountTextBox.Value*/ 10), EditIndex);
+            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text), EditIndex);
             Close();
         }
 
@@ -303,12 +303,6 @@ namespace AistTrader
         private void ToolComboBox_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             throw new NotImplementedException();
-        }
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
-            ShowDialog();
         }
     } 
 }
