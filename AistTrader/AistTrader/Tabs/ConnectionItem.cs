@@ -103,13 +103,7 @@ namespace AistTrader
                     ConnectionManager.Connections.Remove(connection);
                     Logger.Info("Connection \"{0}\" has been deleted", connection.ConnectionName);
                 }
-
-                //todo: если уже задействован в менеджере агентов -  про освобожадем ресурсы.
             }
-            //foreach (var item in ProviderListView.SelectedItems.Cast<AgentPortfolio>().ToList())
-            //{
-            //    AgentPortfolioStorage.Remove(item);
-            //}
         }
         private void EditAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {
@@ -220,7 +214,7 @@ namespace AistTrader
                 this.GuiAsync(() =>
                 {
                     agent.ConnectionParams.Tools.AddRange(securities)/* PortfoliosList.AddRange(portfolios))*/;
-                    if (agent.ConnectionParams.Tools.Count > 1000 && !sLoaded)
+                    if (agent.ConnectionParams.Tools.Count > 200 && !sLoaded)
                     {
                         sLoaded = true;
                         Logger.Info("Securities were loaded");
@@ -299,6 +293,8 @@ namespace AistTrader
                 var item = (sender as FrameworkElement).DataContext;
                 var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
                 var con = ConnectionManager.Connections.FirstOrDefault(m => rowItem != null && m.ConnectionName == rowItem.ToString());
+                ConnectionManager.Connections[1].Disconnect();
+                
                 if (con != null)
                 {
                     con.Disconnect();

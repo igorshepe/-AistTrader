@@ -186,7 +186,7 @@ namespace AistTrader
             //todo: добавить обновление вверх по иерархии на этапе обработки эвентов
             //добавить выборку, берем имя, по имени обращемся к коллекции
 
-            var connection =  MainWindow.Instance.ConnectionManager.Connections.Find(i=>i.Name == selectedPortfolio.Connection.Name);
+            var connection =  MainWindow.Instance.ConnectionManager.Connections.Find(i=>i.ConnectionName == selectedPortfolio.Connection.Name);
             if (connection != null)
             {
                 if (connection.ConnectionState == ConnectionStates.Connected)
