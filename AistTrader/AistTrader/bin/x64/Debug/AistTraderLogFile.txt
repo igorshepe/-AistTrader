@@ -252,3 +252,59 @@
 2016-03-04 01:47:36.6940|INFO|AistTrader.MainWindow|Agent collection been updated
 2016-03-04 04:18:25.3766|INFO|AistTrader.MainWindow|Successfully added agent - "AistInvestStrategy 1111 - 1666"
 2016-03-04 04:18:25.5369|INFO|AistTrader.MainWindow|Agent collection been updated
+2016-03-29 18:45:34.4883|INFO|AistTrader.MainWindow|Successfully added agent - "AistInvestStrategy 1111 - 1666"
+2016-03-29 18:45:47.5231|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"??????"...
+2016-03-29 18:45:47.5359|INFO|AistTrader.MainWindow|IP and port of -"??????" connection were successfully acquired
+2016-03-29 18:45:49.9721|INFO|AistTrader.MainWindow|Connection - "??????" is active now
+2016-03-29 18:45:50.2688|INFO|AistTrader.MainWindow|Securities were loaded
+2016-03-29 18:45:50.3083|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
+2016-03-29 18:47:01.6078|INFO|AistTrader.MainWindow|Successfully added agent manager - "???????"
+2016-03-29 18:47:01.7867|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-03-29 18:47:20.3740|INFO|AistTrader.MainWindow|Successfully added agent manager - "???????"
+2016-03-29 18:47:20.6349|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-04-02 10:30:25.7436|INFO|AistTrader.MainWindow|Successfully added agent - "AistInvestStrategy 1111 - 1666"
+2016-04-02 10:31:49.3600|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy SMA 20 - SMA 100 - Highest 20 - Lowest 20"
+2016-04-02 10:44:46.0574|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy SMA 20 - SMA 100 - Highest 20 - Lowest 20"
+2016-04-02 10:46:42.7112|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"??????"...
+2016-04-02 10:46:42.7421|INFO|AistTrader.MainWindow|IP and port of -"??????" connection were successfully acquired
+2016-04-02 10:46:46.9958|INFO|AistTrader.MainWindow|Connection - "??????" is active now
+2016-04-02 10:46:47.3850|INFO|AistTrader.MainWindow|Securities were loaded
+2016-04-02 10:46:47.5331|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
+2016-04-02 10:47:22.7875|INFO|AistTrader.MainWindow|Successfully added agent manager - "fdfdfdfdfPortfolio"
+2016-04-02 10:47:23.2569|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-04-02 15:45:11.4524|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"bbbbbbbbbbbbb"...
+2016-04-02 15:45:11.4839|INFO|AistTrader.MainWindow|IP and port of -"bbbbbbbbbbbbb" connection were successfully acquired
+2016-04-02 15:45:13.7483|INFO|AistTrader.MainWindow|Connection - "bbbbbbbbbbbbb" is active now
+2016-04-02 15:45:14.1861|INFO|AistTrader.MainWindow|Securities were loaded
+2016-04-02 15:45:14.3279|INFO|AistTrader.MainWindow|Portfolios for connection "bbbbbbbbbbbbb" were loaded
+2016-04-02 16:03:29.2028|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"bbbbbbbbbbbbb"...
+2016-04-02 16:03:29.2342|INFO|AistTrader.MainWindow|IP and port of -"bbbbbbbbbbbbb" connection were successfully acquired
+2016-04-02 16:29:25.1802|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"???????????????"...
+2016-04-02 16:29:25.2097|INFO|AistTrader.MainWindow|IP and port of -"???????????????" connection were successfully acquired
+2016-04-02 16:32:25.3031|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"rtrtrt"...
+2016-04-02 16:32:25.3435|INFO|AistTrader.MainWindow|IP and port of -"rtrtrt" connection were successfully acquired
+2016-04-02 16:36:17.9539|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"rtrtrt"...
+2016-04-02 16:36:17.9834|INFO|AistTrader.MainWindow|IP and port of -"rtrtrt" connection were successfully acquired
+2016-04-02 16:36:20.2132|INFO|AistTrader.MainWindow|Connection - "rtrtrt" is active now
+2016-04-02 16:36:20.6687|INFO|AistTrader.MainWindow|Securities were loaded
+2016-04-02 16:36:20.8148|INFO|AistTrader.MainWindow|Portfolios for connection "rtrtrt" were loaded
+2016-04-02 16:44:25.2773|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"rtrtrtModified"...
+2016-04-02 16:44:25.2773|INFO|AistTrader.MainWindow|IP and port of -"rtrtrtModified" connection were successfully acquired
+2016-04-02 16:44:25.3713|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=qNNKLiYyXEkT7fy9$S8NDX5MWQ1GBWTRbnqeVQOlW$EYOhl$eQ0KcmNitc28_C3Gr.#=qrLWvO8O9xkeib9pzAx3SnA==(UInt32 #=qllKXha_eAp_THoFTm5opSQ==, String #=q5CWOmhqJ$hM45uCQiv6EYQ==, Object[] #=quNaLEHYcUctz40p1XsUIdw==)
+   at #=qfzPjBbA$RHaWTItULJUKJDExv2VR3lBaLJxA8QbWg6l6J95CtglDW4ToGoZ8j3LF.#=qvs25Yn5d$OA0GFh6m7HrzLAEF$fuyLRE3JdHDi97SV4=.#=q0czzl81LBxqy3L__zbXZCw5P5f1E4bW$ZC6lRPtS7uY=()", connection "AistTraderConnnectionWrapper" is not active
+2016-04-02 16:44:48.6335|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=qNNKLiYyXEkT7fy9$S8NDX5MWQ1GBWTRbnqeVQOlW$EYOhl$eQ0KcmNitc28_C3Gr.#=qrLWvO8O9xkeib9pzAx3SnA==(UInt32 #=qllKXha_eAp_THoFTm5opSQ==, String #=q5CWOmhqJ$hM45uCQiv6EYQ==, Object[] #=quNaLEHYcUctz40p1XsUIdw==)
+   at #=qfzPjBbA$RHaWTItULJUKJDExv2VR3lBaLJxA8QbWg6l6J95CtglDW4ToGoZ8j3LF.#=qvs25Yn5d$OA0GFh6m7HrzLAEF$fuyLRE3JdHDi97SV4=.#=q0czzl81LBxqy3L__zbXZCw5P5f1E4bW$ZC6lRPtS7uY=()", connection "AistTraderConnnectionWrapper" is not active
+2016-04-02 16:45:17.5739|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=qNNKLiYyXEkT7fy9$S8NDX5MWQ1GBWTRbnqeVQOlW$EYOhl$eQ0KcmNitc28_C3Gr.#=qrLWvO8O9xkeib9pzAx3SnA==(UInt32 #=qllKXha_eAp_THoFTm5opSQ==, String #=q5CWOmhqJ$hM45uCQiv6EYQ==, Object[] #=quNaLEHYcUctz40p1XsUIdw==)
+   at #=qfzPjBbA$RHaWTItULJUKJDExv2VR3lBaLJxA8QbWg6l6J95CtglDW4ToGoZ8j3LF.#=qvs25Yn5d$OA0GFh6m7HrzLAEF$fuyLRE3JdHDi97SV4=.#=q0czzl81LBxqy3L__zbXZCw5P5f1E4bW$ZC6lRPtS7uY=()", connection "AistTraderConnnectionWrapper" is not active
+2016-04-02 16:46:38.9445|INFO|AistTrader.MainWindow|Connection - "AistTraderConnnectionWrapper" is not active now
+2016-04-02 16:46:47.1219|INFO|AistTrader.MainWindow|Connection - "rtrtrtModified" is active now
+2016-04-02 16:46:47.5503|INFO|AistTrader.MainWindow|Securities were loaded
+2016-04-02 16:46:47.7206|INFO|AistTrader.MainWindow|Portfolios for connection "rtrtrtModified" were loaded
+2016-04-02 16:49:53.6747|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"rtrtrtModified"...
+2016-04-02 16:49:53.7080|INFO|AistTrader.MainWindow|IP and port of -"rtrtrtModified" connection were successfully acquired
+2016-04-02 16:49:56.1009|INFO|AistTrader.MainWindow|Connection - "rtrtrtModified" is active now
+2016-04-02 16:49:56.5688|INFO|AistTrader.MainWindow|Securities were loaded
+2016-04-02 16:49:56.6690|INFO|AistTrader.MainWindow|Portfolios for connection "rtrtrtModified" were loaded

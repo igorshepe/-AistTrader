@@ -14,13 +14,10 @@ namespace AistTrader
 {
     public partial class PortfolioAddition : IDataErrorInfo
     {
-
         #region Fields
-
         private int EditIndex { get; set; }
         public ObservableCollection<Agent> AgentPortfolioStorage { get; private set; }
         private string _portfolioName;
-
         public string PortfolioName
         {
             get { return _portfolioName; }
@@ -33,17 +30,14 @@ namespace AistTrader
         {
             get { return _registeredProvider; }
             set { _registeredProvider = value; }
-
         }
 
         private string _selectedRegisteredProvider;
-
         public string SelectedRegisteredProvider
         {
             get { return _selectedRegisteredProvider; }
             set { _selectedRegisteredProvider = value; }
         }
-
         public List<Portfolio> DynamicAccount { get; set; }
         private Dictionary<string, bool> validPortflolioProperties = new Dictionary<string, bool>();
 

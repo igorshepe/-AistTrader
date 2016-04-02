@@ -293,7 +293,7 @@ namespace AistTrader
                 var item = (sender as FrameworkElement).DataContext;
                 var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
                 var con = ConnectionManager.Connections.FirstOrDefault(m => rowItem != null && m.ConnectionName == rowItem.ToString());
-                ConnectionManager.Connections[1].Disconnect();
+                ConnectionManager.Connections[0].Disconnect();
                 
                 if (con != null)
                 {

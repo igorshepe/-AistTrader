@@ -22,7 +22,10 @@ namespace Strategies.Strategies
         private readonly MedianPrice _medianPrice = new MedianPrice {};
         private BaseStrategy _baseStrategy;
 
-        public ChStrategy (){}
+        public ChStrategy()
+        {
+            
+        }
 
         private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage
         {

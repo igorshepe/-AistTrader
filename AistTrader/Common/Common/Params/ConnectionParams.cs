@@ -11,6 +11,7 @@ namespace Common.Params
         public ConnectionParams(string name, string code, PlazaConnectionParams connectiong, bool isActive)
         {
             Name = name;
+            
             Code = code;
             PlazaConnectionParams = connectiong;
             IsConnected = isActive;
@@ -26,12 +27,12 @@ namespace Common.Params
         {
             return Name;
         }
-
         public ConnectionParams()
         {
         }
         public PlazaConnectionParams PlazaConnectionParams { get; set; }
         public string Name { get; set; }
+        
         public string Code { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }

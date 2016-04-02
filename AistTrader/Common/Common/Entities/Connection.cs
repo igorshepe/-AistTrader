@@ -11,9 +11,11 @@ namespace Common.Entities
         public Connection(string name, ConnectionParams connectionParams)
         {
             Name = name;
+            DisplayName = name;
             ConnectionParams = connectionParams;
         }
         public string Name { get; set; }
+        public string DisplayName { get; set; }
         public ConnectionParams ConnectionParams { get; set; }
         public override string ToString()
         {

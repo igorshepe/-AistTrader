@@ -163,14 +163,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="517128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="528904">
       <assemblyIdentity name="AistTrader" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>v4b8P/9qX8mPKnN7IrFJsVT9PMywE/FUiO/RLTVMDT4=</dsig:DigestValue>
+        <dsig:DigestValue>K27dtbDWaxPF8T3WDJK4tlOSKB7Xfl94GUmRGH3UHiw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -235,14 +235,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="12800">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="13312">
       <assemblyIdentity name="Common" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wMXPI8hQMpjKL/GRqf6SMBJCXTw2XwcphukIdf4eIrE=</dsig:DigestValue>
+        <dsig:DigestValue>5fH4Qi6GU0V/+aEMowBCcoW9Ieuw6HOc/4es2VDvrd8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -547,6 +547,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MahApps.Metro.dll" size="940544">
+      <assemblyIdentity name="MahApps.Metro" version="1.2.4.0" publicKeyToken="F4FB5A3C4D1E5B4F" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>DectpLwtFtOcMDaK+IDXVPoL2XRYl2UrpQIT5YnSZcU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MathNet.Numerics.dll" size="1011712">
       <assemblyIdentity name="MathNet.Numerics" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -607,14 +619,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NlogViewer.dll" size="16384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NlogViewer.dll" size="15872">
       <assemblyIdentity name="NlogViewer" version="0.6.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gqw7g2K6cWiRAdnCzknf7HKGQ/KWU9pTr7hcM9xNHxc=</dsig:DigestValue>
+        <dsig:DigestValue>2VwRYwqM7NPs2e48DFBIQuXq36X4MSd7NiVO3o/iOtQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -806,7 +818,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>utXRdsNPtGNCUix9h3jVGvXLzCmEGIb/ABGX9p+H2b0=</dsig:DigestValue>
+        <dsig:DigestValue>mZVrAA8lnmFXjY0wCacB/tWrGJU0abeyf6gfgtooyIo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Windows.Interactivity.dll" size="55904">
+      <assemblyIdentity name="System.Windows.Interactivity" version="4.5.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>k/vFnkiAr8nxNsOsCXatp/P6p8rO3OXIJLM3y8qdLr8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -819,18 +843,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>6NW7q9JVFUe9zwbawwtMkpem929VuiuPOCpfir9q3kM=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WPFToolkit.Extended.dll" size="581120">
-      <assemblyIdentity name="WPFToolkit.Extended" version="1.8.0.0" publicKeyToken="3E4669D2F30244F4" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>emlx08UzCGSMxpibkPXVC2wan8PqZquMObwaVQfTMvk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -861,7 +873,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>wzlS++DGt9eH7s8OLFcog8G4DAsuoPch6/iz+zYaUyw=</dsig:DigestValue>
+      <dsig:DigestValue>W49ZDwUOek3KaEF9h5zhEqnOlQRr/z+9oUKsJjl6l8U=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\Images\mainIcon.ico" size="15086">

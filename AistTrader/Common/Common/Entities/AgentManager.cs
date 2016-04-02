@@ -8,7 +8,7 @@ namespace Common.Entities
     public class AgentManager
     {
         AgentManager() { }
-        public AgentManager(string name, ManagerParams agentManager, Security tool, int amount)
+        public AgentManager(string name, ManagerParams agentManager, Security tool, string amount)
         {
             Name = name;
             AgentManagerSettings = agentManager;
@@ -24,7 +24,7 @@ namespace Common.Entities
         public string Name { get; set; }
         public StockSharp.BusinessEntities.Security Tool { get; set; }
         //public Unit Amount { get; set; }
-        public int Amount { get; set; }
+        public string Amount { get; set; }
         public ManagerParams AgentManagerSettings { get; set; }
     }
 }
