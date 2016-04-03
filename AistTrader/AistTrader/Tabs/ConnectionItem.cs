@@ -96,8 +96,6 @@ namespace AistTrader
                         MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
                         return;
                     }
-
-
                     ConnectionsStorage.Remove(item);
                     SaveProviderItems();
                     var connection = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == item.DisplayName);
@@ -238,7 +236,6 @@ namespace AistTrader
                 this.GuiAsync(() => agent.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Connected);
                 this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is active now", connection.ConnectionName));
-                var c = connection.Securities;
             };
             connection.Disconnected += () =>
             {
@@ -291,7 +288,7 @@ namespace AistTrader
                 //ProviderListView.SelectedItems.Clear();
                 //ProviderListView.SelectedItems.Add(item);
                 var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
-                int index = ConnectionManager.Connections.FindIndex(i => i.Name == rowItem.DisplayName);
+                int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
                 rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
                 if (rowItem.ConnectionParams.IsRegistredConnection)
                     ConnectionManager.Connections[index].Connect();
@@ -304,17 +301,19 @@ namespace AistTrader
                 var item = (sender as FrameworkElement).DataContext;
                 var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
                 var con = ConnectionManager.Connections.FirstOrDefault(m => rowItem != null && m.ConnectionName == rowItem.ToString());
-                ConnectionManager.Connections[0].Disconnect();
+                //get index from manager by name
+                int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+                ConnectionManager.Connections[index].Disconnect();
                 
                 if (con != null)
                 {
-                    con.Disconnect();
-                    con.Dispose();
+                    //con.Disconnect();
+                    //con.Dispose();
                 }
                 if (rowItem != null)
                 {
                     rowItem.ConnectionParams.Command = OperationCommand.Connect;
-                    rowItem.ConnectionParams.IsRegistredConnection = false;
+                    //rowItem.ConnectionParams.IsRegistredConnection = false;
                 }
                 UpdateProviderListView();
             }

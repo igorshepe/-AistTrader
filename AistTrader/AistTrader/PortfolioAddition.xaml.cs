@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Common.Entities;
+using Ecng.ComponentModel;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 using Portfolio = Common.Entities.Portfolio;
@@ -37,6 +38,12 @@ namespace AistTrader
         {
             get { return _selectedRegisteredProvider; }
             set { _selectedRegisteredProvider = value; }
+        }
+        private string _selectedAccount;
+        public string SelectedAccount
+        {
+            get { return _selectedAccount; }
+            set { _selectedAccount = value; }
         }
         public List<Portfolio> DynamicAccount { get; set; }
         private Dictionary<string, bool> validPortflolioProperties = new Dictionary<string, bool>();
@@ -79,7 +86,7 @@ namespace AistTrader
             //выбирать либо напрямую с менеджера подключений либо/ибо из айтема, где предавариельно ставим, что данный объект активен
             ConnectionProviderComboBox.ItemsSource =
                 MainWindow.Instance.ConnectionManager.Connections.Where(
-                    i => i.ConnectionState == ConnectionStates.Connected).Select(i => i.Name).ToList();
+                    i => i.ConnectionState == ConnectionStates.Connected).Select(i => i.ConnectionName).ToList();
             //или
             //ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ConnectionsStorage.Where(i=>i.Connection.).Select(i => i.Name).ToList();
 
@@ -100,7 +107,9 @@ namespace AistTrader
             //int index = MainWindow.Instance.ConnectionsStorage.Where<AgentConnection>(x => x.Name == portfolio.Connection.Name).Select<AgentConnection, int>(x => MainWindow.Instance.ConnectionsStorage.IndexOf(x)).Single<int>();
             //portfolio.Connection.Name;
             //Todo: переделать под динамику
-            //AccountComboBox.ItemsSource = portfolio.Connection.Connection.Accounts;
+            AccountComboBox.ItemsSource = portfolio.Connection.ConnectionParams.Accounts;
+             _selectedAccount = portfolio.Code;
+
             _portfolioName = portfolio.Name;
             //DynamicAccount = new List<string> {"Allem", "Vinny"};
         }
@@ -128,6 +137,7 @@ namespace AistTrader
         //}
         private void AccountComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
         }
 
         private void ConnectionProviderComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -232,15 +242,17 @@ namespace AistTrader
             //throw new NotImplementedException();
 
             var item = ConnectionProviderComboBox.SelectedItem.ToString();
-            item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
+            if (item.Contains('('))
+                item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
             var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.DisplayName == item);
-            var accounts = agent.ConnectionParams.Accounts;
-            List<StockSharp.BusinessEntities. Portfolio> portfolios = new List<StockSharp.BusinessEntities. Portfolio>();
-            foreach (var i in accounts)
-            {
-                portfolios.Add(i);
-            }
-            AccountComboBox.ItemsSource = portfolios.ToList();
+            var accounts = agent.ConnectionParams.Accounts.Select(i=>i.Name).ToList();
+            //List<StockSharp.BusinessEntities. Portfolio> portfolios = new List<StockSharp.BusinessEntities. Portfolio>();
+            //foreach (var i in accounts)
+            //{
+            //    portfolios.Add(i);
+            //}
+            AccountComboBox.ItemsSource = accounts;
+            AccountComboBox.SelectedItem = _selectedAccount;
 
         }
     }
