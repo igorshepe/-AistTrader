@@ -22,6 +22,9 @@ namespace AistTrader
         private string _code;
         private string _providerPath;
         private string _selectedPath;
+        private bool editMode;
+        private string _originPath;
+        private Connection connectionToEdit;
         public string ConnectionName
         {
             get { return _connectionName; }
@@ -80,15 +83,18 @@ namespace AistTrader
             DataContext = this;
             EditIndex = editIndex;
         }
-        private void InitFields(Connection account)
+        private void InitFields(Connection connection)
         {
-            _connectionName = account.ConnectionParams.Name;
-            _code = account.ConnectionParams.Code;
+            connectionToEdit = connection;
+            editMode = true;
+            _connectionName = connection.DisplayName;
+            _code = connection.ConnectionParams.Code;
             //Provider = account.ConnectionParams.PlazaConnectionParams.Type.ToString();
             //_providerPath= GetAllPlazaDirectories();
             AllPlazaDirectoriesComboBox.ItemsSource = GetAllPlazaDirectories();
             //AllPlazaDirectoriesComboBox.SelectedItem = account.Connection.ConnectionSettings.Path.ToString();
-            _selectedPath = account.ConnectionParams.PlazaConnectionParams.Path;
+            _selectedPath = connection.ConnectionParams.PlazaConnectionParams.Path;
+            _originPath = connection.ConnectionParams.PlazaConnectionParams.Path;
         }
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
@@ -98,12 +104,23 @@ namespace AistTrader
             //        MessageBox.Show(this, @"В выбранной дериктории нет ini файла: {0}.".Put(AllPlazaDirectoriesComboBox.SelectedItem));
             //        return;
             //    }
+
             var terminalConnSettings = new PlazaConnectionParams(AllPlazaDirectoriesComboBox.SelectedItem.ToString());
-            var agent = new ConnectionParams(ClienNameTxtBox.Text, ClienCodeTxtBox.Text, terminalConnSettings, false);
-            MainWindow.Instance.AddNewAgentConnection(new Connection(ClienNameTxtBox.Text, agent), EditIndex);
+            var connParams = new ConnectionParams(ConnectionNameTxtBox.Text, ClienCodeTxtBox.Text, terminalConnSettings, false);
+            if (editMode)
+            {
+                var item= MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == connectionToEdit.Id);
+                item.DisplayName = ConnectionNameTxtBox.Text;
+                item.ConnectionParams = connParams;
+                MainWindow.Instance.AddNewAgentConnection(connectionToEdit, EditIndex);
+                editMode = false; //todo убрать
+                connectionToEdit = null;
+            }
+            else
+                MainWindow.Instance.AddNewAgentConnection(new Connection(ConnectionNameTxtBox.Text, connParams), EditIndex);
             Close();
         }
-        private void ClienNameTxtBox_KeyDown(object sender, KeyEventArgs e)
+        private void ConnectionNameTxtBox_KeyDown(object sender, KeyEventArgs e)
         {
             //string result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(ClienNameTxtBox.Text);
             //ClienNameTxtBox.Text = result;
@@ -124,7 +141,7 @@ namespace AistTrader
             //    }
             //}
         }
-        private void ClienNameTxtBox_OnKeyUp(object sender, KeyEventArgs e)
+        private void ConnectionNameTxtBox_OnKeyUp(object sender, KeyEventArgs e)
         {
             //ЗАЧЕМ ЭТО?
             //var has = Settings.Default.AgentConnection.Cast<AgentConnection>().Any(i => i.Name == ClienNameTxtBox.Text);
@@ -199,6 +216,19 @@ namespace AistTrader
                     return  string.Format("В выбранной дериктории нет ini файла: {0}".Put(AllPlazaDirectoriesComboBox.SelectedItem)) ;
                 }    
             }
+            if (AllPlazaDirectoriesComboBox.ItemsSource != null)
+            {
+                if (_originPath != AllPlazaDirectoriesComboBox.SelectedItem.ToString()) 
+                {
+                    var item = MainWindow.Instance.ConnectionsStorage.Any(i => i.ConnectionParams.PlazaConnectionParams.Path == AllPlazaDirectoriesComboBox.SelectedItem);
+                    if (item)
+                    {
+                        return "Выбранный роутер уже используется!";
+                    }
+                }
+
+            }
+
             return String.Empty;
         }
         private bool ValidateProperties()
@@ -207,11 +237,11 @@ namespace AistTrader
         }
         public string Error { get; private set; }
         //todo: проверить что делает этот метод, поменять ресурс 
-        private void ClienNameTxtBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        private void ConnectionNameTxtBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (IsAdditionMode)
             {
-                var text = ClienNameTxtBox.Text;
+                var text = ConnectionNameTxtBox.Text;
                 //todo: проработать логику
                 //if (Settings.Default.AgentConnection != null)
                 //    NameAlredyInUse = Settings.Default.AgentConnection.Cast<Connection>().Any(i => i.Name == text);    

@@ -86,28 +86,39 @@ namespace AistTrader
         }
         private void DelAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {
-            foreach (var item in ProviderListView.SelectedItems.Cast<Connection>().ToList())
+            MessageBoxResult result = MessageBox.Show("Connection \"{0}\" will be deleted! You sure?".Put(ProviderListView.SelectedItem),"Delete connection", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
             {
-                if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.Name == item.Name))
+                foreach (var item in ProviderListView.SelectedItems.Cast<Connection>().ToList())
                 {
-                    MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
-                    return;
-                }
-                ConnectionsStorage.Remove(item);
-                SaveProviderItems();
-                var connection = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == item.Name);
-                if (connection != null)
-                {
-                    connection.Disconnect();
-                    connection.Dispose();
-                    ConnectionManager.Connections.Remove(connection);
-                    Logger.Info("Connection \"{0}\" has been deleted", connection.ConnectionName);
+                    if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.DisplayName == item.DisplayName))
+                    {
+                        MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
+                        return;
+                    }
+
+
+                    ConnectionsStorage.Remove(item);
+                    SaveProviderItems();
+                    var connection = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == item.DisplayName);
+                    if (connection != null)
+                    {
+                        connection.Disconnect();
+                        connection.Dispose();
+                        ConnectionManager.Connections.Remove(connection);
+                        Logger.Info("Connection \"{0}\" has been deleted", connection.ConnectionName);
+                    }
                 }
             }
         }
         private void EditAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {
             var listToEdit = ProviderListView.SelectedItems.Cast<Connection>().ToList();
+            if (listToEdit[0].ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
+            {
+                MessageBox.Show(this, @"Активное соединение, редактирование невозможно!");
+                return;
+            }
             //TODO: переделать
             foreach (var connectionEditWindow in from agentSettings in listToEdit
                                                  let index = ConnectionsStorage.IndexOf(agentSettings)
@@ -155,7 +166,7 @@ namespace AistTrader
         }
         public void UpdateProviderGridListView(Connection agentConnection)
         {
-            var item = ConnectionsStorage.FirstOrDefault(i => i.Name == agentConnection.Name);
+            var item = ConnectionsStorage.FirstOrDefault(i => i.DisplayName == agentConnection.DisplayName);
             item.ConnectionParams.VariationMargin = item.ConnectionParams.Accounts.FirstOrDefault().VariationMargin;
             item.ConnectionParams.Funds = item.ConnectionParams.Accounts.FirstOrDefault().CurrentValue;
             item.ConnectionParams.NetValue= item.ConnectionParams.Accounts.FirstOrDefault().CurrentPrice;
@@ -175,9 +186,9 @@ namespace AistTrader
             {
                 try
                 {
-                    Logger.Info("Trying to get the ip,port of plaza connection -\"{0}\"...", agent.Name.ToString());
+                    Logger.Info("Trying to get the ip,port of plaza connection -\"{0}\"...", agent.DisplayName.ToString());
                     ipEndPoint = GetPlazaConnectionIpPort(agent.ConnectionParams.PlazaConnectionParams.Path);
-                    Logger.Info("IP and port of -\"{0}\" connection were successfully acquired", agent.Name.ToString());
+                    Logger.Info("IP and port of -\"{0}\" connection were successfully acquired", agent.DisplayName.ToString());
                 }
                 catch (Exception e)
                 {
@@ -190,7 +201,7 @@ namespace AistTrader
             }
             else
                 ipEndPoint = agent.ConnectionParams.PlazaConnectionParams.IpEndPoint;
-            var connection = new AistTraderConnnectionWrapper(agent.Name) {Address = ipEndPoint.To<IPEndPoint>(), IsCGate = true};
+            var connection = new AistTraderConnnectionWrapper(agent.DisplayName) {Address = ipEndPoint.To<IPEndPoint>(), IsCGate = true};
 
             //TODO: посмотри примеры того как идет динамический апдейт, а потом уже подписывай события на то что будет апдейтится
             agent.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>();
@@ -277,10 +288,10 @@ namespace AistTrader
             {
                 //ON
                 var item = (sender as FrameworkElement).DataContext;
-                ProviderListView.SelectedItems.Clear();
-                ProviderListView.SelectedItems.Add(item);
+                //ProviderListView.SelectedItems.Clear();
+                //ProviderListView.SelectedItems.Add(item);
                 var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
-                int index = ConnectionManager.Connections.FindIndex(i => i.Name == rowItem.Name);
+                int index = ConnectionManager.Connections.FindIndex(i => i.Name == rowItem.DisplayName);
                 rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
                 if (rowItem.ConnectionParams.IsRegistredConnection)
                     ConnectionManager.Connections[index].Connect();

@@ -84,6 +84,7 @@
                               AutoGenerateColumns="False"
                               GridLinesVisibility="Vertical"
                               HeadersVisibility="Column"
+                              SelectionMode="Single"
                               HorizontalAlignment="Stretch"
                               SelectionChanged="AgentListView_OnSelectionChanged"
                               ItemsSource="{Binding ElementName=MainFrm, Path=AgentCollectionView}"
@@ -176,10 +177,12 @@
                                   GridLinesVisibility="All"
                                   AutoGenerateColumns="False"
                                   Loaded="ProviderListView_Loaded" 
+                                  SelectionMode="Single"
+                                  IsReadOnly="True"
                                   Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Width="300"
-                                                    Binding="{Binding Name}"/>
+                                                    Binding="{Binding DisplayName}"/>
                                 <DataGridTextColumn Header="Code"
                                                     Binding="{Binding ConnectionParams.Code}" />
                                 <DataGridTextColumn Header="Funds"
@@ -237,8 +240,10 @@
                         <DataGrid x:Name="PortfolioListView"
                                   AutoGenerateColumns="False"
                                   IsSynchronizedWithCurrentItem="True"
+                                  SelectionMode="Single"
                                   x:FieldModifier="private"
                                   Loaded="PortfolioListView_Loaded"
+                                  IsReadOnly="True"
                                   Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name"
@@ -281,7 +286,9 @@
                               Loaded="AgentManagerListView_OnLoaded"
                               ItemsSource="{Binding ElementName=AddAgentsWnd, Path=AgentManagerStorage}"
                               IsSynchronizedWithCurrentItem="True"  
+                              SelectionMode="Single"
                               x:FieldModifier="private" 
+                              IsReadOnly="True"
                               Grid.Column="1">
 
                             <DataGrid.Columns>

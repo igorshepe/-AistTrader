@@ -61,13 +61,13 @@
                HorizontalAlignment="Left" 
                Width="95"/>
         <TextBox Margin="5,35,5,0"
-                 x:Name="ClienNameTxtBox"
+                 x:Name="ConnectionNameTxtBox"
                  Text="{Binding Path=ConnectionName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Delay=700}"
                  TabIndex="0"
                  x:FieldModifier="private"
-                 KeyDown="ClienNameTxtBox_KeyDown"
-                 KeyUp="ClienNameTxtBox_OnKeyUp"
-                 TextChanged="ClienNameTxtBox_OnTextChanged" Height="22" VerticalAlignment="Top"/>
+                 KeyDown="ConnectionNameTxtBox_KeyDown"
+                 KeyUp="ConnectionNameTxtBox_OnKeyUp"
+                 TextChanged="ConnectionNameTxtBox_OnTextChanged" Height="22" VerticalAlignment="Top"/>
         <TextBox Margin="5,91,5,0"
                  x:Name="ClienCodeTxtBox"
                  Text="{Binding Path=Code, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
@@ -75,7 +75,7 @@
                  VerticalAlignment="Top"
                  TabIndex="1"
                  x:FieldModifier="private"
-                 KeyDown="ClienNameTxtBox_KeyDown"/>
+                 KeyDown="ConnectionNameTxtBox_KeyDown"/>
         <!--<ComboBox Height="22"
                   Margin="5,146,0,0"
                   x:Name="ConnectionTypeComboBox"
