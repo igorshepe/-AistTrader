@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Common.Entities;
+using Common.Params;
 using Ecng.Common;
 using Ecng.ComponentModel;
 using StockSharp.BusinessEntities;
@@ -46,6 +47,8 @@ namespace AistTrader
             get { return _selectedAccount; }
             set { _selectedAccount = value; }
         }
+
+        private bool _isEditMode;
         public List<Portfolio> DynamicAccount { get; set; }
         private Dictionary<string, bool> validPortflolioProperties = new Dictionary<string, bool>();
 
@@ -76,6 +79,7 @@ namespace AistTrader
 
         public PortfolioAddition(Portfolio portfolio, int editIndex)
         {
+            _isEditMode = true;
             InitializeComponent();
             DataContext = this;
             EditIndex = editIndex;
@@ -175,7 +179,7 @@ namespace AistTrader
                     case "RegisteredProvider":
                         validationResult = ValidateRegisteredProvider();
                         break;
-                    case "DynamicAccount":
+                    case "SelectedAccount":
                         validationResult = ValidateDynamicAccount();
                         break;
                     //case "ProviderPath":
@@ -207,10 +211,8 @@ namespace AistTrader
 
         private string ValidateDynamicAccount()
         {
-            //if (this.DynamicAccount.Count==0)//TODO: вот тут подтянуть указатель на соединение которое используется для получения данного счёта
-            //    return "Счёт не получен, соединение не активно";
-            //if (AccountComboBox.SelectedItem==null)
-            //    return "Не выбран счёт";
+            if (string.IsNullOrEmpty(this.SelectedAccount))
+                return "Счёт не получен или все доступные счета уже задействованы";
             return String.Empty;
         }
 
@@ -237,10 +239,41 @@ namespace AistTrader
             var item = ConnectionProviderComboBox.SelectedItem.ToString();
             if (item.Contains('('))
                 item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
+            //Active
             var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.DisplayName == item);
-            var accounts = agent.ConnectionParams.Accounts.Select(i=>i.Name).ToList();
-            AccountComboBox.ItemsSource = accounts;
-            AccountComboBox.SelectedItem = _selectedAccount;
+            if (agent.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected && agent.ConnectionParams.Accounts.Count != 0)
+            {
+                if (_isEditMode)
+                {
+                    var accounts = agent.ConnectionParams.Accounts.Select(i => i.Name).ToList();
+                    AccountComboBox.ItemsSource = accounts;
+                    AccountComboBox.SelectedItem = _selectedAccount;
+                }
+                else
+                {
+                    var accounts = agent.ConnectionParams.Accounts.Select(i => i.Name).ToList().Except(MainWindow.Instance.AgentPortfolioStorage.Select(i=>i.Code)).ToList();
+                    AccountComboBox.ItemsSource = accounts;
+                }
+            }
+            //Not Active
+            if (agent.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Disconnected)
+            {
+                var accounts = MainWindow.Instance.AgentPortfolioStorage.Select(i => i.Code).ToList();
+                AccountComboBox.ItemsSource = accounts;
+                AccountComboBox.SelectedItem = _selectedAccount;
+                //var accounts = agent.ConnectionParams.Accounts.Select(i => i.Name).ToList()/*.Except(MainWindow.Instance.AgentPortfolioStorage.Where(i=>i.Code !=agent.ConnectionParams.Accounts.First().Name).Select(i=>i.Code))*/;
+            }
+
+
+
+
+
+
+
+            //var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.DisplayName == item);
+
+            
+
         }
     }
 }

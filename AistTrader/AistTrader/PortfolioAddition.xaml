@@ -60,6 +60,7 @@
                   Margin="5,94,5,0"
                   x:Name="AccountComboBox"
                   VerticalAlignment="Top"
+                  Text="{Binding Path=SelectedAccount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path= SelectedAccount, Mode=TwoWay, ValidatesOnDataErrors=False, UpdateSourceTrigger=PropertyChanged }"
                   TabIndex="1"
                   SelectionChanged="AccountComboBoxSelectionChanged"
