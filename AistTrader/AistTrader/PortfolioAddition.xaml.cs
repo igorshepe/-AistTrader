@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Common.Entities;
+using Ecng.Common;
 using Ecng.ComponentModel;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
@@ -84,13 +85,9 @@ namespace AistTrader
         private void InitFields(Portfolio portfolio)
         {
             //выбирать либо напрямую с менеджера подключений либо/ибо из айтема, где предавариельно ставим, что данный объект активен
-            ConnectionProviderComboBox.ItemsSource =
-                MainWindow.Instance.ConnectionManager.Connections.Where(
-                    i => i.ConnectionState == ConnectionStates.Connected).Select(i => i.ConnectionName).ToList();
-            //или
-            //ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ConnectionsStorage.Where(i=>i.Connection.).Select(i => i.Name).ToList();
-
-
+            ConnectionProviderComboBox.ItemsSource =MainWindow.Instance.ConnectionManager.Connections.Where(i => i.ConnectionState == ConnectionStates.Connected).Select(i => i.ConnectionName).ToList();
+            if (ConnectionProviderComboBox.Items.Count ==0)
+                ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ConnectionsStorage.Select(i => i.DisplayName).ToList();    
 
             var items = ConnectionProviderComboBox.ItemsSource;
             //var index= MainWindow.Instance.ConnectionsStorage.ToList().FindIndex(i => i.Name == portfolio.Connection.Name);
@@ -109,8 +106,10 @@ namespace AistTrader
             //Todo: переделать под динамику
             AccountComboBox.ItemsSource = portfolio.Connection.ConnectionParams.Accounts;
              _selectedAccount = portfolio.Code;
-
             _portfolioName = portfolio.Name;
+            ConnectionProviderComboBox.IsEnabled = false;
+            AccountComboBox.IsEnabled = false;
+
             //DynamicAccount = new List<string> {"Allem", "Vinny"};
         }
 
@@ -160,10 +159,6 @@ namespace AistTrader
                 //TODO: уточнить что делать если данных нет    
             }
         }
-
-
-
-
         public string this[string columnName]
         {
             //имя уникальное всегда
@@ -239,21 +234,13 @@ namespace AistTrader
         //}
         private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //throw new NotImplementedException();
-
             var item = ConnectionProviderComboBox.SelectedItem.ToString();
             if (item.Contains('('))
                 item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
             var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.DisplayName == item);
             var accounts = agent.ConnectionParams.Accounts.Select(i=>i.Name).ToList();
-            //List<StockSharp.BusinessEntities. Portfolio> portfolios = new List<StockSharp.BusinessEntities. Portfolio>();
-            //foreach (var i in accounts)
-            //{
-            //    portfolios.Add(i);
-            //}
             AccountComboBox.ItemsSource = accounts;
             AccountComboBox.SelectedItem = _selectedAccount;
-
         }
     }
 }
