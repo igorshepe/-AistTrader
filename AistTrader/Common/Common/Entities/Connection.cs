@@ -10,16 +10,16 @@ namespace Common.Entities
         Connection() { }
         public Connection(string name, ConnectionParams connectionParams)
         {
-            Name = name;
+            Id = name;
             DisplayName = name;
             ConnectionParams = connectionParams;
         }
-        public string Name { get; set; }
+        public string Id { get; set; }
         public string DisplayName { get; set; }
         public ConnectionParams ConnectionParams { get; set; }
         public override string ToString()
         {
-            return Name;
+            return DisplayName;
         }
     }
 }
