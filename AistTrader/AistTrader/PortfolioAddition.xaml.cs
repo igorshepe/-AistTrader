@@ -190,7 +190,7 @@ namespace AistTrader
                 }
                 string error = validationResult;
                 validPortflolioProperties[columnName] = String.IsNullOrEmpty(error) ? true : false;
-                if (validPortflolioProperties.Count == 2)
+                if (validPortflolioProperties.Count == 3)
                     OkPortfolioBtn.IsEnabled = validPortflolioProperties.Values.All(isValid => isValid);
                 return validationResult;
             }
