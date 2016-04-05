@@ -157,6 +157,8 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                 EditPortfolioBtn.IsEnabled = true;
             }
         }
+        
+
     }
 }
     

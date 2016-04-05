@@ -303,6 +303,18 @@
                                                     Binding="{Binding AgentManagerSettings.AgentOrGroup}" />
                                 <DataGridTextColumn Header="Securitie"
                                                     Binding="{Binding AgentManagerSettings.Tool}" />
+                                
+                                
+                                <DataGridTemplateColumn Header="TS">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <Image MouseDown="AgentManagerTradeSettingsPic_OnMouseDown" HorizontalAlignment="Left" Width="17" Height="17" Source="Resources/Images/Settings.ico" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                
                                 <DataGridTextColumn Header="Position(Позиции(лоты))"
                                                     Binding="{Binding AgentManagerSettings.Position}" />
                                 <DataGridTextColumn Header="Net value(Чистая стоимость)"

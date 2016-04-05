@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Xml.Serialization;
 using Common.Entities;
 using NLog;
@@ -156,14 +157,6 @@ namespace AistTrader
             strategytest.Start();
         }
 
-
-        private void OpenTradeSettingsWindowBtn_OnClick(object sender, RoutedEventArgs e)
-        {
-            var form = new ManagerAdditionTradeSettings();
-            form.ShowDialog();
-            form = null;
-        }
-
         private void AgentManagerListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (AgentManagerListView.Items.Count == 0)
@@ -176,6 +169,15 @@ namespace AistTrader
                 EditAgentManagerBtn.IsEnabled = true;
                 DelAgentManagerBtn.IsEnabled = true;
             }
+        }
+
+        private void AgentManagerTradeSettingsPic_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = (sender as FrameworkElement).DataContext;
+            var form = new ManagerAdditionTradeSettings();
+            form.ShowDialog();
+            form = null;
+
         }
     }
 }
