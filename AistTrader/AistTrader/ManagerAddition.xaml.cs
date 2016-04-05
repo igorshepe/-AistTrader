@@ -67,9 +67,6 @@ namespace AistTrader
             DataContext = this;
             EditIndex = int.MinValue;
             LoadParams();
-            var x = SecurityPicker;
-            //TODO:указывать источник- подключение, для загрузки параметров
-            x.SecurityProvider = new FilterableSecurityProvider(/*MainWindow.Instance.Trader*/);
             
             //workin'
             //SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
@@ -94,7 +91,6 @@ namespace AistTrader
             var accounts = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             PortfolioComboBox.ItemsSource = accounts;
             AmountTextBox.Text = "";
-
         }
         private void InitFields(AgentManager agent)
         {
@@ -166,7 +162,7 @@ namespace AistTrader
             }
         }
 
-        private void AccountComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PortfolioComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == (string)PortfolioComboBox.SelectedItem);
 
@@ -185,18 +181,23 @@ namespace AistTrader
 
             //todo: добавить обновление вверх по иерархии на этапе обработки эвентов
             //добавить выборку, берем имя, по имени обращемся к коллекции
+            //var connection = MainWindow.Instance.ConnectionManager.Connections.Find(i => i. == selectedPortfolio.Connection.Id);
 
-            var connection =  MainWindow.Instance.ConnectionManager.Connections.Find(i=>i.ConnectionName == selectedPortfolio.Connection.DisplayName);
+            var connection =  MainWindow.Instance.ConnectionsStorage.First(i=>i.Id == selectedPortfolio.Connection.Id);
             if (connection != null)
             {
-                if (connection.ConnectionState == ConnectionStates.Connected)
+                if (connection.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
                 {
                     if (SecurityPicker.SecurityProvider != null)
                     {
                         SecurityPicker.SecurityProvider.Securities.Clear();
                         SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.ConnectionParams.Tools);
                     }
-                    
+                    else
+                    {
+                        SecurityPicker.SecurityProvider = new FilterableSecurityProvider();
+                        SecurityPicker.SecurityProvider.Securities.AddRange(connection.ConnectionParams.Tools);
+                    }
                 }
                 else
                     SecurityPicker.SecurityProvider.Securities.Clear();

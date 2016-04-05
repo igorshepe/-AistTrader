@@ -120,6 +120,8 @@ namespace AistTrader
             var listToEdit = ProviderListView.SelectedItems.Cast<Connection>().ToList();
             if (listToEdit[0].ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
             {
+
+                //todo: заменить на неактивную кнопку редактирования, убрать предупреждения
                 MessageBox.Show(this, @"Активное соединение, редактирование невозможно!");
                 return;
             }

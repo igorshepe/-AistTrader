@@ -78,7 +78,7 @@
                   Name="PortfolioComboBox" 
                   VerticalAlignment="Top" 
                   TabIndex="4" 
-                  SelectionChanged="AccountComboBox_OnSelectionChanged"
+                  SelectionChanged="PortfolioComboBox_OnSelectionChanged"
                   x:FieldModifier="private"
                   SelectedItem="{Binding Path=SelectedPortfolio}"
                   />
