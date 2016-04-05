@@ -5,7 +5,7 @@
         xmlns:nlogViewer="clr-namespace:NlogViewer;assembly=NlogViewer"
         Height="842.5"
         Width="1349"
-        Title="AistTrader"
+        Title="Aist Trader"
         x:Name="MainFrm" 
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen" 
@@ -80,7 +80,7 @@
                             <ColumnDefinition Width="1080*"/>
                         </Grid.ColumnDefinitions>
                         <DataGrid x:Name="AgentListView"
-                              Margin="0,0,10,0"
+                              Margin="0,0,10,5"
                               AutoGenerateColumns="False"
                               GridLinesVisibility="Vertical"
                               HeadersVisibility="Column"
@@ -156,10 +156,8 @@
                                     Name="CreateGroupItemBtn"
                                     IsEnabled="False"
                                     Click="AddAgentConfigGroupBtnClick"
-                                    HorizontalAlignment="Center"
-                                    Margin="12,89,8,0"
-                                    VerticalAlignment="Top"
-                                    Width="100"/>
+                                    Margin="0,88,8,0"
+                                    VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
                         </Grid>
                     </Grid>
                 </TabItem>
@@ -180,7 +178,7 @@
                                   SelectionMode="Single"
                                   SelectionChanged="ProviderListView_OnSelectionChanged"
                                   IsReadOnly="True"
-                                  Grid.Column="1">
+                                  Grid.Column="1" Margin="0,0,10,5">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Width="300"
                                                     Binding="{Binding DisplayName}"/>
@@ -248,7 +246,7 @@
                                   Loaded="PortfolioListView_Loaded"
                                   SelectionChanged="PortfolioListView_OnSelectionChanged"
                                   IsReadOnly="True"
-                                  Grid.Column="1">
+                                  Grid.Column="1" Margin="0,0,10,5">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name"
                                                     Binding="{Binding Name}"/>
@@ -291,15 +289,18 @@
                               ItemsSource="{Binding ElementName=AddAgentsWnd, Path=AgentManagerStorage}"
                               IsSynchronizedWithCurrentItem="True"  
                               SelectionMode="Single"
+                              SelectionChanged="AgentManagerListView_OnSelectionChanged"
                               x:FieldModifier="private" 
                               IsReadOnly="True"
-                              Grid.Column="1">
+                              Grid.Column="1" Margin="0,0,10,5">
 
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name"
                                                     Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="Code"
                                                     Binding="{Binding AgentManagerSettings.Account.AgentAccount.Code}" />
+                                <DataGridTextColumn Header="Agent"
+                                                    Binding="{Binding AgentManagerSettings.AgentOrGroup}" />
                                 <DataGridTextColumn Header="Securitie"
                                                     Binding="{Binding AgentManagerSettings.Tool}" />
                                 <DataGridTextColumn Header="Position(Позиции(лоты))"
@@ -370,12 +371,14 @@
                                     Width="100"/>
                             <Button Content="Редактировать"
                                     Click="EditAgentManagerBtnClick"
+                                    Name="EditAgentManagerBtn"
                                     HorizontalAlignment="Center"
                                     Margin="4,34,0,0"
                                     VerticalAlignment="Top" 
                                     Width="100"/>
                             <Button Content="Удалить"
                                     Click="DelAgentManagerBtnClick" 
+                                    Name="DelAgentManagerBtn"
                                     HorizontalAlignment="Center"
                                     Margin="4,61,0,0"
                                     VerticalAlignment="Top"
@@ -383,7 +386,7 @@
                             <Button Content="Запустить"
                                     Click="TestStrategyStartBtnClick"
                                     HorizontalAlignment="Center" 
-                                    Margin="10,88,10,0"
+                                    Margin="12,89,8,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
                         </Grid>

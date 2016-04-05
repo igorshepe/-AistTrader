@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Xml.Serialization;
 using Common.Entities;
@@ -119,6 +120,17 @@ namespace AistTrader
         {
             if (!IsAgentManagerSettingsLoaded & (File.Exists("AgentManagerSettings.xml")))
                 InitiateAgentManagerSettings();
+
+            if (AgentManagerListView.Items.Count == 0)
+            {
+                EditAgentManagerBtn.IsEnabled = false;
+                DelAgentManagerBtn.IsEnabled = false;
+            }
+            else
+            {
+                EditAgentManagerBtn.IsEnabled = true;
+                DelAgentManagerBtn.IsEnabled = true;
+            }
         }
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
         {
@@ -150,6 +162,20 @@ namespace AistTrader
             var form = new ManagerAdditionTradeSettings();
             form.ShowDialog();
             form = null;
+        }
+
+        private void AgentManagerListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AgentManagerListView.Items.Count == 0)
+            {
+                EditAgentManagerBtn.IsEnabled = false;
+                DelAgentManagerBtn.IsEnabled = false;
+            }
+            else
+            {
+                EditAgentManagerBtn.IsEnabled = true;
+                DelAgentManagerBtn.IsEnabled = true;
+            }
         }
     }
 }

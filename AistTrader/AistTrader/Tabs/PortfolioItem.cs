@@ -92,6 +92,14 @@ namespace AistTrader //todo: идентификаторы портфеля то�
         }
         private void DelPortfolioBtnClick(object sender, RoutedEventArgs e)
         {
+
+            var selectedPortfolio = PortfolioListView.SelectedItem as Portfolio;
+            if (AgentManagerListView.Items.Cast<Common.Entities.AgentManager>().Any(i => i.AgentManagerSettings.Portfolio.Name == selectedPortfolio.Name))
+            {
+                MessageBox.Show(this, @"На данном портфеле завязан агент в менеджере агентов, удаление невозможно!");
+                return;
+            }
+
             MessageBoxResult result = MessageBox.Show("Portfolio \"{0}\" will be deleted! You sure?".Put(PortfolioListView.SelectedItem), "Delete connection", MessageBoxButton.YesNo);
             if (result== MessageBoxResult.Yes)
             {

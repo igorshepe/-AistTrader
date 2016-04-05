@@ -81,6 +81,9 @@ namespace AistTrader
         }
         private void LoadParams()
         {
+
+            SecurityPicker.SecurityProvider = new FilterableSecurityProvider();
+
             List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName).ToList();
             var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName != "ungrouped agents").Select(i => i.Params.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
@@ -94,13 +97,14 @@ namespace AistTrader
         }
         private void InitFields(AgentManager agent)
         {
-            PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<StockSharp.BusinessEntities.Portfolio>().Select(i => i.Name).ToList();
+            SecurityPicker.SecurityProvider = new FilterableSecurityProvider();
+            PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             _selectedPortfolio = agent.Name;
 
-            List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Name).ToList();
+            List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName).ToList();
             var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName != "ungrouped agents").Select(i => i.Params.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
-            GroupOrSingleAgentComboBox.ItemsSource = resultsList;
+            GroupOrSingleAgentComboBox.ItemsSource = resultsList.ToList();
             _selectedGroupOrSingleAgent = agent.AgentManagerSettings.AgentOrGroup;
 
 
@@ -165,7 +169,7 @@ namespace AistTrader
         private void PortfolioComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == (string)PortfolioComboBox.SelectedItem);
-
+            GroupOrSingleAgentComboBox.SelectedItem = _selectedGroupOrSingleAgent;
             ////имя счета
             //var item = AccountComboBox.SelectedItem.ToString();
 
@@ -195,7 +199,6 @@ namespace AistTrader
                     }
                     else
                     {
-                        SecurityPicker.SecurityProvider = new FilterableSecurityProvider();
                         SecurityPicker.SecurityProvider.Securities.AddRange(connection.ConnectionParams.Tools);
                     }
                 }

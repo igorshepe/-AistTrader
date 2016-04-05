@@ -88,7 +88,7 @@
                   x:Name="GroupOrSingleAgentComboBox"
                   SelectionChanged="GroupOrSingleAgentComboBox_OnSelectionChanged"
                   VerticalAlignment="Top"
-                  SelectedItem="{Binding Path=SelectedGroupOrSingleAgent}"
+                  SelectedItem="{Binding Path= SelectedGroupOrSingleAgent}"
                   TabIndex="4"  
                   x:FieldModifier="private"/>
         <!--<ComboBox Height="22"
