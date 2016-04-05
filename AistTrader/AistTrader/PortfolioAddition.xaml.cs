@@ -88,6 +88,8 @@ namespace AistTrader
 
         private void InitFields(Portfolio portfolio)
         {
+
+            //todo: переписать этот бред(
             //выбирать либо напрямую с менеджера подключений либо/ибо из айтема, где предавариельно ставим, что данный объект активен
             ConnectionProviderComboBox.ItemsSource =MainWindow.Instance.ConnectionManager.Connections.Where(i => i.ConnectionState == ConnectionStates.Connected).Select(i => i.ConnectionName).ToList();
             if (ConnectionProviderComboBox.Items.Count ==0)
@@ -95,15 +97,30 @@ namespace AistTrader
 
             var items = ConnectionProviderComboBox.ItemsSource;
             //var index= MainWindow.Instance.ConnectionsStorage.ToList().FindIndex(i => i.Name == portfolio.Connection.Name);
-            foreach (var i in items)
+
+
+
+
+            var connections = MainWindow.Instance.ConnectionsStorage.Where(i=>i.Id ==portfolio.Connection.Id).Select(i => i.DisplayName).ToList();
+            foreach (var i in connections)
             {
-                if (i.ToString() == portfolio.Connection.DisplayName)
-                {
-                    var selectedProvider = i;
-                    _selectedRegisteredProvider = selectedProvider.ToString();
-                    break;
-                }
+                _selectedRegisteredProvider = i.ToString();
             }
+            //_selectedRegisteredProvider = connections.Select(i=>i).ToString();
+            //var x = connections.Where(i=>i.)
+
+            //foreach (var i in items)
+            //{
+            //    if (i.ToString() == portfolio.Connection.Id)
+            //    {
+            //        var selectedProvider = i;
+            //        _selectedRegisteredProvider = selectedProvider.ToString();
+            //        break;
+            //    }
+            //}
+
+
+
             //ConnectionProviderComboBox.SelectedItem= items;
             //int index = MainWindow.Instance.ConnectionsStorage.Where<AgentConnection>(x => x.Name == portfolio.Connection.Name).Select<AgentConnection, int>(x => MainWindow.Instance.ConnectionsStorage.IndexOf(x)).Single<int>();
             //portfolio.Connection.Name;

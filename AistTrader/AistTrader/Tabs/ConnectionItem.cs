@@ -85,17 +85,23 @@ namespace AistTrader
             form = null;
         }
         private void DelAgentConnectionBtnClick(object sender, RoutedEventArgs e)
-        {
+        {//todo: оптимизировать запросы, выборки
+            var selectedItem = ProviderListView.SelectedItem as Connection;
+            if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.Id == selectedItem.Id))
+            {
+                MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
+                return;
+            }
             MessageBoxResult result = MessageBox.Show("Connection \"{0}\" will be deleted! You sure?".Put(ProviderListView.SelectedItem),"Delete connection", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
                 foreach (var item in ProviderListView.SelectedItems.Cast<Connection>().ToList())
                 {
-                    if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.DisplayName == item.DisplayName))
-                    {
-                        MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
-                        return;
-                    }
+                    //if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.DisplayName == item.DisplayName))
+                    //{
+                    //    MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
+                    //    return;
+                    //}
                     ConnectionsStorage.Remove(item);
                     SaveProviderItems();
                     var connection = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == item.DisplayName);
@@ -240,13 +246,14 @@ namespace AistTrader
             connection.Disconnected += () =>
             {
                 this.GuiAsync(() => agent.ConnectionParams.IsConnected = false);
-                this.GuiAsync(() => agent.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);
+                this.GuiAsync(() => agent.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);   
                 this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is not active now", connection.Name));
             };
             connection.ConnectionError += error =>
             {
                 this.GuiAsync(() => Logger.Info("Connection error -\"{0}\", connection \"{1}\" is not active", error, connection.Name));
+                //todo: коды ошибок в енам, подкидывать готовые уведомления на примере нерабочего роутера, подсвечивать в гриде цветом, если ошибка критическая
             };
             //TODO: Добавить все эвенты по аналогии с портфелями
             connection.Connect();
@@ -322,6 +329,32 @@ namespace AistTrader
         {
             if (!IsProviderSettingsLoaded & (File.Exists("Connections.xml")) & ConnectionsStorage.Count == 0)
                 InitiateProviderItems();
+
+
+            if (ProviderListView.Items.Count ==0)
+            {
+                EditAgentConnectionBtn.IsEnabled = false;
+                DelAgentConnectionBtn.IsEnabled = false;
+            }
+            else
+            {
+                EditAgentConnectionBtn.IsEnabled = true;
+                DelAgentConnectionBtn.IsEnabled = true;
+            }
+        }
+
+        private void ProviderListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ProviderListView.Items.Count == 0)
+            {
+                EditAgentConnectionBtn.IsEnabled = false;
+                DelAgentConnectionBtn.IsEnabled = false;
+            }
+            else
+            {
+                EditAgentConnectionBtn.IsEnabled = true;
+                DelAgentConnectionBtn.IsEnabled = true;
+            }
         }
     }
 

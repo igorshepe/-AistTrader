@@ -4,12 +4,14 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 using Common.Entities;
+using Ecng.Common;
 using NLog;
 
 namespace AistTrader //todo: идентификаторы портфеля тоже в кеше
@@ -90,20 +92,31 @@ namespace AistTrader //todo: идентификаторы портфеля то�
         }
         private void DelPortfolioBtnClick(object sender, RoutedEventArgs e)
         {
-            foreach (var item in PortfolioListView.SelectedItems.Cast<Common.Entities.Portfolio>().ToList())
+            MessageBoxResult result = MessageBox.Show("Portfolio \"{0}\" will be deleted! You sure?".Put(PortfolioListView.SelectedItem), "Delete connection", MessageBoxButton.YesNo);
+            if (result== MessageBoxResult.Yes)
             {
-                AgentPortfolioStorage.Remove(item);
-                SavePortfolioSettings();
+                foreach (var item in PortfolioListView.SelectedItems.Cast<Common.Entities.Portfolio>().ToList())
+                {
+                    AgentPortfolioStorage.Remove(item);
+                    SavePortfolioSettings();
+                }
             }
+            
         }
         private void PortfolioListView_Loaded(object sender, RoutedEventArgs e)
         {
             if (!IsPortfolioSettingsLoaded & (File.Exists("Portfolios.xml")) & AgentPortfolioStorage.Count == 0)
                 InitiatePortfolioSettings();
-            //if (AgentPortfolioStorage.Count > 0)
-            //    EditSingleOrGroupItemBtn.IsEnabled = true;
-            //else
-            //    EditSingleOrGroupItemBtn.IsEnabled = false;
+            if (PortfolioListView.Items.Count == 0)
+            {
+                DelPortfolioBtn.IsEnabled = false;
+                EditPortfolioBtn.IsEnabled = false;
+            }
+            else
+            {
+                DelPortfolioBtn.IsEnabled = true;
+                EditPortfolioBtn.IsEnabled = true;
+            }
         }
         private void AgentPortfolioStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
@@ -120,6 +133,20 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                 LogWindowPreviousHight = mainGrid.RowDefinitions[2].Height;
                 mainGrid.RowDefinitions[2].Height = new GridLength(0);
                 MainFrm.ImageInStackPanelOfStatusBar.Source = new BitmapImage(new Uri("Resources/Images/show.png", UriKind.Relative));
+            }
+        }
+
+        private void PortfolioListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PortfolioListView.Items.Count == 0)
+            {
+                DelPortfolioBtn.IsEnabled = false;
+                EditPortfolioBtn.IsEnabled = false;
+            }
+            else
+            {
+                DelPortfolioBtn.IsEnabled = true;
+                EditPortfolioBtn.IsEnabled = true;
             }
         }
     }

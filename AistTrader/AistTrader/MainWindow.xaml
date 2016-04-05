@@ -178,6 +178,7 @@
                                   AutoGenerateColumns="False"
                                   Loaded="ProviderListView_Loaded" 
                                   SelectionMode="Single"
+                                  SelectionChanged="ProviderListView_OnSelectionChanged"
                                   IsReadOnly="True"
                                   Grid.Column="1">
                             <DataGrid.Columns>
@@ -217,12 +218,14 @@
                                     Width="100"/>
                             <Button Content="Редактировать" 
                                     Click="EditAgentConnectionBtnClick"
+                                    Name="EditAgentConnectionBtn"
                                     HorizontalAlignment="Center"
                                     Margin="4,34,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
                             <Button Content="Удалить"
                                     Click="DelAgentConnectionBtnClick"
+                                    Name="DelAgentConnectionBtn"
                                     HorizontalAlignment="Center" 
                                     Margin="4,61,0,0"
                                     VerticalAlignment="Top" 
@@ -243,6 +246,7 @@
                                   SelectionMode="Single"
                                   x:FieldModifier="private"
                                   Loaded="PortfolioListView_Loaded"
+                                  SelectionChanged="PortfolioListView_OnSelectionChanged"
                                   IsReadOnly="True"
                                   Grid.Column="1">
                             <DataGrid.Columns>
@@ -266,8 +270,8 @@
                         </DataGrid>
                         <Grid Grid.Column="0" HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
                             <Button Content="Добавить" Name="AddPortfolioBtn" Click="AddAgentPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
-                            <Button Content="Редактировать" Click="EditPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
-                            <Button Content="Удалить" Click="DelPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Редактировать" Name="EditPortfolioBtn" Click="EditPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Удалить" Name="DelPortfolioBtn" Click="DelPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
                         </Grid>
                     </Grid>
                 </TabItem>

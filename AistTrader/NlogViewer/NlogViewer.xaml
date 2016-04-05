@@ -14,7 +14,7 @@
         <DataGrid Style="{StaticResource AzureDataGrid}" ItemsSource="{Binding LogEntries}" IsReadOnly="True" Name="logView" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type nlogViewer:NlogViewer}}, Path=TimeWidth}"/>
-                <DataGridTextColumn Binding="{Binding FormattedMessage}" Header="Message" FontFamily="Consolas" FontSize="13"  Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type nlogViewer:NlogViewer}}, Path=TimeWidth}"/>
+                <DataGridTextColumn Binding="{Binding FormattedMessage}" Header="Message" FontFamily="Consolas" FontSize="11" FontWeight="Bold" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type nlogViewer:NlogViewer}}, Path=TimeWidth}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
