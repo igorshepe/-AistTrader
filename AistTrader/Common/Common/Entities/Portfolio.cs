@@ -8,11 +8,12 @@ namespace Common.Entities
     public class Portfolio
     {
         Portfolio() { }
-        public Portfolio(string name, Connection connection,string code)
+        public Portfolio(string name, Connection connection,string code,StockSharp.BusinessEntities.Portfolio portfolio)
         {
             Name = name;
             Connection = connection;
             Code = code;
+            SelectedAccount = portfolio;
         }
         public override string ToString()
         {
@@ -21,5 +22,6 @@ namespace Common.Entities
         public string Name { get; set; }
         public Connection Connection { get; set; }
         public string Code { get; set; }
+        public StockSharp.BusinessEntities.Portfolio SelectedAccount { get; set; }
     }
 }
