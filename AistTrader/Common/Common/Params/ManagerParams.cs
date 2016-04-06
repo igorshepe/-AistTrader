@@ -18,6 +18,7 @@ namespace Common.Params
             Transaction = -1;
             FinalTransaction = -1;
             Tool = security;
+
         }
         public Common.Entities.Portfolio Portfolio { get; set; }
         public string AgentOrGroup { get; set; }
@@ -26,5 +27,6 @@ namespace Common.Params
         public string Position { get; set; }
         public int Transaction { get; set; }
         public double FinalTransaction { get; set; }
+        public OperationCommand Command { get; set; }
     }
 }
