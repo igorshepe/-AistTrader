@@ -184,5 +184,10 @@ namespace AistTrader
             form = null;
 
         }
+
+        private void StartStopBtnClick(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

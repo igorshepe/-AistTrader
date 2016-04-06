@@ -322,6 +322,14 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 
+                                <DataGridTemplateColumn Header="Command">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="StartStopBtnClick" MinWidth="100" Content="{Binding Path= AgentManagerSettings.Command}"  HorizontalAlignment="Right" Margin="0,0,0,0"></Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                
                                 <DataGridTextColumn Header="Position(Позиции(лоты))"
                                                     Binding="{Binding AgentManagerSettings.Position}" />
                                 <DataGridTextColumn Header="Net value(Чистая стоимость)"
@@ -332,6 +340,7 @@
                                                     Binding="{Binding AgentManagerSettings.FinalTransaction}" />
                                 <DataGridTextColumn Header="Current state(состояние)"
                                                     Binding="{Binding AgentManagerSettings.Account.AgentAccount.IsActive}" />
+  
                             </DataGrid.Columns>
                             <!--<GridViewColumn Width="350" Header="Агент" >
                                         <GridViewColumn.CellTemplate>
