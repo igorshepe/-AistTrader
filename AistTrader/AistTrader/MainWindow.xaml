@@ -94,13 +94,20 @@
                               IsReadOnly="True"
                               Grid.Column="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name"
+                                <DataGridTextColumn IsReadOnly="False" Header="Name"
                                                     Binding="{Binding Params.FriendlyName}"/>
                                 <DataGridTextColumn Header="Connection Count"
                                                     Binding="{Binding Params.ConnectionCount}" />
                                 <DataGridTextColumn Header="Contracs"
                                                     Binding="{Binding Params.ConnectionCount}" />
-                                <!--<DataGridCheckBoxColumn  Name="ChkBoxSelectAllAgents" Click="ChkBoxSelectAllAgents_OnClick" IsChecked="False" FlowDirection="RightToLeft" />-->
+
+                                <!--<DataGridCheckBoxColumn Binding="{Binding Params.IsChecked, Mode=TwoWay}" IsReadOnly="False">
+                                    <DataGridCheckBoxColumn.HeaderTemplate>
+                                        <DataTemplate x:Name="DtCheckAllBox">
+                                            <CheckBox Name ="ChkBoxSelectAllAgents" Click="ChkBoxSelectAllAgents_OnClick"  IsChecked="{Binding ElementName=MainFrm , Path=AllAgentsChecked, Mode=TwoWay}" FlowDirection="RightToLeft"></CheckBox>
+                                        </DataTemplate>
+                                    </DataGridCheckBoxColumn.HeaderTemplate>
+                                </DataGridCheckBoxColumn>-->
                             </DataGrid.Columns>
                             <DataGrid.GroupStyle>
                                 <GroupStyle>

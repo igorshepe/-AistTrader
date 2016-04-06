@@ -211,6 +211,7 @@ namespace AistTrader
         {
             var x = PropertyGridControl;
             var res= x.SelectedObject;
+            Close();
         }
     }
 }
