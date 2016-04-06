@@ -411,12 +411,6 @@
                                     Margin="4,61,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
-                            <Button Content="Запустить"
-                                    Click="TestStrategyStartBtnClick"
-                                    HorizontalAlignment="Center" 
-                                    Margin="12,89,8,0"
-                                    VerticalAlignment="Top"
-                                    Width="100"/>
                         </Grid>
                     </Grid>
                 </TabItem>
