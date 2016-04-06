@@ -86,7 +86,6 @@ namespace AistTrader
         {
             if (editIndex >= 0 && editIndex < AgentManagerStorage.Count)
                 AgentManagerStorage[editIndex] = settings;
-
             else
                 try
                 {
@@ -97,7 +96,13 @@ namespace AistTrader
                 {
                     Logger.Info("Error adding agent - {0}", settings.Name);
                 }
-                SaveAgentManagerSettings();
+            SaveAgentManagerSettings();
+            UpdateAgentManagerListView();
+        }
+        public void UpdateAgentManagerListView()
+        {
+            AgentManagerListView.ItemsSource = AgentManagerStorage;
+            AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
         }
         private void SaveAgentManagerSettings()
         {
