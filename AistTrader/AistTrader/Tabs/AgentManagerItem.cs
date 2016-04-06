@@ -8,7 +8,10 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Serialization;
 using Common.Entities;
+using Common.Params;
 using NLog;
+using StockSharp.Algo.Strategies;
+using Strategies.Common;
 using Strategies.Strategies;
 
 namespace AistTrader
@@ -16,6 +19,7 @@ namespace AistTrader
     public partial class MainWindow
     {
         public bool IsAgentManagerSettingsLoaded;
+        public static Strategy strategy = new Strategy();
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var form = new ManagerAddition();
@@ -103,6 +107,7 @@ namespace AistTrader
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
             AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+            AgentManagerCollectionView.Refresh();
         }
         private void SaveAgentManagerSettings()
         {
@@ -187,7 +192,49 @@ namespace AistTrader
 
         private void StartStopBtnClick(object sender, RoutedEventArgs e)
         {
-            //throw new NotImplementedException();
+            if ((sender as Button).Content.ToString() == "Connect")
+            {
+                //ON 
+                var item = (sender as FrameworkElement).DataContext as AgentManager;
+                Strategy strategy = null;
+                var strategyName = item.AgentManagerSettings.AgentOrGroup.Split(null);
+                var connectionName =
+                    AgentPortfolioStorage.Cast<Portfolio>()
+                        .FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Name);
+                var portfolio = item.AgentManagerSettings.Portfolio;
+                var realConnection =
+                    ConnectionManager.Connections.Find(i => i.ConnectionName == connectionName.Connection.DisplayName);
+                var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
+                strategy = (Strategy)Activator.CreateInstance(strategyType);
+                {
+                    strategy.Security = item.AgentManagerSettings.Tool;
+                    strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i=>i.Name == item.AgentManagerSettings.Portfolio.Code);
+                    strategy.Connector = realConnection;
+                }
+                strategy.Start();
+                item.AgentManagerSettings.Command = OperationCommand.Disconnect;
+                UpdateAgentManagerListView();
+
+
+                //var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
+                //int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+                //rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
+                //if (rowItem.ConnectionParams.IsRegistredConnection)
+                //    ConnectionManager.Connections[index].Connect();
+                //else
+                //    ConnectAccount(item as Connection);
+                //UpdateProviderListView();
+            }
+            else
+            {
+                var item = (sender as FrameworkElement).DataContext as AgentManager;
+                strategy.Stop();
+                item.AgentManagerSettings.Command = OperationCommand.Connect;
+                UpdateAgentManagerListView();
+            }
+
+
+
         }
     }
 }
