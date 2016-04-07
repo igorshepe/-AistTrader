@@ -36,7 +36,7 @@ namespace AistTrader
             if (!IsAgentSettingsLoaded & (File.Exists("Agents.xml")))
                 InitiateAgentSettings();
             var selectedItem = AgentListView.SelectedItem as Agent;
-            if (AgentsStorage.Count > 0 && selectedItem.Params.GroupName != "ungrouped agents")
+            if (selectedItem != null && (AgentsStorage.Count > 0 && selectedItem.Params.GroupName != "ungrouped agents"))
                 EditSingleOrGroupItemBtn.IsEnabled = true;
             else
                 EditSingleOrGroupItemBtn.IsEnabled = false;
