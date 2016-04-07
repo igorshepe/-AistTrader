@@ -7,29 +7,79 @@ using StockSharp.Algo;
 using StockSharp.Algo.Candles;
 using StockSharp.Algo.Indicators;
 using StockSharp.Algo.Strategies;
+using StockSharp.Logging;
 using StockSharp.Messages;
 using Strategies.Common;
 using Strategies.Settings;
-using LogManager = StockSharp.Logging.LogManager;
+
 
 namespace Strategies.Strategies
 {
-    public class ChStrategy : BaseStrategy
+    public class ChStrategy : BaseStrategy, IOptionalSettings
     {
         private static readonly Logger TradesLogger = NLog.LogManager.GetLogger("TradesLogger");
         private CandleSeries _candleSeries;
         private CandleManager _candleManager;
-        private readonly MedianPrice _medianPrice = new MedianPrice {};
-        private BaseStrategy _baseStrategy;
+        private readonly MedianPrice _medianPrice = new MedianPrice { };
+        //private BaseStrategy _baseStrategy;
 
-        public ChStrategy()
+        private decimal FastSma { get; set; }
+        private decimal SlowSma { get; set; }
+        private decimal Period { get; set; }
+
+        public ChStrategy() { }
+
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage)
+            : base(settingsStorage)
         {
-            
+
+            UpdateStrategySettings();
+
+        }
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage, CandleSeries candleSeries)
+            : base(settingsStorage, (TimeSpan)candleSeries.Arg)
+        {
+            _candleSeries = candleSeries;
+            UpdateStrategySettings();
         }
 
-        private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage
+        private void UpdateStrategySettings()
         {
-            Length = 100
+            string errorString = null;
+
+            object obj;
+            var res = SettingsStorage.TryGetValue(ChStrategyDefaultSettings.FastSmaString, out obj);
+            if (!res)
+            {
+                errorString = string.Format("Ошибка получения значения FastSma из настроек. Используем {0}", ChStrategyDefaultSettings.FastSma);
+            }
+            FastSma = (decimal?)obj ?? ChStrategyDefaultSettings.FastSma;
+
+
+            res = SettingsStorage.TryGetValue(ChStrategyDefaultSettings.SlowSmaString, out obj);
+            if (!res)
+            {
+                errorString = string.Format("{0}\r\nОшибка получения значения SlowSma из настроек. Используем {1}", errorString, ChStrategyDefaultSettings.SlowSma);
+            }
+            SlowSma = (decimal?)obj ?? ChStrategyDefaultSettings.SlowSma;
+
+
+            res = SettingsStorage.TryGetValue(ChStrategyDefaultSettings.PeriodString, out obj);
+            if (!res)
+            {
+                errorString = string.Format("Ошибка получения значения FastSma из настроек. Используем {0}", ChStrategyDefaultSettings.Period);
+            }
+            Period = (decimal?)obj ?? ChStrategyDefaultSettings.Period;
+            if (errorString != null) this.AddWarningLog(errorString);
+
+        }
+
+
+
+
+        public SimpleMovingAverage _indicatorSlowSma  = new SimpleMovingAverage
+        {
+            Length = 20
         };
 
         private readonly SimpleMovingAverage _indicatorFastSma = new SimpleMovingAverage
@@ -48,23 +98,29 @@ namespace Strategies.Strategies
             Length = 20
         };
 
-        
+
 
         private bool NoActiveOrders { get { return Orders.Count(o => o.State == OrderStates.Active) == 0; } }
         // private DateTime _lastTimeFrame = DateTime.MinValue;
 
+        public override string GetFriendlyName()
+        {
+            return "ChStrategy {0} - {1} - {2}".Put(FastSma, SlowSma, Period);
+        }
 
         private void RunProcessGetCandles(TimeSpan timeFrame)
         {
             _candleManager = new CandleManager(Connector);
 
             var security = Security;
-            
+
             _candleSeries = new CandleSeries(typeof(TimeFrameCandle), security, timeFrame);
-            
+
             _candleManager.Start(_candleSeries);
 
-         }
+            //_indicatorSlowSma = new SimpleMovingAverage() { Length = (int)SlowSma };
+
+        }
 
         private void MainAlgorithm(Candle candle)
         {
@@ -97,7 +153,7 @@ namespace Strategies.Strategies
                     {
                         //RegisterOrder(this.SellAtMarket());
                         MakeMarketOrder(Sides.Sell);
-                    }   
+                    }
                 }
                 else // Для короткой позиции
                 {
@@ -110,30 +166,30 @@ namespace Strategies.Strategies
 
 
                 }
-                
+
             }
             else if (NoActiveOrders)    //Нет активных заявок
             {
-                TradesLogger.Info("Позиций  нет, проверка условий входа в позицию. Значения Slow SMA {0},Fast SMA {1}, Highest {2}, Lowest {3}", ssmaValue , fsmaValue , highestValue , lowestValue );
+                TradesLogger.Info("Позиций  нет, проверка условий входа в позицию. Значения Slow SMA {0},Fast SMA {1}, Highest {2}, Lowest {3}", ssmaValue, fsmaValue, highestValue, lowestValue);
                 //TradesLogger.Info("Сравниваем значения с GetCurrentValue Значения Slow SMA {0},Fast SMA {1}, Highest {2}, Lowest {3}", _indicatorSlowSma.GetCurrentValue(), _indicatorFastSma.GetCurrentValue(), _indicatorHighest.GetCurrentValue(), _indicatorLowest.GetCurrentValue());
                 //Если значение Roc меньше нуля//при пересечении цены закрытия свечи и скользящей
                 if (_indicatorSlowSma.GetCurrentValue() > _indicatorFastSma.GetCurrentValue() && candle.LowPrice <= _indicatorLowest.GetCurrentValue())
                 {
                     //RegisterOrder(this.SellAtLimit(_indicatorLowest.GetCurrentValue(), Volume));
                     SellStrategyVolumeAtMarket();
-                    _baseStrategy.RegisterOrder(this.SellAtLimit(_indicatorLowest.GetCurrentValue(), Volume));
+                    //_baseStrategy.RegisterOrder(this.SellAtLimit(_indicatorLowest.GetCurrentValue(), Volume));
                     //RegisterOrder(this.SellAtMarket());
                     //MakeMarketOrder(Sides.Sell);
                     //MakeLimitOrder(Sides.Sell, _indicatorLowest.GetCurrentValue());
                     TradesLogger.Info("Короткая позиция. Цена ордера {0}", _indicatorLowest.GetCurrentValue());
-                    
+
                 }
                 //Пересечение цены закрытия и линии боллинджера вверх
                 else if (_indicatorSlowSma.GetCurrentValue() < _indicatorFastSma.GetCurrentValue() && candle.HighPrice >= _indicatorHighest.GetCurrentValue())
                 {
                     //RegisterOrder(this.BuyAtLimit(_indicatorHighest.GetCurrentValue(), Volume));
-                   BuyStrategyVolumeAtMarket();
-                    _baseStrategy.RegisterOrder(this.BuyAtLimit(_indicatorHighest.GetCurrentValue(), Volume)); 
+                    BuyStrategyVolumeAtMarket();
+                    //_baseStrategy.RegisterOrder(this.BuyAtLimit(_indicatorHighest.GetCurrentValue(), Volume));
                     //RegisterOrder(this.BuyAtMarket());
                     //MakeMarketOrder(Sides.Buy);
                     //MakeLimitOrder(Sides.Buy, _indicatorHighest.GetCurrentValue());
@@ -146,7 +202,7 @@ namespace Strategies.Strategies
 
         protected override void OnStarted()
         {
-            
+
             var timeFrame = TimeSpan.FromMinutes(5);
             RunProcessGetCandles(timeFrame);
             //Подписываемся на правило события окончания чвечей
@@ -157,7 +213,7 @@ namespace Strategies.Strategies
             //Вызываем базовый метод
             base.OnStarted();
 
-            TradesLogger.Info("start strategy {0}, {1}, {2}", timeFrame, GetFriendlyName(),Security  );
+            TradesLogger.Info("start strategy {0}, {1}, {2}", timeFrame, GetFriendlyName(), Security);
         }
 
         private void MakeMarketOrder(Sides direction)
@@ -175,12 +231,9 @@ namespace Strategies.Strategies
             TradesLogger.Info(order);
 
         }
-         
-        public override string GetFriendlyName()
-        {
-            return "ChStrategy {0} - {1} - {2} - {3}".Put(_indicatorFastSma, _indicatorSlowSma, _indicatorHighest, _indicatorLowest);
-        }
-        
+
+
+
     }
 }
 
