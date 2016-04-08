@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,6 +11,7 @@ using Common.Params;
 using Ecng.Common;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
+using StockSharp.Xaml;
 
 namespace AistTrader
 {
@@ -210,6 +212,30 @@ namespace AistTrader
 
         private void AmountTextBox_KeyUp(object sender, KeyEventArgs e)
         {
+
+            Regex regex = new Regex(@"^[0-9]+$");
+            var editor = sender as UnitEditor;
+            if (editor.Text.EndsWith("%"))
+            {
+                string[] line = editor.Text.Split('%');
+                if (!regex.IsMatch(line.First()))
+                {
+                    MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+                    editor.Text = "";
+                    return;
+                    // editor.Select(editor.Text.Length, 0);
+                }
+            }
+            if (!editor.Text.EndsWith("%"))
+            {
+                if (!regex.IsMatch(editor.Text))
+                {
+                    MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+                    editor.Text = "";
+                    return;
+                    //editor.Select(editor.Text.Length, 0);
+                }
+            }
             Unit newVolume;
             try
             {
