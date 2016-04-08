@@ -126,6 +126,12 @@ namespace AistTrader
                         {
                             MessageBox.Show("Нельзя удалить, используется в группе");
                         }
+                        var agentItem = AgentListView.SelectedItem as Agent;
+                        var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup== agentItem.Params.FriendlyName.ToString());
+                        if (isUsedInAgentManager)
+                        {
+                            MessageBox.Show("Нельзя удалить, используется в менеджере агентов");
+                        }
                         else
                         {
                             foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
