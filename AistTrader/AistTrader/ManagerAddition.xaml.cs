@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Common.Entities;
 using Common.Params;
 using Ecng.Common;
+using StockSharp.Algo;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 using StockSharp.Xaml;
@@ -84,7 +85,7 @@ namespace AistTrader
         private void LoadParams()
         {
 
-            SecurityPicker.SecurityProvider = new FilterableSecurityProvider();
+            SecurityPicker.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
 
             List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName).ToList();
             var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName != "ungrouped agents").Select(i => i.Params.GroupName).Distinct().ToList();
@@ -99,7 +100,7 @@ namespace AistTrader
         }
         private void InitFields(AgentManager agent)
         {
-            SecurityPicker.SecurityProvider = new FilterableSecurityProvider();
+            SecurityPicker.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
             PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             _selectedPortfolio = agent.Name;
 
@@ -199,16 +200,16 @@ namespace AistTrader
                 {
                     if (SecurityPicker.SecurityProvider != null)
                     {
-                        SecurityPicker.SecurityProvider.Securities.Clear();
-                        SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.ConnectionParams.Tools);
+                        //SecurityPicker.SecurityProvider.Securities.Clear();
+                        //SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.ConnectionParams.Tools);
                     }
                     else
                     {
-                        SecurityPicker.SecurityProvider.Securities.AddRange(connection.ConnectionParams.Tools);
+                        //SecurityPicker.SecurityProvider.Securities.AddRange(connection.ConnectionParams.Tools);
                     }
                 }
-                else
-                    SecurityPicker.SecurityProvider.Securities.Clear();
+                //else
+                    //SecurityPicker.SecurityProvider.Securities.Clear();
             }
             //if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
         }

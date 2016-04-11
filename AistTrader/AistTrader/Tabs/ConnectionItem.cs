@@ -207,7 +207,7 @@ namespace AistTrader
             }
             else
                 ipEndPoint = agent.ConnectionParams.PlazaConnectionParams.IpEndPoint;
-            var connection = new AistTraderConnnectionWrapper(agent.DisplayName) {Address = ipEndPoint.To<IPEndPoint>(), IsCGate = true};
+            var connection = new AistTraderConnnectionWrapper(agent.DisplayName) {Address = ipEndPoint.To<IPEndPoint>(), IsCGate = true, IsDemo = true};
 
             //TODO: посмотри примеры того как идет динамический апдейт, а потом уже подписывай события на то что будет апдейтится
             agent.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>();

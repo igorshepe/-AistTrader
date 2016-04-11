@@ -206,9 +206,9 @@ namespace Strategies.Strategies
             var timeFrame = TimeSpan.FromMinutes(5);
             RunProcessGetCandles(timeFrame);
             //Подписываемся на правило события окончания чвечей
-            _candleSeries.WhenCandlesFinished()
-                   .Do(MainAlgorithm)
-                   .Apply();
+            //_candleSeries.WhenCandlesFinished()
+            //       .Do(MainAlgorithm)
+            //       .Apply();
 
             //Вызываем базовый метод
             base.OnStarted();

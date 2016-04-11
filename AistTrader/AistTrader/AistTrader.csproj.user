@@ -14,4 +14,7 @@
   <PropertyGroup>
     <ReferencePath>C:\Repository\AistTrader\References\</ReferencePath>
   </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
 </Project>
