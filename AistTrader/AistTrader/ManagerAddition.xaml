@@ -103,19 +103,18 @@
         <sx:SecurityEditor
             Name="SecurityPicker"
             Margin="5,132,5,0" Height="28" VerticalAlignment="Top"
-            SelectedSecurity="{Binding Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+            SelectedSecurity="{Binding  Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                            
             />
         <xaml:UnitEditor HorizontalAlignment="Left" 
                          Height="22" 
-                         Value="{Binding Path=Amount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding Path=Amount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                          Margin="5,197,0,0" 
                          TextWrapping="Wrap"
                          VerticalAlignment="Top"
                          Width="115"
-                         
+                         TextChanged="AmountTextBox_OnTextChanged"
                          Name="AmountTextBox"
-                         KeyUp="AmountTextBox_KeyUp"
                          Style="{StaticResource {x:Type xaml:UnitEditor}}"
                          />
         <Button Content="ОК"

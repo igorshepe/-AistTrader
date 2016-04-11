@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,6 +11,7 @@ using Common.Params;
 using Ecng.Common;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
+using StockSharp.Xaml;
 
 namespace AistTrader
 {
@@ -52,8 +54,8 @@ namespace AistTrader
             set { _tools = value; } 
 
         }
-        private int _amount;
-        public int Amount
+        private string _amount;
+        public string Amount
         {
             get { return _amount; }
             set { _amount = value; }
@@ -110,7 +112,10 @@ namespace AistTrader
 
 
             SecurityPicker.SelectedSecurity = agent.Tool;
-            AmountTextBox.Text = agent.Amount.ToString();
+
+            _amount = agent.Amount.ToString();
+
+            //AmountTextBox.Text = agent.Amount.ToString();
         }
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
         {
@@ -208,26 +213,54 @@ namespace AistTrader
             //if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
         }
 
-        private void AmountTextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            Unit newVolume;
-            try
-            {
-                if (!AmountTextBox.Text.IsEmpty())
-                    newVolume = AmountTextBox.Text.ToUnit();
-                else
-                {
-                    UnitVolumeLabel.Content = "";
-                    return;
-                }
-            }
-            catch (Exception)
-            {
-                UnitVolumeLabel.Content = "";
-                return;
-            }
-            UnitVolumeLabel.Content = newVolume == null ? "" : (newVolume.Type == UnitTypes.Percent ? " от счёта" : " контрактов");
-        }
+        //private void AmountTextBox_KeyUp(object sender, KeyEventArgs e)
+        //{
+
+        //    Regex regex = new Regex(@"^[0-9]+$");
+        //    var editor = sender as UnitEditor;
+        //    if (editor.Text.EndsWith("%"))
+        //    {
+        //        string[] line = editor.Text.Split('%');
+        //        if (!regex.IsMatch(line.First()))
+        //        {
+        //            //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+        //            _amount= editor.Text = "";
+        //            return;
+        //            // editor.Select(editor.Text.Length, 0);
+        //        }
+        //    }
+        //    if (!editor.Text.EndsWith("%"))
+        //    {
+        //        if (!regex.IsMatch(editor.Text))
+        //        {
+        //            //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+        //            _amount= editor.Text = "";
+        //            return;
+        //            //editor.Select(editor.Text.Length, 0);
+        //        }
+        //    }
+
+
+
+
+        //    //Unit newVolume;
+        //    //try
+        //    //{
+        //    //    if (!AmountTextBox.Text.IsEmpty())
+        //    //        newVolume = AmountTextBox.Text.ToUnit();
+        //    //    else
+        //    //    {
+        //    //        UnitVolumeLabel.Content = "";
+        //    //        return;
+        //    //    }
+        //    //}
+        //    //catch (Exception)
+        //    //{
+        //    //    UnitVolumeLabel.Content = "";
+        //    //    return;
+        //    //}
+        //    //UnitVolumeLabel.Content = newVolume == null ? "" : (newVolume.Type == UnitTypes.Percent ? " от счёта" : " контрактов");
+        //}
 
         public string this[string columnName]
         {
@@ -254,7 +287,24 @@ namespace AistTrader
                 string error = validationResult;
                 validManagerProperties[columnName] = String.IsNullOrEmpty(error) ? true : false;
                 if (validManagerProperties.Count == 4)
+                {
+                    if (SecurityPicker.SelectedSecurity != null)
+                    {
+                        var props= validManagerProperties;
+                        validManagerProperties.Remove("Tools");
+                    }
                     OkBtnClick.IsEnabled = validManagerProperties.Values.All(isValid => isValid);
+                }
+                if (validManagerProperties.Count == 3)
+                {
+                    if (SecurityPicker.SelectedSecurity != null)
+                    {
+                        var props = validManagerProperties;
+                        validManagerProperties.Remove("Tools");
+                    }
+                    OkBtnClick.IsEnabled = validManagerProperties.Values.All(isValid => isValid);
+                }
+
                 return validationResult;
             }
         }
@@ -275,27 +325,40 @@ namespace AistTrader
         }
         private string ValidateTools()
         {
-            //добавить уведомление если инструменты не получены, так как соединение не активно
-            
-            //if (ToolComboBox.SelectedItem == null)
-            //{
-            //    return "Не выбран инструмент";
-            //}
+            if (SecurityPicker.SelectedSecurity == null)
+            {
+                return "Не выбран инструмент";
+            }
             return String.Empty;
         }
         private string ValidateAmount()
         {
+            Regex regex = new Regex(@"^[0-9]+$");
+            if (Amount != null && Amount.EndsWith("%"))
+            {
+                string[] line = Amount.Split('%');
+                if (!regex.IsMatch(line.First()))
+                {
+                  return "Возможен ввод только цифр или цифры со знаком % на конце";
+                }
+            }
+            if (Amount != null && !Amount.EndsWith("%"))
+            {
+                if (!regex.IsMatch(Amount))
+                {
+                    Amount = "";
+                    return "Возможен ввод только цифр или цифры со знаком % на конце";
+                }
+            }
+
             //TODO: добавить обработку на знаки, которые не допустимы в данном поле
             //так же обработка случая, когда форма скрыта
-            if(String.IsNullOrEmpty(Amount.ToString()))
+            if (String.IsNullOrEmpty(Amount))
                 return "Не указан объем";
             return String.Empty;
         }
 
-        private bool ValidateProperties()
-        {
-            return validManagerProperties.Values.All(isValid => isValid);
-        }
+
         public string Error { get; private set; }
 
         private void ToolComboBox_OnLoaded(object sender, RoutedEventArgs e)
@@ -307,6 +370,18 @@ namespace AistTrader
         private void ToolComboBox_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void AmountTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+         
+            //throw new NotImplementedException();
+        }
+
+        private void SecurityEditor_OnSecuritySelected(object sender, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            //Tools = SecurityPicker.SelectedSecurity.Name;
+            //throw new NotImplementedException();
         }
     } 
 }
