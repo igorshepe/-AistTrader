@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +9,7 @@ using System.Windows.Threading;
 using Common.Entities;
 using Common.Params;
 using Ecng.Common;
+using MahApps.Metro.Controls.Dialogs;
 using MoreLinq;
 using NLog;
 using StockSharp.BusinessEntities;
@@ -17,6 +19,7 @@ namespace AistTrader
     public partial class MainWindow
     {
         #region Fields
+        private bool _shutdown;
         public static MainWindow Instance { get; private set; }
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
@@ -39,10 +42,10 @@ namespace AistTrader
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
             #region Initialize collections
-            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            {
-                this.TimeTextBlock.Text = String.Format("{0:G}( тоже Local )", TimeHelper.Now);
-            },this.Dispatcher);
+            //DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            //{
+            //    this.TimeTextBlock.Text = String.Format("{0:G}( тоже Local )", TimeHelper.Now);
+            //},this.Dispatcher);
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
 
@@ -101,6 +104,30 @@ namespace AistTrader
         {
             var form = new WhatsNew().ShowDialog();
             form = null;
+        }
+
+        private async void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "Quit",
+                NegativeButtonText = "Cancel",
+                AnimateShow = true,
+                AnimateHide = false
+            };
+            var result = await this.ShowMessageAsync("Quit application?",
+                "Sure you want to quit application?",
+                MessageDialogStyle.AffirmativeAndNegative, mySettings);
+            _shutdown = result == MessageDialogResult.Affirmative;
+
+            if (_shutdown)
+                Application.Current.Shutdown();
+        }
+
+        private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/igorshepe/-AistTrader");
         }
     }
 }

@@ -149,6 +149,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -212,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="SecuritiesSelectorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -266,6 +271,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Resource Include="Resources\Entypo-license.txt" />
+    <Resource Include="Resources\Entypo.ttf" />
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+    <Resource Include="Resources\Images\sitelogo.ico" />
     <Resource Include="Resources\Images\hide.png" />
     <Resource Include="Resources\Images\show.png" />
     <EmbeddedResource Include="Properties\Resources.resx">

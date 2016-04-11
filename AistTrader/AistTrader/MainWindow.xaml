@@ -10,17 +10,44 @@
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized"
+        Closing="MainWindow_OnClosing"
         NonActiveGlowBrush="#CDFF0000">
 
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro.Resources;component/Icons.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/Resources/Icons.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="AccentColorMenuItemStyle"
+                   TargetType="{x:Type MenuItem}"
+                   BasedOn="{StaticResource MetroMenuItem}">
+                <Setter Property="Command"
+                        Value="{Binding ChangeAccentCommand}" />
+                <Setter Property="Icon"
+                        Value="{StaticResource AccentMenuIcon}" />
+                <Setter Property="Header"
+                        Value="{Binding Name, Mode=OneWay}" />
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
+
+    <Controls:MetroWindow.LeftWindowCommands>
+        <Controls:WindowCommands>
+            <Button Click="LaunchAppOnGitHub"
+                    ToolTip="AistTrader on GitHub">
+                <Rectangle Width="22"
+                           Height="22"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Uniform"
+                                     Visual="{StaticResource appbar_github}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.LeftWindowCommands>
 
     <Controls:MetroContentControl>
         <Grid Name="mainGrid" >
@@ -44,9 +71,9 @@
                     <MenuItem Name="PortfolioManagerMenuItem" Header="Управление портфелями" Click="PortfolioMenuItem_OnClick" ></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Настройки">
-                    <!--<MenuItem Header="Тема" 
+                    <MenuItem Header="Тема" 
                               ItemsSource="{Binding AccentColors, Mode=OneWay}"
-                              ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}"/>-->
+                              ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}"/>
                     <MenuItem Header="Цветовая схема" >
                         <MenuItem Header="WinForms"></MenuItem>
                     </MenuItem>
@@ -65,7 +92,7 @@
                 <TextBlock Name="TimeTextBlock"/>
                 <Separator />
                 <StackPanel Name="StackPanelInStatusBar"  Margin="0,-6,0,0" >
-                    <Image Name="ImageInStackPanelOfStatusBar" ToolTip="Show log window" Source="Resources/Images/hide.png" Height="35" Width="35" MouseDown="StasusBarLogImage_OnMouseDown"  RenderTransformOrigin="0.95,0.032" />
+                    <Image Name="ImageInStackPanelOfStatusBar" ToolTip="Show log window"  Source="Resources/Images/hide.png" Height="35" Width="35" MouseDown="StasusBarLogImage_OnMouseDown"  RenderTransformOrigin="0.95,0.032" />
                 </StackPanel>
             </StatusBar>
             <Controls:MetroAnimatedSingleRowTabControl Grid.Row="1"
