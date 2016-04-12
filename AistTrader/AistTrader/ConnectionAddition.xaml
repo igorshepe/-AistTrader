@@ -1,19 +1,22 @@
-﻿<Window x:Class="AistTrader.ConnectionAddition"
+﻿<controls:MetroWindow x:Class="AistTrader.ConnectionAddition"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        Title="Аист Трейдер - Добавить поставщика данных" 
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+		Title="Добавить поставщика данных" 
         ResizeMode="NoResize" 
         mc:Ignorable="d"
-        Height="283.805"
+        Height="248.33"
         Width="273"
         FontFamily="Consolas"
         WindowStartupLocation="CenterScreen"
         Icon="Resources/Images/mainIcon.ico"
-        x:Name="Window">
+        x:Name="Window"
+        GlowBrush="CadetBlue"
+                      >
 
-    <Grid Margin="1,1,1,1" Name="AgentConnectionGrid">
+    <Grid Margin="1" Name="AgentConnectionGrid">
         <Grid.Resources>
             <Style TargetType="{x:Type TextBox}">
                 <Style.Triggers>
@@ -110,4 +113,4 @@
         	TabIndex="2"
             SelectedItem="{Binding Path=SelectedPath}"/>
     </Grid>
-</Window>
+</controls:MetroWindow>

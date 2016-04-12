@@ -84,9 +84,7 @@ namespace AistTrader
         }
         private void LoadParams()
         {
-
             SecurityPicker.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
-
             List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName).ToList();
             var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName != "ungrouped agents").Select(i => i.Params.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
@@ -118,7 +116,7 @@ namespace AistTrader
 
             //AmountTextBox.Text = agent.Amount.ToString();
         }
-        private void AddConfigBtnClick(object sender, RoutedEventArgs e)
+        private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             //if (AccountComboBox.SelectedIndex == -1)
             //{

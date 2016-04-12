@@ -16,9 +16,11 @@ using Common.Params;
 using Ecng.Common;
 using Ecng.Xaml;
 using IniParser;
+using MahApps.Metro.Controls.Dialogs;
 using NLog;
 using StockSharp.BusinessEntities;
 using StockSharp.Plaza;
+using System.Threading.Tasks;
 
 namespace AistTrader
 {
@@ -84,13 +86,21 @@ namespace AistTrader
             form.ShowDialog();
             form = null;
         }
-        private void DelAgentConnectionBtnClick(object sender, RoutedEventArgs e)
+        private async void DelAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {//todo: оптимизировать запросы, выборки
             var selectedItem = ProviderListView.SelectedItem as Connection;
             if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.Id == selectedItem.Id))
             {
-                MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
-                return;
+
+                //var dialog = new BaseMetroDialog(MainFrm.MainFrm); //(BaseMetroDialog)this.Resources["CustomDialogTest"];
+                //await this.ShowMetroDialogAsync(dialog);
+
+                //textBlock.Text = "The dialog will close in 2 seconds.";
+                await Task.Delay(2000);
+
+//                await this.HideMetroDialogAsync(dialog);
+                //MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
+                //return;
             }
             MessageBoxResult result = MessageBox.Show("Connection \"{0}\" will be deleted! You sure?".Put(ProviderListView.SelectedItem),"Delete connection", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)

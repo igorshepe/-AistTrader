@@ -80,15 +80,15 @@ namespace AistTrader
             if (agentEditMode == AgentWorkMode.Single)
             {
                 RowSetter = 0;
-                DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(200) });
+                DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(290) });
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(60) });
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
+                DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
                 var cb = new ComboBox
                 {
-                    Height = 23,
+                    Height = 28,
                     HorizontalAlignment = HorizontalAlignment.Left,
-                    Width = 180,
+                    Width = 280,
                     Margin = new Thickness {Left = 10, Top = 5, Right = 0, Bottom = 0},
                     ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName),
                     SelectedItem = AgentItem.Params.FriendlyName,
@@ -99,7 +99,7 @@ namespace AistTrader
                 var amount = new UnitEditor
                 {
                     FontSize = 12,
-                    Height = 23,
+                    Height = 28,
                     Width = 40,
                     Margin = new Thickness { Left = 0, Top = 5, Right = 0, Bottom = 0 },
                     Name = string.Format("{0}_{1}", "AmountTextBox", RowSetter)
@@ -113,7 +113,7 @@ namespace AistTrader
                 var addDelControl = new Label
                 {
                     Foreground = Brushes.Red,
-                    Margin = new Thickness { Left = -10, Top = -4, Right = 29, Bottom = 0 },
+                    Margin = new Thickness { Left = -10, Top = 0, Right = 29, Bottom = 0 },
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Top,
                     HorizontalContentAlignment = HorizontalAlignment.Center,
@@ -150,18 +150,18 @@ namespace AistTrader
                 if (DynamicGrid.ColumnDefinitions.Count == 0)
                 {
                     RowSetter = 0;
-                    DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(200) });
+                    DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(290) });
                     DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(60) });
                     DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                    DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
+                    DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
                 }
                 else
-                    DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
+                    DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
                 var cb = new ComboBox
                 {
-                    Height = 23,
+                    Height = 28,
                     HorizontalAlignment = HorizontalAlignment.Left,
-                    Width = 180,
+                    Width = 280,
                     Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                     //TODO: дополнить условие выбора.важно после выбора алгоритма
                     ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName),
@@ -173,7 +173,7 @@ namespace AistTrader
                 var amount = new UnitEditor
                 {
                     FontSize = 12,
-                    Height = 23,
+                    Height = 28,
                     Width = 40,
                     Margin = new Thickness { Left = 0, Top = 5, Right = 0, Bottom = 0 },
                     Name = string.Format("{0}_{1}", "AmountTextBox", RowSetter)
@@ -187,7 +187,7 @@ namespace AistTrader
                 var addDelControl = new Label
                 {
                     Foreground = Brushes.Red,
-                    Margin = new Thickness { Left = -10, Top = -4, Right = 29, Bottom = 0 },
+                    Margin = new Thickness { Left = -10, Top = 0, Right = 0, Bottom = 0 },
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Top,
                     HorizontalContentAlignment = HorizontalAlignment.Center,
@@ -256,18 +256,18 @@ namespace AistTrader
             if (DynamicGrid.ColumnDefinitions.Count == 0)
             {
                 RowSetter = 0;
-                DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(200) });
+                DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(290) });
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(60) });
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
+                DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
             }
             else
-                DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
+                DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
             var cb = new ComboBox
             {
-                Height = 23,
+                Height = 28,
                 HorizontalAlignment = HorizontalAlignment.Left,
-                Width = 180,
+                Width = 280,
                 Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                 //TODO: дополнить условие выбора.важно после выбора алгоритма
                 ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
@@ -277,9 +277,9 @@ namespace AistTrader
             var amount = new UnitEditor
             {
                 FontSize = 12,
-                Height = 23,
+                Height = 28,
                 Width = 40,
-                Margin = new Thickness { Left = 0, Top = 5, Right = 0, Bottom = 0 },
+                Margin = new Thickness { Left = -5, Top = 5, Right = 0, Bottom = 0 },
                 Name = string.Format("{0}_{1}", "AmountTextBox", RowSetter)
             };
             amount.KeyUp += Amount_KeyUp; ;
@@ -288,7 +288,7 @@ namespace AistTrader
             var addDelControl = new Label
             {
                 Foreground = Brushes.Red,
-                Margin = new Thickness { Left = -10, Top = -4, Right = 29, Bottom = 0 },
+                Margin = new Thickness { Left = -10, Top = 0, Right = 0, Bottom = 0 },
                 HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Top,
                 HorizontalContentAlignment = HorizontalAlignment.Center,
