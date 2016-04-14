@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AistTrader", "AistTrader\AistTrader.csproj", "{494861D0-4DC1-44E8-9D48-E5629CE71D53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common\Common.csproj", "{85CC6248-717D-4B40-B90F-36C0629FC8AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategies", "..\Strategies\Strategies\Strategies.csproj", "{A4EB3F81-1328-48CD-A8E3-CD8211F88633}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NlogViewer", "NlogViewer\NlogViewer.csproj", "{C04E879D-287E-49B5-9933-42FC2EFF75F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{A4EB3F81-1328-48CD-A8E3-CD8211F88633}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4EB3F81-1328-48CD-A8E3-CD8211F88633}.Release|x64.ActiveCfg = Release|x64
 		{A4EB3F81-1328-48CD-A8E3-CD8211F88633}.Release|x64.Build.0 = Release|x64
+		{C04E879D-287E-49B5-9933-42FC2EFF75F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04E879D-287E-49B5-9933-42FC2EFF75F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04E879D-287E-49B5-9933-42FC2EFF75F0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C04E879D-287E-49B5-9933-42FC2EFF75F0}.Debug|x64.Build.0 = Debug|Any CPU
+		{C04E879D-287E-49B5-9933-42FC2EFF75F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04E879D-287E-49B5-9933-42FC2EFF75F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C04E879D-287E-49B5-9933-42FC2EFF75F0}.Release|x64.ActiveCfg = Release|Any CPU
+		{C04E879D-287E-49B5-9933-42FC2EFF75F0}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

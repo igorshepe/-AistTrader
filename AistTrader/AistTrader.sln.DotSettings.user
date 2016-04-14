@@ -4,4 +4,6 @@
   &lt;Assembly Path="C:\Repository\AistTrader\References\StockSharp.Algo.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Repository\AistTrader\References\StockSharp.BusinessEntities.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Repository\-AistTrader\AistTrader\References\MoreLinq.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Repository\-AistTrader\AistTrader\References\StockSharp.Xaml.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

@@ -147,7 +147,10 @@ namespace Strategies.Strategies
             //            //Получили все данные для текущей свечки - больше её не анализируем
             //            _lastTimeFrame = roundMarketTime;
 
-            //            var firstTime = Connector.GetMarketTime(Security.ExchangeBoard.Exchange).Date.Add(firstWorkingTime.Min);
+
+            
+
+            //var firstTime = Connector.GetMarketTime(Security.ExchangeBoard.Exchange).Date.Add(firstWorkingTime.Min);
 
             //            var oldCandles =
             //                _candleSeries.GetCandles<TimeFrameCandle>(new Range<DateTime>(firstTime,

@@ -1,5 +1,5 @@
 ﻿using System;
-using Common.Settings;
+using Common.Params;
 
 namespace Common.Entities
 {
@@ -7,48 +7,30 @@ namespace Common.Entities
     public class Agent : ICloneable
     {
         public Agent() { }
-
-        public Agent(string name, AlgorithmSettings algorithm)
+        public Agent(string name, AgentParams agentParams)
         {
             Name = name;
-            _Agent = algorithm;
+            Params = agentParams;
         }
-
-
-        // ReSharper disable MemberCanBePrivate.Global
         public string Name { get; set; }
-        public AlgorithmSettings _Agent { get; set; }
-        // ReSharper restore MemberCanBePrivate.Global
+        public AgentParams Params { get; set; }
 
-        //public decimal GetStrategyVolume(Security security, Portfolio portfolio = null)
-        //{
-        //    if (portfolio == null)
-        //    {
-        //        portfolio = security.Trader.Portfolios.FirstOrDefault(p => p.Name == Name);
-        //    }
-
-        //    if (portfolio == null) return 1;
-
-        //    var margin = security.MarginBuy != 0 ? security.MarginBuy : 8000;
-        //    //var volume = Strategy.Volume.Type == UnitTypes.Absolute
-        //    //                ? Strategy.Volume.Value
-        //    //                : Math.Round(Strategy.Volume.Value * portfolio.BeginValue / (100 * margin));
-
-        //    return volume == 0 ? 1 : volume;
-        //}
-
+        public override string ToString()
+        {
+            return Name;
+        }
         public object Clone()
         {
-            Agent temp = (Agent)this.MemberwiseClone();
-            temp._Agent = new AlgorithmSettings
+            Agent temp = (Agent)MemberwiseClone();
+            temp.Params = new AgentParams
             {
-                GroupName = this._Agent.GroupName,
-                AgentName = this._Agent.AgentName,
-                SettingsStorage = this._Agent.SettingsStorage,
-                Algorithm = this._Agent.Algorithm,
-                ConnectionCount = this._Agent.ConnectionCount,
-                Contracts = this._Agent.Contracts,
-                IsChecked = this._Agent.IsChecked
+                GroupName = Params.GroupName,
+                AgentName = Params.AgentName,
+                SettingsStorage = Params.SettingsStorage,
+                FriendlyName = Params.FriendlyName,
+                ConnectionCount = Params.ConnectionCount,
+                Contracts = Params.Contracts,
+                IsChecked = Params.IsChecked
             };
             return temp;
         }

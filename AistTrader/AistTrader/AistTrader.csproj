@@ -26,8 +26,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationVersion>1.0.0.17</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -76,6 +76,9 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Images\mainIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ecng.Collections">
       <HintPath>..\References\Ecng.Collections.dll</HintPath>
@@ -83,8 +86,7 @@
     <Reference Include="Ecng.Common">
       <HintPath>..\References\Ecng.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Ecng.ComponentModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ecng.ComponentModel">
       <HintPath>..\References\Ecng.ComponentModel.dll</HintPath>
     </Reference>
     <Reference Include="Ecng.Configuration">
@@ -93,23 +95,27 @@
     <Reference Include="Ecng.Localization">
       <HintPath>..\References\Ecng.Localization.dll</HintPath>
     </Reference>
-    <Reference Include="Ecng.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ecng.Serialization">
       <HintPath>..\References\Ecng.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Ecng.Xaml, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ecng.Xaml">
       <HintPath>..\References\Ecng.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="INIFileParser, Version=1.7.1.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\INIFileParser.dll</HintPath>
     </Reference>
+    <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MoreLinq">
       <HintPath>..\References\MoreLinq.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.Algo, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NLog">
+      <HintPath>..\References\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Algo">
       <HintPath>..\References\StockSharp.Algo.dll</HintPath>
     </Reference>
     <Reference Include="StockSharp.BusinessEntities">
@@ -121,12 +127,10 @@
     <Reference Include="StockSharp.Localization">
       <HintPath>..\References\StockSharp.Localization.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.Logging, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="StockSharp.Logging">
       <HintPath>..\References\StockSharp.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.Messages, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="StockSharp.Messages">
       <HintPath>..\References\StockSharp.Messages.dll</HintPath>
     </Reference>
     <Reference Include="StockSharp.Plaza">
@@ -135,12 +139,14 @@
     <Reference Include="StockSharp.Xaml">
       <HintPath>..\References\StockSharp.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="StockSharp.Xaml.Charting">
-      <HintPath>..\References\StockSharp.Xaml.Charting.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -149,15 +155,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="ToggleSwitch">
-      <HintPath>..\packages\ToggleSwitch.1.1.1\lib\net40-client\ToggleSwitch.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFToolkit.Extended">
-      <HintPath>..\References\WPFToolkit.Extended.dll</HintPath>
-    </Reference>
     <Reference Include="Xceed.Wpf.Toolkit">
       <HintPath>..\References\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
@@ -167,39 +167,49 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ManagerAdditionTradeSettings.xaml.cs">
+      <DependentUpon>ManagerAdditionTradeSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SecuritiesSelectorWindow.xaml.cs">
+      <DependentUpon>SecuritiesSelectorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WhatsNew.xaml.cs">
       <DependentUpon>WhatsNew.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentConfig.xaml.cs">
-      <DependentUpon>AgentConfig.xaml</DependentUpon>
+    <Compile Include="AgentAddition.xaml.cs">
+      <DependentUpon>AgentAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentConnectionAddition.xaml.cs">
-      <DependentUpon>AgentConnectionAddition.xaml</DependentUpon>
+    <Compile Include="ConnectionAddition.xaml.cs">
+      <DependentUpon>ConnectionAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentGroupAddition.xaml.cs">
-      <DependentUpon>AgentGroupAddition.xaml</DependentUpon>
+    <Compile Include="GroupAddition.xaml.cs">
+      <DependentUpon>GroupAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentManagerAddition.xaml.cs">
-      <DependentUpon>AgentManagerAddition.xaml</DependentUpon>
+    <Compile Include="ManagerAddition.xaml.cs">
+      <DependentUpon>ManagerAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AgentPortfolioAddition.xaml.cs">
-      <DependentUpon>AgentPortfolioAddition.xaml</DependentUpon>
+    <Compile Include="PortfolioAddition.xaml.cs">
+      <DependentUpon>PortfolioAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\CommandReference.cs" />
-    <Compile Include="Commands\DelegateCommand.cs" />
-    <Compile Include="Models\AgentConfigModel.cs" />
     <Compile Include="StrategiesSettingsWindow.xaml.cs">
       <DependentUpon>StrategiesSettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TabItemsLogic\AgentItemLogic.cs" />
-    <Compile Include="TabItemsLogic\AgentManagerItemLogic.cs" />
-    <Compile Include="TabItemsLogic\PortfolioItemLogic.cs" />
-    <Compile Include="TabItemsLogic\ProviderItemLogic.cs" />
-    <Compile Include="ViewModels\AgentConfigViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\AgentConfigView.xaml.cs">
-      <DependentUpon>AgentConfigView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Tabs\AgentItem.cs" />
+    <Compile Include="Tabs\AgentManagerItem.cs" />
+    <Compile Include="Tabs\PortfolioItem.cs" />
+    <Compile Include="Tabs\ConnectionItem.cs" />
+    <Page Include="ManagerAdditionTradeSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SecuritiesSelectorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="WhatsNew.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -216,33 +226,29 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="AgentConfig.xaml">
+    <Page Include="AgentAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AgentConnectionAddition.xaml">
+    <Page Include="ConnectionAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AgentGroupAddition.xaml">
+    <Page Include="GroupAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AgentManagerAddition.xaml">
+    <Page Include="ManagerAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AgentPortfolioAddition.xaml">
+    <Page Include="PortfolioAddition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="StrategiesSettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AgentConfigView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -254,28 +260,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <Resource Include="Resources\Entypo-license.txt" />
+    <Resource Include="Resources\Entypo.ttf" />
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+    <Resource Include="Resources\Images\sitelogo.ico" />
+    <Resource Include="Resources\Images\hide.png" />
+    <Resource Include="Resources\Images\show.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="AistTrader_TemporaryKey.pfx" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="On to Refactoring\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Strategies\Strategies\Strategies.csproj">
       <Project>{a4eb3f81-1328-48cd-a8e3-cd8211f88633}</Project>
@@ -284,6 +292,10 @@
     <ProjectReference Include="..\Common\Common\Common.csproj">
       <Project>{85CC6248-717D-4B40-B90F-36C0629FC8AE}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NlogViewer\NlogViewer.csproj">
+      <Project>{C04E879D-287E-49B5-9933-42FC2EFF75F0}</Project>
+      <Name>NlogViewer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

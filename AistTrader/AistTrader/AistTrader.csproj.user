@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>\\10.10.10.10\AistShared\AistTrader\Install\|\\Hp-server\soft\AistTraderInstall\|publish\</PublishUrlHistory>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <PublishUrlHistory>\\Hp-server\soft\AistTraderInstall\|\\10.10.10.10\AistShared\AistTrader\Install\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory />
@@ -13,5 +13,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <ReferencePath>C:\Repository\AistTrader\References\</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
 </Project>

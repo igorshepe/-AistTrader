@@ -1,6 +1,6 @@
 ﻿using System;
-using Common.Settings;
-using StockSharp.Messages;
+using Common.Params;
+using StockSharp.BusinessEntities;
 
 namespace Common.Entities
 {
@@ -8,16 +8,45 @@ namespace Common.Entities
     public class AgentManager
     {
         AgentManager() { }
-        public AgentManager(string name, AgentManagerSettings agentManager, string tool, Unit amount)
+        public AgentManager(string name, ManagerParams agentManager, Security tool, string amount)
         {
             Name = name;
             AgentManagerSettings = agentManager;
             Tool = tool;
             Amount = amount;
         }
+        public override string ToString()
+        {
+            return Name;
+        }
         public string Name { get; set; }
-        public string Tool { get; set; }
-        public Unit Amount { get; set; }
-        public AgentManagerSettings AgentManagerSettings { get; set; }
+        public StockSharp.BusinessEntities.Security Tool { get; set; }
+        //todo по аналогии дописать конвертер как в группах агетов
+        public string Amount { get; set; }
+        public ManagerParams AgentManagerSettings { get; set; }
+        public TradeParams TradeParams { get; set; }
+    }
+
+    public class TradeParams
+    {
+        public bool DirectIns { get; set; }
+        public bool DirectOuts { get; set; }
+        public int AutoOpenBarAction { get; set; }
+        public int AutoCloseBarAction { get; set; }
+        public bool IgnorePositionOutOfHistory { get; set; }
+        public bool NotifyOnMissedIns { get; set; }
+        public bool NotOpenIfGap { get; set; }
+        public bool NotifyOnRecount { get; set; }
+        public int VirtualCandleMax { get; set; }
+        public int WaitOnSuccessfulOut { get; set; }
+        public int WaitOnSuccessfulIn { get; set; }
+        public bool SimulatePositionSequence { get; set; }
+        public int SlippingInSteps { get; set; }
+        public int SlippingInPercent { get; set; }
+        public bool TakeProfitWithNoSlipping { get; set; }
+        public bool OpeningWithLimitingOrders { get; set; }
+        public bool ByMarketWithFixedPrice { get; set; }
+        public bool BadOrdersByMarket { get; set; }
     }
 }
+

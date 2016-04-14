@@ -1,8 +1,10 @@
+C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NLog.config
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Strategies.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Strategies.pdb
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Common.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.ComponentModel.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Serialization.dll
+C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NLog.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Algo.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.BusinessEntities.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Logging.dll
@@ -38,6 +40,7 @@ C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\ICSharpCode.SharpZ
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Ecng.Security.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NPOI.OpenXmlFormats.dll
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NPOI.OpenXml4Net.dll
+C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\NLog.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Algo.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.BusinessEntities.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Logging.xml

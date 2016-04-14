@@ -1,192 +1,133 @@
-﻿using System.ComponentModel;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using AistTrader.Properties;
+using System.Windows.Data;
+using System.Windows.Threading;
 using Common.Entities;
+using Common.Params;
+using Ecng.Common;
+using MahApps.Metro.Controls.Dialogs;
 using MoreLinq;
+using NLog;
+using StockSharp.BusinessEntities;
 
 namespace AistTrader
 {
     public partial class MainWindow
     {
-
+        #region Fields
+        private bool _shutdown;
         public static MainWindow Instance { get; private set; }
-        //public List<Security> SecuritiesList { get; set; } 
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        
+        private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
+        private  readonly Logger LogView;
+        public ObservableCollection<Agent> AgentsStorage { get; private set; }
+        public ObservableCollection<Connection> ConnectionsStorage { get; private set; }
+        public ObservableCollection<Common.Entities.Portfolio> AgentPortfolioStorage { get; private set; }
+        public ObservableCollection<AgentManager> AgentManagerStorage { get; private set; }
+
+        public CollectionView AgentCollectionView { get; set; }
+        public CollectionView ProviderCollectionView { get; set; }
+        public CollectionView PortfolioCollectionView { get; set; }
+        public CollectionView AgentManagerCollectionView { get; set; }
+        private GridLength LogWindowPreviousHight;
+        #endregion
 
         public MainWindow()
         {
-
-
-            //Agents
-
-
-
-            //Settings.Default.AistTrader.Clear();
-            //Settings.Default.AgentConnection.Clear();
-            //Settings.Default.AgentManager.Clear();
-            //Settings.Default.AgentPortfolio.Clear();
-            //Settings.Default.Agents.Clear();
-
-
-
-
-
-
-
-
-
-
-
             Instance = this;
-            var x = Settings.Default;
-            SetConnectionValuesToDefault();
+            ConnectionManager = new AistTraderConnnectionManager();
+            #region Initialize collections
+            //DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            //{
+            //    this.TimeTextBlock.Text = String.Format("{0:G}( тоже Local )", TimeHelper.Now);
+            //},this.Dispatcher);
+            AgentsStorage = new ObservableCollection<Agent>();
+            AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
 
+            ConnectionsStorage = new ObservableCollection<Connection>();
+            ConnectionsStorage.CollectionChanged += ProviderStorageOnCollectionChanged;
+
+            AgentPortfolioStorage = new ObservableCollection<Common.Entities.Portfolio>();
+            AgentPortfolioStorage.CollectionChanged += AgentPortfolioStorageOnCollectionChanged; 
+
+            AgentManagerStorage = new ObservableCollection<AgentManager>();
+
+
+            #endregion
         }
-
-
-        //*Shit hits the fan time coding bitch
-
+        private void SetConnectionCommandStatus()
+        {
+            Instance.ConnectionsStorage.ForEach(i=>i.ConnectionParams.Command= OperationCommand.Connect);
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.IsConnected = false);
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.IsRegistredConnection = false);
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>() );
+            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Tools = new List<Security>());
+        }
         private void TabCtr_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             if (e.OriginalSource is TabControl && AgentItem != null && AgentItem.IsSelected)
             {
-                LoadAgentTabItemData();
             }
-
             if (e.OriginalSource is TabControl && ProviderItem != null && ProviderItem.IsSelected)
             {
-                LoadProviderTabItemData();
             }
             if (e.OriginalSource is TabControl && PortfolioItem != null && PortfolioItem.IsSelected)
             {
-                LoadPortfolioTabItemData();
             }
             if (e.OriginalSource is TabControl && AgentManagerItem != null && AgentManagerItem.IsSelected)
             {
-                LoadAgentManagerTabItemData();
             }
-
-
         }
-
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //public static void Unique()
-        //{
-        //    bool isUnique = SecurityList.Distinct().Count() == SecurityList.Count();
-        //}
-
-        private static void UpdateWorkingDays()
-        {
-            // Заполнено в библиотеке на 2011-2013 года
-            //var specialWorkingDays = new[]
-            //						 {
-            //							 new DateTime(2012, 12, 29)
-            //						 };
-            //var specialHolidays = new[]
-            //					  {
-            //						  new DateTime(2012, 12, 31)
-            //					  };
-
-            //ExchangeBoard.Forts.WorkingTime.SpecialWorkingDays = specialWorkingDays;
-            //ExchangeBoard.Forts.WorkingTime.SpecialHolidays = specialHolidays;
-
-            //ExchangeBoard.Micex.WorkingTime.SpecialWorkingDays = specialWorkingDays;
-            //ExchangeBoard.Micex.WorkingTime.SpecialHolidays = specialHolidays;
-        }
-
-
-
-        private void SetConnectionValuesToDefault()
-        {
-            //ToDo:обнуление на неактивное
-
-            //if (Settings.Default.AgentConnection != null)
-            //    Settings.Default.AgentConnection.Cast<AgentConnection>().ForEach(i => i.Connection.IsActive = false);
-            //Settings.Default.Save();
-
-        }
-
-
-        private void SetStartBtnStatus()
-        {
-            //StartBtn.IsEnabled = Settings.Default.Robots != null && Settings.Default.Robots.Count > 0 &&
-            //    Settings.Default.Robots.Cast<Account>().Any(r => r.Agent.IsEnabled);
-            //StartBtn.IsEnabled = true;
-
-        }
-
-
-
-
-        private void SettingsButton_OnClick(object sender, RoutedEventArgs e)
-        {
-        }
-
-        //TODO: подключить в последствии..
         private void AgentAddConfigMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             TabCtr.SelectedItem = AgentItem;
-
-            //MainFrame.Navigate(new AgentManagerForm());
-            //new AgentForm().ShowDialog();
-
-
-
-            //var form = new AgentForm();
-            //form.ShowDialog();
-            //form.Close();
-            //form = null;
         }
         private void AgentManagerMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            //new AgentManagerForm().ShowDialog();
-            //var form = new AgentManagerForm();
-            //form.ShowDialog();
-            //form.Close();
-            //form = null;
             TabCtr.SelectedItem = AgentManagerItem;
         }
         private void ProviderManagerMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             TabCtr.SelectedItem = ProviderItem;
-
-            //new ProviderManagerForm().ShowDialog();
         }
-
-
         private void PortfolioMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             TabCtr.SelectedItem = PortfolioItem;
         }
-        
         private void WhatsNewItem_OnClick(object sender, RoutedEventArgs e)
         {
-            
-            //открытие окна, где можно посмотреть, что нового
             var form = new WhatsNew().ShowDialog();
+            form = null;
+        }
 
+        private async void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "Quit",
+                NegativeButtonText = "Cancel",
+                AnimateShow = true,
+                AnimateHide = false
+            };
+            var result = await this.ShowMessageAsync("Quit application?",
+                "Sure you want to quit application?",
+                MessageDialogStyle.AffirmativeAndNegative, mySettings);
+            _shutdown = result == MessageDialogResult.Affirmative;
+
+            if (_shutdown)
+                Application.Current.Shutdown();
+        }
+
+        private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/igorshepe/-AistTrader");
         }
     }
 }

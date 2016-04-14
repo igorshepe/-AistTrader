@@ -47,39 +47,51 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\References\Ecng.ComponentModel.dll</HintPath>
     </Reference>
+    <Reference Include="Ecng.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Ecng.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="StockSharp.Algo, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\StockSharp.Algo.dll</HintPath>
+    </Reference>
     <Reference Include="StockSharp.BusinessEntities, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\References\StockSharp.BusinessEntities.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Logging, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\StockSharp.Logging.dll</HintPath>
     </Reference>
     <Reference Include="StockSharp.Messages, Version=4.3.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\References\StockSharp.Messages.dll</HintPath>
     </Reference>
+    <Reference Include="StockSharp.Plaza">
+      <HintPath>..\..\References\StockSharp.Plaza.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Agent.cs" />
-    <Compile Include="Entities\AgentPortfolio.cs" />
+    <Compile Include="Entities\Portfolio.cs" />
     <Compile Include="Entities\AgentManager.cs" />
-    <Compile Include="Entities\AgentConnection.cs" />
-    <Compile Include="Helpers.cs" />
+    <Compile Include="Entities\Connection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\AgentManagerSettings.cs" />
-    <Compile Include="Settings\AgentSettings.cs" />
-    <Compile Include="Settings\AlgorithmSettings.cs" />
-    <Compile Include="Settings\ConnectionsSettings.cs" />
-    <Compile Include="Settings\SettingsArrayList.cs" />
-    <Compile Include="Settings\TerminalSettings.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Compile Include="Params\ManagerParams.cs" />
+    <Compile Include="Params\AgentParams.cs" />
+    <Compile Include="Params\ConnectionParams.cs" />
+    <Compile Include="Params\PlazaConnectionParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Strategies\Strategies\Strategies.csproj">
