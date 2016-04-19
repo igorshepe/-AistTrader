@@ -7,6 +7,7 @@ using Common.Entities;
 using Ecng.Common;
 using Ecng.Xaml;
 using MoreLinq;
+using StockSharp.Algo;
 using Strategies.Common;
 using Strategies.Settings;
 
@@ -18,10 +19,10 @@ namespace AistTrader
     public class AgentSettingParametrProperty
     {
         public  string Name { get; set; }
-        public  object Parametr { get; set; }
+        public  decimal Parametr { get; set; }
         public  bool UseInAgentName { get; set; }
     }
-    public partial class StrategiesSettingsWindow
+    public partial class AgentSettings
     {
         public SerializableDictionary<string, object> SettingsStorage { get; private set; }
         // ReSharper disable MemberCanBePrivate.Global
@@ -31,7 +32,7 @@ namespace AistTrader
 
         // ReSharper restore MemberCanBePrivate.Global
 
-        public StrategiesSettingsWindow(SerializableDictionary<string, object> settingsStorage, StrategyDefaultSettings settings)
+        public AgentSettings(SerializableDictionary<string, object> settingsStorage, StrategyDefaultSettings settings)
         {
             AgentSettingsStorage = new ObservableCollection<object>();
 
@@ -47,12 +48,15 @@ namespace AistTrader
                 agentSettingsProperty.Name = property.Name;
                 if (property.Name == "TimeFrame")
                 {
-                    var test =property.GetValue(Settings).ToString();
-                    agentSettingsProperty.Parametr = property.GetValue(Settings).ToString();
+                    TimeSpan test =(TimeSpan)property.GetValue(Settings);
+                    double sec = test.TotalSeconds;
+                    agentSettingsProperty.Parametr = (decimal)sec;
                     //agentSettingsProperty.Parametr = test;
                     //                    agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
                 }
-                agentSettingsProperty.Parametr = property.GetValue(Settings);
+                else
+                    agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
+                
                 agentSettingsProperty.UseInAgentName = false;
                 AgentSettingsStorage.Add(agentSettingsProperty);
             }
