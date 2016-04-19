@@ -4,7 +4,9 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Data;
 using Common.Entities;
+using Ecng.Common;
 using Ecng.Xaml;
+using MoreLinq;
 using Strategies.Common;
 using Strategies.Settings;
 
@@ -32,19 +34,6 @@ namespace AistTrader
         public StrategiesSettingsWindow(SerializableDictionary<string, object> settingsStorage, StrategyDefaultSettings settings)
         {
             AgentSettingsStorage = new ObservableCollection<object>();
-            var strat = new AistInvestStrategySettings();
-
-            var agentSettingsProperty = new AgentSettingParametrProperty();
-            
-
-
-            //AgentSettingsStorage.Add();
-
-
-            //AgentSettingsDG.ItemsSource = AgentSettingsStorage;
-
-            //AgentSettingsStorage.Add();
-
 
             SettingsStorage = settingsStorage;
             Settings = settings;
@@ -54,11 +43,20 @@ namespace AistTrader
             PropertyInfo[] properties = type.GetProperties();
             foreach (PropertyInfo property in properties)
             {
+                var agentSettingsProperty = new AgentSettingParametrProperty();
                 agentSettingsProperty.Name = property.Name;
+                if (property.Name == "TimeFrame")
+                {
+                    var test =property.GetValue(Settings).ToString();
+                    agentSettingsProperty.Parametr = property.GetValue(Settings).ToString();
+                    //agentSettingsProperty.Parametr = test;
+                    //                    agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
+                }
                 agentSettingsProperty.Parametr = property.GetValue(Settings);
                 agentSettingsProperty.UseInAgentName = false;
                 AgentSettingsStorage.Add(agentSettingsProperty);
             }
+            AgentSettingsDG.ItemsSource = AgentSettingsStorage;
         }
 
         private void OkButtonClick(object sender, RoutedEventArgs e)

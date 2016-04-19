@@ -30,6 +30,11 @@ namespace AistTrader
                 EditSingleOrGroupItemBtn.IsEnabled = true;
             if (AgentsStorage.Count == 0)
                 EditSingleOrGroupItemBtn.IsEnabled = false;
+
+            if (AgentListView.Items.Count == 0)
+                DelAgentBtn.IsEnabled = false;
+            else
+                DelAgentBtn.IsEnabled = true;
         }
         private void AgentListView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -40,6 +45,11 @@ namespace AistTrader
                 EditSingleOrGroupItemBtn.IsEnabled = true;
             else
                 EditSingleOrGroupItemBtn.IsEnabled = false;
+
+            if (AgentListView.Items.Count == 0)
+                DelAgentBtn.IsEnabled = false;
+            else
+                DelAgentBtn.IsEnabled = true;
         }
         private void AddAgentConfigGroupBtnClick(object sender, RoutedEventArgs e)
         {

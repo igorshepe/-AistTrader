@@ -181,6 +181,7 @@
                                     VerticalAlignment="Top"
                                     Width="100"/>
                             <Button Content="Удалить" 
+                                    Name="DelAgentBtn"
                                     Click="DeleteAgentBtnClick" 
                                     HorizontalAlignment="Center"
                                     Margin="4,61,0,0"
