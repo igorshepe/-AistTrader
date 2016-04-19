@@ -191,8 +191,8 @@
     <Compile Include="PortfolioAddition.xaml.cs">
       <DependentUpon>PortfolioAddition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StrategiesSettingsWindow.xaml.cs">
-      <DependentUpon>StrategiesSettingsWindow.xaml</DependentUpon>
+    <Compile Include="AgentSettings.xaml.cs">
+      <DependentUpon>AgentSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tabs\AgentItem.cs" />
     <Compile Include="Tabs\AgentManagerItem.cs" />
@@ -246,7 +246,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="StrategiesSettingsWindow.xaml">
+    <Page Include="AgentSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

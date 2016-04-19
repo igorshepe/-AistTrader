@@ -1,8 +1,8 @@
 ﻿namespace AistTrader
 {
-    public partial class StrategiesSettingsWindow 
+    public partial class AgentSettings
     {
-        public StrategiesSettingsWindow()
+        public AgentSettings()
         {
             InitializeComponent();
         }

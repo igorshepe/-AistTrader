@@ -81,7 +81,7 @@ namespace AistTrader
                 var type = HelperStrategies.GetStrategySettingsType(AlgorithmComboBox.SelectedItem.ToString());
                 object settingsClassInstance = Activator.CreateInstance(type);
                 var strategyDs = (StrategyDefaultSettings)settingsClassInstance;
-                var strategySw = new StrategiesSettingsWindow(AgentSettings, strategyDs);
+                var strategySw = new AgentSettings(AgentSettings, strategyDs);
                 strategySw.Settings.Load(AgentSettings);
                 AgentSettings = strategySw.Settings.Save();
                 type = null;
@@ -140,7 +140,7 @@ namespace AistTrader
                 var type = HelperStrategies.GetStrategySettingsType(AlgorithmComboBox.SelectedItem.ToString());
                 object settingsClassInstance = Activator.CreateInstance(type);
                 var strategyDs = (StrategyDefaultSettings)settingsClassInstance;
-                var strategySw = new StrategiesSettingsWindow(AgentSettings, strategyDs);
+                var strategySw = new AgentSettings(AgentSettings, strategyDs);
                 strategySw.Settings.Load(AgentSettings);
                 AgentSettings = strategySw.Settings.Save();
                 type = null;
@@ -164,7 +164,7 @@ namespace AistTrader
             }
             var type = HelperStrategies.GetStrategySettingsType(AlgorithmComboBox.SelectedItem.ToString());
             var iSettingsDlg = (StrategyDefaultSettings)Activator.CreateInstance(type);
-            var vrsDialog = new StrategiesSettingsWindow(AgentSettings, iSettingsDlg);
+            var vrsDialog = new AgentSettings(AgentSettings, iSettingsDlg);
 
             var dlgResults = vrsDialog.ShowDialog();
             //iSettingsDlg = null;
