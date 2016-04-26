@@ -241,7 +241,7 @@ namespace AistTrader
                 this.GuiAsync(() =>
                 {
                     agent.ConnectionParams.Tools.AddRange(securities)/* PortfoliosList.AddRange(portfolios))*/;
-                    if (agent.ConnectionParams.Tools.Count > 200 && !sLoaded)
+                    if (agent.ConnectionParams.Tools.Count > 10 && !sLoaded)
                     {
                         sLoaded = true;
                         Logger.Info("Securities were loaded");
@@ -278,11 +278,11 @@ namespace AistTrader
         public static string GetPlazaConnectionIpPort(string plazaPath)
         {
             //TODO: исключить статику если потребуются
-            plazaPath = plazaPath + @"\client_router.ini";
-            FileIniDataParser file = new FileIniDataParser();
-            IniData data = file.LoadFile(plazaPath);
-            var port = data["P2MQRouter"]["port"];
-            var address = IPAddress.Loopback.ToString() +":"+ port;
+            //plazaPath = plazaPath + @"\client_router.ini";
+            //FileIniDataParser file = new FileIniDataParser();
+            //IniData data = file.LoadFile(plazaPath);
+            //var port = data["P2MQRouter"]["port"];
+            var address = IPAddress.Loopback.ToString() +":"+ 4001 /*port*/;
             // у нас есть два исключения когда роутер и тслаб на разных серверах, в таком случае соответственно не локалхост
             return address;
         }
