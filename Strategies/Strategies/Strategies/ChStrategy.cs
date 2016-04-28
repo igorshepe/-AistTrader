@@ -18,15 +18,20 @@ namespace Strategies.Strategies
     public class ChStrategy : BaseStrategy, IOptionalSettings
     {
         private static readonly Logger TradesLogger = NLog.LogManager.GetLogger("TradesLogger");
-        private CandleSeries _candleSeries;
         private CandleManager _candleManager;
-        private readonly MedianPrice _medianPrice = new MedianPrice { };
-        //private BaseStrategy _baseStrategy;
+
+        private CandleSeries _candleSeries;
+
+
+
+        private readonly TimeSpan _timeFrame = TimeSpan.FromMinutes(5);
+
 
         private decimal FastSma { get; set; }
         private decimal SlowSma { get; set; }
         private decimal Period { get; set; }
 
+        //settingsStorage
         public ChStrategy() { }
 
         public ChStrategy(SerializableDictionary<string, object> settingsStorage)
@@ -39,7 +44,7 @@ namespace Strategies.Strategies
         public ChStrategy(SerializableDictionary<string, object> settingsStorage, CandleSeries candleSeries)
             : base(settingsStorage, (TimeSpan)candleSeries.Arg)
         {
-            _candleSeries = candleSeries;
+
             UpdateStrategySettings();
         }
 
@@ -70,43 +75,31 @@ namespace Strategies.Strategies
                 errorString = string.Format("Ошибка получения значения FastSma из настроек. Используем {0}", ChStrategyDefaultSettings.Period);
             }
             Period = (decimal?)obj ?? ChStrategyDefaultSettings.Period;
+
+
             if (errorString != null) this.AddWarningLog(errorString);
 
         }
 
+        // end settingsStorage
 
 
-
-        public SimpleMovingAverage _indicatorSlowSma  = new SimpleMovingAverage
-        {
-            Length = 20
-        };
-
-        private readonly SimpleMovingAverage _indicatorFastSma = new SimpleMovingAverage
-        {
-            Length = 20
-        };
-
-
-        private readonly Highest _indicatorHighest = new Highest
-        {
-            Length = 20
-        };
-
-        private readonly Lowest _indicatorLowest = new Lowest
-        {
-            Length = 20
-        };
-
-
-
-        private bool NoActiveOrders { get { return Orders.Count(o => o.State == OrderStates.Active) == 0; } }
-        // private DateTime _lastTimeFrame = DateTime.MinValue;
 
         public override string GetFriendlyName()
         {
             return "ChStrategy {0} - {1} - {2}".Put(FastSma, SlowSma, Period);
         }
+
+        //=============================================================
+
+        private bool NoActiveOrders { get { return Orders.Count(o => o.State == OrderStates.Active) == 0; } }
+
+        public string GetParamsForFriendlyName()
+        {
+            return FastSma.GetDisplayName();
+        }
+
+
 
         private void RunProcessGetCandles(TimeSpan timeFrame)
         {
@@ -118,120 +111,35 @@ namespace Strategies.Strategies
 
             _candleManager.Start(_candleSeries);
 
-            //_indicatorSlowSma = new SimpleMovingAverage() { Length = (int)SlowSma };
-
         }
 
-        private void MainAlgorithm(Candle candle)
+
+
+        protected override ProcessResults OnProcess()
         {
-            var timeFrame = (TimeSpan)candle.Arg;
-            var time = ((TimeSpan)candle.Arg).GetCandleBounds(Connector.CurrentTime).Min - timeFrame;
-            var highestValue = _indicatorHighest.Process(candle.HighPrice);
-            var lowestValue = _indicatorLowest.Process(candle.LowPrice);
-            var ssmaValue = _indicatorSlowSma.Process(candle.ClosePrice);
-            var fsmaValue = _indicatorFastSma.Process(candle.ClosePrice);
-            var medianPriceValue = _medianPrice.Process(candle);
-
-
-            if (candle.OpenTime < time ||
-                !_indicatorSlowSma.IsFormed ||
-                !_indicatorFastSma.IsFormed ||
-                !_indicatorHighest.IsFormed ||
-                !_indicatorLowest.IsFormed ||
-                !_medianPrice.IsFormed)
+            // если наша стратегия в процессе остановки
+            if (ProcessState == ProcessStates.Stopping)
             {
-                TradesLogger.Info("Исторические свечи");
-                return;
-            }
+                // отменяем активные заявки
+                CancelActiveOrders();
 
-            if (Position != 0) // Если позиция есть
-            {
-                TradesLogger.Info("есть позиция {0}", Position);
-                if (Position > 0) // Для длинной позиции
-                {
-                    if (candle.ClosePrice < _medianPrice.GetCurrentValue())
-                    {
-                        //RegisterOrder(this.SellAtMarket());
-                        MakeMarketOrder(Sides.Sell);
-                    }
-                }
-                else // Для короткой позиции
-                {
-
-                    if (candle.ClosePrice > _medianPrice.GetCurrentValue())
-                    {
-                        //RegisterOrder(this.BuyAtMarket());
-                        MakeMarketOrder(Sides.Buy);
-                    }
-
-
-                }
-
-            }
-            else if (NoActiveOrders)    //Нет активных заявок
-            {
-                TradesLogger.Info("Позиций  нет, проверка условий входа в позицию. Значения Slow SMA {0},Fast SMA {1}, Highest {2}, Lowest {3}", ssmaValue, fsmaValue, highestValue, lowestValue);
-                //TradesLogger.Info("Сравниваем значения с GetCurrentValue Значения Slow SMA {0},Fast SMA {1}, Highest {2}, Lowest {3}", _indicatorSlowSma.GetCurrentValue(), _indicatorFastSma.GetCurrentValue(), _indicatorHighest.GetCurrentValue(), _indicatorLowest.GetCurrentValue());
-                //Если значение Roc меньше нуля//при пересечении цены закрытия свечи и скользящей
-                if (_indicatorSlowSma.GetCurrentValue() > _indicatorFastSma.GetCurrentValue() && candle.LowPrice <= _indicatorLowest.GetCurrentValue())
-                {
-                    //RegisterOrder(this.SellAtLimit(_indicatorLowest.GetCurrentValue(), Volume));
-                    SellStrategyVolumeAtMarket();
-                    //_baseStrategy.RegisterOrder(this.SellAtLimit(_indicatorLowest.GetCurrentValue(), Volume));
-                    //RegisterOrder(this.SellAtMarket());
-                    //MakeMarketOrder(Sides.Sell);
-                    //MakeLimitOrder(Sides.Sell, _indicatorLowest.GetCurrentValue());
-                    TradesLogger.Info("Короткая позиция. Цена ордера {0}", _indicatorLowest.GetCurrentValue());
-
-                }
-                //Пересечение цены закрытия и линии боллинджера вверх
-                else if (_indicatorSlowSma.GetCurrentValue() < _indicatorFastSma.GetCurrentValue() && candle.HighPrice >= _indicatorHighest.GetCurrentValue())
-                {
-                    //RegisterOrder(this.BuyAtLimit(_indicatorHighest.GetCurrentValue(), Volume));
-                    BuyStrategyVolumeAtMarket();
-                    //_baseStrategy.RegisterOrder(this.BuyAtLimit(_indicatorHighest.GetCurrentValue(), Volume));
-                    //RegisterOrder(this.BuyAtMarket());
-                    //MakeMarketOrder(Sides.Buy);
-                    //MakeLimitOrder(Sides.Buy, _indicatorHighest.GetCurrentValue());
-                    TradesLogger.Info("Длинная позиция . Цена ордера {0}", _indicatorHighest.GetCurrentValue());
-                }
+                // так как все активные заявки гарантированно были отменены, то возвращаем ProcessResults.Stop
+                return ProcessResults.Stop;
             }
 
 
+            RunProcessGetCandles(_timeFrame);
+
+
+
+
+            TradesLogger.Info("Цикл стратегии - {0}", Connector.CurrentTime);
+
+
+
+
+            return ProcessResults.Continue;
         }
-
-        protected override void OnStarted()
-        {
-
-            var timeFrame = TimeSpan.FromMinutes(5);
-            RunProcessGetCandles(timeFrame);
-            //Подписываемся на правило события окончания чвечей
-            //_candleSeries.WhenCandlesFinished()
-            //       .Do(MainAlgorithm)
-            //       .Apply();
-
-            //Вызываем базовый метод
-            base.OnStarted();
-
-            TradesLogger.Info("start strategy {0}, {1}, {2}", timeFrame, GetFriendlyName(), Security);
-        }
-
-        private void MakeMarketOrder(Sides direction)
-        {
-            var price = direction == Sides.Buy ? Connector.GetMarketDepth(Security).BestAsk.Price : Connector.GetMarketDepth(Security).BestBid.Price;
-            var order = this.CreateOrder(direction, price, Volume);
-            RegisterOrder(order);
-            TradesLogger.Info(order);
-        }
-
-        private void MakeLimitOrder(Sides direction, decimal price)
-        {
-            var order = this.CreateOrder(direction, price, Volume);
-            RegisterOrder(order);
-            TradesLogger.Info(order);
-
-        }
-
 
 
     }
