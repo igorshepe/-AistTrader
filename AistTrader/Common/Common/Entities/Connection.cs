@@ -8,14 +8,16 @@ namespace Common.Entities
     public class Connection
     {
         Connection() { }
-        public Connection(string name, ConnectionParams connectionParams)
+        public Connection(string name, ConnectionParams connectionParams,bool isDemo)
         {
             Id = name;
             DisplayName = name;
             ConnectionParams = connectionParams;
+            IsDemo = isDemo;
         }
         public string Id { get; set; }
         public string DisplayName { get; set; }
+        public bool IsDemo { get; set; }
         public ConnectionParams ConnectionParams { get; set; }
         public override string ToString()
         {
