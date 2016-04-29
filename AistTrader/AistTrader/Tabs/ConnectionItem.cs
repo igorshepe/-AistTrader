@@ -21,6 +21,8 @@ using NLog;
 using StockSharp.BusinessEntities;
 using StockSharp.Plaza;
 using System.Threading.Tasks;
+using MahApps.Metro.Controls;
+using StockSharp.Messages;
 
 namespace AistTrader
 {
@@ -148,28 +150,40 @@ namespace AistTrader
         }
         private void ConnectionStateSwitch_OnClick(object sender, RoutedEventArgs e)
         {
-            //if ((sender as HorizontalToggleSwitch).IsChecked)
-            //{
-            //    //ON
-            //    var item = (sender as FrameworkElement).DataContext;
-            //    ProviderListView.SelectedItems.Clear();
-            //    ProviderListView.SelectedItems.Add(item);
-            //    ConnectAccount(item as AgentConnection);
-            //}
-            //else
-            //{
-            //    //OFF
-            //    if (Trader != null && Trader.ConnectionState == ConnectionStates.Connected)
-            //    {
-            //        Trader.Disconnect();
-            //        //set to null all collectionzzzZZzzz
-            //        SecuritiesList.Clear();
-            //        PortfoliosList.Clear();
-            //    }
-            //    var item = (sender as FrameworkElement).DataContext;
-            //    var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
-            //    rowItem.Connection.IsActive = false;
-            //}
+            if ((bool) (sender as ToggleSwitchButton).IsChecked)
+            {
+                //ON
+                var item = (sender as FrameworkElement).DataContext;
+                var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
+                int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+                rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
+                if (rowItem.ConnectionParams.IsRegistredConnection)
+                    ConnectionManager.Connections[index].Connect();
+                else
+                    ConnectAccount(item as Connection);
+            }
+            else
+            {
+                //OFF
+                var item = (sender as FrameworkElement).DataContext;
+                var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
+                var con = ConnectionManager.Connections.FirstOrDefault(m => rowItem != null && m.ConnectionName == rowItem.ToString());
+                //get index from manager by name
+                int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+                ConnectionManager.Connections[index].Disconnect();
+
+                if (con != null)
+                {
+                    //con.Disconnect();
+                    //con.Dispose();
+                }
+                if (rowItem != null)
+                {
+                    rowItem.ConnectionParams.Command = OperationCommand.Connect;
+                    //rowItem.ConnectionParams.IsRegistredConnection = false;
+                }
+            }
+            //UpdateProviderListView();
         }
 
         public void UpdateProviderListView()
@@ -193,40 +207,40 @@ namespace AistTrader
             ProviderCollectionView.Refresh();
         }
 
-        public void ConnectAccount(Connection agent)
+        public void ConnectAccount(Connection conn)
         {
             string ipEndPoint = "";
             bool sLoaded=false;
 
-            if (agent.ConnectionParams.PlazaConnectionParams.IpEndPoint == null)
+            if (conn.ConnectionParams.PlazaConnectionParams.IpEndPoint == null)
             {
                 try
                 {
-                    Logger.Info("Trying to get the ip,port of plaza connection -\"{0}\"...", agent.DisplayName.ToString());
-                    ipEndPoint = GetPlazaConnectionIpPort(agent.ConnectionParams.PlazaConnectionParams.Path);
-                    Logger.Info("IP and port of -\"{0}\" connection were successfully acquired", agent.DisplayName.ToString());
+                    Logger.Info("Trying to get the ip,port of plaza connection -\"{0}\"...", conn.DisplayName.ToString());
+                    ipEndPoint = GetPlazaConnectionIpPort(conn.ConnectionParams.PlazaConnectionParams.Path);
+                    Logger.Info("IP and port of -\"{0}\" connection were successfully acquired", conn.DisplayName.ToString());
                 }
                 catch (Exception e)
                 {
                     Logger.Log(LogLevel.Error, e.Message);
                     Logger.Log(LogLevel.Error, e.InnerException.Message);
                 }
-                var item = ConnectionsStorage.Cast<Connection>().Where(i => i.ConnectionParams.PlazaConnectionParams.Path == agent.ConnectionParams.PlazaConnectionParams.Path)
+                var item = ConnectionsStorage.Cast<Connection>().Where(i => i.ConnectionParams.PlazaConnectionParams.Path == conn.ConnectionParams.PlazaConnectionParams.Path)
                         .Select(i => i).FirstOrDefault();
                 item.ConnectionParams.PlazaConnectionParams.IpEndPoint = ipEndPoint;
             }
             else
-                ipEndPoint = agent.ConnectionParams.PlazaConnectionParams.IpEndPoint;
-            var connection = new AistTraderConnnectionWrapper(agent.DisplayName) {Address = ipEndPoint.To<IPEndPoint>(), IsCGate = true, IsDemo = true};
+                ipEndPoint = conn.ConnectionParams.PlazaConnectionParams.IpEndPoint;
+            var connection = new AistTraderConnnectionWrapper(conn.DisplayName) {Address = ipEndPoint.To<IPEndPoint>(), IsCGate = true, IsDemo = conn.IsDemo};
 
             //TODO: посмотри примеры того как идет динамический апдейт, а потом уже подписывай события на то что будет апдейтится
-            agent.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>();
-            agent.ConnectionParams.Tools = new List<Security>();
-            agent.ConnectionParams.IsRegistredConnection = true;
+            conn.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>();
+            conn.ConnectionParams.Tools = new List<Security>();
+            conn.ConnectionParams.IsRegistredConnection = true;
             connection.NewPortfolios += portfolios =>
             {
-                this.GuiAsync(() => agent.ConnectionParams.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
-                this.GuiAsync(() => UpdateProviderGridListView(agent));
+                this.GuiAsync(() => conn.ConnectionParams.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
+                this.GuiAsync(() => UpdateProviderGridListView(conn));
                 this.GuiAsync(() => Logger.Info("Portfolios for connection \"{0}\" were loaded",connection.ConnectionName));
                 //try
                 //{
@@ -240,8 +254,8 @@ namespace AistTrader
             {
                 this.GuiAsync(() =>
                 {
-                    agent.ConnectionParams.Tools.AddRange(securities)/* PortfoliosList.AddRange(portfolios))*/;
-                    if (agent.ConnectionParams.Tools.Count > 10 && !sLoaded)
+                    conn.ConnectionParams.Tools.AddRange(securities)/* PortfoliosList.AddRange(portfolios))*/;
+                    if (conn.ConnectionParams.Tools.Count > 10 && !sLoaded)
                     {
                         sLoaded = true;
                         Logger.Info("Securities were loaded");
@@ -250,15 +264,15 @@ namespace AistTrader
             };
             connection.Connected += () =>
             {
-                this.GuiAsync(() => agent.ConnectionParams.IsConnected = true);
-                this.GuiAsync(() => agent.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Connected);
+                this.GuiAsync(() => conn.ConnectionParams.IsConnected = true);
+                this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Connected);
                 this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is active now", connection.ConnectionName));
             };
             connection.Disconnected += () =>
             {
-                this.GuiAsync(() => agent.ConnectionParams.IsConnected = false);
-                this.GuiAsync(() => agent.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);   
+                this.GuiAsync(() => conn.ConnectionParams.IsConnected = false);
+                this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);   
                 this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is not active now", connection.Name));
             };
@@ -367,6 +381,11 @@ namespace AistTrader
                 EditAgentConnectionBtn.IsEnabled = true;
                 DelAgentConnectionBtn.IsEnabled = true;
             }
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 
