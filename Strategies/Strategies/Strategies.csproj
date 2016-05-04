@@ -98,6 +98,7 @@
     <Compile Include="Settings\StrategyScriptSettings.cs" />
     <Compile Include="Settings\AistInvestStrategySettings.cs" />
     <Compile Include="Strategies\AistInvestStrategy.cs" />
+    <Compile Include="Strategies\CandleSatrategy.cs" />
     <Compile Include="Strategies\ChStrategy.cs" />
     <Compile Include="Strategies\NewStrategy.cs" />
     <Compile Include="Strategies\StrategyScript.cs" />
