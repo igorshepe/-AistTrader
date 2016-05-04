@@ -117,7 +117,7 @@ namespace AistTrader
                 connectionToEdit = null;
             }
             else
-                MainWindow.Instance.AddNewAgentConnection(new Connection(ConnectionNameTxtBox.Text, connParams), EditIndex);
+                MainWindow.Instance.AddNewAgentConnection(new Connection(ConnectionNameTxtBox.Text, connParams, IsDemoChkBox.IsChecked.Value), EditIndex);
             Close();
         }
         private void ConnectionNameTxtBox_KeyDown(object sender, KeyEventArgs e)
