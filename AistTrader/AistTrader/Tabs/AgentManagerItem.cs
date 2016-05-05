@@ -18,6 +18,7 @@ using StockSharp.Algo.Strategies;
 using StockSharp.Logging;
 using StockSharp.Plaza;
 using Strategies.Common;
+using Strategies.Strategies;
 
 namespace AistTrader
 {
@@ -213,7 +214,7 @@ namespace AistTrader
                 //strategy = (CandleStrategy)Activator.CreateInstance(strategyType);
                 //{
                 //    strategy.Security = item.AgentManagerSettings.Tool;
-                //    strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i=>i.Name == item.AgentManagerSettings.Portfolio.Code);
+                //    strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code);
                 //    strategy.Connector = realConnection;
                 //    strategy.TimeFrame = TimeSpan.FromMinutes(1);
                 //    strategy.Volume = 1;
@@ -257,28 +258,28 @@ namespace AistTrader
 
         private void ConnectTest_OnClick(object sender, RoutedEventArgs e)
         {
-            //string adress = IPAddress.Loopback.ToString() + ":" + 4001 /*port*/;
+            string adress = IPAddress.Loopback.ToString() + ":" + 4001 /*port*/;
 
-            //Trader.Address = adress.To<IPEndPoint>();
-            //Trader.IsCGate = true;
-            //Trader.IsDemo = true;
-            //Trader.Connect();
+            Trader.Address = adress.To<IPEndPoint>();
+            Trader.IsCGate = true;
+            Trader.IsDemo = true;
+            Trader.Connect();
         }
 
         private void StartStrategyTest_OnClick(object sender, RoutedEventArgs e)
         {
-                //var candleManager = new CandleManager(Trader);
-                //var strat =  new CandleStrategy();
-                //strat.Connector = Trader;
-                //strat.TimeFrame = TimeSpan.FromMinutes(1);
-                
-                //strat.Portfolio = Trader.Portfolios.First();
-                //strat.Security = Trader.Securities.First(i=>i.Code  == "SiM6");
-                //strat.Volume = 1;
-                //strat.SetCandleManager(candleManager); 
-                //strat.LogLevel = LogLevels.Debug;
+            var candleManager = new CandleManager(Trader);
+            var strat = new CandleStrategy();
+            strat.Connector = Trader;
+            strat.TimeFrame = TimeSpan.FromMinutes(1);
 
-                //strat.Start();
+            strat.Portfolio = Trader.Portfolios.First();
+            strat.Security = Trader.Securities.First(i => i.Code == "SiM6");
+            strat.Volume = 1;
+            strat.SetCandleManager(candleManager);
+            strat.LogLevel = LogLevels.Debug;
+
+            strat.Start();
         }
     }
 }
