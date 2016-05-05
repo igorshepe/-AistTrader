@@ -358,7 +358,7 @@
                                 <DataGridTemplateColumn Header="Command">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Controls:ToggleSwitchButton Name="AgentManagerStateSwitch" Content="{Binding Path=AgentManagerSettings.Command}"></Controls:ToggleSwitchButton>
+                                            <Controls:ToggleSwitchButton  Name="AgentManagerStateSwitch" Checked="StartStopBtnClick" Unchecked="StartStopBtnClick" Content="{Binding Path=AgentManagerSettings.Command}"></Controls:ToggleSwitchButton>
                                             <!--<Button Click="StartStopBtnClick" MinWidth="100" Content="{Binding Path= AgentManagerSettings.Command}"  HorizontalAlignment="Right" Margin="0,0,0,0"></Button>-->
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Xml.Serialization;
 using Common.Entities;
 using Common.Params;
+using MahApps.Metro.Controls;
 using NLog;
 using StockSharp.Algo.Strategies;
 using Strategies.Common;
@@ -159,12 +160,12 @@ namespace AistTrader
             //}
             //strategy.Start();
 
-            var strategytest = new ChStrategy
-            {
-                Security = ConnectionManager.Connections[0].Securities.First(i => i.Code == "SiH6"),
-                Connector = ConnectionManager.Connections.First()
-            };
-            strategytest.Start();
+            //var strategytest = new ChStrategy
+            //{
+            //    Security = ConnectionManager.Connections[0].Securities.First(i => i.Code == "SiH6"),
+            //    Connector = ConnectionManager.Connections.First()
+            //};
+            //strategytest.Start();
         }
 
         private void AgentManagerListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -192,7 +193,7 @@ namespace AistTrader
 
         private void StartStopBtnClick(object sender, RoutedEventArgs e)
         {
-            if ((sender as Button).Content.ToString() == "Connect")
+            if ((bool)(sender as ToggleSwitchButton).IsChecked)
             {
                 //ON 
                 var item = (sender as FrameworkElement).DataContext as AgentManager;
@@ -204,7 +205,7 @@ namespace AistTrader
                 var portfolio = item.AgentManagerSettings.Portfolio;
                 var realConnection =
                     ConnectionManager.Connections.Find(i => i.ConnectionName == connectionName.Connection.DisplayName);
-                var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
+                var strategyType = HelperStrategies.GetRegistredStrategiesTest(/*strategyName.FirstOrDefault()*/"CandleStrategy");
                 strategy = (Strategy)Activator.CreateInstance(strategyType);
                 {
                     strategy.Security = item.AgentManagerSettings.Tool;
