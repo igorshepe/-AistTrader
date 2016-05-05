@@ -12,7 +12,7 @@ namespace Strategies.Strategies
 {
     using System;
     using System.Linq;
-    using System.ComponentModel;
+    using System.ComponentModel; 
     using NLog;
     //using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
