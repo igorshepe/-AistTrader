@@ -173,7 +173,6 @@
     <Compile Include="SecuritiesSelectorWindow.xaml.cs">
       <DependentUpon>SecuritiesSelectorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tabs\CandleStrategy.cs" />
     <Compile Include="WhatsNew.xaml.cs">
       <DependentUpon>WhatsNew.xaml</DependentUpon>
     </Compile>
