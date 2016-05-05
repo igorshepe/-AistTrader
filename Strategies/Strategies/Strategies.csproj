@@ -91,6 +91,7 @@
     <Compile Include="Common\SerializableDictionary.cs" />
     <Compile Include="Common\HelperStrategies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\CandleStrategySettings.cs" />
     <Compile Include="Settings\ChStrategySettings.cs" />
     <Compile Include="Settings\IOptionalSettings.cs" />
     <Compile Include="Settings\StrategyDefaultSettings.cs" />

@@ -4,6 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ecng.Serialization;
+using Strategies.Common;
+using Strategies.Settings;
 
 namespace Strategies.Strategies
 {
@@ -30,7 +33,7 @@ namespace Strategies.Strategies
     /// Long - если текущая свеча черная;  
     /// Short - если текущая свеча белая;
     /// </summary>
-    public class CandleStrategy : Strategy
+    public class CandleStrategy : Strategy, IOptionalSettings
     {
 
         private ICandleManager _candleManager;
@@ -44,6 +47,7 @@ namespace Strategies.Strategies
             _timeFrame = this.Param("TimeFrame", TimeSpan.FromMinutes(1));
         }
 
+
         private readonly StrategyParam<TimeSpan> _timeFrame;
 
         ///// <summary>
@@ -53,6 +57,10 @@ namespace Strategies.Strategies
         //[PropertyOrder(0)]
         //[DisplayName("Тайм-фрейм")]
         //[Description("Тайм-фрейм серии данных")]
+         
+        //public CandleStrategy() { }
+
+
         public TimeSpan TimeFrame
         {
             get { return _timeFrame.Value; }
@@ -62,6 +70,11 @@ namespace Strategies.Strategies
                     return;
                 _timeFrame.Value = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return "CandleStrategy";
         }
 
         protected override void OnStarted()
@@ -91,15 +104,7 @@ namespace Strategies.Strategies
                 .Until(FinishCandles)           // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
                 .Apply(this);                   // Активатор правила (включает правило). В данном случае правило также будет добавлено в список Strategy.Rules
 
-
-            //// создаем правило на появление завершенной свечи
-            //_candleManager                      // объект, к которому применяется правило
-            //    .WhenCandlesFinished(_series)   // условие (событие) правила
-            //    .Do(ProcessCandles)             // действия при выполнении условия (событие) правила
-            //    .Apply(this);                   // Активатор правила (включает правило). В данном случае правило также будет добавлено в список Strategy.Rules
-
-
-            //_candleManager.Stopped += s => this.Stop();
+ 
 
             // запускаем CandleManager
             _candleManager.Start(_series);
