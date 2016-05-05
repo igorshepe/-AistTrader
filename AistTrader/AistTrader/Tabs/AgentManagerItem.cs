@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,18 +10,22 @@ using System.Windows.Input;
 using System.Xml.Serialization;
 using Common.Entities;
 using Common.Params;
+using Ecng.Common;
 using MahApps.Metro.Controls;
 using NLog;
+using StockSharp.Algo.Candles;
 using StockSharp.Algo.Strategies;
+using StockSharp.Logging;
+using StockSharp.Plaza;
 using Strategies.Common;
-using Strategies.Strategies;
 
 namespace AistTrader
 {
     public partial class MainWindow
     {
+        public readonly PlazaTrader Trader = new PlazaTrader();
         public bool IsAgentManagerSettingsLoaded;
-        public static Strategy strategy = new Strategy();
+        public static CandleStrategy strategy = new CandleStrategy();
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var form = new ManagerAddition();
@@ -188,7 +193,6 @@ namespace AistTrader
             var form = new ManagerAdditionTradeSettings();
             form.ShowDialog();
             form = null;
-
         }
 
         private void StartStopBtnClick(object sender, RoutedEventArgs e)
@@ -197,7 +201,7 @@ namespace AistTrader
             {
                 //ON 
                 var item = (sender as FrameworkElement).DataContext as AgentManager;
-                Strategy strategy = null;
+                //CandleStrategy strategy = null;
                 var strategyName = item.AgentManagerSettings.AgentOrGroup.Split(null);
                 var connectionName =
                     AgentPortfolioStorage.Cast<Portfolio>()
@@ -206,16 +210,32 @@ namespace AistTrader
                 var realConnection =
                     ConnectionManager.Connections.Find(i => i.ConnectionName == connectionName.Connection.DisplayName);
                 var strategyType = HelperStrategies.GetRegistredStrategiesTest(/*strategyName.FirstOrDefault()*/"CandleStrategy");
-                strategy = (Strategy)Activator.CreateInstance(strategyType);
-                {
-                    strategy.Security = item.AgentManagerSettings.Tool;
-                    strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i=>i.Name == item.AgentManagerSettings.Portfolio.Code);
-                    strategy.Connector = realConnection;
-                }
-                strategy.Start();
-                item.AgentManagerSettings.Command = OperationCommand.Disconnect;
-                UpdateAgentManagerListView();
+                //strategy = (CandleStrategy)Activator.CreateInstance(strategyType);
+                //{
+                //    strategy.Security = item.AgentManagerSettings.Tool;
+                //    strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i=>i.Name == item.AgentManagerSettings.Portfolio.Code);
+                //    strategy.Connector = realConnection;
+                //    strategy.TimeFrame = TimeSpan.FromMinutes(1);
+                //    strategy.Volume = 1;
 
+                //}
+                //var candleManager = new CandleManager(realConnection);
+                //strategy.SetCandleManager(candleManager);
+                //strategy.Start();
+                //item.AgentManagerSettings.Command = OperationCommand.Disconnect;
+                //UpdateAgentManagerListView();
+
+                var candleManager = new CandleManager(realConnection);
+                var strat = new CandleStrategy();
+                strat.Connector = realConnection;
+                strat.TimeFrame = TimeSpan.FromMinutes(1);
+
+                strat.Portfolio = realConnection.Portfolios.First();
+                strat.Security = realConnection.Securities.First(i => i.Code == "SiM6");
+                strat.Volume = 1;
+                strat.SetCandleManager(candleManager);
+                strat.LogLevel = LogLevels.Debug;
+                strat.Start();
 
                 //var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
                 //int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
@@ -233,9 +253,32 @@ namespace AistTrader
                 item.AgentManagerSettings.Command = OperationCommand.Connect;
                 UpdateAgentManagerListView();
             }
+        }
 
+        private void ConnectTest_OnClick(object sender, RoutedEventArgs e)
+        {
+            //string adress = IPAddress.Loopback.ToString() + ":" + 4001 /*port*/;
 
+            //Trader.Address = adress.To<IPEndPoint>();
+            //Trader.IsCGate = true;
+            //Trader.IsDemo = true;
+            //Trader.Connect();
+        }
 
+        private void StartStrategyTest_OnClick(object sender, RoutedEventArgs e)
+        {
+                //var candleManager = new CandleManager(Trader);
+                //var strat =  new CandleStrategy();
+                //strat.Connector = Trader;
+                //strat.TimeFrame = TimeSpan.FromMinutes(1);
+                
+                //strat.Portfolio = Trader.Portfolios.First();
+                //strat.Security = Trader.Securities.First(i=>i.Code  == "SiM6");
+                //strat.Volume = 1;
+                //strat.SetCandleManager(candleManager); 
+                //strat.LogLevel = LogLevels.Debug;
+
+                //strat.Start();
         }
     }
 }

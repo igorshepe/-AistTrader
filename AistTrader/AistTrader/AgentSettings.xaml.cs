@@ -40,25 +40,25 @@ namespace AistTrader
             Settings = settings;
             InitializeComponent();
             Settings.Load(SettingsStorage);
-            Type type = typeof (AistInvestStrategySettings);
+            Type type = typeof (CandleStrategyDefaultSettings);
             PropertyInfo[] properties = type.GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                var agentSettingsProperty = new AgentSettingParametrProperty();
-                agentSettingsProperty.Name = property.Name;
-                if (property.Name == "TimeFrame")
-                {
-                    TimeSpan test =(TimeSpan)property.GetValue(Settings);
-                    double sec = test.TotalSeconds;
-                    agentSettingsProperty.Parametr = (decimal)sec;
-                    //agentSettingsProperty.Parametr = test;
-                    //                    agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
-                }
-                else
-                    agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
+                //var agentSettingsProperty = new AgentSettingParametrProperty();
+                //agentSettingsProperty.Name = property.Name;
+                //if (property.Name == "TimeFrame")
+                //    TimeSpan test =(TimeSpan)property.GetValue(Settings);
+                //    double sec = test.TotalSeconds;
+                //    agentSettingsProperty.Parametr = (decimal)sec;
+                //{
+                //    //agentSettingsProperty.Parametr = test;
+                //    //                    agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
+                //}
+                //else
+                //    agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
                 
-                agentSettingsProperty.UseInAgentName = false;
-                AgentSettingsStorage.Add(agentSettingsProperty);
+                //agentSettingsProperty.UseInAgentName = false;
+                //AgentSettingsStorage.Add(agentSettingsProperty);
             }
             AgentSettingsDG.ItemsSource = AgentSettingsStorage;
         }
