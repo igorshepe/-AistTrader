@@ -46,6 +46,10 @@ namespace Strategies.Strategies
         {
             _timeFrame = this.Param("TimeFrame", TimeSpan.FromMinutes(1));
         }
+        public CandleStrategy(SerializableDictionary<string, object> settingsStorage)
+        {
+            //
+        }
 
 
         private readonly StrategyParam<TimeSpan> _timeFrame;

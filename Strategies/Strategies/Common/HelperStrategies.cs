@@ -11,10 +11,10 @@ namespace Strategies.Common
     {
         public static List<Type> GetStrategies()
         {
-            var baseType = typeof(BaseStrategy);
-            var baseTypeStrategy = typeof(Strategy);
+            var baseType = typeof(Strategy);
+            //var baseTypeStrategy = typeof(Strategy);
             Assembly assembly = Assembly.LoadFrom(Assembly.GetExecutingAssembly().GetName().Name + ".dll");
-            return assembly.GetTypes().Where(type => type.IsSubclassOf(baseType) || type.IsSubclassOf(baseTypeStrategy) && type != baseType).ToList();
+            return assembly.GetTypes().Where(type => type.IsSubclassOf(baseType)).ToList();
         }
 
         public static bool StrategyHasParams(string strategyName)
@@ -27,7 +27,7 @@ namespace Strategies.Common
 
         public static Type GetRegistredStrategies(string strategyName)
         {
-            var baseType = typeof(BaseStrategy);
+            var baseType = typeof(Strategy);
             Assembly assembly = Assembly.LoadFrom(Assembly.GetExecutingAssembly().GetName().Name + ".dll");
             return assembly.GetTypes().FirstOrDefault(type => type.IsSubclassOf(baseType) && type.Name == strategyName);
         }
@@ -60,7 +60,7 @@ namespace Strategies.Common
         }
         public static Type GetRegistredStrategiesTest(string strategyName)
         {
-            var baseType = typeof(BaseStrategy);
+            var baseType = typeof(Strategy);
             Assembly assembly = Assembly.LoadFrom(Assembly.GetExecutingAssembly().GetName().Name + ".dll");
             return assembly.GetTypes().FirstOrDefault(type => type.IsSubclassOf(baseType) && type.Name.StartsWith(strategyName));
         }
