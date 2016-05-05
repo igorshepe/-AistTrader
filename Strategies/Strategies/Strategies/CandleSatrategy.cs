@@ -51,9 +51,7 @@ namespace Strategies.Strategies
             //
         }
 
-
         private readonly StrategyParam<TimeSpan> _timeFrame;
-
         ///// <summary>
         ///// Тайм-фрейм.
         ///// </summary>
