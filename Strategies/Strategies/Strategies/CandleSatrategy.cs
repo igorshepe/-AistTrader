@@ -13,7 +13,7 @@ namespace Strategies.Strategies
     using System;
     using System.Linq;
     using System.ComponentModel;
-
+    using NLog;
     //using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
     using StockSharp.Logging;
@@ -35,7 +35,7 @@ namespace Strategies.Strategies
     /// </summary>
     public class CandleStrategy : Strategy, IOptionalSettings
     {
-
+        private static readonly Logger TradesLogger = NLog.LogManager.GetLogger("TradesLogger");
         private ICandleManager _candleManager;
         private bool _sendOrder;
         private CandleSeries _series;
@@ -46,10 +46,10 @@ namespace Strategies.Strategies
         {
             _timeFrame = this.Param("TimeFrame", TimeSpan.FromMinutes(1));
         }
-        public CandleStrategy(SerializableDictionary<string, object> settingsStorage)
-        {
-            //
-        }
+        //public CandleStrategy(SerializableDictionary<string, object> settingsStorage)
+        //{
+        //    //
+        //}
 
         private readonly StrategyParam<TimeSpan> _timeFrame;
         ///// <summary>
@@ -81,12 +81,13 @@ namespace Strategies.Strategies
 
         protected override void OnStarted()
         {
+            //_candleManager = new CandleManager(Connector);
             // Вызываем базовую реализацию метода.
             base.OnStarted();
-
+            TradesLogger.Info("OnStarted - {0}");
             Console.WriteLine("СТАРТ");
 
-            // Получаем CandleManager 
+            //Получаем CandleManager
             _candleManager = this.GetCandleManager();
 
             // Подписываемся на сделки
@@ -117,18 +118,19 @@ namespace Strategies.Strategies
         {
             // _candleManager.Stop(_series);
             _IsFinish = true;
-            Console.WriteLine("Stopping");
+           
+            //Console.WriteLine("Stopping");
         }
 
         protected override void OnStopped()
         {
-
 
             Console.WriteLine("СТОП");
 
             // Следующая строка добавлена только с демонстрационной целью, т.к.
             // если стратегия добавлена в источники логов LogManager, то сообщения
             // о старте и остановке стратении и так будут сгенерированы.
+            TradesLogger.Info("Остановка стратегии");
             this.AddInfoLog("Стратегия остановлена");
         }
 
@@ -140,7 +142,8 @@ namespace Strategies.Strategies
 
             if (candle.OpenTime < time)
             {
-                Debug.Print("Историческая свеча {0}", candle.OpenTime);
+
+                TradesLogger.Info("Историческая свеча - {0}", candle.OpenTime); 
                 return;
             }
 
@@ -153,27 +156,27 @@ namespace Strategies.Strategies
             if (_sendOrder || _candleManager.GetCandleCount(_series) < 2 || candle.IsWhiteOrBlack() == null)
                 return;
 
-            Debug.Print("цикл алгоритма");
+            TradesLogger.Info("цикл алгоритма");
 
 
             Order order = null;
 
             bool isWhite = candle.IsWhiteOrBlack().Value;
 
-            Debug.Print("Позиций {0}, {1}", Position, CurrentTime);
+            TradesLogger.Info("Позиций {0}, {1}", Position, CurrentTime);
             if (this.Position == 0) // пытаемся открыть позицию, если нет открытых позиций
             {
                 var prevCandle = _candleManager.GetCandle<TimeFrameCandle>(_series, 1);
 
                 if (isWhite) // если свеча белая
                 {
-                    Debug.Print("Белая свечка {0}", CurrentTime);
+                    TradesLogger.Info("Белая свечка {0}", CurrentTime);
                     if (candle.ClosePrice > prevCandle.HighPrice)
                         order = GetOrder(Sides.Buy);
                 }
                 else // если свеча черная
                 {
-                    Debug.Print("Черная свечка {0}", CurrentTime);
+                    TradesLogger.Info("Черная свечка {0}", CurrentTime);
                     if (candle.ClosePrice < prevCandle.LowPrice)
                         order = GetOrder(Sides.Sell);
                 }
@@ -199,7 +202,7 @@ namespace Strategies.Strategies
         // 2. Регистрирует заявку
         private void OrderProcess(Order order)
         {
-            Debug.Print("Подаем заявку");
+            TradesLogger.Info("Подаем заявку");
             // Создаем правило на событие отмены заявки
             var orderCanceledRule = order.WhenCanceled(this.Connector).Do(o =>
             {
