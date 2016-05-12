@@ -59,27 +59,27 @@
             </Grid.RowDefinitions>
 
             <Menu Grid.Row="0"  VerticalAlignment="Stretch" HorizontalAlignment="Left"  Margin="5">
-                <MenuItem Header="Скрипты">
+                <MenuItem Header="Scripts">
                 </MenuItem>
-                <MenuItem Header="Счета">
+                <MenuItem Header="Accounts">
                 </MenuItem>
-                <MenuItem Header="Агенты">
-                    <MenuItem Name="AgentAddConfigMenuItem" Header="Добавление конфигурации" Click="AgentAddConfigMenuItem_OnClick" ></MenuItem>
-                    <MenuItem Name="AgentManagerMenuItem" Header="Управление агентами" Click="AgentManagerMenuItem_OnClick" ></MenuItem>
+                <MenuItem Header="Agents">
+                    <MenuItem Name="AgentAddConfigMenuItem" Header="Agents" Click="AgentAddConfigMenuItem_OnClick" ></MenuItem>
+                    <MenuItem Name="AgentManagerMenuItem" Header="Agent manager" Click="AgentManagerMenuItem_OnClick" ></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Портфели">
-                    <MenuItem Name="PortfolioManagerMenuItem" Header="Управление портфелями" Click="PortfolioMenuItem_OnClick" ></MenuItem>
+                <MenuItem Header="Portfolios">
+                    <MenuItem Name="PortfolioManagerMenuItem" Header="Portfolios" Click="PortfolioMenuItem_OnClick" ></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Настройки">
-                    <MenuItem Header="Тема" 
+                <MenuItem Header="Settings">
+                    <MenuItem Header="Theme" 
                               ItemsSource="{Binding AccentColors, Mode=OneWay}"
                               ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}"/>
-                    <MenuItem Header="Цветовая схема" >
+                    <MenuItem Header="Color scheme" >
                         <MenuItem Header="WinForms"></MenuItem>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Управление поставщиками">
-                    <MenuItem Name="ProviderManagerMenuItem" Header="Управление подключениями" Click="ProviderManagerMenuItem_OnClick" ></MenuItem>
+                <MenuItem Header="Manage connections">
+                    <MenuItem Name="ProviderManagerMenuItem" Header="Connections" Click="ProviderManagerMenuItem_OnClick" ></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Что нового?">
                     <MenuItem Name="WhatsNewItem" Header="Показать новые фичи" Click="WhatsNewItem_OnClick" ></MenuItem>
@@ -88,9 +88,7 @@
 
             <StatusBar Grid.Row="3"   Height="28">
                 Disconnected
-                <Separator />
-                <TextBlock Name="TimeTextBlock"/>
-                <Separator />
+                <Separator Style="{StaticResource MetroStatusBarSeparator}" />
                 <StackPanel Name="StackPanelInStatusBar"  Margin="0,-6,0,0" >
                     <Image Name="ImageInStackPanelOfStatusBar" ToolTip="Show log window"  Source="Resources/Images/hide.png" Height="35" Width="35" MouseDown="StasusBarLogImage_OnMouseDown"  RenderTransformOrigin="0.95,0.032" />
                 </StackPanel>
@@ -167,27 +165,27 @@
                               VerticalAlignment="Top"
                               Width="120"
                               Margin="0,0,0,0">
-                            <Button Content="Добавить"
+                            <Button Content="Add"
                                     Click="AddAgentConfigBtnClick"
                                     HorizontalAlignment="Center"
                                     Margin="4,6,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
-                            <Button Content="Редактировать"
+                            <Button Content="Edit"
                                     Name="EditSingleOrGroupItemBtn"
                                     Click="EditAgentConfigBtnClick" 
                                     HorizontalAlignment="Center"
                                     Margin="4,34,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
-                            <Button Content="Удалить" 
+                            <Button Content="Delete" 
                                     Name="DelAgentBtn"
                                     Click="DeleteAgentBtnClick" 
                                     HorizontalAlignment="Center"
                                     Margin="4,61,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
-                            <Button Content="Создать группу" 
+                            <Button Content="Create a group" 
                                     Name="CreateGroupItemBtn"
                                     IsEnabled="False"
                                     Click="AddAgentConfigGroupBtnClick"
@@ -246,21 +244,21 @@
                               VerticalAlignment="Top" 
                               Width="120" 
                               Margin="0,0,0,0">
-                            <Button Content="Добавить"
+                            <Button Content="Add"
                                     Name="AddConnectionBtn"
                                     Click="AddAgentConnectionBtnClick"
                                     Margin="0,6,8,0"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Right"
                                     Width="100"/>
-                            <Button Content="Редактировать" 
+                            <Button Content="Edit" 
                                     Click="EditAgentConnectionBtnClick"
                                     Name="EditAgentConnectionBtn"
                                     HorizontalAlignment="Center"
                                     Margin="4,34,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
-                            <Button Content="Удалить"
+                            <Button Content="Delete"
                                     Click="DelAgentConnectionBtnClick"
                                     Name="DelAgentConnectionBtn"
                                     HorizontalAlignment="Center" 
@@ -306,9 +304,9 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <Grid Grid.Column="0" HorizontalAlignment="Center" Height="225" VerticalAlignment="Top" Width="120" Margin="0,0,0,0">
-                            <Button Content="Добавить" Name="AddPortfolioBtn" Click="AddAgentPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
-                            <Button Content="Редактировать" Name="EditPortfolioBtn" Click="EditPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
-                            <Button Content="Удалить" Name="DelPortfolioBtn" Click="DelPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Add" Name="AddPortfolioBtn" Click="AddAgentPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,6,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Edit" Name="EditPortfolioBtn" Click="EditPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,34,0,0" VerticalAlignment="Top" Width="100"/>
+                            <Button Content="Delete" Name="DelPortfolioBtn" Click="DelPortfolioBtnClick" HorizontalAlignment="Center" Margin="4,61,0,0" VerticalAlignment="Top" Width="100"/>
                         </Grid>
                     </Grid>
                 </TabItem>
@@ -342,8 +340,8 @@
                                                     Binding="{Binding AgentManagerSettings.AgentOrGroup}" />
                                 <DataGridTextColumn Header="Securitie"
                                                     Binding="{Binding AgentManagerSettings.Tool}" />
-                                
-                                
+
+
                                 <DataGridTemplateColumn Header="TS">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -358,7 +356,7 @@
                                 <DataGridTemplateColumn Header="Command">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Controls:ToggleSwitchButton  Name="AgentManagerStateSwitch" Checked="StartStopBtnClick" Unchecked="StartStopBtnClick" Content="{Binding Path=AgentManagerSettings.Command}"></Controls:ToggleSwitchButton>
+                                            <Controls:ToggleSwitchButton Name="AgentManagerStateSwitch" Content="{Binding Path=AgentManagerSettings.Command}"></Controls:ToggleSwitchButton>
                                             <!--<Button Click="StartStopBtnClick" MinWidth="100" Content="{Binding Path= AgentManagerSettings.Command}"  HorizontalAlignment="Right" Margin="0,0,0,0"></Button>-->
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -374,7 +372,7 @@
                                                     Binding="{Binding AgentManagerSettings.FinalTransaction}" />
                                 <DataGridTextColumn Header="Current state(состояние)"
                                                     Binding="{Binding AgentManagerSettings.Account.AgentAccount.IsActive}" />
-  
+
                             </DataGrid.Columns>
                             <!--<GridViewColumn Width="350" Header="Агент" >
                                         <GridViewColumn.CellTemplate>
@@ -425,26 +423,30 @@
                               VerticalAlignment="Top"
                               Width="120" 
                               Margin="0,0,0,0">
-                            <Button Content="Добавить"
+                            <Button Content="Add"
                                     Click="AddAgentManagerBtnClick"
                                     HorizontalAlignment="Center" 
                                     Margin="4,6,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
-                            <Button Content="Редактировать"
+                            <Button Content="Edit"
                                     Click="EditAgentManagerBtnClick"
                                     Name="EditAgentManagerBtn"
                                     HorizontalAlignment="Center"
                                     Margin="4,34,0,0"
                                     VerticalAlignment="Top" 
                                     Width="100"/>
-                            <Button Content="Удалить"
+                            <Button Content="Delete"
                                     Click="DelAgentManagerBtnClick" 
                                     Name="DelAgentManagerBtn"
                                     HorizontalAlignment="Center"
                                     Margin="4,61,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
+
+
+
+
                             <!--<Button Content="Connect"
                                     Click="ConnectTest_OnClick" 
                                     Name="ConnectTest"
@@ -459,6 +461,8 @@
                                     Margin="12,111,8,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>-->
+
+
                         </Grid>
                     </Grid>
                 </TabItem>
@@ -475,6 +479,3 @@
     </Controls:MetroContentControl>
 
 </Controls:MetroWindow>
-
-
-
