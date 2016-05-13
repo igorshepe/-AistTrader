@@ -18,6 +18,8 @@ namespace AistTrader
     public class AgentSettingParameterProperty
     {
         public  string Name { get; set; }
+        //todo: object tests
+
         public  decimal Parametr { get; set; }
         public  bool UseInAgentName { get; set; }
     }
@@ -68,14 +70,19 @@ namespace AistTrader
                 AgentSettingsStorage.Add(agentSettingsProperty);
             }
             AgentSettingsDG.ItemsSource = AgentSettingsStorage;
-            
+
             
 
         }
 
         private void OkButtonClick(object sender, RoutedEventArgs e)
         {
-            SettingsStorage = Settings.Save();
+            SettingsStorage.Clear();
+            foreach (AgentSettingParameterProperty sett in AgentSettingsStorage)
+            {
+                SettingsStorage.Add(sett.Name, sett.Parametr);
+            }
+            //SettingsStorage = Settings.Save();
             if (SettingsStorage == null) return;
             DialogResult = true;
         }

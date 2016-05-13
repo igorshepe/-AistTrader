@@ -36,7 +36,7 @@
                               HeadersVisibility="Column"
                               SelectionMode="Single"
                               HorizontalAlignment="Stretch"
-                              ItemsSource="{Binding ElementName=StratSettings, Path=AgentSettingsCollectionView}"
+                              ItemsSource="{Binding ElementName=StratSettings, Path=AgentSettingsCollectionView, Mode=OneWayToSource}"
                               IsSynchronizedWithCurrentItem="True"
                               x:FieldModifier="private"
                               CanUserAddRows="False"

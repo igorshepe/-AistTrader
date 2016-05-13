@@ -83,6 +83,7 @@ namespace AistTrader
                 var strategyDs = (StrategyDefaultSettings)settingsClassInstance;
                 var strategySw = new AgentSettings(AgentSettings, strategyDs);
                 strategySw.Settings.Load(AgentSettings);
+                AgentSettings = strategySw.SettingsStorage;
                 AgentSettings = strategySw.Settings.Save();
                 type = null;
                 //todo:сделать уведомления в всплывающем окне с анимацией/запись лога
