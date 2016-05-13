@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using Ecng.Common;
+using Ecng.Serialization;
 using NLog;
 using StockSharp.Algo;
 using StockSharp.Algo.Candles;
@@ -25,18 +26,39 @@ namespace Strategies.Strategies
         private CandleSeries _series;
          
         private bool _IsFinish = false;
-
+       
+       
         public ChStrategy()
         {
-            _timeFrame = this.Param("TimeFrame", TimeSpan.FromMinutes(1));
+           // _timeFrame = this.Param("TimeFrame", TimeSpan.FromMinutes(1));
         }
         public ChStrategy(SerializableDictionary<string, object> settingsStorage)
         {
+            object obj;
+            settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
+            TimeSpan ts = TimeSpan.Parse(obj.ToString());
+            _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, ts);
 
+            settingsStorage.TryGetValue(ChStrategyDefaultSettings.FastSmaString, out obj);
+            var fs = (decimal) obj ;
+            _fastSma = this.Param(ChStrategyDefaultSettings.FastSmaString, fs);
+
+            settingsStorage.TryGetValue(ChStrategyDefaultSettings.SlowSmaString, out obj);
+            var ss = (decimal)obj;
+            _slowSma = this.Param(ChStrategyDefaultSettings.SlowSmaString, ss);
+
+            settingsStorage.TryGetValue(ChStrategyDefaultSettings.PeriodString, out obj);
+            var per = (decimal)obj;
+            _period = this.Param(ChStrategyDefaultSettings.PeriodString, per);
         }
 
-        private readonly StrategyParam<TimeSpan> _timeFrame;
- 
+         
+
+        private StrategyParam<TimeSpan> _timeFrame;
+        private StrategyParam<decimal> _fastSma;
+        private StrategyParam<decimal> _slowSma;
+        private StrategyParam<decimal> _period;
+
         public TimeSpan TimeFrame
         {
             get { return _timeFrame.Value; }
@@ -47,6 +69,41 @@ namespace Strategies.Strategies
                 _timeFrame.Value = value;
             }
         }
+
+        public decimal FastSma
+        {
+            get { return _fastSma.Value; }
+            set
+            {
+                if (value == FastSma)
+                    return;
+                _fastSma.Value = value;
+            }
+        }
+
+        public decimal SlowSma
+        {
+            get { return _slowSma.Value; }
+            set
+            {
+                if (value == SlowSma)
+                    return;
+                _slowSma.Value = value;
+            }
+        }
+
+        public decimal Period
+        {
+            get { return _period.Value; }
+            set
+            {
+                if (value == Period)
+                    return;
+                _period.Value = value;
+            }
+        }
+
+
         private bool NoActiveOrders { get { return Orders.Count(o => o.State == OrderStates.Active) == 0; } }
 
         private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage
@@ -275,7 +332,7 @@ namespace Strategies.Strategies
 
         public string GetFriendlyName()
         {
-            return "ChStrategy {0} _разделители_ {1}".Put("параметр1", "параметр2");
+            return "ChStrategy {0} _ {1} _ {2} _ {3} ".Put(_timeFrame.Value, _fastSma.Value, _slowSma.Value, _period.Value );
         }
     }
 }
