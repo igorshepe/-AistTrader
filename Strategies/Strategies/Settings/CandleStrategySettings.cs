@@ -9,7 +9,7 @@ namespace Strategies.Settings
         public const string TimeFrameString = "TimeFrame";
         public static readonly TimeSpan TimeFrame = new TimeSpan(0, 5, 0);
     }
-    class CandleStrategySettings: StrategyDefaultSettings
+    public class CandleStrategySettings: StrategyDefaultSettings
     {
         private TimeSpan _timeFrame;
 

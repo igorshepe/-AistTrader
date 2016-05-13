@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ecng.Common;
 using Ecng.Serialization;
 using Strategies.Common;
 using Strategies.Settings;
@@ -46,10 +47,10 @@ namespace Strategies.Strategies
         {
             _timeFrame = this.Param("TimeFrame", TimeSpan.FromMinutes(1));
         }
-        //public CandleStrategy(SerializableDictionary<string, object> settingsStorage)
-        //{
-        //    //
-        //}
+        public CandleStrategy(SerializableDictionary<string, object> settingsStorage)
+        {
+            
+        }
 
         private readonly StrategyParam<TimeSpan> _timeFrame;
         ///// <summary>
@@ -74,10 +75,8 @@ namespace Strategies.Strategies
             }
         }
 
-        public override string ToString()
-        {
-            return "CandleStrategy";
-        }
+        public override string Name => GetFriendlyName();
+
 
         protected override void OnStarted()
         {
@@ -265,8 +264,10 @@ namespace Strategies.Strategies
         {
             return _IsFinish;
         }
-
-
-
+        
+        public string GetFriendlyName()
+        {
+            return "Имя стратегии {0} _разделители_ {1}".Put("параметр1", "параметр2");
+        }
     }
 }
