@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using AistTrader.Properties;
 using Common.Entities;
@@ -90,7 +91,7 @@ namespace AistTrader
                 AgentSettings = strategySw.SettingsStorage;
                 //AgentSettings = strategySw.Settings.Save();
                 AgentNameSettings = new ObservableCollection<object>();
-                AgentNameSettings = strategySw.AgentSettingsStorage;
+                AgentNameSettings = AistTrader.AgentSettings.AgentSettingsStorage;
                 type = null;
                 //todo:сделать уведомления в всплывающем окне с анимацией/запись лога
                 //MessageBox.Show(this, @"Применены дефолтные настройки для выбранного алгоритма");
@@ -158,9 +159,26 @@ namespace AistTrader
                 strategySw = null;
             }
              
-            var strategy = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
-            var agentParams = new AgentParams(strategy, -1, -1, AgentSettings, AlgorithmComboBox.SelectedItem.ToString() );
+            var agentFullName = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
+            var toolTipName = new StringBuilder();
+            foreach (var param in AgentSettings)
+                toolTipName.Append(param.Key+"-"+param.Value+",");
+            toolTipName.Length--;
+
+
+            var agentCompiledName = new StringBuilder(AlgorithmComboBox.SelectedItem.ToString());
+
+            foreach (AgentSettingParameterProperty set in AistTrader.AgentSettings.AgentSettingsStorage)
+            {
+                if (set.UseInAgentName)
+                {
+                    agentCompiledName.Append("_"+set.Parametr);
+                }
+            }
+
+            var agentParams = new AgentParams(agentFullName, -1, -1, AgentSettings, AlgorithmComboBox.SelectedItem.ToString(), agentCompiledName.ToString(),toolTipName.ToString());
             MainWindow.Instance.AddNewAgent(new Agent(AlgorithmComboBox.SelectedItem.ToString(), agentParams), EditIndex);
+            agentCompiledName.Clear();
             Close();
         }
         private void AgentSettingsButtonClick(object sender, RoutedEventArgs e)

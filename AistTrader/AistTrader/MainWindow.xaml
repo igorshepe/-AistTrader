@@ -119,8 +119,15 @@
                               IsReadOnly="True"
                               Grid.Column="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn IsReadOnly="False" Header="Name"
-                                                    Binding="{Binding Params.FriendlyName}"/>
+                                <DataGridTextColumn IsReadOnly="False"   Header="Name"
+                                                    Binding="{Binding Params.AgentCompiledName}"
+                                                    >
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{Binding Params.ToolTipName}" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
                                 <DataGridTextColumn Header="Connection Count"
                                                     Binding="{Binding Params.ConnectionCount}" />
                                 <DataGridTextColumn Header="Contracs"

@@ -34,7 +34,7 @@ namespace AistTrader
         // ReSharper disable MemberCanBePrivate.Global
         public StrategyDefaultSettings Settings { get; set; }
         public CollectionView AgentSettingsCollectionView { get; set; }
-        public ObservableCollection<object> AgentSettingsStorage { get; private set; }
+        public static ObservableCollection<object> AgentSettingsStorage { get; private set; }
         
 
         // ReSharper restore MemberCanBePrivate.Global
@@ -71,7 +71,7 @@ namespace AistTrader
                 else
                     agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
 
-                agentSettingsProperty.UseInAgentName = false;
+                //agentSettingsProperty.UseInAgentName = false;
                 AgentSettingsStorage.Add(agentSettingsProperty);
             }
             AgentSettingsDG.ItemsSource = AgentSettingsStorage;
