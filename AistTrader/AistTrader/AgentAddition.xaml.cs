@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -42,6 +43,9 @@ namespace AistTrader
         public SerializableDictionary<string, object> AgentSettings { get; set; }
         private int EditIndex { get; set; }
         private bool _alreadyExist;
+
+        private ObservableCollection<object> AgentNameSettings { get; set; }
+
         #endregion
         public AgentAddition()
         {
@@ -84,7 +88,9 @@ namespace AistTrader
                 var strategySw = new AgentSettings(AgentSettings, strategyDs);
                 strategySw.Settings.Load(AgentSettings);
                 AgentSettings = strategySw.SettingsStorage;
-                AgentSettings = strategySw.Settings.Save();
+                //AgentSettings = strategySw.Settings.Save();
+                AgentNameSettings = new ObservableCollection<object>();
+                AgentNameSettings = strategySw.AgentSettingsStorage;
                 type = null;
                 //todo:сделать уведомления в всплывающем окне с анимацией/запись лога
                 //MessageBox.Show(this, @"Применены дефолтные настройки для выбранного алгоритма");
@@ -143,7 +149,7 @@ namespace AistTrader
                 var strategyDs = (StrategyDefaultSettings)settingsClassInstance;
                 var strategySw = new AgentSettings(AgentSettings, strategyDs);
                 strategySw.Settings.Load(AgentSettings);
-                AgentSettings = strategySw.Settings.Save();
+                AgentSettings = strategySw.SettingsStorage;/* strategySw.Settings.Save();*/
                 type = null;
                 //TODO: всплывающее окно, о том, что применены по дефолту кастомное
                 //MessageBox.Show(this, @"Применены дефолтные настройки для выбранного алгоритма");
@@ -151,6 +157,7 @@ namespace AistTrader
                 strategySw.Close();
                 strategySw = null;
             }
+             
             var strategy = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
             var agentParams = new AgentParams(strategy, -1, -1, AgentSettings, AlgorithmComboBox.SelectedItem.ToString() );
             MainWindow.Instance.AddNewAgent(new Agent(AlgorithmComboBox.SelectedItem.ToString(), agentParams), EditIndex);

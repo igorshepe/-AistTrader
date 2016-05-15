@@ -17,6 +17,11 @@ namespace AistTrader
     [Serializable]
     public class AgentSettingParameterProperty
     {
+        public override string ToString()
+        {
+            return Name;
+        }
+
         public  string Name { get; set; }
         //todo: object tests
 
@@ -38,7 +43,7 @@ namespace AistTrader
         {
             AgentSettingsStorage = new ObservableCollection<object>();
 
-            SettingsStorage = settingsStorage;
+            //SettingsStorage = settingsStorage;
             Settings = settings;
             var type  = settings.GetType();
             
@@ -70,18 +75,24 @@ namespace AistTrader
                 AgentSettingsStorage.Add(agentSettingsProperty);
             }
             AgentSettingsDG.ItemsSource = AgentSettingsStorage;
+            FillAgentSettings();
+            //SettingsStorage = AgentSettingsStorage;
 
-            
+        }
+
+        public void FillAgentSettings()
+        {
+            SettingsStorage = new SerializableDictionary<string, object>();
+            foreach (AgentSettingParameterProperty sett in AgentSettingsStorage)
+            {
+                SettingsStorage.Add(sett.Name, sett.Parametr);
+            }
 
         }
 
         private void OkButtonClick(object sender, RoutedEventArgs e)
         {
-            SettingsStorage.Clear();
-            foreach (AgentSettingParameterProperty sett in AgentSettingsStorage)
-            {
-                SettingsStorage.Add(sett.Name, sett.Parametr);
-            }
+            FillAgentSettings();
             //SettingsStorage = Settings.Save();
             if (SettingsStorage == null) return;
             DialogResult = true;
