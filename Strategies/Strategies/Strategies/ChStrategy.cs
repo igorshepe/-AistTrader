@@ -1,5 +1,6 @@
 ﻿using System; 
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using Ecng.Common;
 using Ecng.Serialization;
@@ -35,9 +36,14 @@ namespace Strategies.Strategies
         public ChStrategy(SerializableDictionary<string, object> settingsStorage)
         {
             object obj;
+            //когда меняется выбранный элемент, не меняется набор параметров.
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
-            TimeSpan ts = TimeSpan.Parse(obj.ToString());
-            _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, ts);
+            TimeSpan tstest = new TimeSpan(0,0, int.Parse(obj.ToString()));
+            //TimeSpan ts = TimeSpan.ParseExact(obj.ToString(),"ss", CultureInfo.InvariantCulture);
+
+
+
+            _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, tstest);
 
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.FastSmaString, out obj);
             var fs = (decimal) obj ;
@@ -332,7 +338,7 @@ namespace Strategies.Strategies
 
         public string GetFriendlyName()
         {
-            return "ChStrategy {0} _ {1} _ {2} _ {3} ".Put(_timeFrame.Value, _fastSma.Value, _slowSma.Value, _period.Value );
+            return "ChStrategy {0}_{1}_{2}_{3} ".Put(_timeFrame.Value.TotalSeconds, _fastSma.Value, _slowSma.Value, _period.Value );
         }
     }
 }
