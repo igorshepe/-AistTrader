@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using AistTrader.Properties;
 using Common.Entities;
 using Common.Params;
@@ -83,39 +85,60 @@ namespace AistTrader
             AgentSettingsButton.IsEnabled = hasSetting;
             if (hasSetting)
             {
+
+                //есть настройки
+                //создаем инстанс той стратеги, которую пишем в систему
                 var type = HelperStrategies.GetStrategySettingsType(AlgorithmComboBox.SelectedItem.ToString());
                 object settingsClassInstance = Activator.CreateInstance(type);
-                var strategyDs = (StrategyDefaultSettings)settingsClassInstance;
-                var strategySw = new AgentSettings(AgentSettings, strategyDs);
-                strategySw.Settings.Load(AgentSettings);
-                AgentSettings = strategySw.SettingsStorage;
+                var agentDefaultSettings = (StrategyDefaultSettings)settingsClassInstance;
+                var agentSettingWindow = new AgentSettings(AgentSettings, agentDefaultSettings);
+                if (AgentSettings == null)
+                {
+                    agentSettingWindow.Settings.Load(AgentSettings);
+                    AgentSettings = agentSettingWindow.SettingsStorage;
+                }
+                
+
+                var agentPotentialNameStr = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
+
+                //var agentPotentialNameStr = new StringBuilder(AlgorithmComboBox.SelectedItem.ToString());
+
+                //foreach (AgentSettingParameterProperty set in AistTrader.AgentSettings.AgentSettingsStorage)
+                //{
+                //    if (set.UseInAgentName)
+                //    {
+                //        agentPotentialNameStr.Append("_" + set.Parametr);
+                //    }
+                //}
+
+
                 //AgentSettings = strategySw.Settings.Save();
                 AgentNameSettings = new ObservableCollection<object>();
                 AgentNameSettings = AistTrader.AgentSettings.AgentSettingsStorage;
                 type = null;
                 //todo:сделать уведомления в всплывающем окне с анимацией/запись лога
                 //MessageBox.Show(this, @"Применены дефолтные настройки для выбранного алгоритма");
-                strategySw.Close();
-                strategySw = null;
+                agentSettingWindow.Close();
+                agentSettingWindow = null;
                 var selectedStrategy = AlgorithmComboBox.SelectedItem.ToString();
                 if (MainWindow.Instance.AgentsStorage != null)
                 {
-                    var algorithmNameInCollection = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any(i => i.Name.StartsWith(selectedStrategy));
-                    if (algorithmNameInCollection)
-                    {
-                        foreach (var strategy in MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
-                        {
-                            if (strategy.Params.SettingsStorage.SequenceEqual(AgentSettings))
-                            {
-                                _alreadyExist = true;
-                            }
-                            //todo: добавить рамку и выводить сообщение о том, что добавление невозможно
-                        }
-                    }
+                    if (MainWindow.Instance.AgentsStorage.Cast<Agent>().Any(i => i.Name == agentPotentialNameStr))
+                        _alreadyExist = true;
+                    //var algorithmNameInCollection = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any(i => i.Name.StartsWith(selectedStrategy));
+                    //if (algorithmNameInCollection)
+                    //{
+                    //    foreach (var strategy in MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Name.StartsWith(selectedStrategy)))
+                    //    {
+                    //        if (strategy.Params.SettingsStorage.SequenceEqual(AgentSettings))
+                    //        {
+                    //            _alreadyExist = true;
+                    //        }
+                    //        //todo: добавить рамку и выводить сообщение о том, что добавление невозможно
+                    //    }
+                    //}
                     else
-                    {
                         _alreadyExist = false;
-                    }
                 }
                 else
                 {
@@ -136,7 +159,7 @@ namespace AistTrader
         {
             if (AlgorithmComboBox.SelectedItem == null)
             {
-                AlgorithmComboBox.ItemsSource = HelperStrategies.GetStrategies().Select(type => type.Name).ToList();
+                AlgorithmComboBox.ItemsSource  =  HelperStrategies.GetStrategies().Select(type => type.Name).ToList();
                 AlgorithmOkBtn.IsEnabled = false;
             }
         }
@@ -162,10 +185,16 @@ namespace AistTrader
             var agentFullName = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
             var toolTipName = new StringBuilder();
             foreach (var param in AgentSettings)
-                toolTipName.Append(param.Key+"-"+param.Value+",");
+            {
+                //if (param.Key == "TimeFrame")
+                //{
+                //    TimeSpan time = (TimeSpan)param.Value;
+                //    toolTipName.Append(param.Key + "-" + time.TotalSeconds + ",");
+                //}
+                //else
+                    toolTipName.Append(param.Key + "-" + param.Value + ",");
+            }
             toolTipName.Length--;
-
-
             var agentCompiledName = new StringBuilder(AlgorithmComboBox.SelectedItem.ToString());
 
             foreach (AgentSettingParameterProperty set in AistTrader.AgentSettings.AgentSettingsStorage)
@@ -177,7 +206,7 @@ namespace AistTrader
             }
 
             var agentParams = new AgentParams(agentFullName, -1, -1, AgentSettings, AlgorithmComboBox.SelectedItem.ToString(), agentCompiledName.ToString(),toolTipName.ToString());
-            MainWindow.Instance.AddNewAgent(new Agent(AlgorithmComboBox.SelectedItem.ToString(), agentParams), EditIndex);
+            MainWindow.Instance.AddNewAgent(new Agent(/*AlgorithmComboBox.SelectedItem.ToString()*/agentFullName, agentParams), EditIndex);
             agentCompiledName.Clear();
             Close();
         }
@@ -197,24 +226,53 @@ namespace AistTrader
             //type = null;
             if (dlgResults.HasValue && dlgResults.Value)
             {
+
+
+
+                //AlgorithmComboBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();  
+                //OnPropertyChanged();
+
+
+
+
+
+
+
+
+
+
+
+
+
+                AlgorithmComboBoxSelectionChanged(AlgorithmComboBox, new RoutedEventArgs());
+                //Strategy = AlgorithmComboBox.SelectedItem.ToString();
                 AgentSettings = vrsDialog.SettingsStorage;
                 UniqueStrategyNameReCheckAfterSettingsAltering(AgentSettings);
+
+                //AlgorithmComboBoxSelectionChanged(null,null);
+
                 //триппер тайм!
-                int currentIndex = AlgorithmComboBox.SelectedIndex;
+                //int currentIndex = AlgorithmComboBox.SelectedIndex;
 
-                //TODO: попробовать это
-                //BindingExpression binding = txtWindowTitle.GetBindingExpression(TextBox.TextProperty);
-                //binding.UpdateSource();
-                //http://www.wpf-tutorial.com/data-binding/the-update-source-trigger-property/
+                ////TODO: попробовать это
+                ////BindingExpression binding = txtWindowTitle.GetBindingExpression(TextBox.TextProperty);
+                ////binding.UpdateSource();
+                ////http://www.wpf-tutorial.com/data-binding/the-update-source-trigger-property/
 
-                AlgorithmComboBox.SelectedIndex = 1;
-                AlgorithmComboBox.SelectedIndex = currentIndex;
+                //AlgorithmComboBox.SelectedIndex = 1;
+                //AlgorithmComboBox.SelectedIndex = currentIndex;
             }
         }
+
         private void UniqueStrategyNameReCheckAfterSettingsAltering(SerializableDictionary<string, object> sd)
         {
+            var agentPotentialNameStr = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), sd);
+            if (MainWindow.Instance.AgentsStorage.Cast<Agent>().Any(i => i.Name == agentPotentialNameStr))
+                _alreadyExist = true;
+            string error = (this as IDataErrorInfo)["Strategy"];
+
             //передать в форму
-            _alreadyExist = false;
+            //            _alreadyExist = false;
             var selectedStrategy = AlgorithmComboBox.SelectedItem.ToString();
 
             //todo: вот эта логика была закоменчена, после того как дропнул ебату с внутренними настройками, посмотри, что тут тебе надо

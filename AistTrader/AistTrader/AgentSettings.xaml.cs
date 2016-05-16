@@ -85,7 +85,14 @@ namespace AistTrader
             SettingsStorage = new SerializableDictionary<string, object>();
             foreach (AgentSettingParameterProperty sett in AgentSettingsStorage)
             {
-                SettingsStorage.Add(sett.Name, sett.Parametr);
+                if (sett.Name == "TimeFrame")
+                {
+                    TimeSpan TimeFrame = new TimeSpan(0, 0, int.Parse(sett.Parametr.ToString()));
+                    SettingsStorage.Add(sett.Name, TimeFrame.TotalSeconds);
+                }
+                else
+                    SettingsStorage.Add(sett.Name, sett.Parametr);
+                
             }
 
         }
