@@ -45,3 +45,99 @@
 2016-04-26 14:04:29.4759|INFO|AistTrader.MainWindow|Agent manager item "dfdsfdf" has been deleted
 2016-04-26 14:04:29.5839|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
 2016-04-26 14:04:35.0366|INFO|AistTrader.MainWindow|Agent "AistInvestStrategy 1111 - 1666" has been deleted.  Strategies class name: AistInvestStrategy.cs
+2016-05-10 23:50:35.4797|INFO|AistTrader.MainWindow|Successfully added agent - "CS"
+2016-05-10 23:50:39.3881|INFO|AistTrader.MainWindow|Agent "CS" has been deleted.  Strategies class name: CandleStrategy.cs
+2016-05-13 07:19:05.3821|INFO|AistTrader.MainWindow|Successfully added agent - "CS"
+2016-05-13 07:19:10.5153|INFO|AistTrader.MainWindow|Agent "CS" has been deleted.  Strategies class name: CandleStrategy.cs
+2016-05-13 07:33:06.8741|INFO|AistTrader.MainWindow|Successfully added agent - "CS"
+2016-05-13 07:38:16.0084|INFO|AistTrader.MainWindow|Agent "CS" has been deleted.  Strategies class name: CandleStrategy.cs
+2016-05-13 07:39:18.9221|INFO|AistTrader.MainWindow|Successfully added agent - "CS"
+2016-05-13 08:06:23.4525|INFO|AistTrader.MainWindow|Agent "CS" has been deleted.  Strategies class name: CandleStrategy.cs
+2016-05-13 08:25:26.6631|INFO|AistTrader.MainWindow|Successfully added agent - "AistInvestStrategy ffsdfds - fdfdf"
+2016-05-13 08:28:41.8725|INFO|AistTrader.MainWindow|Agent "AistInvestStrategy ffsdfds - fdfdf" has been deleted.  Strategies class name: CandleStrategy.cs
+2016-05-13 08:28:49.9390|INFO|AistTrader.MainWindow|Successfully added agent - "??? ????????? ????????1 _???????????_ ????????2"
+2016-05-13 08:34:02.7089|INFO|AistTrader.MainWindow|Agent "??? ????????? ????????1 _???????????_ ????????2" has been deleted.  Strategies class name: CandleStrategy.cs
+2016-05-13 08:34:06.1329|INFO|AistTrader.MainWindow|Successfully added agent - "??? ????????? ????????1 _???????????_ ????????2"
+2016-05-13 11:33:30.1322|INFO|AistTrader.MainWindow|Agent "??? ????????? ????????1 _???????????_ ????????2" has been deleted.  Strategies class name: CandleStrategy.cs
+2016-05-13 13:40:27.8827|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 00:05:00 _ 50 _ 100 _ 100 "
+2016-05-13 13:40:43.1895|INFO|AistTrader.MainWindow|Agent "ChStrategy 00:05:00 _ 50 _ 100 _ 100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-13 13:50:17.4459|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900.00:00:00 _ 50 _ 97 _ 97 "
+2016-05-13 13:50:24.7080|INFO|AistTrader.MainWindow|Agent "ChStrategy 900.00:00:00 _ 50 _ 97 _ 97 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 03:09:26.9985|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 00:14:56 _ 47 _ 97 _ 98 "
+2016-05-15 03:10:50.4679|INFO|AistTrader.MainWindow|Agent "ChStrategy 00:14:56 _ 47 _ 97 _ 98 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 03:12:13.2988|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 00:00:00 _ 50 _ 100 _ 100 "
+2016-05-15 03:12:17.3974|INFO|AistTrader.MainWindow|Agent "ChStrategy 00:00:00 _ 50 _ 100 _ 100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 03:13:55.9030|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 00:14:54 _ 50 _ 100 _ 100 "
+2016-05-15 03:14:02.1608|INFO|AistTrader.MainWindow|Agent "ChStrategy 00:14:54 _ 50 _ 100 _ 100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 03:27:39.6054|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 00:14:55 _ 50 _ 100 _ 100 "
+2016-05-15 03:27:45.3224|INFO|AistTrader.MainWindow|Agent "ChStrategy 00:14:55 _ 50 _ 100 _ 100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 03:35:54.5935|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 00:15:00 _ 50 _ 100 _ 100 "
+2016-05-15 03:37:48.6475|INFO|AistTrader.MainWindow|Agent "ChStrategy 00:15:00 _ 50 _ 100 _ 100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 03:38:01.0806|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900 _ 50 _ 100 _ 100 "
+2016-05-15 03:38:51.2987|INFO|AistTrader.MainWindow|Agent "ChStrategy 900 _ 50 _ 100 _ 100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 03:39:02.1787|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100 "
+2016-05-15 03:44:35.2994|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 04:07:12.2435|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100 "
+2016-05-15 04:07:15.3687|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 04:56:13.4117|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100 "
+2016-05-15 04:56:52.7110|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 05:01:42.0669|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 895_50_100_100 "
+2016-05-15 05:01:44.6592|INFO|AistTrader.MainWindow|Agent "ChStrategy 895_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 05:03:20.0831|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 896_50_100_100 "
+2016-05-15 05:03:22.7236|INFO|AistTrader.MainWindow|Agent "ChStrategy 896_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 05:46:46.3092|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 897_48_100_100 "
+2016-05-15 05:49:02.4777|INFO|AistTrader.MainWindow|Agent "ChStrategy 897_48_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 05:49:34.2768|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 899_49_100_100 "
+2016-05-15 05:49:41.4434|INFO|AistTrader.MainWindow|Agent "ChStrategy 899_49_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 05:52:37.8127|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_53_100_100 "
+2016-05-15 06:00:45.3503|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_53_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:01:13.0609|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_47_96_95 "
+2016-05-15 06:02:51.9791|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_47_96_95 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:06:50.2301|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_46_96_104 "
+2016-05-15 06:07:12.9718|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_46_96_104 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:11:55.5244|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_105 "
+2016-05-15 06:13:43.0799|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_105 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:13:53.1644|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_45_100_100 "
+2016-05-15 06:14:02.8049|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_45_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:14:31.8453|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_47_100_100 "
+2016-05-15 06:14:41.7430|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_47_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:16:53.0360|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_104_100 "
+2016-05-15 06:17:21.0080|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_104_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:17:25.8662|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100 "
+2016-05-15 06:24:48.8882|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:24:57.5012|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100 "
+2016-05-15 06:31:23.8157|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-15 06:31:40.0217|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 896_45_100_100 "
+2016-05-15 06:32:06.1403|INFO|AistTrader.MainWindow|Agent "ChStrategy 896_45_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-16 00:59:58.4088|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 896_50_100_100 "
+2016-05-16 01:05:45.3873|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100 "
+2016-05-16 01:26:36.0511|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-16 01:26:36.4233|INFO|AistTrader.MainWindow|Agent "ChStrategy 896_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-16 01:32:17.8523|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100 "
+2016-05-16 01:32:30.5446|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100 " has been deleted.  Strategies class name: ChStrategy.cs
+2016-05-16 01:33:14.3867|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 02:08:03.3184|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100" has been deleted.  Strategies class name: ChStrategy 900_50_100_100.cs
+2016-05-16 02:41:39.0519|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 02:52:26.2072|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 02:57:11.2173|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:01:41.8612|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:02:44.4899|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:02:51.0840|ERROR|AistTrader.MainWindow|There was an error generating the XML document.
+2016-05-16 03:02:56.8161|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100" has been deleted.  Strategies class name: ChStrategy 900_50_100_100.cs
+2016-05-16 03:03:14.5263|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:07:25.9557|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:10:06.5210|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:10:52.4279|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:19:43.3488|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:20:04.3868|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100" has been deleted.  Strategies class name: ChStrategy 900_50_100_100.cs
+2016-05-16 03:21:30.1574|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:21:32.4848|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100" has been deleted.  Strategies class name: ChStrategy 900_50_100_100.cs
+2016-05-16 03:30:50.7673|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:30:53.0620|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100" has been deleted.  Strategies class name: ChStrategy 900_50_100_100.cs
+2016-05-16 03:37:59.4147|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-16 03:38:01.2681|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100" has been deleted.  Strategies class name: ChStrategy 900_50_100_100.cs
+2016-05-16 03:38:08.5603|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 896_50_100_100"
+2016-05-16 03:38:36.8388|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 896_50_100_100"
+2016-05-16 04:47:59.6747|INFO|AistTrader.MainWindow|Agent "ChStrategy 896_50_100_100" has been deleted.  Strategies class name: ChStrategy 896_50_100_100.cs
+2016-05-16 04:48:00.3278|INFO|AistTrader.MainWindow|Agent "ChStrategy 896_50_100_100" has been deleted.  Strategies class name: ChStrategy 896_50_100_100.cs
+2016-05-16 13:48:41.1639|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"

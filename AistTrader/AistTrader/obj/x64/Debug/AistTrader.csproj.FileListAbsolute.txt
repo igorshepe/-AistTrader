@@ -1,6 +1,5 @@
-C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\MahApps.Metro.dll
-C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.config
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.config
+C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.config
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.manifest
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.application
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe
@@ -14,6 +13,7 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Ecng.Localization.
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Ecng.Serialization.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Ecng.Xaml.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\INIFileParser.dll
+C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\MahApps.Metro.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\MoreLinq.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.dll
 C:\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NlogViewer.dll
