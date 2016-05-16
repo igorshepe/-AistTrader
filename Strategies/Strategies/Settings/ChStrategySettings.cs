@@ -7,7 +7,7 @@ namespace Strategies.Settings
     public static class ChStrategyDefaultSettings
     {
         public const string TimeFrameString = "TimeFrame";
-        public static readonly TimeSpan TimeFrame = new TimeSpan(0, 15, 0);
+        public static readonly TimeSpan TimeFrame = new TimeSpan(0, 0, 900);
 
         public const string FastSmaString = "FastSma";
         public const decimal FastSma = 50;
@@ -94,6 +94,23 @@ namespace Strategies.Settings
             TimeFrame = settingsStorage != null && settingsStorage.ContainsKey(ChStrategyDefaultSettings.TimeFrameString)
                         ? TimeSpan.Parse((string)settingsStorage[ChStrategyDefaultSettings.TimeFrameString])
                         : ChStrategyDefaultSettings.TimeFrame;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             FastSma = settingsStorage != null && settingsStorage.ContainsKey(ChStrategyDefaultSettings.FastSmaString)
                         ? (decimal)settingsStorage[ChStrategyDefaultSettings.FastSmaString]
                         : ChStrategyDefaultSettings.FastSma;

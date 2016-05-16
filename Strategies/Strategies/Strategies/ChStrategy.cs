@@ -38,6 +38,7 @@ namespace Strategies.Strategies
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
+
             TimeSpan tstest = new TimeSpan(0,0, int.Parse(obj.ToString()));
             //TimeSpan ts = TimeSpan.ParseExact(obj.ToString(),"ss", CultureInfo.InvariantCulture);
 
@@ -338,7 +339,11 @@ namespace Strategies.Strategies
 
         public string GetFriendlyName()
         {
-            return "ChStrategy {0}_{1}_{2}_{3} ".Put(_timeFrame.Value.TotalSeconds, _fastSma.Value, _slowSma.Value, _period.Value );
+
+            //Заметка для Артёма: т.к у нас имя считается idшником в системе(на него много чего завязано), оч важно соблюдать некотрые правила. например пробелы в конце имени. там просто не надо их оставлять
+            //т.к при фильтрации все это учитывается.
+            //TODO: определить единый формат строки имени агента для всех стратегий на платформе.
+            return "ChStrategy {0}_{1}_{2}_{3}".Put(_timeFrame.Value.TotalSeconds, _fastSma.Value, _slowSma.Value, _period.Value);
         }
     }
 }
