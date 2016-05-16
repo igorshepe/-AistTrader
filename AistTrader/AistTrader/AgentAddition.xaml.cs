@@ -232,19 +232,7 @@ namespace AistTrader
                 //AlgorithmComboBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();  
                 //OnPropertyChanged();
 
-
-
-
-
-
-
-
-
-
-
-
-
-                AlgorithmComboBoxSelectionChanged(AlgorithmComboBox, new RoutedEventArgs());
+                //AlgorithmComboBoxSelectionChanged(AlgorithmComboBox, new RoutedEventArgs());
                 //Strategy = AlgorithmComboBox.SelectedItem.ToString();
                 AgentSettings = vrsDialog.SettingsStorage;
                 UniqueStrategyNameReCheckAfterSettingsAltering(AgentSettings);
