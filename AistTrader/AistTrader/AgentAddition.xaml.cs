@@ -97,7 +97,7 @@ namespace AistTrader
                     agentSettingWindow.Settings.Load(AgentSettings);
                     AgentSettings = agentSettingWindow.SettingsStorage;
                 }
-                
+                AgentSettings = agentSettingWindow.SettingsStorage;
 
                 var agentPotentialNameStr = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
 
