@@ -1,0 +1,14 @@
+<license>
+  <ver>1.2</ver>
+  <id>100136</id>
+  <issuedTo>igorshepe@ya.ru</issuedTo>
+  <company>igorshepe@ya.ru</company>
+  <issuedDate>635830528646548221</issuedDate>
+  <expirationDate>636147648000000000</expirationDate>
+  <account></account>
+  <hardwareId>todo</hardwareId>
+  <features>Quik,PlazaCOM,AlfaDirect,SmartCOM,Transaq,Alor,OpenECry,InteractiveBrokers,ETrade,Lmax,Oanda,Blackwood,IQFeed,Fix,Sterling,Rithmic,CQG,BTCE,BitStamp,RSS,BTCChina,ICBT,Multi,Trailing,Quoting,Hedge,OrderLog,HydraServer,CGate</features>
+  <issuedBy>StockSharp</issuedBy>
+  <expireAction>PreventUpgrade</expireAction>
+  <signature>mA1xvp6qnqbyhZpAYst0OvsdpEO4EZzUuQgENLqSqvIkB7SnBSi3kBCNdWXy0IqQFrY+mLMTSKgpsAOKRgE5G3b9QnIJ197LayzN71VAvaLTyDEPE3l6l5i2FC7glsAHzK/MLAIyTtJixRvVSGq4qYN+Eq0bluP3uuZItNPCyXY=</signature>
+</license>

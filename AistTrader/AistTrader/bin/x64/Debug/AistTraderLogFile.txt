@@ -953,3 +953,15 @@
    at #=qXZxu3opaoESDX$03gTY$7JdiOz2rnWFmSW4KBDx$xD3apV3pZHX28dOK8VXJv$6Z.#=qOQeVDLmbZj_ZtmsotZ6XoE_LGLqidSDfJqXGUSG9U$cUq_a3h38jmCeMHu3tCdQLZusFUANTHszxrUbXTFs5GA==(#=qvX85iFKYRvP2skoQ8ATl$aAfnt6uJ_wjqQ9IB0agzd$RxUQmPNDASkSBtiI7Y2Hu #=qmOE7QYP3rKXkWjTHpCXhUw==)
    at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()
    --- End of inner exception stack trace ---", connection "AistTraderConnnectionWrapper" is not active
+2016-05-19 14:51:30.0431|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"??????"...
+2016-05-19 14:51:30.0661|INFO|AistTrader.MainWindow|IP and port of -"??????" connection were successfully acquired
+2016-05-19 14:51:32.2381|INFO|AistTrader.MainWindow|Connection - "??????" is active now
+2016-05-19 14:51:32.6172|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-19 14:51:32.9784|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
+2016-05-19 14:51:53.4318|INFO|AistTrader.MainWindow|Successfully added agent manager - "12321312321"
+2016-05-19 14:51:53.7090|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-19 14:54:20.0113|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"??????"...
+2016-05-19 14:54:20.0363|INFO|AistTrader.MainWindow|IP and port of -"??????" connection were successfully acquired
+2016-05-19 14:54:22.1729|INFO|AistTrader.MainWindow|Connection - "??????" is active now
+2016-05-19 14:54:22.4771|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-19 14:54:22.9975|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
