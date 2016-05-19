@@ -183,6 +183,27 @@ namespace AistTrader
             }
              
             var agentFullName = HelperStrategies.GetStrategyFriendlyName(AlgorithmComboBox.SelectedItem.ToString(), AgentSettings);
+            //
+            var exist = MainWindow.Instance.AgentsStorage.Any(i => i.Name == agentFullName);
+            if (exist)
+            {
+                MessageBoxResult result = MessageBox.Show("Агент с такими настройками уже зарегестрирован!", "Ошибка уникальности", MessageBoxButton.OK);
+                if (result == MessageBoxResult.OK)
+                {
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+
+            }
+
+
+
+
+
+
             var toolTipName = new StringBuilder();
             foreach (var param in AgentSettings)
             {
@@ -313,8 +334,12 @@ namespace AistTrader
             if (_alreadyExist)
             {
                 _alreadyExist = false;
-                AlgorithmOkBtn.IsEnabled = false;
-                return "Стратегий с таким именем и настройками уже зарегестрирована";
+                AlgorithmOkBtn.IsEnabled = true;
+                //AlgorithmOkBtn.IsEnabled = false;
+
+                return String.Empty;
+
+                //return "Стратегий с таким именем и настройками уже зарегестрирована";
             }
             //if (String.IsNullOrEmpty(AlgorithmComboBox.SelectedItem.ToString()))
             //else if (this.AlgorithmName.Length < 5)
