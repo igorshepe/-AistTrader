@@ -937,3 +937,19 @@
 2016-05-19 13:28:56.2495|INFO|AistTrader.MainWindow|Agent "??? ????????? ????????1 _???????????_ ????????2" has been deleted.  Strategies class name: ??? ????????? ????????1 _???????????_ ????????2.cs
 2016-05-19 13:32:12.3067|INFO|AistTrader.MainWindow|Successfully added agent - "??? ????????? ????????1 _???????????_ ????????2"
 2016-05-19 13:42:42.7423|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-19 14:13:02.3716|INFO|AistTrader.MainWindow|Agent "ChStrategy 900_50_100_100" has been deleted.  Strategies class name: ChStrategy 900_50_100_100.cs
+2016-05-19 14:26:11.4506|INFO|AistTrader.MainWindow|Agent "??? ????????? ????????1 _???????????_ ????????2" has been deleted.  Strategies class name: ??? ????????? ????????1 _???????????_ ????????2.cs
+2016-05-19 14:37:45.5662|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 900_50_100_100"
+2016-05-19 14:37:54.9033|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"??????"...
+2016-05-19 14:37:54.9033|INFO|AistTrader.MainWindow|IP and port of -"??????" connection were successfully acquired
+2016-05-19 14:37:55.5798|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error connecting to Plaza server. Code -2147221164, description 'error code not found: 0x80040154'. ---> System.Runtime.InteropServices.COMException: Retrieving the COM class factory for component with CLSID {43FB494A-620B-4588-A9DD-DB0BE4B6694A} failed due to the following error: 80040154 Class not registered (Exception from HRESULT: 0x80040154 (REGDB_E_CLASSNOTREG)).
+   at System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(RuntimeType objectType)
+   at System.Runtime.Remoting.Activation.ActivationServices.CreateInstance(RuntimeType serverType)
+   at System.Runtime.Remoting.Activation.ActivationServices.IsCurrentContextOK(RuntimeType serverType, Object[] props, Boolean bNewObj)
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance[T]()
+   at #=q8YFEqG44wRlBpSeP2R3YZEErcZZ0Lk6gWREabg0qfjyhqHcUYtFUEPQclFwDY3jWG9hO0TgpW6uWT1NcJUFYSg==..ctor(#=qvX85iFKYRvP2skoQ8ATl$aAfnt6uJ_wjqQ9IB0agzd$RxUQmPNDASkSBtiI7Y2Hu #=qmOE7QYP3rKXkWjTHpCXhUw==)
+   at #=qXZxu3opaoESDX$03gTY$7JdiOz2rnWFmSW4KBDx$xD3apV3pZHX28dOK8VXJv$6Z.#=qOQeVDLmbZj_ZtmsotZ6XoE_LGLqidSDfJqXGUSG9U$cUq_a3h38jmCeMHu3tCdQLZusFUANTHszxrUbXTFs5GA==(#=qvX85iFKYRvP2skoQ8ATl$aAfnt6uJ_wjqQ9IB0agzd$RxUQmPNDASkSBtiI7Y2Hu #=qmOE7QYP3rKXkWjTHpCXhUw==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()
+   --- End of inner exception stack trace ---", connection "AistTraderConnnectionWrapper" is not active

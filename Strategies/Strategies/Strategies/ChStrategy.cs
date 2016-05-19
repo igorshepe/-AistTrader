@@ -25,7 +25,8 @@ namespace Strategies.Strategies
         private ICandleManager _candleManager;
         private bool _sendOrder;
         private CandleSeries _series;
-         
+        private SimpleMovingAverage _indicatorSlowSma= new SimpleMovingAverage();        
+
         private bool _IsFinish = false;
        
        
@@ -56,9 +57,11 @@ namespace Strategies.Strategies
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.PeriodString, out obj);
             var per = (decimal)obj;
             _period = this.Param(ChStrategyDefaultSettings.PeriodString, per);
+
+            _indicatorSlowSma.Length = Convert.ToInt32(_slowSma.Value.ToString());
+
         }
 
-         
 
         private StrategyParam<TimeSpan> _timeFrame;
         private StrategyParam<decimal> _fastSma;
@@ -112,10 +115,10 @@ namespace Strategies.Strategies
 
         private bool NoActiveOrders { get { return Orders.Count(o => o.State == OrderStates.Active) == 0; } }
 
-        private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage
-        {
-            Length = 20
-        };
+        //private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage
+        //{
+        //    Length = 20
+        //};
 
         private readonly SimpleMovingAverage _indicatorFastSma = new SimpleMovingAverage
         {

@@ -1,29 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfAgent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Agent>
-    <Name>Имя стратегии параметр1 _разделители_ параметр2</Name>
-    <Params>
-      <AgentName>CandleStrategy</AgentName>
-      <ToolTipName>TimeFrame-300</ToolTipName>
-      <AgentCompiledName>CandleStrategy</AgentCompiledName>
-      <ConnectionCount>-1</ConnectionCount>
-      <FriendlyName>Имя стратегии параметр1 _разделители_ параметр2</FriendlyName>
-      <SettingsStorage>
-        <item>
-          <key>
-            <string>TimeFrame</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:double">300</anyType>
-          </value>
-        </item>
-      </SettingsStorage>
-      <IsChecked>false</IsChecked>
-      <Contracts>-1</Contracts>
-      <GroupName>ungrouped agents</GroupName>
-    </Params>
-  </Agent>
-  <Agent>
     <Name>ChStrategy 900_50_100_100</Name>
     <Params>
       <AgentName>ChStrategy</AgentName>
