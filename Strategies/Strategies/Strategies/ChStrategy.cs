@@ -43,7 +43,6 @@ namespace Strategies.Strategies
             //TimeSpan ts = TimeSpan.ParseExact(obj.ToString(),"ss", CultureInfo.InvariantCulture);
 
 
-
             _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, tstest);
 
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.FastSmaString, out obj);
