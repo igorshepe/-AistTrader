@@ -226,8 +226,19 @@ namespace AistTrader
                 //item.AgentManagerSettings.Command = OperationCommand.Disconnect;
                 //UpdateAgentManagerListView();
 
+
+                SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
+                var agentName = item.AgentManagerSettings.AgentOrGroup;
+
+                var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().Select(i => i).Where(i=>i.Name == agentName).ToList();
+                agentSetting = agent.FirstOrDefault().Params.SettingsStorage;
+
+                
+
+
+
                 var candleManager = new CandleManager(realConnection);
-                var strat = new CandleStrategy();
+                var strat = new ChStrategy(agentSetting);
                 strat.Connector = realConnection;
                 strat.TimeFrame = TimeSpan.FromMinutes(1);
 

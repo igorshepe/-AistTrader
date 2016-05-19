@@ -182,3 +182,8 @@
 2016-05-19 14:54:22.1729|INFO|AistTrader.MainWindow|Connection - "??????" is active now
 2016-05-19 14:54:22.4771|INFO|AistTrader.MainWindow|Securities were loaded
 2016-05-19 14:54:22.9975|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
+2016-05-19 15:15:02.0777|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"??????"...
+2016-05-19 15:15:02.0997|INFO|AistTrader.MainWindow|IP and port of -"??????" connection were successfully acquired
+2016-05-19 15:15:04.2242|INFO|AistTrader.MainWindow|Connection - "??????" is active now
+2016-05-19 15:15:04.7609|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-19 15:15:04.9480|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
