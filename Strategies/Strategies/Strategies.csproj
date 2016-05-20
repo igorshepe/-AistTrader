@@ -94,7 +94,6 @@
     <Compile Include="Settings\ChStrategySettings.cs" />
     <Compile Include="Settings\IOptionalSettings.cs" />
     <Compile Include="Settings\StrategyDefaultSettings.cs" />
-    <Compile Include="Strategies\CandleSatrategy.cs" />
     <Compile Include="Strategies\ChStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
