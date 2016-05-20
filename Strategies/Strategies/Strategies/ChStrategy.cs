@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
 using Ecng.Common;
-using Ecng.Serialization;
 using NLog;
 using StockSharp.Algo;
 using StockSharp.Algo.Candles;
@@ -22,20 +19,20 @@ namespace Strategies.Strategies
 
     {
         private static readonly Logger TradesLogger = NLog.LogManager.GetLogger("TradesLogger");
+        
         private ICandleManager _candleManager;
         private bool _sendOrder;
         private CandleSeries _series;
-
-        private bool _IsFinish = false;
-
-        private decimal buyPriceCH;
-        private decimal sellPriceCH;
-        private decimal midPriceCH;
-        private bool exitPosition = false;
-        private SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage();
-        private SimpleMovingAverage _indicatorFastSma = new SimpleMovingAverage();
-        private Highest _indicatorHighest = new Highest();
-        private Lowest _indicatorLowest = new Lowest();
+        private bool _isFinish = false;
+        private decimal _buyPriceCh;
+        private decimal _sellPriceCh;
+        private decimal _midPriceCh;
+        private bool _exitPosition = false;
+        private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage();
+        private readonly SimpleMovingAverage _indicatorFastSma = new SimpleMovingAverage();
+        private readonly Highest _indicatorHighest = new Highest();
+        private readonly Lowest _indicatorLowest = new Lowest();
+        private int _cancelOrderCandle = 3;
 
         public ChStrategy()
         {
@@ -132,31 +129,7 @@ namespace Strategies.Strategies
             }
         }
 
-
-
-
-
-        //private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage
-        //{
-        //    Length = 20
-        //};
-
-        //private readonly SimpleMovingAverage _indicatorFastSma = new SimpleMovingAverage
-        //{
-        //    Length = 10
-        //};
-
-
-        //private readonly Highest _indicatorHighest = new Highest
-        //{
-        //    Length = 20
-        //};
-
-        //private readonly Lowest _indicatorLowest = new Lowest
-        //{
-        //    Length = 20
-        //};
-
+ 
         public override string Name => GetFriendlyName();
 
         protected override void OnStarted()
@@ -164,7 +137,7 @@ namespace Strategies.Strategies
             // Вызываем базовую реализацию метода.
             base.OnStarted();
 
-            TradesLogger.Info("СТАРТ");
+            TradesLogger.Info("{0}: СТАРТ", Name);
 
             // Получаем CandleManager 
             _candleManager = this.GetCandleManager();
@@ -196,27 +169,29 @@ namespace Strategies.Strategies
         protected override void OnStopping()
         {
             // _candleManager.Stop(_series);
-            _IsFinish = true;
-            TradesLogger.Info("Stopping");
+            _isFinish = true;
+             
         }
 
         protected override void OnStopped()
         {
 
 
-            TradesLogger.Info("СТОП");
+            TradesLogger.Info("{0}: СТОП",Name);
+            CancelActiveOrders();
 
             // Следующая строка добавлена только с демонстрационной целью, т.к.
             // если стратегия добавлена в источники логов LogManager, то сообщения
             // о старте и остановке стратении и так будут сгенерированы.
-            this.AddInfoLog("Стратегия остановлена");
+            //this.AddInfoLog("Стратегия остановлена");
         }
 
-        private bool NoActiveOrders { get { return Orders.Count(o => o.State == OrderStates.Active) == 0; } }
+        //private bool NoActiveOrders { get { return Orders.Count(o => o.State == OrderStates.Active) == 0; } }
 
         // Обработчик события появления новой завершенной свечи
         private void ProcessCandles(Candle candle)
         {
+            Order order = null;
             var timeFrame = (TimeSpan)candle.Arg;
             var time = ((TimeSpan)candle.Arg).GetCandleBounds(Connector.CurrentTime).Min - timeFrame;
             var highestValue = _indicatorHighest.Process(candle.HighPrice);
@@ -225,7 +200,12 @@ namespace Strategies.Strategies
             var fsmaValue = _indicatorFastSma.Process(candle.ClosePrice);
 
 
-            Order order = null;
+            if (_cancelOrderCandle == 0)
+            {
+                CancelActiveOrders();
+                _cancelOrderCandle = 5;
+                }
+            
 
             if (candle.OpenTime < time ||
                 !_indicatorSlowSma.IsFormed ||
@@ -235,66 +215,69 @@ namespace Strategies.Strategies
                 _sendOrder)
             {
                 if (_sendOrder)
-                    TradesLogger.Info("Ожидаем исполнения заявки");
+                {
+                    TradesLogger.Info("{0}: Ожидаем исполнения заявки, {1} свечей до отмены заявки", Name, _cancelOrderCandle);
+                    --_cancelOrderCandle;
+                }
                 else
-                    TradesLogger.Info("Исторические свечи {0}", candle.OpenTime);
+                    TradesLogger.Info("{0}: Исторические свечи {1}", Name, candle.OpenTime);
 
                 return;
             }
 
             var midCh = (_indicatorLowest.GetCurrentValue() + _indicatorHighest.GetCurrentValue()) / 2;
 
-            TradesLogger.Info("Позиций {0}, время открытия свечки {1}", Position, candle.OpenTime);
+            //TradesLogger.Info("Позиций {0}, время открытия свечки {1}", Position, candle.OpenTime);
 
             if (Position != 0) // Если позиция есть
             {
-                TradesLogger.Info("есть позиция {0}, CP {1}, midCH {2}", Position, candle.ClosePrice, midCh);
+                TradesLogger.Info("{0}: Позиций = {1}, CP {2}, midCH {3}",Name, Position, candle.ClosePrice, midCh);
 
                 if (Position < 0) // Для короткой позиции
                 {
-                    if (candle.ClosePrice >= midCh)
+                    if (candle.HighPrice >= midCh)
                     {
 
-                        exitPosition = true;
-                        midPriceCH = midCh;
-                        order = GetOrder(Sides.Buy, midPriceCH, exitPosition);
-                        TradesLogger.Info("SX {0}, Candle_CP {1} > MidCH {2}", Sides.Buy, candle.ClosePrice, midCh);
+                        _exitPosition = true;
+                        _midPriceCh = midCh;
+                        order = GetOrder(Sides.Buy, _midPriceCh, _exitPosition);
+                        TradesLogger.Info("{0}: SX {1}, Candle_HP {2} > MidCH {3}",Name, Sides.Buy, candle.HighPrice, midCh);
                     }
                 }
                 else // Для длинной позиции
                 {
 
-                    if (candle.ClosePrice <= midCh)
+                    if (candle.LowPrice <= midCh)
                     {
-                        exitPosition = true;
-                        midPriceCH = midCh;
-                        order = GetOrder(Sides.Sell, midPriceCH, exitPosition);
-                        TradesLogger.Info("LX {0}, Candle_CP {1} < MidCH {2}", Sides.Sell, candle.ClosePrice, midCh);
+                        _exitPosition = true;
+                        _midPriceCh = midCh;
+                        order = GetOrder(Sides.Sell, _midPriceCh, _exitPosition);
+                        TradesLogger.Info("{0}: LX {1}, Candle_LP {2} < MidCH {3}",Name, Sides.Sell, candle.LowPrice, midCh);
                     }
 
 
                 }
 
             }
-            else if (NoActiveOrders)    //Нет активных заявок
+            else if (Position == 0) //Нет активных заявок
             {
-                TradesLogger.Info("Позиций  нет, проверка условий входа в позицию. Значения Slow SMA {0},Fast SMA {1}, Highest {2}, Lowest {3}, Mid {4}", ssmaValue.InputValue, fsmaValue.InputValue, highestValue, lowestValue, midCh);
+                TradesLogger.Info("{0}: Позиций = 0, SlowSMA {1}, FastSMA {2}, Highest {3}, Lowest {4}, Mid {5}",Name, ssmaValue , fsmaValue , highestValue, lowestValue, midCh);
 
                 if (_indicatorSlowSma.GetCurrentValue() > _indicatorFastSma.GetCurrentValue() && candle.LowPrice <= _indicatorLowest.GetCurrentValue())
                 {
-                    exitPosition = false;
-                    sellPriceCH = _indicatorLowest.GetCurrentValue();
-                    order = GetOrder(Sides.Sell, sellPriceCH, exitPosition);
-                    TradesLogger.Info("SE {0}, SSMA {1} > FSMA {2}, Candle_LP {3} <= Lowest {4} ", Sides.Sell, _indicatorSlowSma.GetCurrentValue(), _indicatorFastSma.GetCurrentValue(), candle.LowPrice, _indicatorLowest.GetCurrentValue());
+                    _exitPosition = false;
+                    _sellPriceCh = _indicatorLowest.GetCurrentValue();
+                    order = GetOrder(Sides.Sell, _sellPriceCh, _exitPosition);
+                    TradesLogger.Info("{0}: SE {1}, SSMA {2} > FSMA {3}, Candle_LP {4} <= Lowest {5}",Name, _sellPriceCh, _indicatorSlowSma.GetCurrentValue(), _indicatorFastSma.GetCurrentValue(), candle.LowPrice, _indicatorLowest.GetCurrentValue());
 
                 }
                 // 
                 else if (_indicatorSlowSma.GetCurrentValue() < _indicatorFastSma.GetCurrentValue() && candle.HighPrice >= _indicatorHighest.GetCurrentValue())
                 {
-                    exitPosition = false;
-                    buyPriceCH = _indicatorHighest.GetCurrentValue();
-                    order = GetOrder(Sides.Buy, buyPriceCH, exitPosition);
-                    TradesLogger.Info("LE {0}, SSMA {1} < FSMA {2}, Candle_HP {3} >= Highest {4} ", Sides.Buy, _indicatorSlowSma.GetCurrentValue(), _indicatorFastSma.GetCurrentValue(), candle.HighPrice, _indicatorHighest.GetCurrentValue());
+                    _exitPosition = false;
+                    _buyPriceCh = _indicatorHighest.GetCurrentValue();
+                    order = GetOrder(Sides.Buy, _buyPriceCh, _exitPosition);
+                    TradesLogger.Info("{0}: LE {1}, SSMA {2} < FSMA {3}, Candle_HP {4} >= Highest {5} ",Name, _buyPriceCh, _indicatorSlowSma.GetCurrentValue(), _indicatorFastSma.GetCurrentValue(), candle.HighPrice, _indicatorHighest.GetCurrentValue());
                 }
             }
 
@@ -307,10 +290,15 @@ namespace Strategies.Strategies
         // 2. Регистрирует заявку
         private void OrderProcess(Order order)
         {
-            TradesLogger.Info("Подаем заявку");
+            
+            TradesLogger.Info("{0}: Подаем заявку {1}",Name, order.Price);
             // Создаем правило на событие отмены заявки
+            
             var orderCanceledRule = order.WhenCanceled(this.Connector).Do(o =>
             {
+                
+                _sendOrder = false;
+                TradesLogger.Info("{0}: Заявка отменена", Name);
                 // TODO
             }).Once();
 
@@ -319,6 +307,7 @@ namespace Strategies.Strategies
             {
                 this.AddInfoLog(o.ToString());
                 // Переводим в рабочее состояние
+                TradesLogger.Info("{0}: Заявка зарегистрирована",Name);
                 orderCanceledRule.Apply(this);
             });
 
@@ -327,6 +316,7 @@ namespace Strategies.Strategies
 
             order.WhenRegisterFailed(this.Connector).Do((o, of) =>
             {
+                TradesLogger.Info(of.Error);
                 this.AddErrorLog(of.Error);
             });
 
@@ -339,7 +329,8 @@ namespace Strategies.Strategies
                 {
                     // "Опускаем" флаг. Теперь в ProcessCandles возобновится отработка логики стратегии
                     _sendOrder = false;
-
+                    
+                    TradesLogger.Info("{0}: Заявка исполнена {1}", Name, order.Price);
                     // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                     this.Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
 
@@ -360,17 +351,18 @@ namespace Strategies.Strategies
         private Order GetOrder(Sides side, decimal price, bool exitpos)
         {
 
+            var shrinkPrice = Security.ShrinkPrice(price);
 
-            int orderprice = Decimal.ToInt32(price);
+            
             //if (orderprice == null)
             //    return null;
-            return this.CreateOrder(side, orderprice);
+            return this.CreateOrder(side, shrinkPrice);
         }
 
         // Критерий продолжения работы правила WhenCandlesFinished
         private bool FinishCandles()
         {
-            return _IsFinish;
+            return _isFinish;
         }
 
         public string GetFriendlyName()
@@ -381,5 +373,8 @@ namespace Strategies.Strategies
             //TODO: определить единый формат строки имени агента для всех стратегий на платформе.
             return "ChStrategy {0}_{1}_{2}_{3}".Put(_timeFrame.Value.TotalSeconds, _fastSma.Value, _slowSma.Value, _period.Value);
         }
+
+        
+
     }
 }
