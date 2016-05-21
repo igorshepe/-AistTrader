@@ -148,14 +148,25 @@ namespace AistTrader
                 var any = Instance.ConnectionsStorage.Any(i => i.ConnectionParams.IsDefaulConnection);
                 if (any)
                 {
-                    var item = Instance.ConnectionsStorage.Where(i => i.ConnectionParams.IsDefaulConnection) as Connection;
-                    ConnectionStatusTextBlock.ToolTip = item.DisplayName;
+                    var item =
+                        Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.IsDefaulConnection) as
+                            Connection;
+                    ConnectionStatusTextBlock.ToolTip = string.Format("{0}" + " is set as default connection",
+                        item.DisplayName);
                 }
                 else
-                    return;
+                {
+                    ConnectionStatusTextBlock.ToolTip = "Default connection is not set";
+                    ConnectionStatusTextBlock.Text = "Disconnected";
+                }
+
             }
             else
-                return;    
+            {
+                ConnectionStatusTextBlock.ToolTip = "Default connection is not set";
+                ConnectionStatusTextBlock.Text = "Disconnected";
+            }
+            
         }
     }
 }

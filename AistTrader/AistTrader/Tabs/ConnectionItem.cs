@@ -114,8 +114,7 @@ namespace AistTrader
                     //    MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
                     //    return;
                     //}
-                    ConnectionsStorage.Remove(item);
-                    SaveProviderItems();
+
                     var connection = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == item.DisplayName);
                     if (connection != null)
                     {
@@ -124,6 +123,8 @@ namespace AistTrader
                         ConnectionManager.Connections.Remove(connection);
                         Logger.Info("Connection \"{0}\" has been deleted", connection.ConnectionName);
                     }
+                    ConnectionsStorage.Remove(item);
+                    SaveProviderItems();
                 }
             }
         }
@@ -269,21 +270,26 @@ namespace AistTrader
                 this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is active now", connection.ConnectionName));
 
-                try
-                {
-                    TimeHelper.SyncMarketTime();
-                }
-                catch
-                {
-                    // ignored
-                }
+                //try
+                //{
+                //    TimeHelper.SyncMarketTime(20000);
+                //}
+                //catch
+                //{
+                //    // ignored
+                //}
+                if (conn.ConnectionParams.IsDefaulConnection)
+                    this.GuiAsync(() => Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Connected.ToString());
             };
             connection.Disconnected += () =>
             {
                 this.GuiAsync(() => conn.ConnectionParams.IsConnected = false);
                 this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);   
                 this.GuiAsync(() => UpdateProviderListView());
-                this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is not active now", connection.Name));
+                this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is not active now", connection.ConnectionName));
+
+                if (conn.ConnectionParams.IsDefaulConnection)
+                    this.GuiAsync(() => Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Disconnected.ToString());
             };
             connection.ConnectionError += error =>
             {
@@ -398,12 +404,16 @@ namespace AistTrader
         }
         private void ConnectionsContextMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
+            foreach (var conn in ConnectionsStorage)
+                conn.ConnectionParams.IsDefaulConnection = false;
 
-            //выбранный айтем
-            //алгоритм для дефолта
-
-
-            throw new NotImplementedException();
+            var item = ProviderListView.SelectedItem as Connection;
+            item.ConnectionParams.IsDefaulConnection = true;
+            if (item.ConnectionParams.IsConnected)
+                Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Connected.ToString();
+            else
+                Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Disconnected.ToString();
+            SaveProviderItems();
         }
     }
 
