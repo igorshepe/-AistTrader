@@ -268,6 +268,15 @@ namespace AistTrader
                 this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Connected);
                 this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is active now", connection.ConnectionName));
+
+                try
+                {
+                    TimeHelper.SyncMarketTime();
+                }
+                catch
+                {
+                    // ignored
+                }
             };
             connection.Disconnected += () =>
             {
@@ -385,6 +394,15 @@ namespace AistTrader
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
+            throw new NotImplementedException();
+        }
+        private void ConnectionsContextMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+
+            //выбранный айтем
+            //алгоритм для дефолта
+
+
             throw new NotImplementedException();
         }
     }

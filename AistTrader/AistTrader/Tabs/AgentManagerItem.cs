@@ -300,5 +300,7 @@ namespace AistTrader
 
             //strat.Start();
         }
+
+
     }
 }

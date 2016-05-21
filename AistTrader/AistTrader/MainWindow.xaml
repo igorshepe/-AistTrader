@@ -87,7 +87,21 @@
             </Menu>
 
             <StatusBar Grid.Row="3"   Height="28">
-                Disconnected
+                <TextBlock Name="ConnectionStatusTextBlock" Text="Disconnected" ToolTipOpening="ConnectionStatusTextBlock_OnToolTipOpening">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="ToolTip" Value="Default connection is not set"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Separator Style="{StaticResource MetroStatusBarSeparator}" />
+                <TextBlock Name="TimeTextBlock" >
+
+                </TextBlock>
                 <Separator Style="{StaticResource MetroStatusBarSeparator}" />
                 <StackPanel Name="StackPanelInStatusBar"  Margin="0,-6,0,0" >
                     <Image Name="ImageInStackPanelOfStatusBar" ToolTip="Show log window"  Source="Resources/Images/hide.png" Height="35" Width="35" MouseDown="StasusBarLogImage_OnMouseDown"  RenderTransformOrigin="0.95,0.032" />
@@ -208,6 +222,9 @@
                             <ColumnDefinition Width="90*"/>
                             <ColumnDefinition Width="1080*"/>
                         </Grid.ColumnDefinitions>
+
+
+                        
                         <DataGrid x:Name="ProviderListView"
                                   IsSynchronizedWithCurrentItem="True" 
                                   x:FieldModifier="private"
@@ -236,6 +253,7 @@
                                                     Binding="{Binding IsDemo}" />
 
                                 <DataGridTemplateColumn Header="Command">
+                                    
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Controls:ToggleSwitchButton Name="ConnectionStateSwitch" Checked="ConnectionStateSwitch_OnClick" Unchecked="ConnectionStateSwitch_OnClick"  IsChecked="{Binding Path=ConnectionParams.IsConnected, Mode=OneWay }"></Controls:ToggleSwitchButton>
@@ -244,6 +262,11 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
+                            <DataGrid.ContextMenu>
+                                <ContextMenu >
+                                    <MenuItem Header="Set as default connection" Click="ConnectionsContextMenuItem_OnClick"  />
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
                         </DataGrid>
                         <Grid Grid.Column="0"
                               HorizontalAlignment="Center"

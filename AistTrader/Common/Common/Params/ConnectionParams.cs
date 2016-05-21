@@ -30,6 +30,8 @@ namespace Common.Params
         public ConnectionParams()
         {
         }
+
+        public bool IsDefaulConnection { get; set; }
         public PlazaConnectionParams PlazaConnectionParams { get; set; }
         public string Name { get; set; }
         

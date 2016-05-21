@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Threading;
 using Common.Entities;
 using Common.Params;
+using Ecng.Collections;
 using Ecng.Common;
 using MahApps.Metro.Controls.Dialogs;
 using MoreLinq;
@@ -20,6 +22,15 @@ namespace AistTrader
     {
         #region Fields
         private bool _shutdown;
+
+        public string DefaulConnectionName
+        {
+            get
+            {
+                return "TEst";
+            }
+            set { } 
+        }
         public static MainWindow Instance { get; private set; }
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
@@ -42,10 +53,10 @@ namespace AistTrader
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
             #region Initialize collections
-            //DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            //{
-            //    this.TimeTextBlock.Text = String.Format("{0:G}( тоже Local )", TimeHelper.Now);
-            //},this.Dispatcher);
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                this.TimeTextBlock.Text = String.Format("{0:G} (Local)", TimeHelper.Now);
+            }, this.Dispatcher);
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
 
@@ -128,6 +139,23 @@ namespace AistTrader
         private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/igorshepe/-AistTrader");
+        }
+
+        private void ConnectionStatusTextBlock_OnToolTipOpening(object sender, ToolTipEventArgs e)
+        {
+            if (!Instance.ConnectionsStorage.IsEmpty())
+            {
+                var any = Instance.ConnectionsStorage.Any(i => i.ConnectionParams.IsDefaulConnection);
+                if (any)
+                {
+                    var item = Instance.ConnectionsStorage.Where(i => i.ConnectionParams.IsDefaulConnection) as Connection;
+                    ConnectionStatusTextBlock.ToolTip = item.DisplayName;
+                }
+                else
+                    return;
+            }
+            else
+                return;    
         }
     }
 }
