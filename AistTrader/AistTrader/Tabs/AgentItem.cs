@@ -7,12 +7,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media;
 using System.Xml.Serialization;
 using Common.Entities;
 using Common.Params;
-using Ecng.Collections;
-using MoreLinq;
 using NLog;
 
 namespace AistTrader
@@ -53,7 +50,8 @@ namespace AistTrader
         }
         private void AddAgentConfigGroupBtnClick(object sender, RoutedEventArgs e)
         {
-            new GroupAddition().ShowDialog();
+            var form= new GroupAddition().ShowDialog();
+            form = null;
             SaveAgentSettings();
         }
         private void AddAgentConfigBtnClick(object sender, RoutedEventArgs e)

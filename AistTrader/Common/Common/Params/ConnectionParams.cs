@@ -11,7 +11,6 @@ namespace Common.Params
         public ConnectionParams(string name, string code, PlazaConnectionParams connectiong, bool isActive)
         {
             Name = name;
-            
             Code = code;
             PlazaConnectionParams = connectiong;
             IsConnected = isActive;
@@ -23,18 +22,12 @@ namespace Common.Params
             ConnectionState = ConnectionStatus.Disconnected;
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
-        public ConnectionParams()
-        {
-        }
-
+        
+        public ConnectionParams(){}
+        public override string ToString() { return Name; }
         public bool IsDefaulConnection { get; set; }
         public PlazaConnectionParams PlazaConnectionParams { get; set; }
         public string Name { get; set; }
-        
         public string Code { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
@@ -54,18 +47,14 @@ namespace Common.Params
         public Portfolio SelectedAccount { get; set; }
         public ConnectionStatus ConnectionState { get; set; }
 
-
         public enum ConnectionStatus
         {
             Connected,
             Disconnected,
             ConnectionError,
             Authentication
-            //TODO:дополнить по необходимости тем, что надо
         }
-        
     }
-
 
     [TypeConverter]
     public enum OperationCommand

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,14 +14,11 @@ using Common.Entities;
 using Common.Params;
 using Ecng.Common;
 using Ecng.Xaml;
-using IniParser;
-using MahApps.Metro.Controls.Dialogs;
 using NLog;
 using StockSharp.BusinessEntities;
 using StockSharp.Plaza;
 using System.Threading.Tasks;
 using MahApps.Metro.Controls;
-using StockSharp.Messages;
 
 namespace AistTrader
 {
@@ -406,9 +402,9 @@ namespace AistTrader
         {
             foreach (var conn in ConnectionsStorage)
                 conn.ConnectionParams.IsDefaulConnection = false;
-
             var item = ProviderListView.SelectedItem as Connection;
             item.ConnectionParams.IsDefaulConnection = true;
+            Logger.Info("Connection - \"{0}\" is set to be default connection", item.DisplayName);
             if (item.ConnectionParams.IsConnected)
                 Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Connected.ToString();
             else

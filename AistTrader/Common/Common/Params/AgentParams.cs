@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Xml.Serialization;
-using StockSharp.Messages;
 using Strategies.Common;
 
 namespace Common.Params
