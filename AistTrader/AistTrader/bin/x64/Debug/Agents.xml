@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <ArrayOfAgent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Agent>
-    <Name>ChStrategy 900_50_100_100</Name>
+    <Name>ChStrategy 60_10_20_20</Name>
     <Params>
       <AgentName>ChStrategy</AgentName>
-      <ToolTipName>TimeFrame-900,FastSma-50,SlowSma-100,Period-100</ToolTipName>
+      <ToolTipName>TimeFrame-60,FastSma-10,SlowSma-20,Period-20</ToolTipName>
       <AgentCompiledName>ChStrategy</AgentCompiledName>
       <ConnectionCount>-1</ConnectionCount>
-      <FriendlyName>ChStrategy 900_50_100_100</FriendlyName>
+      <FriendlyName>ChStrategy 60_10_20_20</FriendlyName>
       <SettingsStorage>
         <item>
           <key>
             <string>TimeFrame</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:double">900</anyType>
+            <anyType xsi:type="xsd:double">60</anyType>
           </value>
         </item>
         <item>
@@ -22,7 +22,7 @@
             <string>FastSma</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:decimal">50</anyType>
+            <anyType xsi:type="xsd:decimal">10</anyType>
           </value>
         </item>
         <item>
@@ -30,7 +30,7 @@
             <string>SlowSma</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:decimal">100</anyType>
+            <anyType xsi:type="xsd:decimal">20</anyType>
           </value>
         </item>
         <item>
@@ -38,54 +38,7 @@
             <string>Period</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:decimal">100</anyType>
-          </value>
-        </item>
-      </SettingsStorage>
-      <IsChecked>false</IsChecked>
-      <Contracts>-1</Contracts>
-      <GroupName>ungrouped agents</GroupName>
-    </Params>
-  </Agent>
-  <Agent>
-    <Name>ChStrategy 900_46_100_100</Name>
-    <Params>
-      <AgentName>ChStrategy</AgentName>
-      <ToolTipName>TimeFrame-900,FastSma-46,SlowSma-100,Period-100</ToolTipName>
-      <AgentCompiledName>ChStrategy</AgentCompiledName>
-      <ConnectionCount>-1</ConnectionCount>
-      <FriendlyName>ChStrategy 900_46_100_100</FriendlyName>
-      <SettingsStorage>
-        <item>
-          <key>
-            <string>TimeFrame</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:double">900</anyType>
-          </value>
-        </item>
-        <item>
-          <key>
-            <string>FastSma</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:decimal">46</anyType>
-          </value>
-        </item>
-        <item>
-          <key>
-            <string>SlowSma</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:decimal">100</anyType>
-          </value>
-        </item>
-        <item>
-          <key>
-            <string>Period</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:decimal">100</anyType>
+            <anyType xsi:type="xsd:decimal">20</anyType>
           </value>
         </item>
       </SettingsStorage>
