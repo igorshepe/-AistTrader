@@ -96,6 +96,14 @@ namespace AistTrader
             _selectedPath = connection.ConnectionParams.PlazaConnectionParams.Path;
             _originPath = connection.ConnectionParams.PlazaConnectionParams.Path;
         }
+
+        private bool IsFirtConnectionToBeSetAsDefault()
+        {
+            if (MainWindow.Instance.ConnectionsStorage.Count == 0)
+                return true;
+            else
+                return false;
+        }
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
             //    if (!File.Exists(AllPlazaDirectoriesComboBox.SelectedItem + @"\client_router.ini"))
@@ -104,9 +112,8 @@ namespace AistTrader
             //        MessageBox.Show(this, @"В выбранной дериктории нет ini файла: {0}.".Put(AllPlazaDirectoriesComboBox.SelectedItem));
             //        return;
             //    }
-
             var terminalConnSettings = new PlazaConnectionParams(AllPlazaDirectoriesComboBox.SelectedItem.ToString());
-            var connParams = new ConnectionParams(ConnectionNameTxtBox.Text, ClienCodeTxtBox.Text, terminalConnSettings, false);
+            var connParams = new ConnectionParams(ConnectionNameTxtBox.Text, ClienCodeTxtBox.Text, terminalConnSettings, false, IsFirtConnectionToBeSetAsDefault());
             if (editMode)
             {
                 var item= MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == connectionToEdit.Id);

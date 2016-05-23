@@ -112,6 +112,6 @@
             Text="{Binding Path=ProviderPath, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
         	TabIndex="2"
             SelectedItem="{Binding Path=SelectedPath}"/>
-        <CheckBox x:Name="IsDemoChkBox" Content="Demo mode" HorizontalAlignment="Left" Margin="5,181,0,0" VerticalAlignment="Top" Width="124"/>
+        <CheckBox x:Name="IsDemoChkBox" TabIndex="3" Content="Demo mode" HorizontalAlignment="Left" Margin="5,181,0,0" VerticalAlignment="Top" Width="124"/>
     </Grid>
 </controls:MetroWindow>

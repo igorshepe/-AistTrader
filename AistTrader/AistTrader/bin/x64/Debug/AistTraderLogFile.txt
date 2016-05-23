@@ -983,3 +983,5 @@
 2016-05-23 13:14:42.2624|INFO|AistTrader.MainWindow|Connection - "??????" is set to be default connection
 2016-05-23 13:15:01.9788|INFO|AistTrader.MainWindow|Connection - "??????" is not active now
 2016-05-23 13:15:04.1630|INFO|AistTrader.MainWindow|Connection - "??????" is active now
+2016-05-23 13:43:31.0791|INFO|AistTrader.MainWindow|Agent manager item "12321312321" has been deleted
+2016-05-23 13:43:31.1737|INFO|AistTrader.MainWindow|Successfully saved manager agent Items

@@ -16,4 +16,3 @@ C:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.Properties.
 C:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.csproj.GenerateResource.Cache
 C:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.dll
 C:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.pdb
-C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.csprojResolveAssemblyReference.cache

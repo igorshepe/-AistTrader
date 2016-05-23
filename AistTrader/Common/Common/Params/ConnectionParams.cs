@@ -8,7 +8,7 @@ namespace Common.Params
     [Serializable]
     public class ConnectionParams
     {
-        public ConnectionParams(string name, string code, PlazaConnectionParams connectiong, bool isActive)
+        public ConnectionParams(string name, string code, PlazaConnectionParams connectiong, bool isActive,bool isDefauld)
         {
             Name = name;
             Code = code;
@@ -20,6 +20,7 @@ namespace Common.Params
             NetValue = -1;
             VariationMargin = -1;
             ConnectionState = ConnectionStatus.Disconnected;
+            IsDefaulConnection = isDefauld;
         }
 
         
