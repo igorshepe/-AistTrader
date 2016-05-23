@@ -30,6 +30,12 @@ namespace AistTrader
         //public static CandleStrategy strategy = new CandleStrategy();
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
+
+
+
+
+
+
             var form = new ManagerAddition();
             form.ShowDialog();
             form = null;

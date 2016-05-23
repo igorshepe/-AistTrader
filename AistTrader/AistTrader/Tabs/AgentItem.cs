@@ -22,16 +22,35 @@ namespace AistTrader
         {
             var item = AgentListView.SelectedItem as Agent;
             if (item != null && item.Params.GroupName == "ungrouped agents")
+            {
                 EditSingleOrGroupItemBtn.IsEnabled = false;
+                EditSingleOrGroupItemBtn.ToolTip = "Added agents can't be edited.";
+            }
+            
             else
                 EditSingleOrGroupItemBtn.IsEnabled = true;
             if (AgentsStorage.Count == 0)
+            {
                 EditSingleOrGroupItemBtn.IsEnabled = false;
+                EditSingleOrGroupItemBtn.ToolTip = "Added agents can't be edited.";
 
+            }
             if (AgentListView.Items.Count == 0)
+            {
                 DelAgentBtn.IsEnabled = false;
+                DelAgentBtn.ToolTip = "No agents to delete";
+                return;
+            }
             else
                 DelAgentBtn.IsEnabled = true;
+
+            //TODO: проверить инициализацию коллекций на данном этапе
+            var agentItem = AgentListView.SelectedItem as Agent;
+            if (AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString()))
+            {
+                DelAgentBtn.IsEnabled = false;
+                DelAgentBtn.ToolTip = string.Format("Can't delete - \"{0}\", currently used in agen manager",agentItem.Name) ;
+            }
         }
         private void AgentListView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -168,10 +187,15 @@ namespace AistTrader
         }
         private void AgentSettingsStorageChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if(AgentsStorage.Count > 1)
+            if (AgentsStorage.Count > 1)
                 CreateGroupItemBtn.IsEnabled = true;
             else
+            {
                 CreateGroupItemBtn.IsEnabled = false;
+                CreateGroupItemBtn.ToolTip = "Can't create a group with one registred agent";
+
+            }
+            
         }
         private void EditAgentConfigBtnClick(object sender, RoutedEventArgs e)
         {

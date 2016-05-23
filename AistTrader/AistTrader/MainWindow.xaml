@@ -188,12 +188,15 @@
                               Margin="0,0,0,0">
                             <Button Content="Add"
                                     Click="AddAgentConfigBtnClick"
+                                    Name="AddAgentConfigBtn"
+                                    ToolTipService.ShowOnDisabled="True"
                                     HorizontalAlignment="Center"
                                     Margin="4,6,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
                             <Button Content="Edit"
                                     Name="EditSingleOrGroupItemBtn"
+                                    ToolTipService.ShowOnDisabled="True"
                                     Click="EditAgentConfigBtnClick" 
                                     HorizontalAlignment="Center"
                                     Margin="4,34,0,0"
@@ -201,6 +204,7 @@
                                     Width="100"/>
                             <Button Content="Delete" 
                                     Name="DelAgentBtn"
+                                    ToolTipService.ShowOnDisabled="True"
                                     Click="DeleteAgentBtnClick" 
                                     HorizontalAlignment="Center"
                                     Margin="4,61,0,0"
@@ -208,6 +212,7 @@
                                     Width="100"/>
                             <Button Content="Create a group" 
                                     Name="CreateGroupItemBtn"
+                                    ToolTipService.ShowOnDisabled="True"
                                     IsEnabled="False"
                                     Click="AddAgentConfigGroupBtnClick"
                                     Margin="0,88,8,0"
@@ -455,6 +460,8 @@
                               Margin="0,0,0,0">
                             <Button Content="Add"
                                     Click="AddAgentManagerBtnClick"
+                                    Name="AddAgentManagerBtn"
+                                    ToolTipService.ShowOnDisabled="True"
                                     HorizontalAlignment="Center" 
                                     Margin="4,6,0,0"
                                     VerticalAlignment="Top"

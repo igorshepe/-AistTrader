@@ -15,6 +15,7 @@ using MahApps.Metro.Controls.Dialogs;
 using MoreLinq;
 using NLog;
 using StockSharp.BusinessEntities;
+using StockSharp.Messages;
 
 namespace AistTrader
 {
@@ -93,6 +94,22 @@ namespace AistTrader
             }
             if (e.OriginalSource is TabControl && AgentManagerItem != null && AgentManagerItem.IsSelected)
             {
+
+                //todo: на все коннекты что есть проверка на активное состояние
+
+                var anyActive = Instance.ConnectionManager.Connections.Any(i=>i.ConnectionState == ConnectionStates.Connected);
+
+
+                if (!anyActive)
+                {
+                    AddAgentManagerBtn.ToolTip = "No active connections, cannot retrieve any securities";
+                    AddAgentManagerBtn.IsEnabled = false;
+                }
+                if (anyActive)
+                {
+                    AddAgentManagerBtn.IsEnabled = true;
+                }
+
             }
         }
         private void AgentAddConfigMenuItem_OnClick(object sender, RoutedEventArgs e)

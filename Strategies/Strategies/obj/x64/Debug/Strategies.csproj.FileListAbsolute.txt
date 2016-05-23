@@ -47,4 +47,3 @@ C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\log4net.xml
 C:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\Newtonsoft.Json.xml
 C:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.dll
 C:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.pdb
-C:\REPOSITORY\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.csprojResolveAssemblyReference.cache
