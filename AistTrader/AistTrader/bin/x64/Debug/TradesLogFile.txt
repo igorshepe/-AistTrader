@@ -187,3 +187,16 @@
 2016-05-19 15:15:04.2242|INFO|AistTrader.MainWindow|Connection - "??????" is active now
 2016-05-19 15:15:04.7609|INFO|AistTrader.MainWindow|Securities were loaded
 2016-05-19 15:15:04.9480|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
+2016-05-19 15:21:54.9188|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"??????"...
+2016-05-19 15:21:54.9438|INFO|AistTrader.MainWindow|IP and port of -"??????" connection were successfully acquired
+2016-05-19 15:21:57.0916|INFO|AistTrader.MainWindow|Connection - "??????" is active now
+2016-05-19 15:21:57.4588|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-19 15:21:57.9772|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
+2016-05-23 13:14:36.5235|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"??????"...
+2016-05-23 13:14:36.5491|INFO|AistTrader.MainWindow|IP and port of -"??????" connection were successfully acquired
+2016-05-23 13:14:38.5467|INFO|AistTrader.MainWindow|Connection - "??????" is active now
+2016-05-23 13:14:38.8770|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-23 13:14:38.9491|INFO|AistTrader.MainWindow|Portfolios for connection "??????" were loaded
+2016-05-23 13:14:42.2624|INFO|AistTrader.MainWindow|Connection - "??????" is set to be default connection
+2016-05-23 13:15:01.9788|INFO|AistTrader.MainWindow|Connection - "??????" is not active now
+2016-05-23 13:15:04.1630|INFO|AistTrader.MainWindow|Connection - "??????" is active now

@@ -105,11 +105,11 @@ namespace AistTrader
             {
                 foreach (var item in ProviderListView.SelectedItems.Cast<Connection>().ToList())
                 {
-                    //if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.DisplayName == item.DisplayName))
-                    //{
-                    //    MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
-                    //    return;
-                    //}
+                    if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.DisplayName == item.DisplayName))
+                    {
+                        MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
+                        return;
+                    }
 
                     var connection = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == item.DisplayName);
                     if (connection != null)

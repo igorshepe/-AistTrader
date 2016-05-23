@@ -8,7 +8,7 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="file://10.10.10.10/AistShared/AistTrader/Install/AistTrader.application" />
+    <deploymentProvider codebase="file:///C:/Users/Allen/Desktop/Aist/AistTrader.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
@@ -21,7 +21,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>78UWp8FvAMas3xvgG/9SS9Y9RjxDtXhjl8vPFVL4de8=</dsig:DigestValue>
+        <dsig:DigestValue>84/n3yRp8aD0OvSlzx7nqTS7AitHQVFYL1K0Jr8uLbo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="1751048">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="1754120">
       <assemblyIdentity name="AistTrader" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FiLqc6DuQilXZrkrNJtPLSMC7BTe73ZbKm5Vs0R5hzM=</dsig:DigestValue>
+        <dsig:DigestValue>/KpdCtvMDK1BeMMIHEmX9IyEX8ZzDjmKZuvWffxBMYY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="17408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="17920">
       <assemblyIdentity name="Common" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Cn+a+jQ+Ux/X/fSUpYMKvAKVVeH3suz1Th3kLQvIfUw=</dsig:DigestValue>
+        <dsig:DigestValue>xBK9NMJEpsCaBMEqNrTU2hR6Mt+YDAcu+Ege78mFKYg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -422,7 +422,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Mq7VYeE0bQoMrfMUmPflM/uU5Oi3FwIpaNBTnpco6Zg=</dsig:DigestValue>
+        <dsig:DigestValue>piYoXjDrnIUrE7mTgw0TSM31sbXw7ax3lwK+Dft3ofk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -547,14 +547,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strategies.dll" size="22016">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strategies.dll" size="19968">
       <assemblyIdentity name="Strategies" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EPwLcnNB/54mPMqO3xSY3qmS+h+4D3QLYsz0PJfnE3w=</dsig:DigestValue>
+        <dsig:DigestValue>HzNwRPRyBAillUOaQprMLXgfGXKaR3gzjYMamq7cBL4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
