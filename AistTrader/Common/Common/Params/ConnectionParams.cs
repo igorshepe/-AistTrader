@@ -21,7 +21,7 @@ namespace Common.Params
             VariationMargin = -1;
             ConnectionState = ConnectionStatus.Disconnected;
             IsDefaulConnection = isDefauld;
-        }
+        }   
 
         
         public ConnectionParams(){}
