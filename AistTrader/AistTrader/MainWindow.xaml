@@ -81,9 +81,9 @@
                 <MenuItem Header="Manage connections">
                     <MenuItem Name="ProviderManagerMenuItem" Header="Connections" Click="ProviderManagerMenuItem_OnClick" ></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Что нового?">
+                <!--<MenuItem Header="Что нового?">
                     <MenuItem Name="WhatsNewItem" Header="Показать новые фичи" Click="WhatsNewItem_OnClick" ></MenuItem>
-                </MenuItem>
+                </MenuItem>-->
             </Menu>
 
             <StatusBar Grid.Row="3"   Height="28">

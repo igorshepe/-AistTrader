@@ -77,7 +77,7 @@
                   Margin="5,25,5,0" 
                   Name="PortfolioComboBox" 
                   VerticalAlignment="Top" 
-                  TabIndex="4" 
+                  TabIndex="0" 
                   SelectionChanged="PortfolioComboBox_OnSelectionChanged"
                   x:FieldModifier="private"
                   SelectedItem="{Binding Path=SelectedPortfolio}"
@@ -89,7 +89,7 @@
                   SelectionChanged="GroupOrSingleAgentComboBox_OnSelectionChanged"
                   VerticalAlignment="Top"
                   SelectedItem="{Binding Path= SelectedGroupOrSingleAgent}"
-                  TabIndex="4"  
+                  TabIndex="1"  
                   x:FieldModifier="private"/>
         <!--<ComboBox Height="22"
                   Text="{Binding Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
@@ -102,7 +102,7 @@
                   x:FieldModifier="private"/>-->
         <sx:SecurityEditor
             Name="SecurityPicker"
-            Margin="5,132,5,0" Height="28" VerticalAlignment="Top"
+            Margin="5,132,5,0" Height="28" VerticalAlignment="Top" TabIndex="2"
             SelectedSecurity="{Binding  Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                            
             />
@@ -113,6 +113,7 @@
                          TextWrapping="Wrap"
                          VerticalAlignment="Top"
                          Width="115"
+                         TabIndex="3"
                          TextChanged="AmountTextBox_OnTextChanged"
                          Name="AmountTextBox"
                          Style="{StaticResource {x:Type xaml:UnitEditor}}"
@@ -123,7 +124,7 @@
                 Margin="0,0,85,8"
                 Width="75"
                 Click="AddAgentInAgentManagerBtnClick"
-                TabIndex="7" 
+                TabIndex="4" 
                 IsDefault="True" Height="23" VerticalAlignment="Bottom" 
                 IsEnabled="True"
                 />
@@ -131,7 +132,7 @@
                 HorizontalAlignment="Right"
                 Margin="0,0,5,8" 
                 Width="75"
-                TabIndex="8" 
+                TabIndex="5" 
                 IsCancel="True" Height="23" VerticalAlignment="Bottom" />
     </Grid>
 </Window>

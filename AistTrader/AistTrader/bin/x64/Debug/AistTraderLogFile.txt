@@ -985,3 +985,42 @@
 2016-05-23 13:15:04.1630|INFO|AistTrader.MainWindow|Connection - "??????" is active now
 2016-05-23 13:43:31.0791|INFO|AistTrader.MainWindow|Agent manager item "12321312321" has been deleted
 2016-05-23 13:43:31.1737|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 13:49:47.2426|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"kfdsjfkdshfkjh"...
+2016-05-23 13:49:47.2676|INFO|AistTrader.MainWindow|IP and port of -"kfdsjfkdshfkjh" connection were successfully acquired
+2016-05-23 13:49:49.4353|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is active now
+2016-05-23 13:49:50.8850|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-23 13:49:50.9420|INFO|AistTrader.MainWindow|Portfolios for connection "kfdsjfkdshfkjh" were loaded
+2016-05-23 13:50:15.7178|INFO|AistTrader.MainWindow|Successfully added agent manager - "dfdsfdsfsdf"
+2016-05-23 13:50:15.9730|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 13:58:16.3393|INFO|AistTrader.MainWindow|Agent manager item "dfdsfdsfsdf" has been deleted
+2016-05-23 13:58:16.4189|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 13:58:56.0239|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"kfdsjfkdshfkjh"...
+2016-05-23 13:58:56.0395|INFO|AistTrader.MainWindow|IP and port of -"kfdsjfkdshfkjh" connection were successfully acquired
+2016-05-23 13:58:58.0120|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is active now
+2016-05-23 13:58:58.4901|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-23 13:58:58.5264|INFO|AistTrader.MainWindow|Portfolios for connection "kfdsjfkdshfkjh" were loaded
+2016-05-23 13:59:13.1535|INFO|AistTrader.MainWindow|Successfully added agent manager - "dfdsfdsfsdf"
+2016-05-23 13:59:13.4168|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 13:59:18.1980|INFO|AistTrader.MainWindow|Agent manager item "dfdsfdsfsdf" has been deleted
+2016-05-23 13:59:18.2700|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 13:59:35.3169|INFO|AistTrader.MainWindow|Successfully added agent manager - "dfdsfdsfsdf"
+2016-05-23 13:59:35.5804|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 14:14:27.1562|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is not active now
+2016-05-23 14:14:30.0478|INFO|AistTrader.MainWindow|Agent manager item "dfdsfdsfsdf" has been deleted
+2016-05-23 14:14:30.1012|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 14:21:23.1704|INFO|AistTrader.MainWindow|Successfully added agent manager - "dfdsfdsfsdf"
+2016-05-23 14:21:23.4253|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 14:26:02.9709|INFO|AistTrader.MainWindow|Agent manager item "dfdsfdsfsdf" has been deleted
+2016-05-23 14:26:03.0645|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-23 14:26:06.9592|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"kfdsjfkdshfkjh"...
+2016-05-23 14:26:06.9592|INFO|AistTrader.MainWindow|IP and port of -"kfdsjfkdshfkjh" connection were successfully acquired
+2016-05-23 14:26:12.9158|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is active now
+2016-05-23 14:26:13.0820|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-23 14:26:13.2908|INFO|AistTrader.MainWindow|Portfolios for connection "kfdsjfkdshfkjh" were loaded
+2016-05-23 14:32:50.1280|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"kfdsjfkdshfkjh"...
+2016-05-23 14:32:50.1500|INFO|AistTrader.MainWindow|IP and port of -"kfdsjfkdshfkjh" connection were successfully acquired
+2016-05-23 14:32:53.3818|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is active now
+2016-05-23 14:32:53.6199|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-23 14:32:53.7856|INFO|AistTrader.MainWindow|Portfolios for connection "kfdsjfkdshfkjh" were loaded
+2016-05-23 14:33:15.6844|INFO|AistTrader.MainWindow|Successfully added agent manager - "dfdsfdsfsdf"
+2016-05-23 14:33:15.9651|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
