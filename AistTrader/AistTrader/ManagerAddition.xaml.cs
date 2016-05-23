@@ -162,6 +162,7 @@ namespace AistTrader
             Close();
         }
 
+
         private void GroupOrSingleAgentComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var result = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any

@@ -26,12 +26,14 @@ namespace AistTrader
                 EditSingleOrGroupItemBtn.IsEnabled = false;
                 EditSingleOrGroupItemBtn.ToolTip = "Added agents can't be edited.";
             }
+            
             else
                 EditSingleOrGroupItemBtn.IsEnabled = true;
             if (AgentsStorage.Count == 0)
             {
                 EditSingleOrGroupItemBtn.IsEnabled = false;
                 EditSingleOrGroupItemBtn.ToolTip = "Added agents can't be edited.";
+
             }
             if (AgentListView.Items.Count == 0)
             {
@@ -44,11 +46,10 @@ namespace AistTrader
 
             //TODO: проверить инициализацию коллекций на данном этапе
             var agentItem = AgentListView.SelectedItem as Agent;
-            var usedInManager =AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString());
             if (AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString()))
             {
                 DelAgentBtn.IsEnabled = false;
-                DelAgentBtn.ToolTip = string.Format("Can't delete - \"{0}\", currently used in agent manager as \"{1}\"",agentItem.Name, usedInManager.Name) ;
+                DelAgentBtn.ToolTip = string.Format("Can't delete - \"{0}\", currently used in agen manager",agentItem.Name) ;
             }
         }
         private void AgentListView_Loaded(object sender, RoutedEventArgs e)
