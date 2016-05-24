@@ -102,3 +102,13 @@ C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe.man
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.application
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe
 C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.pdb
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\PortfoliosWindow.baml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\PortfoliosWindow.g.cs
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\MyTradesWindow.baml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\OrdersWindow.baml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\SecuritiesWindow.baml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\MyTradesWindow.g.cs
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\OrdersWindow.g.cs
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\SecuritiesWindow.g.cs
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\QuotesWindow.baml
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\QuotesWindow.g.cs

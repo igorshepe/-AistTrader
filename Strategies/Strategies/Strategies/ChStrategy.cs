@@ -15,7 +15,7 @@ using Strategies.Settings;
 
 namespace Strategies.Strategies
 {
-    public class ChStrategy : Strategy, IOptionalSettings
+    public class ChStrategy : Strategy, IOptionalSettings   
 
     {
         private static readonly Logger TradesLogger = NLog.LogManager.GetLogger("TradesLogger");
@@ -232,7 +232,7 @@ namespace Strategies.Strategies
 
             order.WhenRegisterFailed(this.Connector).Do((o, of) =>
             {
-                TradesLogger.Info(of.Error);
+                TradesLogger.Info(of.Error.ToString);
                 this.AddErrorLog(of.Error);
             });
 
@@ -250,6 +250,8 @@ namespace Strategies.Strategies
                     // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                     this.Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
 
+                    var d = order.TransactionId;
+                    
                     // Удаляет определенное правило
                     // this.Rules.Remove(orderCanceledRule)
                 })
@@ -266,10 +268,11 @@ namespace Strategies.Strategies
         // Возвращает объект заявки с рыночной ценой, по заданному направлению
         private Order GetOrder(Sides side, decimal price, Candle candle)
         {
-
-            var shrinkPrice = Security.ShrinkPrice(price);
+            var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену до шага цены иснтрумента
             var bestprice = this.GetMarketPrice(side);
-            TradesLogger.Info("{0} midch {1}, bestprice{2}", Name, shrinkPrice, bestprice);
+            var d = Security.GetMarketPrice(this.Connector, side);
+
+            TradesLogger.Info("{0} midch {1}, bestprice {2}", Name, shrinkPrice , d);
             //if (orderprice == null)
             //    return null;
             return this.CreateOrder(side, shrinkPrice);
@@ -306,6 +309,7 @@ namespace Strategies.Strategies
                     if (_ssmaValue > _fsmaValue && candle.LowPrice <= _lowestValue && _enterPosition)
                         // Вход в короткую позицию
                     {
+                        _exitPosition = false; // блокируем вход и выход в одной свече
                         _enterPosition = false; // для предотвращения бесконечных входов внутри одной свечки
                         _sellPriceCh = _indicatorLowest.GetCurrentValue();
                         order = GetOrder(Sides.Sell, _sellPriceCh, candle);
@@ -315,6 +319,7 @@ namespace Strategies.Strategies
                     }
                     else if (_ssmaValue < _fsmaValue && candle.HighPrice >= _highestValue && _enterPosition)
                     {
+                        _exitPosition = false; // блокируем вход и выход в одной свече
                         _enterPosition = false; // для предотвращения бесконечных входов внутри одной свечки
                         _buyPriceCh = _indicatorHighest.GetCurrentValue();
                         order = GetOrder(Sides.Buy, _buyPriceCh, candle);
@@ -327,7 +332,8 @@ namespace Strategies.Strategies
                 {
                     if (candle.HighPrice >= _midChValue && _exitPosition)
                     {
-                        _exitPosition = false;
+                        _exitPosition = false;// для предотвращения бесконечных выходов внутри одной свечки
+                        _enterPosition = false; // блокируем вход и выход в одной свече
                         _midPriceCh = _midChValue;
                         order = GetOrder(Sides.Buy, _midPriceCh, candle);
                         TradesLogger.Info("{0}: SX {1}, Candle_HP {2} > MidCH {3}", Name, _midPriceCh, candle.HighPrice,
@@ -338,7 +344,8 @@ namespace Strategies.Strategies
                 {
                     if (candle.LowPrice <= _midChValue && _exitPosition)
                     {
-                        _exitPosition = false;
+                        _exitPosition = false; // для предотвращения бесконечных выходов внутри одной свечки
+                        _enterPosition = false; // блокируем вход и выход в одной свече
                         _midPriceCh = _midChValue;
                         order = GetOrder(Sides.Sell, _midPriceCh, candle);
                         TradesLogger.Info("{0}: LX {1}, Candle_LP {2} < MidCH {3}", Name, _midPriceCh, candle.LowPrice,
@@ -362,11 +369,7 @@ namespace Strategies.Strategies
             var ssmaValue = _indicatorSlowSma.Process(candle.ClosePrice);
             var fsmaValue = _indicatorFastSma.Process(candle.ClosePrice);
 
-            if (_cancelOrderCandle == 0) // проверяем когда нужно снять все заявки в случае пропуска правильного входа или выхода
-            {
-                CancelActiveOrders();
-                _cancelOrderCandle = _cancelCandle;
-            }
+            
 
             if (candle.OpenTime < time ||
                 !_indicatorSlowSma.IsFormed ||
@@ -382,8 +385,18 @@ namespace Strategies.Strategies
                     _indicatorLowest.IsFormed
                     )
                 {
-                    TradesLogger.Info("{0}: Ожидаем исполнения заявки, {1} свечей до отмены заявки", Name, _cancelOrderCandle);
-                    --_cancelOrderCandle;
+                    if (_cancelOrderCandle == 0) // проверяем когда нужно снять все заявки в случае пропуска правильного входа или выхода
+                    {
+                        CancelActiveOrders();
+
+                        _cancelOrderCandle = _cancelCandle;
+                    }
+                    else
+                    {
+                        TradesLogger.Info("{0}: Ожидаем исполнения заявки, {1} свечей до отмены заявки", Name, _cancelOrderCandle);
+                        --_cancelOrderCandle;
+                    }
+                    
                 }
                 else
                     TradesLogger.Info("{0}: Исторические свечи {1}", Name, candle.OpenTime);

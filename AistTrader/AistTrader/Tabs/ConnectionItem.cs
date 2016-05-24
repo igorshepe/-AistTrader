@@ -234,11 +234,27 @@ namespace AistTrader
             conn.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>();
             conn.ConnectionParams.Tools = new List<Security>();
             conn.ConnectionParams.IsRegistredConnection = true;
+
+            connection.NewOrders += orders =>
+            {
+                 _ordersWindow.OrderGrid.Orders.AddRange(orders); // Для тестов 
+            };
+            connection.NewPositions += positions =>
+            {
+                _portfoliosWindow.PortfolioGrid.Positions.AddRange(positions); // Для тестов 
+            };
+            connection.NewMyTrades  += trades =>
+            {
+                _myTradesWindow.TradeGrid.Trades.AddRange(trades); // Для тестов 
+            };
+            _securitiesWindow.SecurityPicker.MarketDataProvider = connection; // Для тестов 
+
             connection.NewPortfolios += portfolios =>
             {
                 this.GuiAsync(() => conn.ConnectionParams.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
                 this.GuiAsync(() => UpdateProviderGridListView(conn));
                 this.GuiAsync(() => Logger.Info("Portfolios for connection \"{0}\" were loaded",connection.ConnectionName));
+                this.GuiAsync(() => _portfoliosWindow.PortfolioGrid.Portfolios.AddRange(portfolios)); // Для тестов 
                 //try
                 //{
                 //    TimeHelper.SyncMarketTime();
@@ -258,6 +274,7 @@ namespace AistTrader
                         Logger.Info("Securities were loaded");
                     }
                 });
+                this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
             };
             connection.Connected += () =>
             {
@@ -265,7 +282,7 @@ namespace AistTrader
                 this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Connected);
                 this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is active now", connection.ConnectionName));
-
+                
                 //try
                 //{
                 //    TimeHelper.SyncMarketTime(20000);

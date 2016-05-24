@@ -11,9 +11,11 @@ using Common.Entities;
 using Common.Params;
 using Ecng.Collections;
 using Ecng.Common;
+using Ecng.Xaml;
 using MahApps.Metro.Controls.Dialogs;
 using MoreLinq;
 using NLog;
+using SamplePlaza;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 
@@ -47,6 +49,11 @@ namespace AistTrader
         public CollectionView PortfolioCollectionView { get; set; }
         public CollectionView AgentManagerCollectionView { get; set; }
         private GridLength LogWindowPreviousHight;
+
+        private readonly PortfoliosWindow _portfoliosWindow = new PortfoliosWindow();
+        private readonly OrdersWindow _ordersWindow = new OrdersWindow();
+        private readonly SecuritiesWindow _securitiesWindow = new SecuritiesWindow();
+        private readonly MyTradesWindow _myTradesWindow = new MyTradesWindow();
         #endregion
 
         public MainWindow()
@@ -69,6 +76,10 @@ namespace AistTrader
 
             AgentManagerStorage = new ObservableCollection<AgentManager>();
 
+            _portfoliosWindow.MakeHideable();
+            _ordersWindow.MakeHideable();
+            _myTradesWindow.MakeHideable();
+            _securitiesWindow.MakeHideable();
 
             #endregion
         }
@@ -134,6 +145,32 @@ namespace AistTrader
             form = null;
         }
 
+        private void ShowPortfoliosClick(object sender, RoutedEventArgs e)
+        {
+            ShowOrHide(_portfoliosWindow);
+        }
+        private void ShowSecuritiesClick(object sender, RoutedEventArgs e)
+        {
+            ShowOrHide(_securitiesWindow);
+        }
+        private void ShowMyTradesClick(object sender, RoutedEventArgs e)
+        {
+            ShowOrHide(_myTradesWindow);
+        }
+        private void ShowOrdersClick(object sender, RoutedEventArgs e)
+        {
+            ShowOrHide(_ordersWindow);
+        }
+        private static void ShowOrHide(Window window)
+        {
+            if (window == null)
+                throw new ArgumentNullException(nameof(window));
+
+            if (window.Visibility == Visibility.Visible)
+                window.Hide();
+            else
+                window.Show();
+        }
         private async void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;

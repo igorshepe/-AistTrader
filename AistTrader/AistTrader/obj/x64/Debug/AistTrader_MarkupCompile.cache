@@ -10,11 +10,11 @@ none
 false
 
 C:\Repository\-AistTrader\AistTrader\AistTrader\App.xaml
-111239908377
+16-428878771
 1-2138471434
-171544908402
+22859791564
 38-39313227
-ManagerAdditionTradeSettings.xaml;Resources\Icons.xaml;SecuritiesSelectorWindow.xaml;WhatsNew.xaml;MainWindow.xaml;AgentAddition.xaml;ConnectionAddition.xaml;GroupAddition.xaml;ManagerAddition.xaml;PortfolioAddition.xaml;AgentSettings.xaml;
+ManagerAdditionTradeSettings.xaml;MyTradesWindow.xaml;OrdersWindow.xaml;PortfoliosWindow.xaml;QuotesWindow.xaml;Resources\Icons.xaml;SecuritiesSelectorWindow.xaml;SecuritiesWindow.xaml;WhatsNew.xaml;MainWindow.xaml;AgentAddition.xaml;ConnectionAddition.xaml;GroupAddition.xaml;ManagerAddition.xaml;PortfolioAddition.xaml;AgentSettings.xaml;
 
 False
 

@@ -170,8 +170,23 @@
     <Compile Include="ManagerAdditionTradeSettings.xaml.cs">
       <DependentUpon>ManagerAdditionTradeSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyTradesWindow.xaml.cs">
+      <DependentUpon>MyTradesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdersWindow.xaml.cs">
+      <DependentUpon>OrdersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PortfoliosWindow.xaml.cs">
+      <DependentUpon>PortfoliosWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotesWindow.xaml.cs">
+      <DependentUpon>QuotesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SecuritiesSelectorWindow.xaml.cs">
       <DependentUpon>SecuritiesSelectorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SecuritiesWindow.xaml.cs">
+      <DependentUpon>SecuritiesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WhatsNew.xaml.cs">
       <DependentUpon>WhatsNew.xaml</DependentUpon>
@@ -202,11 +217,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="MyTradesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdersWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PortfoliosWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuotesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SecuritiesSelectorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SecuritiesWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
