@@ -276,6 +276,10 @@ namespace AistTrader
                 });
                 this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
             };
+            connection.PortfolioChanged += portfolio =>
+            {
+
+            };
             connection.Connected += () =>
             {
                 this.GuiAsync(() => conn.ConnectionParams.IsConnected = true);

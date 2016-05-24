@@ -424,6 +424,7 @@ namespace AistTrader
                             foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents"))
                             {
                                 var newAgent = (Agent)rs.Clone();
+                                newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
                                 newAgent.Params.Amount = amount;
                                 newAgent.Params.GroupName = groupName;
                                 list.Add(newAgent);
