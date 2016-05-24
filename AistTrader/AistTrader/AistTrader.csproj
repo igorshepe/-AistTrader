@@ -170,22 +170,22 @@
     <Compile Include="ManagerAdditionTradeSettings.xaml.cs">
       <DependentUpon>ManagerAdditionTradeSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyTradesWindow.xaml.cs">
+    <Compile Include="Артём-Тест\MyTradesWindow.xaml.cs">
       <DependentUpon>MyTradesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrdersWindow.xaml.cs">
+    <Compile Include="Артём-Тест\OrdersWindow.xaml.cs">
       <DependentUpon>OrdersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PortfoliosWindow.xaml.cs">
+    <Compile Include="Артём-Тест\PortfoliosWindow.xaml.cs">
       <DependentUpon>PortfoliosWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuotesWindow.xaml.cs">
+    <Compile Include="Артём-Тест\QuotesWindow.xaml.cs">
       <DependentUpon>QuotesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SecuritiesSelectorWindow.xaml.cs">
+    <Compile Include="Артём-Тест\SecuritiesSelectorWindow.xaml.cs">
       <DependentUpon>SecuritiesSelectorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SecuritiesWindow.xaml.cs">
+    <Compile Include="Артём-Тест\SecuritiesWindow.xaml.cs">
       <DependentUpon>SecuritiesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WhatsNew.xaml.cs">
@@ -217,19 +217,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MyTradesWindow.xaml">
+    <Page Include="Артём-Тест\MyTradesWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="OrdersWindow.xaml">
+    <Page Include="Артём-Тест\OrdersWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PortfoliosWindow.xaml">
+    <Page Include="Артём-Тест\PortfoliosWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="QuotesWindow.xaml">
+    <Page Include="Артём-Тест\QuotesWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -237,11 +237,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SecuritiesSelectorWindow.xaml">
+    <Page Include="Артём-Тест\SecuritiesSelectorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SecuritiesWindow.xaml">
+    <Page Include="Артём-Тест\SecuritiesWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

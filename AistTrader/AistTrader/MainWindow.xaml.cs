@@ -15,7 +15,6 @@ using Ecng.Xaml;
 using MahApps.Metro.Controls.Dialogs;
 using MoreLinq;
 using NLog;
-using SamplePlaza;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 

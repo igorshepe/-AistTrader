@@ -7913,3 +7913,13 @@
 2016-05-24 14:12:07.0898|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is active now
 2016-05-24 14:12:07.3521|INFO|AistTrader.MainWindow|Securities were loaded
 2016-05-24 14:12:08.0206|INFO|AistTrader.MainWindow|Portfolios for connection "kfdsjfkdshfkjh" were loaded
+2016-05-24 14:31:56.8151|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"kfdsjfkdshfkjh"...
+2016-05-24 14:31:56.8401|INFO|AistTrader.MainWindow|IP and port of -"kfdsjfkdshfkjh" connection were successfully acquired
+2016-05-24 14:31:58.7254|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is active now
+2016-05-24 14:31:58.9756|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-24 14:31:59.6140|INFO|AistTrader.MainWindow|Portfolios for connection "kfdsjfkdshfkjh" were loaded
+2016-05-24 14:36:59.2706|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"kfdsjfkdshfkjh"...
+2016-05-24 14:36:59.2966|INFO|AistTrader.MainWindow|IP and port of -"kfdsjfkdshfkjh" connection were successfully acquired
+2016-05-24 14:37:01.2523|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is active now
+2016-05-24 14:37:01.6288|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-24 14:37:02.1692|INFO|AistTrader.MainWindow|Portfolios for connection "kfdsjfkdshfkjh" were loaded
