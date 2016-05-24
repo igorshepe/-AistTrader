@@ -259,6 +259,10 @@ namespace AistTrader
                     }
                 });
             };
+            connection.PortfolioChanged += portfolio =>
+            {
+
+            };
             connection.Connected += () =>
             {
                 this.GuiAsync(() => conn.ConnectionParams.IsConnected = true);
