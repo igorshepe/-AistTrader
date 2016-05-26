@@ -232,7 +232,8 @@ namespace AistTrader
                 //strategy = new ChStrategy(agentSetting);
 
                 strategy = new Strategy();
-                strategy = (ChStrategy)Activator.CreateInstance(strategyType, agentSetting);
+                //strategy = (ChStrategy)Activator.CreateInstance(strategyType, agentSetting);
+                strategy = new ChStrategy(agentSetting);
                 strategy.DisposeOnStop = true;
                 strategy.Security = item.AgentManagerSettings.Tool;
                 strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code);
@@ -242,6 +243,9 @@ namespace AistTrader
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;
                 strategy.Start();
+
+
+
                 //item.AgentManagerSettings.Command = OperationCommand.Disconnect;
                 //UpdateAgentManagerListView();
 
