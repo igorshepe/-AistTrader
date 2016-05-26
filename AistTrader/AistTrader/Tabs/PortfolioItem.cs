@@ -93,7 +93,10 @@ namespace AistTrader //todo: идентификаторы портфеля то�
         {
 
             var selectedPortfolio = PortfolioListView.SelectedItem as Portfolio;
-            if (AgentManagerListView.Items.Cast<Common.Entities.AgentManager>().Any(i => i.AgentManagerSettings.Portfolio.Name == selectedPortfolio.Name))
+            if (AgentManagerListView.Items.Cast<Common.Entities.AgentManager>().Any(i =>
+            {
+                return selectedPortfolio != null && i.AgentManagerSettings.Portfolio.Name == selectedPortfolio.Name;
+            }))
             {
                 MessageBox.Show(this, @"На данном портфеле завязан агент в менеджере агентов, удаление невозможно!");
                 return;

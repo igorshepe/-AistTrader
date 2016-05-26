@@ -69,7 +69,7 @@ namespace AistTrader
                 }
                 AgentManagerListView.ItemsSource = AgentManagerStorage;
                 AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-                if (AgentManagerCollectionView.GroupDescriptions.Count == 0)
+                if (AgentManagerCollectionView.GroupDescriptions != null && AgentManagerCollectionView.GroupDescriptions.Count == 0)
                     AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
                 IsAgentManagerSettingsLoaded = true;
             }
@@ -193,7 +193,11 @@ namespace AistTrader
 
         private void AgentManagerTradeSettingsPic_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            var item = (sender as FrameworkElement).DataContext;
+            var frameworkElement = sender as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                var item = frameworkElement.DataContext;
+            }
             var form = new ManagerAdditionTradeSettings();
             form.ShowDialog();
             form = null;
@@ -213,12 +217,16 @@ namespace AistTrader
                         .FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Name);
                 var portfolio = item.AgentManagerSettings.Portfolio;
                 var realConnection =
-                    ConnectionManager.Connections.Find(i => i.ConnectionName == connectionName.Connection.DisplayName);
+                    ConnectionManager.Connections.Find(i =>
+                    {
+                        return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;
+                    });
                 var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
                 SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
                 var agentName = item.AgentManagerSettings.AgentOrGroup;
                 var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().Select(i => i).Where(i => i.Name == agentName).ToList();
-                agentSetting = agent.FirstOrDefault().Params.SettingsStorage;
+                var firstOrDefault = agent.FirstOrDefault();
+                if (firstOrDefault != null) agentSetting = firstOrDefault.Params.SettingsStorage;
 
 
                 //strategy = new ChStrategy(agentSetting);
@@ -272,7 +280,7 @@ namespace AistTrader
                 strategy.Stop();
 
 
-                item.AgentManagerSettings.Command = OperationCommand.Connect;
+                if (item != null) item.AgentManagerSettings.Command = OperationCommand.Connect;
                 UpdateAgentManagerListView();
             }
         }

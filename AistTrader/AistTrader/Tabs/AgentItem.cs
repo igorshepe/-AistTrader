@@ -271,7 +271,7 @@ namespace AistTrader
         {
             AgentListView.ItemsSource = AgentsStorage;
             AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
-            if (AgentCollectionView.GroupDescriptions.Count == 0)
+            if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
                 AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
         }
         public void InitiateAgentSettings()
@@ -291,7 +291,7 @@ namespace AistTrader
                 }
                 AgentListView.ItemsSource = AgentsStorage;
                 AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
-                if (AgentCollectionView.GroupDescriptions.Count == 0)
+                if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
                     AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
                 IsAgentSettingsLoaded = true;
             }

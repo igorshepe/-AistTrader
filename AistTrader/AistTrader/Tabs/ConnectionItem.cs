@@ -92,7 +92,10 @@ namespace AistTrader
         private async void DelAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {//todo: оптимизировать запросы, выборки
             var selectedItem = ProviderListView.SelectedItem as Connection;
-            if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.Id == selectedItem.Id))
+            if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i =>
+            {
+                return selectedItem != null && i.Connection.Id == selectedItem.Id;
+            }))
             {
 
                 //var dialog = new BaseMetroDialog(MainFrm.MainFrm); //(BaseMetroDialog)this.Resources["CustomDialogTest"];
@@ -157,7 +160,10 @@ namespace AistTrader
                 //ON
                 var item = (sender as FrameworkElement).DataContext;
                 var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
-                int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+                int index = ConnectionManager.Connections.FindIndex(i =>
+                {
+                    return rowItem != null && i.ConnectionName == rowItem.DisplayName;
+                });
                 rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
                 if (rowItem.ConnectionParams.IsRegistredConnection)
                     ConnectionManager.Connections[index].Connect();
@@ -171,7 +177,10 @@ namespace AistTrader
                 var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
                 var con = ConnectionManager.Connections.FirstOrDefault(m => rowItem != null && m.ConnectionName == rowItem.ToString());
                 //get index from manager by name
-                int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+                int index = ConnectionManager.Connections.FindIndex(i =>
+                {
+                    return rowItem != null && i.ConnectionName == rowItem.DisplayName;
+                });
                 ConnectionManager.Connections[index].Disconnect();
 
                 if (con != null)
@@ -199,9 +208,15 @@ namespace AistTrader
         public void UpdateProviderGridListView(Connection agentConnection)
         {
             var item = ConnectionsStorage.FirstOrDefault(i => i.DisplayName == agentConnection.DisplayName);
-            item.ConnectionParams.VariationMargin = item.ConnectionParams.Accounts.FirstOrDefault().VariationMargin;
-            item.ConnectionParams.Funds = item.ConnectionParams.Accounts.FirstOrDefault().CurrentValue;
-            item.ConnectionParams.NetValue= item.ConnectionParams.Accounts.FirstOrDefault().CurrentPrice;
+            var firstOrDefault = item.ConnectionParams.Accounts.FirstOrDefault();
+            if (firstOrDefault != null)
+                item.ConnectionParams.VariationMargin = firstOrDefault.VariationMargin;
+            var orDefault = item.ConnectionParams.Accounts.FirstOrDefault();
+            if (orDefault != null)
+                item.ConnectionParams.Funds = orDefault.CurrentValue;
+            var portfolio = item.ConnectionParams.Accounts.FirstOrDefault();
+            if (portfolio != null)
+                item.ConnectionParams.NetValue= portfolio.CurrentPrice;
 
 
             ProviderListView.ItemsSource = ConnectionsStorage;
@@ -358,7 +373,10 @@ namespace AistTrader
                 //ProviderListView.SelectedItems.Clear();
                 //ProviderListView.SelectedItems.Add(item);
                 var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
-                int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+                int index = ConnectionManager.Connections.FindIndex(i =>
+                {
+                    return rowItem != null && i.ConnectionName == rowItem.DisplayName;
+                });
                 rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
                 if (rowItem.ConnectionParams.IsRegistredConnection)
                     ConnectionManager.Connections[index].Connect();
@@ -372,7 +390,10 @@ namespace AistTrader
                 var rowItem = ConnectionsStorage.FirstOrDefault(i => i == item);
                 var con = ConnectionManager.Connections.FirstOrDefault(m => rowItem != null && m.ConnectionName == rowItem.ToString());
                 //get index from manager by name
-                int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+                int index = ConnectionManager.Connections.FindIndex(i =>
+                {
+                    return rowItem != null && i.ConnectionName == rowItem.DisplayName;
+                });
                 ConnectionManager.Connections[index].Disconnect();
                 
                 if (con != null)
