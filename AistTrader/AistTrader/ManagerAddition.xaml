@@ -134,7 +134,8 @@
                 Margin="0,0,5,8" 
                 Width="75"
                 TabIndex="5" 
-                IsCancel="True" Height="23" VerticalAlignment="Bottom" />
+                IsCancel="True"
+                Height="23" VerticalAlignment="Bottom" />
     </Grid>
 </Window>
 

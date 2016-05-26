@@ -398,7 +398,30 @@ namespace AistTrader
 
         private void AmountTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-         
+            Regex regex = new Regex(@"^[0-9]+$");
+            var editor = sender as UnitEditor;
+            if (editor.Text.EndsWith("%"))
+            {
+                string[] line = editor.Text.Split('%');
+                if (!regex.IsMatch(line.First()))
+                {
+                    //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+                    editor.Text = "";
+                    return;
+                    // editor.Select(editor.Text.Length, 0);
+                }
+            }
+            if (!editor.Text.EndsWith("%"))
+            {
+                if (!regex.IsMatch(editor.Text))
+                {
+                    //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+                    editor.Text = "";
+                    return;
+                    //editor.Select(editor.Text.Length, 0);
+                }
+            }
+
             //throw new NotImplementedException();
         }
 
