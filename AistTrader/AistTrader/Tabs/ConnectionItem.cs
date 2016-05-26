@@ -261,17 +261,17 @@ namespace AistTrader
 
             connection.NewOrders += orders =>
             {
-                 _ordersWindow.OrderGrid.Orders.AddRange(orders); // Для тестов 
+                this.GuiAsync(() => _ordersWindow.OrderGrid.Orders.AddRange(orders)); // Для тестов 
             };
             connection.NewPositions += positions =>
             {
-                _portfoliosWindow.PortfolioGrid.Positions.AddRange(positions); // Для тестов 
+                this.GuiAsync(() => _portfoliosWindow.PortfolioGrid.Positions.AddRange(positions)); // Для тестов 
             };
             connection.NewMyTrades  += trades =>
             {
-                _myTradesWindow.TradeGrid.Trades.AddRange(trades); // Для тестов 
+                this.GuiAsync(() => _myTradesWindow.TradeGrid.Trades.AddRange(trades)); // Для тестов 
             };
-            _securitiesWindow.SecurityPicker.MarketDataProvider = connection; // Для тестов 
+            this.GuiAsync(() => _securitiesWindow.SecurityPicker.MarketDataProvider = connection); // Для тестов 
 
             connection.NewPortfolios += portfolios =>
             {
