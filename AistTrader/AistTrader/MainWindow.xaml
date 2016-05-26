@@ -271,9 +271,6 @@
                                                     Binding="{Binding ConnectionParams.NetValue}" />
                                 <DataGridTextColumn Header="Connection state"
                                                     Binding="{Binding ConnectionParams.ConnectionState, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="Is demo connection"
-                                                    Binding="{Binding IsDemo}" />
-
                                 <DataGridTemplateColumn Header="Command">
                                     
                                     <DataGridTemplateColumn.CellTemplate>
@@ -283,6 +280,9 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Is demo connection"
+                                                    Binding="{Binding IsDemo}" />
+                                
                             </DataGrid.Columns>
                             <DataGrid.ContextMenu>
                                 <ContextMenu >

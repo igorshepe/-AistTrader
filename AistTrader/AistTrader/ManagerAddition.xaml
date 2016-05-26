@@ -104,6 +104,7 @@
             Name="SecurityPicker"
             Margin="5,132,5,0" Height="28" VerticalAlignment="Top" TabIndex="2"
             SelectedSecurity="{Binding  Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+            SecuritySelected="SecurityPicker_OnSecuritySelected"
                            
             />
         <xaml:UnitEditor HorizontalAlignment="Left" 

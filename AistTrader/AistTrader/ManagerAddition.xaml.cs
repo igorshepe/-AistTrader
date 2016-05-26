@@ -63,6 +63,7 @@ namespace AistTrader
 
         }
 
+        private bool IsGroup;
         private int EditIndex { get; set; }
         public ManagerAddition()
         {
@@ -165,18 +166,26 @@ namespace AistTrader
 
         private void GroupOrSingleAgentComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var result = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any
+
+            if (GroupOrSingleAgentComboBox.SelectedItem !=null)
+            {
+                var result = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any
                 (i => i.Params.GroupName != "ungrouped agents" && i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-            if (result)
-            {
-                AmountTextBox.Visibility = Visibility.Collapsed;
-                AmountLbl.Visibility = Visibility.Collapsed;
+                if (result)
+                {
+                    AmountTextBox.Visibility = Visibility.Collapsed;
+                    AmountLbl.Visibility = Visibility.Collapsed;
+                    IsGroup = true;
+                }
+                else
+                {
+                    IsGroup = false;
+                    AmountTextBox.Visibility = Visibility.Visible;
+                    AmountLbl.Visibility = Visibility.Visible;
+                }
             }
-            else
-            {
-                AmountTextBox.Visibility = Visibility.Visible;
-                AmountLbl.Visibility = Visibility.Visible;
-            }
+
+            
         }
 
         private void PortfolioComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -302,14 +311,19 @@ namespace AistTrader
                         var props= validManagerProperties;
                         validManagerProperties.Remove("Tools");
                     }
+                    if (AmountTextBox.Visibility == Visibility.Collapsed)
+                    {
+                        validManagerProperties.Remove("Amount");
+                    }
                     OkBtnClick.IsEnabled = validManagerProperties.Values.All(isValid => isValid);
                 }
-                if (validManagerProperties.Count == 3)
+                if (validManagerProperties.Count == 3 & AmountTextBox.Visibility != Visibility.Collapsed)
                 {
                     if (SecurityPicker.SelectedSecurity != null)
                     {
                         var props = validManagerProperties;
                         validManagerProperties.Remove("Tools");
+                        validManagerProperties.Remove("Amount");
                     }
                     OkBtnClick.IsEnabled = validManagerProperties.Values.All(isValid => isValid);
                 }
@@ -348,7 +362,8 @@ namespace AistTrader
                 string[] line = Amount.Split('%');
                 if (!regex.IsMatch(line.First()))
                 {
-                  return "Возможен ввод только цифр или цифры со знаком % на конце";
+                    Amount= "";
+                    return "Возможен ввод только цифр или цифры со знаком % на конце";
                 }
             }
             if (Amount != null && !Amount.EndsWith("%"))
@@ -391,6 +406,14 @@ namespace AistTrader
         {
             //Tools = SecurityPicker.SelectedSecurity.Name;
             //throw new NotImplementedException();
+        }
+
+        private void SecurityPicker_OnSecuritySelected()
+        {
+            if (SecurityPicker.SelectedSecurity != null && PortfolioComboBox.SelectedItem != null && IsGroup)
+            {
+                OkBtnClick.IsEnabled = true;
+            }
         }
     } 
 }
