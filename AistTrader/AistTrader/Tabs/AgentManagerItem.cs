@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -26,16 +27,11 @@ namespace AistTrader
     {
         public readonly PlazaTrader Trader = new PlazaTrader();
         public bool IsAgentManagerSettingsLoaded;
+        public bool AllAgentManagerItemsChecked { get; set; }
         Strategy strategy = new Strategy();
         //public static CandleStrategy strategy = new CandleStrategy();
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
-
-
-
-
-
-
             var form = new ManagerAddition();
             form.ShowDialog();
             form = null;
@@ -308,5 +304,40 @@ namespace AistTrader
         }
 
 
+        private void ChkBoxSelectAllAgentManagerItems_OnClick(object sender, RoutedEventArgs e)
+        {
+
+            if (AllAgentsChecked == true)
+            {
+
+                //foreach (var item in AgentListView.Items.Cast<Agent>())
+                //{
+                //    item.Params.IsChecked = false;
+                //}
+
+                var list = AgentListView.Items.Cast<Agent>().Select(i => i).ToList();
+                foreach (var i in list)
+                    i.Params.IsChecked = true;
+                AgentListView.CommitEdit();
+                AgentListView.CommitEdit();
+                AgentListView.CancelEdit();
+                AgentListView.CancelEdit();
+                ICollectionView view = CollectionViewSource.GetDefaultView(AgentListView.Items);
+                view.Refresh();
+            }
+            else
+            {
+                var list = AgentListView.Items.Cast<Agent>().Select(i => i).ToList();
+                foreach (var i in list)
+                    i.Params.IsChecked = false;
+                AgentListView.CommitEdit();
+                AgentListView.CommitEdit();
+                AgentListView.CancelEdit();
+                AgentListView.CancelEdit();
+                ICollectionView view = CollectionViewSource.GetDefaultView(AgentListView.Items);
+                view.Refresh();
+            }
+            // throw new NotImplementedException();
+        }
     }
 }

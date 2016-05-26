@@ -200,7 +200,7 @@ namespace AistTrader
             //_shutdown = result == MessageDialogResult.Affirmative;
 
             //if (_shutdown)
-            //    Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)

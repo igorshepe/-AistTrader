@@ -23,5 +23,6 @@ namespace Common.Params
         public int Transaction { get; set; }
         public double FinalTransaction { get; set; }
         public OperationCommand Command { get; set; }
+        public bool IsChecked { get; set; }
     }
 }

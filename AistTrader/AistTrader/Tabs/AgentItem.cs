@@ -309,9 +309,19 @@ namespace AistTrader
         {
             if (AllAgentsChecked == true)
             {
+
+                //foreach (var item in AgentListView.Items.Cast<Agent>())
+                //{
+                //    item.Params.IsChecked = false;
+                //}
+
                 var list = AgentListView.Items.Cast<Agent>().Select(i => i).ToList();
                 foreach (var i in list)
                     i.Params.IsChecked = true;
+                AgentListView.CommitEdit();
+                AgentListView.CommitEdit();
+                AgentListView.CancelEdit();
+                AgentListView.CancelEdit();
                 ICollectionView view = CollectionViewSource.GetDefaultView(AgentListView.Items);
                 view.Refresh();
             }
@@ -320,6 +330,10 @@ namespace AistTrader
                 var list = AgentListView.Items.Cast<Agent>().Select(i => i).ToList();
                 foreach (var i in list)
                     i.Params.IsChecked = false;
+                AgentListView.CommitEdit();
+                AgentListView.CommitEdit();
+                AgentListView.CancelEdit();
+                AgentListView.CancelEdit();
                 ICollectionView view = CollectionViewSource.GetDefaultView(AgentListView.Items);
                 view.Refresh();
             }
