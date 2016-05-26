@@ -170,6 +170,7 @@
     <Compile Include="ManagerAdditionTradeSettings.xaml.cs">
       <DependentUpon>ManagerAdditionTradeSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Артём-Тест\MyTradesWindow.xaml.cs">
       <DependentUpon>MyTradesWindow.xaml</DependentUpon>
     </Compile>

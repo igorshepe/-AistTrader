@@ -75,8 +75,13 @@ namespace AistTrader
                 Logger.Log(LogLevel.Error, e.Message);
                 Logger.Log(LogLevel.Error, e.InnerException.Message);
                 if (e.InnerException.Message == "Root element is missing.")
-                   File.WriteAllText("Connections.xml", string.Empty);
+                    File.WriteAllText("Connections.xml", string.Empty);
             }
+            var firstOrDefault = ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.IsDefaulConnection);
+            if (firstOrDefault != null)
+                DefaultConnectionStatusBarText = "Default: " + firstOrDefault.DisplayName;
+            else
+                DefaultConnectionStatusBarText = "Default connection is not set";
         }
         private void AddAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {
@@ -407,12 +412,18 @@ namespace AistTrader
             {
                 EditAgentConnectionBtn.IsEnabled = false;
                 DelAgentConnectionBtn.IsEnabled = false;
+                DefaultConnectionStatusBarText = "Default connection is not set";
             }
             else
             {
                 EditAgentConnectionBtn.IsEnabled = true;
                 DelAgentConnectionBtn.IsEnabled = true;
             }
+            //if (ProviderListView.Items.Count == 1)
+            //{
+            //    var item = ProviderListView.SelectedItem as Connection;
+            //    DefaultConnectionStatusBarText = "Default: " + item.DisplayName;
+            //}
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -425,12 +436,14 @@ namespace AistTrader
                 conn.ConnectionParams.IsDefaulConnection = false;
             var item = ProviderListView.SelectedItem as Connection;
             item.ConnectionParams.IsDefaulConnection = true;
+            DefaultConnectionStatusBarText = "Default: " + item.DisplayName;
             Logger.Info("Connection - \"{0}\" is set to be default connection", item.DisplayName);
             if (item.ConnectionParams.IsConnected)
                 Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Connected.ToString();
             else
                 Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Disconnected.ToString();
             SaveProviderItems();
+            UpdateProviderListView();
         }
     }
 

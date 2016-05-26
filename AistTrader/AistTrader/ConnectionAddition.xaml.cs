@@ -116,7 +116,7 @@ namespace AistTrader
             var connParams = new ConnectionParams(ConnectionNameTxtBox.Text, ClienCodeTxtBox.Text, terminalConnSettings, false, IsFirtConnectionToBeSetAsDefault());
             if (editMode)
             {
-                var item= MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == connectionToEdit.Id);
+                var item = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == connectionToEdit.Id);
                 item.DisplayName = ConnectionNameTxtBox.Text;
                 item.ConnectionParams = connParams;
                 MainWindow.Instance.AddNewAgentConnection(connectionToEdit, EditIndex);
@@ -124,7 +124,12 @@ namespace AistTrader
                 connectionToEdit = null;
             }
             else
+            {
                 MainWindow.Instance.AddNewAgentConnection(new Connection(ConnectionNameTxtBox.Text, connParams, IsDemoChkBox.IsChecked.Value), EditIndex);
+                if (MainWindow.Instance.ProviderCollectionView.Count == 1)
+                    MainWindow.Instance.DefaultConnectionStatusBarText = "Default: " + ConnectionNameTxtBox.Text;
+            }
+
             Close();
         }
         private void ConnectionNameTxtBox_KeyDown(object sender, KeyEventArgs e)

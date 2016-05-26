@@ -26,9 +26,12 @@ namespace AistTrader
                 EditSingleOrGroupItemBtn.IsEnabled = false;
                 EditSingleOrGroupItemBtn.ToolTip = "Added agents can't be edited.";
             }
-            
+
             else
+            {
                 EditSingleOrGroupItemBtn.IsEnabled = true;
+            }
+
             if (AgentsStorage.Count == 0)
             {
                 EditSingleOrGroupItemBtn.IsEnabled = false;
@@ -44,13 +47,13 @@ namespace AistTrader
             else
                 DelAgentBtn.IsEnabled = true;
 
-            //TODO: проверить инициализацию коллекций на данном этапе
-            var agentItem = AgentListView.SelectedItem as Agent;
-            if (AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString()))
-            {
-                DelAgentBtn.IsEnabled = false;
-                DelAgentBtn.ToolTip = string.Format("Can't delete - \"{0}\", currently used in agen manager",agentItem.Name) ;
-            }
+            ////TODO: проверить инициализацию коллекций на данном этапе
+            //var agentItem = AgentListView.SelectedItem as Agent;
+            //if (AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString()))
+            //{
+            //    DelAgentBtn.IsEnabled = false;
+            //    DelAgentBtn.ToolTip = string.Format("Can't delete - \"{0}\", currently used in agen manager",agentItem.Name) ;
+            //}
         }
         private void AgentListView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -69,7 +72,7 @@ namespace AistTrader
         }
         private void AddAgentConfigGroupBtnClick(object sender, RoutedEventArgs e)
         {
-            var form= new GroupAddition().ShowDialog();
+            var form = new GroupAddition().ShowDialog();
             form = null;
             SaveAgentSettings();
         }
@@ -154,7 +157,7 @@ namespace AistTrader
                             MessageBox.Show("Нельзя удалить, используется в группе");
                         }
                         var agentItem = AgentListView.SelectedItem as Agent;
-                        var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup== agentItem.Params.FriendlyName.ToString());
+                        var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString());
                         if (isUsedInAgentManager)
                         {
                             MessageBox.Show("Нельзя удалить, используется в менеджере агентов");
@@ -195,7 +198,7 @@ namespace AistTrader
                 CreateGroupItemBtn.ToolTip = "Can't create a group with one registred agent";
 
             }
-            
+
         }
         private void EditAgentConfigBtnClick(object sender, RoutedEventArgs e)
         {
@@ -268,11 +271,11 @@ namespace AistTrader
         {
             AgentListView.ItemsSource = AgentsStorage;
             AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
-            if(AgentCollectionView.GroupDescriptions.Count ==0)
+            if (AgentCollectionView.GroupDescriptions.Count == 0)
                 AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
         }
         public void InitiateAgentSettings()
-         {
+        {
             StreamReader sr = new StreamReader("Agents.xml");
             try
             {
@@ -296,7 +299,7 @@ namespace AistTrader
             {
                 IsAgentSettingsLoaded = false;
                 sr.Close();
-                Logger.Log(LogLevel.Error,  e.Message);
+                Logger.Log(LogLevel.Error, e.Message);
                 Logger.Log(LogLevel.Error, e.InnerException.Message);
                 if (e.InnerException.Message == "Root element is missing.")
                     IsAgentSettingsLoaded = false;

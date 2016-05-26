@@ -87,6 +87,18 @@
             </Menu>
 
             <StatusBar Grid.Row="3"   Height="28">
+                <TextBlock Name="DefaultConnectionTextBlock" Text="{Binding DefaultConnectionStatusBarText, RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window}}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="ToolTip" Value="Default connection is not set"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Separator Style="{StaticResource MetroStatusBarSeparator}" />
                 <TextBlock Name="ConnectionStatusTextBlock" Text="Disconnected" ToolTipOpening="ConnectionStatusTextBlock_OnToolTipOpening">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">

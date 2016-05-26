@@ -21,7 +21,7 @@ namespace AistTrader
 
 
         public int RowSetter;
-       // public ObservableCollection<Agent> AgentsStorage { get; private set; }
+        // public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public Agent AgentItem;
         public string OldGroupName;
         private int EditIndex { get; set; }
@@ -89,7 +89,7 @@ namespace AistTrader
                     Height = 28,
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Width = 280,
-                    Margin = new Thickness {Left = 10, Top = 5, Right = 0, Bottom = 0},
+                    Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                     ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName),
                     SelectedItem = AgentItem.Params.FriendlyName,
                     Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter),
@@ -204,7 +204,7 @@ namespace AistTrader
                 if (IsEditMode)
                     AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
                 CreateGroupeBtn.Content = "Сохранить";
-                if (RowSetter!=0)
+                if (RowSetter != 0)
                     addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
                 DynamicGrid.RegisterName(amount.Name, amount);
 
@@ -233,17 +233,17 @@ namespace AistTrader
                 string[] line = editor.Text.Split('%');
                 if (!regex.IsMatch(line.First()))
                 {
-                    MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+                    //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
                     editor.Text = "";
                     return;
-                   // editor.Select(editor.Text.Length, 0);
+                    // editor.Select(editor.Text.Length, 0);
                 }
             }
             if (!editor.Text.EndsWith("%"))
             {
                 if (!regex.IsMatch(editor.Text))
                 {
-                    MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
+                    //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
                     editor.Text = "";
                     return;
                     //editor.Select(editor.Text.Length, 0);
@@ -305,7 +305,7 @@ namespace AistTrader
             if (IsEditMode)
                 AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
             CreateGroupeBtn.Content = "Сохранить";
-            if (RowSetter!=0)
+            if (RowSetter != 0)
                 addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
             DynamicGrid.RegisterName(amount.Name, amount);
 
@@ -432,7 +432,7 @@ namespace AistTrader
                             }
                             foreach (var i in list)
                             {
-                                MainWindow.Instance.AddNewAgent(i,-1);
+                                MainWindow.Instance.AddNewAgent(i, -1);
                             }
                         }
                 }

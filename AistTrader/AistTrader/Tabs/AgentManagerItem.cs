@@ -205,7 +205,7 @@ namespace AistTrader
 
         private void StartStopBtnClick(object sender, RoutedEventArgs e)
         {
-            
+
             if ((bool)(sender as ToggleSwitchButton).IsChecked)
             {
                 //ON 
@@ -243,9 +243,9 @@ namespace AistTrader
 
 
                 //SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
-                
 
-                
+
+
 
 
 
@@ -274,8 +274,8 @@ namespace AistTrader
             {
                 var item = (sender as FrameworkElement).DataContext as AgentManager;
                 strategy.Stop();
-                
-                
+
+
                 item.AgentManagerSettings.Command = OperationCommand.Connect;
                 UpdateAgentManagerListView();
             }

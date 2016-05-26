@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Threading;
+using AistTrader.Annotations;
 using Common.Entities;
 using Common.Params;
 using Ecng.Collections;
@@ -20,7 +22,7 @@ using StockSharp.Messages;
 
 namespace AistTrader
 {
-    public partial class MainWindow
+    public partial class MainWindow: INotifyPropertyChanged
     {
         #region Fields
         private bool _shutdown;
@@ -53,6 +55,18 @@ namespace AistTrader
         private readonly OrdersWindow _ordersWindow = new OrdersWindow();
         private readonly SecuritiesWindow _securitiesWindow = new SecuritiesWindow();
         private readonly MyTradesWindow _myTradesWindow = new MyTradesWindow();
+        private string _defaultConnectionStatusBarText;
+        public string DefaultConnectionStatusBarText
+        {
+            get { return _defaultConnectionStatusBarText; }
+            set
+            {
+                _defaultConnectionStatusBarText = value;
+
+                OnPropertyChanged(new PropertyChangedEventArgs("DefaultConnectionStatusBarText"));
+
+            }
+        }
         #endregion
 
         public MainWindow()
@@ -107,18 +121,18 @@ namespace AistTrader
 
                 //todo: на все коннекты что есть проверка на активное состояние
 
-                var anyActive = Instance.ConnectionManager.Connections.Any(i=>i.ConnectionState == ConnectionStates.Connected);
+                //var anyActive = Instance.ConnectionManager.Connections.Any(i=>i.ConnectionState == ConnectionStates.Connected);
 
 
-                if (!anyActive)
-                {
-                    AddAgentManagerBtn.ToolTip = "No active connections, cannot retrieve any securities";
-                    AddAgentManagerBtn.IsEnabled = false;
-                }
-                if (anyActive)
-                {
-                    AddAgentManagerBtn.IsEnabled = true;
-                }
+                //if (!anyActive)
+                //{
+                //    AddAgentManagerBtn.ToolTip = "No active connections, cannot retrieve any securities";
+                //    AddAgentManagerBtn.IsEnabled = false;
+                //}
+                //if (anyActive)
+                //{
+                //    AddAgentManagerBtn.IsEnabled = true;
+                //}
 
             }
         }
@@ -172,21 +186,21 @@ namespace AistTrader
         }
         private async void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
-            e.Cancel = true;
-            var mySettings = new MetroDialogSettings()
-            {
-                AffirmativeButtonText = "Quit",
-                NegativeButtonText = "Cancel",
-                AnimateShow = true,
-                AnimateHide = false
-            };
-            var result = await this.ShowMessageAsync("Quit application?",
-                "Sure you want to quit application?",
-                MessageDialogStyle.AffirmativeAndNegative, mySettings);
-            _shutdown = result == MessageDialogResult.Affirmative;
+            //e.Cancel = true;
+            //var mySettings = new MetroDialogSettings()
+            //{
+            //    AffirmativeButtonText = "Quit",
+            //    NegativeButtonText = "Cancel",
+            //    AnimateShow = true,
+            //    AnimateHide = false
+            //};
+            //var result = await this.ShowMessageAsync("Quit application?",
+            //    "Sure you want to quit application?",
+            //    MessageDialogStyle.AffirmativeAndNegative, mySettings);
+            //_shutdown = result == MessageDialogResult.Affirmative;
 
-            if (_shutdown)
-                Application.Current.Shutdown();
+            //if (_shutdown)
+            //    Application.Current.Shutdown();
         }
 
         private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)
@@ -219,7 +233,16 @@ namespace AistTrader
                 ConnectionStatusTextBlock.ToolTip = "Default connection is not set";
                 ConnectionStatusTextBlock.Text = "Disconnected";
             }
-            
+
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs name, [CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

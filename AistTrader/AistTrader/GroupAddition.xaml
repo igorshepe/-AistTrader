@@ -9,7 +9,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-		Height="643.578"
+		Height="696.26"
         Width="380.61" 
         Icon="Resources/Images/mainIcon.ico"
         Loaded="StratSettings_Loaded"
@@ -17,38 +17,39 @@
                       >
     <Grid Margin="1,1,1,0">
         <Button Content="Отмена"
-                Margin="291,570,5,0"
+                Margin="291,630,5,0"
                 TabIndex="8"
                 IsCancel="True" Height="24" VerticalAlignment="Top" />
         <Grid Name="DynamicGrid"
               HorizontalAlignment="Left"
               Width="369"
-              Margin="2,1,0,124"/>
+              Margin="2,32,0,130"/>
         <Button Name="CreateGroupeBtn"
                 Content="ОК"
                 HorizontalAlignment="Left"
-                Margin="211,570,0,0"
+                Margin="211,630,0,0"
                 Width="75"
                 Click="CreateGroupBtnClick" Height="24" VerticalAlignment="Top"/>
         <TextBox Name="GroupNameTxtBox"
                  HorizontalAlignment="Left"
-                 Margin="10,524,0,0"
+                 Margin="10,584,0,0"
                  TextWrapping="Wrap"
                  Width="196"
                  RenderTransformOrigin="-0.358,0.304" Height="24" VerticalAlignment="Top"/>
         <Button Name="AddConfigBtn"
                 Content="Добавить конфигурацию"
                 HorizontalAlignment="Left"
-                Margin="10,570,0,0"
+                Margin="10,630,0,0"
                 Width="196"
                 RenderTransformOrigin="0.027,0.273"
                 Click="AddConfigBtnClick" Height="23" VerticalAlignment="Top"/>
         <Label x:Name="GroupNameLbl"
                Content="Имя группы"
                HorizontalAlignment="Left" 
-               Margin="10,498,0,0" 
+               Margin="10,558,0,0" 
                VerticalAlignment="Top" 
                RenderTransformOrigin="-4.629,-0.727" 
                Width="124"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Foreground="DeepPink" Margin="12,10,0,0" TextWrapping="Wrap" Text="Note: Pick a script and set it's amount" VerticalAlignment="Top" Width="353" Height="23"/>
     </Grid>
 </controls:MetroWindow>
