@@ -386,16 +386,20 @@
 
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name"
-                                                    Binding="{Binding Name}"/>
+                                                    Binding="{Binding Name}"
+                                                    IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Code"
-                                                    Binding="{Binding AgentManagerSettings.Account.AgentAccount.Code}" />
+                                                    Binding="{Binding AgentManagerSettings.Account.AgentAccount.Code}" 
+                                                    IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Agent"
-                                                    Binding="{Binding AgentManagerSettings.AgentOrGroup}" />
+                                                    Binding="{Binding AgentManagerSettings.AgentOrGroup}" 
+                                                    IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Security"
-                                                    Binding="{Binding AgentManagerSettings.Tool}" />
+                                                    Binding="{Binding AgentManagerSettings.Tool}"
+                                                    IsReadOnly="True"/>
 
 
-                                <DataGridTemplateColumn Header="TS">
+                                <DataGridTemplateColumn Header="TS" IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel>
@@ -406,7 +410,7 @@
                                 </DataGridTemplateColumn>
 
 
-                                <DataGridTemplateColumn Header="Command">
+                                <DataGridTemplateColumn Header="Command" IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Controls:ToggleSwitchButton Unchecked="StartStopBtnClick" Checked="StartStopBtnClick" Name="AgentManagerStateSwitch" Content="{Binding Path=AgentManagerSettings.Command}"></Controls:ToggleSwitchButton>
@@ -416,15 +420,21 @@
                                 </DataGridTemplateColumn>
 
                                 <DataGridTextColumn Header="Position(Позиции(лоты))"
-                                                    Binding="{Binding AgentManagerSettings.Position}" />
+                                                    Binding="{Binding AgentManagerSettings.Position}"
+                                                    IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Net value(Чистая стоимость)"
-                                                    Binding="{Binding Connection.ConnectionParams.NetValue}" />
+                                                    Binding="{Binding Connection.ConnectionParams.NetValue}"
+                                                    IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Transaction(П/У(сделка))"
-                                                    Binding="{Binding AgentManagerSettings.Transaction}" />
+                                                    Binding="{Binding AgentManagerSettings.Transaction}"
+                                                    IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Final transaction(П/У(итоговый))"
-                                                    Binding="{Binding AgentManagerSettings.FinalTransaction}" />
+                                                    Binding="{Binding AgentManagerSettings.FinalTransaction}"
+                                                    IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Current state(состояние)"
-                                                    Binding="{Binding AgentManagerSettings.Account.AgentAccount.IsActive}" />
+                                                    Binding="{Binding AgentManagerSettings.Account.AgentAccount.IsActive}"
+                                                    IsReadOnly="True"
+                                                    />
 
 
                                 <DataGridCheckBoxColumn Binding="{Binding AgentManagerSettings.IsChecked, Mode=TwoWay}" IsReadOnly="False">
