@@ -5,41 +5,39 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         x:Name="StratSettings"
         Title="Настройки стратегии"
-        Height="316"
+        Height="395.699"
         FontFamily="Consolas"
-        Width="263.375"
+        Width="357.056"
         ResizeMode="NoResize"
         GlowBrush="CadetBlue"
         Icon="Resources/Images/mainIcon.ico">
     <Grid>
         <Button Content="Ok"
-                Height="23"
                 HorizontalAlignment="Left"
-                Margin="90,254,0,0"
-                VerticalAlignment="Top"
+                Margin="90,0,0,10"
                 Width="75"
                 Click="OkButtonClick"
-                IsDefault="True"/>
+                IsDefault="True" Height="23" VerticalAlignment="Bottom"/>
         <Button Content="Cancel"
-                Height="23"
                 HorizontalAlignment="Left"
-                Margin="177,254,0,0"
-                VerticalAlignment="Top"
+                Margin="177,0,0,10"
                 Width="75"
-                IsCancel="True" />
+                IsCancel="True" Height="23" VerticalAlignment="Bottom" />
 
-        <DataGrid x:Name="AgentSettingsDG"
+        <DataGrid Style="{StaticResource AzureDataGrid}" x:Name="AgentSettingsDG"
                               Margin="5,5,5,38"
                               AutoGenerateColumns="False"
-                  
+                              IsReadOnly="False"
                               GridLinesVisibility="Vertical"
                               HeadersVisibility="Column"
                               SelectionMode="Single"
-                              HorizontalAlignment="Stretch"
+                              
                               ItemsSource="{Binding ElementName=StratSettings, Path=AgentSettingsCollectionView, Mode=OneWayToSource}"
                               IsSynchronizedWithCurrentItem="True"
                               x:FieldModifier="private"
                               CanUserAddRows="False"
+                  
+                              
                               >
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" 
@@ -48,11 +46,15 @@
                 <controls:DataGridNumericUpDownColumn Header="Value"
                                     IsReadOnly="False"
                                     Binding="{Binding Parametr}" />
-                <DataGridCheckBoxColumn Header="Use in name" 
-                                        Width="*"
-                                        Binding="{Binding UseInAgentName, Mode=TwoWay}"
-                                        IsReadOnly="False">
-                </DataGridCheckBoxColumn>
+
+                <DataGridTemplateColumn Header="Use in name">
+                    <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <CheckBox HorizontalAlignment="Center" IsChecked="{Binding UseInAgentName, Mode=TwoWay}"></CheckBox>
+                    </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
             </DataGrid.Columns>
         </DataGrid>
 
