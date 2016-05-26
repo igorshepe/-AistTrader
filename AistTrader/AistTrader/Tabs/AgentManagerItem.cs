@@ -18,8 +18,10 @@ using StockSharp.Algo.Candles;
 using StockSharp.Algo.Strategies;
 using StockSharp.Logging;
 using StockSharp.Plaza;
+using StockSharp.Xaml;
 using Strategies.Common;
 using Strategies.Strategies;
+using LogManager = StockSharp.Logging.LogManager;
 
 namespace AistTrader
 {
@@ -29,6 +31,7 @@ namespace AistTrader
         public bool IsAgentManagerSettingsLoaded;
         public bool AllAgentManagerItemsChecked { get; set; }
         Strategy strategy = new Strategy();
+        public readonly LogManager _logManager = new LogManager(); // Для логирования внутренних событий стратегии
         //public static CandleStrategy strategy = new CandleStrategy();
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
@@ -243,7 +246,10 @@ namespace AistTrader
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;
                 strategy.Start();
-
+                // Логирование внутренних событий стратегии для тестов
+                _logManager.Sources.Add(strategy);
+                _logManager.Listeners.Add(new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
+                _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
 
 
                 //item.AgentManagerSettings.Command = OperationCommand.Disconnect;

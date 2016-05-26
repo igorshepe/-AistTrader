@@ -546,6 +546,13 @@
                                     Margin="4,166,0,0"
                                     VerticalAlignment="Top"
                                     Width="100"/>
+                            <Button Content="LogStrategy"
+                                    Click="ShowMonitorWindowClick" 
+                                    Name="ShowMonitorWindow"
+                                    HorizontalAlignment="Center"
+                                    Margin="4,188,0,0"
+                                    VerticalAlignment="Top"
+                                    Width="100"/>
 
 
 

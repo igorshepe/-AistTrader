@@ -19,6 +19,7 @@ using MoreLinq;
 using NLog;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
+using StockSharp.Xaml;
 
 namespace AistTrader
 {
@@ -55,6 +56,7 @@ namespace AistTrader
         private readonly OrdersWindow _ordersWindow = new OrdersWindow();
         private readonly SecuritiesWindow _securitiesWindow = new SecuritiesWindow();
         private readonly MyTradesWindow _myTradesWindow = new MyTradesWindow();
+        private readonly MonitorWindow _monitorWindow = new MonitorWindow();
         private string _defaultConnectionStatusBarText;
         public string DefaultConnectionStatusBarText
         {
@@ -93,7 +95,7 @@ namespace AistTrader
             _ordersWindow.MakeHideable();
             _myTradesWindow.MakeHideable();
             _securitiesWindow.MakeHideable();
-
+            _monitorWindow.MakeHideable();
             #endregion
         }
         private void SetConnectionCommandStatus()
@@ -173,6 +175,10 @@ namespace AistTrader
         private void ShowOrdersClick(object sender, RoutedEventArgs e)
         {
             ShowOrHide(_ordersWindow);
+        }
+        private void ShowMonitorWindowClick(object sender, RoutedEventArgs e)
+        {
+            ShowOrHide(_monitorWindow);
         }
         private static void ShowOrHide(Window window)
         {

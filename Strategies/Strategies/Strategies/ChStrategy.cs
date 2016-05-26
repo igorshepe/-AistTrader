@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq; 
+using System.Linq;
 using Ecng.Common;
 using NLog;
 using StockSharp.Algo;
@@ -15,7 +15,7 @@ using Strategies.Settings;
 
 namespace Strategies.Strategies
 {
-    public class ChStrategy : Strategy, IOptionalSettings   
+    public class ChStrategy : Strategy, IOptionalSettings
 
     {
         private static readonly Logger TradesLogger = NLog.LogManager.GetLogger("TradesLogger");
@@ -27,7 +27,7 @@ namespace Strategies.Strategies
         private decimal _buyPriceCh;
         private decimal _sellPriceCh;
         private decimal _midPriceCh;
-        
+
         private readonly SimpleMovingAverage _indicatorSlowSma = new SimpleMovingAverage();
         private readonly SimpleMovingAverage _indicatorFastSma = new SimpleMovingAverage();
         private readonly Highest _indicatorHighest = new Highest();
@@ -143,6 +143,7 @@ namespace Strategies.Strategies
 
         protected override void OnStarted()
         {
+            var dd = Slippage;
             // Вызываем базовую реализацию метода.
             base.OnStarted();
 
@@ -168,7 +169,7 @@ namespace Strategies.Strategies
                 .Until(FinishCandles)
                 // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
                 .Apply(this);
-             
+
 
             _candleManager // объект, к которому применяется правило
                 .WhenCandlesChanged(_series) // условие (событие) правила
@@ -176,7 +177,7 @@ namespace Strategies.Strategies
                 .Until(FinishCandles)
                 // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
                 .Apply(this);
-             
+
 
             _candleManager.Start(_series);
 
@@ -198,16 +199,16 @@ namespace Strategies.Strategies
 
         }
 
-       
+
 
         // Обработчик события появления новой завершенной свечи
-        
+
         // 1. Создает правила для заявки
         // 2. Регистрирует заявку
         private void OrderProcess(Order order)
         {
 
-            TradesLogger.Info("{0}: Подаем заявку {1}", Name, order.Price);
+            TradesLogger.Info("{0}: Подаем заявку {1} {2}", Name, order.Price, order.Direction);
             // Создаем правило на событие отмены заявки
 
             var orderCanceledRule = order.WhenCanceled(this.Connector).Do(o =>
@@ -232,7 +233,8 @@ namespace Strategies.Strategies
 
             order.WhenRegisterFailed(this.Connector).Do((o, of) =>
             {
-                TradesLogger.Info(of.Error.ToString);
+                _sendOrder = false;
+                TradesLogger.Info("{0}: Ошибка регистрации заявки {1}", Name, order.TransactionId);
                 this.AddErrorLog(of.Error);
             });
 
@@ -251,7 +253,7 @@ namespace Strategies.Strategies
                     this.Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
 
                     var d = order.TransactionId;
-                    
+
                     // Удаляет определенное правило
                     // this.Rules.Remove(orderCanceledRule)
                 })
@@ -265,17 +267,16 @@ namespace Strategies.Strategies
 
         }
 
-        // Возвращает объект заявки с рыночной ценой, по заданному направлению
+        // Возвращает объект заявки с рыночной ценой или лимитной, по заданному направлению
         private Order GetOrder(Sides side, decimal price, Candle candle)
         {
-            var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену до шага цены иснтрумента
-            var bestprice = this.GetMarketPrice(side);
-            var d = Security.GetMarketPrice(this.Connector, side);
 
-            TradesLogger.Info("{0} midch {1}, bestprice {2}", Name, shrinkPrice , d);
+            var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену лимитную до шага цены иснтрумента
+            var bestprice = this.GetMarketPrice(side); // цена входа по рынку
+
             //if (orderprice == null)
             //    return null;
-            return this.CreateOrder(side, shrinkPrice);
+            return this.CreateOrder(side, bestprice);
         }
 
         // Критерий продолжения работы правила WhenCandlesFinished
@@ -307,7 +308,7 @@ namespace Strategies.Strategies
                 if (Position == 0) // Проверяем, есть ли активные позиции, если есть активные , то ждем их закрытия
                 {
                     if (_ssmaValue > _fsmaValue && candle.LowPrice <= _lowestValue && _enterPosition)
-                        // Вход в короткую позицию
+                    // Вход в короткую позицию
                     {
                         _exitPosition = false; // блокируем вход и выход в одной свече
                         _enterPosition = false; // для предотвращения бесконечных входов внутри одной свечки
@@ -352,16 +353,16 @@ namespace Strategies.Strategies
                             _midChValue);
                     }
                 }
-                
+
             }
-            
+
             if (order != null)
                 OrderProcess(order);
         }
 
         private void GetValueIndicator(Candle candle) // получаем значения индикаторов по факту окончания свечки
         {
-            
+
             var timeFrame = (TimeSpan)candle.Arg;
             var time = ((TimeSpan)candle.Arg).GetCandleBounds(Connector.CurrentTime).Min - timeFrame;
             var highestValue = _indicatorHighest.Process(candle.HighPrice);
@@ -369,7 +370,7 @@ namespace Strategies.Strategies
             var ssmaValue = _indicatorSlowSma.Process(candle.ClosePrice);
             var fsmaValue = _indicatorFastSma.Process(candle.ClosePrice);
 
-            
+
 
             if (candle.OpenTime < time ||
                 !_indicatorSlowSma.IsFormed ||
@@ -396,7 +397,7 @@ namespace Strategies.Strategies
                         TradesLogger.Info("{0}: Ожидаем исполнения заявки, {1} свечей до отмены заявки", Name, _cancelOrderCandle);
                         --_cancelOrderCandle;
                     }
-                    
+
                 }
                 else
                     TradesLogger.Info("{0}: Исторические свечи {1}", Name, candle.OpenTime);
