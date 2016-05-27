@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Cryptography;
-using Ecng.Collections;
 using Ecng.Common;
 using NLog;
 using StockSharp.Algo;
@@ -145,7 +143,7 @@ namespace Strategies.Strategies
 
         protected override void OnStarted()
         {
-            var dd = Slippage;
+           
             // Вызываем базовую реализацию метода.
             base.OnStarted();
 
@@ -216,7 +214,7 @@ namespace Strategies.Strategies
            
 
             
-            var orderCanceledRule = order.WhenCanceled(this.Connector).Do(o =>
+            var orderCanceledRule = order.WhenCanceled(Connector).Do(o =>
             {
 
                 _sendOrder = false;
@@ -225,7 +223,7 @@ namespace Strategies.Strategies
             }).Once();
 
             // Создаем правило на событие регистрации заявки
-            var orderRedisterRule = order.WhenRegistered(this.Connector).Do(o =>
+            var orderRedisterRule = order.WhenRegistered(Connector).Do(o =>
             {
                 this.AddInfoLog(o.ToString());
                 // Переводим в рабочее состояние
@@ -237,7 +235,7 @@ namespace Strategies.Strategies
             // Приводим правило в рабочее состояние
             orderRedisterRule.Once().Apply(this);
 
-            order.WhenRegisterFailed(this.Connector).Do((o, of) =>
+            order.WhenRegisterFailed(Connector).Do((o, of) =>
             {
                 _sendOrder = false;
                 TradesLogger.Info("{0}: Order register Failed {1}", Name, order.TransactionId);
@@ -246,7 +244,7 @@ namespace Strategies.Strategies
 
 
             // Создаем правило на событие полного исполнения заявки
-            var orderMatchedRule = order.WhenMatched(this.Connector);
+            var orderMatchedRule = order.WhenMatched(Connector);
 
             orderMatchedRule
                 .Do(o =>
@@ -256,9 +254,9 @@ namespace Strategies.Strategies
                     
                    
                     // Удаляет все правила, связанные с заявкой (удаление правил по токену)
-                    this.Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
+                    Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
                     
-                    TradesLogger.Info("{0}: Order {1} finish ", Name,order.TransactionId );
+                    TradesLogger.Info("{0}: Order {1} finish, vol {2} ", Name, order.TransactionId, order.Volume );
                     // Удаляет определенное правило
                     // this.Rules.Remove(orderCanceledRule)
                 })
@@ -268,12 +266,14 @@ namespace Strategies.Strategies
             // "Возводим" флаг. Теперь в ProcessCandles будет приостановлена отработка логики стратегии
             _sendOrder = true;
 
-            this.RegisterOrder(order);
+            RegisterOrder(order);
 
             order.WhenNewTrades(Connector).Do(trades =>
             {
-                var trade = MyTrades.Last();
-                TradesLogger.Info("{0}: Trade , Slippage {1}, price {2}, vol {3}", Name ,trade.Slippage , trade.Trade.Price, trade.Trade.Volume );
+                //var trade = MyTrades.Last();
+                var trade = trades.Last();
+                 
+                TradesLogger.Info("{0}: Trade price {1}, vol {2}", Name ,trade.Trade.Price, trade.Trade.Volume );
             })
             .Apply(this);
 
@@ -374,13 +374,12 @@ namespace Strategies.Strategies
 
         private void GetValueIndicator(Candle candle) // получаем значения индикаторов по факту окончания свечки
         {
-
-            var timeFrame = (TimeSpan)candle.Arg;
-            var time = ((TimeSpan)candle.Arg).GetCandleBounds(Connector.CurrentTime).Min - timeFrame;
-            var highestValue = _indicatorHighest.Process(candle.HighPrice);
-            var lowestValue = _indicatorLowest.Process(candle.LowPrice);
-            var ssmaValue = _indicatorSlowSma.Process(candle.ClosePrice);
-            var fsmaValue = _indicatorFastSma.Process(candle.ClosePrice);
+            var timeFrame = (TimeSpan) candle.Arg;
+            var time = ((TimeSpan) candle.Arg).GetCandleBounds(Connector.CurrentTime).Min - timeFrame;
+            _indicatorHighest.Process(candle.HighPrice);
+            _indicatorLowest.Process(candle.LowPrice);
+            _indicatorSlowSma.Process(candle.ClosePrice);
+            _indicatorFastSma.Process(candle.ClosePrice);
 
 
 
@@ -416,15 +415,14 @@ namespace Strategies.Strategies
                 return;
             }
 
-            var midCh = (_indicatorLowest.GetCurrentValue() + _indicatorHighest.GetCurrentValue()) / 2;
+            _midChValue = (_indicatorLowest.GetCurrentValue() + _indicatorHighest.GetCurrentValue()) / 2;
             _highestValue = _indicatorHighest.GetCurrentValue();
             _lowestValue = _indicatorLowest.GetCurrentValue();
-            _midChValue = midCh;
             _ssmaValue = _indicatorSlowSma.GetCurrentValue();
             _fsmaValue = _indicatorFastSma.GetCurrentValue();
 
-            _enterPosition = true;
-            _exitPosition = true;
+            _enterPosition = true; // Если есть законченная свечка , можно совершать вход в позицию
+            _exitPosition = true; // Если есть законченная свечка , можно совершать выход из позиции
 
             TradesLogger.Info("{0}: Position = {6}, SlowSMA {1}, FastSMA {2}, Highest {3}, Lowest {4}, Mid {5}", Name, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position);
 
