@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography;
+using Ecng.Collections;
 using Ecng.Common;
 using NLog;
 using StockSharp.Algo;
@@ -211,7 +213,9 @@ namespace Strategies.Strategies
 
             TradesLogger.Info("{0}: New order, price {1}(MarketPrice), {2}, vol {3}", Name, order.Price ,order.Direction, order.VisibleVolume);
             // Создаем правило на событие отмены заявки
+           
 
+            
             var orderCanceledRule = order.WhenCanceled(this.Connector).Do(o =>
             {
 
@@ -225,7 +229,8 @@ namespace Strategies.Strategies
             {
                 this.AddInfoLog(o.ToString());
                 // Переводим в рабочее состояние
-                TradesLogger.Info("{0}: Order Registered", Name);
+                TradesLogger.Info("{0}: Order {1} Registered", Name, order.TransactionId);
+                
                 orderCanceledRule.Apply(this);
             });
 
@@ -248,15 +253,12 @@ namespace Strategies.Strategies
                 {
                     // "Опускаем" флаг. Теперь в ProcessCandles возобновится отработка логики стратегии
                     _sendOrder = false;
-
-                     
+                    
+                   
                     // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                     this.Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
-
-                     
-                    var dd = MyTrades.Last();
-
-                    TradesLogger.Info("{0}: Order finish , price {1}, vol {2}", Name, dd.Trade.Price, dd.Trade.Volume);
+                    
+                    TradesLogger.Info("{0}: Order {1} finish ", Name,order.TransactionId );
                     // Удаляет определенное правило
                     // this.Rules.Remove(orderCanceledRule)
                 })
@@ -267,6 +269,13 @@ namespace Strategies.Strategies
             _sendOrder = true;
 
             this.RegisterOrder(order);
+
+            order.WhenNewTrades(Connector).Do(trades =>
+            {
+                var trade = MyTrades.Last();
+                TradesLogger.Info("{0}: Trade , Slippage {1}, price {2}, vol {3}", Name ,trade.Slippage , trade.Trade.Price, trade.Trade.Volume );
+            })
+            .Apply(this);
 
         }
 
