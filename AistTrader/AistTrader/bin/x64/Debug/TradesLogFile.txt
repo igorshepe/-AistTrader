@@ -7276,3 +7276,151 @@
 2016-05-31 11:00:29.9339|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
 2016-05-31 11:01:51.9306|INFO|TradesLogger|ChStrategy 60_10_20_20: START
 2016-05-31 11:01:56.6786|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
+2016-05-31 11:09:17.2549|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 11:09:17.2831|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 11:09:47.5824|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 11:09:47.6099|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 11:09:49.2008|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 11:09:49.7252|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 11:09:50.1303|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 11:10:08.7838|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-05-31 11:10:16.0193|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
+2016-05-31 11:26:39.3057|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaa"...
+2016-05-31 11:26:39.3214|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaa" connection were successfully acquired
+2016-05-31 11:26:41.0448|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-05-31 11:26:41.5629|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 11:26:41.9465|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaa" were loaded
+2016-05-31 11:30:05.3837|INFO|AistTrader.MainWindow|Agent manager item "112323sssq" has been deleted
+2016-05-31 11:30:05.4742|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 11:40:26.8841|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection3"...
+2016-05-31 11:40:26.8841|INFO|AistTrader.MainWindow|IP and port of -"TestConnection3" connection were successfully acquired
+2016-05-31 11:40:28.5979|INFO|AistTrader.MainWindow|Connection - "TestConnection3" is active now
+2016-05-31 11:40:28.8582|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 11:40:29.5085|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection3" were loaded
+2016-05-31 11:40:34.2976|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection2"...
+2016-05-31 11:40:34.2976|INFO|AistTrader.MainWindow|IP and port of -"TestConnection2" connection were successfully acquired
+2016-05-31 11:40:34.3565|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 11:40:37.2820|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection"...
+2016-05-31 11:40:37.2820|INFO|AistTrader.MainWindow|IP and port of -"TestConnection" connection were successfully acquired
+2016-05-31 11:40:37.3133|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 11:41:01.8865|INFO|AistTrader.MainWindow|Connection - "TestConnection3" is not active now
+2016-05-31 11:41:03.9972|INFO|AistTrader.MainWindow|Connection - "TestConnection" is active now
+2016-05-31 11:41:04.1962|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 11:41:04.6776|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection" were loaded
+2016-05-31 11:41:07.2989|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 11:42:02.7162|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection"...
+2016-05-31 11:42:02.7495|INFO|AistTrader.MainWindow|IP and port of -"TestConnection" connection were successfully acquired
+2016-05-31 11:42:04.4721|INFO|AistTrader.MainWindow|Connection - "TestConnection" is active now
+2016-05-31 11:42:04.7531|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 11:42:05.3421|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection" were loaded
+2016-05-31 11:42:36.0412|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection2"...
+2016-05-31 11:43:16.0249|INFO|AistTrader.MainWindow|IP and port of -"TestConnection2" connection were successfully acquired
+2016-05-31 11:43:18.4280|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 11:44:12.6681|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 11:45:07.3820|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection"...
+2016-05-31 11:45:08.2806|INFO|AistTrader.MainWindow|IP and port of -"TestConnection" connection were successfully acquired
+2016-05-31 11:45:10.9564|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 11:45:17.3947|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 11:45:35.9832|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection"...
+2016-05-31 11:45:36.8158|INFO|AistTrader.MainWindow|IP and port of -"TestConnection" connection were successfully acquired
+2016-05-31 11:45:38.3781|INFO|AistTrader.MainWindow|Connection - "TestConnection" is active now
+2016-05-31 11:45:38.6774|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 11:45:39.3418|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection" were loaded
+2016-05-31 11:45:43.4866|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection2"...
+2016-05-31 11:45:55.0090|INFO|AistTrader.MainWindow|IP and port of -"TestConnection2" connection were successfully acquired
+2016-05-31 12:08:58.9664|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection2"...
+2016-05-31 12:09:01.4198|INFO|AistTrader.MainWindow|IP and port of -"TestConnection2" connection were successfully acquired
+2016-05-31 12:10:44.0724|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection2"...
+2016-05-31 12:10:44.5803|INFO|AistTrader.MainWindow|IP and port of -"TestConnection2" connection were successfully acquired
+2016-05-31 12:10:48.7502|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 12:18:10.4216|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"tcgggg"...
+2016-05-31 12:18:23.4139|INFO|AistTrader.MainWindow|IP and port of -"tcgggg" connection were successfully acquired
+2016-05-31 12:18:25.7178|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4017;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 12:23:25.4812|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection"...
+2016-05-31 12:23:26.2823|INFO|AistTrader.MainWindow|IP and port of -"TestConnection" connection were successfully acquired
+2016-05-31 12:23:57.6731|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection"...
+2016-05-31 12:23:58.1800|INFO|AistTrader.MainWindow|IP and port of -"TestConnection" connection were successfully acquired
+2016-05-31 12:24:01.2833|INFO|AistTrader.MainWindow|Connection - "TestConnection" is active now
+2016-05-31 12:24:01.6046|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 12:24:03.8668|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection" were loaded
+2016-05-31 12:25:34.2221|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection"...
+2016-05-31 12:25:34.4070|INFO|AistTrader.MainWindow|IP and port of -"TestConnection" connection were successfully acquired
+2016-05-31 12:25:37.2391|INFO|AistTrader.MainWindow|Connection - "TestConnection" is active now
+2016-05-31 12:25:37.5339|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 12:25:39.8021|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection" were loaded
+2016-05-31 12:26:21.7511|INFO|AistTrader.MainWindow|Connection - "TestConnection" is not active now
+2016-05-31 12:26:52.4522|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection"...
+2016-05-31 12:26:52.6081|INFO|AistTrader.MainWindow|IP and port of -"TestConnection" connection were successfully acquired
+2016-05-31 12:26:55.6323|INFO|AistTrader.MainWindow|Connection - "TestConnection" is active now
+2016-05-31 12:26:56.2348|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 12:26:57.8998|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection" were loaded
+2016-05-31 12:27:39.4038|INFO|AistTrader.MainWindow|Connection - "TestConnection" is not active now
+2016-05-31 12:27:48.7203|INFO|AistTrader.MainWindow|Connection "TestConnection" has been deleted
+2016-05-31 12:28:04.4472|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConn"...
+2016-05-31 12:28:04.5943|INFO|AistTrader.MainWindow|IP and port of -"TestConn" connection were successfully acquired
+2016-05-31 12:28:05.5493|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 12:28:06.0039|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 12:28:06.9579|INFO|AistTrader.MainWindow|Portfolios for connection "TestConn" were loaded
+2016-05-31 12:29:18.5430|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConn"...
+2016-05-31 12:29:19.1032|INFO|AistTrader.MainWindow|IP and port of -"TestConn" connection were successfully acquired
+2016-05-31 12:29:21.7256|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 12:29:21.9857|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 12:29:23.5905|INFO|AistTrader.MainWindow|Portfolios for connection "TestConn" were loaded
+2016-05-31 12:29:37.3902|INFO|AistTrader.MainWindow|Connection - "TestConn" is not active now
+2016-05-31 12:29:39.8917|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 12:29:44.0473|INFO|AistTrader.MainWindow|Connection - "TestConn" is not active now
+2016-05-31 12:32:11.8595|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 12:37:31.5490|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConn"...
+2016-05-31 12:37:32.1187|INFO|AistTrader.MainWindow|IP and port of -"TestConn" connection were successfully acquired
+2016-05-31 12:37:35.3318|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 12:37:35.6291|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 12:37:37.0657|INFO|AistTrader.MainWindow|Portfolios for connection "TestConn" were loaded
+2016-05-31 12:38:21.0612|INFO|AistTrader.MainWindow|Successfully added agent manager - "12343ee"
+2016-05-31 12:38:21.4707|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 12:39:18.7700|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-05-31 12:41:22.6472|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConn"...
+2016-05-31 12:41:22.8637|INFO|AistTrader.MainWindow|IP and port of -"TestConn" connection were successfully acquired
+2016-05-31 12:41:48.6384|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConn"...
+2016-05-31 12:41:49.1472|INFO|AistTrader.MainWindow|IP and port of -"TestConn" connection were successfully acquired
+2016-05-31 12:41:52.1937|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 12:41:52.4806|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 12:41:53.8156|INFO|AistTrader.MainWindow|Portfolios for connection "TestConn" were loaded
+2016-05-31 12:59:05.6494|INFO|AistTrader.MainWindow|Connection - "TestConn" is not active now
+2016-05-31 12:59:08.6023|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 12:59:22.5339|INFO|AistTrader.MainWindow|Agent manager item "12343ee" has been deleted
+2016-05-31 12:59:22.6089|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 12:59:50.7864|INFO|AistTrader.MainWindow|Connection error -"System.InvalidOperationException: Connection process was interrupted because of an unexpected disconnection. ---> System.InvalidOperationException: Connection lost. Connection state Error.
+   --- End of inner exception stack trace ---", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 12:59:56.4215|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 13:00:16.0937|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConn"...
+2016-05-31 13:00:16.7039|INFO|AistTrader.MainWindow|IP and port of -"TestConn" connection were successfully acquired
+2016-05-31 13:00:40.4515|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 13:00:49.3258|INFO|AistTrader.MainWindow|Connection - "TestConn" is not active now
+2016-05-31 13:11:14.8221|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConn"...
+2016-05-31 13:11:15.6767|INFO|AistTrader.MainWindow|IP and port of -"TestConn" connection were successfully acquired
+2016-05-31 13:11:43.0979|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 13:11:43.7992|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 13:11:54.0191|INFO|AistTrader.MainWindow|Portfolios for connection "TestConn" were loaded
+2016-05-31 14:17:33.4305|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConn"...
+2016-05-31 14:17:34.5998|INFO|AistTrader.MainWindow|IP and port of -"TestConn" connection were successfully acquired
+2016-05-31 14:17:37.4241|INFO|AistTrader.MainWindow|Connection - "TestConn" is active now
+2016-05-31 14:17:37.6287|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 14:17:38.8584|INFO|AistTrader.MainWindow|Portfolios for connection "TestConn" were loaded

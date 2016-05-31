@@ -30,10 +30,10 @@ namespace AistTrader
         #endregion
         private void ProviderStorageOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
-            if(ConnectionsStorage.Count == 2)
-                AddConnectionBtn.IsEnabled = false;
-            else
-                AddConnectionBtn.IsEnabled = true;
+            //if(ConnectionsStorage.Count == 2)
+            //    AddConnectionBtn.IsEnabled = false;
+            //else
+            //    AddConnectionBtn.IsEnabled = true;
         }
         public void AddNewAgentConnection(Connection connection, int editIndex)
         {

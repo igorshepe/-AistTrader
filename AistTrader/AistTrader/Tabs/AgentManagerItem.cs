@@ -241,27 +241,20 @@ namespace AistTrader
                     MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
                         i => i.ConnectionName == item.AgentManagerSettings.Portfolio.Connection.Id);
                     var secMargSell = data.Securities.FirstOrDefault(i => i.Name == item.Tool.Name).MarginSell;
-
                     var currValue = data.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code).CurrentValue;
                     var percent = amount.Value.Value;
                     var calculatedPercent = (currValue / 100) * percent;
-                    //var portfolioByPercent =
-                    //    data.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code).CurrentValue * calculatedPercent;
                     calculatedAmount = calculatedPercent / secMargSell.Value;
                     //todo - уточнить у Дена по округлению от разряда
                     calculatedAmount = Math.Truncate(calculatedAmount);
                 }
-
                 if (amount.Value.Type == UnitTypes.Absolute)
-                {
                     calculatedAmount = amount.Value.To<decimal>();
-                }
-
                 //todo: дописать конвертацию под проценты и расчёт по формуле
                 //strategy = new ChStrategy(agentSetting);
 
                 strategy = new Strategy();
-                strategy = (ChStrategy)Activator.CreateInstance(strategyType, agentSetting);
+                strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting);
                 //strategy = new ChStrategy(agentSetting);
                 strategy.DisposeOnStop = true;
                 strategy.Security = item.AgentManagerSettings.Tool;

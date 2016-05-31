@@ -1,16 +1,89 @@
 <?xml version="1.0"?>
 <ArrayOfConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Connection>
-    <Id>fdsfsdf</Id>
-    <DisplayName>fdsfsdf</DisplayName>
+    <Id>TestConnection2</Id>
+    <DisplayName>TestConnection2</DisplayName>
     <IsDemo>true</IsDemo>
     <ConnectionParams>
-      <IsDefaulConnection>true</IsDefaulConnection>
+      <IsDefaulConnection>false</IsDefaulConnection>
       <PlazaConnectionParams>
-        <Path>C:\SpectraCGate</Path>
+        <Path>C:\SpectraCGate2</Path>
+        <IpEndPoint>127.0.0.1:4002</IpEndPoint>
       </PlazaConnectionParams>
-      <Name>fdsfsdf</Name>
-      <Code>dsfdsfsf</Code>
+      <Name>TestConnection2</Name>
+      <Code>TC2</Code>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
+      <Funds>-1</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>-1</NetValue>
+      <VariationMargin>-1</VariationMargin>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <Tools />
+      <Accounts />
+      <ConnectionState>Disconnected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+  <Connection>
+    <Id>TestConnection3</Id>
+    <DisplayName>TestConnection3</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>false</IsDefaulConnection>
+      <PlazaConnectionParams>
+        <Path>C:\SpectraCGate3</Path>
+      </PlazaConnectionParams>
+      <Name>TestConnection3</Name>
+      <Code>TC3</Code>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
+      <Funds>-1</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>-1</NetValue>
+      <VariationMargin>-1</VariationMargin>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <Tools />
+      <Accounts />
+      <ConnectionState>Disconnected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+  <Connection>
+    <Id>tcgggg</Id>
+    <DisplayName>tcgggg</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>false</IsDefaulConnection>
+      <PlazaConnectionParams>
+        <Path>C:\SpectraCGateG</Path>
+      </PlazaConnectionParams>
+      <Name>tcgggg</Name>
+      <Code>tcg</Code>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
+      <Funds>-1</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>-1</NetValue>
+      <VariationMargin>-1</VariationMargin>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <Tools />
+      <Accounts />
+      <ConnectionState>Disconnected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+  <Connection>
+    <Id>TestConn</Id>
+    <DisplayName>TestConn</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>false</IsDefaulConnection>
+      <PlazaConnectionParams>
+        <Path>C:\SpectraCGate2</Path>
+      </PlazaConnectionParams>
+      <Name>TestConn</Name>
+      <Code>TC</Code>
       <IsConnected>false</IsConnected>
       <Command>Connect</Command>
       <Funds>-1</Funds>
