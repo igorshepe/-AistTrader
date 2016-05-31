@@ -255,8 +255,8 @@ namespace Strategies.Strategies
                    
                     // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                     Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
-                    
-                    TradesLogger.Info("{0}: Order {1} finish, vol {2} ", Name, order.TransactionId, order.Volume );
+                    var averagePrice = order.GetAveragePrice(Connector);
+                    TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3}", Name, order.TransactionId, order.Volume, averagePrice );
                     // Удаляет определенное правило
                     // this.Rules.Remove(orderCanceledRule)
                 })
@@ -285,7 +285,7 @@ namespace Strategies.Strategies
             
             var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену лимитную до шага цены иснтрумента
             var bestprice = this.GetMarketPrice(side); // цена входа по рынку
-
+             
             //if (orderprice == null)
             //    return null;
             return this.CreateOrder(side, bestprice);
