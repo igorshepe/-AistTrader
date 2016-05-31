@@ -236,6 +236,16 @@ namespace AistTrader
                 amount.Text = item.Amount;
                 amount.Value = amount.Text.ToUnit();
 
+                var data =
+                    MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
+                        i => i.ConnectionName == item.AgentManagerSettings.Portfolio.Connection.Id);
+                var secMargSell = data.Securities.FirstOrDefault(i => i.Name == item.Tool.Name).MarginSell;
+
+
+                var portfolioByPercent =
+                    data.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code).CurrentValue * amount.Value.Value ;
+                var calculatedAmount = portfolioByPercent/secMargSell.Value;
+
                 //todo: дописать конвертацию под проценты и расчёт по формуле
                 //strategy = new ChStrategy(agentSetting);
 
@@ -246,8 +256,7 @@ namespace AistTrader
                 strategy.Security = item.AgentManagerSettings.Tool;
                 strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code);
                 strategy.Connector = realConnection;
-                //strategy.Volume = amount.Value();
-                strategy.Volume = amount.Value.To<decimal>();
+                strategy.Volume = calculatedAmount; /*amount.Value.To<decimal>();*/
                 var candleManager = new CandleManager(realConnection);
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;

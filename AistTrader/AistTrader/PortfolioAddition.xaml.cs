@@ -136,17 +136,27 @@ namespace AistTrader
 
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
-            var selectedAccount = AccountComboBox.SelectedItem;
+            
+            //var selectedAccount =  AccountComboBox.SelectedItem;
             var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
+
+
+            
+
+
+
+
+
             if (EditIndex == int.MinValue)
                 connectionProvider = connectionProvider.Substring(0,
                     connectionProvider.IndexOf(" (", StringComparison.Ordinal));
 
+            var selectedAccount = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connectionProvider)?.Portfolios.First();
             var agentItem =
                 MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.DisplayName == connectionProvider.ToString());
             agentItem.ConnectionParams.SelectedAccount = selectedAccount as StockSharp.BusinessEntities.Portfolio;
 
-            MainWindow.Instance.AddNewAgentPortfolio(new Common.Entities.Portfolio(PortfolioNameTxtBox.Text, agentItem, selectedAccount.ToString(), selectedAccount as StockSharp.BusinessEntities.Portfolio), EditIndex);
+            MainWindow.Instance.AddNewAgentPortfolio(new Common.Entities.Portfolio(PortfolioNameTxtBox.Text, agentItem, selectedAccount.Name, (StockSharp.BusinessEntities.Portfolio) selectedAccount), EditIndex);
             Close();
         }
 

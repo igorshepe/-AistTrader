@@ -7140,3 +7140,79 @@
 2016-05-24 14:37:01.2523|INFO|AistTrader.MainWindow|Connection - "kfdsjfkdshfkjh" is active now
 2016-05-24 14:37:01.6288|INFO|AistTrader.MainWindow|Securities were loaded
 2016-05-24 14:37:02.1692|INFO|AistTrader.MainWindow|Portfolios for connection "kfdsjfkdshfkjh" were loaded
+2016-05-31 06:48:15.7536|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"kfdsjfkdshfkjh"...
+2016-05-31 06:48:15.7806|INFO|AistTrader.MainWindow|IP and port of -"kfdsjfkdshfkjh" connection were successfully acquired
+2016-05-31 06:49:20.9411|INFO|AistTrader.MainWindow|Agent manager item "????????" has been deleted
+2016-05-31 06:49:21.0371|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 06:49:31.0481|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"kfdsjfkdshfkjh"...
+2016-05-31 06:49:31.0481|INFO|AistTrader.MainWindow|IP and port of -"kfdsjfkdshfkjh" connection were successfully acquired
+2016-05-31 06:50:07.7699|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" has been deleted.  Strategies class name: ChStrategy 60_10_20_20.cs
+2016-05-31 06:51:05.6134|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
+2016-05-31 06:51:19.8177|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 06:51:19.8227|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 06:52:38.4081|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 06:52:38.4351|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 06:52:40.9949|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-05-31 06:52:54.0997|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 06:52:54.3749|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 06:52:54.3669|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 06:53:15.2768|INFO|AistTrader.MainWindow|Successfully added agent manager - "dsfdsfdsfsdf"
+2016-05-31 06:53:15.6232|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 08:30:05.7211|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 08:30:05.7435|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 08:30:07.4451|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 08:30:07.6713|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 08:30:07.7033|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 08:41:22.9088|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 08:41:22.9311|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 08:49:18.9707|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 08:49:19.0019|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 08:49:20.7361|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 08:49:21.0541|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 08:51:43.2226|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 09:01:45.8541|INFO|AistTrader.MainWindow|Agent manager item "dsfdsfdsfsdf" has been deleted
+2016-05-31 09:01:45.9343|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 09:01:50.9742|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 09:01:50.9899|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 09:01:52.6734|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 09:01:52.9021|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 09:01:54.6156|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 09:02:14.5173|INFO|AistTrader.MainWindow|Successfully added agent manager - "qqqqqqqqqqqq"
+2016-05-31 09:02:14.7803|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 09:03:38.9433|INFO|AistTrader.MainWindow|Agent manager item "qqqqqqqqqqqq" has been deleted
+2016-05-31 09:03:39.0354|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 09:03:48.0269|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 09:03:48.0269|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 09:03:49.7036|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 09:03:49.9498|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 09:03:51.6957|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 09:15:27.6595|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 09:15:27.6867|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 09:15:29.4345|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 09:15:29.7468|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 09:15:31.9546|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 09:17:06.6196|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 09:17:06.6456|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 09:17:08.3581|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 09:17:08.6345|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 09:17:11.1328|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 09:18:32.0160|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 09:18:32.0381|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 09:18:33.6600|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 09:18:35.4548|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 09:18:35.4705|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 09:19:40.6511|INFO|AistTrader.MainWindow|Successfully added agent manager - "112323sssq"
+2016-05-31 09:19:41.0209|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 09:43:40.4659|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 09:43:40.4921|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 09:43:42.2430|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 09:43:42.7886|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 09:43:44.8915|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 09:44:05.2028|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 09:44:05.2314|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 09:44:06.8937|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 09:44:07.1376|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 09:44:09.7089|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 09:44:17.4940|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
