@@ -24,7 +24,7 @@
                 Width="75"
                 IsCancel="True" Height="23" VerticalAlignment="Bottom" />
 
-        <DataGrid Style="{StaticResource AzureDataGrid}" x:Name="AgentSettingsDG"
+        <DataGrid  x:Name="AgentSettingsDG"
                               Margin="5,5,5,38"
                               AutoGenerateColumns="False"
                               IsReadOnly="False"
@@ -45,16 +45,21 @@
                                     Binding="{Binding Name}"/>
                 <controls:DataGridNumericUpDownColumn Header="Value"
                                     IsReadOnly="False"
-                                    Binding="{Binding Parametr}" />
+                                    Binding="{Binding Parametr, Mode=TwoWay}" />
 
-                <DataGridTemplateColumn Header="Use in name">
+                <!--<DataGridTemplateColumn Header="Use in name">
                     <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
                         <CheckBox HorizontalAlignment="Center" IsChecked="{Binding UseInAgentName, Mode=TwoWay}"></CheckBox>
                     </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                
+                </DataGridTemplateColumn>-->
+                <DataGridCheckBoxColumn Header="Use in name" 
+                                        Width="*"
+                                        Binding="{Binding UseInAgentName, Mode=TwoWay}"
+                                        IsReadOnly="False">
+                </DataGridCheckBoxColumn>
+
             </DataGrid.Columns>
         </DataGrid>
 

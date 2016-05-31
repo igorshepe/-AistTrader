@@ -17,6 +17,7 @@ namespace AistTrader
     [Serializable]
     public class AgentSettingParameterProperty
     {
+
         public override string ToString()
         {
             return Name;
@@ -30,6 +31,7 @@ namespace AistTrader
     }
     public partial class AgentSettings
     {
+        
         public SerializableDictionary<string, object> SettingsStorage { get; private set; }
         // ReSharper disable MemberCanBePrivate.Global
         public StrategyDefaultSettings Settings { get; set; }

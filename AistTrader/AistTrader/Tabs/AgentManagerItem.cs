@@ -17,6 +17,7 @@ using NLog;
 using StockSharp.Algo.Candles;
 using StockSharp.Algo.Strategies;
 using StockSharp.Logging;
+using StockSharp.Messages;
 using StockSharp.Plaza;
 using StockSharp.Xaml;
 using Strategies.Common;
@@ -231,7 +232,11 @@ namespace AistTrader
                 var firstOrDefault = agent.FirstOrDefault();
                 if (firstOrDefault != null) agentSetting = firstOrDefault.Params.SettingsStorage;
 
+                var amount = new UnitEditor();
+                amount.Text = item.Amount;
+                amount.Value = amount.Text.ToUnit();
 
+                //todo: дописать конвертацию под проценты и расчёт по формуле
                 //strategy = new ChStrategy(agentSetting);
 
                 strategy = new Strategy();
@@ -241,7 +246,8 @@ namespace AistTrader
                 strategy.Security = item.AgentManagerSettings.Tool;
                 strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code);
                 strategy.Connector = realConnection;
-                strategy.Volume = 1;
+                //strategy.Volume = amount.Value();
+                strategy.Volume = amount.Value.To<decimal>();
                 var candleManager = new CandleManager(realConnection);
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;
