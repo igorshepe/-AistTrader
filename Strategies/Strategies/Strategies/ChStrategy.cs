@@ -143,7 +143,7 @@ namespace Strategies.Strategies
 
         protected override void OnStarted()
         {
-           
+
             // Вызываем базовую реализацию метода.
             base.OnStarted();
 
@@ -196,7 +196,7 @@ namespace Strategies.Strategies
 
 
             TradesLogger.Info("{0}: STOP", Name);
-            
+
 
         }
 
@@ -209,11 +209,11 @@ namespace Strategies.Strategies
         private void OrderProcess(Order order)
         {
 
-            TradesLogger.Info("{0}: New order, price {1}(MarketPrice), {2}, vol {3}", Name, order.Price ,order.Direction, order.VisibleVolume);
+            TradesLogger.Info("{0}: New order, price {1}(MarketPrice), {2}, vol {3}", Name, order.Price, order.Direction, order.VisibleVolume);
             // Создаем правило на событие отмены заявки
-           
 
-            
+
+
             var orderCanceledRule = order.WhenCanceled(Connector).Do(o =>
             {
 
@@ -225,10 +225,11 @@ namespace Strategies.Strategies
             // Создаем правило на событие регистрации заявки
             var orderRedisterRule = order.WhenRegistered(Connector).Do(o =>
             {
+
                 this.AddInfoLog(o.ToString());
                 // Переводим в рабочее состояние
                 TradesLogger.Info("{0}: Order {1} Registered", Name, order.TransactionId);
-                
+
                 orderCanceledRule.Apply(this);
             });
 
@@ -238,9 +239,10 @@ namespace Strategies.Strategies
             order.WhenRegisterFailed(Connector).Do((o, of) =>
             {
                 _sendOrder = false;
-                TradesLogger.Info("{0}: Order register Failed {1}", Name, order.TransactionId);
+                TradesLogger.Info("{0}: Order register Failed {1}, {2}", Name, order.TransactionId, of.Error);
                 this.AddErrorLog(of.Error);
-            });
+            })
+            .Apply(this);
 
 
             // Создаем правило на событие полного исполнения заявки
@@ -251,12 +253,12 @@ namespace Strategies.Strategies
                 {
                     // "Опускаем" флаг. Теперь в ProcessCandles возобновится отработка логики стратегии
                     _sendOrder = false;
-                    
-                   
+
+
                     // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                     Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
                     var averagePrice = order.GetAveragePrice(Connector);
-                    TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3}", Name, order.TransactionId, order.Volume, averagePrice );
+                    TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3}", Name, order.TransactionId, order.Volume, averagePrice);
                     // Удаляет определенное правило
                     // this.Rules.Remove(orderCanceledRule)
                 })
@@ -266,26 +268,28 @@ namespace Strategies.Strategies
             // "Возводим" флаг. Теперь в ProcessCandles будет приостановлена отработка логики стратегии
             _sendOrder = true;
 
-            RegisterOrder(order);
-
             order.WhenNewTrades(Connector).Do(trades =>
             {
                 //var trade = MyTrades.Last();
                 var trade = trades.Last();
-                 
-                TradesLogger.Info("{0}: Trade price {1}, vol {2}", Name ,trade.Trade.Price, trade.Trade.Volume );
+
+                TradesLogger.Info("{0}: Trade price {1}, vol {2}", Name, trade.Trade.Price, trade.Trade.Volume);
             })
             .Apply(this);
+
+            RegisterOrder(order);
+
+
 
         }
 
         // Возвращает объект заявки с рыночной ценой или лимитной, по заданному направлению
         private Order GetOrder(Sides side, decimal price, Candle candle)
         {
-            
+
             var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену лимитную до шага цены иснтрумента
             var bestprice = this.GetMarketPrice(side); // цена входа по рынку
-             
+
             //if (orderprice == null)
             //    return null;
             return this.CreateOrder(side, bestprice);
@@ -374,8 +378,9 @@ namespace Strategies.Strategies
 
         private void GetValueIndicator(Candle candle) // получаем значения индикаторов по факту окончания свечки
         {
-            var timeFrame = (TimeSpan) candle.Arg;
-            var time = ((TimeSpan) candle.Arg).GetCandleBounds(Connector.CurrentTime).Min - timeFrame;
+
+            var timeFrame = (TimeSpan)candle.Arg;
+            var time = ((TimeSpan)candle.Arg).GetCandleBounds(Connector.CurrentTime).Min - timeFrame;
             _indicatorHighest.Process(candle.HighPrice);
             _indicatorLowest.Process(candle.LowPrice);
             _indicatorSlowSma.Process(candle.ClosePrice);
@@ -400,7 +405,7 @@ namespace Strategies.Strategies
                     if (_cancelOrderCandle == 0) // проверяем когда нужно снять все заявки в случае пропуска правильного входа или выхода
                     {
                         CancelActiveOrders();
-
+                        //Connector.CancelOrder(_registeredOrder);
                         _cancelOrderCandle = _cancelCandle;
                     }
                     else
