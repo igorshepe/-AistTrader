@@ -7216,3 +7216,63 @@
 2016-05-31 09:44:07.1376|INFO|AistTrader.MainWindow|Securities were loaded
 2016-05-31 09:44:09.7089|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
 2016-05-31 09:44:17.4940|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 10:06:10.9138|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:06:10.9413|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:06:12.6308|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:06:12.9173|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:06:14.4342|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:06:38.9454|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:06:38.9575|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:06:40.5629|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:06:41.1533|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:06:43.1971|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:06:52.9126|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 10:15:00.0726|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:15:00.0996|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:15:01.8843|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:15:02.1665|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:15:03.6494|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:17:20.2009|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:17:20.2284|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:17:21.9659|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:17:22.2248|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:17:26.0910|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:28:45.5950|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:28:45.6172|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:28:47.3188|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:28:47.6151|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:28:48.1941|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:32:23.3146|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:32:23.3537|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:32:25.0718|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:32:25.6042|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:32:25.9903|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:36:39.9201|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:36:39.9462|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:36:41.6473|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:36:41.8944|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:36:42.5131|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:49:31.7274|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:49:31.7544|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:49:33.4688|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:49:33.7339|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:49:34.3464|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:50:54.1595|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:50:54.1801|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:50:55.7834|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:50:56.0678|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:50:56.7009|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 10:51:06.0413|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 10:57:23.9967|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 10:57:24.0279|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 10:57:25.8068|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 10:57:26.0590|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 10:57:26.1075|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 11:00:21.7196|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"fdsfsdf"...
+2016-05-31 11:00:21.7508|INFO|AistTrader.MainWindow|IP and port of -"fdsfsdf" connection were successfully acquired
+2016-05-31 11:00:23.4529|INFO|AistTrader.MainWindow|Connection - "fdsfsdf" is active now
+2016-05-31 11:00:23.6917|INFO|AistTrader.MainWindow|Securities were loaded
+2016-05-31 11:00:24.3087|INFO|AistTrader.MainWindow|Portfolios for connection "fdsfsdf" were loaded
+2016-05-31 11:00:29.9339|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-05-31 11:01:51.9306|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-05-31 11:01:56.6786|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP

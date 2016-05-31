@@ -209,7 +209,6 @@ namespace AistTrader
 
         private void StartStopBtnClick(object sender, RoutedEventArgs e)
         {
-
             if ((bool)(sender as ToggleSwitchButton).IsChecked)
             {
                 //ON 
@@ -235,16 +234,28 @@ namespace AistTrader
                 var amount = new UnitEditor();
                 amount.Text = item.Amount;
                 amount.Value = amount.Text.ToUnit();
-
-                var data =
+                decimal calculatedAmount = 0;
+                if (amount.Value.Type == UnitTypes.Percent)
+                {
+                    var data =
                     MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
                         i => i.ConnectionName == item.AgentManagerSettings.Portfolio.Connection.Id);
-                var secMargSell = data.Securities.FirstOrDefault(i => i.Name == item.Tool.Name).MarginSell;
+                    var secMargSell = data.Securities.FirstOrDefault(i => i.Name == item.Tool.Name).MarginSell;
 
+                    var currValue = data.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code).CurrentValue;
+                    var percent = amount.Value.Value;
+                    var calculatedPercent = (currValue / 100) * percent;
+                    //var portfolioByPercent =
+                    //    data.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code).CurrentValue * calculatedPercent;
+                    calculatedAmount = calculatedPercent / secMargSell.Value;
+                    //todo - уточнить у Дена по округлению от разряда
+                    calculatedAmount = Math.Truncate(calculatedAmount);
+                }
 
-                var portfolioByPercent =
-                    data.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code).CurrentValue * amount.Value.Value ;
-                var calculatedAmount = portfolioByPercent/secMargSell.Value;
+                if (amount.Value.Type == UnitTypes.Absolute)
+                {
+                    calculatedAmount = amount.Value.To<decimal>();
+                }
 
                 //todo: дописать конвертацию под проценты и расчёт по формуле
                 //strategy = new ChStrategy(agentSetting);
