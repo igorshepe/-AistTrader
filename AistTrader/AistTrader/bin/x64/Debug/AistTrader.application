@@ -14,14 +14,14 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="AistTrader.exe.manifest" size="34017">
+    <dependentAssembly dependencyType="install" codebase="AistTrader.exe.manifest" size="33339">
       <assemblyIdentity name="AistTrader.exe" version="1.0.0.17" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="amd64" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aHX+sKqv6Gh9+7NhfLC4rr5ILKQ/1HKXIvyiGTF8fx8=</dsig:DigestValue>
+        <dsig:DigestValue>4omzSo9MMEHuqg/EbtiQRxNSSUu/9sDAg3mLPekZ2Pw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
