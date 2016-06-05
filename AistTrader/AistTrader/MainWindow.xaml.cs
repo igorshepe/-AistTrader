@@ -26,7 +26,6 @@ namespace AistTrader
     public partial class MainWindow: INotifyPropertyChanged
     {
         #region Fields
-        private bool _shutdown;
 
         public string DefaulConnectionName
         {
@@ -40,7 +39,6 @@ namespace AistTrader
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
-        private  readonly Logger LogView;
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public ObservableCollection<Connection> ConnectionsStorage { get; private set; }
         public ObservableCollection<Common.Entities.Portfolio> AgentPortfolioStorage { get; private set; }
@@ -190,24 +188,24 @@ namespace AistTrader
             else
                 window.Show();
         }
-        private async void MainWindow_OnClosing(object sender, CancelEventArgs e)
-        {
-            //e.Cancel = true;
-            //var mySettings = new MetroDialogSettings()
-            //{
-            //    AffirmativeButtonText = "Quit",
-            //    NegativeButtonText = "Cancel",
-            //    AnimateShow = true,
-            //    AnimateHide = false
-            //};
-            //var result = await this.ShowMessageAsync("Quit application?",
-            //    "Sure you want to quit application?",
-            //    MessageDialogStyle.AffirmativeAndNegative, mySettings);
-            //_shutdown = result == MessageDialogResult.Affirmative;
+        //private async void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        //{
+        //    //e.Cancel = true;
+        //    //var mySettings = new MetroDialogSettings()
+        //    //{
+        //    //    AffirmativeButtonText = "Quit",
+        //    //    NegativeButtonText = "Cancel",
+        //    //    AnimateShow = true,
+        //    //    AnimateHide = false
+        //    //};
+        //    //var result = await this.ShowMessageAsync("Quit application?",
+        //    //    "Sure you want to quit application?",
+        //    //    MessageDialogStyle.AffirmativeAndNegative, mySettings);
+        //    //_shutdown = result == MessageDialogResult.Affirmative;
 
-            //if (_shutdown)
-            Application.Current.Shutdown();
-        }
+        //    //if (_shutdown)
+        //    Application.Current.Shutdown();
+        //}
 
         private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)
         {

@@ -7675,3 +7675,42 @@
 2016-06-01 13:47:44.8772|INFO|AistTrader.MainWindow|Connection - "TestConnection_4" is not active now
 2016-06-01 13:47:57.3173|INFO|AistTrader.MainWindow|Connection - "TestConnection_5" is active now
 2016-06-01 13:47:58.2231|INFO|AistTrader.MainWindow|Connection - "TestConnection_4" is active now
+2016-06-02 15:48:13.7430|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_17_20"
+2016-06-02 15:48:44.5356|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
+2016-06-02 15:48:44.5506|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_17_20"
+2016-06-03 10:38:58.2367|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 64_10_20_20"
+2016-06-03 10:39:13.1886|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_4_20_20"
+2016-06-03 12:08:44.9514|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-03 12:09:50.8462|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-03 12:10:12.0869|INFO|AistTrader.MainWindow|Connection - "TestConnection_1" is active now
+2016-06-03 12:10:12.3679|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-03 12:10:13.2741|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection_1" were loaded
+2016-06-05 14:07:23.0535|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection_2"...
+2016-06-05 14:07:25.4923|INFO|AistTrader.MainWindow|IP and port of -"TestConnection_2" connection were successfully acquired
+2016-06-05 14:07:27.6538|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-05 14:07:35.5222|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-05 14:07:54.7232|INFO|AistTrader.MainWindow|Agent manager item "TestPortfolio_1" has been deleted
+2016-06-05 14:07:55.2300|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-05 14:07:55.7567|INFO|AistTrader.MainWindow|Agent manager item "testP_10" has been deleted
+2016-06-05 14:07:55.9983|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-05 14:07:56.4283|INFO|AistTrader.MainWindow|Agent manager item "testP_10" has been deleted
+2016-06-05 14:07:56.4946|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-05 14:08:08.8315|INFO|AistTrader.MainWindow|Connection "TestConnection_2" has been deleted
+2016-06-05 14:17:15.7543|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"testC"...
+2016-06-05 14:17:18.8021|INFO|AistTrader.MainWindow|IP and port of -"testC" connection were successfully acquired
+2016-06-05 14:17:22.3351|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-05 14:18:22.3811|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"teeeess"...
+2016-06-05 14:18:23.5680|INFO|AistTrader.MainWindow|IP and port of -"teeeess" connection were successfully acquired
+2016-06-05 14:18:23.6371|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active

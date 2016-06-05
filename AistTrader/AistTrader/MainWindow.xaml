@@ -10,7 +10,6 @@
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized"
-        Closing="MainWindow_OnClosing"
         NonActiveGlowBrush="#CDFF0000">
 
 
