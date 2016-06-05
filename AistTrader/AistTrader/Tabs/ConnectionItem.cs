@@ -128,10 +128,14 @@ namespace AistTrader
                         Logger.Info("Connection \"{0}\" has been deleted", connection.ConnectionName);
                     }
                     ConnectionsStorage.Remove(item);
-                    DefaultConnectionStatusBarText = "Default connection is not set";
-
-
-
+                    if (ConnectionsStorage.Count ==0)
+                        DefaultConnectionStatusBarText = "Default connection is not set";
+                    else
+                    {
+                        var value = ConnectionsStorage.First();
+                        value.ConnectionParams.IsDefaulConnection = true;
+                        DefaultConnectionStatusBarText = "Default: "+ value.DisplayName;
+                    }
                     SaveProviderItems();
                 }
             }
