@@ -1,0 +1,16 @@
+2016-06-06 09:11:31.3088|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"testc"...
+2016-06-06 09:11:31.3228|INFO|AistTrader.MainWindow|IP and port of -"testc" connection were successfully acquired
+2016-06-06 09:11:34.3386|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qYsyb3C$Wa0MwjvP7Mc6M7PHtFgAsH6e5b9naoCp69D7$T4MUOnjg5i73J5YJlLER.#=qZfhD5$6U0JTEoXFLRYCO8HL$3BgRkDk0lMnKCTFs_dU=.#=qoBouKJ3VyqdSUUThH7e2nqPjGUsf76J9Mn7QcgUsf5u5hgrttSDol5if5xdkov$NsXdV8tBQU9nA8S7zSAxMVg==()
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-06 09:15:14.2146|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"testc"...
+2016-06-06 09:15:14.2302|INFO|AistTrader.MainWindow|IP and port of -"testc" connection were successfully acquired
+2016-06-06 09:15:17.9062|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4001;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qYsyb3C$Wa0MwjvP7Mc6M7PHtFgAsH6e5b9naoCp69D7$T4MUOnjg5i73J5YJlLER.#=qZfhD5$6U0JTEoXFLRYCO8HL$3BgRkDk0lMnKCTFs_dU=.#=qoBouKJ3VyqdSUUThH7e2nqPjGUsf76J9Mn7QcgUsf5u5hgrttSDol5if5xdkov$NsXdV8tBQU9nA8S7zSAxMVg==()
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-06 09:16:31.5773|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
+2016-06-06 09:17:42.3573|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 57_10_20_20"
+2016-06-06 09:20:36.7499|INFO|AistTrader.MainWindow|Agent "ChStrategy 57_10_20_20" has been deleted.  Strategies class name: ChStrategy 57_10_20_20.cs
+2016-06-06 09:20:41.9517|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" has been deleted.  Strategies class name: ChStrategy 60_10_20_20.cs

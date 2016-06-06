@@ -18,7 +18,7 @@ namespace NlogViewer
             Exception = logEventInfo.Exception;
             LoggerName = logEventInfo.LoggerName;
             var date = new DateTime(logEventInfo.TimeStamp.Year, logEventInfo.TimeStamp.Month, logEventInfo.TimeStamp.Day, logEventInfo.TimeStamp.Hour, logEventInfo.TimeStamp.Minute, logEventInfo.TimeStamp.Second);
-            Time = string.Format("{0:d/M/yyyy HH:mm:ss}", date);
+            Time = string.Format("{0:dd.MM.yyyy HH:mm:ss}", date);
             SetupColors(logEventInfo);
         }
 
