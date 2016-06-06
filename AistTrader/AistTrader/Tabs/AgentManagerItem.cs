@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -219,6 +220,9 @@ namespace AistTrader
             }
             else
             {
+
+                //todo: по имени обращаться в менеджер и отключать
+
                 var item = (sender as FrameworkElement).DataContext as AgentManager;
                 strategy.Stop();
 
@@ -227,11 +231,9 @@ namespace AistTrader
                 UpdateAgentManagerListView();
             }
         }
-
-
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
-
+            //TODO: при добавлении второго коннекта, у нас нас свитч выключается
             var strategyName = agentOrGroup.AgentManagerSettings.AgentOrGroup.Split(null);
             var connectionName =
                 AgentPortfolioStorage.Cast<Portfolio>()
@@ -284,32 +286,6 @@ namespace AistTrader
             _logManager.Sources.Add(strategy);
             _logManager.Listeners.Add(new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
             _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
-
-            //item.AgentManagerSettings.Command = OperationCommand.Disconnect;
-            //UpdateAgentManagerListView();
-
-            //SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
-
-            //var candleManager = new CandleManager(realConnection);
-            //var strat = new ChStrategy(agentSetting);
-            //strat.Connector = realConnection;
-            //strat.TimeFrame = TimeSpan.FromMinutes(1);
-
-            //strat.Portfolio = realConnection.Portfolios.First();
-            //strat.Security = realConnection.Securities.First(i => i.Code == "SiM6");
-            //strat.Volume = 1;
-            //strat.SetCandleManager(candleManager);
-            //strat.LogLevel = LogLevels.Debug;
-            //strat.Start();
-
-            //var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
-            //int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
-            //rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
-            //if (rowItem.ConnectionParams.IsRegistredConnection)
-            //    ConnectionManager.Connections[index].Connect();
-            //else
-            //    ConnectAccount(item as Connection);
-            //UpdateProviderListView();
         }
         private void ConnectTest_OnClick(object sender, RoutedEventArgs e)
         {
@@ -372,5 +348,123 @@ namespace AistTrader
             }
             // throw new NotImplementedException();
         }
+
+        #region Aist Trader Agent/Group Manager
+        public class AistTraderAgentManagerWrapper : Strategy
+        {
+            public AistTraderAgentManagerWrapper(string name)
+            {
+                AgentOrGroupName = name;
+            }
+            public string AgentOrGroupName { get; set; }
+        }
+        public class AistTraderConnnectionManager : IList<AistTraderAgentManagerWrapper>, IDisposable
+        {
+            public List<AistTraderConnnectionWrapper> Connections = new List<AistTraderConnnectionWrapper>();
+
+            IEnumerator<AistTraderAgentManagerWrapper> IEnumerable<AistTraderAgentManagerWrapper>.GetEnumerator()
+            {
+                throw new NotImplementedException();
+            }
+
+            public IEnumerator<AistTraderConnnectionWrapper> GetEnumerator()
+            {
+                throw new NotImplementedException();
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+
+            public void Add(AistTraderConnnectionWrapper item)
+            {
+                Connections.Add(item);
+            }
+
+            public void Add(AistTraderAgentManagerWrapper item)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Clear()
+            {
+                Connections.Clear();
+            }
+
+            public bool Contains(AistTraderAgentManagerWrapper item)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void CopyTo(AistTraderAgentManagerWrapper[] array, int arrayIndex)
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool Remove(AistTraderAgentManagerWrapper item)
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool Contains(AistTraderConnnectionWrapper item)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void CopyTo(AistTraderConnnectionWrapper[] array, int arrayIndex)
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool Remove(AistTraderConnnectionWrapper item)
+            {
+                return Connections.Remove(item);
+            }
+            public int Count { get; set; }
+            public bool IsReadOnly { get; set; }
+            public int IndexOf(AistTraderConnnectionWrapper item)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Insert(int index, AistTraderConnnectionWrapper item)
+            {
+                throw new NotImplementedException();
+            }
+
+            public int IndexOf(AistTraderAgentManagerWrapper item)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Insert(int index, AistTraderAgentManagerWrapper item)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void RemoveAt(int index)
+            {
+                throw new NotImplementedException();
+            }
+
+            AistTraderAgentManagerWrapper IList<AistTraderAgentManagerWrapper>.this[int index]
+            {
+                get { throw new NotImplementedException(); }
+                set { throw new NotImplementedException(); }
+            }
+
+            public AistTraderConnnectionWrapper this[int index]
+            {
+                get { throw new NotImplementedException(); }
+                set { throw new NotImplementedException(); }
+            }
+
+            public void Dispose()
+            {
+            }
+        }
+
+        #endregion
     }
 }

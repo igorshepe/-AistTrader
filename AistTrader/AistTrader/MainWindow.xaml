@@ -419,19 +419,19 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
-                                <DataGridTextColumn Header="Position(Позиции(лоты))"
+                                <DataGridTextColumn Header="Position"
                                                     Binding="{Binding AgentManagerSettings.Position}"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Net value(Чистая стоимость)"
+                                <DataGridTextColumn Header="Net value"
                                                     Binding="{Binding Connection.ConnectionParams.NetValue}"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Transaction(П/У(сделка))"
+                                <DataGridTextColumn Header="Transaction)"
                                                     Binding="{Binding AgentManagerSettings.Transaction}"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Final transaction(П/У(итоговый))"
+                                <DataGridTextColumn Header="Final transaction)"
                                                     Binding="{Binding AgentManagerSettings.FinalTransaction}"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Current state(состояние)"
+                                <DataGridTextColumn Header="Current state"
                                                     Binding="{Binding AgentManagerSettings.Account.AgentAccount.IsActive}"
                                                     IsReadOnly="True"
                                                     />

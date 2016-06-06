@@ -85,16 +85,8 @@ namespace AistTrader
         }
         private void LoadParams()
         {
-
-
             //todo:выбирать для каждого подключения/портфеля свой набор параметров
             //SecurityPicker.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
-
-
-
-
-
-
             List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName).ToList();
             var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName != "ungrouped agents").Select(i => i.Params.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
