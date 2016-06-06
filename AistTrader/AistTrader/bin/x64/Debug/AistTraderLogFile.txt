@@ -8498,3 +8498,1146 @@
 2016-06-05 14:18:23.6371|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
    at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
    at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-06 09:47:04.5798|INFO|AistTrader.MainWindow|Connection - "testC" is active now
+2016-06-06 09:47:04.8210|INFO|AistTrader.MainWindow|Portfolios for connection "testC" were loaded
+2016-06-06 09:47:07.4178|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:47:07.7578|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"teeeess"...
+2016-06-06 09:47:08.4397|INFO|AistTrader.MainWindow|IP and port of -"teeeess" connection were successfully acquired
+2016-06-06 09:47:10.5958|INFO|AistTrader.MainWindow|Connection - "teeeess" is active now
+2016-06-06 09:47:10.7629|INFO|AistTrader.MainWindow|Portfolios for connection "teeeess" were loaded
+2016-06-06 09:47:11.9165|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:47:29.6876|INFO|AistTrader.MainWindow|Connection "testC" has been deleted
+2016-06-06 09:47:49.0853|INFO|AistTrader.MainWindow|Connection - "teeeess" is not active now
+2016-06-06 09:48:04.7660|INFO|AistTrader.MainWindow|Connection "teeeess" has been deleted
+2016-06-06 09:49:29.7332|INFO|AistTrader.MainWindow|Agent "ChStrategy 64_10_20_20" has been deleted.  Strategies class name: ChStrategy 64_10_20_20.cs
+2016-06-06 09:49:34.4375|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_4_20_20" has been deleted.  Strategies class name: ChStrategy 60_4_20_20.cs
+2016-06-06 09:49:52.6556|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
+2016-06-06 09:50:21.9001|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection1"...
+2016-06-06 09:50:22.7377|INFO|AistTrader.MainWindow|IP and port of -"TestConnection1" connection were successfully acquired
+2016-06-06 09:50:25.8793|INFO|AistTrader.MainWindow|Connection - "TestConnection1" is active now
+2016-06-06 09:50:26.1365|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection1" were loaded
+2016-06-06 09:50:27.0750|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:50:38.8177|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection2"...
+2016-06-06 09:50:39.6305|INFO|AistTrader.MainWindow|IP and port of -"TestConnection2" connection were successfully acquired
+2016-06-06 09:50:40.2358|INFO|AistTrader.MainWindow|Connection - "TestConnection2" is active now
+2016-06-06 09:50:40.3999|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection2" were loaded
+2016-06-06 09:50:42.1960|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:51:17.1883|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection3"...
+2016-06-06 09:51:18.2777|INFO|AistTrader.MainWindow|IP and port of -"TestConnection3" connection were successfully acquired
+2016-06-06 09:51:20.3897|INFO|AistTrader.MainWindow|Connection - "TestConnection3" is active now
+2016-06-06 09:51:20.6139|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection3" were loaded
+2016-06-06 09:51:21.5042|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:52:40.9812|INFO|AistTrader.MainWindow|Successfully added agent manager - "TestPortfolio1"
+2016-06-06 09:52:41.1995|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-06 09:55:50.8769|INFO|AistTrader.MainWindow|Connection - "TestConnection1" is active now
+2016-06-06 09:55:51.1031|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection1" were loaded
+2016-06-06 09:55:52.9950|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:55:59.1138|INFO|AistTrader.MainWindow|Connection - "TestConnection2" is active now
+2016-06-06 09:55:59.2660|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection2" were loaded
+2016-06-06 09:56:01.0923|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:56:02.8567|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection3"...
+2016-06-06 09:56:03.5261|INFO|AistTrader.MainWindow|IP and port of -"TestConnection3" connection were successfully acquired
+2016-06-06 09:56:03.6200|INFO|AistTrader.MainWindow|Connection - "TestConnection3" is active now
+2016-06-06 09:56:03.8089|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection3" were loaded
+2016-06-06 09:56:04.9961|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:56:38.3749|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection4"...
+2016-06-06 09:56:45.8237|INFO|AistTrader.MainWindow|IP and port of -"TestConnection4" connection were successfully acquired
+2016-06-06 09:56:46.0531|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-06 09:56:46.2142|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-06 09:56:47.7948|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 09:57:25.6265|INFO|AistTrader.MainWindow|Successfully added agent manager - "TestPortfolio4"
+2016-06-06 09:57:26.0112|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-06 09:59:33.8437|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-06 09:59:57.4002|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:15:00 +03:00
+2016-06-06 09:59:57.4002|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:16:00 +03:00
+2016-06-06 09:59:57.4159|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:17:00 +03:00
+2016-06-06 09:59:57.4159|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:18:00 +03:00
+2016-06-06 09:59:57.4159|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:19:00 +03:00
+2016-06-06 09:59:57.4159|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:20:00 +03:00
+2016-06-06 09:59:57.4159|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:21:00 +03:00
+2016-06-06 09:59:57.4159|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:22:00 +03:00
+2016-06-06 09:59:57.4315|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:23:00 +03:00
+2016-06-06 09:59:57.4315|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:24:00 +03:00
+2016-06-06 09:59:57.4315|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:25:00 +03:00
+2016-06-06 09:59:57.4315|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:26:00 +03:00
+2016-06-06 09:59:57.4315|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:27:00 +03:00
+2016-06-06 09:59:57.4315|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:28:00 +03:00
+2016-06-06 09:59:57.4315|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:29:00 +03:00
+2016-06-06 09:59:57.4315|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:30:00 +03:00
+2016-06-06 09:59:57.4481|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:31:00 +03:00
+2016-06-06 09:59:57.4481|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:32:00 +03:00
+2016-06-06 09:59:57.4481|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:33:00 +03:00
+2016-06-06 09:59:57.4481|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:34:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:35:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:36:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:37:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:38:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:39:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:40:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:41:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:42:00 +03:00
+2016-06-06 09:59:57.4693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:43:00 +03:00
+2016-06-06 09:59:57.4849|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:44:00 +03:00
+2016-06-06 09:59:57.4849|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:45:00 +03:00
+2016-06-06 09:59:57.4849|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:46:00 +03:00
+2016-06-06 09:59:57.4849|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:47:00 +03:00
+2016-06-06 09:59:57.4849|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:48:00 +03:00
+2016-06-06 09:59:57.4849|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:49:00 +03:00
+2016-06-06 09:59:57.5005|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:50:00 +03:00
+2016-06-06 09:59:57.5005|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:51:00 +03:00
+2016-06-06 09:59:57.5005|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:52:00 +03:00
+2016-06-06 09:59:57.5005|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:53:00 +03:00
+2016-06-06 09:59:57.5162|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:54:00 +03:00
+2016-06-06 09:59:57.5162|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:55:00 +03:00
+2016-06-06 09:59:57.5162|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:56:00 +03:00
+2016-06-06 09:59:57.5162|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:57:00 +03:00
+2016-06-06 09:59:57.5162|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:58:00 +03:00
+2016-06-06 09:59:57.5318|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:59:00 +03:00
+2016-06-06 09:59:57.5318|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:00:00 +03:00
+2016-06-06 09:59:57.5318|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:01:00 +03:00
+2016-06-06 09:59:57.5318|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:02:00 +03:00
+2016-06-06 09:59:57.5318|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:03:00 +03:00
+2016-06-06 09:59:57.5504|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:04:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:05:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:06:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:07:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:08:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:09:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:10:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:11:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:12:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:13:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:14:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:15:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:16:00 +03:00
+2016-06-06 09:59:57.5539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:17:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:18:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:19:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:20:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:21:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:22:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:23:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:24:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:25:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:26:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:27:00 +03:00
+2016-06-06 09:59:57.5786|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:28:00 +03:00
+2016-06-06 09:59:57.5942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:29:00 +03:00
+2016-06-06 09:59:57.5942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:30:00 +03:00
+2016-06-06 09:59:57.5942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:31:00 +03:00
+2016-06-06 09:59:57.5942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:32:00 +03:00
+2016-06-06 09:59:57.5942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:33:00 +03:00
+2016-06-06 09:59:57.5942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:34:00 +03:00
+2016-06-06 09:59:57.5942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:35:00 +03:00
+2016-06-06 09:59:57.6225|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:36:00 +03:00
+2016-06-06 09:59:57.6225|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:37:00 +03:00
+2016-06-06 09:59:57.6225|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:38:00 +03:00
+2016-06-06 09:59:57.6225|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:39:00 +03:00
+2016-06-06 09:59:57.6225|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:40:00 +03:00
+2016-06-06 09:59:57.6335|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:41:00 +03:00
+2016-06-06 09:59:57.6335|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:42:00 +03:00
+2016-06-06 09:59:57.6335|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:43:00 +03:00
+2016-06-06 09:59:57.6335|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:44:00 +03:00
+2016-06-06 09:59:57.6335|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:45:00 +03:00
+2016-06-06 09:59:57.6335|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:46:00 +03:00
+2016-06-06 09:59:57.6335|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:47:00 +03:00
+2016-06-06 09:59:57.6485|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:48:00 +03:00
+2016-06-06 09:59:57.6485|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:49:00 +03:00
+2016-06-06 09:59:57.6485|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:50:00 +03:00
+2016-06-06 09:59:57.6485|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:51:00 +03:00
+2016-06-06 09:59:57.6485|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:52:00 +03:00
+2016-06-06 09:59:57.6485|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:53:00 +03:00
+2016-06-06 09:59:57.6485|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:54:00 +03:00
+2016-06-06 09:59:57.6485|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:55:00 +03:00
+2016-06-06 09:59:57.6738|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:56:00 +03:00
+2016-06-06 09:59:57.6738|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:57:00 +03:00
+2016-06-06 09:59:57.6738|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:58:00 +03:00
+2016-06-06 09:59:57.6738|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:59:00 +03:00
+2016-06-06 09:59:57.6738|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:00:00 +03:00
+2016-06-06 09:59:57.6738|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:01:00 +03:00
+2016-06-06 09:59:57.6738|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:02:00 +03:00
+2016-06-06 09:59:57.6738|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:03:00 +03:00
+2016-06-06 09:59:57.6894|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:04:00 +03:00
+2016-06-06 09:59:57.6894|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:05:00 +03:00
+2016-06-06 09:59:57.6894|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:06:00 +03:00
+2016-06-06 09:59:57.6894|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:07:00 +03:00
+2016-06-06 09:59:57.6894|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:08:00 +03:00
+2016-06-06 09:59:57.6894|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:09:00 +03:00
+2016-06-06 09:59:57.6894|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:10:00 +03:00
+2016-06-06 09:59:57.7050|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:11:00 +03:00
+2016-06-06 09:59:57.7050|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:12:00 +03:00
+2016-06-06 09:59:57.7050|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:13:00 +03:00
+2016-06-06 09:59:57.7050|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:14:00 +03:00
+2016-06-06 09:59:57.7050|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:15:00 +03:00
+2016-06-06 09:59:57.7050|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:16:00 +03:00
+2016-06-06 09:59:57.7050|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:17:00 +03:00
+2016-06-06 09:59:57.7207|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:18:00 +03:00
+2016-06-06 09:59:57.7363|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:19:00 +03:00
+2016-06-06 09:59:57.7363|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:20:00 +03:00
+2016-06-06 09:59:57.7363|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:21:00 +03:00
+2016-06-06 09:59:57.7363|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:22:00 +03:00
+2016-06-06 09:59:57.7363|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:23:00 +03:00
+2016-06-06 09:59:57.7539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:24:00 +03:00
+2016-06-06 09:59:57.7539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:25:00 +03:00
+2016-06-06 09:59:57.7539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:26:00 +03:00
+2016-06-06 09:59:57.7539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:27:00 +03:00
+2016-06-06 09:59:57.7539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:28:00 +03:00
+2016-06-06 09:59:57.7539|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:29:00 +03:00
+2016-06-06 09:59:57.7696|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:30:00 +03:00
+2016-06-06 09:59:57.7696|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:31:00 +03:00
+2016-06-06 09:59:57.7696|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:32:00 +03:00
+2016-06-06 09:59:57.7852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:33:00 +03:00
+2016-06-06 09:59:57.7852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:34:00 +03:00
+2016-06-06 09:59:57.7852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:35:00 +03:00
+2016-06-06 09:59:57.7852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:36:00 +03:00
+2016-06-06 09:59:57.7852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:37:00 +03:00
+2016-06-06 09:59:57.7852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:38:00 +03:00
+2016-06-06 09:59:57.8008|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:39:00 +03:00
+2016-06-06 09:59:57.8008|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:40:00 +03:00
+2016-06-06 09:59:57.8008|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:41:00 +03:00
+2016-06-06 09:59:57.8008|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:42:00 +03:00
+2016-06-06 09:59:57.8008|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:43:00 +03:00
+2016-06-06 09:59:57.8008|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:44:00 +03:00
+2016-06-06 09:59:57.8008|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:45:00 +03:00
+2016-06-06 09:59:57.8164|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:46:00 +03:00
+2016-06-06 09:59:57.8164|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:47:00 +03:00
+2016-06-06 09:59:57.8164|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:48:00 +03:00
+2016-06-06 09:59:57.8164|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:49:00 +03:00
+2016-06-06 09:59:57.8164|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:50:00 +03:00
+2016-06-06 09:59:57.8321|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:51:00 +03:00
+2016-06-06 09:59:57.8321|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:52:00 +03:00
+2016-06-06 09:59:57.8321|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:53:00 +03:00
+2016-06-06 09:59:57.8507|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:54:00 +03:00
+2016-06-06 09:59:57.8507|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:55:00 +03:00
+2016-06-06 09:59:57.8507|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:56:00 +03:00
+2016-06-06 09:59:57.8507|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:57:00 +03:00
+2016-06-06 09:59:57.8507|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:58:00 +03:00
+2016-06-06 09:59:57.8507|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:59:00 +03:00
+2016-06-06 09:59:57.8507|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:00:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:01:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:02:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:03:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:04:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:05:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:06:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:07:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:08:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:09:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:10:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:11:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:12:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:13:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:14:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:15:00 +03:00
+2016-06-06 09:59:57.8703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:16:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:17:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:18:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:19:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:20:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:21:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:22:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:23:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:24:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:25:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:26:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:27:00 +03:00
+2016-06-06 09:59:57.8860|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:28:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:29:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:30:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:31:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:32:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:33:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:34:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:35:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:36:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:37:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:38:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:39:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:40:00 +03:00
+2016-06-06 09:59:57.9016|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:41:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:42:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:43:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:44:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:00:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:01:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:02:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:03:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:04:00 +03:00
+2016-06-06 09:59:57.9172|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:05:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:06:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:07:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:08:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:09:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:10:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:11:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:12:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:13:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:14:00 +03:00
+2016-06-06 09:59:57.9328|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:15:00 +03:00
+2016-06-06 09:59:57.9500|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:16:00 +03:00
+2016-06-06 09:59:57.9500|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:17:00 +03:00
+2016-06-06 09:59:57.9500|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:18:00 +03:00
+2016-06-06 09:59:57.9600|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:19:00 +03:00
+2016-06-06 09:59:57.9600|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:20:00 +03:00
+2016-06-06 09:59:57.9600|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:21:00 +03:00
+2016-06-06 09:59:57.9770|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:22:00 +03:00
+2016-06-06 09:59:57.9770|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:23:00 +03:00
+2016-06-06 09:59:57.9770|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:24:00 +03:00
+2016-06-06 09:59:57.9770|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:25:00 +03:00
+2016-06-06 09:59:57.9770|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:26:00 +03:00
+2016-06-06 09:59:57.9770|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:27:00 +03:00
+2016-06-06 09:59:57.9770|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:28:00 +03:00
+2016-06-06 09:59:57.9770|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:29:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:30:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:31:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:32:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:33:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:34:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:35:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:36:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:37:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:38:00 +03:00
+2016-06-06 09:59:57.9978|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:39:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:40:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:41:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:42:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:43:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:44:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:45:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:46:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:47:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:48:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:49:00 +03:00
+2016-06-06 09:59:58.0134|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:50:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:51:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:52:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:53:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:54:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:55:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:56:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:57:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:58:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:59:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:00:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:01:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:02:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:03:00 +03:00
+2016-06-06 09:59:58.0290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:04:00 +03:00
+2016-06-06 09:59:58.0461|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:05:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:06:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:07:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:08:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:09:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:10:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:11:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:12:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:13:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:14:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:15:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:16:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:17:00 +03:00
+2016-06-06 09:59:58.0546|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:18:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:19:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:20:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:21:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:22:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:23:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:24:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:25:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:26:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:27:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:28:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:29:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:30:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:31:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:32:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:33:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:34:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:35:00 +03:00
+2016-06-06 09:59:58.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:36:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:37:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:38:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:39:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:40:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:41:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:42:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:43:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:44:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:45:00 +03:00
+2016-06-06 09:59:58.0864|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:46:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:47:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:48:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:49:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:50:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:51:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:52:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:53:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:54:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:55:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:56:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:57:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:58:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:59:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:00:00 +03:00
+2016-06-06 09:59:58.1020|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:01:00 +03:00
+2016-06-06 09:59:58.1176|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:02:00 +03:00
+2016-06-06 09:59:58.1176|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:03:00 +03:00
+2016-06-06 09:59:58.1396|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:04:00 +03:00
+2016-06-06 09:59:58.1396|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:05:00 +03:00
+2016-06-06 09:59:58.1396|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:06:00 +03:00
+2016-06-06 09:59:58.1396|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:07:00 +03:00
+2016-06-06 09:59:58.1396|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:08:00 +03:00
+2016-06-06 09:59:58.1396|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:09:00 +03:00
+2016-06-06 09:59:58.1396|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:10:00 +03:00
+2016-06-06 09:59:58.1396|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:11:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:12:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:13:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:14:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:15:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:16:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:17:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:18:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:19:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:20:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:21:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:22:00 +03:00
+2016-06-06 09:59:58.1476|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:23:00 +03:00
+2016-06-06 09:59:58.1631|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:24:00 +03:00
+2016-06-06 09:59:58.1631|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:25:00 +03:00
+2016-06-06 09:59:58.1631|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:26:00 +03:00
+2016-06-06 09:59:58.1631|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:27:00 +03:00
+2016-06-06 09:59:58.1631|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:28:00 +03:00
+2016-06-06 09:59:58.1631|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:29:00 +03:00
+2016-06-06 09:59:58.1631|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:30:00 +03:00
+2016-06-06 09:59:58.1631|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:31:00 +03:00
+2016-06-06 09:59:58.1905|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:32:00 +03:00
+2016-06-06 09:59:58.1905|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:33:00 +03:00
+2016-06-06 09:59:58.1905|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:34:00 +03:00
+2016-06-06 09:59:58.1905|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:35:00 +03:00
+2016-06-06 09:59:58.1905|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:36:00 +03:00
+2016-06-06 09:59:58.1905|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:37:00 +03:00
+2016-06-06 09:59:58.1905|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:38:00 +03:00
+2016-06-06 09:59:58.1905|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:39:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:40:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:41:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:42:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:43:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:44:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:45:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:46:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:47:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:48:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:49:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:50:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:51:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:52:00 +03:00
+2016-06-06 09:59:58.2061|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:53:00 +03:00
+2016-06-06 09:59:58.2217|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:54:00 +03:00
+2016-06-06 09:59:58.2217|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:55:00 +03:00
+2016-06-06 09:59:58.2217|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:56:00 +03:00
+2016-06-06 09:59:58.2217|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:57:00 +03:00
+2016-06-06 09:59:58.2217|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:58:00 +03:00
+2016-06-06 09:59:58.2217|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:59:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:00:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:01:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:02:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:03:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:04:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:05:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:06:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:07:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:08:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:09:00 +03:00
+2016-06-06 09:59:58.2373|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:10:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:11:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:12:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:13:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:14:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:15:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:16:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:17:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:18:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:19:00 +03:00
+2016-06-06 09:59:58.2556|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:20:00 +03:00
+2016-06-06 09:59:58.2712|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:21:00 +03:00
+2016-06-06 09:59:58.2712|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:22:00 +03:00
+2016-06-06 09:59:58.2712|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:23:00 +03:00
+2016-06-06 09:59:58.2712|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:24:00 +03:00
+2016-06-06 09:59:58.2712|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:25:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:26:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:27:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:28:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:29:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:30:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:31:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:32:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:33:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:34:00 +03:00
+2016-06-06 09:59:58.2868|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:35:00 +03:00
+2016-06-06 09:59:58.3025|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:36:00 +03:00
+2016-06-06 09:59:58.3025|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:37:00 +03:00
+2016-06-06 09:59:58.3025|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:38:00 +03:00
+2016-06-06 09:59:58.3025|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:39:00 +03:00
+2016-06-06 09:59:58.3025|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:40:00 +03:00
+2016-06-06 09:59:58.3181|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:41:00 +03:00
+2016-06-06 09:59:58.3181|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:42:00 +03:00
+2016-06-06 09:59:58.3181|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:43:00 +03:00
+2016-06-06 09:59:58.3181|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:44:00 +03:00
+2016-06-06 09:59:58.3181|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:45:00 +03:00
+2016-06-06 09:59:58.3181|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:46:00 +03:00
+2016-06-06 09:59:58.3337|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:47:00 +03:00
+2016-06-06 09:59:58.3337|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:48:00 +03:00
+2016-06-06 09:59:58.3337|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:49:00 +03:00
+2016-06-06 09:59:58.3337|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:50:00 +03:00
+2016-06-06 09:59:58.3337|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:51:00 +03:00
+2016-06-06 09:59:58.3337|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:52:00 +03:00
+2016-06-06 09:59:58.3337|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:53:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:54:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:55:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:56:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:57:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:58:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:59:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:00:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:01:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:02:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:03:00 +03:00
+2016-06-06 09:59:58.3548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:04:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:05:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:06:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:07:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:08:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:09:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:10:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:11:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:12:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:13:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:14:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:15:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:16:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:17:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:18:00 +03:00
+2016-06-06 09:59:58.3705|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:19:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:20:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:21:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:22:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:23:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:24:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:25:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:26:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:27:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:28:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:29:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:30:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:31:00 +03:00
+2016-06-06 09:59:58.3861|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:32:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:33:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:34:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:35:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:36:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:37:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:38:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:39:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:40:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:41:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:42:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:43:00 +03:00
+2016-06-06 09:59:58.4017|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:44:00 +03:00
+2016-06-06 10:00:56.1847|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 0, SlowSMA 65812.65000, FastSMA 65812.10000, Highest 65860.00000, Lowest 65800.00000, Mid 65830.00000
+2016-06-06 10:01:56.0578|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 0, SlowSMA 65817.25000, FastSMA 65819.40000, Highest 65926.00000, Lowest 65800.00000, Mid 65863.00000
+2016-06-06 10:02:00.1659|INFO|TradesLogger|ChStrategy 60_10_20_20: LE 65926.00000, SSMA 65817.25000 < FSMA 65819.40000, Candle_HP 65899.00000 >= Highest 65926.00000 
+2016-06-06 10:02:00.1659|INFO|TradesLogger|ChStrategy 60_10_20_20: New order, price 70363.00000(MarketPrice), Buy, vol 17
+2016-06-06 10:02:00.3033|INFO|TradesLogger|ChStrategy 60_10_20_20: Order 35805826 Registered
+2016-06-06 10:02:00.3344|INFO|TradesLogger|ChStrategy 60_10_20_20: Trade price 65927.00000, vol 17
+2016-06-06 10:02:00.3657|INFO|TradesLogger|ChStrategy 60_10_20_20: Order 35805826 finish, vol 17 , averagePrice 65927.00000
+2016-06-06 10:02:55.8132|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 17, SlowSMA 65821.40000, FastSMA 65827.20000, Highest 65927.00000, Lowest 65800.00000, Mid 65863.50000
+2016-06-06 10:03:03.5092|INFO|TradesLogger|ChStrategy 60_10_20_20: LX 65863.50000, Candle_LP 65851.00000 < MidCH 65863.50000
+2016-06-06 10:03:03.5092|INFO|TradesLogger|ChStrategy 60_10_20_20: New order, price 64303.00000(MarketPrice), Sell, vol 17
+2016-06-06 10:03:03.5470|INFO|TradesLogger|ChStrategy 60_10_20_20: Order 35805827 Registered
+2016-06-06 10:03:03.5626|INFO|TradesLogger|ChStrategy 60_10_20_20: Trade price 65842.00000, vol 2
+2016-06-06 10:03:03.5626|INFO|TradesLogger|ChStrategy 60_10_20_20: Trade price 65840.00000, vol 1
+2016-06-06 10:03:03.5626|INFO|TradesLogger|ChStrategy 60_10_20_20: Trade price 65840.00000, vol 1
+2016-06-06 10:03:03.5782|INFO|TradesLogger|ChStrategy 60_10_20_20: Trade price 65840.00000, vol 5
+2016-06-06 10:03:03.5782|INFO|TradesLogger|ChStrategy 60_10_20_20: Trade price 65835.00000, vol 8
+2016-06-06 10:03:03.5939|INFO|TradesLogger|ChStrategy 60_10_20_20: Order 35805827 finish, vol 17 , averagePrice 65837.882352941176470588235294
+2016-06-06 10:03:09.6733|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
+2016-06-06 10:03:16.9082|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is not active now
+2016-06-06 10:03:20.5912|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-06 10:03:23.6204|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is not active now
+2016-06-06 10:03:24.8984|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-06 10:03:54.1172|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection4"...
+2016-06-06 10:03:55.6754|INFO|AistTrader.MainWindow|IP and port of -"TestConnection4" connection were successfully acquired
+2016-06-06 10:03:57.3626|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-06 10:03:57.5448|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-06 10:03:58.6108|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:04:04.9998|INFO|AistTrader.MainWindow|Connection - "TestConnection3" is active now
+2016-06-06 10:04:05.1765|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection3" were loaded
+2016-06-06 10:04:05.5833|INFO|AistTrader.MainWindow|Connection - "TestConnection2" is active now
+2016-06-06 10:04:05.7570|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection2" were loaded
+2016-06-06 10:04:06.1935|INFO|AistTrader.MainWindow|Connection - "TestConnection1" is active now
+2016-06-06 10:04:06.3716|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection1" were loaded
+2016-06-06 10:04:06.7334|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:04:07.4245|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:04:07.6077|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:18:06.3911|INFO|AistTrader.MainWindow|Connection - "TestConnection1" is active now
+2016-06-06 10:18:06.5894|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection1" were loaded
+2016-06-06 10:18:08.6118|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:18:10.8056|INFO|AistTrader.MainWindow|Connection - "TestConnection2" is active now
+2016-06-06 10:18:10.9650|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection2" were loaded
+2016-06-06 10:18:12.9340|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:18:14.5825|INFO|AistTrader.MainWindow|Connection - "TestConnection3" is active now
+2016-06-06 10:18:14.7533|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection3" were loaded
+2016-06-06 10:18:16.3836|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"TestConnection4"...
+2016-06-06 10:18:17.7623|INFO|AistTrader.MainWindow|IP and port of -"TestConnection4" connection were successfully acquired
+2016-06-06 10:18:17.7903|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:18:18.0545|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-06 10:18:18.1691|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-06 10:18:20.4329|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:23:27.1520|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-06 10:23:29.3786|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
+2016-06-06 10:23:36.9820|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-06 10:23:42.5525|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
+2016-06-06 10:25:53.0940|INFO|AistTrader.MainWindow|Agent manager item "TestPortfolio1" has been deleted
+2016-06-06 10:25:53.4057|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-06 10:26:42.0535|INFO|AistTrader.MainWindow|Connection "TestConnection1" has been deleted
+2016-06-06 10:27:15.7526|INFO|AistTrader.MainWindow|Connection - "TestConnection2" is active now
+2016-06-06 10:27:15.9417|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection2" were loaded
+2016-06-06 10:27:17.0364|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:27:22.6293|INFO|AistTrader.MainWindow|Connection - "TestConnection3" is active now
+2016-06-06 10:27:22.8039|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection3" were loaded
+2016-06-06 10:27:25.8973|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:32:08.9556|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-06 10:32:09.1143|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-06 10:32:10.4339|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-06 10:33:14.1454|INFO|AistTrader.MainWindow|Successfully added agent manager - "TestPortfolio4"
+2016-06-06 10:33:14.5143|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-06 10:33:45.0571|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-06 10:34:06.9199|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:15:00 +03:00
+2016-06-06 10:34:06.9329|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:16:00 +03:00
+2016-06-06 10:34:06.9329|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:17:00 +03:00
+2016-06-06 10:34:06.9559|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:18:00 +03:00
+2016-06-06 10:34:06.9619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:19:00 +03:00
+2016-06-06 10:34:06.9619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:20:00 +03:00
+2016-06-06 10:34:06.9619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:21:00 +03:00
+2016-06-06 10:34:06.9619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:22:00 +03:00
+2016-06-06 10:34:06.9789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:23:00 +03:00
+2016-06-06 10:34:06.9789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:24:00 +03:00
+2016-06-06 10:34:06.9789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:25:00 +03:00
+2016-06-06 10:34:06.9789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:26:00 +03:00
+2016-06-06 10:34:06.9789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:27:00 +03:00
+2016-06-06 10:34:06.9930|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:28:00 +03:00
+2016-06-06 10:34:06.9930|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:29:00 +03:00
+2016-06-06 10:34:06.9930|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:30:00 +03:00
+2016-06-06 10:34:06.9930|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:31:00 +03:00
+2016-06-06 10:34:07.0091|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:32:00 +03:00
+2016-06-06 10:34:07.0236|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:33:00 +03:00
+2016-06-06 10:34:07.0236|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:34:00 +03:00
+2016-06-06 10:34:07.0236|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:35:00 +03:00
+2016-06-06 10:34:07.0236|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:36:00 +03:00
+2016-06-06 10:34:07.0381|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:37:00 +03:00
+2016-06-06 10:34:07.0381|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:38:00 +03:00
+2016-06-06 10:34:07.0381|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:39:00 +03:00
+2016-06-06 10:34:07.0381|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:40:00 +03:00
+2016-06-06 10:34:07.0381|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:41:00 +03:00
+2016-06-06 10:34:07.0571|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:42:00 +03:00
+2016-06-06 10:34:07.0571|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:43:00 +03:00
+2016-06-06 10:34:07.0571|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:44:00 +03:00
+2016-06-06 10:34:07.0571|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:45:00 +03:00
+2016-06-06 10:34:07.0701|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:46:00 +03:00
+2016-06-06 10:34:07.0701|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:47:00 +03:00
+2016-06-06 10:34:07.0701|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:48:00 +03:00
+2016-06-06 10:34:07.0701|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:49:00 +03:00
+2016-06-06 10:34:07.1022|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:50:00 +03:00
+2016-06-06 10:34:07.1022|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:51:00 +03:00
+2016-06-06 10:34:07.1022|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:52:00 +03:00
+2016-06-06 10:34:07.1177|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:53:00 +03:00
+2016-06-06 10:34:07.1177|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:54:00 +03:00
+2016-06-06 10:34:07.1177|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:55:00 +03:00
+2016-06-06 10:34:07.1177|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:56:00 +03:00
+2016-06-06 10:34:07.1322|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:57:00 +03:00
+2016-06-06 10:34:07.1322|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:58:00 +03:00
+2016-06-06 10:34:07.1322|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 15:59:00 +03:00
+2016-06-06 10:34:07.1322|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:00:00 +03:00
+2016-06-06 10:34:07.1482|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:01:00 +03:00
+2016-06-06 10:34:07.1482|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:02:00 +03:00
+2016-06-06 10:34:07.1482|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:03:00 +03:00
+2016-06-06 10:34:07.1482|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:04:00 +03:00
+2016-06-06 10:34:07.1632|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:05:00 +03:00
+2016-06-06 10:34:07.1632|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:06:00 +03:00
+2016-06-06 10:34:07.1632|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:07:00 +03:00
+2016-06-06 10:34:07.1862|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:08:00 +03:00
+2016-06-06 10:34:07.1862|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:09:00 +03:00
+2016-06-06 10:34:07.1942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:10:00 +03:00
+2016-06-06 10:34:07.1942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:11:00 +03:00
+2016-06-06 10:34:07.1942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:12:00 +03:00
+2016-06-06 10:34:07.1942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:13:00 +03:00
+2016-06-06 10:34:07.1942|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:14:00 +03:00
+2016-06-06 10:34:07.2132|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:15:00 +03:00
+2016-06-06 10:34:07.2132|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:16:00 +03:00
+2016-06-06 10:34:07.2258|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:17:00 +03:00
+2016-06-06 10:34:07.2258|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:18:00 +03:00
+2016-06-06 10:34:07.2258|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:19:00 +03:00
+2016-06-06 10:34:07.2258|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:20:00 +03:00
+2016-06-06 10:34:07.2258|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:21:00 +03:00
+2016-06-06 10:34:07.2438|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:22:00 +03:00
+2016-06-06 10:34:07.2438|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:23:00 +03:00
+2016-06-06 10:34:07.2438|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:24:00 +03:00
+2016-06-06 10:34:07.2658|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:25:00 +03:00
+2016-06-06 10:34:07.2748|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:26:00 +03:00
+2016-06-06 10:34:07.2748|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:27:00 +03:00
+2016-06-06 10:34:07.2748|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:28:00 +03:00
+2016-06-06 10:34:07.2748|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:29:00 +03:00
+2016-06-06 10:34:07.2883|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:30:00 +03:00
+2016-06-06 10:34:07.2883|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:31:00 +03:00
+2016-06-06 10:34:07.2883|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:32:00 +03:00
+2016-06-06 10:34:07.2883|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:33:00 +03:00
+2016-06-06 10:34:07.3053|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:34:00 +03:00
+2016-06-06 10:34:07.3053|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:35:00 +03:00
+2016-06-06 10:34:07.3053|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:36:00 +03:00
+2016-06-06 10:34:07.3403|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:37:00 +03:00
+2016-06-06 10:34:07.3509|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:38:00 +03:00
+2016-06-06 10:34:07.3509|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:39:00 +03:00
+2016-06-06 10:34:07.3709|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:40:00 +03:00
+2016-06-06 10:34:07.3709|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:41:00 +03:00
+2016-06-06 10:34:07.3819|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:42:00 +03:00
+2016-06-06 10:34:07.3819|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:43:00 +03:00
+2016-06-06 10:34:07.4019|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:44:00 +03:00
+2016-06-06 10:34:07.4019|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:45:00 +03:00
+2016-06-06 10:34:07.4019|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:46:00 +03:00
+2016-06-06 10:34:07.4184|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:47:00 +03:00
+2016-06-06 10:34:07.4184|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:48:00 +03:00
+2016-06-06 10:34:07.4184|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:49:00 +03:00
+2016-06-06 10:34:07.4184|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:50:00 +03:00
+2016-06-06 10:34:07.4389|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:51:00 +03:00
+2016-06-06 10:34:07.4454|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:52:00 +03:00
+2016-06-06 10:34:07.4454|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:53:00 +03:00
+2016-06-06 10:34:07.4699|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:54:00 +03:00
+2016-06-06 10:34:07.4764|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:55:00 +03:00
+2016-06-06 10:34:07.4764|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:56:00 +03:00
+2016-06-06 10:34:07.4764|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:57:00 +03:00
+2016-06-06 10:34:07.4940|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:58:00 +03:00
+2016-06-06 10:34:07.4940|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 16:59:00 +03:00
+2016-06-06 10:34:07.5070|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:00:00 +03:00
+2016-06-06 10:34:07.5070|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:01:00 +03:00
+2016-06-06 10:34:07.5070|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:02:00 +03:00
+2016-06-06 10:34:07.5070|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:03:00 +03:00
+2016-06-06 10:34:07.5230|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:04:00 +03:00
+2016-06-06 10:34:07.5230|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:05:00 +03:00
+2016-06-06 10:34:07.5380|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:06:00 +03:00
+2016-06-06 10:34:07.5380|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:07:00 +03:00
+2016-06-06 10:34:07.5380|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:08:00 +03:00
+2016-06-06 10:34:07.5380|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:09:00 +03:00
+2016-06-06 10:34:07.5535|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:10:00 +03:00
+2016-06-06 10:34:07.5535|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:11:00 +03:00
+2016-06-06 10:34:07.5535|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:12:00 +03:00
+2016-06-06 10:34:07.5535|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:13:00 +03:00
+2016-06-06 10:34:07.5535|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:14:00 +03:00
+2016-06-06 10:34:07.5730|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:15:00 +03:00
+2016-06-06 10:34:07.5885|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:16:00 +03:00
+2016-06-06 10:34:07.5885|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:17:00 +03:00
+2016-06-06 10:34:07.5885|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:18:00 +03:00
+2016-06-06 10:34:07.5885|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:19:00 +03:00
+2016-06-06 10:34:07.6040|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:20:00 +03:00
+2016-06-06 10:34:07.6040|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:21:00 +03:00
+2016-06-06 10:34:07.6040|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:22:00 +03:00
+2016-06-06 10:34:07.6250|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:23:00 +03:00
+2016-06-06 10:34:07.6250|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:24:00 +03:00
+2016-06-06 10:34:07.6250|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:25:00 +03:00
+2016-06-06 10:34:07.6361|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:26:00 +03:00
+2016-06-06 10:34:07.6361|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:27:00 +03:00
+2016-06-06 10:34:07.6361|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:28:00 +03:00
+2016-06-06 10:34:07.6361|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:29:00 +03:00
+2016-06-06 10:34:07.6361|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:30:00 +03:00
+2016-06-06 10:34:07.6506|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:31:00 +03:00
+2016-06-06 10:34:07.6506|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:32:00 +03:00
+2016-06-06 10:34:07.6506|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:33:00 +03:00
+2016-06-06 10:34:07.6506|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:34:00 +03:00
+2016-06-06 10:34:07.6676|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:35:00 +03:00
+2016-06-06 10:34:07.6676|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:36:00 +03:00
+2016-06-06 10:34:07.6676|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:37:00 +03:00
+2016-06-06 10:34:07.6831|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:38:00 +03:00
+2016-06-06 10:34:07.6831|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:39:00 +03:00
+2016-06-06 10:34:07.6831|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:40:00 +03:00
+2016-06-06 10:34:07.7021|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:41:00 +03:00
+2016-06-06 10:34:07.7021|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:42:00 +03:00
+2016-06-06 10:34:07.7021|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:43:00 +03:00
+2016-06-06 10:34:07.7131|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:44:00 +03:00
+2016-06-06 10:34:07.7131|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:45:00 +03:00
+2016-06-06 10:34:07.7131|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:46:00 +03:00
+2016-06-06 10:34:07.7131|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:47:00 +03:00
+2016-06-06 10:34:07.7291|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:48:00 +03:00
+2016-06-06 10:34:07.7291|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:49:00 +03:00
+2016-06-06 10:34:07.7291|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:50:00 +03:00
+2016-06-06 10:34:07.7291|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:51:00 +03:00
+2016-06-06 10:34:07.7456|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:52:00 +03:00
+2016-06-06 10:34:07.7456|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:53:00 +03:00
+2016-06-06 10:34:07.7456|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:54:00 +03:00
+2016-06-06 10:34:07.7456|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:55:00 +03:00
+2016-06-06 10:34:07.7566|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:56:00 +03:00
+2016-06-06 10:34:07.7566|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:57:00 +03:00
+2016-06-06 10:34:07.7566|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:58:00 +03:00
+2016-06-06 10:34:07.7566|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 17:59:00 +03:00
+2016-06-06 10:34:07.7566|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:00:00 +03:00
+2016-06-06 10:34:07.7742|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:01:00 +03:00
+2016-06-06 10:34:07.7742|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:02:00 +03:00
+2016-06-06 10:34:07.7902|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:03:00 +03:00
+2016-06-06 10:34:07.7902|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:04:00 +03:00
+2016-06-06 10:34:07.7902|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:05:00 +03:00
+2016-06-06 10:34:07.7902|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:06:00 +03:00
+2016-06-06 10:34:07.8227|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:07:00 +03:00
+2016-06-06 10:34:07.8227|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:08:00 +03:00
+2016-06-06 10:34:07.8227|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:09:00 +03:00
+2016-06-06 10:34:07.8227|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:10:00 +03:00
+2016-06-06 10:34:07.8227|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:11:00 +03:00
+2016-06-06 10:34:07.8382|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:12:00 +03:00
+2016-06-06 10:34:07.8382|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:13:00 +03:00
+2016-06-06 10:34:07.8382|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:14:00 +03:00
+2016-06-06 10:34:07.8527|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:15:00 +03:00
+2016-06-06 10:34:07.8527|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:16:00 +03:00
+2016-06-06 10:34:07.8527|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:17:00 +03:00
+2016-06-06 10:34:07.8672|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:18:00 +03:00
+2016-06-06 10:34:07.8672|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:19:00 +03:00
+2016-06-06 10:34:07.8857|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:20:00 +03:00
+2016-06-06 10:34:07.8857|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:21:00 +03:00
+2016-06-06 10:34:07.9107|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:22:00 +03:00
+2016-06-06 10:34:07.9178|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:23:00 +03:00
+2016-06-06 10:34:07.9178|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:24:00 +03:00
+2016-06-06 10:34:07.9178|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:25:00 +03:00
+2016-06-06 10:34:07.9178|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:26:00 +03:00
+2016-06-06 10:34:07.9288|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:27:00 +03:00
+2016-06-06 10:34:07.9288|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:28:00 +03:00
+2016-06-06 10:34:07.9458|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:29:00 +03:00
+2016-06-06 10:34:07.9458|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:30:00 +03:00
+2016-06-06 10:34:07.9458|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:31:00 +03:00
+2016-06-06 10:34:07.9458|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:32:00 +03:00
+2016-06-06 10:34:07.9703|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:33:00 +03:00
+2016-06-06 10:34:07.9803|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:34:00 +03:00
+2016-06-06 10:34:07.9803|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:35:00 +03:00
+2016-06-06 10:34:07.9803|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:36:00 +03:00
+2016-06-06 10:34:07.9803|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:37:00 +03:00
+2016-06-06 10:34:07.9918|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:38:00 +03:00
+2016-06-06 10:34:07.9918|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:39:00 +03:00
+2016-06-06 10:34:08.0086|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:40:00 +03:00
+2016-06-06 10:34:08.0086|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:41:00 +03:00
+2016-06-06 10:34:08.0086|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:42:00 +03:00
+2016-06-06 10:34:08.0236|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:43:00 +03:00
+2016-06-06 10:34:08.0236|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 18:44:00 +03:00
+2016-06-06 10:34:08.0236|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:00:00 +03:00
+2016-06-06 10:34:08.0236|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:01:00 +03:00
+2016-06-06 10:34:08.0391|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:02:00 +03:00
+2016-06-06 10:34:08.0391|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:03:00 +03:00
+2016-06-06 10:34:08.0391|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:04:00 +03:00
+2016-06-06 10:34:08.0391|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:05:00 +03:00
+2016-06-06 10:34:08.0391|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:06:00 +03:00
+2016-06-06 10:34:08.0391|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:07:00 +03:00
+2016-06-06 10:34:08.0391|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:08:00 +03:00
+2016-06-06 10:34:08.0391|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:09:00 +03:00
+2016-06-06 10:34:08.0601|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:10:00 +03:00
+2016-06-06 10:34:08.0601|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:11:00 +03:00
+2016-06-06 10:34:08.0741|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:12:00 +03:00
+2016-06-06 10:34:08.0741|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:13:00 +03:00
+2016-06-06 10:34:08.0741|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:14:00 +03:00
+2016-06-06 10:34:08.0741|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:15:00 +03:00
+2016-06-06 10:34:08.0886|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:16:00 +03:00
+2016-06-06 10:34:08.0886|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:17:00 +03:00
+2016-06-06 10:34:08.0886|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:18:00 +03:00
+2016-06-06 10:34:08.1022|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:19:00 +03:00
+2016-06-06 10:34:08.1022|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:20:00 +03:00
+2016-06-06 10:34:08.1167|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:21:00 +03:00
+2016-06-06 10:34:08.1167|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:22:00 +03:00
+2016-06-06 10:34:08.1167|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:23:00 +03:00
+2016-06-06 10:34:08.1167|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:24:00 +03:00
+2016-06-06 10:34:08.1167|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:25:00 +03:00
+2016-06-06 10:34:08.1347|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:26:00 +03:00
+2016-06-06 10:34:08.1347|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:27:00 +03:00
+2016-06-06 10:34:08.1347|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:28:00 +03:00
+2016-06-06 10:34:08.1347|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:29:00 +03:00
+2016-06-06 10:34:08.1497|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:30:00 +03:00
+2016-06-06 10:34:08.1497|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:31:00 +03:00
+2016-06-06 10:34:08.1497|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:32:00 +03:00
+2016-06-06 10:34:08.1497|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:33:00 +03:00
+2016-06-06 10:34:08.1497|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:34:00 +03:00
+2016-06-06 10:34:08.1652|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:35:00 +03:00
+2016-06-06 10:34:08.1652|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:36:00 +03:00
+2016-06-06 10:34:08.1652|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:37:00 +03:00
+2016-06-06 10:34:08.1652|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:38:00 +03:00
+2016-06-06 10:34:08.1807|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:39:00 +03:00
+2016-06-06 10:34:08.1807|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:40:00 +03:00
+2016-06-06 10:34:08.1807|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:41:00 +03:00
+2016-06-06 10:34:08.1967|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:42:00 +03:00
+2016-06-06 10:34:08.1967|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:43:00 +03:00
+2016-06-06 10:34:08.1967|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:44:00 +03:00
+2016-06-06 10:34:08.1967|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:45:00 +03:00
+2016-06-06 10:34:08.1967|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:46:00 +03:00
+2016-06-06 10:34:08.2137|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:47:00 +03:00
+2016-06-06 10:34:08.2137|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:48:00 +03:00
+2016-06-06 10:34:08.2137|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:49:00 +03:00
+2016-06-06 10:34:08.2137|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:50:00 +03:00
+2016-06-06 10:34:08.2137|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:51:00 +03:00
+2016-06-06 10:34:08.2292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:52:00 +03:00
+2016-06-06 10:34:08.2292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:53:00 +03:00
+2016-06-06 10:34:08.2292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:54:00 +03:00
+2016-06-06 10:34:08.2292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:55:00 +03:00
+2016-06-06 10:34:08.2443|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:56:00 +03:00
+2016-06-06 10:34:08.2443|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:57:00 +03:00
+2016-06-06 10:34:08.2443|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:58:00 +03:00
+2016-06-06 10:34:08.2578|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 19:59:00 +03:00
+2016-06-06 10:34:08.2578|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:00:00 +03:00
+2016-06-06 10:34:08.2578|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:01:00 +03:00
+2016-06-06 10:34:08.2728|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:02:00 +03:00
+2016-06-06 10:34:08.2728|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:03:00 +03:00
+2016-06-06 10:34:08.2728|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:04:00 +03:00
+2016-06-06 10:34:08.2728|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:05:00 +03:00
+2016-06-06 10:34:08.2728|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:06:00 +03:00
+2016-06-06 10:34:08.2923|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:07:00 +03:00
+2016-06-06 10:34:08.2923|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:08:00 +03:00
+2016-06-06 10:34:08.2923|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:09:00 +03:00
+2016-06-06 10:34:08.3063|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:10:00 +03:00
+2016-06-06 10:34:08.3063|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:11:00 +03:00
+2016-06-06 10:34:08.3063|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:12:00 +03:00
+2016-06-06 10:34:08.3288|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:13:00 +03:00
+2016-06-06 10:34:08.3398|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:14:00 +03:00
+2016-06-06 10:34:08.3398|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:15:00 +03:00
+2016-06-06 10:34:08.3398|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:16:00 +03:00
+2016-06-06 10:34:08.3398|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:17:00 +03:00
+2016-06-06 10:34:08.3398|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:18:00 +03:00
+2016-06-06 10:34:08.3623|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:19:00 +03:00
+2016-06-06 10:34:08.3623|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:20:00 +03:00
+2016-06-06 10:34:08.3693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:21:00 +03:00
+2016-06-06 10:34:08.3693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:22:00 +03:00
+2016-06-06 10:34:08.3693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:23:00 +03:00
+2016-06-06 10:34:08.3693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:24:00 +03:00
+2016-06-06 10:34:08.3693|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:25:00 +03:00
+2016-06-06 10:34:08.3969|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:26:00 +03:00
+2016-06-06 10:34:08.4254|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:27:00 +03:00
+2016-06-06 10:34:08.4254|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:28:00 +03:00
+2016-06-06 10:34:08.4289|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:29:00 +03:00
+2016-06-06 10:34:08.4289|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:30:00 +03:00
+2016-06-06 10:34:08.4289|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:31:00 +03:00
+2016-06-06 10:34:08.4289|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:32:00 +03:00
+2016-06-06 10:34:08.4289|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:33:00 +03:00
+2016-06-06 10:34:08.4479|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:34:00 +03:00
+2016-06-06 10:34:08.4479|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:35:00 +03:00
+2016-06-06 10:34:08.4479|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:36:00 +03:00
+2016-06-06 10:34:08.4479|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:37:00 +03:00
+2016-06-06 10:34:08.4479|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:38:00 +03:00
+2016-06-06 10:34:08.4619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:39:00 +03:00
+2016-06-06 10:34:08.4619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:40:00 +03:00
+2016-06-06 10:34:08.4619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:41:00 +03:00
+2016-06-06 10:34:08.4619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:42:00 +03:00
+2016-06-06 10:34:08.4789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:43:00 +03:00
+2016-06-06 10:34:08.4789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:44:00 +03:00
+2016-06-06 10:34:08.4789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:45:00 +03:00
+2016-06-06 10:34:08.4789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:46:00 +03:00
+2016-06-06 10:34:08.4789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:47:00 +03:00
+2016-06-06 10:34:08.4789|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:48:00 +03:00
+2016-06-06 10:34:08.4929|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:49:00 +03:00
+2016-06-06 10:34:08.4929|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:50:00 +03:00
+2016-06-06 10:34:08.4929|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:51:00 +03:00
+2016-06-06 10:34:08.4929|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:52:00 +03:00
+2016-06-06 10:34:08.4929|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:53:00 +03:00
+2016-06-06 10:34:08.4929|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:54:00 +03:00
+2016-06-06 10:34:08.5099|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:55:00 +03:00
+2016-06-06 10:34:08.5099|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:56:00 +03:00
+2016-06-06 10:34:08.5099|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:57:00 +03:00
+2016-06-06 10:34:08.5099|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:58:00 +03:00
+2016-06-06 10:34:08.5099|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 20:59:00 +03:00
+2016-06-06 10:34:08.5245|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:00:00 +03:00
+2016-06-06 10:34:08.5245|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:01:00 +03:00
+2016-06-06 10:34:08.5245|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:02:00 +03:00
+2016-06-06 10:34:08.5245|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:03:00 +03:00
+2016-06-06 10:34:08.5505|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:04:00 +03:00
+2016-06-06 10:34:08.5545|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:05:00 +03:00
+2016-06-06 10:34:08.5545|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:06:00 +03:00
+2016-06-06 10:34:08.5545|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:07:00 +03:00
+2016-06-06 10:34:08.5545|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:08:00 +03:00
+2016-06-06 10:34:08.5545|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:09:00 +03:00
+2016-06-06 10:34:08.5725|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:10:00 +03:00
+2016-06-06 10:34:08.5725|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:11:00 +03:00
+2016-06-06 10:34:08.5725|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:12:00 +03:00
+2016-06-06 10:34:08.5725|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:13:00 +03:00
+2016-06-06 10:34:08.5725|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:14:00 +03:00
+2016-06-06 10:34:08.5880|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:15:00 +03:00
+2016-06-06 10:34:08.5880|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:16:00 +03:00
+2016-06-06 10:34:08.5880|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:17:00 +03:00
+2016-06-06 10:34:08.5880|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:18:00 +03:00
+2016-06-06 10:34:08.6070|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:19:00 +03:00
+2016-06-06 10:34:08.6070|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:20:00 +03:00
+2016-06-06 10:34:08.6070|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:21:00 +03:00
+2016-06-06 10:34:08.6165|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:22:00 +03:00
+2016-06-06 10:34:08.6165|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:23:00 +03:00
+2016-06-06 10:34:08.6165|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:24:00 +03:00
+2016-06-06 10:34:08.6165|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:25:00 +03:00
+2016-06-06 10:34:08.6320|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:26:00 +03:00
+2016-06-06 10:34:08.6320|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:27:00 +03:00
+2016-06-06 10:34:08.6320|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:28:00 +03:00
+2016-06-06 10:34:08.6490|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:29:00 +03:00
+2016-06-06 10:34:08.6490|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:30:00 +03:00
+2016-06-06 10:34:08.6490|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:31:00 +03:00
+2016-06-06 10:34:08.6490|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:32:00 +03:00
+2016-06-06 10:34:08.6490|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:33:00 +03:00
+2016-06-06 10:34:08.6636|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:34:00 +03:00
+2016-06-06 10:34:08.6636|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:35:00 +03:00
+2016-06-06 10:34:08.6636|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:36:00 +03:00
+2016-06-06 10:34:08.6636|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:37:00 +03:00
+2016-06-06 10:34:08.6636|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:38:00 +03:00
+2016-06-06 10:34:08.6801|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:39:00 +03:00
+2016-06-06 10:34:08.6801|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:40:00 +03:00
+2016-06-06 10:34:08.6801|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:41:00 +03:00
+2016-06-06 10:34:08.6801|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:42:00 +03:00
+2016-06-06 10:34:08.6801|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:43:00 +03:00
+2016-06-06 10:34:08.6951|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:44:00 +03:00
+2016-06-06 10:34:08.6951|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:45:00 +03:00
+2016-06-06 10:34:08.6951|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:46:00 +03:00
+2016-06-06 10:34:08.6951|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:47:00 +03:00
+2016-06-06 10:34:08.6951|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:48:00 +03:00
+2016-06-06 10:34:08.6951|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:49:00 +03:00
+2016-06-06 10:34:08.7116|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:50:00 +03:00
+2016-06-06 10:34:08.7116|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:51:00 +03:00
+2016-06-06 10:34:08.7116|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:52:00 +03:00
+2016-06-06 10:34:08.7116|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:53:00 +03:00
+2016-06-06 10:34:08.7116|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:54:00 +03:00
+2016-06-06 10:34:08.7256|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:55:00 +03:00
+2016-06-06 10:34:08.7256|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:56:00 +03:00
+2016-06-06 10:34:08.7256|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:57:00 +03:00
+2016-06-06 10:34:08.7416|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:58:00 +03:00
+2016-06-06 10:34:08.7416|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 21:59:00 +03:00
+2016-06-06 10:34:08.7416|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:00:00 +03:00
+2016-06-06 10:34:08.7416|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:01:00 +03:00
+2016-06-06 10:34:08.7416|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:02:00 +03:00
+2016-06-06 10:34:08.7416|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:03:00 +03:00
+2016-06-06 10:34:08.7416|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:04:00 +03:00
+2016-06-06 10:34:08.7586|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:05:00 +03:00
+2016-06-06 10:34:08.7586|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:06:00 +03:00
+2016-06-06 10:34:08.7586|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:07:00 +03:00
+2016-06-06 10:34:08.7726|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:08:00 +03:00
+2016-06-06 10:34:08.7726|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:09:00 +03:00
+2016-06-06 10:34:08.7726|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:10:00 +03:00
+2016-06-06 10:34:08.7726|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:11:00 +03:00
+2016-06-06 10:34:08.7726|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:12:00 +03:00
+2016-06-06 10:34:08.7896|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:13:00 +03:00
+2016-06-06 10:34:08.7896|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:14:00 +03:00
+2016-06-06 10:34:08.7896|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:15:00 +03:00
+2016-06-06 10:34:08.7896|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:16:00 +03:00
+2016-06-06 10:34:08.7896|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:17:00 +03:00
+2016-06-06 10:34:08.8047|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:18:00 +03:00
+2016-06-06 10:34:08.8287|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:19:00 +03:00
+2016-06-06 10:34:08.8287|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:20:00 +03:00
+2016-06-06 10:34:08.8367|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:21:00 +03:00
+2016-06-06 10:34:08.8367|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:22:00 +03:00
+2016-06-06 10:34:08.8367|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:23:00 +03:00
+2016-06-06 10:34:08.8367|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:24:00 +03:00
+2016-06-06 10:34:08.8562|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:25:00 +03:00
+2016-06-06 10:34:08.8717|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:26:00 +03:00
+2016-06-06 10:34:08.8717|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:27:00 +03:00
+2016-06-06 10:34:08.8717|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:28:00 +03:00
+2016-06-06 10:34:08.8852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:29:00 +03:00
+2016-06-06 10:34:08.8852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:30:00 +03:00
+2016-06-06 10:34:08.8852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:31:00 +03:00
+2016-06-06 10:34:08.8852|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:32:00 +03:00
+2016-06-06 10:34:08.8977|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:33:00 +03:00
+2016-06-06 10:34:08.8977|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:34:00 +03:00
+2016-06-06 10:34:08.8977|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:35:00 +03:00
+2016-06-06 10:34:08.8977|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:36:00 +03:00
+2016-06-06 10:34:08.8977|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:37:00 +03:00
+2016-06-06 10:34:08.9147|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:38:00 +03:00
+2016-06-06 10:34:08.9147|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:39:00 +03:00
+2016-06-06 10:34:08.9147|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:40:00 +03:00
+2016-06-06 10:34:08.9292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:41:00 +03:00
+2016-06-06 10:34:08.9292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:42:00 +03:00
+2016-06-06 10:34:08.9292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:43:00 +03:00
+2016-06-06 10:34:08.9292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:44:00 +03:00
+2016-06-06 10:34:08.9292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:45:00 +03:00
+2016-06-06 10:34:08.9292|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:46:00 +03:00
+2016-06-06 10:34:08.9468|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:47:00 +03:00
+2016-06-06 10:34:08.9468|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:48:00 +03:00
+2016-06-06 10:34:08.9468|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:49:00 +03:00
+2016-06-06 10:34:08.9468|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:50:00 +03:00
+2016-06-06 10:34:08.9603|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:51:00 +03:00
+2016-06-06 10:34:08.9603|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:52:00 +03:00
+2016-06-06 10:34:08.9603|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:53:00 +03:00
+2016-06-06 10:34:08.9603|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:54:00 +03:00
+2016-06-06 10:34:08.9603|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:55:00 +03:00
+2016-06-06 10:34:08.9603|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:56:00 +03:00
+2016-06-06 10:34:08.9783|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:57:00 +03:00
+2016-06-06 10:34:08.9783|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:58:00 +03:00
+2016-06-06 10:34:08.9783|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 22:59:00 +03:00
+2016-06-06 10:34:08.9783|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:00:00 +03:00
+2016-06-06 10:34:08.9783|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:01:00 +03:00
+2016-06-06 10:34:08.9783|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:02:00 +03:00
+2016-06-06 10:34:08.9968|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:03:00 +03:00
+2016-06-06 10:34:08.9968|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:04:00 +03:00
+2016-06-06 10:34:08.9968|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:05:00 +03:00
+2016-06-06 10:34:08.9968|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:06:00 +03:00
+2016-06-06 10:34:09.0068|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:07:00 +03:00
+2016-06-06 10:34:09.0068|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:08:00 +03:00
+2016-06-06 10:34:09.0068|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:09:00 +03:00
+2016-06-06 10:34:09.0248|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:10:00 +03:00
+2016-06-06 10:34:09.0248|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:11:00 +03:00
+2016-06-06 10:34:09.0248|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:12:00 +03:00
+2016-06-06 10:34:09.0418|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:13:00 +03:00
+2016-06-06 10:34:09.0418|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:14:00 +03:00
+2016-06-06 10:34:09.0418|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:15:00 +03:00
+2016-06-06 10:34:09.0548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:16:00 +03:00
+2016-06-06 10:34:09.0548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:17:00 +03:00
+2016-06-06 10:34:09.0548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:18:00 +03:00
+2016-06-06 10:34:09.0548|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:19:00 +03:00
+2016-06-06 10:34:09.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:20:00 +03:00
+2016-06-06 10:34:09.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:21:00 +03:00
+2016-06-06 10:34:09.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:22:00 +03:00
+2016-06-06 10:34:09.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:23:00 +03:00
+2016-06-06 10:34:09.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:24:00 +03:00
+2016-06-06 10:34:09.0708|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:25:00 +03:00
+2016-06-06 10:34:09.0869|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:26:00 +03:00
+2016-06-06 10:34:09.0869|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:27:00 +03:00
+2016-06-06 10:34:09.0869|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:28:00 +03:00
+2016-06-06 10:34:09.0869|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:29:00 +03:00
+2016-06-06 10:34:09.1024|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:30:00 +03:00
+2016-06-06 10:34:09.1024|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:31:00 +03:00
+2016-06-06 10:34:09.1024|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:32:00 +03:00
+2016-06-06 10:34:09.1244|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:33:00 +03:00
+2016-06-06 10:34:09.1244|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:34:00 +03:00
+2016-06-06 10:34:09.1244|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:35:00 +03:00
+2016-06-06 10:34:09.1244|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:36:00 +03:00
+2016-06-06 10:34:09.1354|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:37:00 +03:00
+2016-06-06 10:34:09.1354|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:38:00 +03:00
+2016-06-06 10:34:09.1354|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:39:00 +03:00
+2016-06-06 10:34:09.1354|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:40:00 +03:00
+2016-06-06 10:34:09.1474|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:41:00 +03:00
+2016-06-06 10:34:09.1474|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:42:00 +03:00
+2016-06-06 10:34:09.1474|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:43:00 +03:00
+2016-06-06 10:34:09.1474|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/03/2016 23:44:00 +03:00
+2016-06-06 10:34:09.1654|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:00:00 +03:00
+2016-06-06 10:34:09.1654|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:01:00 +03:00
+2016-06-06 10:34:09.1654|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:02:00 +03:00
+2016-06-06 10:34:09.1654|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:03:00 +03:00
+2016-06-06 10:34:09.1654|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:04:00 +03:00
+2016-06-06 10:34:09.1804|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:05:00 +03:00
+2016-06-06 10:34:09.1804|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:06:00 +03:00
+2016-06-06 10:34:09.1804|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:07:00 +03:00
+2016-06-06 10:34:09.1804|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:08:00 +03:00
+2016-06-06 10:34:09.1804|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:09:00 +03:00
+2016-06-06 10:34:09.1959|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:10:00 +03:00
+2016-06-06 10:34:09.1959|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:11:00 +03:00
+2016-06-06 10:34:09.1959|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:12:00 +03:00
+2016-06-06 10:34:09.2115|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:13:00 +03:00
+2016-06-06 10:34:09.2115|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:14:00 +03:00
+2016-06-06 10:34:09.2115|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:15:00 +03:00
+2016-06-06 10:34:09.2115|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:16:00 +03:00
+2016-06-06 10:34:09.2115|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:17:00 +03:00
+2016-06-06 10:34:09.2290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:18:00 +03:00
+2016-06-06 10:34:09.2290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:19:00 +03:00
+2016-06-06 10:34:09.2290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:20:00 +03:00
+2016-06-06 10:34:09.2290|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:21:00 +03:00
+2016-06-06 10:34:09.2415|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:22:00 +03:00
+2016-06-06 10:34:09.2415|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:23:00 +03:00
+2016-06-06 10:34:09.2415|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:24:00 +03:00
+2016-06-06 10:34:09.2415|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:25:00 +03:00
+2016-06-06 10:34:09.2415|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:26:00 +03:00
+2016-06-06 10:34:09.2595|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:27:00 +03:00
+2016-06-06 10:34:09.2595|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:28:00 +03:00
+2016-06-06 10:34:09.2595|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:29:00 +03:00
+2016-06-06 10:34:09.2595|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:30:00 +03:00
+2016-06-06 10:34:09.2595|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:31:00 +03:00
+2016-06-06 10:34:09.2755|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/06/2016 10:32:00 +03:00
+2016-06-06 10:34:10.2042|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 0, SlowSMA 65981.75000, FastSMA 65967.00000, Highest 66150.00000, Lowest 65900.00000, Mid 66025.00000

@@ -1,317 +1,1165 @@
-2016-06-06 09:11:34.244018;p2syslog;;Use async writing mode; msg_pool_size: 2048; logthread_affinity 0x0;TID 10728
-2016-06-06 09:11:34.244033;p2syslog;;Precise system time supported;TID 10728
-2016-06-06 09:11:34.244034;p2syslog;WARNING;Use default buffer size;TID 10728
-2016-06-06 09:11:34.244065;cgate.env;;Registered default p2 logger cgate.env.;TID 10728
-2016-06-06 09:11:34.244068;cgate.env;;Registered default p2 logger cgate.user.;TID 10728
-2016-06-06 09:11:34.245405;p2mq-cli;;MQ library started.;TID 10728
-2016-06-06 09:11:34.245422;p2repl-cli;;Client replication library started;TID 10728
-2016-06-06 09:11:34.245538;cgate.env;;New conn impl registered: p2tcp.;TID 10728
-2016-06-06 09:11:34.245542;cgate.env;;New conn impl registered: p2lrpcq.;TID 10728
-2016-06-06 09:11:34.245544;cgate.env;;New conn impl registered: p2sys.;TID 10728
-2016-06-06 09:11:34.245545;cgate.env;;New listener impl registered: p2sys.;TID 10728
-2016-06-06 09:11:34.245547;cgate.env;;New publisher impl registered: p2sys.;TID 10728
-2016-06-06 09:11:34.245553;cgate.env;;New publisher impl registered: p2mq.;TID 10728
-2016-06-06 09:11:34.245555;cgate.env;;New listener impl registered: p2repl.;TID 10728
-2016-06-06 09:11:34.245556;cgate.env;;New listener impl registered: p2mqreply.;TID 10728
-2016-06-06 09:11:34.245557;cgate.env;;New listener impl registered: p2ordbook.;TID 10728
-2016-06-06 09:11:34.245559;cgate.env;;New conn impl registered: test.;TID 10728
-2016-06-06 09:11:34.245561;cgate.env;;New publisher impl registered: test.;TID 10728
-2016-06-06 09:11:34.245562;cgate.env;;New listener impl registered: test.;TID 10728
-2016-06-06 09:11:34.245564;cgate.env;;New conn impl registered: timer.;TID 10728
-2016-06-06 09:11:34.245566;cgate.env;;New listener impl registered: interval_timer.;TID 10728
-2016-06-06 09:11:34.245567;cgate.env;;New listener impl registered: cron_timer.;TID 10728
-2016-06-06 09:11:34.245569;cgate.env;;New publisher impl registered: file.;TID 10728
-2016-06-06 09:11:34.245574;cgate.user;;Cgate version: 5.1.0;TID 10728
-2016-06-06 09:11:34.245602;cgate.user;;OS version: Microsoft  (build 9200), 64-bit;TID 10728
-2016-06-06 09:11:34.245604;cgate.user;;P2 version: 206.;TID 10728
-2016-06-06 09:11:34.245608;cgate.user;;Current work path: C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\Debug;TID 10728
-2016-06-06 09:11:34.245610;cgate.user;;cg_env_open settings: ini=StockSharp.Plaza.CGate.ini;key=11111111;TID 10728
-2016-06-06 09:11:34.245819;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_0;TID 10728
-2016-06-06 09:11:34.245850;cgate.env;;Registered default p2 logger cgate.connection.p2.;TID 10728
-2016-06-06 09:11:34.245880;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_0;name=noname1 @cee{name: , obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.245895;cgate.env;;New connection was registered: noname1.;TID 10728
-2016-06-06 09:11:34.245908;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_1;TID 15056
-2016-06-06 09:11:34.245925;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_1;name=noname2 @cee{name: , obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.245937;cgate.env;;New connection was registered: noname2.;TID 15056
-2016-06-06 09:11:34.245950;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_2;TID 18176
-2016-06-06 09:11:34.245968;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_2;name=noname3 @cee{name: , obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.245980;cgate.env;;New connection was registered: noname3.;TID 18176
-2016-06-06 09:11:34.245993;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_3;TID 13896
-2016-06-06 09:11:34.246009;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_3;name=noname4 @cee{name: , obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.246020;cgate.env;;New connection was registered: noname4.;TID 13896
-2016-06-06 09:11:34.246253;cgate.user;;cg_conn_open: 1B687B0;TID 10728
-2016-06-06 09:11:34.246255;cgate.user;;cg_conn_open settings: ;TID 10728
-2016-06-06 09:11:34.246257;cgate.connection.p2;;open: connection open. @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.246260;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_4;TID 5700
-2016-06-06 09:11:34.246274;cgate.connection.p2;;P2MQ connection string: appName=SS_0;host=127.0.0.1;port=4001;
- @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.246283;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_4;name=noname5 @cee{name: , obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.246325;cgate.user;;cg_conn_open: 1B68440;TID 18176
-2016-06-06 09:11:34.246327;cgate.user;;cg_conn_open settings: ;TID 18176
-2016-06-06 09:11:34.246330;cgate.connection.p2;;open: connection open. @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.246337;cgate.connection.p2;;P2MQ connection string: appName=SS_2;host=127.0.0.1;port=4001;
- @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.246353;cgate.user;;cg_conn_open: 1B67F18;TID 15056
-2016-06-06 09:11:34.246355;cgate.user;;cg_conn_open settings: ;TID 15056
-2016-06-06 09:11:34.246357;cgate.connection.p2;;open: connection open. @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.246362;cgate.connection.p2;;P2MQ connection string: appName=SS_1;host=127.0.0.1;port=4001;
- @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.246377;cgate.user;;cg_conn_open: 1B685F8;TID 13896
-2016-06-06 09:11:34.247099;cgate.user;;cg_conn_open settings: ;TID 13896
-2016-06-06 09:11:34.247105;cgate.connection.p2;;open: connection open. @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.247114;cgate.connection.p2;;P2MQ connection string: appName=SS_3;host=127.0.0.1;port=4001;
- @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.247124;cgate.env;;New connection was registered: noname5.;TID 5700
-2016-06-06 09:11:34.247142;cgate.user;;cg_conn_open: 1B68968;TID 5700
-2016-06-06 09:11:34.247144;cgate.user;;cg_conn_open settings: ;TID 5700
-2016-06-06 09:11:34.247146;cgate.connection.p2;;open: connection open. @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.247154;cgate.connection.p2;;P2MQ connection string: appName=SS_4;host=127.0.0.1;port=4001;
- @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.250560;p2mq-cli;;Connection 0x8324B40 connected; mq-conn 0x4; router state 'connected'; 'appName=SS_3;host=127.0.0.1;port=4001;';TID 13896
-2016-06-06 09:11:34.250566;p2mq-cli;;Connection 0x8324978 connected; mq-conn 0x2; router state 'connected'; 'appName=SS_1;host=127.0.0.1;port=4001;';TID 15056
-2016-06-06 09:11:34.250568;p2mq-cli;;Connection 0x8325260 connected; mq-conn 0x3; router state 'connected'; 'appName=SS_2;host=127.0.0.1;port=4001;';TID 18176
-2016-06-06 09:11:34.250572;p2mq-cli;;Connection 0x83245E8 connected; mq-conn 0x5; router state 'connected'; 'appName=SS_4;host=127.0.0.1;port=4001;';TID 5700
-2016-06-06 09:11:34.250575;p2mq-cli;;Connection 0x83247B0 connected; mq-conn 0x1; router state 'connected'; 'appName=SS_0;host=127.0.0.1;port=4001;';TID 10728
-2016-06-06 09:11:34.250602;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.250602;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.250610;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.250617;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.250623;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.250624;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.250625;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.250625;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.250657;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.250658;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.250658;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.250659;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.250681;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.250684;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.250689;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.265617;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_01B687B0;timeout=10000;scheme=noscheme;TID 10728
-2016-06-06 09:11:34.265619;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_01B68440;timeout=10000;scheme=noscheme;TID 18176
-2016-06-06 09:11:34.265620;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_01B67F18;timeout=10000;scheme=noscheme;TID 15056
-2016-06-06 09:11:34.265621;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_01B68968;timeout=10000;scheme=noscheme;TID 5700
-2016-06-06 09:11:34.265648;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_01B685F8;timeout=10000;scheme=noscheme;TID 13896
-2016-06-06 09:11:34.265680;cgate.env;;Registered default p2 logger cgate.publisher.p2mq.;TID 5700
-2016-06-06 09:11:34.265712;cgate.env;;Registered default p2 logger scheme.;TID 18176
-2016-06-06 09:11:34.265760;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.265760;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.265761;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.265762;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.265779;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.265793;cgate.env;;New publisher was registered: certlistner_01B685F8.;TID 13896
-2016-06-06 09:11:34.265799;cgate.env;;New publisher was registered: certlistner_01B67F18.;TID 15056
-2016-06-06 09:11:34.265806;cgate.env;;New publisher was registered: certlistner_01B68440.;TID 18176
-2016-06-06 09:11:34.265811;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B67F18;scheme=noscheme;TID 15056
-2016-06-06 09:11:34.265812;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B685F8;scheme=noscheme;TID 13896
-2016-06-06 09:11:34.265814;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B68440;scheme=noscheme;TID 18176
-2016-06-06 09:11:34.265818;cgate.env;;New publisher was registered: certlistner_01B68968.;TID 5700
-2016-06-06 09:11:34.265822;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B68968;scheme=noscheme;TID 5700
-2016-06-06 09:11:34.265834;cgate.env;;New publisher was registered: certlistner_01B687B0.;TID 10728
-2016-06-06 09:11:34.265838;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B687B0;scheme=noscheme;TID 10728
-2016-06-06 09:11:34.265847;cgate.env;;Registered default p2 logger cgate.listener.p2mqreply.;TID 10728
-2016-06-06 09:11:34.265858;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B687B0;scheme=noscheme;name=noname10. @cee{name: , obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.265858;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B67F18;scheme=noscheme;name=noname7. @cee{name: , obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.265859;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B68440;scheme=noscheme;name=noname6. @cee{name: , obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.265860;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B68968;scheme=noscheme;name=noname9. @cee{name: , obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.265870;cgate.env;;New listener was registered: noname7.;TID 15056
-2016-06-06 09:11:34.265874;cgate.env;;New listener was registered: noname9.;TID 5700
-2016-06-06 09:11:34.265877;cgate.user;;cg_pub_open: E86218C;TID 5700
-2016-06-06 09:11:34.265878;cgate.user;;cg_pub_open: E86173C;TID 15056
-2016-06-06 09:11:34.265881;cgate.env;;New listener was registered: noname10.;TID 10728
-2016-06-06 09:11:34.265884;cgate.user;;cg_pub_open: E8618F4;TID 10728
-2016-06-06 09:11:34.265886;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_01B685F8;scheme=noscheme;name=noname8. @cee{name: , obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.265888;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.265889;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.265891;cgate.env;;New listener was registered: noname6.;TID 18176
-2016-06-06 09:11:34.265894;cgate.user;;cg_pub_open: 1B680D4;TID 18176
-2016-06-06 09:11:34.265896;cgate.env;;New listener was registered: noname8.;TID 13896
-2016-06-06 09:11:34.265899;cgate.user;;cg_pub_open: E861214;TID 13896
-2016-06-06 09:11:34.265899;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.265900;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.265901;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.265902;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.265906;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.265908;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.265910;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.265911;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.265913;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.265916;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.265924;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.265912;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.265912;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.267646;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x2;TID 15056
-2016-06-06 09:11:34.267656;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x3;TID 18176
-2016-06-06 09:11:34.267661;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.267665;cgate.user;;cg_lsn_open: E588B4C;TID 15056
-2016-06-06 09:11:34.267666;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x4;TID 13896
-2016-06-06 09:11:34.267668;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.267669;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x5;TID 5700
-2016-06-06 09:11:34.267672;cgate.user;;cg_lsn_open: E588C64;TID 18176
-2016-06-06 09:11:34.267677;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x1;TID 10728
-2016-06-06 09:11:34.267678;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.267679;cgate.listener.p2mqreply;;Open (null) @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.267681;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.267682;cgate.user;;cg_lsn_open: 1B3A934;TID 13896
-2016-06-06 09:11:34.267682;cgate.listener.p2mqreply;;open: (null). @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.267683;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.267684;cgate.user;;cg_lsn_open: 1B39AFC;TID 5700
-2016-06-06 09:11:34.267685;cgate.listener.p2mqreply;;Open (null) @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.267686;cgate.user;;cg_lsn_open: 8217BDC;TID 10728
-2016-06-06 09:11:34.267687;cgate.listener.p2mqreply;;Open (null) @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.267687;cgate.listener.p2mqreply;;open: (null). @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.267688;cgate.listener.p2mqreply;;Open (null) @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.267689;cgate.listener.p2mqreply;;open: (null). @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.267691;cgate.listener.p2mqreply;;open: (null). @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.267699;cgate.listener.p2mqreply;;Open (null) @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.267702;cgate.listener.p2mqreply;;open: (null). @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.267732;cgate.publisher.p2mq;;addHandler: 0x01B3A9C4. @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.267732;cgate.publisher.p2mq;;addHandler: 0x0E588BDC. @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.267733;cgate.publisher.p2mq;;addHandler: 0x08217C6C. @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.267734;cgate.publisher.p2mq;;addHandler: 0x01B39B8C. @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.267740;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.267741;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.267743;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.267745;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.267748;cgate.publisher.p2mq;;addHandler: 0x0E588CF4. @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.267757;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.304851;cgate.connection.p2;;Response from cert service was received. @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.304859;cgate.connection.p2;;Connection was rejected: 127.0.0.1:4001 @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.304862;cgate.user;;cg_pub_destroy: E8618F4;TID 10728
-2016-06-06 09:11:34.304864;cgate.publisher.p2mq;;Close @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.304868;cgate.publisher.p2mq;;close. @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.304881;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.304885;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.304888;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.304890;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.304894;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_01B687B0 is done @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.304896;cgate.listener.p2mqreply;;Close @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.304899;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.304901;cgate.listener.p2mqreply;;close. @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.304905;cgate.publisher.p2mq;;removeHandler: 0x08217C6C. @cee{name: certlistner_01B687B0, obj: 0xE8618B8, thread: 10728};TID 10728
-2016-06-06 09:11:34.304912;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.304922;cgate.env;;Publisher was unregistered: 0xE8618F4.;TID 10728
-2016-06-06 09:11:34.304928;cgate.user;;cg_lsn_destroy: 8217BDC;TID 10728
-2016-06-06 09:11:34.304930;cgate.listener.p2mqreply;;Done @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.304933;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname10, obj: 0x8217BA0, thread: 10728};TID 10728
-2016-06-06 09:11:34.304939;cgate.env;;Listener was unregistered: 0x8217BDC.;TID 10728
-2016-06-06 09:11:34.304953;cgate.connection.p2;ERROR;Certificate check failed @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.304956;cgate.connection.p2;;Close @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.306466;p2mq-cli;;Connection disconnected; mq-conn 0x1;TID 10728
-2016-06-06 09:11:34.308535;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.309343;cgate.connection.p2;;Response from cert service was received. @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.309349;cgate.connection.p2;;Connection was rejected: 127.0.0.1:4001 @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.309352;cgate.user;;cg_pub_destroy: E861214;TID 13896
-2016-06-06 09:11:34.309355;cgate.publisher.p2mq;;Close @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309359;cgate.publisher.p2mq;;close. @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309368;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309371;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309374;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309377;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309381;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_01B685F8 is done @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309383;cgate.listener.p2mqreply;;Close @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309388;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309390;cgate.listener.p2mqreply;;close. @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309393;cgate.publisher.p2mq;;removeHandler: 0x01B3A9C4. @cee{name: certlistner_01B685F8, obj: 0xE8611D8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309400;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309409;cgate.env;;Publisher was unregistered: 0xE861214.;TID 13896
-2016-06-06 09:11:34.309415;cgate.user;;cg_lsn_destroy: 1B3A934;TID 13896
-2016-06-06 09:11:34.309417;cgate.listener.p2mqreply;;Done @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309420;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname8, obj: 0x1B3A8F8, thread: 13896};TID 13896
-2016-06-06 09:11:34.309426;cgate.env;;Listener was unregistered: 0x1B3A934.;TID 13896
-2016-06-06 09:11:34.309432;cgate.connection.p2;ERROR;Certificate check failed @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.309434;cgate.connection.p2;;Close @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.309474;p2mq-cli;;Connection disconnected; mq-conn 0x4;TID 13896
-2016-06-06 09:11:34.309602;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.312018;cgate.user;;cg_conn_destroy: 1B685F8;TID 13896
-2016-06-06 09:11:34.312028;cgate.connection.p2;;done: connection done. @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.312030;cgate.connection.p2;;Close @cee{name: noname4, obj: 0x1B685C0, thread: 13896};TID 13896
-2016-06-06 09:11:34.312044;cgate.env;;Connection was unregistered: 0x1B685F8.;TID 13896
-2016-06-06 09:11:34.312613;cgate.connection.p2;;Response from cert service was received. @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.312614;cgate.connection.p2;;Response from cert service was received. @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.312615;cgate.connection.p2;;Response from cert service was received. @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.312619;cgate.connection.p2;;Connection was rejected: 127.0.0.1:4001 @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.312619;cgate.connection.p2;;Connection was rejected: 127.0.0.1:4001 @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.312621;cgate.connection.p2;;Connection was rejected: 127.0.0.1:4001 @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.312621;cgate.user;;cg_pub_destroy: E86218C;TID 5700
-2016-06-06 09:11:34.312622;cgate.user;;cg_pub_destroy: E86173C;TID 15056
-2016-06-06 09:11:34.312623;cgate.user;;cg_pub_destroy: 1B680D4;TID 18176
-2016-06-06 09:11:34.312624;cgate.publisher.p2mq;;Close @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.312624;cgate.publisher.p2mq;;Close @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.312625;cgate.publisher.p2mq;;Close @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.312627;cgate.publisher.p2mq;;close. @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.312627;cgate.publisher.p2mq;;close. @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.312628;cgate.publisher.p2mq;;close. @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.312637;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.312639;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.312640;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.312642;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.312643;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.312643;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.312645;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.312646;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.312646;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.312648;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.312649;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.312649;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_01B67F18 is done @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.312651;cgate.listener.p2mqreply;;Close @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.312651;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.312652;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_01B68440 is done @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.312653;cgate.listener.p2mqreply;;Close @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.312654;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.312655;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_01B68968 is done @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.312656;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.312656;cgate.listener.p2mqreply;;close. @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.312657;cgate.listener.p2mqreply;;Close @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.312658;cgate.listener.p2mqreply;;close. @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.312659;cgate.publisher.p2mq;;removeHandler: 0x0E588BDC. @cee{name: certlistner_01B67F18, obj: 0xE861700, thread: 15056};TID 15056
-2016-06-06 09:11:34.312659;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.312660;cgate.publisher.p2mq;;removeHandler: 0x0E588CF4. @cee{name: certlistner_01B68440, obj: 0x1B68098, thread: 18176};TID 18176
-2016-06-06 09:11:34.312661;cgate.listener.p2mqreply;;close. @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.312663;cgate.publisher.p2mq;;removeHandler: 0x01B39B8C. @cee{name: certlistner_01B68968, obj: 0xE862150, thread: 5700};TID 5700
-2016-06-06 09:11:34.312665;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.312666;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.312669;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.312674;cgate.env;;Publisher was unregistered: 0x1B680D4.;TID 18176
-2016-06-06 09:11:34.312678;cgate.user;;cg_lsn_destroy: E588C64;TID 18176
-2016-06-06 09:11:34.312679;cgate.listener.p2mqreply;;Done @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.312681;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname6, obj: 0xE588C28, thread: 18176};TID 18176
-2016-06-06 09:11:34.312682;cgate.env;;Publisher was unregistered: 0xE86173C.;TID 15056
-2016-06-06 09:11:34.312685;cgate.user;;cg_lsn_destroy: E588B4C;TID 15056
-2016-06-06 09:11:34.312686;cgate.env;;Publisher was unregistered: 0xE86218C.;TID 5700
-2016-06-06 09:11:34.312687;cgate.listener.p2mqreply;;Done @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.312689;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname7, obj: 0xE588B10, thread: 15056};TID 15056
-2016-06-06 09:11:34.312689;cgate.user;;cg_lsn_destroy: 1B39AFC;TID 5700
-2016-06-06 09:11:34.312691;cgate.listener.p2mqreply;;Done @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.312693;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname9, obj: 0x1B39AC0, thread: 5700};TID 5700
-2016-06-06 09:11:34.312694;cgate.env;;Listener was unregistered: 0xE588B4C.;TID 15056
-2016-06-06 09:11:34.312697;cgate.connection.p2;ERROR;Certificate check failed @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.312699;cgate.connection.p2;;Close @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.312700;cgate.env;;Listener was unregistered: 0x1B39AFC.;TID 5700
-2016-06-06 09:11:34.312703;cgate.connection.p2;ERROR;Certificate check failed @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.312704;cgate.connection.p2;;Close @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.312705;cgate.env;;Listener was unregistered: 0xE588C64.;TID 18176
-2016-06-06 09:11:34.312709;cgate.connection.p2;ERROR;Certificate check failed @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.312710;cgate.connection.p2;;Close @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.312727;p2mq-cli;;Connection disconnected; mq-conn 0x5;TID 5700
-2016-06-06 09:11:34.312731;p2mq-cli;;Connection disconnected; mq-conn 0x3;TID 18176
-2016-06-06 09:11:34.312769;p2mq-cli;;Connection disconnected; mq-conn 0x2;TID 15056
-2016-06-06 09:11:34.312801;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.312825;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.312827;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.313101;cgate.user;;cg_conn_destroy: 1B68968;TID 5700
-2016-06-06 09:11:34.313134;cgate.connection.p2;;done: connection done. @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.313139;cgate.connection.p2;;Close @cee{name: noname5, obj: 0x1B68930, thread: 5700};TID 5700
-2016-06-06 09:11:34.313143;cgate.user;;cg_conn_destroy: 1B68440;TID 18176
-2016-06-06 09:11:34.313146;cgate.connection.p2;;done: connection done. @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.313147;cgate.env;;Connection was unregistered: 0x1B68968.;TID 5700
-2016-06-06 09:11:34.313149;cgate.connection.p2;;Close @cee{name: noname3, obj: 0x1B68408, thread: 18176};TID 18176
-2016-06-06 09:11:34.313156;cgate.env;;Connection was unregistered: 0x1B68440.;TID 18176
-2016-06-06 09:11:34.313163;cgate.user;;cg_conn_destroy: 1B67F18;TID 15056
-2016-06-06 09:11:34.313168;cgate.connection.p2;;done: connection done. @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.313170;cgate.connection.p2;;Close @cee{name: noname2, obj: 0x1B67EE0, thread: 15056};TID 15056
-2016-06-06 09:11:34.313176;cgate.env;;Connection was unregistered: 0x1B67F18.;TID 15056
-2016-06-06 09:11:34.329269;cgate.user;;cg_conn_destroy: 1B687B0;TID 10728
-2016-06-06 09:11:34.329277;cgate.connection.p2;;done: connection done. @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.329280;cgate.connection.p2;;Close @cee{name: noname1, obj: 0x1B68778, thread: 10728};TID 10728
-2016-06-06 09:11:34.329293;cgate.env;;Connection was unregistered: 0x1B687B0.;TID 10728
+2016-06-06 09:41:18.250121;p2syslog;;Use async writing mode; msg_pool_size: 2048; logthread_affinity 0x0;TID 10144
+2016-06-06 09:41:18.250137;p2syslog;;Precise system time supported;TID 10144
+2016-06-06 09:41:18.250139;p2syslog;WARNING;Use default buffer size;TID 10144
+2016-06-06 09:41:18.250168;cgate.env;;Registered default p2 logger cgate.env.;TID 10144
+2016-06-06 09:41:18.250171;cgate.env;;Registered default p2 logger cgate.user.;TID 10144
+2016-06-06 09:41:18.250197;p2mq-cli;;MQ library started.;TID 10144
+2016-06-06 09:41:18.250208;p2repl-cli;;Client replication library started;TID 10144
+2016-06-06 09:41:18.250318;cgate.env;;New conn impl registered: p2tcp.;TID 10144
+2016-06-06 09:41:18.250321;cgate.env;;New conn impl registered: p2lrpcq.;TID 10144
+2016-06-06 09:41:18.250323;cgate.env;;New conn impl registered: p2sys.;TID 10144
+2016-06-06 09:41:18.250325;cgate.env;;New listener impl registered: p2sys.;TID 10144
+2016-06-06 09:41:18.250327;cgate.env;;New publisher impl registered: p2sys.;TID 10144
+2016-06-06 09:41:18.250329;cgate.env;;New publisher impl registered: p2mq.;TID 10144
+2016-06-06 09:41:18.250330;cgate.env;;New listener impl registered: p2repl.;TID 10144
+2016-06-06 09:41:18.250332;cgate.env;;New listener impl registered: p2mqreply.;TID 10144
+2016-06-06 09:41:18.250334;cgate.env;;New listener impl registered: p2ordbook.;TID 10144
+2016-06-06 09:41:18.250335;cgate.env;;New conn impl registered: test.;TID 10144
+2016-06-06 09:41:18.250337;cgate.env;;New publisher impl registered: test.;TID 10144
+2016-06-06 09:41:18.250338;cgate.env;;New listener impl registered: test.;TID 10144
+2016-06-06 09:41:18.250340;cgate.env;;New conn impl registered: timer.;TID 10144
+2016-06-06 09:41:18.250341;cgate.env;;New listener impl registered: interval_timer.;TID 10144
+2016-06-06 09:41:18.250343;cgate.env;;New listener impl registered: cron_timer.;TID 10144
+2016-06-06 09:41:18.250344;cgate.env;;New publisher impl registered: file.;TID 10144
+2016-06-06 09:41:18.250349;cgate.user;;Cgate version: 5.1.0;TID 10144
+2016-06-06 09:41:18.250406;cgate.user;;OS version: Microsoft  (build 9200), 64-bit;TID 10144
+2016-06-06 09:41:18.250409;cgate.user;;P2 version: 206.;TID 10144
+2016-06-06 09:41:18.250413;cgate.user;;Current work path: C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\Debug;TID 10144
+2016-06-06 09:41:18.250414;cgate.user;;cg_env_open settings: ini=StockSharp.Plaza.CGate.ini;key=11111111;TID 10144
+2016-06-06 09:41:18.250623;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_0;TID 10144
+2016-06-06 09:41:18.250659;cgate.env;;Registered default p2 logger cgate.connection.p2.;TID 10144
+2016-06-06 09:41:18.250691;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_0;name=noname1 @cee{name: , obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.250708;cgate.env;;New connection was registered: noname1.;TID 10144
+2016-06-06 09:41:18.250722;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_1;TID 10148
+2016-06-06 09:41:18.250735;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_1;name=noname2 @cee{name: , obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.250746;cgate.env;;New connection was registered: noname2.;TID 10148
+2016-06-06 09:41:18.250759;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_2;TID 10152
+2016-06-06 09:41:18.250777;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_2;name=noname3 @cee{name: , obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.250789;cgate.env;;New connection was registered: noname3.;TID 10152
+2016-06-06 09:41:18.250801;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_3;TID 10156
+2016-06-06 09:41:18.250816;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_3;name=noname4 @cee{name: , obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.250825;cgate.env;;New connection was registered: noname4.;TID 10156
+2016-06-06 09:41:18.250837;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4001;app_name=SS_4;TID 10160
+2016-06-06 09:41:18.250853;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4001;app_name=SS_4;name=noname5 @cee{name: , obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.250862;cgate.env;;New connection was registered: noname5.;TID 10160
+2016-06-06 09:41:18.251304;cgate.user;;cg_conn_open: F569298;TID 10144
+2016-06-06 09:41:18.251307;cgate.user;;cg_conn_open settings: ;TID 10144
+2016-06-06 09:41:18.251310;cgate.connection.p2;;open: connection open. @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.251320;cgate.user;;cg_conn_open: F65BE10;TID 10160
+2016-06-06 09:41:18.251324;cgate.user;;cg_conn_open settings: ;TID 10160
+2016-06-06 09:41:18.251327;cgate.connection.p2;;P2MQ connection string: appName=SS_0;host=127.0.0.1;port=4001;
+ @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.251328;cgate.connection.p2;;open: connection open. @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.251339;cgate.connection.p2;;P2MQ connection string: appName=SS_4;host=127.0.0.1;port=4001;
+ @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.251379;cgate.user;;cg_conn_open: F5697C0;TID 10148
+2016-06-06 09:41:18.251382;cgate.user;;cg_conn_open settings: ;TID 10148
+2016-06-06 09:41:18.251384;cgate.connection.p2;;open: connection open. @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.251385;cgate.user;;cg_conn_open: F569608;TID 10152
+2016-06-06 09:41:18.251390;cgate.user;;cg_conn_open settings: ;TID 10152
+2016-06-06 09:41:18.251392;cgate.connection.p2;;P2MQ connection string: appName=SS_1;host=127.0.0.1;port=4001;
+ @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.251396;cgate.connection.p2;;open: connection open. @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.251403;cgate.connection.p2;;P2MQ connection string: appName=SS_2;host=127.0.0.1;port=4001;
+ @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.251409;cgate.user;;cg_conn_open: F569450;TID 10156
+2016-06-06 09:41:18.251411;cgate.user;;cg_conn_open settings: ;TID 10156
+2016-06-06 09:41:18.251413;cgate.connection.p2;;open: connection open. @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.251418;cgate.connection.p2;;P2MQ connection string: appName=SS_3;host=127.0.0.1;port=4001;
+ @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.252674;p2mq-cli;;Connection 0xF669C48 connected; mq-conn 0x1; router state 'connected'; 'appName=SS_0;host=127.0.0.1;port=4001;';TID 10144
+2016-06-06 09:41:18.252694;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.252710;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.252729;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.252899;p2mq-cli;;Connection 0xF669A80 connected; mq-conn 0x5; router state 'connected'; 'appName=SS_4;host=127.0.0.1;port=4001;';TID 10160
+2016-06-06 09:41:18.252908;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.252912;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.252923;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.253224;p2mq-cli;;Connection 0xF669198 connected; mq-conn 0x2; router state 'connected'; 'appName=SS_1;host=127.0.0.1;port=4001;';TID 10148
+2016-06-06 09:41:18.253236;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.253241;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.253247;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.253502;p2mq-cli;;Connection 0xF6698B8 connected; mq-conn 0x3; router state 'connected'; 'appName=SS_2;host=127.0.0.1;port=4001;';TID 10152
+2016-06-06 09:41:18.253514;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.253518;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.253525;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.253810;p2mq-cli;;Connection 0xF668FD0 connected; mq-conn 0x4; router state 'connected'; 'appName=SS_3;host=127.0.0.1;port=4001;';TID 10156
+2016-06-06 09:41:18.253820;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.253824;cgate.connection.p2;;Checking certification for: 127.0.0.1:4001, key: 11111111 @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.253835;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.267132;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_0F65BE10;timeout=10000;scheme=noscheme;TID 10160
+2016-06-06 09:41:18.267134;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_0F569298;timeout=10000;scheme=noscheme;TID 10144
+2016-06-06 09:41:18.267182;cgate.env;;Registered default p2 logger cgate.publisher.p2mq.;TID 10160
+2016-06-06 09:41:18.267194;cgate.env;;Registered default p2 logger scheme.;TID 10160
+2016-06-06 09:41:18.267230;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.267230;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.267263;cgate.env;;New publisher was registered: certlistner_0F569298.;TID 10144
+2016-06-06 09:41:18.267269;cgate.env;;New publisher was registered: certlistner_0F65BE10.;TID 10160
+2016-06-06 09:41:18.267272;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F569298;scheme=noscheme;TID 10144
+2016-06-06 09:41:18.267274;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F65BE10;scheme=noscheme;TID 10160
+2016-06-06 09:41:18.267307;cgate.env;;Registered default p2 logger cgate.listener.p2mqreply.;TID 10160
+2016-06-06 09:41:18.267319;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F65BE10;scheme=noscheme;name=noname6. @cee{name: , obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.267320;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F569298;scheme=noscheme;name=noname7. @cee{name: , obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.267331;cgate.env;;New listener was registered: noname6.;TID 10160
+2016-06-06 09:41:18.267334;cgate.user;;cg_pub_open: 73122BC;TID 10160
+2016-06-06 09:41:18.267337;cgate.env;;New listener was registered: noname7.;TID 10144
+2016-06-06 09:41:18.267341;cgate.user;;cg_pub_open: 7312A64;TID 10144
+2016-06-06 09:41:18.267343;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.267344;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.267352;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.267355;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.267365;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.267367;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.267522;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x5;TID 10160
+2016-06-06 09:41:18.267532;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.267536;cgate.user;;cg_lsn_open: F749B6C;TID 10160
+2016-06-06 09:41:18.267541;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x1;TID 10144
+2016-06-06 09:41:18.267547;cgate.listener.p2mqreply;;Open (null) @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.267550;cgate.listener.p2mqreply;;open: (null). @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.267551;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.267554;cgate.user;;cg_lsn_open: F74A65C;TID 10144
+2016-06-06 09:41:18.267557;cgate.listener.p2mqreply;;Open (null) @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.267559;cgate.listener.p2mqreply;;open: (null). @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.267584;cgate.publisher.p2mq;;addHandler: 0x0F749BFC. @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.267586;cgate.publisher.p2mq;;addHandler: 0x0F74A6EC. @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.267591;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.267596;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.268094;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_0F5697C0;timeout=10000;scheme=noscheme;TID 10148
+2016-06-06 09:41:18.268096;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_0F569608;timeout=10000;scheme=noscheme;TID 10152
+2016-06-06 09:41:18.268097;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_0F569450;timeout=10000;scheme=noscheme;TID 10156
+2016-06-06 09:41:18.268109;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.268113;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.268117;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.268122;cgate.env;;New publisher was registered: certlistner_0F569608.;TID 10152
+2016-06-06 09:41:18.268126;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F569608;scheme=noscheme;TID 10152
+2016-06-06 09:41:18.268132;cgate.env;;New publisher was registered: certlistner_0F569450.;TID 10156
+2016-06-06 09:41:18.268138;cgate.env;;New publisher was registered: certlistner_0F5697C0.;TID 10148
+2016-06-06 09:41:18.268148;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F569450;scheme=noscheme;TID 10156
+2016-06-06 09:41:18.268149;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F5697C0;scheme=noscheme;TID 10148
+2016-06-06 09:41:18.268152;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F569608;scheme=noscheme;name=noname8. @cee{name: , obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.268158;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F5697C0;scheme=noscheme;name=noname9. @cee{name: , obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.268165;cgate.env;;New listener was registered: noname8.;TID 10152
+2016-06-06 09:41:18.268167;cgate.user;;cg_pub_open: F65C184;TID 10152
+2016-06-06 09:41:18.268170;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.268170;cgate.env;;New listener was registered: noname9.;TID 10148
+2016-06-06 09:41:18.268173;cgate.user;;cg_pub_open: F65B57C;TID 10148
+2016-06-06 09:41:18.268175;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.268181;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.268183;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.268184;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.268186;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.268213;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_0F569450;scheme=noscheme;name=noname10. @cee{name: , obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.268225;cgate.env;;New listener was registered: noname10.;TID 10156
+2016-06-06 09:41:18.268228;cgate.user;;cg_pub_open: F65B8EC;TID 10156
+2016-06-06 09:41:18.268231;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.268238;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.268241;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.268259;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x2;TID 10148
+2016-06-06 09:41:18.268268;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.268271;cgate.user;;cg_lsn_open: F749C84;TID 10148
+2016-06-06 09:41:18.268273;cgate.listener.p2mqreply;;Open (null) @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.268275;cgate.listener.p2mqreply;;open: (null). @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.268280;cgate.publisher.p2mq;;addHandler: 0x0F749D14. @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.268287;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.268304;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x3;TID 10152
+2016-06-06 09:41:18.268314;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.268318;cgate.user;;cg_lsn_open: F74A42C;TID 10152
+2016-06-06 09:41:18.268320;cgate.listener.p2mqreply;;Open (null) @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.268323;cgate.listener.p2mqreply;;open: (null). @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.268328;cgate.publisher.p2mq;;addHandler: 0x0F74A4BC. @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.268335;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.268352;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x4;TID 10156
+2016-06-06 09:41:18.268360;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.268362;cgate.user;;cg_lsn_open: F74AABC;TID 10156
+2016-06-06 09:41:18.268364;cgate.listener.p2mqreply;;Open (null) @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.268366;cgate.listener.p2mqreply;;open: (null). @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.268371;cgate.publisher.p2mq;;addHandler: 0x0F74AB4C. @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.268377;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.355851;cgate.connection.p2;;Response from cert service was received. @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.355859;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.355871;cgate.user;;cg_pub_destroy: 7312A64;TID 10144
+2016-06-06 09:41:18.355873;cgate.publisher.p2mq;;Close @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.355875;cgate.publisher.p2mq;;close. @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.355900;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.355903;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.355905;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.355907;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.355909;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_0F569298 is done @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.355911;cgate.listener.p2mqreply;;Close @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.355913;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.355916;cgate.listener.p2mqreply;;close. @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.355918;cgate.publisher.p2mq;;removeHandler: 0x0F74A6EC. @cee{name: certlistner_0F569298, obj: 0x7312A28, thread: 10144};TID 10144
+2016-06-06 09:41:18.355923;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.355932;cgate.env;;Publisher was unregistered: 0x7312A64.;TID 10144
+2016-06-06 09:41:18.355936;cgate.user;;cg_lsn_destroy: F74A65C;TID 10144
+2016-06-06 09:41:18.355938;cgate.listener.p2mqreply;;Done @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.355940;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname7, obj: 0xF74A620, thread: 10144};TID 10144
+2016-06-06 09:41:18.355945;cgate.env;;Listener was unregistered: 0xF74A65C.;TID 10144
+2016-06-06 09:41:18.358117;cgate.user;;cg_pub_new settings: p2mq://FORTS_SRV;category=FORTS_MSG;name=pub_127_0_0_1_4001_SS_0;timeout=5000;scheme=|FILE|StockSharp.Plaza.Messages.ini|message;TID 10144
+2016-06-06 09:41:18.358147;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0xF65B6F8, thread: 10144};TID 10144
+2016-06-06 09:41:18.358171;cgate.connection.p2;;Response from cert service was received. @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.358173;cgate.env;;New publisher was registered: pub_127_0_0_1_4001_SS_0.;TID 10144
+2016-06-06 09:41:18.358177;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.358179;cgate.user;;cg_pub_destroy: 73122BC;TID 10160
+2016-06-06 09:41:18.358181;cgate.publisher.p2mq;;Close @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.358184;cgate.publisher.p2mq;;close. @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.358193;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.358195;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.358197;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.358199;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.358201;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_0F65BE10 is done @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.358202;cgate.listener.p2mqreply;;Close @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.358204;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.358206;cgate.listener.p2mqreply;;close. @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.358208;cgate.publisher.p2mq;;removeHandler: 0x0F749BFC. @cee{name: certlistner_0F65BE10, obj: 0x7312280, thread: 10160};TID 10160
+2016-06-06 09:41:18.358214;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.358221;cgate.env;;Publisher was unregistered: 0x73122BC.;TID 10160
+2016-06-06 09:41:18.358225;cgate.user;;cg_lsn_destroy: F749B6C;TID 10160
+2016-06-06 09:41:18.358227;cgate.listener.p2mqreply;;Done @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.358229;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname6, obj: 0xF749B30, thread: 10160};TID 10160
+2016-06-06 09:41:18.358234;cgate.env;;Listener was unregistered: 0xF749B6C.;TID 10160
+2016-06-06 09:41:18.358531;cgate.user;;cg_pub_open: F65B734;TID 10144
+2016-06-06 09:41:18.358535;cgate.user;;cg_pub_new settings: ;TID 10144
+2016-06-06 09:41:18.358539;cgate.publisher.p2mq;;open: . @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 10144};TID 10144
+2016-06-06 09:41:18.358548;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 10144};TID 10144
+2016-06-06 09:41:18.358564;scheme;;Scheme::make: URL: |FILE|StockSharp.Plaza.Messages.ini|message @cee{name: , obj: 0xF65B75C, thread: 10144};TID 10144
+2016-06-06 09:41:18.359167;cgate.connection.p2;;Response from cert service was received. @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.359168;cgate.connection.p2;;Response from cert service was received. @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359171;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.359174;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359175;cgate.user;;cg_pub_destroy: F65B8EC;TID 10156
+2016-06-06 09:41:18.359173;cgate.connection.p2;;Response from cert service was received. @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.359177;cgate.user;;cg_pub_destroy: F65C184;TID 10152
+2016-06-06 09:41:18.359177;cgate.publisher.p2mq;;Close @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.359179;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4001 @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.359179;cgate.publisher.p2mq;;Close @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.359181;cgate.publisher.p2mq;;close. @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.359181;cgate.user;;cg_pub_destroy: F65B57C;TID 10148
+2016-06-06 09:41:18.359182;cgate.publisher.p2mq;;close. @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.359183;cgate.publisher.p2mq;;Close @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.359186;cgate.publisher.p2mq;;close. @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.359188;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.359191;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.359191;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.359194;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.359194;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.359195;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.359196;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.359197;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.359197;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.359200;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.359200;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_0F569450 is done @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.359201;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.359209;cgate.listener.p2mqreply;;Close @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.359211;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.359212;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.359203;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_0F569608 is done @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359214;cgate.listener.p2mqreply;;close. @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.359214;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_0F5697C0 is done @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.359216;cgate.listener.p2mqreply;;Close @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359217;cgate.publisher.p2mq;;removeHandler: 0x0F74AB4C. @cee{name: certlistner_0F569450, obj: 0xF65B8B0, thread: 10156};TID 10156
+2016-06-06 09:41:18.359217;cgate.listener.p2mqreply;;Close @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.359219;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359220;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.359221;cgate.listener.p2mqreply;;close. @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359222;cgate.listener.p2mqreply;;close. @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.359223;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.359223;cgate.publisher.p2mq;;removeHandler: 0x0F74A4BC. @cee{name: certlistner_0F569608, obj: 0xF65C148, thread: 10152};TID 10152
+2016-06-06 09:41:18.359225;cgate.publisher.p2mq;;removeHandler: 0x0F749D14. @cee{name: certlistner_0F5697C0, obj: 0xF65B540, thread: 10148};TID 10148
+2016-06-06 09:41:18.359230;cgate.env;;Publisher was unregistered: 0xF65B8EC.;TID 10156
+2016-06-06 09:41:18.359230;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359231;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.359233;cgate.user;;cg_lsn_destroy: F74AABC;TID 10156
+2016-06-06 09:41:18.359235;cgate.listener.p2mqreply;;Done @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.359237;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname10, obj: 0xF74AA80, thread: 10156};TID 10156
+2016-06-06 09:41:18.359240;cgate.env;;Publisher was unregistered: 0xF65C184.;TID 10152
+2016-06-06 09:41:18.359244;cgate.env;;Listener was unregistered: 0xF74AABC.;TID 10156
+2016-06-06 09:41:18.359249;cgate.user;;cg_lsn_destroy: F74A42C;TID 10152
+2016-06-06 09:41:18.359251;cgate.listener.p2mqreply;;Done @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359252;cgate.env;;Publisher was unregistered: 0xF65B57C.;TID 10148
+2016-06-06 09:41:18.359253;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname8, obj: 0xF74A3F0, thread: 10152};TID 10152
+2016-06-06 09:41:18.359256;cgate.user;;cg_lsn_destroy: F749C84;TID 10148
+2016-06-06 09:41:18.359258;cgate.listener.p2mqreply;;Done @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.359260;cgate.env;;Listener was unregistered: 0xF74A42C.;TID 10152
+2016-06-06 09:41:18.359260;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname9, obj: 0xF749C48, thread: 10148};TID 10148
+2016-06-06 09:41:18.359268;cgate.env;;Listener was unregistered: 0xF749C84.;TID 10148
+2016-06-06 09:41:18.360326;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme;TID 10160
+2016-06-06 09:41:18.360327;cgate.user;;cg_lsn_new settings: p2repl://RTS_INDEX_REPL;scheme=|FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme;TID 10156
+2016-06-06 09:41:18.360333;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme;TID 10148
+2016-06-06 09:41:18.360350;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTTRADE_REPL.ini|CustReplScheme;TID 10152
+2016-06-06 09:41:18.360374;cgate.env;;Registered default p2 logger cgate.listener.p2repl.;TID 10160
+2016-06-06 09:41:18.360387;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme;name=noname11. @cee{name: , obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.360387;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTTRADE_REPL.ini|CustReplScheme;name=noname14. @cee{name: , obj: 0xF6B8500, thread: 10152};TID 10152
+2016-06-06 09:41:18.360405;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme;name=noname13. @cee{name: , obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.360425;cgate.listener.p2repl;;init: init listener: p2repl://RTS_INDEX_REPL;scheme=|FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme;name=noname12. @cee{name: , obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.360454;p2repl-cli;;Stream created;strm 0xF785FD8;TID 10156
+2016-06-06 09:41:18.360454;p2repl-cli;;Stream created;strm 0xF784CB8;TID 10160
+2016-06-06 09:41:18.360455;p2repl-cli;;Stream created;strm 0xF785978;TID 10152
+2016-06-06 09:41:18.360474;p2repl-cli;;Stream created;strm 0xF785318;TID 10148
+2016-06-06 09:41:18.360491;cgate.env;;New listener was registered: noname11.;TID 10160
+2016-06-06 09:41:18.360496;cgate.env;;New listener was registered: noname14.;TID 10152
+2016-06-06 09:41:18.360501;cgate.env;;New listener was registered: noname13.;TID 10148
+2016-06-06 09:41:18.360738;cgate.env;;New listener was registered: noname12.;TID 10156
+2016-06-06 09:41:18.362729;Scheme;ERROR;Duplicated item name "FutChangeClientMoney";sch-name "message";TID 10144
+2016-06-06 09:41:18.362785;scheme;ERROR;..\..\..\..\src\gate\src\cgate\scheme.cpp:576: P2 error: 0x8008. 'DB:WRONG_DB_SCHEME' @cee{name: , obj: 0xF65B75C, thread: 10144};TID 10144
+2016-06-06 09:41:18.362789;cgate.publisher.p2mq;ERROR;open: Scheme::make failed with error: 0x20000. 'CG:INTERNAL' @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 10144};TID 10144
+2016-06-06 09:41:18.362798;cgate.publisher.p2mq;;State changed OPENING -> ERROR @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 10144};TID 10144
+2016-06-06 09:41:18.363534;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme;TID 10160
+2016-06-06 09:41:18.363542;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme;TID 10148
+2016-06-06 09:41:18.363555;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme;name=noname15. @cee{name: , obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.363563;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme;name=noname16. @cee{name: , obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.363568;p2repl-cli;;Stream created;strm 0xF797A28;TID 10160
+2016-06-06 09:41:18.363579;p2repl-cli;;Stream created;strm 0xF52FD18;TID 10148
+2016-06-06 09:41:18.363581;cgate.env;;New listener was registered: noname15.;TID 10160
+2016-06-06 09:41:18.363593;cgate.env;;New listener was registered: noname16.;TID 10148
+2016-06-06 09:41:18.363603;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme;TID 10148
+2016-06-06 09:41:18.363614;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme;name=noname17. @cee{name: , obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.363626;p2repl-cli;;Stream created;strm 0xF530378;TID 10148
+2016-06-06 09:41:18.363635;cgate.env;;New listener was registered: noname17.;TID 10148
+2016-06-06 09:41:18.363644;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme;TID 10148
+2016-06-06 09:41:18.363655;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme;name=noname18. @cee{name: , obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.363724;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTTRADE_REPL.ini|CustReplScheme;TID 10152
+2016-06-06 09:41:18.363741;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTTRADE_REPL.ini|CustReplScheme;name=noname19. @cee{name: , obj: 0xF50D7B8, thread: 10152};TID 10152
+2016-06-06 09:41:18.363753;p2repl-cli;;Stream created;strm 0x71B7B10;TID 10152
+2016-06-06 09:41:18.363764;cgate.env;;New listener was registered: noname19.;TID 10152
+2016-06-06 09:41:18.363965;p2repl-cli;;Stream created;strm 0xF8F3E30;TID 10148
+2016-06-06 09:41:18.363978;cgate.env;;New listener was registered: noname18.;TID 10148
+2016-06-06 09:41:18.363994;cgate.user;;cg_lsn_new settings: p2repl://FORTS_PART_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme;TID 10148
+2016-06-06 09:41:18.364008;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_PART_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme;name=noname20. @cee{name: , obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.364017;p2repl-cli;;Stream created;strm 0xF8F4490;TID 10148
+2016-06-06 09:41:18.364026;cgate.env;;New listener was registered: noname20.;TID 10148
+2016-06-06 09:41:18.364035;cgate.user;;cg_lsn_new settings: p2repl://FORTS_POS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme;TID 10148
+2016-06-06 09:41:18.364044;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_POS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme;name=noname21. @cee{name: , obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.364052;p2repl-cli;;Stream created;strm 0xF8F4AF0;TID 10148
+2016-06-06 09:41:18.364060;cgate.env;;New listener was registered: noname21.;TID 10148
+2016-06-06 09:41:18.364066;cgate.user;;cg_lsn_new settings: p2repl://FORTS_DEALS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme;TID 10148
+2016-06-06 09:41:18.364073;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_DEALS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme;name=noname22. @cee{name: , obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.364080;p2repl-cli;;Stream created;strm 0xF8F5150;TID 10148
+2016-06-06 09:41:18.364088;cgate.env;;New listener was registered: noname22.;TID 10148
+2016-06-06 09:41:18.367351;cgate.user;;cg_lsn_destroy: F6B853C;TID 10152
+2016-06-06 09:41:18.367362;cgate.listener.p2repl;;Done @cee{name: noname14, obj: 0xF6B8500, thread: 10152};TID 10152
+2016-06-06 09:41:18.367390;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10152
+2016-06-06 09:41:18.367435;cgate.env;;Listener was unregistered: 0xF6B853C.;TID 10152
+2016-06-06 09:41:18.368442;cgate.user;;cg_lsn_destroy: F50D7F4;TID 10152
+2016-06-06 09:41:18.368451;cgate.listener.p2repl;;Done @cee{name: noname19, obj: 0xF50D7B8, thread: 10152};TID 10152
+2016-06-06 09:41:18.368458;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10152
+2016-06-06 09:41:18.368467;cgate.env;;Listener was unregistered: 0xF50D7F4.;TID 10152
+2016-06-06 09:41:18.369053;cgate.user;;cg_lsn_open: F6B8A34;TID 10160
+2016-06-06 09:41:18.369057;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10160
+2016-06-06 09:41:18.369062;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.369065;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.369072;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.369074;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.369077;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.369079;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.369088;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme @cee{name: , obj: 0x12F3ED18, thread: 10160};TID 10160
+2016-06-06 09:41:18.369400;P2ReplStorage;;Basic policy created;policy 0xF61D9C0;TID 10160
+2016-06-06 09:41:18.369408;P2ReplStorage;;Policy 0xF61D9C0 assigned;strm 0xF784CB8;TID 10160
+2016-06-06 09:41:18.369494;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.369699;cgate.user;;cg_lsn_open: F50C5BC;TID 10160
+2016-06-06 09:41:18.369702;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10160
+2016-06-06 09:41:18.369706;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.369709;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.369714;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.369717;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.369720;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.369722;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.369729;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme @cee{name: , obj: 0x12F3ED18, thread: 10160};TID 10160
+2016-06-06 09:41:18.369924;P2ReplStorage;;Basic policy created;policy 0xF61D958;TID 10160
+2016-06-06 09:41:18.369927;P2ReplStorage;;Policy 0xF61D958 assigned;strm 0xF797A28;TID 10160
+2016-06-06 09:41:18.369973;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.370248;cgate.user;;cg_conn_close: F569608;TID 10152
+2016-06-06 09:41:18.370256;cgate.connection.p2;;Close @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.370416;p2mq-cli;;Connection disconnected; mq-conn 0x3;TID 10152
+2016-06-06 09:41:18.370492;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.370504;cgate.user;;cg_lsn_close: F6B8A34;TID 10160
+2016-06-06 09:41:18.370509;cgate.listener.p2repl;;Close @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.370513;cgate.listener.p2repl;;close. @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.370519;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10160
+2016-06-06 09:41:18.370530;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.370605;cgate.user;;cg_conn_destroy: F569608;TID 10152
+2016-06-06 09:41:18.370611;cgate.connection.p2;;done: connection done. @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.370614;cgate.connection.p2;;Close @cee{name: noname3, obj: 0xF5695D0, thread: 10152};TID 10152
+2016-06-06 09:41:18.370623;cgate.env;;Connection was unregistered: 0xF569608.;TID 10152
+2016-06-06 09:41:18.370649;cgate.user;;cg_lsn_destroy: F6B8A34;TID 10160
+2016-06-06 09:41:18.370654;cgate.listener.p2repl;;Done @cee{name: noname11, obj: 0xF6B89F8, thread: 10160};TID 10160
+2016-06-06 09:41:18.370659;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10160
+2016-06-06 09:41:18.370666;cgate.env;;Listener was unregistered: 0xF6B8A34.;TID 10160
+2016-06-06 09:41:18.370679;cgate.user;;cg_lsn_close: F50C5BC;TID 10160
+2016-06-06 09:41:18.370681;cgate.listener.p2repl;;Close @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.370684;cgate.listener.p2repl;;close. @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.370689;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10160
+2016-06-06 09:41:18.370699;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.370702;cgate.user;;cg_lsn_destroy: F50C5BC;TID 10160
+2016-06-06 09:41:18.370704;cgate.listener.p2repl;;Done @cee{name: noname15, obj: 0xF50C580, thread: 10160};TID 10160
+2016-06-06 09:41:18.370708;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10160
+2016-06-06 09:41:18.370713;cgate.env;;Listener was unregistered: 0xF50C5BC.;TID 10160
+2016-06-06 09:41:18.370727;cgate.user;;cg_conn_close: F65BE10;TID 10160
+2016-06-06 09:41:18.370729;cgate.connection.p2;;Close @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.370772;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF784CB8;TID 10160
+2016-06-06 09:41:18.370777;P2ReplStorage;;Basic policy deleted;policy 0xF61D9C0;strm 0xF784CB8;TID 10160
+2016-06-06 09:41:18.370781;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF797A28;TID 10160
+2016-06-06 09:41:18.370783;P2ReplStorage;;Basic policy deleted;policy 0xF61D958;strm 0xF797A28;TID 10160
+2016-06-06 09:41:18.370785;p2mq-cli;;Connection disconnected; mq-conn 0x5;TID 10160
+2016-06-06 09:41:18.371747;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.371756;cgate.user;;cg_conn_destroy: F65BE10;TID 10160
+2016-06-06 09:41:18.371757;cgate.user;;cg_lsn_open: F6B86E4;TID 10156
+2016-06-06 09:41:18.371758;cgate.connection.p2;;done: connection done. @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.371761;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10156
+2016-06-06 09:41:18.371761;cgate.connection.p2;;Close @cee{name: noname5, obj: 0xF65BDD8, thread: 10160};TID 10160
+2016-06-06 09:41:18.371766;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.371768;cgate.user;;cg_lsn_open: F6B81EC;TID 10148
+2016-06-06 09:41:18.371771;cgate.env;;Connection was unregistered: 0xF65BE10.;TID 10160
+2016-06-06 09:41:18.371772;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.371776;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10148
+2016-06-06 09:41:18.371778;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.371781;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.371784;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.371786;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.371780;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.371793;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.371797;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme @cee{name: , obj: 0x12DFEC38, thread: 10156};TID 10156
+2016-06-06 09:41:18.371802;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.371805;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.371808;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.371812;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.371820;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme @cee{name: , obj: 0x12BBE948, thread: 10148};TID 10148
+2016-06-06 09:41:18.372065;P2ReplStorage;;Basic policy created;policy 0xF52F6D0;TID 10156
+2016-06-06 09:41:18.372068;P2ReplStorage;;Policy 0xF52F6D0 assigned;strm 0xF785FD8;TID 10156
+2016-06-06 09:41:18.372083;P2ReplStorage;;Basic policy created;policy 0xF52F468;TID 10148
+2016-06-06 09:41:18.372088;P2ReplStorage;;Policy 0xF52F468 assigned;strm 0xF785318;TID 10148
+2016-06-06 09:41:18.372134;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.372152;cgate.user;;cg_lsn_open: F50C26C;TID 10148
+2016-06-06 09:41:18.372154;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10148
+2016-06-06 09:41:18.372165;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.372175;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.372201;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.372196;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.372214;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.372228;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.372234;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.372244;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme @cee{name: , obj: 0x12BBE948, thread: 10148};TID 10148
+2016-06-06 09:41:18.372565;P2ReplStorage;;Basic policy created;policy 0xF52F2C8;TID 10148
+2016-06-06 09:41:18.372569;P2ReplStorage;;Policy 0xF52F2C8 assigned;strm 0xF52FD18;TID 10148
+2016-06-06 09:41:18.372696;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.373259;cgate.user;;cg_lsn_open: F50DE94;TID 10148
+2016-06-06 09:41:18.373262;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10148
+2016-06-06 09:41:18.373266;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.373270;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.373276;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.373279;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.373281;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.373284;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.373291;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme @cee{name: , obj: 0x12BBE948, thread: 10148};TID 10148
+2016-06-06 09:41:18.373465;cgate.user;;cg_conn_close: F569298;TID 10144
+2016-06-06 09:41:18.373469;cgate.connection.p2;;Close @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.374031;p2mq-cli;;Connection disconnected; mq-conn 0x1;TID 10144
+2016-06-06 09:41:18.374213;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.374221;cgate.user;;cg_conn_destroy: F569298;TID 10144
+2016-06-06 09:41:18.374224;cgate.connection.p2;;done: connection done. @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.374226;cgate.connection.p2;;Close @cee{name: noname1, obj: 0xF569260, thread: 10144};TID 10144
+2016-06-06 09:41:18.374234;cgate.env;;Connection was unregistered: 0xF569298.;TID 10144
+2016-06-06 09:41:18.374270;P2ReplStorage;;Basic policy created;policy 0xF52F870;TID 10148
+2016-06-06 09:41:18.374274;P2ReplStorage;;Policy 0xF52F870 assigned;strm 0xF530378;TID 10148
+2016-06-06 09:41:18.374326;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.374349;cgate.user;;cg_lsn_open: F50D154;TID 10148
+2016-06-06 09:41:18.374351;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10148
+2016-06-06 09:41:18.374354;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.374357;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.374362;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.374364;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.374366;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.374367;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.374375;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme @cee{name: , obj: 0x12BBE948, thread: 10148};TID 10148
+2016-06-06 09:41:18.374724;P2ReplStorage;;Basic policy created;policy 0xF52F668;TID 10148
+2016-06-06 09:41:18.374728;P2ReplStorage;;Policy 0xF52F668 assigned;strm 0xF8F3E30;TID 10148
+2016-06-06 09:41:18.374771;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.374791;cgate.user;;cg_lsn_open: F50C764;TID 10148
+2016-06-06 09:41:18.374793;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10148
+2016-06-06 09:41:18.374795;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.374798;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.374803;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.374806;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.374808;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.374811;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.374818;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme @cee{name: , obj: 0x12BBE948, thread: 10148};TID 10148
+2016-06-06 09:41:18.374994;P2ReplStorage;;Basic policy created;policy 0xF52F808;TID 10148
+2016-06-06 09:41:18.374997;P2ReplStorage;;Policy 0xF52F808 assigned;strm 0xF8F4490;TID 10148
+2016-06-06 09:41:18.375038;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.375055;cgate.user;;cg_lsn_open: F50C90C;TID 10148
+2016-06-06 09:41:18.375057;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10148
+2016-06-06 09:41:18.375059;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.375062;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.375066;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.375069;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.375071;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.375074;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.375081;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme @cee{name: , obj: 0x12BBE948, thread: 10148};TID 10148
+2016-06-06 09:41:18.375316;P2ReplStorage;;Basic policy created;policy 0xF52F598;TID 10148
+2016-06-06 09:41:18.375321;P2ReplStorage;;Policy 0xF52F598 assigned;strm 0xF8F4AF0;TID 10148
+2016-06-06 09:41:18.375388;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.376146;cgate.user;;cg_lsn_open: F50CE04;TID 10148
+2016-06-06 09:41:18.376149;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 10148
+2016-06-06 09:41:18.376153;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.376156;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.376165;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.376167;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.376169;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.376170;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.376178;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme @cee{name: , obj: 0x12BBE948, thread: 10148};TID 10148
+2016-06-06 09:41:18.377009;P2ReplStorage;;Basic policy created;policy 0xF52F530;TID 10148
+2016-06-06 09:41:18.377013;P2ReplStorage;;Policy 0xF52F530 assigned;strm 0xF8F5150;TID 10148
+2016-06-06 09:41:18.377071;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.377110;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTCOMMON_REPL';srv_addr 'P2PROM-01.inter_futcommon';strm 0xF785318;TID 10148
+2016-06-06 09:41:18.377128;cgate.user;;cg_lsn_close: F6B81EC;TID 10148
+2016-06-06 09:41:18.377131;cgate.listener.p2repl;;Close @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.377134;cgate.listener.p2repl;;close. @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.377156;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377169;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.377173;cgate.user;;cg_lsn_destroy: F6B81EC;TID 10148
+2016-06-06 09:41:18.377175;cgate.listener.p2repl;;Done @cee{name: noname13, obj: 0xF6B81B0, thread: 10148};TID 10148
+2016-06-06 09:41:18.377178;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377186;cgate.env;;Listener was unregistered: 0xF6B81EC.;TID 10148
+2016-06-06 09:41:18.377198;cgate.user;;cg_lsn_close: F50C26C;TID 10148
+2016-06-06 09:41:18.377200;cgate.listener.p2repl;;Close @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.377203;cgate.listener.p2repl;;close. @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.377208;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377218;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.377221;cgate.user;;cg_lsn_destroy: F50C26C;TID 10148
+2016-06-06 09:41:18.377222;cgate.listener.p2repl;;Done @cee{name: noname16, obj: 0xF50C230, thread: 10148};TID 10148
+2016-06-06 09:41:18.377226;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377230;cgate.env;;Listener was unregistered: 0xF50C26C.;TID 10148
+2016-06-06 09:41:18.377238;cgate.user;;cg_lsn_close: F50DE94;TID 10148
+2016-06-06 09:41:18.377240;cgate.listener.p2repl;;Close @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.377242;cgate.listener.p2repl;;close. @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.377247;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377258;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.377260;cgate.user;;cg_lsn_destroy: F50DE94;TID 10148
+2016-06-06 09:41:18.377261;cgate.listener.p2repl;;Done @cee{name: noname17, obj: 0xF50DE58, thread: 10148};TID 10148
+2016-06-06 09:41:18.377265;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377268;cgate.env;;Listener was unregistered: 0xF50DE94.;TID 10148
+2016-06-06 09:41:18.377275;cgate.user;;cg_lsn_close: F50D154;TID 10148
+2016-06-06 09:41:18.377276;cgate.listener.p2repl;;Close @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.377278;cgate.listener.p2repl;;close. @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.377281;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377294;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.377296;cgate.user;;cg_lsn_destroy: F50D154;TID 10148
+2016-06-06 09:41:18.377297;cgate.listener.p2repl;;Done @cee{name: noname18, obj: 0xF50D118, thread: 10148};TID 10148
+2016-06-06 09:41:18.377300;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377304;cgate.env;;Listener was unregistered: 0xF50D154.;TID 10148
+2016-06-06 09:41:18.377310;cgate.user;;cg_lsn_close: F50C764;TID 10148
+2016-06-06 09:41:18.377311;cgate.listener.p2repl;;Close @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.377313;cgate.listener.p2repl;;close. @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.377318;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377325;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.377328;cgate.user;;cg_lsn_destroy: F50C764;TID 10148
+2016-06-06 09:41:18.377329;cgate.listener.p2repl;;Done @cee{name: noname20, obj: 0xF50C728, thread: 10148};TID 10148
+2016-06-06 09:41:18.377333;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377337;cgate.env;;Listener was unregistered: 0xF50C764.;TID 10148
+2016-06-06 09:41:18.377343;cgate.user;;cg_lsn_close: F50C90C;TID 10148
+2016-06-06 09:41:18.377345;cgate.listener.p2repl;;Close @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.377347;cgate.listener.p2repl;;close. @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.377351;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.377382;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.378296;cgate.user;;cg_lsn_destroy: F50C90C;TID 10148
+2016-06-06 09:41:18.378300;cgate.listener.p2repl;;Done @cee{name: noname21, obj: 0xF50C8D0, thread: 10148};TID 10148
+2016-06-06 09:41:18.378306;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.378315;cgate.env;;Listener was unregistered: 0xF50C90C.;TID 10148
+2016-06-06 09:41:18.378329;cgate.user;;cg_lsn_close: F50CE04;TID 10148
+2016-06-06 09:41:18.378330;cgate.listener.p2repl;;Close @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.378332;cgate.listener.p2repl;;close. @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.378336;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.378350;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.378352;cgate.user;;cg_lsn_destroy: F50CE04;TID 10148
+2016-06-06 09:41:18.378353;cgate.listener.p2repl;;Done @cee{name: noname22, obj: 0xF50CDC8, thread: 10148};TID 10148
+2016-06-06 09:41:18.378357;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10148
+2016-06-06 09:41:18.378360;cgate.env;;Listener was unregistered: 0xF50CE04.;TID 10148
+2016-06-06 09:41:18.378371;cgate.user;;cg_conn_close: F5697C0;TID 10148
+2016-06-06 09:41:18.378374;cgate.connection.p2;;Close @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.378460;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF52FD18;TID 10148
+2016-06-06 09:41:18.378467;P2ReplStorage;;Basic policy deleted;policy 0xF52F2C8;strm 0xF52FD18;TID 10148
+2016-06-06 09:41:18.378473;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF530378;TID 10148
+2016-06-06 09:41:18.378476;P2ReplStorage;;Basic policy deleted;policy 0xF52F870;strm 0xF530378;TID 10148
+2016-06-06 09:41:18.378481;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF8F3E30;TID 10148
+2016-06-06 09:41:18.378483;P2ReplStorage;;Basic policy deleted;policy 0xF52F668;strm 0xF8F3E30;TID 10148
+2016-06-06 09:41:18.378489;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF8F4490;TID 10148
+2016-06-06 09:41:18.378491;P2ReplStorage;;Basic policy deleted;policy 0xF52F808;strm 0xF8F4490;TID 10148
+2016-06-06 09:41:18.378495;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF8F4AF0;TID 10148
+2016-06-06 09:41:18.378498;P2ReplStorage;;Basic policy deleted;policy 0xF52F598;strm 0xF8F4AF0;TID 10148
+2016-06-06 09:41:18.378502;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF8F5150;TID 10148
+2016-06-06 09:41:18.378505;P2ReplStorage;;Basic policy deleted;policy 0xF52F530;strm 0xF8F5150;TID 10148
+2016-06-06 09:41:18.378510;p2repl-cli;WARNING;Stream state was changed;strm 0xF785318;TID 10148
+2016-06-06 09:41:18.378513;P2ReplStorage;;Basic policy deleted;policy 0xF52F468;strm 0xF785318;TID 10148
+2016-06-06 09:41:18.378518;p2mq-cli;;Connection disconnected; mq-conn 0x2;TID 10148
+2016-06-06 09:41:18.378645;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.378651;cgate.user;;cg_conn_destroy: F5697C0;TID 10148
+2016-06-06 09:41:18.378653;cgate.connection.p2;;done: connection done. @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.378655;cgate.connection.p2;;Close @cee{name: noname2, obj: 0xF569788, thread: 10148};TID 10148
+2016-06-06 09:41:18.378662;cgate.env;;Connection was unregistered: 0xF5697C0.;TID 10148
+2016-06-06 09:41:18.382225;cgate.user;;cg_lsn_close: F6B86E4;TID 10156
+2016-06-06 09:41:18.382232;cgate.listener.p2repl;;Close @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.382245;cgate.listener.p2repl;;close. @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.382252;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10156
+2016-06-06 09:41:18.382273;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.382276;cgate.user;;cg_lsn_destroy: F6B86E4;TID 10156
+2016-06-06 09:41:18.382277;cgate.listener.p2repl;;Done @cee{name: noname12, obj: 0xF6B86A8, thread: 10156};TID 10156
+2016-06-06 09:41:18.382280;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 10156
+2016-06-06 09:41:18.382289;cgate.env;;Listener was unregistered: 0xF6B86E4.;TID 10156
+2016-06-06 09:41:18.382302;cgate.user;;cg_conn_close: F569450;TID 10156
+2016-06-06 09:41:18.382303;cgate.connection.p2;;Close @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.382374;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0xF785FD8;TID 10156
+2016-06-06 09:41:18.382378;P2ReplStorage;;Basic policy deleted;policy 0xF52F6D0;strm 0xF785FD8;TID 10156
+2016-06-06 09:41:18.382383;p2mq-cli;;Connection disconnected; mq-conn 0x4;TID 10156
+2016-06-06 09:41:18.382487;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.382493;cgate.user;;cg_conn_destroy: F569450;TID 10156
+2016-06-06 09:41:18.382495;cgate.connection.p2;;done: connection done. @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.382498;cgate.connection.p2;;Close @cee{name: noname4, obj: 0xF569418, thread: 10156};TID 10156
+2016-06-06 09:41:18.382505;cgate.env;;Connection was unregistered: 0xF569450.;TID 10156
+2016-06-06 09:41:18.401036;cgate.user;;cg_pub_close: F65B734;TID 8496
+2016-06-06 09:41:18.401052;cgate.publisher.p2mq;;Close @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 8496};TID 8496
+2016-06-06 09:41:18.401056;cgate.publisher.p2mq;;close. @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 8496};TID 8496
+2016-06-06 09:41:18.401068;cgate.publisher.p2mq;;State changed ERROR -> CLOSED @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 8496};TID 8496
+2016-06-06 09:41:18.401071;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 8496};TID 8496
+2016-06-06 09:41:18.401169;cgate.user;;cg_pub_destroy: F65B734;TID 8496
+2016-06-06 09:41:18.401174;cgate.publisher.p2mq;;done: done publisher. @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 8496};TID 8496
+2016-06-06 09:41:18.401176;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: pub_127_0_0_1_4001_SS_0, obj: 0xF65B6F8, thread: 8496};TID 8496
+2016-06-06 09:41:18.401193;cgate.env;;Publisher was unregistered: 0xF65B734.;TID 8496
+2016-06-06 09:41:43.466574;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4002;app_name=SS_0;TID 9304
+2016-06-06 09:41:43.466683;cgate.env;;Registered default p2 logger cgate.connection.p2.;TID 9304
+2016-06-06 09:41:43.466692;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4002;app_name=SS_0;name=noname23 @cee{name: , obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.466705;cgate.env;;New connection was registered: noname23.;TID 9304
+2016-06-06 09:41:43.466712;cgate.user;;cg_conn_open: 1527EB90;TID 9304
+2016-06-06 09:41:43.466715;cgate.user;;cg_conn_open settings: ;TID 9304
+2016-06-06 09:41:43.466717;cgate.connection.p2;;open: connection open. @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.466724;cgate.connection.p2;;P2MQ connection string: appName=SS_0;host=127.0.0.1;port=4002;
+ @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.467961;p2mq-cli;;Connection 0x15275A48 connected; mq-conn 0x6; router state 'connected'; 'appName=SS_0;host=127.0.0.1;port=4002;';TID 9304
+2016-06-06 09:41:43.467977;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.467982;cgate.connection.p2;;Checking certification for: 127.0.0.1:4002, key: 11111111 @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.467992;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.477098;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4002;app_name=SS_1;TID 9316
+2016-06-06 09:41:43.477194;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4002;app_name=SS_1;name=noname24 @cee{name: , obj: 0x1527E7E8, thread: 9316};TID 9316
+2016-06-06 09:41:43.477370;cgate.env;;New connection was registered: noname24.;TID 9316
+2016-06-06 09:41:43.477402;cgate.user;;cg_conn_open: 1527E820;TID 9316
+2016-06-06 09:41:43.477405;cgate.user;;cg_conn_open settings: ;TID 9316
+2016-06-06 09:41:43.477408;cgate.connection.p2;;open: connection open. @cee{name: noname24, obj: 0x1527E7E8, thread: 9316};TID 9316
+2016-06-06 09:41:43.477417;cgate.connection.p2;;P2MQ connection string: appName=SS_1;host=127.0.0.1;port=4002;
+ @cee{name: noname24, obj: 0x1527E7E8, thread: 9316};TID 9316
+2016-06-06 09:41:43.478649;p2mq-cli;;Connection 0x15275FA0 connected; mq-conn 0x7; router state 'connected'; 'appName=SS_1;host=127.0.0.1;port=4002;';TID 9316
+2016-06-06 09:41:43.478668;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname24, obj: 0x1527E7E8, thread: 9316};TID 9316
+2016-06-06 09:41:43.478674;cgate.connection.p2;;Checking certification for: 127.0.0.1:4002, key: 11111111 @cee{name: noname24, obj: 0x1527E7E8, thread: 9316};TID 9316
+2016-06-06 09:41:43.478684;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname24, obj: 0x1527E7E8, thread: 9316};TID 9316
+2016-06-06 09:41:43.479340;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4002;app_name=SS_2;TID 9336
+2016-06-06 09:41:43.479361;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4002;app_name=SS_2;name=noname25 @cee{name: , obj: 0x1527E9A0, thread: 9336};TID 9336
+2016-06-06 09:41:43.479373;cgate.env;;New connection was registered: noname25.;TID 9336
+2016-06-06 09:41:43.479381;cgate.user;;cg_conn_open: 1527E9D8;TID 9336
+2016-06-06 09:41:43.479384;cgate.user;;cg_conn_open settings: ;TID 9336
+2016-06-06 09:41:43.479385;cgate.connection.p2;;open: connection open. @cee{name: noname25, obj: 0x1527E9A0, thread: 9336};TID 9336
+2016-06-06 09:41:43.479443;cgate.connection.p2;;P2MQ connection string: appName=SS_2;host=127.0.0.1;port=4002;
+ @cee{name: noname25, obj: 0x1527E9A0, thread: 9336};TID 9336
+2016-06-06 09:41:43.481380;p2mq-cli;;Connection 0x15275328 connected; mq-conn 0x8; router state 'connected'; 'appName=SS_2;host=127.0.0.1;port=4002;';TID 9336
+2016-06-06 09:41:43.481400;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname25, obj: 0x1527E9A0, thread: 9336};TID 9336
+2016-06-06 09:41:43.481407;cgate.connection.p2;;Checking certification for: 127.0.0.1:4002, key: 11111111 @cee{name: noname25, obj: 0x1527E9A0, thread: 9336};TID 9336
+2016-06-06 09:41:43.481415;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname25, obj: 0x1527E9A0, thread: 9336};TID 9336
+2016-06-06 09:41:43.482317;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_1527EB90;timeout=10000;scheme=noscheme;TID 9304
+2016-06-06 09:41:43.482345;cgate.env;;Registered default p2 logger cgate.publisher.p2mq.;TID 9304
+2016-06-06 09:41:43.482349;cgate.env;;Registered default p2 logger scheme.;TID 9304
+2016-06-06 09:41:43.482354;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.482370;cgate.env;;New publisher was registered: certlistner_1527EB90.;TID 9304
+2016-06-06 09:41:43.482375;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527EB90;scheme=noscheme;TID 9304
+2016-06-06 09:41:43.482390;cgate.env;;Registered default p2 logger cgate.listener.p2mqreply.;TID 9304
+2016-06-06 09:41:43.482396;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527EB90;scheme=noscheme;name=noname26. @cee{name: , obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.482406;cgate.env;;New listener was registered: noname26.;TID 9304
+2016-06-06 09:41:43.482409;cgate.user;;cg_pub_open: 1527ED4C;TID 9304
+2016-06-06 09:41:43.482412;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.482421;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.482424;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.482517;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x6;TID 9304
+2016-06-06 09:41:43.482532;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.482535;cgate.user;;cg_lsn_open: F8F368C;TID 9304
+2016-06-06 09:41:43.482539;cgate.listener.p2mqreply;;Open (null) @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.482543;cgate.listener.p2mqreply;;open: (null). @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.482549;cgate.publisher.p2mq;;addHandler: 0x0F8F371C. @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.482556;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.483150;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4002;app_name=SS_3;TID 8856
+2016-06-06 09:41:43.483171;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4002;app_name=SS_3;name=noname27 @cee{name: , obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.483185;cgate.env;;New connection was registered: noname27.;TID 8856
+2016-06-06 09:41:43.483193;cgate.user;;cg_conn_open: 1527EF00;TID 8856
+2016-06-06 09:41:43.483195;cgate.user;;cg_conn_open settings: ;TID 8856
+2016-06-06 09:41:43.483198;cgate.connection.p2;;open: connection open. @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.483207;cgate.connection.p2;;P2MQ connection string: appName=SS_3;host=127.0.0.1;port=4002;
+ @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.485321;p2mq-cli;;Connection 0x15275880 connected; mq-conn 0x9; router state 'connected'; 'appName=SS_3;host=127.0.0.1;port=4002;';TID 8856
+2016-06-06 09:41:43.485342;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.485348;cgate.connection.p2;;Checking certification for: 127.0.0.1:4002, key: 11111111 @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.485358;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.486406;cgate.user;;cg_conn_new settings: p2tcp://127.0.0.1:4002;app_name=SS_4;TID 5192
+2016-06-06 09:41:43.486501;cgate.connection.p2;;init: connection init. Connection settings: p2tcp://127.0.0.1:4002;app_name=SS_4;name=noname28 @cee{name: , obj: 0x1527E108, thread: 5192};TID 5192
+2016-06-06 09:41:43.486577;cgate.env;;New connection was registered: noname28.;TID 5192
+2016-06-06 09:41:43.486591;cgate.user;;cg_conn_open: 1527E140;TID 5192
+2016-06-06 09:41:43.487131;cgate.user;;cg_conn_open settings: ;TID 5192
+2016-06-06 09:41:43.487134;cgate.connection.p2;;open: connection open. @cee{name: noname28, obj: 0x1527E108, thread: 5192};TID 5192
+2016-06-06 09:41:43.487143;cgate.connection.p2;;P2MQ connection string: appName=SS_4;host=127.0.0.1;port=4002;
+ @cee{name: noname28, obj: 0x1527E108, thread: 5192};TID 5192
+2016-06-06 09:41:43.488189;p2mq-cli;;Connection 0x152754F0 connected; mq-conn 0xA; router state 'connected'; 'appName=SS_4;host=127.0.0.1;port=4002;';TID 5192
+2016-06-06 09:41:43.488205;cgate.connection.p2;;State changed CLOSED -> OPENING @cee{name: noname28, obj: 0x1527E108, thread: 5192};TID 5192
+2016-06-06 09:41:43.488211;cgate.connection.p2;;Checking certification for: 127.0.0.1:4002, key: 11111111 @cee{name: noname28, obj: 0x1527E108, thread: 5192};TID 5192
+2016-06-06 09:41:43.488220;cgate.connection.p2;;State changed OPENING -> ACTIVE @cee{name: noname28, obj: 0x1527E108, thread: 5192};TID 5192
+2016-06-06 09:41:43.493372;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_1527E820;timeout=10000;scheme=noscheme;TID 9316
+2016-06-06 09:41:43.493407;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.493423;cgate.env;;New publisher was registered: certlistner_1527E820.;TID 9316
+2016-06-06 09:41:43.493428;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527E820;scheme=noscheme;TID 9316
+2016-06-06 09:41:43.493457;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527E820;scheme=noscheme;name=noname29. @cee{name: , obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.493468;cgate.env;;New listener was registered: noname29.;TID 9316
+2016-06-06 09:41:43.493470;cgate.user;;cg_pub_open: 1527E2FC;TID 9316
+2016-06-06 09:41:43.493473;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.493481;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.493484;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.493645;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x7;TID 9316
+2016-06-06 09:41:43.493668;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.493682;cgate.user;;cg_lsn_open: F74A0E4;TID 9316
+2016-06-06 09:41:43.493685;cgate.listener.p2mqreply;;Open (null) @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.493688;cgate.listener.p2mqreply;;open: (null). @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.493694;cgate.publisher.p2mq;;addHandler: 0x0F74A174. @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.493701;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.496338;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_1527E9D8;timeout=10000;scheme=noscheme;TID 9336
+2016-06-06 09:41:43.496369;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.496385;cgate.env;;New publisher was registered: certlistner_1527E9D8.;TID 9336
+2016-06-06 09:41:43.496389;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527E9D8;scheme=noscheme;TID 9336
+2016-06-06 09:41:43.496401;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527E9D8;scheme=noscheme;name=noname30. @cee{name: , obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.496412;cgate.env;;New listener was registered: noname30.;TID 9336
+2016-06-06 09:41:43.496415;cgate.user;;cg_pub_open: 1527E4B4;TID 9336
+2016-06-06 09:41:43.496417;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.496425;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.496427;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.496564;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x8;TID 9336
+2016-06-06 09:41:43.496588;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.496601;cgate.user;;cg_lsn_open: F74AF1C;TID 9336
+2016-06-06 09:41:43.496603;cgate.listener.p2mqreply;;Open (null) @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.496606;cgate.listener.p2mqreply;;open: (null). @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.496612;cgate.publisher.p2mq;;addHandler: 0x0F74AFAC. @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.496619;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.500355;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_1527EF00;timeout=10000;scheme=noscheme;TID 8856
+2016-06-06 09:41:43.500376;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.500391;cgate.env;;New publisher was registered: certlistner_1527EF00.;TID 8856
+2016-06-06 09:41:43.500396;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527EF00;scheme=noscheme;TID 8856
+2016-06-06 09:41:43.500407;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527EF00;scheme=noscheme;name=noname31. @cee{name: , obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.500425;cgate.env;;New listener was registered: noname31.;TID 8856
+2016-06-06 09:41:43.500427;cgate.user;;cg_pub_open: 1527F954;TID 8856
+2016-06-06 09:41:43.500429;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.500446;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.500449;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.500579;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0x9;TID 8856
+2016-06-06 09:41:43.500601;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.500604;cgate.user;;cg_lsn_open: F74B37C;TID 8856
+2016-06-06 09:41:43.500616;cgate.listener.p2mqreply;;Open (null) @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.500619;cgate.listener.p2mqreply;;open: (null). @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.500624;cgate.publisher.p2mq;;addHandler: 0x0F74B40C. @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.500631;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.502369;cgate.user;;cg_pub_new settings: p2mq://SOFTWARE_AUTH;category=CERT_MSG;format=raw;name=certlistner_1527E140;timeout=10000;scheme=noscheme;TID 5192
+2016-06-06 09:41:43.502399;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.502427;cgate.env;;New publisher was registered: certlistner_1527E140.;TID 5192
+2016-06-06 09:41:43.502441;cgate.user;;cg_lsn_new settings: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527E140;scheme=noscheme;TID 5192
+2016-06-06 09:41:43.502454;cgate.listener.p2mqreply;;init: init listener: p2mqreply://;category=CERT_MSG;format=raw;ref=certlistner_1527E140;scheme=noscheme;name=noname32. @cee{name: , obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.502464;cgate.env;;New listener was registered: noname32.;TID 5192
+2016-06-06 09:41:43.502467;cgate.user;;cg_pub_open: 152803A4;TID 5192
+2016-06-06 09:41:43.502469;cgate.publisher.p2mq;;open: (null). @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.502477;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.502480;cgate.publisher.p2mq;;open: settings scheme is noscheme. @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.502607;p2mq-cli;;Service 'SOFTWARE_AUTH' resolved at 'P2PROXY-01.jcertserv'; mq-conn 0xA;TID 5192
+2016-06-06 09:41:43.502638;cgate.publisher.p2mq;;State changed OPENING -> ACTIVE @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.502641;cgate.user;;cg_lsn_open: 1524DD54;TID 5192
+2016-06-06 09:41:43.502644;cgate.listener.p2mqreply;;Open (null) @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.502647;cgate.listener.p2mqreply;;open: (null). @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.502653;cgate.publisher.p2mq;;addHandler: 0x1524DDE4. @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.502660;cgate.listener.p2mqreply;;State changed CLOSED -> ACTIVE @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.513804;cgate.connection.p2;;Response from cert service was received. @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.513816;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4002 @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.513820;cgate.user;;cg_pub_destroy: 1527ED4C;TID 9304
+2016-06-06 09:41:43.513822;cgate.publisher.p2mq;;Close @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.513827;cgate.publisher.p2mq;;close. @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.513839;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.513843;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.513845;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.513848;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.513851;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_1527EB90 is done @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.513853;cgate.listener.p2mqreply;;Close @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.513856;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.513857;cgate.listener.p2mqreply;;close. @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.513859;cgate.publisher.p2mq;;removeHandler: 0x0F8F371C. @cee{name: certlistner_1527EB90, obj: 0x1527ED10, thread: 9304};TID 9304
+2016-06-06 09:41:43.513866;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.513875;cgate.env;;Publisher was unregistered: 0x1527ED4C.;TID 9304
+2016-06-06 09:41:43.513880;cgate.user;;cg_lsn_destroy: F8F368C;TID 9304
+2016-06-06 09:41:43.513881;cgate.listener.p2mqreply;;Done @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.513883;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname26, obj: 0xF8F3650, thread: 9304};TID 9304
+2016-06-06 09:41:43.513888;cgate.env;;Listener was unregistered: 0xF8F368C.;TID 9304
+2016-06-06 09:41:43.513950;cgate.user;;cg_pub_new settings: p2mq://FORTS_SRV;category=FORTS_MSG;name=pub_127_0_0_1_4002_SS_0;timeout=5000;scheme=|FILE|StockSharp.Plaza.Messages.ini|message;TID 9304
+2016-06-06 09:41:43.513970;cgate.publisher.p2mq;;init: init publisher. @cee{name: , obj: 0x1527FFF8, thread: 9304};TID 9304
+2016-06-06 09:41:43.513988;cgate.env;;New publisher was registered: pub_127_0_0_1_4002_SS_0.;TID 9304
+2016-06-06 09:41:43.513997;cgate.user;;cg_pub_open: 15280034;TID 9304
+2016-06-06 09:41:43.513999;cgate.user;;cg_pub_new settings: ;TID 9304
+2016-06-06 09:41:43.514001;cgate.publisher.p2mq;;open: . @cee{name: pub_127_0_0_1_4002_SS_0, obj: 0x1527FFF8, thread: 9304};TID 9304
+2016-06-06 09:41:43.514009;cgate.publisher.p2mq;;State changed CLOSED -> OPENING @cee{name: pub_127_0_0_1_4002_SS_0, obj: 0x1527FFF8, thread: 9304};TID 9304
+2016-06-06 09:41:43.514016;scheme;;Scheme::make: URL: |FILE|StockSharp.Plaza.Messages.ini|message @cee{name: , obj: 0x1528005C, thread: 9304};TID 9304
+2016-06-06 09:41:43.515333;cgate.connection.p2;;Response from cert service was received. @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.515340;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4002 @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.515343;cgate.user;;cg_pub_destroy: 1527F954;TID 8856
+2016-06-06 09:41:43.515344;cgate.publisher.p2mq;;Close @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.515348;cgate.publisher.p2mq;;close. @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.515358;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.515361;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.515364;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.515366;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.515369;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_1527EF00 is done @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.515372;cgate.listener.p2mqreply;;Close @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.515374;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.515376;cgate.listener.p2mqreply;;close. @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.515378;cgate.publisher.p2mq;;removeHandler: 0x0F74B40C. @cee{name: certlistner_1527EF00, obj: 0x1527F918, thread: 8856};TID 8856
+2016-06-06 09:41:43.515385;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.515393;cgate.env;;Publisher was unregistered: 0x1527F954.;TID 8856
+2016-06-06 09:41:43.515395;cgate.user;;cg_lsn_destroy: F74B37C;TID 8856
+2016-06-06 09:41:43.515396;cgate.listener.p2mqreply;;Done @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.515398;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname31, obj: 0xF74B340, thread: 8856};TID 8856
+2016-06-06 09:41:43.515402;cgate.env;;Listener was unregistered: 0xF74B37C.;TID 8856
+2016-06-06 09:41:43.515432;cgate.user;;cg_lsn_new settings: p2repl://RTS_INDEX_REPL;scheme=|FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme;TID 8856
+2016-06-06 09:41:43.515457;cgate.env;;Registered default p2 logger cgate.listener.p2repl.;TID 8856
+2016-06-06 09:41:43.515462;cgate.listener.p2repl;;init: init listener: p2repl://RTS_INDEX_REPL;scheme=|FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme;name=noname33. @cee{name: , obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.515477;p2repl-cli;;Stream created;strm 0x152A09B0;TID 8856
+2016-06-06 09:41:43.515491;cgate.env;;New listener was registered: noname33.;TID 8856
+2016-06-06 09:41:43.515533;cgate.user;;cg_lsn_open: F602B8C;TID 8856
+2016-06-06 09:41:43.515536;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 8856
+2016-06-06 09:41:43.515538;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.515541;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.515546;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.515549;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.515551;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.515553;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.515559;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\RTS_INDEX_REPL.ini|CustReplScheme @cee{name: , obj: 0x12F0E898, thread: 8856};TID 8856
+2016-06-06 09:41:43.515804;P2ReplStorage;;Basic policy created;policy 0xF7399B0;TID 8856
+2016-06-06 09:41:43.515808;P2ReplStorage;;Policy 0xF7399B0 assigned;strm 0x152A09B0;TID 8856
+2016-06-06 09:41:43.515874;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.516390;Scheme;ERROR;Duplicated item name "FutChangeClientMoney";sch-name "message";TID 9304
+2016-06-06 09:41:43.516431;scheme;ERROR;..\..\..\..\src\gate\src\cgate\scheme.cpp:576: P2 error: 0x8008. 'DB:WRONG_DB_SCHEME' @cee{name: , obj: 0x1528005C, thread: 9304};TID 9304
+2016-06-06 09:41:43.516436;cgate.publisher.p2mq;ERROR;open: Scheme::make failed with error: 0x20000. 'CG:INTERNAL' @cee{name: pub_127_0_0_1_4002_SS_0, obj: 0x1527FFF8, thread: 9304};TID 9304
+2016-06-06 09:41:43.516444;cgate.publisher.p2mq;;State changed OPENING -> ERROR @cee{name: pub_127_0_0_1_4002_SS_0, obj: 0x1527FFF8, thread: 9304};TID 9304
+2016-06-06 09:41:43.516662;cgate.user;;cg_conn_close: 1527EB90;TID 9304
+2016-06-06 09:41:43.516666;cgate.connection.p2;;Close @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.516714;p2mq-cli;;Connection disconnected; mq-conn 0x6;TID 9304
+2016-06-06 09:41:43.516775;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.516779;cgate.user;;cg_conn_destroy: 1527EB90;TID 9304
+2016-06-06 09:41:43.516781;cgate.connection.p2;;done: connection done. @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.516783;cgate.connection.p2;;Close @cee{name: noname23, obj: 0x1527EB58, thread: 9304};TID 9304
+2016-06-06 09:41:43.516791;cgate.env;;Connection was unregistered: 0x1527EB90.;TID 9304
+2016-06-06 09:41:43.517895;cgate.connection.p2;;Response from cert service was received. @cee{name: noname28, obj: 0x1527E108, thread: 5192};TID 5192
+2016-06-06 09:41:43.517900;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4002 @cee{name: noname28, obj: 0x1527E108, thread: 5192};TID 5192
+2016-06-06 09:41:43.517903;cgate.user;;cg_pub_destroy: 152803A4;TID 5192
+2016-06-06 09:41:43.517905;cgate.publisher.p2mq;;Close @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.517908;cgate.publisher.p2mq;;close. @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.517916;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.517919;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.517921;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.517923;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.517926;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_1527E140 is done @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.517928;cgate.listener.p2mqreply;;Close @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.517930;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.517932;cgate.listener.p2mqreply;;close. @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.517934;cgate.publisher.p2mq;;removeHandler: 0x1524DDE4. @cee{name: certlistner_1527E140, obj: 0x15280368, thread: 5192};TID 5192
+2016-06-06 09:41:43.517940;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.517946;cgate.env;;Publisher was unregistered: 0x152803A4.;TID 5192
+2016-06-06 09:41:43.517949;cgate.user;;cg_lsn_destroy: 1524DD54;TID 5192
+2016-06-06 09:41:43.517951;cgate.listener.p2mqreply;;Done @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.517953;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname32, obj: 0x1524DD18, thread: 5192};TID 5192
+2016-06-06 09:41:43.517957;cgate.env;;Listener was unregistered: 0x1524DD54.;TID 5192
+2016-06-06 09:41:43.517982;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme;TID 5192
+2016-06-06 09:41:43.517997;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme;name=noname34. @cee{name: , obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.518009;p2repl-cli;;Stream created;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.518021;cgate.env;;New listener was registered: noname34.;TID 5192
+2016-06-06 09:41:43.518032;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme;TID 5192
+2016-06-06 09:41:43.518041;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTAGGR5_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme;name=noname35. @cee{name: , obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.518048;p2repl-cli;;Stream created;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.518056;cgate.env;;New listener was registered: noname35.;TID 5192
+2016-06-06 09:41:43.518076;cgate.user;;cg_lsn_open: F6051A4;TID 5192
+2016-06-06 09:41:43.518077;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 5192
+2016-06-06 09:41:43.518079;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.518081;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.518084;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.518086;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.518088;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.518089;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.518094;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTAGGR5_REPL.ini|CustReplScheme @cee{name: , obj: 0x15B2E1B8, thread: 5192};TID 5192
+2016-06-06 09:41:43.518400;P2ReplStorage;;Basic policy created;policy 0xD765B0;TID 5192
+2016-06-06 09:41:43.518405;P2ReplStorage;;Policy 0xD765B0 assigned;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.518481;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.519006;cgate.user;;cg_lsn_open: F60534C;TID 5192
+2016-06-06 09:41:43.519009;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 5192
+2016-06-06 09:41:43.519014;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.519017;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.519022;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.519024;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.519026;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.519028;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.519035;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTAGGR5_REPL.ini|CustReplScheme @cee{name: , obj: 0x15B2E1B8, thread: 5192};TID 5192
+2016-06-06 09:41:43.519304;P2ReplStorage;;Basic policy created;policy 0xD76618;TID 5192
+2016-06-06 09:41:43.519307;P2ReplStorage;;Policy 0xD76618 assigned;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.519458;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.519536;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTAGGR5_REPL';srv_addr 'P2PROM-01.inter_futaggr5';strm 0xF690808;TID 5192
+2016-06-06 09:41:43.520675;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTAGGR5_REPL';srv_addr 'P2PROM-01.inter_optaggr5';strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.523414;cgate.connection.p2;;Response from cert service was received. @cee{name: noname24, obj: 0x1527E7E8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523420;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4002 @cee{name: noname24, obj: 0x1527E7E8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523424;cgate.user;;cg_pub_destroy: 1527E2FC;TID 9316
+2016-06-06 09:41:43.523425;cgate.publisher.p2mq;;Close @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523428;cgate.publisher.p2mq;;close. @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523439;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523441;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523442;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523444;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523448;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_1527E820 is done @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523449;cgate.listener.p2mqreply;;Close @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523451;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523453;cgate.listener.p2mqreply;;close. @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523455;cgate.publisher.p2mq;;removeHandler: 0x0F74A174. @cee{name: certlistner_1527E820, obj: 0x1527E2C0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523461;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523512;cgate.env;;Publisher was unregistered: 0x1527E2FC.;TID 9316
+2016-06-06 09:41:43.523517;cgate.user;;cg_lsn_destroy: F74A0E4;TID 9316
+2016-06-06 09:41:43.523519;cgate.listener.p2mqreply;;Done @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523522;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname29, obj: 0xF74A0A8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523528;cgate.env;;Listener was unregistered: 0xF74A0E4.;TID 9316
+2016-06-06 09:41:43.523557;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme;TID 9316
+2016-06-06 09:41:43.523573;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme;name=noname36. @cee{name: , obj: 0xF603048, thread: 9316};TID 9316
+2016-06-06 09:41:43.523587;p2repl-cli;;Stream created;strm 0x153F77D8;TID 9316
+2016-06-06 09:41:43.523600;cgate.env;;New listener was registered: noname36.;TID 9316
+2016-06-06 09:41:43.523612;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme;TID 9316
+2016-06-06 09:41:43.523623;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTCOMMON_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme;name=noname37. @cee{name: , obj: 0xF603890, thread: 9316};TID 9316
+2016-06-06 09:41:43.523632;p2repl-cli;;Stream created;strm 0x71B7B10;TID 9316
+2016-06-06 09:41:43.523642;cgate.env;;New listener was registered: noname37.;TID 9316
+2016-06-06 09:41:43.523649;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme;TID 9316
+2016-06-06 09:41:43.523657;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme;name=noname38. @cee{name: , obj: 0xF601918, thread: 9316};TID 9316
+2016-06-06 09:41:43.523666;p2repl-cli;;Stream created;strm 0x71B8170;TID 9316
+2016-06-06 09:41:43.523674;cgate.env;;New listener was registered: noname38.;TID 9316
+2016-06-06 09:41:43.523680;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme;TID 9316
+2016-06-06 09:41:43.523689;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTINFO_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme;name=noname39. @cee{name: , obj: 0xF602CF8, thread: 9316};TID 9316
+2016-06-06 09:41:43.523697;p2repl-cli;;Stream created;strm 0x1B80D48;TID 9316
+2016-06-06 09:41:43.523705;cgate.env;;New listener was registered: noname39.;TID 9316
+2016-06-06 09:41:43.523713;cgate.user;;cg_lsn_new settings: p2repl://FORTS_PART_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme;TID 9316
+2016-06-06 09:41:43.523722;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_PART_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme;name=noname40. @cee{name: , obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523730;p2repl-cli;;Stream created;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.523738;cgate.env;;New listener was registered: noname40.;TID 9316
+2016-06-06 09:41:43.523744;cgate.user;;cg_lsn_new settings: p2repl://FORTS_POS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme;TID 9316
+2016-06-06 09:41:43.523753;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_POS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme;name=noname41. @cee{name: , obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.523760;p2repl-cli;;Stream created;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.523768;cgate.env;;New listener was registered: noname41.;TID 9316
+2016-06-06 09:41:43.523789;cgate.user;;cg_lsn_new settings: p2repl://FORTS_DEALS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme;TID 9316
+2016-06-06 09:41:43.523799;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_DEALS_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme;name=noname42. @cee{name: , obj: 0xF604FC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.523807;p2repl-cli;;Stream created;strm 0x15255E10;TID 9316
+2016-06-06 09:41:43.523816;cgate.env;;New listener was registered: noname42.;TID 9316
+2016-06-06 09:41:43.523836;cgate.user;;cg_lsn_open: F603084;TID 9316
+2016-06-06 09:41:43.523838;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9316
+2016-06-06 09:41:43.523840;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname36, obj: 0xF603048, thread: 9316};TID 9316
+2016-06-06 09:41:43.523843;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname36, obj: 0xF603048, thread: 9316};TID 9316
+2016-06-06 09:41:43.523848;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname36, obj: 0xF603048, thread: 9316};TID 9316
+2016-06-06 09:41:43.523850;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname36, obj: 0xF603048, thread: 9316};TID 9316
+2016-06-06 09:41:43.523852;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname36, obj: 0xF603048, thread: 9316};TID 9316
+2016-06-06 09:41:43.523855;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname36, obj: 0xF603048, thread: 9316};TID 9316
+2016-06-06 09:41:43.523861;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTCOMMON_REPL.ini|CustReplScheme @cee{name: , obj: 0x12D0E988, thread: 9316};TID 9316
+2016-06-06 09:41:43.524101;P2ReplStorage;;Basic policy created;policy 0xF58F9D8;TID 9316
+2016-06-06 09:41:43.524104;P2ReplStorage;;Policy 0xF58F9D8 assigned;strm 0x153F77D8;TID 9316
+2016-06-06 09:41:43.524154;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname36, obj: 0xF603048, thread: 9316};TID 9316
+2016-06-06 09:41:43.524172;cgate.user;;cg_lsn_open: F6038CC;TID 9316
+2016-06-06 09:41:43.524175;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9316
+2016-06-06 09:41:43.524177;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname37, obj: 0xF603890, thread: 9316};TID 9316
+2016-06-06 09:41:43.524179;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname37, obj: 0xF603890, thread: 9316};TID 9316
+2016-06-06 09:41:43.524182;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname37, obj: 0xF603890, thread: 9316};TID 9316
+2016-06-06 09:41:43.524184;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname37, obj: 0xF603890, thread: 9316};TID 9316
+2016-06-06 09:41:43.524185;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname37, obj: 0xF603890, thread: 9316};TID 9316
+2016-06-06 09:41:43.524187;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname37, obj: 0xF603890, thread: 9316};TID 9316
+2016-06-06 09:41:43.524193;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTCOMMON_REPL.ini|CustReplScheme @cee{name: , obj: 0x12D0E988, thread: 9316};TID 9316
+2016-06-06 09:41:43.524366;P2ReplStorage;;Basic policy created;policy 0xF58FAA8;TID 9316
+2016-06-06 09:41:43.524369;P2ReplStorage;;Policy 0xF58FAA8 assigned;strm 0x71B7B10;TID 9316
+2016-06-06 09:41:43.524410;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname37, obj: 0xF603890, thread: 9316};TID 9316
+2016-06-06 09:41:43.524427;cgate.user;;cg_lsn_open: F601954;TID 9316
+2016-06-06 09:41:43.524429;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9316
+2016-06-06 09:41:43.524431;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname38, obj: 0xF601918, thread: 9316};TID 9316
+2016-06-06 09:41:43.524434;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname38, obj: 0xF601918, thread: 9316};TID 9316
+2016-06-06 09:41:43.524439;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname38, obj: 0xF601918, thread: 9316};TID 9316
+2016-06-06 09:41:43.524442;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname38, obj: 0xF601918, thread: 9316};TID 9316
+2016-06-06 09:41:43.524444;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname38, obj: 0xF601918, thread: 9316};TID 9316
+2016-06-06 09:41:43.524446;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname38, obj: 0xF601918, thread: 9316};TID 9316
+2016-06-06 09:41:43.524454;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTINFO_REPL.ini|CustReplScheme @cee{name: , obj: 0x12D0E988, thread: 9316};TID 9316
+2016-06-06 09:41:43.524704;P2ReplStorage;;Basic policy created;policy 0xF590260;TID 9316
+2016-06-06 09:41:43.524707;P2ReplStorage;;Policy 0xF590260 assigned;strm 0x71B8170;TID 9316
+2016-06-06 09:41:43.524748;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname38, obj: 0xF601918, thread: 9316};TID 9316
+2016-06-06 09:41:43.524765;cgate.user;;cg_lsn_open: F602D34;TID 9316
+2016-06-06 09:41:43.524767;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9316
+2016-06-06 09:41:43.524769;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname39, obj: 0xF602CF8, thread: 9316};TID 9316
+2016-06-06 09:41:43.524772;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname39, obj: 0xF602CF8, thread: 9316};TID 9316
+2016-06-06 09:41:43.524776;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname39, obj: 0xF602CF8, thread: 9316};TID 9316
+2016-06-06 09:41:43.524779;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname39, obj: 0xF602CF8, thread: 9316};TID 9316
+2016-06-06 09:41:43.524781;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname39, obj: 0xF602CF8, thread: 9316};TID 9316
+2016-06-06 09:41:43.524783;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname39, obj: 0xF602CF8, thread: 9316};TID 9316
+2016-06-06 09:41:43.524790;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTINFO_REPL.ini|CustReplScheme @cee{name: , obj: 0x12D0E988, thread: 9316};TID 9316
+2016-06-06 09:41:43.525218;P2ReplStorage;;Basic policy created;policy 0xF58F768;TID 9316
+2016-06-06 09:41:43.525222;P2ReplStorage;;Policy 0xF58F768 assigned;strm 0x1B80D48;TID 9316
+2016-06-06 09:41:43.525262;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname39, obj: 0xF602CF8, thread: 9316};TID 9316
+2016-06-06 09:41:43.525279;cgate.user;;cg_lsn_open: F601AFC;TID 9316
+2016-06-06 09:41:43.525281;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9316
+2016-06-06 09:41:43.525284;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.525286;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.525290;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.525292;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.525293;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.525295;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.525301;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_PART_REPL.ini|CustReplScheme @cee{name: , obj: 0x12D0E988, thread: 9316};TID 9316
+2016-06-06 09:41:43.525354;cgate.user;;cg_lsn_close: F602B8C;TID 8856
+2016-06-06 09:41:43.525359;cgate.listener.p2repl;;Close @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.525362;cgate.listener.p2repl;;close. @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.525369;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 8856
+2016-06-06 09:41:43.525386;cgate.listener.p2repl;;State changed OPENING -> CLOSED @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.525390;cgate.user;;cg_lsn_destroy: F602B8C;TID 8856
+2016-06-06 09:41:43.525392;cgate.listener.p2repl;;Done @cee{name: noname33, obj: 0xF602B50, thread: 8856};TID 8856
+2016-06-06 09:41:43.525396;***TP***;;data: 0.00 mcs  begin trans: 0.00 mcs  process_tables: 0.00 mcs  commit: 0.00 mcs  parse: 0.00 mcs  stat: 0.00 mcs  user cbk: 0.00 mcs  5: 0.00 mcs  ;TID 8856
+2016-06-06 09:41:43.525404;cgate.env;;Listener was unregistered: 0xF602B8C.;TID 8856
+2016-06-06 09:41:43.525417;cgate.user;;cg_conn_close: 1527EF00;TID 8856
+2016-06-06 09:41:43.525419;cgate.connection.p2;;Close @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.525460;p2repl-cli;WARNING;Stream state was changed during service resolve;currState 0; prevState 10strm 0x152A09B0;TID 8856
+2016-06-06 09:41:43.525462;P2ReplStorage;;Basic policy deleted;policy 0xF7399B0;strm 0x152A09B0;TID 8856
+2016-06-06 09:41:43.525468;p2mq-cli;;Connection disconnected; mq-conn 0x9;TID 8856
+2016-06-06 09:41:43.525558;cgate.connection.p2;;State changed ACTIVE -> CLOSED @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.525563;cgate.user;;cg_conn_destroy: 1527EF00;TID 8856
+2016-06-06 09:41:43.525564;cgate.connection.p2;;done: connection done. @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.525566;cgate.connection.p2;;Close @cee{name: noname27, obj: 0x1527EEC8, thread: 8856};TID 8856
+2016-06-06 09:41:43.525574;cgate.env;;Connection was unregistered: 0x1527EF00.;TID 8856
+2016-06-06 09:41:43.525612;P2ReplStorage;;Basic policy created;policy 0xF58F7D0;TID 9316
+2016-06-06 09:41:43.525632;P2ReplStorage;;Policy 0xF58F7D0 assigned;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.526348;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.526350;cgate.connection.p2;;Response from cert service was received. @cee{name: noname25, obj: 0x1527E9A0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526355;cgate.connection.p2;;Connection was successfully verified: 127.0.0.1:4002 @cee{name: noname25, obj: 0x1527E9A0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526357;cgate.user;;cg_pub_destroy: 1527E4B4;TID 9336
+2016-06-06 09:41:43.526360;cgate.publisher.p2mq;;Close @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.526362;cgate.publisher.p2mq;;close. @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.526371;cgate.publisher.p2mq;;State changed ACTIVE -> CLOSED @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.526373;cgate.user;;cg_lsn_open: F60569C;TID 9316
+2016-06-06 09:41:43.526374;cgate.publisher.p2mq;;close: notify listeners publisher is closing. @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.526375;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9316
+2016-06-06 09:41:43.526377;cgate.publisher.p2mq;;done: done publisher. @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.526378;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.526379;cgate.publisher.p2mq;;done: notify listeners publisher is destroyed. @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.526381;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.526382;cgate.listener.p2mqreply;;listener will be closed because ref publisher certlistner_1527E9D8 is done @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526384;cgate.listener.p2mqreply;;Close @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526386;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.526387;cgate.listener.p2mqreply;;Post close messages (parent) @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526388;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.526389;cgate.listener.p2mqreply;;close. @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526390;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.526391;cgate.publisher.p2mq;;removeHandler: 0x0F74AFAC. @cee{name: certlistner_1527E9D8, obj: 0x1527E478, thread: 9336};TID 9336
+2016-06-06 09:41:43.526392;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.526397;cgate.listener.p2mqreply;;State changed ACTIVE -> CLOSED @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526399;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_POS_REPL.ini|CustReplScheme @cee{name: , obj: 0x12D0E988, thread: 9316};TID 9316
+2016-06-06 09:41:43.526404;cgate.env;;Publisher was unregistered: 0x1527E4B4.;TID 9336
+2016-06-06 09:41:43.526408;cgate.user;;cg_lsn_destroy: F74AF1C;TID 9336
+2016-06-06 09:41:43.526409;cgate.listener.p2mqreply;;Done @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526411;cgate.listener.p2mqreply;;done: done listener. @cee{name: noname30, obj: 0xF74AEE0, thread: 9336};TID 9336
+2016-06-06 09:41:43.526417;cgate.env;;Listener was unregistered: 0xF74AF1C.;TID 9336
+2016-06-06 09:41:43.526441;cgate.user;;cg_lsn_new settings: p2repl://FORTS_FUTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTTRADE_REPL.ini|CustReplScheme;TID 9336
+2016-06-06 09:41:43.526456;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_FUTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_FUTTRADE_REPL.ini|CustReplScheme;name=noname43. @cee{name: , obj: 0xF603A38, thread: 9336};TID 9336
+2016-06-06 09:41:43.526468;p2repl-cli;;Stream created;strm 0x152A09B0;TID 9336
+2016-06-06 09:41:43.526481;cgate.env;;New listener was registered: noname43.;TID 9336
+2016-06-06 09:41:43.526493;cgate.user;;cg_lsn_new settings: p2repl://FORTS_OPTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTTRADE_REPL.ini|CustReplScheme;TID 9336
+2016-06-06 09:41:43.526503;cgate.listener.p2repl;;init: init listener: p2repl://FORTS_OPTTRADE_REPL;scheme=|FILE|StockSharp_Plaza\Configs\FORTS_OPTTRADE_REPL.ini|CustReplScheme;name=noname44. @cee{name: , obj: 0xF6040D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.526511;p2repl-cli;;Stream created;strm 0x15256470;TID 9336
+2016-06-06 09:41:43.526520;cgate.env;;New listener was registered: noname44.;TID 9336
+2016-06-06 09:41:43.526536;cgate.user;;cg_lsn_open: F603A74;TID 9336
+2016-06-06 09:41:43.526537;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9336
+2016-06-06 09:41:43.526539;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname43, obj: 0xF603A38, thread: 9336};TID 9336
+2016-06-06 09:41:43.526552;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname43, obj: 0xF603A38, thread: 9336};TID 9336
+2016-06-06 09:41:43.526556;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname43, obj: 0xF603A38, thread: 9336};TID 9336
+2016-06-06 09:41:43.526557;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname43, obj: 0xF603A38, thread: 9336};TID 9336
+2016-06-06 09:41:43.526559;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname43, obj: 0xF603A38, thread: 9336};TID 9336
+2016-06-06 09:41:43.526561;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname43, obj: 0xF603A38, thread: 9336};TID 9336
+2016-06-06 09:41:43.526566;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_FUTTRADE_REPL.ini|CustReplScheme @cee{name: , obj: 0x12E0E4D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.526627;P2ReplStorage;;Basic policy created;policy 0xF58FB10;TID 9316
+2016-06-06 09:41:43.526629;P2ReplStorage;;Policy 0xF58FB10 assigned;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.526673;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.527008;P2ReplStorage;;Basic policy created;policy 0xD761A0;TID 9336
+2016-06-06 09:41:43.527012;P2ReplStorage;;Policy 0xD761A0 assigned;strm 0x152A09B0;TID 9336
+2016-06-06 09:41:43.527066;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname43, obj: 0xF603A38, thread: 9336};TID 9336
+2016-06-06 09:41:43.527894;cgate.user;;cg_lsn_open: F604FFC;TID 9316
+2016-06-06 09:41:43.527895;cgate.user;;cg_lsn_open: F604114;TID 9336
+2016-06-06 09:41:43.527898;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9316
+2016-06-06 09:41:43.527899;cgate.user;;cg_lsn_open settings: mode=snapshot+online;TID 9336
+2016-06-06 09:41:43.527903;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname44, obj: 0xF6040D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.527904;cgate.listener.p2repl;;Open mode=snapshot+online @cee{name: noname42, obj: 0xF604FC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.527906;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname44, obj: 0xF6040D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.527907;cgate.listener.p2repl;;open: mode=snapshot+online. @cee{name: noname42, obj: 0xF604FC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.527912;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname44, obj: 0xF6040D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.527913;cgate.listener.p2repl;;open: stream type + snapshot. @cee{name: noname42, obj: 0xF604FC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.527915;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname44, obj: 0xF6040D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.527915;cgate.listener.p2repl;;open: stream type + online. @cee{name: noname42, obj: 0xF604FC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.527917;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname44, obj: 0xF6040D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.527918;cgate.listener.p2repl;;open: blob is empty. @cee{name: noname42, obj: 0xF604FC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.527919;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname44, obj: 0xF6040D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.527920;cgate.listener.p2repl;;open: state changed to MODE_ONLINE. @cee{name: noname42, obj: 0xF604FC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.527928;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_OPTTRADE_REPL.ini|CustReplScheme @cee{name: , obj: 0x12E0E4D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.527929;scheme;;Scheme::make: URL: |FILE|StockSharp_Plaza\Configs\FORTS_DEALS_REPL.ini|CustReplScheme @cee{name: , obj: 0x12D0E988, thread: 9316};TID 9316
+2016-06-06 09:41:43.528408;P2ReplStorage;;Basic policy created;policy 0xD76680;TID 9336
+2016-06-06 09:41:43.528412;P2ReplStorage;;Policy 0xD76680 assigned;strm 0x15256470;TID 9336
+2016-06-06 09:41:43.528432;P2ReplStorage;;Basic policy created;policy 0xF58E998;TID 9316
+2016-06-06 09:41:43.528435;P2ReplStorage;;Policy 0xF58E998 assigned;strm 0x15255E10;TID 9316
+2016-06-06 09:41:43.528473;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname42, obj: 0xF604FC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.528500;cgate.listener.p2repl;;State changed CLOSED -> OPENING @cee{name: noname44, obj: 0xF6040D8, thread: 9336};TID 9336
+2016-06-06 09:41:43.528532;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTCOMMON_REPL';srv_addr 'P2PROM-01.inter_futcommon';strm 0x153F77D8;TID 9316
+2016-06-06 09:41:43.528570;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTCOMMON_REPL';srv_addr 'P2PROM-01.inter_optcommon';strm 0x71B7B10;TID 9316
+2016-06-06 09:41:43.528585;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTTRADE_REPL';srv_addr 'P2PROM-01.inter_futtrade';strm 0x152A09B0;TID 9336
+2016-06-06 09:41:43.528719;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTTRADE_REPL';srv_addr 'P2PROM-01.inter_opttrade';strm 0x15256470;TID 9336
+2016-06-06 09:41:43.528755;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_DEALS_REPL';srv_addr 'P2PROM-01.inter_ordLog';strm 0x15255E10;TID 9316
+2016-06-06 09:41:43.552988;p2repl-cli;;Negotiated protocol version 14;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.553074;p2repl-cli;;Stream opened;chan 0x33ABEF5434C;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.553084;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.553089;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0xF690808;TID 5192
+2016-06-06 09:41:43.553189;p2repl-cli;;Current life nums;name 'FORTS_FUTAGGR5_REPL';cli lifenum 0;srv lifenum 45050;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.554224;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.555176;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_OPTINFO_REPL';srv_addr 'P2PROM-AUX-01.inter_info';strm 0x71B8170;TID 9316
+2016-06-06 09:41:43.555248;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_FUTINFO_REPL';srv_addr 'P2PROM-AUX-01.inter_info';strm 0x1B80D48;TID 9316
+2016-06-06 09:41:43.555277;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.555284;p2repl-cli;;Life number changed;name 'FORTS_FUTAGGR5_REPL';cli lifenum 0;srv lifenum 45050;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.555292;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname34, obj: 0xF605168, thread: 5192};TID 5192
+2016-06-06 09:41:43.555889;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_PART_REPL';srv_addr 'P2PROM-AUX-01.inter_part';strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.556460;p2repl-cli;;Stream opening started;type 0x1;name 'FORTS_POS_REPL';srv_addr 'P2PROM-AUX-01.inter_pos';strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.559425;p2repl-cli;;Scheme setting started;strm 0xF690808;TID 5192
+2016-06-06 09:41:43.559470;p2repl-cli;;Negotiated protocol version 14;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.559508;p2repl-cli;;Stream opened;chan 0x274D2605CEB;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.559527;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.559530;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.559564;p2repl-cli;;Current life nums;name 'FORTS_OPTAGGR5_REPL';cli lifenum 0;srv lifenum 45050;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.559567;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.559570;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.559573;p2repl-cli;;Life number changed;name 'FORTS_OPTAGGR5_REPL';cli lifenum 0;srv lifenum 45050;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.559577;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname35, obj: 0xF605310, thread: 5192};TID 5192
+2016-06-06 09:41:43.559648;p2repl-cli;;Scheme setting started;strm 0xF8F5008;TID 5192
+2016-06-06 09:41:43.586094;p2repl-cli;;Negotiated protocol version 14;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.586226;p2repl-cli;;Stream opened;chan 0xD0A6953B2FD1150;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.586234;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.586238;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.588953;p2repl-cli;WARNING;Not optimal scheme;tbl 'part' (idx 0);fldIdx 5;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.589046;p2repl-cli;;Current life nums;name 'FORTS_PART_REPL';cli lifenum 0;srv lifenum 15119;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.589051;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.589053;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.589056;p2repl-cli;;Life number changed;name 'FORTS_PART_REPL';cli lifenum 0;srv lifenum 15119;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.589063;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.589148;p2repl-cli;;Scheme setting started;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.589190;p2repl-cli;;Negotiated protocol version 14;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.589253;p2repl-cli;;Stream opened;chan 0x26781E7D1EFA;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.589259;cgate.listener.p2repl;;ReplCallback: stream opened. @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.589262;p2repl-cli;;Desired schema is not equal to prev schema (lifenum ignored);strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.589327;p2repl-cli;WARNING;Not optimal scheme;tbl 'position' (idx 0);fldIdx 6;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.589334;p2repl-cli;;Current life nums;name 'FORTS_POS_REPL';cli lifenum 0;srv lifenum 50000;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.589337;P2ReplStorage;;Revs were cleared after lifenum change;cnt 1;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.589338;P2ReplStorage;;	tbl 0;cur_rev 0;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.589341;p2repl-cli;;Life number changed;name 'FORTS_POS_REPL';cli lifenum 0;srv lifenum 50000;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.589344;cgate.listener.p2repl;;ReplCallback: life num changed. @cee{name: noname41, obj: 0xF605660, thread: 9316};TID 9316
+2016-06-06 09:41:43.589409;p2repl-cli;;Scheme setting started;strm 0x152557B0;TID 9316
+2016-06-06 09:41:43.618463;p2repl-cli;;Scheme is set;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.618494;p2repl-cli;;Statistics module for table 'part' was successfully registered;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.618496;p2repl-cli;;Statistics was registered;stream name FORTS_PART_REPL;strm 0x1B813A8;TID 9316
+2016-06-06 09:41:43.618511;cgate.listener.p2repl;;ReplCallback: scheme is set. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316
+2016-06-06 09:41:43.618515;cgate.listener.p2repl;;initRevisionsMap: init revisions map. @cee{name: noname40, obj: 0xF601AC0, thread: 9316};TID 9316

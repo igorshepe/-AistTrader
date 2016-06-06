@@ -32,23 +32,23 @@
             </Style>
         </Grid.Resources>
         
-        <Label Content="Поставщик"
+        <Label Content="Connection"
                Margin="1,10,0,0"
                HorizontalContentAlignment="Left"
                Height="25"
                VerticalAlignment="Top"
                HorizontalAlignment="Left" />
-        <Label Content="Счёт"
+        <Label Content="Account"
                Margin="1,63,0,0"
                HorizontalContentAlignment="Left"
                Height="25" VerticalAlignment="Top"
                HorizontalAlignment="Left" />
-        <Label Content="Имя порфеля"
+        <Label Content="Portfolio name"
                Margin="1,121,0,0"
-               HorizontalContentAlignment="Right"
+               HorizontalContentAlignment="Left"
                Height="25" VerticalAlignment="Top"
                HorizontalAlignment="Left"
-               Width="86" />
+               Width="123" />
         <ComboBox Height="22"
                   Text="{Binding Path=RegisteredProvider, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                   Margin="5,35,5,0"

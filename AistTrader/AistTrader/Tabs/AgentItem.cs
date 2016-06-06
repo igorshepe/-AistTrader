@@ -123,7 +123,7 @@ namespace AistTrader
                 {
                     //todo: в вопросы, после ответа доделать функционал
 
-                    //AgentsStorage.Remove(i);
+                    AgentsStorage.Remove(i);
                 }
             }
             else

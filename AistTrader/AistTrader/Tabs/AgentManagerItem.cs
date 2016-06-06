@@ -212,96 +212,10 @@ namespace AistTrader
             if ((bool)(sender as ToggleSwitchButton).IsChecked)
             {
                 //ON 
-                var item = (sender as FrameworkElement).DataContext as AgentManager;
-                //CandleStrategy strategy = null;
-                var strategyName = item.AgentManagerSettings.AgentOrGroup.Split(null);
-                var connectionName =
-                    AgentPortfolioStorage.Cast<Portfolio>()
-                        .FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Name);
-                var portfolio = item.AgentManagerSettings.Portfolio;
-                var realConnection =
-                    ConnectionManager.Connections.Find(i =>
-                    {
-                        return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;
-                    });
-                var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
-                SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
-                var agentName = item.AgentManagerSettings.AgentOrGroup;
-                var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().Select(i => i).Where(i => i.Name == agentName).ToList();
-                var firstOrDefault = agent.FirstOrDefault();
-                if (firstOrDefault != null) agentSetting = firstOrDefault.Params.SettingsStorage;
+                var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
+                StartAgentOrGroup(agentOrGroup);
 
-                var amount = new UnitEditor();
-                amount.Text = item.Amount;
-                amount.Value = amount.Text.ToUnit();
-                decimal calculatedAmount = 0;
-                if (amount.Value.Type == UnitTypes.Percent)
-                {
-                    var data =
-                    MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
-                        i => i.ConnectionName == item.AgentManagerSettings.Portfolio.Connection.Id);
-                    var secMargSell = data.Securities.FirstOrDefault(i => i.Name == item.Tool.Name).MarginSell;
-                    var currValue = data.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code).CurrentValue;
-                    var percent = amount.Value.Value;
-                    var calculatedPercent = (currValue / 100) * percent;
-                    calculatedAmount = calculatedPercent / secMargSell.Value;
-                    //todo - уточнить у Дена по округлению от разряда
-                    calculatedAmount = Math.Truncate(calculatedAmount);
-                }
-                if (amount.Value.Type == UnitTypes.Absolute)
-                    calculatedAmount = amount.Value.To<decimal>();
-                //todo: дописать конвертацию под проценты и расчёт по формуле
-                //strategy = new ChStrategy(agentSetting);
-
-                strategy = new Strategy();
-                strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting);
-                //strategy = new ChStrategy(agentSetting);
-                strategy.DisposeOnStop = true;
-                strategy.Security = item.AgentManagerSettings.Tool;
-                strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == item.AgentManagerSettings.Portfolio.Code);
-                strategy.Connector = realConnection;
-                strategy.Volume = calculatedAmount; /*amount.Value.To<decimal>();*/
-                var candleManager = new CandleManager(realConnection);
-                strategy.SetCandleManager(candleManager);
-                strategy.LogLevel = LogLevels.Debug;
-                strategy.Start();
-                // Логирование внутренних событий стратегии для тестов
-                _logManager.Sources.Add(strategy);
-                _logManager.Listeners.Add(new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
-                _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
-
-
-                //item.AgentManagerSettings.Command = OperationCommand.Disconnect;
-                //UpdateAgentManagerListView();
-
-
-                //SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
-
-
-
-
-
-
-                //var candleManager = new CandleManager(realConnection);
-                //var strat = new ChStrategy(agentSetting);
-                //strat.Connector = realConnection;
-                //strat.TimeFrame = TimeSpan.FromMinutes(1);
-
-                //strat.Portfolio = realConnection.Portfolios.First();
-                //strat.Security = realConnection.Securities.First(i => i.Code == "SiM6");
-                //strat.Volume = 1;
-                //strat.SetCandleManager(candleManager);
-                //strat.LogLevel = LogLevels.Debug;
-                //strat.Start();
-
-                //var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
-                //int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
-                //rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
-                //if (rowItem.ConnectionParams.IsRegistredConnection)
-                //    ConnectionManager.Connections[index].Connect();
-                //else
-                //    ConnectAccount(item as Connection);
-                //UpdateProviderListView();
+                
             }
             else
             {
@@ -314,6 +228,89 @@ namespace AistTrader
             }
         }
 
+
+        public void StartAgentOrGroup(AgentManager agentOrGroup)
+        {
+
+            var strategyName = agentOrGroup.AgentManagerSettings.AgentOrGroup.Split(null);
+            var connectionName =
+                AgentPortfolioStorage.Cast<Portfolio>()
+                    .FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Name);
+            var portfolio = agentOrGroup.AgentManagerSettings.Portfolio;
+            var realConnection =
+                ConnectionManager.Connections.Find(i =>
+                {
+                    return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;
+                });
+            var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
+            SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
+            var agentName = agentOrGroup.AgentManagerSettings.AgentOrGroup;
+            var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().Select(i => i).Where(i => i.Name == agentName).ToList();
+            var firstOrDefault = agent.FirstOrDefault();
+            if (firstOrDefault != null) agentSetting = firstOrDefault.Params.SettingsStorage;
+
+            var amount = new UnitEditor();
+            amount.Text = agentOrGroup.Amount;
+            amount.Value = amount.Text.ToUnit();
+            decimal calculatedAmount = 0;
+            if (amount.Value.Type == UnitTypes.Percent)
+            {
+                var data =
+                MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
+                    i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
+                var secMargSell = data.Securities.FirstOrDefault(i => i.Name == agentOrGroup.Tool.Name).MarginSell;
+                var currValue = data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code).CurrentValue;
+                var percent = amount.Value.Value;
+                var calculatedPercent = (currValue / 100) * percent;
+                calculatedAmount = calculatedPercent / secMargSell.Value;
+                //todo - уточнить у Дена по округлению от разряда
+                calculatedAmount = Math.Truncate(calculatedAmount);
+            }
+            if (amount.Value.Type == UnitTypes.Absolute)
+                calculatedAmount = amount.Value.To<decimal>();
+
+            strategy = new Strategy();
+            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting);
+            strategy.DisposeOnStop = true;
+            strategy.Security = agentOrGroup.AgentManagerSettings.Tool;
+            strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
+            strategy.Connector = realConnection;
+            strategy.Volume = calculatedAmount; /*amount.Value.To<decimal>();*/
+            var candleManager = new CandleManager(realConnection);
+            strategy.SetCandleManager(candleManager);
+            strategy.LogLevel = LogLevels.Debug;
+            strategy.Start();
+            // Логирование внутренних событий стратегии для тестов
+            _logManager.Sources.Add(strategy);
+            _logManager.Listeners.Add(new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
+            _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+
+            //item.AgentManagerSettings.Command = OperationCommand.Disconnect;
+            //UpdateAgentManagerListView();
+
+            //SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
+
+            //var candleManager = new CandleManager(realConnection);
+            //var strat = new ChStrategy(agentSetting);
+            //strat.Connector = realConnection;
+            //strat.TimeFrame = TimeSpan.FromMinutes(1);
+
+            //strat.Portfolio = realConnection.Portfolios.First();
+            //strat.Security = realConnection.Securities.First(i => i.Code == "SiM6");
+            //strat.Volume = 1;
+            //strat.SetCandleManager(candleManager);
+            //strat.LogLevel = LogLevels.Debug;
+            //strat.Start();
+
+            //var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
+            //int index = ConnectionManager.Connections.FindIndex(i => i.ConnectionName == rowItem.DisplayName);
+            //rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
+            //if (rowItem.ConnectionParams.IsRegistredConnection)
+            //    ConnectionManager.Connections[index].Connect();
+            //else
+            //    ConnectAccount(item as Connection);
+            //UpdateProviderListView();
+        }
         private void ConnectTest_OnClick(object sender, RoutedEventArgs e)
         {
             string adress = IPAddress.Loopback.ToString() + ":" + 4001 /*port*/;
@@ -323,7 +320,6 @@ namespace AistTrader
             Trader.IsDemo = true;
             Trader.Connect();
         }
-
         private void StartStrategyTest_OnClick(object sender, RoutedEventArgs e)
         {
             //var candleManager = new CandleManager(Trader);
