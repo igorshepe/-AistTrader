@@ -29,6 +29,7 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
+        public AistTraderStrategiesConnnectionManager AgentConnnectionManager;
         public readonly PlazaTrader Trader = new PlazaTrader();
         public bool IsAgentManagerSettingsLoaded;
         public bool AllAgentManagerItemsChecked { get; set; }
@@ -41,6 +42,7 @@ namespace AistTrader
             form.ShowDialog();
             form = null;
         }
+
         public void DelAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             foreach (var item in AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList())
@@ -57,13 +59,14 @@ namespace AistTrader
             }
             SaveAgentManagerSettings();
         }
+
         private void InitiateAgentManagerSettings()
         {
             StreamReader sr = new StreamReader("AgentManagerSettings.xml");
             try
             {
-                var xmlSerializer = new XmlSerializer(typeof(List<AgentManager>), new Type[] { typeof(AgentManager) });
-                var agents = (List<AgentManager>)xmlSerializer.Deserialize(sr);
+                var xmlSerializer = new XmlSerializer(typeof (List<AgentManager>), new Type[] {typeof (AgentManager)});
+                var agents = (List<AgentManager>) xmlSerializer.Deserialize(sr);
                 sr.Close();
                 if (agents == null) return;
 
@@ -73,8 +76,10 @@ namespace AistTrader
                     AgentManagerStorage.Add(rs);
                 }
                 AgentManagerListView.ItemsSource = AgentManagerStorage;
-                AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-                if (AgentManagerCollectionView.GroupDescriptions != null && AgentManagerCollectionView.GroupDescriptions.Count == 0)
+                AgentManagerCollectionView =
+                    (CollectionView) CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+                if (AgentManagerCollectionView.GroupDescriptions != null &&
+                    AgentManagerCollectionView.GroupDescriptions.Count == 0)
                     AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
                 IsAgentManagerSettingsLoaded = true;
             }
@@ -88,19 +93,21 @@ namespace AistTrader
                     IsAgentManagerSettingsLoaded = false;
             }
         }
+
         private void EditAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var listToEdit = AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList();
             foreach (var addQuikWindow in from agentConfigs in listToEdit
-                                          let index = AgentManagerStorage.IndexOf(agentConfigs)
-                                          where index != -1
-                                          select new ManagerAddition(agentConfigs, index))
+                let index = AgentManagerStorage.IndexOf(agentConfigs)
+                where index != -1
+                select new ManagerAddition(agentConfigs, index))
             {
                 addQuikWindow.Title = "Редактирование конфигурации";
                 addQuikWindow.ShowDialog();
                 //SaveSettings();
             }
         }
+
         public void AddNewAgentManager(AgentManager settings, int editIndex)
         {
             if (editIndex >= 0 && editIndex < AgentManagerStorage.Count)
@@ -118,20 +125,26 @@ namespace AistTrader
             SaveAgentManagerSettings();
             UpdateAgentManagerListView();
         }
+
         public void UpdateAgentManagerListView()
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
-            AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+            AgentManagerCollectionView =
+                (CollectionView) CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
             AgentManagerCollectionView.Refresh();
         }
+
         private void SaveAgentManagerSettings()
         {
             try
             {
                 List<AgentManager> obj = AgentManagerStorage.Select(a => a).ToList();
-                using (var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                using (
+                    var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write,
+                        FileShare.None))
                 {
-                    var xmlSerializer = new XmlSerializer(typeof(List<AgentManager>), new Type[] { typeof(AgentManager) });
+                    var xmlSerializer = new XmlSerializer(typeof (List<AgentManager>),
+                        new Type[] {typeof (AgentManager)});
                     xmlSerializer.Serialize(fStream, obj);
                     fStream.Close();
                 }
@@ -142,6 +155,7 @@ namespace AistTrader
                 Logger.Log(LogLevel.Error, ex.Message);
             }
         }
+
         private void AgentManagerListView_OnLoaded(object sender, RoutedEventArgs e)
         {
             if (!IsAgentManagerSettingsLoaded & (File.Exists("AgentManagerSettings.xml")))
@@ -158,6 +172,7 @@ namespace AistTrader
                 DelAgentManagerBtn.IsEnabled = true;
             }
         }
+
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
         {
             //var item = AgentManagerListView.SelectedItem as AgentManager;
@@ -210,29 +225,35 @@ namespace AistTrader
 
         private void StartStopBtnClick(object sender, RoutedEventArgs e)
         {
-            if ((bool)(sender as ToggleSwitchButton).IsChecked)
+            if ((bool) (sender as ToggleSwitchButton).IsChecked)
             {
                 //ON 
                 var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
                 StartAgentOrGroup(agentOrGroup);
-
-                
             }
             else
             {
-
                 //todo: по имени обращаться в менеджер и отключать
-
                 var item = (sender as FrameworkElement).DataContext as AgentManager;
-                strategy.Stop();
+                var strategyOrGroup =
+                    AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
+
+                strategyOrGroup.ActualStrategyRunning.Stop();
 
 
                 if (item != null) item.AgentManagerSettings.Command = OperationCommand.Connect;
                 UpdateAgentManagerListView();
             }
         }
+
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
+
+            
+
+
+
+
             //TODO: при добавлении второго коннекта, у нас нас свитч выключается
             var strategyName = agentOrGroup.AgentManagerSettings.AgentOrGroup.Split(null);
             var connectionName =
@@ -247,7 +268,8 @@ namespace AistTrader
             var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
             SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
             var agentName = agentOrGroup.AgentManagerSettings.AgentOrGroup;
-            var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().Select(i => i).Where(i => i.Name == agentName).ToList();
+            var agent =
+                MainWindow.Instance.AgentsStorage.Cast<Agent>().Select(i => i).Where(i => i.Name == agentName).ToList();
             var firstOrDefault = agent.FirstOrDefault();
             if (firstOrDefault != null) agentSetting = firstOrDefault.Params.SettingsStorage;
 
@@ -258,24 +280,32 @@ namespace AistTrader
             if (amount.Value.Type == UnitTypes.Percent)
             {
                 var data =
-                MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
-                    i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
+                    MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
+                        i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
                 var secMargSell = data.Securities.FirstOrDefault(i => i.Name == agentOrGroup.Tool.Name).MarginSell;
-                var currValue = data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code).CurrentValue;
+                var currValue =
+                    data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code)
+                        .CurrentValue;
                 var percent = amount.Value.Value;
-                var calculatedPercent = (currValue / 100) * percent;
-                calculatedAmount = calculatedPercent / secMargSell.Value;
+                var calculatedPercent = (currValue/100)*percent;
+                calculatedAmount = calculatedPercent/secMargSell.Value;
                 //todo - уточнить у Дена по округлению от разряда
                 calculatedAmount = Math.Truncate(calculatedAmount);
             }
             if (amount.Value.Type == UnitTypes.Absolute)
                 calculatedAmount = amount.Value.To<decimal>();
 
+            
+
+            //actualStrategy = (AistTraderAgentManagerWrapper)Activator.CreateInstance(strategyType, agentSetting);
+            //actualStrategy.DisposeOnStop = true;
             strategy = new Strategy();
-            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting);
+            
+            strategy = (Strategy) Activator.CreateInstance(strategyType, agentSetting);
             strategy.DisposeOnStop = true;
             strategy.Security = agentOrGroup.AgentManagerSettings.Tool;
-            strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
+            strategy.Portfolio =
+                realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
             strategy.Connector = realConnection;
             strategy.Volume = calculatedAmount; /*amount.Value.To<decimal>();*/
             var candleManager = new CandleManager(realConnection);
@@ -284,9 +314,15 @@ namespace AistTrader
             strategy.Start();
             // Логирование внутренних событий стратегии для тестов
             _logManager.Sources.Add(strategy);
-            _logManager.Listeners.Add(new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
+            _logManager.Listeners.Add(
+                new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
+                    DateTime.Now.Day)));
             _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+            var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
+            //var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias,strategy);
+            AgentConnnectionManager.Add(wrapper);
         }
+
         private void ConnectTest_OnClick(object sender, RoutedEventArgs e)
         {
             string adress = IPAddress.Loopback.ToString() + ":" + 4001 /*port*/;
@@ -296,6 +332,7 @@ namespace AistTrader
             Trader.IsDemo = true;
             Trader.Connect();
         }
+
         private void StartStrategyTest_OnClick(object sender, RoutedEventArgs e)
         {
             //var candleManager = new CandleManager(Trader);
@@ -350,24 +387,32 @@ namespace AistTrader
         }
 
         #region Aist Trader Agent/Group Manager
-        public class AistTraderAgentManagerWrapper : Strategy
+
+        public class AistTraderAgentManagerWrapper
         {
-            public AistTraderAgentManagerWrapper(string name)
+            public AistTraderAgentManagerWrapper(string name, Strategy strategy)
             {
                 AgentOrGroupName = name;
+                ActualStrategyRunning = strategy;
             }
+
+            public override string ToString()
+            {
+                return AgentOrGroupName;
+            }
+
+            public Strategy ActualStrategyRunning { get; set; }
             public string AgentOrGroupName { get; set; }
         }
-        public class AistTraderConnnectionManager : IList<AistTraderAgentManagerWrapper>, IDisposable
+
+        public class AistTraderStrategiesConnnectionManager : IList<AistTraderAgentManagerWrapper>, IDisposable
         {
-            public List<AistTraderConnnectionWrapper> Connections = new List<AistTraderConnnectionWrapper>();
+            public List<AistTraderAgentManagerWrapper> Strategies = new List<AistTraderAgentManagerWrapper>();
 
-            IEnumerator<AistTraderAgentManagerWrapper> IEnumerable<AistTraderAgentManagerWrapper>.GetEnumerator()
-            {
-                throw new NotImplementedException();
-            }
 
-            public IEnumerator<AistTraderConnnectionWrapper> GetEnumerator()
+            #endregion
+
+            public IEnumerator<AistTraderAgentManagerWrapper> GetEnumerator()
             {
                 throw new NotImplementedException();
             }
@@ -377,19 +422,14 @@ namespace AistTrader
                 return GetEnumerator();
             }
 
-            public void Add(AistTraderConnnectionWrapper item)
-            {
-                Connections.Add(item);
-            }
-
             public void Add(AistTraderAgentManagerWrapper item)
             {
-                throw new NotImplementedException();
+                Strategies.Add(item);
             }
 
             public void Clear()
             {
-                Connections.Clear();
+                throw new NotImplementedException();
             }
 
             public bool Contains(AistTraderAgentManagerWrapper item)
@@ -407,32 +447,8 @@ namespace AistTrader
                 throw new NotImplementedException();
             }
 
-            public bool Contains(AistTraderConnnectionWrapper item)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void CopyTo(AistTraderConnnectionWrapper[] array, int arrayIndex)
-            {
-                throw new NotImplementedException();
-            }
-
-            public bool Remove(AistTraderConnnectionWrapper item)
-            {
-                return Connections.Remove(item);
-            }
-            public int Count { get; set; }
-            public bool IsReadOnly { get; set; }
-            public int IndexOf(AistTraderConnnectionWrapper item)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void Insert(int index, AistTraderConnnectionWrapper item)
-            {
-                throw new NotImplementedException();
-            }
-
+            public int Count { get; }
+            public bool IsReadOnly { get; }
             public int IndexOf(AistTraderAgentManagerWrapper item)
             {
                 throw new NotImplementedException();
@@ -448,13 +464,7 @@ namespace AistTrader
                 throw new NotImplementedException();
             }
 
-            AistTraderAgentManagerWrapper IList<AistTraderAgentManagerWrapper>.this[int index]
-            {
-                get { throw new NotImplementedException(); }
-                set { throw new NotImplementedException(); }
-            }
-
-            public AistTraderConnnectionWrapper this[int index]
+            public AistTraderAgentManagerWrapper this[int index]
             {
                 get { throw new NotImplementedException(); }
                 set { throw new NotImplementedException(); }
@@ -462,9 +472,8 @@ namespace AistTrader
 
             public void Dispose()
             {
+                throw new NotImplementedException();
             }
         }
-
-        #endregion
     }
 }

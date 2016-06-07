@@ -394,11 +394,12 @@
                                 <DataGridTextColumn Header="Agent"
                                                     Binding="{Binding AgentManagerSettings.AgentOrGroup}" 
                                                     IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Alias"
+                                                    Binding="{Binding Alias}"
+                                                    IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Security"
                                                     Binding="{Binding AgentManagerSettings.Tool}"
                                                     IsReadOnly="True"/>
-
-
                                 <DataGridTemplateColumn Header="TS" IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>

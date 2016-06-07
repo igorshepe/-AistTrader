@@ -63,6 +63,14 @@ namespace AistTrader
 
         }
 
+        private string _alias;
+        public string Alias
+        {
+            get { return _alias; }
+            set { _alias = value; }
+
+        }
+
         private bool IsGroup;
         private int EditIndex { get; set; }
         public ManagerAddition()
@@ -135,11 +143,27 @@ namespace AistTrader
             //    MessageBox.Show(this, @"Не заполнен объем");
             //    return;
             //}
-            //if (ToolComboBox.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show(this, @"Не выбран инструмент");
-            //    return;
-            //}
+
+
+
+
+            if (AliasTxtBox.Text== "")
+            {
+                MessageBox.Show(this, @"Set an alias");
+                return;
+            }
+            //временная проверка не через автовалидацию
+            if (AliasTxtBox.Text != "")
+            {
+                if (MainWindow.Instance.AgentManagerStorage.Any(i => i.Alias == AliasTxtBox.Text))
+                {
+                    MessageBox.Show(this, @"This alias already in use");
+                    return;
+                }
+
+            }
+
+
             var s =  SecurityPicker.SelectedSecurity;
             ManagerParams setting;
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == PortfolioComboBox.SelectedItem.ToString());
@@ -151,7 +175,7 @@ namespace AistTrader
             }
             else
                 setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPicker.SelectedSecurity);
-            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text), EditIndex);
+            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text), EditIndex);
             Close();
         }
 
@@ -175,6 +199,9 @@ namespace AistTrader
                     AmountTextBox.Visibility = Visibility.Visible;
                     AmountLbl.Visibility = Visibility.Visible;
                 }
+
+
+                AliasTxtBox.Text = GroupOrSingleAgentComboBox.SelectedItem.ToString();
             }
 
             

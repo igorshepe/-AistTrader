@@ -56,6 +56,7 @@ namespace AistTrader
         private readonly MyTradesWindow _myTradesWindow = new MyTradesWindow();
         private readonly MonitorWindow _monitorWindow = new MonitorWindow();
         private string _defaultConnectionStatusBarText;
+        
         public string DefaultConnectionStatusBarText
         {
             get { return _defaultConnectionStatusBarText; }
@@ -73,6 +74,7 @@ namespace AistTrader
         {
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
+            AgentConnnectionManager = new AistTraderStrategiesConnnectionManager();
             #region Initialize collections
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {

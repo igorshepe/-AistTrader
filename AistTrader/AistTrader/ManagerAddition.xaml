@@ -136,8 +136,8 @@
                 TabIndex="5" 
                 IsCancel="True"
                 Height="23" VerticalAlignment="Bottom" />
-        <Label x:Name="AliasTxtBox" Content="Alias" HorizontalAlignment="Left" Margin="5,107,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox" Height="23" Margin="5,133,5,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Label x:Name="AliasLbl" Content="Alias" HorizontalAlignment="Left" Margin="5,107,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="AliasTxtBox" Height="23" Margin="5,133,5,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
     </Grid>
 </Window>
 
