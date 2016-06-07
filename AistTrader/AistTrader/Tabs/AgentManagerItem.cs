@@ -129,9 +129,21 @@ namespace AistTrader
         public void UpdateAgentManagerListView()
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
-            AgentManagerCollectionView =
-                (CollectionView) CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+            AgentManagerCollectionView =(CollectionView) CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
             AgentManagerCollectionView.Refresh();
+
+
+            //if (AgentManagerCollectionView.GroupDescriptions != null && AgentManagerCollectionView.GroupDescriptions.Count == 0)
+            //    AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
+            //AgentManagerCollectionView.Refresh();  
+
+
+
+            //AgentListView.ItemsSource = AgentsStorage;
+            //AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
+
+            //if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
+            //    AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
         }
 
         private void SaveAgentManagerSettings()
@@ -229,6 +241,7 @@ namespace AistTrader
             {
                 //ON 
                 var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
+                agentOrGroup.AgentManagerSettings.Command = OperationCommand.Disconnect;
                 StartAgentOrGroup(agentOrGroup);
             }
             else
@@ -237,23 +250,14 @@ namespace AistTrader
                 var item = (sender as FrameworkElement).DataContext as AgentManager;
                 var strategyOrGroup =
                     AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
-
                 strategyOrGroup.ActualStrategyRunning.Stop();
-
-
+                var agentOrGroup= AgentManagerStorage.FirstOrDefault(i => i.Alias == item.Alias.ToString());
                 if (item != null) item.AgentManagerSettings.Command = OperationCommand.Connect;
-                UpdateAgentManagerListView();
             }
         }
 
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
-
-            
-
-
-
-
             //TODO: при добавлении второго коннекта, у нас нас свитч выключается
             var strategyName = agentOrGroup.AgentManagerSettings.AgentOrGroup.Split(null);
             var connectionName =
@@ -295,12 +299,7 @@ namespace AistTrader
             if (amount.Value.Type == UnitTypes.Absolute)
                 calculatedAmount = amount.Value.To<decimal>();
 
-            
-
-            //actualStrategy = (AistTraderAgentManagerWrapper)Activator.CreateInstance(strategyType, agentSetting);
-            //actualStrategy.DisposeOnStop = true;
             strategy = new Strategy();
-            
             strategy = (Strategy) Activator.CreateInstance(strategyType, agentSetting);
             strategy.DisposeOnStop = true;
             strategy.Security = agentOrGroup.AgentManagerSettings.Tool;
@@ -410,7 +409,7 @@ namespace AistTrader
             public List<AistTraderAgentManagerWrapper> Strategies = new List<AistTraderAgentManagerWrapper>();
 
 
-            #endregion
+            
 
             public IEnumerator<AistTraderAgentManagerWrapper> GetEnumerator()
             {
@@ -475,5 +474,6 @@ namespace AistTrader
                 throw new NotImplementedException();
             }
         }
+        #endregion
     }
 }

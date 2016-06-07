@@ -387,10 +387,9 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name"
                                                     Binding="{Binding Name}"
+                                                    Visibility="Hidden"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Code"
-                                                    Binding="{Binding AgentManagerSettings.Account.AgentAccount.Code}" 
-                                                    IsReadOnly="True"/>
+
                                 <DataGridTextColumn Header="Agent"
                                                     Binding="{Binding AgentManagerSettings.AgentOrGroup}" 
                                                     IsReadOnly="True"/>
@@ -399,6 +398,9 @@
                                                     IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Security"
                                                     Binding="{Binding AgentManagerSettings.Tool}"
+                                                    IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Code"
+                                                    Binding="{Binding AgentManagerSettings.Account.AgentAccount.Code}" 
                                                     IsReadOnly="True"/>
                                 <DataGridTemplateColumn Header="TS" IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>

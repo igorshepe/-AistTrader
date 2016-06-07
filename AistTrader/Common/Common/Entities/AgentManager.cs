@@ -10,6 +10,7 @@ namespace Common.Entities
         AgentManager() { }
         public AgentManager(string name, ManagerParams agentManager, Security tool, string amount, string alias)
         {
+            AgentManagerUniqueId = alias;
             Name = name;
             Alias = alias;
             AgentManagerSettings = agentManager;
@@ -18,8 +19,9 @@ namespace Common.Entities
         }
         public override string ToString()
         {
-            return Name;
+            return AgentManagerUniqueId;
         }
+        public string AgentManagerUniqueId { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
         public StockSharp.BusinessEntities.Security Tool { get; set; }
