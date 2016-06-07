@@ -380,7 +380,7 @@
                               SelectionMode="Single"
                               SelectionChanged="AgentManagerListView_OnSelectionChanged"
                               x:FieldModifier="private" 
-                              IsReadOnly="False"
+                              IsReadOnly="True"
                               CanUserAddRows="False"
                               Grid.Column="1" Margin="0,0,10,5">
 
