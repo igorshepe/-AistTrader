@@ -16,6 +16,8 @@ namespace Common.Params
             FinalTransaction = -1;
             Tool = security;
         }
+
+        public bool IsConnected { get; set; }
         public Common.Entities.Portfolio Portfolio { get; set; }
         public string AgentOrGroup { get; set; }
         public Security Tool { get; set; }

@@ -9589,3 +9589,60 @@
 2016-06-08 12:47:30.1155|INFO|TradesLogger|ChStrategy 57_8_20_20: START
 2016-06-08 12:48:09.7984|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
 2016-06-08 12:48:27.3189|INFO|TradesLogger|ChStrategy 57_8_20_20: STOP
+2016-06-08 13:04:14.7955|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 13:04:15.0187|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 13:04:15.6883|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 13:04:19.0283|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 13:04:22.0829|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 13:04:22.7964|INFO|TradesLogger|ChStrategy 57_8_20_20: START
+2016-06-08 13:04:40.1096|INFO|AistTrader.MainWindow|Successfully added agent manager - "gggggggggggggggggg"
+2016-06-08 13:04:40.7446|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-08 13:06:25.8707|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 13:06:26.1408|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 13:06:26.7547|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 13:07:47.0935|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 13:07:48.7138|INFO|TradesLogger|ChStrategy 57_8_20_20: START
+2016-06-08 13:07:51.3117|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 13:08:05.5179|INFO|AistTrader.MainWindow|Successfully added agent manager - "gggggggggggggggggg"
+2016-06-08 13:08:06.3712|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-08 13:11:40.2271|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4003;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-08 13:11:41.3511|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4004;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-08 13:11:45.0112|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4004;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-08 13:11:46.8234|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4004;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-08 13:12:01.5287|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 13:12:01.7351|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 13:12:02.3475|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 13:12:05.4546|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 13:12:09.4282|INFO|TradesLogger|ChStrategy 57_8_20_20: START
+2016-06-08 13:12:23.5337|INFO|AistTrader.MainWindow|Successfully added agent manager - "gggggggggggggggggg"
+2016-06-08 13:12:24.5430|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-08 13:20:13.9043|INFO|AistTrader.MainWindow|Connection - "TestConnection2" is active now
+2016-06-08 13:20:14.2096|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 13:20:14.8642|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection2" were loaded
+2016-06-08 13:20:15.9364|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 13:20:16.1566|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 13:20:16.6578|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 13:20:23.6903|INFO|TradesLogger|ChStrategy 57_8_20_20: START
+2016-06-08 13:20:36.6295|INFO|AistTrader.MainWindow|Successfully added agent manager - "gggggggggggggggggg"
+2016-06-08 13:20:37.8639|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-08 13:25:51.2542|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4003;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-08 13:25:53.4995|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4004;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-08 13:26:13.0858|INFO|TradesLogger|ChStrategy 57_8_20_20: STOP
+2016-06-08 13:26:13.3337|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 13:26:13.5629|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 13:26:14.2011|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 13:26:33.9163|INFO|AistTrader.MainWindow|Successfully added agent manager - "gggggggggggggggggg"
+2016-06-08 13:26:35.2467|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-08 13:26:37.1134|INFO|TradesLogger|ChStrategy 57_8_20_20: START

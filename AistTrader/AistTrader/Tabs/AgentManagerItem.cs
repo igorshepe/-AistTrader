@@ -242,6 +242,7 @@ namespace AistTrader
                 //ON 
                 var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
                 agentOrGroup.AgentManagerSettings.Command = OperationCommand.Disconnect;
+                agentOrGroup.AgentManagerSettings.IsConnected = true;
                 StartAgentOrGroup(agentOrGroup);
             }
             else
@@ -260,6 +261,7 @@ namespace AistTrader
                         foreach (var agent in agentsToStop)
                             agent.ActualStrategyRunning.Stop();
                         if (item != null) item.AgentManagerSettings.Command = OperationCommand.Connect;
+                        item.AgentManagerSettings.IsConnected = false;
                     }
                 }
                 else
@@ -267,6 +269,7 @@ namespace AistTrader
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
                     strategyOrGroup.ActualStrategyRunning.Stop();
                     if (item != null) item.AgentManagerSettings.Command = OperationCommand.Connect;
+                    item.AgentManagerSettings.IsConnected = false;
                 }
             }
         }
