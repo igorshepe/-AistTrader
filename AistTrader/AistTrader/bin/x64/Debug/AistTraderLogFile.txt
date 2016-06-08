@@ -10304,3 +10304,72 @@
 2016-06-06 12:39:21.2187|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection2" were loaded
 2016-06-06 12:39:39.2111|INFO|AistTrader.MainWindow|Successfully added agent manager - "TestPortfolio2"
 2016-06-06 12:39:39.5795|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-07 16:50:50.0823|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-07 16:50:50.3415|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-07 16:50:51.0278|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-07 16:51:10.9991|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-07 16:51:11.2398|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-07 16:51:11.9374|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-07 16:51:13.9066|INFO|AistTrader.MainWindow|Agent manager item "TestPortfolio2" has been deleted
+2016-06-07 16:51:14.1456|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-07 16:51:17.7637|INFO|AistTrader.MainWindow|Agent manager item "TestPortfolio2" has been deleted
+2016-06-07 16:51:17.8694|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-07 16:51:39.7182|INFO|AistTrader.MainWindow|Successfully added agent manager - "gggggggggggggggggg"
+2016-06-07 16:51:40.0014|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-07 16:51:41.0252|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-07 16:52:57.7158|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-07 17:51:40.8898|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4003;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-07 17:51:40.9158|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131073, description 'Error opening connection 'p2tcp://127.0.0.1:4002;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-07 17:51:43.4617|INFO|AistTrader.MainWindow|Connection error -"StockSharp.Plaza.PlazaException: Error occured. Code 131074, description 'Error opening connection 'p2tcp://127.0.0.1:4004;app_name=SS_0'.'.
+   at #=q1KxFMUgQJLIoiLYFIGcyjwpPJWekz2aiZf3ddXSV8_82vEcCTalURf8cxKhdBiCP.#=qGDLI36bpiXuqSVoVZKhqRQ==(UInt32 #=qyDQ2onI49___Itz1GTdkfg==, String #=qVC3bhdnSPZC7Pla4cJbRuA==, Object[] #=qc9V0hXveRZZL2glf65rYLQ==)
+   at #=qSN1_jWrOg2TxKe542NXV8_MPI99PSZxG2uhu0EvRzvQK5dwAQfRJp5Db1vO1QBor.#=q5cxcbBMLXaSA0IZQj6scG_5FWcU07KDxgaiSO_3IXhs=.#=q8GLD7tGVM6GaN_cqa1lUJ5N5QgQoAi5LXo2Oof2I7xQ=()", connection "AistTraderConnnectionWrapper" is not active
+2016-06-07 17:52:16.0256|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-07 17:52:16.3388|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-07 17:52:17.0864|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-07 17:52:26.6599|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-07 18:02:08.5255|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-07 18:02:08.8286|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-07 18:02:09.5040|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-07 18:02:19.3677|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-07 18:05:09.6620|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-07 18:05:09.9295|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-07 18:05:10.6514|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-07 18:05:20.2890|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-07 18:07:38.1942|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-07 18:07:38.8098|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-07 18:07:39.2982|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-07 18:07:45.9999|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-07 18:13:17.4116|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-07 18:13:17.6788|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-07 18:13:18.3733|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-07 18:13:25.5220|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-07 18:14:07.6154|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 11:07:02.1213|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 11:07:02.4224|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 11:07:03.0387|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 11:07:24.7136|INFO|AistTrader.MainWindow|Successfully added agent manager - "gggggggggggggggggg"
+2016-06-08 11:07:25.2124|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-08 11:49:26.5099|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 11:49:26.7411|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 11:49:27.4102|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 11:51:54.1183|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 11:51:54.3349|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 11:51:54.9920|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 11:53:45.1902|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 11:54:42.0702|INFO|TradesLogger|ChStrategy 57_8_20_20: START
+2016-06-08 12:33:37.9291|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 12:33:38.1815|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 12:33:38.8401|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 12:33:58.8949|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 12:34:00.1582|INFO|TradesLogger|ChStrategy 57_8_20_20: START
+2016-06-08 12:47:20.3902|INFO|AistTrader.MainWindow|Connection - "TestConnection4" is active now
+2016-06-08 12:47:20.6294|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-08 12:47:21.2927|INFO|AistTrader.MainWindow|Portfolios for connection "TestConnection4" were loaded
+2016-06-08 12:47:28.9304|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-08 12:47:30.1155|INFO|TradesLogger|ChStrategy 57_8_20_20: START
+2016-06-08 12:48:09.7984|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
+2016-06-08 12:48:27.3189|INFO|TradesLogger|ChStrategy 57_8_20_20: STOP

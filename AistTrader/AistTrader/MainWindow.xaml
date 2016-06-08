@@ -244,9 +244,6 @@
                             <ColumnDefinition Width="90*"/>
                             <ColumnDefinition Width="1080*"/>
                         </Grid.ColumnDefinitions>
-
-
-                        
                         <DataGrid x:Name="ProviderListView"
                                   IsSynchronizedWithCurrentItem="True" 
                                   x:FieldModifier="private"
@@ -378,6 +375,8 @@
                               ItemsSource="{Binding ElementName=MainFrm, Path=AgentManagerStorage}"
                               IsSynchronizedWithCurrentItem="True"  
                               SelectionMode="Single"
+                              GridLinesVisibility="All"
+                              HorizontalAlignment="Stretch"
                               SelectionChanged="AgentManagerListView_OnSelectionChanged"
                               x:FieldModifier="private" 
                               IsReadOnly="True"

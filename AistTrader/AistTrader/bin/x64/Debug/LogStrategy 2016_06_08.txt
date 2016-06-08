@@ -1,0 +1,26 @@
+﻿2016/06/08 12:48:00.107|Debug  |ChStrategy 60_10_20_20|Transition from state Started to Stopping.
+2016/06/08 12:48:00.107|       |ChStrategy 60_10_20_20|Strategy stopping. [0,-1]. Position 0.
+2016/06/08 12:48:06.348|Warning|ChStrategy 60_10_20_20|Strategy is in state Stopping. Order cancellation is not possible.
+2016/06/08 12:48:06.975|       |ChStrategy 60_10_20_20|Waiting for all active orders to be cancelled.
+2016/06/08 12:48:08.070|Debug  |ChStrategy 60_10_20_20|Rule 'Finished candles TimeFrameCandle_SIM6@FORTS_00-01-00 (0x3C12452)'. Deleting.
+2016/06/08 12:48:08.070|Debug  |ChStrategy 60_10_20_20|Rule 'Finished candles TimeFrameCandle_SIM6@FORTS_00-01-00 (0x3C12452)'. Resources freed.
+2016/06/08 12:48:08.070|Debug  |ChStrategy 60_10_20_20|Rule 'Finished candles TimeFrameCandle_SIM6@FORTS_00-01-00 (0x3C12452)'. Deleted.
+2016/06/08 12:48:08.079|Debug  |ChStrategy 60_10_20_20|Rule 'Changed candles TimeFrameCandle_SIM6@FORTS_00-01-00 (0x3DB3A82)'. Deleting.
+2016/06/08 12:48:08.079|Debug  |ChStrategy 60_10_20_20|Rule 'Changed candles TimeFrameCandle_SIM6@FORTS_00-01-00 (0x3DB3A82)'. Resources freed.
+2016/06/08 12:48:08.079|Debug  |ChStrategy 60_10_20_20|Rule 'Changed candles TimeFrameCandle_SIM6@FORTS_00-01-00 (0x3DB3A82)'. Deleted.
+2016/06/08 12:48:08.080|Debug  |ChStrategy 60_10_20_20|Transition from state Stopping to Stopped.
+2016/06/08 12:48:08.080|       |ChStrategy 60_10_20_20|Strategy stopped. [0,-1]. Position 0.
+2016/06/08 12:48:27.308|Debug  |ChStrategy 57_8_20_20|Transition from state Started to Stopping.
+2016/06/08 12:48:27.308|       |ChStrategy 57_8_20_20|Strategy stopping. [0,-1]. Position 0.
+2016/06/08 12:48:27.308|Warning|ChStrategy 57_8_20_20|Strategy is in state Stopping. Order cancellation is not possible.
+2016/06/08 12:48:27.308|       |ChStrategy 57_8_20_20|Waiting for all active orders to be cancelled.
+2016/06/08 12:48:27.308|Debug  |ChStrategy 57_8_20_20|Rule 'Finished candles TimeFrameCandle_SIM6@FORTS_00-00-57 (0x8D85F4)'. Deleting.
+2016/06/08 12:48:27.308|Debug  |ChStrategy 57_8_20_20|Rule 'Finished candles TimeFrameCandle_SIM6@FORTS_00-00-57 (0x8D85F4)'. Resources freed.
+2016/06/08 12:48:27.308|Debug  |ChStrategy 57_8_20_20|Rule 'Finished candles TimeFrameCandle_SIM6@FORTS_00-00-57 (0x8D85F4)'. Deleted.
+2016/06/08 12:48:27.308|Debug  |ChStrategy 57_8_20_20|Rule 'Changed candles TimeFrameCandle_SIM6@FORTS_00-00-57 (0xD15780)'. Deleting.
+2016/06/08 12:48:27.308|Debug  |ChStrategy 57_8_20_20|Rule 'Changed candles TimeFrameCandle_SIM6@FORTS_00-00-57 (0xD15780)'. Resources freed.
+2016/06/08 12:48:27.308|Debug  |ChStrategy 57_8_20_20|Rule 'Changed candles TimeFrameCandle_SIM6@FORTS_00-00-57 (0xD15780)'. Deleted.
+2016/06/08 12:48:27.308|Debug  |ChStrategy 57_8_20_20|Transition from state Stopping to Stopped.
+2016/06/08 12:48:27.308|       |ChStrategy 57_8_20_20|Strategy stopped. [0,-1]. Position 0.
+2016/06/08 12:48:29.745|Debug  |ChStrategy 60_10_20_20|Attempting to stop strategy in state Stopped.
+2016/06/08 12:48:29.745|Debug  |ChStrategy 57_8_20_20|Attempting to stop strategy in state Stopped.
