@@ -62,6 +62,7 @@ namespace AistTrader
 
         private void InitiateAgentManagerSettings()
         {
+            
             StreamReader sr = new StreamReader("AgentManagerSettings.xml");
             try
             {
@@ -82,6 +83,7 @@ namespace AistTrader
                     AgentManagerCollectionView.GroupDescriptions.Count == 0)
                     AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
                 IsAgentManagerSettingsLoaded = true;
+                SetConnectionCommandStatus();
             }
             catch (Exception e)
             {
@@ -92,6 +94,7 @@ namespace AistTrader
                 if (e.InnerException.Message == "Root element is missing.")
                     IsAgentManagerSettingsLoaded = false;
             }
+            
         }
 
         private void EditAgentManagerBtnClick(object sender, RoutedEventArgs e)
@@ -130,7 +133,7 @@ namespace AistTrader
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
             AgentManagerCollectionView =(CollectionView) CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-            AgentManagerCollectionView.Refresh();
+           // AgentManagerCollectionView.Refresh();
 
 
             //if (AgentManagerCollectionView.GroupDescriptions != null && AgentManagerCollectionView.GroupDescriptions.Count == 0)
@@ -235,12 +238,23 @@ namespace AistTrader
             form = null;
         }
 
-        private void StartStopBtnClick(object sender, RoutedEventArgs e)
+        private void StartStopBtnClickTest(object sender, RoutedEventArgs e)
         {
             if ((bool) (sender as ToggleSwitchButton).IsChecked)
             {
                 //ON 
+
+
+
+
                 var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
+
+                //if (AgentManagerListView.SelectedItem== agentOrGroup)
+                //{
+                //    return;
+                //}
+
+
                 agentOrGroup.AgentManagerSettings.Command = OperationCommand.Disconnect;
                 agentOrGroup.AgentManagerSettings.IsConnected = true;
                 StartAgentOrGroup(agentOrGroup);

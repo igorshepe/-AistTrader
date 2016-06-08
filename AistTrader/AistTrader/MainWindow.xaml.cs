@@ -90,6 +90,7 @@ namespace AistTrader
             AgentPortfolioStorage.CollectionChanged += AgentPortfolioStorageOnCollectionChanged; 
 
             AgentManagerStorage = new ObservableCollection<AgentManager>();
+            AgentManagerStorage.CollectionChanged += AgentManagerStorage_CollectionChanged;
 
             _portfoliosWindow.MakeHideable();
             _ordersWindow.MakeHideable();
@@ -98,6 +99,12 @@ namespace AistTrader
             _monitorWindow.MakeHideable();
             #endregion
         }
+
+        private void AgentManagerStorage_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
         private void SetConnectionCommandStatus()
         {
             Instance.ConnectionsStorage.ForEach(i=>i.ConnectionParams.Command= OperationCommand.Connect);

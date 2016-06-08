@@ -375,7 +375,6 @@
                               ItemsSource="{Binding ElementName=MainFrm, Path=AgentManagerStorage}"
                               IsSynchronizedWithCurrentItem="True"  
                               SelectionMode="Single"
-                              GridLinesVisibility="All"
                               HorizontalAlignment="Stretch"
                               SelectionChanged="AgentManagerListView_OnSelectionChanged"
                               x:FieldModifier="private" 
@@ -414,7 +413,7 @@
                                 <DataGridTemplateColumn Header="Command" IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Controls:ToggleSwitchButton Unchecked="StartStopBtnClick" Checked="StartStopBtnClick" Name="AgentManagerStateSwitch" IsChecked="{Binding Path=AgentManagerSettings.IsConnected, Mode=TwoWay}" ></Controls:ToggleSwitchButton>
+                                            <Controls:ToggleSwitchButton Unchecked="StartStopBtnClickTest" Checked="StartStopBtnClickTest"  Name="AgentManagerStateSwitch" IsChecked="{Binding Path=AgentManagerSettings.IsConnected, Mode=TwoWay}" ></Controls:ToggleSwitchButton>
                                             <!--<Button Click="StartStopBtnClick" MinWidth="100" Content="{Binding Path= AgentManagerSettings.Command}"  HorizontalAlignment="Right" Margin="0,0,0,0"></Button>-->
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

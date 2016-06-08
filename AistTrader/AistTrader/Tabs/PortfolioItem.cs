@@ -43,7 +43,7 @@ namespace AistTrader //todo: идентификаторы портфеля то�
         }
         private void InitiatePortfolioSettings()
         {
-            SetConnectionCommandStatus();
+            
             StreamReader sr = new StreamReader("Portfolios.xml");
             try
             {

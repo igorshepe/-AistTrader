@@ -1,5 +1,5 @@
-C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.config
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.config
+C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.config
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.manifest
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.application
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe
