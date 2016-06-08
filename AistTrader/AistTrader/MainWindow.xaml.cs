@@ -102,6 +102,7 @@ namespace AistTrader
         {
             Instance.ConnectionsStorage.ForEach(i=>i.ConnectionParams.Command= OperationCommand.Connect);
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.IsConnected = false);
+            Instance.AgentManagerStorage.ForEach(i => i.AgentManagerSettings.IsConnected = false);
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.IsRegistredConnection = false);
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>() );
