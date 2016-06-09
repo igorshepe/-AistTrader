@@ -310,13 +310,13 @@ namespace Strategies.Strategies
             {
                 bool priceInDepth = bidList.Last().Price >= shrinkPrice && shrinkPrice <= bidList.First().Price;
 
-                TradesLogger.Info(!priceInDepth ? "{0}: Buy LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3} " : "Buy LimitPrice in Depth, First:{0}, Last:{1}, Shrink{2}", Name, bidList.First().Price, bidList.Last().Price, shrinkPrice);
+                TradesLogger.Info(!priceInDepth ? "{0}: Buy LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3} " : "{0}: Buy LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, bidList.First().Price, bidList.Last().Price, shrinkPrice);
             }
             else
             {
                 bool priceInDepth = asksList.Last().Price >= shrinkPrice && shrinkPrice <= asksList.First().Price;
 
-                TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "Sell LimitPrice in Depth, First:{0}, Last:{1}, Shrink{2}", Name, asksList.First().Price, asksList.Last().Price, shrinkPrice);
+                TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "{0}: Sell LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, asksList.First().Price, asksList.Last().Price, shrinkPrice);
             }
 
            TradesLogger.Info(exit ? "{0}: Exit {1}, {2}" : "{0}: Enter {1}, {2}",Name, asksList[0], bidList[0]);
