@@ -44,12 +44,16 @@ namespace Strategies.Strategies
         private bool _exitPosition;
         private bool _enterPosition;
         private Order _registeredOrder;
+
         public ChStrategy()
         {
+
+
             // _timeFrame = this.Param("TimeFrame", TimeSpan.FromMinutes(1));
         }
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage)
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage )
         {
+            
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
@@ -81,7 +85,6 @@ namespace Strategies.Strategies
 
 
             _indicatorHighest.Length = Convert.ToInt32(_period.Value.ToString());
-
 
 
             _indicatorLowest.Length = Convert.ToInt32(_period.Value.ToString());
@@ -148,7 +151,8 @@ namespace Strategies.Strategies
             // Вызываем базовую реализацию метода.
             base.OnStarted();
 
-            TradesLogger.Info("{0}: START", Name);
+
+            TradesLogger.Info("{0}: START",  Name);
 
             // Получаем CandleManager 
             _candleManager = this.GetCandleManager();
@@ -283,7 +287,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                TradesLogger.Info("Erorr order {0}", e.Source);
+                TradesLogger.Info("{0}: Erorr order {1}",Name, e.Source);
                 throw;
             }
 
@@ -299,39 +303,25 @@ namespace Strategies.Strategies
             var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену лимитную до шага цены иснтрумента
             var bestprice = this.GetMarketPrice(side);
 
-            var marketDepth = this.GetMarketDepth(Security);
+            var marketDepth = GetMarketDepth(Security);
             var asksList = marketDepth.Asks;
             var bidList = marketDepth.Bids;
-           // var orderPrice;
+            // var orderPrice;
 
-            if (side == Sides.Buy)
+            if (side == Sides.Sell)
             {
-                bool priceInDepth = false;
-                for (int i = 0; i < bidList.Count(); i++)
-                {
-                    var bidprice = bidList[i].Price;
-                    if (shrinkPrice == bidprice)
-                        priceInDepth = true;
-                }
+                bool priceInDepth = bidList.Last().Price >= shrinkPrice && shrinkPrice <= bidList.First().Price;
 
-                if (!priceInDepth)
-                    TradesLogger.Info("Buy LimitPrice out of range Depth");
+                TradesLogger.Info(!priceInDepth ? "{0}: Buy LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3} " : "Buy LimitPrice in Depth, First:{0}, Last:{1}, Shrink{2}", Name, bidList.First().Price, bidList.Last().Price, shrinkPrice);
             }
             else
             {
-                bool priceInDepth = false;
-                for (int i = 0; i < asksList.Count(); i++)
-                {
-                    var asksprice = asksList[i].Price;
-                    if (shrinkPrice == asksprice)
-                        priceInDepth = true;
-                }
+                bool priceInDepth = asksList.Last().Price >= shrinkPrice && shrinkPrice <= asksList.First().Price;
 
-                if (!priceInDepth)
-                    TradesLogger.Info("Ask LimitPrice out of range Depth");
+                TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "Sell LimitPrice in Depth, First:{0}, Last:{1}, Shrink{2}", Name, asksList.First().Price, asksList.Last().Price, shrinkPrice);
             }
 
-            TradesLogger.Info(exit ? "exit bid {0}, asks {1}" : "enter bid {0}, asks {1}", asksList[0], bidList[0]);
+           TradesLogger.Info(exit ? "{0}: Exit bid {1}, asks {2}" : "{0}: Enter bid {1}, asks {2}",Name, asksList[0], bidList[0]);
 
             return this.CreateOrder(side, bestprice);
         }
@@ -421,7 +411,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                TradesLogger.Info("Erorr check enter or exit position {0}", e.Source);
+                TradesLogger.Info("{0}: Erorr check enter or exit position {1}",Name, e.Source);
                 throw;
             }
 
@@ -457,7 +447,7 @@ namespace Strategies.Strategies
                         if (_cancelOrderCandle == 0) // проверяем когда нужно снять все заявки в случае пропуска правильного входа или выхода
                         {
                             CancelActiveOrders();
-                            //Connector.CancelOrder(_registeredOrder);
+                            Connector.CancelOrder(_registeredOrder);
                             _sendOrder = false;
                             _cancelOrderCandle = _cancelCandle;
                         }
@@ -487,7 +477,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                TradesLogger.Info("Error get indicators value: {0}", e.Source);
+                TradesLogger.Info("{0}: Error get indicators value: {1}",Name, e.Source);
                 throw;
             }
 
