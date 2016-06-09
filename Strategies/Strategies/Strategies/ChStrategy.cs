@@ -47,11 +47,9 @@ namespace Strategies.Strategies
 
         public ChStrategy()
         {
-
-
-            // _timeFrame = this.Param("TimeFrame", TimeSpan.FromMinutes(1));
+            
         }
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage )
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage)
         {
             
             object obj;
@@ -321,7 +319,7 @@ namespace Strategies.Strategies
                 TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "Sell LimitPrice in Depth, First:{0}, Last:{1}, Shrink{2}", Name, asksList.First().Price, asksList.Last().Price, shrinkPrice);
             }
 
-           TradesLogger.Info(exit ? "{0}: Exit bid {1}, asks {2}" : "{0}: Enter bid {1}, asks {2}",Name, asksList[0], bidList[0]);
+           TradesLogger.Info(exit ? "{0}: Exit {1}, {2}" : "{0}: Enter {1}, {2}",Name, asksList[0], bidList[0]);
 
             return this.CreateOrder(side, bestprice);
         }
