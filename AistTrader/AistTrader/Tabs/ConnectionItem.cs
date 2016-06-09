@@ -135,6 +135,8 @@ namespace AistTrader
                         var value = ConnectionsStorage.First();
                         value.ConnectionParams.IsDefaulConnection = true;
                         DefaultConnectionStatusBarText = "Default: "+ value.DisplayName;
+                        ConnectionStatusTextBlock.Text = value.ConnectionParams.ConnectionState.ToString();
+
                     }
                     SaveProviderItems();
                 }
@@ -209,7 +211,7 @@ namespace AistTrader
         {
             ProviderListView.ItemsSource = ConnectionsStorage;
             ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
-            ProviderCollectionView.Refresh();
+            //ProviderCollectionView.Refresh();
             //ICollectionView view = CollectionViewSource.GetDefaultView(Instance.ProviderListView.ItemsSource);
             //view.Refresh();
         }
@@ -229,7 +231,7 @@ namespace AistTrader
 
             ProviderListView.ItemsSource = ConnectionsStorage;
             ProviderCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(ProviderListView.ItemsSource);
-            ProviderCollectionView.Refresh();
+            //ProviderCollectionView.Refresh();
         }
 
         public void ConnectAccount(Connection conn)

@@ -264,7 +264,7 @@
                                                     Binding="{Binding ConnectionParams.Funds}" />
                                 <DataGridTextColumn Header="Variation margin"
                                                     Binding="{Binding ConnectionParams.VariationMargin}" />
-                                <DataGridTextColumn Header="Net value(Чистая стоимость)"
+                                <DataGridTextColumn Header="Net value"
                                                     Binding="{Binding ConnectionParams.NetValue}" />
                                 <DataGridTextColumn Header="Connection state"
                                                     Binding="{Binding ConnectionParams.ConnectionState, Mode=TwoWay}" />
@@ -311,7 +311,7 @@
                                     Click="DelAgentConnectionBtnClick"
                                     Name="DelAgentConnectionBtn"
                                     HorizontalAlignment="Center" 
-                                    Margin="4,61,0,0"
+                                    Margin="12,61,8,0"
                                     VerticalAlignment="Top" 
                                     Width="100"/>
                         </Grid>
@@ -342,13 +342,13 @@
                                                     Binding="{Binding Connection.ConnectionParams.Funds}" />
                                 <DataGridTextColumn Header="Variation margin"
                                                     Binding="{Binding Connection.ConnectionParams.VariationMargin}" />
-                                <DataGridTextColumn Header="Net value(Чистая стоимость)"
+                                <DataGridTextColumn Header="Net value"
                                                     Binding="{Binding Connection.ConnectionParams.NetValue}" />
                                 <DataGridTextColumn Header="Algorithm count"
                                                     Binding="{Binding Connection.ConnectionParams.AlgorithmCount}" />
                                 <DataGridTextColumn Header="Contracts"
                                                     Binding="{Binding Connection.ConnectionParams.Contracts}" />
-                                <DataGridTextColumn Header="Net value(Чистая стоимость)"
+                                <DataGridTextColumn Header="Net value"
                                                     Binding="{Binding Connection.ConnectionParams.NetValue}" />
                             </DataGrid.Columns>
                         </DataGrid>

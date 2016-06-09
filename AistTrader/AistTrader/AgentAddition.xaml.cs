@@ -184,7 +184,7 @@ namespace AistTrader
             var exist = MainWindow.Instance.AgentsStorage.Any(i => i.Name == agentFullName);
             if (exist)
             {
-                MessageBoxResult result = MessageBox.Show("Агент с такими настройками уже зарегестрирован!", "Ошибка уникальности", MessageBoxButton.OK);
+                MessageBoxResult result = MessageBox.Show("Agent with these trade settings already registred! Consider changing trade settings & try again", "Uniqueness error", MessageBoxButton.OK);
                 if (result == MessageBoxResult.OK)
                 {
                     return;
@@ -232,7 +232,7 @@ namespace AistTrader
         {
             if (AlgorithmComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show(this, @"Не выбран алгоритм");
+                MessageBox.Show(this, @"Script is not set");
                 return;
             }
             var type = HelperStrategies.GetStrategySettingsType(AlgorithmComboBox.SelectedItem.ToString());
@@ -326,7 +326,7 @@ namespace AistTrader
         {
             if (AlgorithmComboBox.SelectedItem == null)
             {
-                return "Не выбран алгоритм";
+                return "Script is not set";
             }
             if (_alreadyExist)
             {

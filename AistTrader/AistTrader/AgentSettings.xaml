@@ -4,10 +4,10 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         x:Name="StratSettings"
-        Title="Настройки стратегии"
-        Height="395.699"
+        Title="Trade settings"
+        Height="316.909"
         FontFamily="Consolas"
-        Width="357.056"
+        Width="263.384"
         ResizeMode="NoResize"
         GlowBrush="CadetBlue"
         Icon="Resources/Images/mainIcon.ico">
@@ -25,7 +25,7 @@
                 IsCancel="True" Height="23" VerticalAlignment="Bottom" />
 
         <DataGrid  x:Name="AgentSettingsDG"
-                              Margin="5,5,5,38"
+                              Margin="1,5,1,0"
                               AutoGenerateColumns="False"
                               IsReadOnly="False"
                               GridLinesVisibility="Vertical"
@@ -35,7 +35,7 @@
                               ItemsSource="{Binding ElementName=StratSettings, Path=AgentSettingsCollectionView, Mode=OneWayToSource}"
                               IsSynchronizedWithCurrentItem="True"
                               x:FieldModifier="private"
-                              CanUserAddRows="False"
+                              CanUserAddRows="False" Height="219" VerticalAlignment="Top"
                   
                               
                               >

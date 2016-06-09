@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="AddAgentConfig"
         FontFamily="Consolas"
-        Title="Аист Трейдер - Добавить конфигурацию"  
+        Title="Aist Trader- Script addition"  
         ResizeMode="NoResize"
         mc:Ignorable="d"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -26,7 +26,7 @@
             </Style>
         </Grid.Resources>
 
-        <Label Content="Выберете алгоритм"
+        <Label Content="Select a script"
                Height="25"
                HorizontalContentAlignment="Left"
                Margin="1,10,98,0" 
@@ -48,6 +48,7 @@
                 Margin="0,31,7,0"
                 x:Name="AgentSettingsButton"
                 Click="AgentSettingsButtonClick"
+                ToolTip="Press to set trade settings for selected script"
                 IsEnabled="False"          
         	    x:FieldModifier="private"
                 TabIndex="1" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Width="32">

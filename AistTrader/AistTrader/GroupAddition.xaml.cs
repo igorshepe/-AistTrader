@@ -126,7 +126,7 @@ namespace AistTrader
                 };
                 if (IsEditMode)
                     AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
-                CreateGroupeBtn.Content = "Сохранить";
+                CreateGroupeBtn.Content = "Save";
                 DynamicGrid.RegisterName(amount.Name, amount);
 
                 Grid.SetRow(cb, RowSetter);
@@ -203,7 +203,7 @@ namespace AistTrader
                     addDelControl.Content = "x";
                 if (IsEditMode)
                     AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
-                CreateGroupeBtn.Content = "Сохранить";
+                CreateGroupeBtn.Content = "Save";
                 if (RowSetter != 0)
                     addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
                 DynamicGrid.RegisterName(amount.Name, amount);
@@ -304,7 +304,7 @@ namespace AistTrader
                 addDelControl.Content = "x";
             if (IsEditMode)
                 AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
-            CreateGroupeBtn.Content = "Сохранить";
+            CreateGroupeBtn.Content = "Save";
             if (RowSetter != 0)
                 addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
             DynamicGrid.RegisterName(amount.Name, amount);
@@ -337,7 +337,7 @@ namespace AistTrader
                         count++;
                     if (count == 1)
                     {
-                        MessageBox.Show("Нельзя добавить одинакоый алгоритм!");
+                        MessageBox.Show("Can not add the same script!");
                         cbox.SelectedIndex = -1;
                         break;
                     }
@@ -376,17 +376,17 @@ namespace AistTrader
             {
                 if (DynamicGrid.Children.OfType<ComboBox>().Any(cb => cb.SelectedIndex == -1))
                 {
-                    MessageBox.Show("Не выбран алгоритм");
+                    MessageBox.Show("Scrtipt is not set");
                     return;
                 }
                 if (DynamicGrid.Children.OfType<UnitEditor>().Any(cb => cb.Text == ""))
                 {
-                    MessageBox.Show("Не все объемы заполненны");
+                    MessageBox.Show("Not all amounts have been set");
                     return;
                 }
                 if (GroupNameTxtBox.Text == "")
                 {
-                    MessageBox.Show("Задать имя группы");
+                    MessageBox.Show("Group name is not set");
                     return;
                 }
             }
@@ -399,7 +399,7 @@ namespace AistTrader
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Задано некорректное значение объема: {0}".Put(i.Text));
+                    MessageBox.Show("Incorrect amount value : {0}".Put(i.Text));
                     return;
                 }
             }
@@ -427,6 +427,7 @@ namespace AistTrader
                                 newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
                                 newAgent.Params.Amount = amount;
                                 newAgent.Params.GroupName = groupName;
+                                newAgent.Params.ToolTipName = rs.Params.ToolTipName;
                                 list.Add(newAgent);
                                 //MainWindow.Instance.AddNewAgent(newAgent, -1);
                             }

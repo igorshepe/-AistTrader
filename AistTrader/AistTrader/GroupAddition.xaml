@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="CreateGroup"
-        Title="Аист Трейдер - Создать группу" 
+        Title="Aist Trader - Create a group" 
         FontFamily="Consolas"
         ResizeMode="NoResize"
         mc:Ignorable="d"
@@ -16,7 +16,7 @@
         GlowBrush="CadetBlue"                    
                       >
     <Grid Margin="1,1,1,0">
-        <Button Content="Отмена"
+        <Button Content="Cancel"
                 Margin="291,630,5,0"
                 TabIndex="8"
                 IsCancel="True" Height="24" VerticalAlignment="Top" />
@@ -25,7 +25,7 @@
               Width="369"
               Margin="2,32,0,130"/>
         <Button Name="CreateGroupeBtn"
-                Content="ОК"
+                Content="Ok"
                 HorizontalAlignment="Left"
                 Margin="211,630,0,0"
                 Width="75"
@@ -37,14 +37,14 @@
                  Width="196"
                  RenderTransformOrigin="-0.358,0.304" Height="24" VerticalAlignment="Top"/>
         <Button Name="AddConfigBtn"
-                Content="Добавить конфигурацию"
+                Content="Add config"
                 HorizontalAlignment="Left"
                 Margin="10,630,0,0"
                 Width="196"
                 RenderTransformOrigin="0.027,0.273"
                 Click="AddConfigBtnClick" Height="23" VerticalAlignment="Top"/>
         <Label x:Name="GroupNameLbl"
-               Content="Имя группы"
+               Content="Set a group name"
                HorizontalAlignment="Left" 
                Margin="10,558,0,0" 
                VerticalAlignment="Top" 
