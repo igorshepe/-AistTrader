@@ -101,7 +101,7 @@
                   TabIndex="4"  
                   x:FieldModifier="private"/>-->
         <sx:SecurityEditor
-            Name="SecurityPicker"
+            Name="SecurityPickerSS"
             Margin="5,185,5,0" Height="28" VerticalAlignment="Top" TabIndex="2"
             SelectedSecurity="{Binding  Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
             SecuritySelected="SecurityPicker_OnSecuritySelected"

@@ -10,6 +10,7 @@ using Common.Entities;
 using Common.Params;
 using Ecng.Common;
 using StockSharp.Algo;
+using StockSharp.Algo.Storages;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 using StockSharp.Xaml;
@@ -19,58 +20,48 @@ namespace AistTrader
     public partial class ManagerAddition : IDataErrorInfo
     {
         private Dictionary<string, bool> validManagerProperties = new Dictionary<string, bool>();
-
         private string _selectedPortfolio;
         public string SelectedPortfolio
         {
             get { return _selectedPortfolio; }
             set { _selectedPortfolio = value; }
-
         }
         private string _portfolio; 
         public string Portfolio 
         {
             get { return _portfolio; }
             set { _portfolio = value; } 
-
         }
         private string _selectedGroupOrSingleAgent;
         public string SelectedGroupOrSingleAgent
         {
             get { return _selectedGroupOrSingleAgent; }
             set { _selectedGroupOrSingleAgent = value; }
-
         }
         private string _groupOrSingleAgent;
         public string GroupOrSingleAgent
         {
             get { return _groupOrSingleAgent; }
             set { _groupOrSingleAgent = value; }
-
         }
         private string _tools;
         public string Tools
         {
             get { return _tools; }
             set { _tools = value; } 
-
         }
         private string _amount;
         public string Amount
         {
             get { return _amount; }
             set { _amount = value; }
-
         }
-
         private string _alias;
         public string Alias
         {
             get { return _alias; }
             set { _alias = value; }
-
         }
-
         private bool IsGroup;
         private int EditIndex { get; set; }
         public ManagerAddition()
@@ -79,10 +70,6 @@ namespace AistTrader
             DataContext = this;
             EditIndex = int.MinValue;
             LoadParams();
-            
-            //workin'
-            //SecurityPicker.SecurityProvider.Securities.AddRange(MainWindow.Instance.SecuritiesList);
-
         }
         public ManagerAddition(AgentManager agent, int editIndex)
         {
@@ -94,21 +81,19 @@ namespace AistTrader
         private void LoadParams()
         {
             //todo:выбирать для каждого подключения/портфеля свой набор параметров
-            //SecurityPicker.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
             List<string> resultsList = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName).ToList();
             var results = MainWindow.Instance.AgentsStorage.Cast<Agent>().Where(i => i.Params.GroupName != "ungrouped agents").Select(i => i.Params.GroupName).Distinct().ToList();
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList;
-
-            //var agents = Settings.Default.AgentManager.Cast<AgentManager>().Select(i => i.Name).ToList();
-            //var accounts = Settings.Default.AgentPortfolio.Cast<AgentPortfolio>().Select(i =>i).Except(agents).ToList();
+            resultsList = null;
             var accounts = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             PortfolioComboBox.ItemsSource = accounts;
+            accounts = null;
             AmountTextBox.Text = "";
         }
         private void InitFields(AgentManager agent)
         {
-            SecurityPicker.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
+            //SecurityPickerSS.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
             PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             _selectedPortfolio = agent.Name;
 
@@ -117,36 +102,11 @@ namespace AistTrader
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList.ToList();
             _selectedGroupOrSingleAgent = agent.AgentManagerSettings.AgentOrGroup;
-
-
-
-            SecurityPicker.SelectedSecurity = agent.Tool;
-
+            SecurityPickerSS.SelectedSecurity = agent.Tool;
             _amount = agent.Amount.ToString();
-
-            //AmountTextBox.Text = agent.Amount.ToString();
         }
         private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
-            //if (AccountComboBox.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show(this, @"Не выбран cчёт");
-            //    return;
-            //} 
-            //if (GroupOrSingleAgentComboBox.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show(this, @"Не выбран агент или группа агентов");
-            //    return;
-            //}
-            //if (AmountTextBox.Visibility == Visibility.Visible && AmountTextBox.Text == "")
-            //{
-            //    MessageBox.Show(this, @"Не заполнен объем");
-            //    return;
-            //}
-
-
-
-
             if (AliasTxtBox.Text== "")
             {
                 MessageBox.Show(this, @"Set an alias");
@@ -160,29 +120,25 @@ namespace AistTrader
                     MessageBox.Show(this, @"This alias already in use");
                     return;
                 }
-
             }
-
-
-            var s =  SecurityPicker.SelectedSecurity;
             ManagerParams setting;
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == PortfolioComboBox.SelectedItem.ToString());
             var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
             if (agent == null)
             {
                 agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-                setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPicker.SelectedSecurity);
+                setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity);
             }
             else
-                setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPicker.SelectedSecurity);
+                setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity);
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text), EditIndex);
+            SecurityPickerSS.SecurityProvider.Dispose();
+            SecurityPickerSS.SecurityProvider = null;
+            agentPortfolio = null;
             Close();
         }
-
-
         private void GroupOrSingleAgentComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             if (GroupOrSingleAgentComboBox.SelectedItem !=null)
             {
                 var result = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any
@@ -199,106 +155,34 @@ namespace AistTrader
                     AmountTextBox.Visibility = Visibility.Visible;
                     AmountLbl.Visibility = Visibility.Visible;
                 }
-
-
                 AliasTxtBox.Text = GroupOrSingleAgentComboBox.SelectedItem.ToString();
             }
-
-            
         }
 
         private void PortfolioComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == (string)PortfolioComboBox.SelectedItem);
+            string selectedP = (string)PortfolioComboBox.SelectedItem;
+            var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == selectedP);
             GroupOrSingleAgentComboBox.SelectedItem = _selectedGroupOrSingleAgent;
-            ////имя счета
-            //var item = AccountComboBox.SelectedItem.ToString();
-
-            //var portfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == item);
-            //item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
-            //var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Name == item);
-            //var securities = selectedPortfolio.Connection.Connection.Tools;
-            //List<Security> portfoliosList = new List<Security>();
-            //foreach (var i in securities)
-            //{
-            //    portfoliosList.Add(i);
-            //}
-
-            //todo: добавить обновление вверх по иерархии на этапе обработки эвентов
-            //добавить выборку, берем имя, по имени обращемся к коллекции
-            //var connection = MainWindow.Instance.ConnectionManager.Connections.Find(i => i. == selectedPortfolio.Connection.Id);
-
-            var connection =  MainWindow.Instance.ConnectionsStorage.First(i=>i.Id == selectedPortfolio.Connection.Id);
+            var connection =  MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i=>i.Id == selectedPortfolio.Connection.Id);
             if (connection != null)
             {
                 if (connection.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
                 {
-                    if (SecurityPicker.SecurityProvider != null)
+                    if (SecurityPickerSS.SecurityProvider != null)
                     {
-                        //SecurityPicker.SecurityProvider.Securities.Clear();
-                        //SecurityPicker.SecurityProvider.Securities.AddRange(selectedPortfolio.Connection.ConnectionParams.Tools);
                     }
                     else
                     {
-                        //SecurityPicker.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
-                        SecurityPicker.SecurityProvider=  new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i=>i.ConnectionName == connection.DisplayName));
+                        var conn= MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
+                        SecurityPickerSS.SecurityProvider=  new CollectionSecurityProvider(conn.Securities);
+                        conn = null;
                     }
                 }
-                //else
-                    //SecurityPicker.SecurityProvider.Securities.Clear();
             }
-            //if (selectedPortfolio != null) ToolComboBox.ItemsSource = selectedPortfolio.Connection.Connection.Tools;
+            selectedPortfolio = null;
+            connection = null;
         }
-
-        //private void AmountTextBox_KeyUp(object sender, KeyEventArgs e)
-        //{
-
-        //    Regex regex = new Regex(@"^[0-9]+$");
-        //    var editor = sender as UnitEditor;
-        //    if (editor.Text.EndsWith("%"))
-        //    {
-        //        string[] line = editor.Text.Split('%');
-        //        if (!regex.IsMatch(line.First()))
-        //        {
-        //            //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
-        //            _amount= editor.Text = "";
-        //            return;
-        //            // editor.Select(editor.Text.Length, 0);
-        //        }
-        //    }
-        //    if (!editor.Text.EndsWith("%"))
-        //    {
-        //        if (!regex.IsMatch(editor.Text))
-        //        {
-        //            //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
-        //            _amount= editor.Text = "";
-        //            return;
-        //            //editor.Select(editor.Text.Length, 0);
-        //        }
-        //    }
-
-
-
-
-        //    //Unit newVolume;
-        //    //try
-        //    //{
-        //    //    if (!AmountTextBox.Text.IsEmpty())
-        //    //        newVolume = AmountTextBox.Text.ToUnit();
-        //    //    else
-        //    //    {
-        //    //        UnitVolumeLabel.Content = "";
-        //    //        return;
-        //    //    }
-        //    //}
-        //    //catch (Exception)
-        //    //{
-        //    //    UnitVolumeLabel.Content = "";
-        //    //    return;
-        //    //}
-        //    //UnitVolumeLabel.Content = newVolume == null ? "" : (newVolume.Type == UnitTypes.Percent ? " от счёта" : " контрактов");
-        //}
-
         public string this[string columnName]
         {
             get
@@ -325,7 +209,7 @@ namespace AistTrader
                 validManagerProperties[columnName] = String.IsNullOrEmpty(error) ? true : false;
                 if (validManagerProperties.Count == 4)
                 {
-                    if (SecurityPicker.SelectedSecurity != null)
+                    if (SecurityPickerSS.SelectedSecurity != null)
                     {
                         var props= validManagerProperties;
                         validManagerProperties.Remove("Tools");
@@ -338,7 +222,7 @@ namespace AistTrader
                 }
                 if (validManagerProperties.Count == 3 & AmountTextBox.Visibility != Visibility.Collapsed)
                 {
-                    if (SecurityPicker.SelectedSecurity != null)
+                    if (SecurityPickerSS.SelectedSecurity != null)
                     {
                         var props = validManagerProperties;
                         validManagerProperties.Remove("Tools");
@@ -367,7 +251,7 @@ namespace AistTrader
         }
         private string ValidateTools()
         {
-            if (SecurityPicker.SelectedSecurity == null)
+            if (SecurityPickerSS.SelectedSecurity == null)
             {
                 return "Не выбран инструмент";
             }
@@ -393,28 +277,13 @@ namespace AistTrader
                     return "Возможен ввод только цифр или цифры со знаком % на конце";
                 }
             }
-
             //TODO: добавить обработку на знаки, которые не допустимы в данном поле
             //так же обработка случая, когда форма скрыта
             if (String.IsNullOrEmpty(Amount))
                 return "Не указан объем";
             return String.Empty;
         }
-
-
         public string Error { get; private set; }
-
-        private void ToolComboBox_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            //ToolComboBox.ItemsSource = MainWindow.Instance.SecuritiesList.Select(i => i.Id).ToList();
-
-        }
-
-        private void ToolComboBox_OnMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void AmountTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             Regex regex = new Regex(@"^[0-9]+$");
@@ -440,19 +309,10 @@ namespace AistTrader
                     //editor.Select(editor.Text.Length, 0);
                 }
             }
-
-            //throw new NotImplementedException();
         }
-
-        private void SecurityEditor_OnSecuritySelected(object sender, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            //Tools = SecurityPicker.SelectedSecurity.Name;
-            //throw new NotImplementedException();
-        }
-
         private void SecurityPicker_OnSecuritySelected()
         {
-            if (SecurityPicker.SelectedSecurity != null && PortfolioComboBox.SelectedItem != null && IsGroup)
+            if (SecurityPickerSS.SelectedSecurity != null && PortfolioComboBox.SelectedItem != null && IsGroup)
             {
                 OkBtnClick.IsEnabled = true;
             }

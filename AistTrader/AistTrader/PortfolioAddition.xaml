@@ -65,7 +65,7 @@
                   Text="{Binding Path=SelectedAccount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path= SelectedAccount, Mode=TwoWay, ValidatesOnDataErrors=False, UpdateSourceTrigger=PropertyChanged }"
                   TabIndex="1"
-                  SelectionChanged="AccountComboBoxSelectionChanged"
+                  
                   
                   x:FieldModifier="private"/>
         <TextBox Margin="5,145,5,0"

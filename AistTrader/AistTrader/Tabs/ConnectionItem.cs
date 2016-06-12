@@ -349,9 +349,13 @@ namespace AistTrader
             //TODO: Добавить все эвенты по аналогии с портфелями
             connection.Connect();
             ConnectionManager.Add(connection);
+            
+
             #region Trash
+
             //только в боевоей версии
             //Trader.CGateKey = "C99ElZcac2yZzSC9xSYqyaq8xXAnNrW";
+
             #endregion
         }
         public static string GetPlazaConnectionIpPort(string plazaPath)
