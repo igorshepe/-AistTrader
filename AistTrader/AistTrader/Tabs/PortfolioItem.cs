@@ -25,7 +25,6 @@ namespace AistTrader //todo: идентификаторы портфеля то�
             else
                 AgentPortfolioStorage.Add(settings);
             SavePortfolioSettings();
-
             UpdatePortfolioListView();
         }
         public void UpdatePortfolioListView()
@@ -43,7 +42,6 @@ namespace AistTrader //todo: идентификаторы портфеля то�
         }
         private void InitiatePortfolioSettings()
         {
-            
             StreamReader sr = new StreamReader("Portfolios.xml");
             try
             {
@@ -111,7 +109,6 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                     SavePortfolioSettings();
                 }
             }
-            
         }
         private void PortfolioListView_Loaded(object sender, RoutedEventArgs e)
         {

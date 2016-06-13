@@ -317,7 +317,7 @@ namespace AistTrader
             {
                 this.GuiAsync(() => conn.ConnectionParams.IsConnected = true);
                 this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Connected);
-                this.GuiAsync(() => UpdateProviderListView());
+                //this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is active now", connection.ConnectionName));
                 
                 //try
@@ -335,7 +335,7 @@ namespace AistTrader
             {
                 this.GuiAsync(() => conn.ConnectionParams.IsConnected = false);
                 this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);   
-                this.GuiAsync(() => UpdateProviderListView());
+                //this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is not active now", connection.ConnectionName));
 
                 if (conn.ConnectionParams.IsDefaulConnection)

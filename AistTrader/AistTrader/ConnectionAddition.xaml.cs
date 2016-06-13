@@ -95,6 +95,7 @@ namespace AistTrader
             //AllPlazaDirectoriesComboBox.SelectedItem = account.Connection.ConnectionSettings.Path.ToString();
             _selectedPath = connection.ConnectionParams.PlazaConnectionParams.Path;
             _originPath = connection.ConnectionParams.PlazaConnectionParams.Path;
+            IsDemoChkBox.IsChecked = connection.IsDemo;
         }
 
         private bool IsFirtConnectionToBeSetAsDefault()
