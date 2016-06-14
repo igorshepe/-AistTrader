@@ -11,6 +11,7 @@
 
 using StockSharp.Licensing.Xaml;
 using StockSharp.Xaml;
+using StockSharp.Xaml.GridControl;
 using StockSharp.Xaml.PropertyGrid;
 using System;
 using System.Diagnostics;

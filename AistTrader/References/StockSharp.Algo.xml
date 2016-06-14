@@ -654,7 +654,7 @@
             The export into database.
             </summary>
         </member>
-        <member name="M:StockSharp.Algo.Export.DatabaseExporter.#ctor(StockSharp.BusinessEntities.Security,System.Object,System.Func{System.Int32,System.Boolean},Ecng.Xaml.Database.DatabaseConnectionPair)">
+        <member name="M:StockSharp.Algo.Export.DatabaseExporter.#ctor(StockSharp.BusinessEntities.Security,System.Object,System.Func{System.Int32,System.Boolean},Ecng.Xaml.DevExp.Database.DatabaseConnectionPair)">
             <summary>
             Initializes a new instance of the <see cref="T:StockSharp.Algo.Export.DatabaseExporter"/>.
             </summary>
@@ -4618,6 +4618,11 @@
             Step price.
             </summary>
         </member>
+        <member name="P:StockSharp.Algo.PnL.PnLQueue.Multiplier">
+            <summary>
+            Multiplier.
+            </summary>
+        </member>
         <member name="P:StockSharp.Algo.PnL.PnLQueue.TradePrice">
             <summary>
             Last price of tick trade.
@@ -4625,7 +4630,7 @@
         </member>
         <member name="P:StockSharp.Algo.PnL.PnLQueue.BidPrice">
             <summary>
-            Last price of demand.
+            Last price of bid.
             </summary>
         </member>
         <member name="P:StockSharp.Algo.PnL.PnLQueue.AskPrice">
@@ -5392,6 +5397,29 @@
             Load settings.
             </summary>
             <param name="storage">Storage.</param>
+        </member>
+        <member name="T:StockSharp.Algo.SecurityAdapter">
+            <summary>
+            Security message adapter.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.SecurityAdapter.#ctor(StockSharp.Messages.IMessageAdapter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.Algo.SecurityAdapter"/>.
+            </summary>
+            <param name="innerAdapter">The adapter, to which messages will be directed.</param>
+        </member>
+        <member name="M:StockSharp.Algo.SecurityAdapter.OnInnerAdapterNewOutMessage(StockSharp.Messages.Message)">
+            <summary>
+            Process <see cref="P:StockSharp.Messages.MessageAdapterWrapper.InnerAdapter"/> output message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:StockSharp.Algo.SecurityAdapter.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.Algo.SecurityAdapter"/>.
+            </summary>
+            <returns>Copy.</returns>
         </member>
         <member name="T:StockSharp.Algo.SecurityTrie">
             <summary>
@@ -8303,6 +8331,16 @@
         <member name="E:StockSharp.Algo.Connector.OrdersCancelFailed">
             <summary>
             Order cancellation errors event.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Algo.Connector.MassOrderCanceled">
+            <summary>
+            Mass order cancellation event.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Algo.Connector.MassOrderCancelFailed">
+            <summary>
+            Mass order cancellation errors event.
             </summary>
         </member>
         <member name="E:StockSharp.Algo.Connector.StopOrdersRegisterFailed">
@@ -14684,7 +14722,7 @@
         </member>
         <member name="E:StockSharp.Algo.Strategies.Strategy.StopOrderRegisterFailed">
             <summary>
-            The event of stop-order successful registration.
+            The event of stop-order registration error.
             </summary>
         </member>
         <member name="E:StockSharp.Algo.Strategies.Strategy.OrderChanged">

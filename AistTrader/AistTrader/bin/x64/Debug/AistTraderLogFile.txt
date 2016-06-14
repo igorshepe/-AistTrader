@@ -16853,3 +16853,15 @@
 2016-06-08 15:14:28.1291|INFO|TradesLogger|ChStrategy 60_10_20_20: START
 2016-06-08 15:14:43.3716|INFO|AistTrader.MainWindow|Successfully added agent manager - "testP4"
 2016-06-08 15:14:45.8293|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-14 16:13:32.9508|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
+2016-06-14 16:17:06.7450|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-06-14 16:17:06.7450|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-06-14 16:17:08.4859|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-06-14 16:17:08.8381|INFO|AistTrader.MainWindow|Securities were loaded
+2016-06-14 16:17:09.3309|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-06-14 16:17:41.5352|INFO|AistTrader.MainWindow|Successfully added agent manager - "sssssssssssss"
+2016-06-14 16:17:41.5683|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-14 16:17:56.3213|INFO|TradesLogger|ChStrategy 60_10_20_20: START
+2016-06-14 16:23:35.5441|INFO|AistTrader.MainWindow|Agent manager item "sssssssssssss" has been deleted
+2016-06-14 16:23:35.5951|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-06-14 16:23:43.5066|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" has been deleted.  Strategies class name: ChStrategy 60_10_20_20.cs
