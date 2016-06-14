@@ -44,17 +44,14 @@ namespace Strategies.Strategies
         private bool _exitPosition;
         private bool _enterPosition;
         private Order _registeredOrder;
-        private string _nameGroup;
+
         public ChStrategy()
         {
-
+            
         }
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup)
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage)
         {
-
-
-            _nameGroup = nameGroup;
-
+            
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
@@ -144,15 +141,7 @@ namespace Strategies.Strategies
         }
 
 
-        public override string Name => (CheckNameGroup());
-
-        private string CheckNameGroup()
-        {
-            var nameStrategy = _nameGroup != "single" ? ($"[{_nameGroup}] {GetFriendlyName()}") : ($"{GetFriendlyName()}");
-
-            return nameStrategy;
-        }
-
+        public override string Name => GetFriendlyName();
 
         protected override void OnStarted()
         {
@@ -161,7 +150,7 @@ namespace Strategies.Strategies
             base.OnStarted();
 
 
-            TradesLogger.Info("{0}: START", Name);
+            TradesLogger.Info("{0}: START",  Name);
 
             // Получаем CandleManager 
             _candleManager = this.GetCandleManager();
@@ -296,7 +285,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                TradesLogger.Info("{0}: Erorr order {1}", Name, e.Source);
+                TradesLogger.Info("{0}: Erorr order {1}",Name, e.Source);
                 throw;
             }
 
@@ -330,7 +319,7 @@ namespace Strategies.Strategies
                 TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "{0}: Sell LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, asksList.First().Price, asksList.Last().Price, shrinkPrice);
             }
 
-            TradesLogger.Info(exit ? "{0}: Exit {1}, {2}" : "{0}: Enter {1}, {2}", Name, asksList[0], bidList[0]);
+           TradesLogger.Info(exit ? "{0}: Exit {1}, {2}" : "{0}: Enter {1}, {2}",Name, asksList[0], bidList[0]);
 
             return this.CreateOrder(side, bestprice);
         }
@@ -420,7 +409,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                TradesLogger.Info("{0}: Erorr check enter or exit position {1}", Name, e.Source);
+                TradesLogger.Info("{0}: Erorr check enter or exit position {1}",Name, e.Source);
                 throw;
             }
 
@@ -486,7 +475,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                TradesLogger.Info("{0}: Error get indicators value: {1}", Name, e.Source);
+                TradesLogger.Info("{0}: Error get indicators value: {1}",Name, e.Source);
                 throw;
             }
 

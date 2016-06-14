@@ -50,11 +50,11 @@ namespace Strategies.Common
             Strategy instance;
             if (settingsStorage != null)
             {
-                instance = (Strategy)Activator.CreateInstance(type, settingsStorage, "single");
+                instance = (Strategy)Activator.CreateInstance(type, settingsStorage);
             }
             else
             {
-                instance = (Strategy)Activator.CreateInstance(type, "single");
+                instance = (Strategy)Activator.CreateInstance(type);
             }
             return instance.Name;
         }
