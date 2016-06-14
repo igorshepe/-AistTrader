@@ -22,6 +22,7 @@ namespace Common.Entities
         public string Name { get; set; }
         public Connection Connection { get; set; }
         public string Code { get; set; }
+        [XmlIgnore]
         public StockSharp.BusinessEntities.Portfolio SelectedAccount { get; set; }
     }
 }

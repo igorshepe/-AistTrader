@@ -243,18 +243,10 @@ namespace AistTrader
             if ((bool) (sender as ToggleSwitchButton).IsChecked)
             {
                 //ON 
-
-
-
-
                 var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
 
-                //if (AgentManagerListView.SelectedItem== agentOrGroup)
-                //{
-                //    return;
-                //}
-
-
+                if (agentOrGroup.AgentManagerSettings.IsConnected)
+                    return;
                 agentOrGroup.AgentManagerSettings.Command = OperationCommand.Disconnect;
                 agentOrGroup.AgentManagerSettings.IsConnected = true;
                 StartAgentOrGroup(agentOrGroup);
@@ -263,6 +255,8 @@ namespace AistTrader
             {
                 //OFF
                 var item = (sender as FrameworkElement).DataContext as AgentManager;
+                if (!item.AgentManagerSettings.IsConnected)
+                    return;
                 var agentOrGroup = AgentManagerStorage.FirstOrDefault(i => i.Alias == item.Alias.ToString());
                 //отдельную логику под остановку групп
                 var groupElements = MainWindow.Instance.AgentsStorage.Select(i => i).Where(i => i.Params.GroupName == agentOrGroup.AgentManagerSettings.AgentOrGroup).ToList();

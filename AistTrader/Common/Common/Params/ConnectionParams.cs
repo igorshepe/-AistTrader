@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Xml.Serialization;
 using StockSharp.BusinessEntities;
 
 namespace Common.Params
@@ -43,8 +44,11 @@ namespace Common.Params
         public bool IsRegistredConnection { get; set; }
 
         //TODO: подключить с новыми исходниками
+        [XmlIgnore]
         public List<Security> Tools { get; set; }
+        [XmlIgnore]
         public List<Portfolio> Accounts { get; set; }
+        [XmlIgnore]
         public Portfolio SelectedAccount { get; set; }
         public ConnectionStatus ConnectionState { get; set; }
 

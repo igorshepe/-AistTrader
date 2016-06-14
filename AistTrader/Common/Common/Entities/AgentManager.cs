@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 using Common.Params;
 using StockSharp.BusinessEntities;
 
@@ -24,6 +25,7 @@ namespace Common.Entities
         public string AgentManagerUniqueId { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
+        [XmlIgnore]
         public StockSharp.BusinessEntities.Security Tool { get; set; }
         //todo по аналогии дописать конвертер как в группах агетов
         public string Amount { get; set; }

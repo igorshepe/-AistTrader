@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 using StockSharp.BusinessEntities;
 
 namespace Common.Params
@@ -20,6 +21,7 @@ namespace Common.Params
         public bool IsConnected { get; set; }
         public Common.Entities.Portfolio Portfolio { get; set; }
         public string AgentOrGroup { get; set; }
+        [XmlIgnore]
         public Security Tool { get; set; }
         public string Position { get; set; }
         public int Transaction { get; set; }
