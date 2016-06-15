@@ -1,2 +1,25 @@
 <?xml version="1.0"?>
-<ArrayOfConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<ArrayOfConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Connection>
+    <Id>aaaaaaaa</Id>
+    <DisplayName>aaaaaaaa</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>true</IsDefaulConnection>
+      <PlazaConnectionParams>
+        <Path>C:\SpectraCGate</Path>
+      </PlazaConnectionParams>
+      <Name>aaaaaaaa</Name>
+      <Code>aaaaaaaa</Code>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
+      <Funds>-1</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>-1</NetValue>
+      <VariationMargin>-1</VariationMargin>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <ConnectionState>Disconnected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+</ArrayOfConnection>
