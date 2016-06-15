@@ -44,14 +44,15 @@ namespace Strategies.Strategies
         private bool _exitPosition;
         private bool _enterPosition;
         private Order _registeredOrder;
+        private readonly string _nameGroup;
 
         public ChStrategy()
         {
             
         }
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage)
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup)
         {
-            
+            _nameGroup = nameGroup;
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
@@ -141,7 +142,14 @@ namespace Strategies.Strategies
         }
 
 
-        public override string Name => GetFriendlyName();
+        public override string Name => (CheckNameGroup());
+
+        private string CheckNameGroup()
+        {
+            var nameStrategy = _nameGroup != "single" ? ($"[{_nameGroup}] {GetFriendlyName()}") : ($"{GetFriendlyName()}");
+
+            return nameStrategy;
+        }
 
         protected override void OnStarted()
         {

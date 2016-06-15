@@ -319,10 +319,11 @@ namespace AistTrader
                     }
                     if (amount.Value.Type == UnitTypes.Absolute)
                         calculatedAmount = amount.Value.To<decimal>();
-                    
+
+                    string nameGroup = agentOrGroup.ToString();
 
                     strategy = new Strategy();
-                    strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage);
+                    strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, nameGroup);
                     strategy.DisposeOnStop = true;
                     strategy.Security = agentOrGroup.AgentManagerSettings.Tool;
 
@@ -391,7 +392,7 @@ namespace AistTrader
                     calculatedAmount = amount.Value.To<decimal>();
                 string nameGroup = agentOrGroup.ToString();
                 strategy = new Strategy();
-                strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting);
+                strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, "single");
                 strategy.DisposeOnStop = true;
                 strategy.Security = agentOrGroup.AgentManagerSettings.Tool;
                 strategy.Portfolio =
