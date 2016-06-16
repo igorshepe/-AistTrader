@@ -8,7 +8,7 @@ namespace Common.Params
     public class ManagerParams
     {
         public ManagerParams(){}
-        public ManagerParams(Common.Entities.Portfolio portfolio, string agent, Security security)
+        public ManagerParams(Common.Entities.Portfolio portfolio, string agent, string security)
         {
             Portfolio = portfolio;
             AgentOrGroup = agent;
@@ -21,8 +21,8 @@ namespace Common.Params
         public bool IsConnected { get; set; }
         public Common.Entities.Portfolio Portfolio { get; set; }
         public string AgentOrGroup { get; set; }
-        [XmlIgnore]
-        public Security Tool { get; set; }
+        //[XmlIgnore]
+        public string Tool { get; set; }
         public string Position { get; set; }
         public int Transaction { get; set; }
         public double FinalTransaction { get; set; }

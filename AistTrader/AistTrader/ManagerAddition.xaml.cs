@@ -19,6 +19,8 @@ namespace AistTrader
 {
     public partial class ManagerAddition : IDataErrorInfo
     {
+        private bool editMode;
+        private AgentManager agentManagerToEdit;
         private Dictionary<string, bool> validManagerProperties = new Dictionary<string, bool>();
         private string _selectedPortfolio;
         public string SelectedPortfolio
@@ -93,6 +95,8 @@ namespace AistTrader
         }
         private void InitFields(AgentManager agent)
         {
+            editMode = true;
+            agentManagerToEdit = agent;
             //SecurityPickerSS.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
             PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             _selectedPortfolio = agent.Name;
@@ -102,7 +106,7 @@ namespace AistTrader
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList.ToList();
             _selectedGroupOrSingleAgent = agent.AgentManagerSettings.AgentOrGroup;
-            SecurityPickerSS.SelectedSecurity = agent.Tool;
+            //SecurityPickerSS.SelectedSecurity = agent.Tool;
             _amount = agent.Amount.ToString();
         }
         private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
@@ -113,7 +117,15 @@ namespace AistTrader
                 return;
             }
             //временная проверка не через автовалидацию
-            if (AliasTxtBox.Text != "")
+            if (editMode)
+            {
+                agentManagerToEdit.Alias= AliasTxtBox.Text;
+                MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
+                agentManagerToEdit = null;
+                Close();
+                editMode = false;
+            }
+            else
             {
                 if (MainWindow.Instance.AgentManagerStorage.Any(i => i.Alias == AliasTxtBox.Text))
                 {
@@ -121,16 +133,17 @@ namespace AistTrader
                     return;
                 }
             }
+
             ManagerParams setting;
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == PortfolioComboBox.SelectedItem.ToString());
             var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
             if (agent == null)
             {
                 agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-                setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity);
+                setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity.Code);
             }
             else
-                setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity);
+                setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity.Code);
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text), EditIndex);
             SecurityPickerSS.SecurityProvider.Dispose();
             SecurityPickerSS.SecurityProvider = null;
@@ -158,7 +171,6 @@ namespace AistTrader
                 AliasTxtBox.Text = GroupOrSingleAgentComboBox.SelectedItem.ToString();
             }
         }
-
         private void PortfolioComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string selectedP = (string)PortfolioComboBox.SelectedItem;
@@ -218,7 +230,8 @@ namespace AistTrader
                     {
                         validManagerProperties.Remove("Amount");
                     }
-                    OkBtnClick.IsEnabled = validManagerProperties.Values.All(isValid => isValid);
+                    OkBtnClick.IsEnabled = true; /* validManagerProperties.Values.All(isValid => isValid)*/
+                    //todo: подключить после тестов;
                 }
                 if (validManagerProperties.Count == 3 & AmountTextBox.Visibility != Visibility.Collapsed)
                 {

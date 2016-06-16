@@ -17,6 +17,7 @@ using MahApps.Metro.Controls;
 using NLog;
 using StockSharp.Algo.Candles;
 using StockSharp.Algo.Strategies;
+using StockSharp.BusinessEntities;
 using StockSharp.Logging;
 using StockSharp.Messages;
 using StockSharp.Plaza;
@@ -24,6 +25,7 @@ using StockSharp.Xaml;
 using Strategies.Common;
 using Strategies.Strategies;
 using LogManager = StockSharp.Logging.LogManager;
+using Portfolio = Common.Entities.Portfolio;
 
 namespace AistTrader
 {
@@ -47,17 +49,21 @@ namespace AistTrader
         {
             foreach (var item in AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList())
             {
-                try
+                MessageBoxResult resultMsg = MessageBox.Show("Selected agent/group will be permanently deleted! Confirm?", "Delete agent/group", MessageBoxButton.YesNo);
+                if (resultMsg == MessageBoxResult.Yes)
                 {
-                    AgentManagerStorage.Remove(item);
-                    Logger.Info("Agent manager item \"{0}\" has been deleted", item.Name);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Log(LogLevel.Error, ex.Message);
+                    try
+                    {
+                        AgentManagerStorage.Remove(item);
+                        Logger.Info("Agent manager item \"{0}\" has been deleted", item.Name);
+                        SaveAgentManagerSettings();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Log(LogLevel.Error, ex.Message);
+                    }
                 }
             }
-            SaveAgentManagerSettings();
         }
 
         private void InitiateAgentManagerSettings()
@@ -307,7 +313,14 @@ namespace AistTrader
                         var data =
                             MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
                                 i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
-                        var secMargSell = data.Securities.FirstOrDefault(i => i.Name == agentOrGroup.Tool.Name).MarginSell;
+
+
+
+                        var secG = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
+
+
+
+                        var secMargSell = data.Securities.FirstOrDefault(i => i.Name == /*agentOrGroup.Tool.Name*/secG.Code).MarginSell;
                         var currValue =
                             data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code)
                                 .CurrentValue;
@@ -325,7 +338,13 @@ namespace AistTrader
                     strategy = new Strategy();
                     strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, nameGroup);
                     strategy.DisposeOnStop = true;
-                    strategy.Security = agentOrGroup.AgentManagerSettings.Tool;
+
+
+                    //тест
+                    var secutityG = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.AgentManagerSettings.Tool);
+
+
+                    strategy.Security = secutityG;
 
                     strategy.Portfolio =realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
                     strategy.Connector = realConnection;
@@ -378,7 +397,12 @@ namespace AistTrader
                     var data =
                         MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
                             i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
-                    var secMargSell = data.Securities.FirstOrDefault(i => i.Name == agentOrGroup.Tool.Name).MarginSell;
+
+
+
+                    var secS = realConnection.Securities.FirstOrDefault(i => i.Name == agentOrGroup.Tool);
+
+                    var secMargSell = data.Securities.FirstOrDefault(i => i.Name == secS.Name).MarginSell;
                     var currValue =
                         data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code)
                             .CurrentValue;
@@ -394,7 +418,8 @@ namespace AistTrader
                 strategy = new Strategy();
                 strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, "single");
                 strategy.DisposeOnStop = true;
-                strategy.Security = agentOrGroup.AgentManagerSettings.Tool;
+                var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
+                strategy.Security = /*agentOrGroup.AgentManagerSettings.Tool*/convertedSecurity;
                 strategy.Portfolio =
                     realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
                 strategy.Connector = realConnection;

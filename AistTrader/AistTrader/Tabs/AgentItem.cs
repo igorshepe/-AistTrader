@@ -100,7 +100,7 @@ namespace AistTrader
             }
         }
         public void DeleteAgentBtnClick(object sender, RoutedEventArgs e)
-        {
+         {
             if (AllAgentsChecked)
             {
                 MessageBoxResult result = MessageBox.Show("Будут удалены все агенты! Подтвердить?", "Удаление всех агентов", MessageBoxButton.YesNo);
@@ -166,16 +166,22 @@ namespace AistTrader
                         {
                             foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
                             {
-                                try
-                                {
-                                    AgentsStorage.Remove(item);
-                                    Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name);
 
-                                }
-                                catch (Exception ex)
+                                MessageBoxResult resultMsg = MessageBox.Show("Selected agent will be permanently deleted! Confirm?", "Delete agent", MessageBoxButton.YesNo);
+                                if (resultMsg == MessageBoxResult.Yes)
                                 {
-                                    Logger.Log(LogLevel.Error, ex.Message);
+                                    try
+                                    {
+                                        AgentsStorage.Remove(item);
+                                        Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name);
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Logger.Log(LogLevel.Error, ex.Message);
+                                    }
                                 }
+
                             }
                             SaveAgentSettings();
                         }

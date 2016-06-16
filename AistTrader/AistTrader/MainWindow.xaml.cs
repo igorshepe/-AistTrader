@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -72,6 +73,9 @@ namespace AistTrader
 
         public MainWindow()
         {
+            String name = Process.GetCurrentProcess().ProcessName;
+            if (Process.GetProcesses().Count(p => p.ProcessName == name) > 1)
+                Application.Current.Shutdown();
             Instance = this;
             ConnectionManager = new AistTraderConnnectionManager();
             AgentConnnectionManager = new AistTraderStrategiesConnnectionManager();

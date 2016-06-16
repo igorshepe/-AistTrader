@@ -9,7 +9,7 @@ namespace Common.Entities
     public class AgentManager
     {
         AgentManager() { }
-        public AgentManager(string name, ManagerParams agentManager, Security tool, string amount, string alias)
+        public AgentManager(string name, ManagerParams agentManager, string tool, string amount, string alias)
         {
             AgentManagerUniqueId = alias;
             Name = name;
@@ -25,8 +25,8 @@ namespace Common.Entities
         public string AgentManagerUniqueId { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
-        [XmlIgnore]
-        public StockSharp.BusinessEntities.Security Tool { get; set; }
+        //[XmlIgnore]
+        public string Tool { get; set; }
         //todo по аналогии дописать конвертер как в группах агетов
         public string Amount { get; set; }
         public ManagerParams AgentManagerSettings { get; set; }
