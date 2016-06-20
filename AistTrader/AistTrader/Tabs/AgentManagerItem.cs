@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -55,12 +56,12 @@ namespace AistTrader
                     try
                     {
                         AgentManagerStorage.Remove(item);
-                        Logger.Info("Agent manager item \"{0}\" has been deleted", item.Name);
+                        Task.Run(() => Logger.Info("Agent manager item \"{0}\" has been deleted", item.Name));
                         SaveAgentManagerSettings();
                     }
                     catch (Exception ex)
                     {
-                        Logger.Log(LogLevel.Error, ex.Message);
+                        Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
                     }
                 }
             }
@@ -95,8 +96,8 @@ namespace AistTrader
             {
                 IsAgentSettingsLoaded = false;
                 sr.Close();
-                Logger.Log(LogLevel.Error, e.Message);
-                Logger.Log(LogLevel.Error, e.InnerException.Message);
+                Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
                 if (e.InnerException.Message == "Root element is missing.")
                     IsAgentManagerSettingsLoaded = false;
             }
@@ -125,11 +126,11 @@ namespace AistTrader
                 try
                 {
                     AgentManagerStorage.Add(settings);
-                    Logger.Info("Successfully added agent manager - \"{0}\"", settings.Name);
+                    Task.Run(() => Logger.Info("Successfully added agent manager - \"{0}\"", settings.Name));
                 }
                 catch (Exception)
                 {
-                    Logger.Info("Error adding agent - {0}", settings.Name);
+                    Task.Run(() => Logger.Info("Error adding agent - {0}", settings.Name));
                 }
             SaveAgentManagerSettings();
             UpdateAgentManagerListView();
@@ -169,11 +170,11 @@ namespace AistTrader
                     xmlSerializer.Serialize(fStream, obj);
                     fStream.Close();
                 }
-                Logger.Info("Successfully saved manager agent Items");
+                Task.Run(() => Logger.Info("Successfully saved manager agent Items"));
             }
             catch (Exception ex)
             {
-                Logger.Log(LogLevel.Error, ex.Message);
+                Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             }
         }
 

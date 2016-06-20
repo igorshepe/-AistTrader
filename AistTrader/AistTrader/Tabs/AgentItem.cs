@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -96,7 +97,7 @@ namespace AistTrader
             }
             catch (Exception ex)
             {
-                Logger.Log(LogLevel.Error, ex.Message);
+                Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             }
         }
         public void DeleteAgentBtnClick(object sender, RoutedEventArgs e)
@@ -109,7 +110,7 @@ namespace AistTrader
                     var delList = AgentListView.Items.Cast<Agent>().Select(r => r).ToList();
                     foreach (var i in delList)
                         AgentsStorage.Remove(i);
-                    Logger.Info("All agents have been deleted.");
+                    Task.Run(() => Logger.Info("All agents have been deleted.")); 
                     SaveAgentSettings();
                     AllAgentsChecked = false;
                 }
@@ -139,11 +140,11 @@ namespace AistTrader
                             try
                             {
                                 AgentsStorage.Remove(item);
-                                Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name);
+                                Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
                             }
                             catch (Exception ex)
                             {
-                                Logger.Log(LogLevel.Error, ex.Message);
+                                Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
                             }
                         }
                         SaveAgentSettings();
@@ -173,12 +174,12 @@ namespace AistTrader
                                     try
                                     {
                                         AgentsStorage.Remove(item);
-                                        Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name);
+                                        Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
 
                                     }
                                     catch (Exception ex)
                                     {
-                                        Logger.Log(LogLevel.Error, ex.Message);
+                                        Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
                                     }
                                 }
 
@@ -264,11 +265,11 @@ namespace AistTrader
                 try
                 {
                     AgentsStorage.Add(agent);
-                    Logger.Info("Successfully added agent - \"{0}\"", agent.Params.FriendlyName);
+                    Task.Run(() => Logger.Info("Successfully added agent - \"{0}\"", agent.Params.FriendlyName));
                 }
                 catch (Exception)
                 {
-                    Logger.Info("Error adding agent - \"{0}\"", agent.Params.FriendlyName);
+                    Task.Run(() => Logger.Info("Error adding agent - \"{0}\"", agent.Params.FriendlyName));
                 }
             SaveAgentSettings();
             UpdateAgentListView();
@@ -305,8 +306,8 @@ namespace AistTrader
             {
                 IsAgentSettingsLoaded = false;
                 sr.Close();
-                Logger.Log(LogLevel.Error, e.Message);
-                Logger.Log(LogLevel.Error, e.InnerException.Message);
+                Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
                 if (e.InnerException.Message == "Root element is missing.")
                     IsAgentSettingsLoaded = false;
             }

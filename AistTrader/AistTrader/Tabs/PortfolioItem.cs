@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -60,8 +61,8 @@ namespace AistTrader //todo: идентификаторы портфеля то�
             {
                 IsPortfolioSettingsLoaded = false;
                 sr.Close();
-                Logger.Log(LogLevel.Error, e.Message);
-                Logger.Log(LogLevel.Error, e.InnerException.Message);
+                Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
                 if (e.InnerException.Message == "Root element is missing.")
                     File.WriteAllText("Portfolios.xml", string.Empty);
             }
