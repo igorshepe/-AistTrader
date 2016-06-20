@@ -139,7 +139,7 @@ namespace AistTrader
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
             AgentManagerCollectionView =(CollectionView) CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-           // AgentManagerCollectionView.Refresh();
+            AgentManagerCollectionView.Refresh();
 
 
             //if (AgentManagerCollectionView.GroupDescriptions != null && AgentManagerCollectionView.GroupDescriptions.Count == 0)
@@ -253,6 +253,18 @@ namespace AistTrader
 
                 if (agentOrGroup.AgentManagerSettings.IsConnected)
                     return;
+                var isActiveConnection= ActiveConnectionCheck(agentOrGroup);
+
+                //начало логики активации контрола из менеджера агентов
+                if (!isActiveConnection)
+                {
+                    MessageBox.Show("Related connections is not active, can't start with no active connection.");
+                    
+                    var item = AgentManagerCollectionView.Cast<AgentManager>().FirstOrDefault(i => i.Alias == agentOrGroup.Alias);
+                    item.AgentManagerSettings.IsConnected = false;
+                    UpdateAgentManagerListView();
+                    return;
+                }
                 agentOrGroup.AgentManagerSettings.Command = OperationCommand.Disconnect;
                 agentOrGroup.AgentManagerSettings.IsConnected = true;
                 StartAgentOrGroup(agentOrGroup);
@@ -286,6 +298,18 @@ namespace AistTrader
                     item.AgentManagerSettings.IsConnected = false;
                 }
             }
+        }
+
+        private bool ActiveConnectionCheck(AgentManager agentOrGroupName)
+        {
+            var connectionName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentOrGroupName.AgentManagerSettings.Portfolio.Name);
+            var realConnection = ConnectionManager.Connections.Find(i => { return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName; });
+            if (realConnection.IsNull() || realConnection.ConnectionState != ConnectionStates.Connected)
+            {
+                return false ;
+            }
+            else
+                return true;
         }
 
         public void StartAgentOrGroup(AgentManager agentOrGroup)
