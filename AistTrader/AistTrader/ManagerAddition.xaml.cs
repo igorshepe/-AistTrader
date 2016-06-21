@@ -251,7 +251,7 @@ namespace AistTrader
         private string ValidatePortfolio()
         {
             if (String.IsNullOrEmpty(Portfolio))
-                return "Не выбран портфель";
+                return "Select a portfolio";
             return String.Empty;
         }
         private string ValidateAgentOrGroup()
@@ -259,14 +259,14 @@ namespace AistTrader
             //TODO: уточнить как обрабатывать уже добавленные агенты и группы агентов
 
             if (String.IsNullOrEmpty(GroupOrSingleAgent))
-                return "Не выбран агент или группа агентов";
+                return "Select an agent or a group of agents";
             return String.Empty;
         }
         private string ValidateTools()
         {
             if (SecurityPickerSS.SelectedSecurity == null)
             {
-                return "Не выбран инструмент";
+                return "Select a security";
             }
             return String.Empty;
         }
@@ -279,7 +279,7 @@ namespace AistTrader
                 if (!regex.IsMatch(line.First()))
                 {
                     Amount= "";
-                    return "Возможен ввод только цифр или цифры со знаком % на конце";
+                    return "Digits only or digits with - '%' sign at the end allowed";
                 }
             }
             if (Amount != null && !Amount.EndsWith("%"))
@@ -287,13 +287,13 @@ namespace AistTrader
                 if (!regex.IsMatch(Amount))
                 {
                     Amount = "";
-                    return "Возможен ввод только цифр или цифры со знаком % на конце";
+                    return "Digits only or digits with - '%' sign at the end allowed";
                 }
             }
             //TODO: добавить обработку на знаки, которые не допустимы в данном поле
             //так же обработка случая, когда форма скрыта
             if (String.IsNullOrEmpty(Amount))
-                return "Не указан объем";
+                return "Set an amount";
             return String.Empty;
         }
         public string Error { get; private set; }

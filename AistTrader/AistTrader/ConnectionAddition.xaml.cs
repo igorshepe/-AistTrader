@@ -191,20 +191,20 @@ namespace AistTrader
         private string ValidateName()
         {
             if (String.IsNullOrEmpty(this.ConnectionName))
-                return "Задайте имя";
+                return "Enter name";
             else if (this.ConnectionName.Length < 5)
-                return "Имя должно содержать не меньше 5 символов.";
+                return "Name should be 5 or more simbols long.";
             else if (NameAlredyInUse)
-                return "Данное имя уже используется";
+                return "This name already in use";
             else
                 return String.Empty;
         }
         private string ValidateCode()
         {
             if (String.IsNullOrEmpty(this.Code))
-                return "Задайте код";
+                return "Enter code";
             else if (this.Code.Length < 2)
-                return "Код должен содержать не меньше 2х символов";
+                return "Code should be 2 or more simbols long";
             else
                 return String.Empty;
         }
@@ -220,13 +220,13 @@ namespace AistTrader
         {
             if (AllPlazaDirectoriesComboBox.SelectedItem == null)
             {
-                return "Не выбран путь к роутеру";
+                return "Select path to router";
             }
             if (AllPlazaDirectoriesComboBox != null)
             {
                 if (!File.Exists(AllPlazaDirectoriesComboBox.SelectedItem + @"\client_router.ini"))
                 {
-                    return  string.Format("В выбранной дериктории нет ini файла: {0}".Put(AllPlazaDirectoriesComboBox.SelectedItem)) ;
+                    return  string.Format("Selected path does not contain an ini fail: {0}".Put(AllPlazaDirectoriesComboBox.SelectedItem)) ;
                 }    
             }
             if (AllPlazaDirectoriesComboBox.ItemsSource != null)
@@ -236,7 +236,7 @@ namespace AistTrader
                     var item = MainWindow.Instance.ConnectionsStorage.Any(i => i.ConnectionParams.PlazaConnectionParams.Path == AllPlazaDirectoriesComboBox.SelectedItem);
                     if (item)
                     {
-                        return "Выбранный роутер уже используется!";
+                        return "Selected router already in use!";
                     }
                 }
 

@@ -112,7 +112,7 @@ namespace AistTrader
                 where index != -1
                 select new ManagerAddition(agentConfigs, index))
             {
-                addQuikWindow.Title = "Редактирование конфигурации";
+                addQuikWindow.Title = "Aist Trader - Edit Configuration";
                 addQuikWindow.ShowDialog();
                 //SaveSettings();
             }

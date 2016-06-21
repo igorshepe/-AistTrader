@@ -115,7 +115,7 @@ namespace AistTrader
                 {
                     if (PortfolioListView.Items.Cast<Common.Entities.Portfolio>().Any(i => i.Connection.DisplayName == item.DisplayName))
                     {
-                        MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
+                        MessageBox.Show(this, @"Can not be deleted, used in portfolio!");
                         return;
                     }
 
@@ -149,7 +149,7 @@ namespace AistTrader
             {
 
                 //todo: заменить на неактивную кнопку редактирования, убрать предупреждения
-                MessageBox.Show(this, @"Активное соединение, редактирование невозможно!");
+                MessageBox.Show(this, @"Active connection can not be edited!");
                 return;
             }
             //TODO: переделать
@@ -158,7 +158,7 @@ namespace AistTrader
                                                  where index != -1
                                                  select new ConnectionAddition(agentSettings, index))
             {
-                connectionEditWindow.Title = "Аист Трейдер - Редактировать подключение";
+                connectionEditWindow.Title = "Aist Trader - Edit connection";
                 connectionEditWindow.ShowDialog();
                 connectionEditWindow.Close();
             }

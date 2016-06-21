@@ -104,7 +104,7 @@ namespace AistTrader
          {
             if (AllAgentsChecked)
             {
-                MessageBoxResult result = MessageBox.Show("Будут удалены все агенты! Подтвердить?", "Удаление всех агентов", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("All agents will be deleted! Confirm?", "Delete all agents", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     var delList = AgentListView.Items.Cast<Agent>().Select(r => r).ToList();
@@ -155,13 +155,13 @@ namespace AistTrader
                         var isUsedinAnyOtherGroup = result.Where(a => a.Name == agent.Name && a.Params.GroupName != "ungrouped agents").Select(a => a).Any();
                         if (isUsedinAnyOtherGroup)
                         {
-                            MessageBox.Show("Нельзя удалить, используется в группе");
+                            MessageBox.Show("Can not be deleted, used in a group");
                         }
                         var agentItem = AgentListView.SelectedItem as Agent;
                         var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString());
                         if (isUsedInAgentManager)
                         {
-                            MessageBox.Show("Нельзя удалить, используется в менеджере агентов");
+                            MessageBox.Show("Can not be deleted, used in agent manager");
                         }
                         else
                         {
@@ -221,14 +221,14 @@ namespace AistTrader
                                               where index != -1
                                               select new AgentAddition(agentConfigs, index))
                 {
-                    addQuikWindow.Title = "Редактирование конфигурации";
+                    addQuikWindow.Title = "Edit configuration";
                     addQuikWindow.ShowDialog();
                     SaveAgentSettings();
                 }
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("Данная конфигурация находися в группе, редактировать всю группу?", "Редактирование", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("This configuration is in a group,edit the whole group?", "Group Edit", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     var listToEdit = AgentListView.SelectedItems.Cast<Agent>().ToList();
@@ -237,7 +237,7 @@ namespace AistTrader
                                                   where index != -1
                                                   select new GroupAddition(agentConfigs, index, AgentWorkMode.Group))
                     {
-                        addQuikWindow.Title = "Редактирование конфигурации";
+                        addQuikWindow.Title = "Edit configuration";
                         addQuikWindow.ShowDialog();
                         SaveAgentSettings();
                     }
@@ -250,7 +250,7 @@ namespace AistTrader
                                                   where index != -1
                                                   select new GroupAddition(agentConfigs, index, AgentWorkMode.Single))
                     {
-                        addQuikWindow.Title = "Редактирование конфигурации";
+                        addQuikWindow.Title = "Edit configuration";
                         addQuikWindow.ShowDialog();
                         SaveAgentSettings();
                     }

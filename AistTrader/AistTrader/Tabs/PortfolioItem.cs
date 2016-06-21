@@ -83,7 +83,7 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                                                  where index != -1
                                                  select new PortfolioAddition(agentSettings, index))
             {
-                portfolioEditkWindow.Title = "Аист Трейдер - Редактировать портфель";
+                portfolioEditkWindow.Title = "Aist Trader - Edit Portfolio";
                 portfolioEditkWindow.ShowDialog();
                 portfolioEditkWindow.Close();
             }
@@ -97,7 +97,7 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                 return selectedPortfolio != null && i.AgentManagerSettings.Portfolio.Name == selectedPortfolio.Name;
             }))
             {
-                MessageBox.Show(this, @"На данном портфеле завязан агент в менеджере агентов, удаление невозможно!");
+                MessageBox.Show(this, @"Used in agent manager, can not be deleted!");
                 return;
             }
 
