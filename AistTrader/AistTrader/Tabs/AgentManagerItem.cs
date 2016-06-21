@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -55,12 +56,12 @@ namespace AistTrader
                     try
                     {
                         AgentManagerStorage.Remove(item);
-                        Logger.Info("Agent manager item \"{0}\" has been deleted", item.Name);
+                        Task.Run(() => Logger.Info("Agent manager item \"{0}\" has been deleted", item.Name));
                         SaveAgentManagerSettings();
                     }
                     catch (Exception ex)
                     {
-                        Logger.Log(LogLevel.Error, ex.Message);
+                        Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
                     }
                 }
             }
@@ -95,8 +96,8 @@ namespace AistTrader
             {
                 IsAgentSettingsLoaded = false;
                 sr.Close();
-                Logger.Log(LogLevel.Error, e.Message);
-                Logger.Log(LogLevel.Error, e.InnerException.Message);
+                Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
                 if (e.InnerException.Message == "Root element is missing.")
                     IsAgentManagerSettingsLoaded = false;
             }
@@ -125,11 +126,11 @@ namespace AistTrader
                 try
                 {
                     AgentManagerStorage.Add(settings);
-                    Logger.Info("Successfully added agent manager - \"{0}\"", settings.Name);
+                    Task.Run(() => Logger.Info("Successfully added agent manager - \"{0}\"", settings.Name));
                 }
                 catch (Exception)
                 {
-                    Logger.Info("Error adding agent - {0}", settings.Name);
+                    Task.Run(() => Logger.Info("Error adding agent - {0}", settings.Name));
                 }
             SaveAgentManagerSettings();
             UpdateAgentManagerListView();
@@ -139,7 +140,7 @@ namespace AistTrader
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
             AgentManagerCollectionView =(CollectionView) CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-           // AgentManagerCollectionView.Refresh();
+            AgentManagerCollectionView.Refresh();
 
 
             //if (AgentManagerCollectionView.GroupDescriptions != null && AgentManagerCollectionView.GroupDescriptions.Count == 0)
@@ -169,11 +170,11 @@ namespace AistTrader
                     xmlSerializer.Serialize(fStream, obj);
                     fStream.Close();
                 }
-                Logger.Info("Successfully saved manager agent Items");
+                Task.Run(() => Logger.Info("Successfully saved manager agent Items"));
             }
             catch (Exception ex)
             {
-                Logger.Log(LogLevel.Error, ex.Message);
+                Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             }
         }
 
@@ -253,6 +254,18 @@ namespace AistTrader
 
                 if (agentOrGroup.AgentManagerSettings.IsConnected)
                     return;
+                var isActiveConnection= ActiveConnectionCheck(agentOrGroup);
+
+                //начало логики активации контрола из менеджера агентов
+                if (!isActiveConnection)
+                {
+                    MessageBox.Show("Related connections is not active, can't start with no active connection.");
+                    
+                    var item = AgentManagerCollectionView.Cast<AgentManager>().FirstOrDefault(i => i.Alias == agentOrGroup.Alias);
+                    item.AgentManagerSettings.IsConnected = false;
+                    UpdateAgentManagerListView();
+                    return;
+                }
                 agentOrGroup.AgentManagerSettings.Command = OperationCommand.Disconnect;
                 agentOrGroup.AgentManagerSettings.IsConnected = true;
                 StartAgentOrGroup(agentOrGroup);
@@ -286,6 +299,18 @@ namespace AistTrader
                     item.AgentManagerSettings.IsConnected = false;
                 }
             }
+        }
+
+        private bool ActiveConnectionCheck(AgentManager agentOrGroupName)
+        {
+            var connectionName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentOrGroupName.AgentManagerSettings.Portfolio.Name);
+            var realConnection = ConnectionManager.Connections.Find(i => { return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName; });
+            if (realConnection.IsNull() || realConnection.ConnectionState != ConnectionStates.Connected)
+            {
+                return false ;
+            }
+            else
+                return true;
         }
 
         public void StartAgentOrGroup(AgentManager agentOrGroup)

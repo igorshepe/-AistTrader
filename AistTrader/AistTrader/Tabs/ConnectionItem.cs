@@ -72,8 +72,8 @@ namespace AistTrader
             {
                 IsProviderSettingsLoaded = false;
                 sr.Close();
-                Logger.Log(LogLevel.Error, e.Message);
-                Logger.Log(LogLevel.Error, e.InnerException.Message);
+                Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
                 if (e.InnerException.Message == "Root element is missing.")
                     File.WriteAllText("Connections.xml", string.Empty);
             }
@@ -243,14 +243,14 @@ namespace AistTrader
             {
                 try
                 {
-                    Logger.Info("Trying to get the ip,port of plaza connection -\"{0}\"...", conn.DisplayName.ToString());
+                    Task.Run(() => Logger.Info("Trying to get the ip,port of plaza connection -\"{0}\"...", conn.DisplayName.ToString()));
                     ipEndPoint = GetPlazaConnectionIpPort(conn.ConnectionParams.PlazaConnectionParams.Path);
-                    Logger.Info("IP and port of -\"{0}\" connection were successfully acquired", conn.DisplayName.ToString());
+                    Task.Run(() => Logger.Info("IP and port of -\"{0}\" connection were successfully acquired", conn.DisplayName.ToString()));
                 }
                 catch (Exception e)
                 {
-                    Logger.Log(LogLevel.Error, e.Message);
-                    Logger.Log(LogLevel.Error, e.InnerException.Message);
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
 
                     return;
 
@@ -304,7 +304,7 @@ namespace AistTrader
                     if (conn.ConnectionParams.Tools.Count > 10 && !sLoaded)
                     {
                         sLoaded = true;
-                        Logger.Info("Securities were loaded");
+                        Task.Run(() => Logger.Info("Securities were loaded"));
                     }
                 });
                 this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
@@ -475,7 +475,7 @@ namespace AistTrader
             var item = ProviderListView.SelectedItem as Connection;
             item.ConnectionParams.IsDefaulConnection = true;
             DefaultConnectionStatusBarText = "Default: " + item.DisplayName;
-            Logger.Info("Connection - \"{0}\" is set to be default connection", item.DisplayName);
+            Task.Run(() => Logger.Info("Connection - \"{0}\" is set to be default connection", item.DisplayName));
             if (item.ConnectionParams.IsConnected)
                 Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Connected.ToString();
             else
