@@ -374,6 +374,9 @@ namespace AistTrader
             var gridItems = DynamicGrid.Children.Cast<UIElement>().Where(i => Grid.GetRow(i) == 0);
             foreach (var i in gridItems)
             {
+                var test = (UIElement)i;
+
+               
                 if (DynamicGrid.Children.OfType<ComboBox>().Any(cb => cb.SelectedIndex == -1))
                 {
                     MessageBox.Show("Scrtipt is not set");
@@ -390,7 +393,19 @@ namespace AistTrader
                     return;
                 }
             }
+
+            //todo: поменять логику, просто удалять то что нельзя вводить
             var unitItems = DynamicGrid.Children.OfType<UnitEditor>().Select(i => i).ToList();
+            if (!IsEditMode && WorkMode== AgentWorkMode.Single && unitItems.Count==1)
+            {
+                MessageBox.Show("Group can not be composed with 1 script");
+                return;
+            }
+            if (IsEditMode && WorkMode == AgentWorkMode.Group && unitItems.Count == 1)
+            {
+                MessageBox.Show("Group can not be composed with 1 script");
+                return;
+            }
             foreach (var i in unitItems)
             {
                 try
@@ -404,64 +419,237 @@ namespace AistTrader
                 }
             }
 
-            if (WorkMode == AgentWorkMode.Group)
-            {
-                foreach (var item in MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName/*GroupNameTxtBox.Text*/).ToList())
-                {
-                    MainWindow.Instance.DelAgentConfigBtnClick(item);
-                }
-                foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
-                {
-                    string cbID = cb.Name.Split('_').Last();
-                    if (cbID != "")
-                        foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
-                        {
 
-                            var amount = ue.Text;
-                            string algorithmName = cb.Text;
-                            var groupName = GroupNameTxtBox.Text;
-                            List<Agent> list = new List<Agent>();
-                            foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents"))
+
+            if (IsEditMode)
+             {
+                if (WorkMode == AgentWorkMode.Group)
+                {
+                    //проверка на смену агентов в группе.
+                    //если добавлены новые
+                    //если не добавлены, только смена параметров
+                    //var IsNewInGroup = 
+
+
+                    //то что есть
+                    var oldItems =MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName).ToList();
+                    List<Agent> newMembersOfCurrentGroup = new List<Agent>();
+
+                    foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
+                    {
+                        string cbID = cb.Name.Split('_').Last();
+                        if (cbID != "")
+                            foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
-                                var newAgent = (Agent)rs.Clone();
-                                newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
-                                newAgent.Params.Amount = amount;
-                                newAgent.Params.GroupName = groupName;
-                                newAgent.Params.ToolTipName = rs.Params.ToolTipName;
-                                list.Add(newAgent);
-                                //MainWindow.Instance.AddNewAgent(newAgent, -1);
+                                var newItems = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)).ToList();
+                                var amount = ue.Text;
+                                string algorithmName = cb.Text;
+                                var groupName = GroupNameTxtBox.Text;
+                                var isInCollection = oldItems.Any(i => i.Name == algorithmName);
+
+                                if (oldItems.Any(i => i.Name == algorithmName))
+                                {
+                                    //edit
+                                    var item = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name== algorithmName &&  i.Params.GroupName == OldGroupName);
+                                    item.Params.PhantomParams.AgentName = item.Name;
+                                    item.Params.PhantomParams.Amount = item.Params.Amount;
+                                    item.Params.PhantomParams.GroupName = item.Params.GroupName;
+
+                                    item.Params.Amount = amount;
+                                    item.Params.GroupName = groupName;
+                                    var index = MainWindow.Instance.AgentsStorage.IndexOf(item);
+                                    MainWindow.Instance.AddNewAgentInGroup(item, index, false);
+                                    newMembersOfCurrentGroup.Add(item);
+                                }
+                                else
+                                {
+                                    //add
+                                    List<Agent> list = new List<Agent>();
+                                    foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents"))
+                                    {
+                                        var newAgent = (Agent)rs.Clone();
+                                        newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
+                                        newAgent.Params.Amount = amount;
+                                        newAgent.Params.GroupName = groupName;
+                                        newAgent.Params.ToolTipName = rs.Params.ToolTipName;
+                                        list.Add(newAgent);
+                                    }
+                                    foreach (var i in list)
+                                    {
+                                        MainWindow.Instance.AddNewAgentInGroup(i, -1, true);
+                                        newMembersOfCurrentGroup.Add(i);
+                                    }
+
+
+                                    //foreach (var item in MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName).ToList())
+                                    //{
+                                    //    MainWindow.Instance.DelAgentConfigBtnClick(item);
+                                    //}
+
+                                }
+
+
+                                
+
+
+
+
+                                //List<Agent> list = new List<Agent>();
+                                //foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents"))
+                                //{
+                                //    var newAgent = (Agent)rs.Clone();
+                                //    newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
+                                //    newAgent.Params.Amount = amount;
+                                //    newAgent.Params.GroupName = groupName;
+                                //    newAgent.Params.ToolTipName = rs.Params.ToolTipName;
+                                //    list.Add(newAgent);
+                                //    var index = MainWindow.Instance.AgentsStorage.IndexOf(rs);
+                                //    //MainWindow.Instance.AddNewAgent(newAgent, -1);
+                                //}
+                                //foreach (var i in list)
+                                //{
+                                //    MainWindow.Instance.AddNewAgentInGroup(i, -1, groupName);
+                                //}
                             }
-                            foreach (var i in list)
-                            {
-                                MainWindow.Instance.AddNewAgent(i, -1);
-                            }
-                        }
+
+                    }
+                    foreach (var oldItem in oldItems)
+                    {
+                        var IsItemToDelete = newMembersOfCurrentGroup.All(i => i != oldItem);
+                        if (IsItemToDelete)
+                            MainWindow.Instance.DelAgentConfigBtnClick(oldItem);
+
+                    }
+                    //foreach (var item in MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName/*GroupNameTxtBox.Text*/).ToList())
+                    //{
+
+                    //    MainWindow.Instance.DelAgentConfigBtnClick(item);
+                    //}
+                    //foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
+                    //{
+                    //    string cbID = cb.Name.Split('_').Last();
+                    //    if (cbID != "")
+                    //        foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
+                    //        {
+                    //            var amount = ue.Text;
+                    //            string algorithmName = cb.Text;
+                    //            var groupName = GroupNameTxtBox.Text;
+                    //            List<Agent> list = new List<Agent>();
+                    //            foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents"))
+                    //            {
+                    //                var newAgent = (Agent)rs.Clone();
+                    //                newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
+                    //                newAgent.Params.Amount = amount;
+                    //                newAgent.Params.GroupName = groupName;
+                    //                newAgent.Params.ToolTipName = rs.Params.ToolTipName;
+                    //                list.Add(newAgent);
+                    //                var index = MainWindow.Instance.AgentsStorage.IndexOf(rs);
+                    //                //MainWindow.Instance.AddNewAgent(newAgent, -1);
+                    //            }
+                    //            foreach (var i in list)
+                    //            {
+                    //                MainWindow.Instance.AddNewAgentInGroup(i, -1, groupName);
+                    //            }
+                    //        }
+                    //}
                 }
+                else
+                {
+                    foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
+                    {
+                        string cbID = cb.Name.Split('_').Last();
+                        if (cbID != "")
+                            foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
+                            {
+                                var amount = ue.Text;
+                                string algorithmName = cb.Text;
+                                var groupName = GroupNameTxtBox.Text;
+                                var items = MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == groupName).ToList();
+                               
+
+
+                                int itemIndex = -1;
+                                foreach (var i in items)
+                                    itemIndex = MainWindow.Instance.AgentsStorage.IndexOf(i);
+                                var itemToEdit = MainWindow.Instance.AgentsStorage[itemIndex];
+
+                                itemToEdit.Params.PhantomParams.AgentName = itemToEdit.Name;
+                                itemToEdit.Params.PhantomParams.Amount = itemToEdit.Params.Amount;
+                                //itemToEdit.Params.PhantomParams.GroupName = itemToEdit.Params.GroupName;
+
+                                itemToEdit.Params.Amount = amount;
+                                itemToEdit.Params.GroupName = groupName;
+                                itemToEdit.Name = algorithmName;
+                                MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
+                            }
+                    }
+                }
+                Close();
             }
+
             else
             {
-                foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
+                if (WorkMode == AgentWorkMode.Group)
                 {
-                    string cbID = cb.Name.Split('_').Last();
-                    if (cbID != "")
-                        foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
-                        {
-                            var amount = ue.Text;
-                            string algorithmName = cb.Text;
-                            var groupName = GroupNameTxtBox.Text;
-                            var items = MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == groupName).ToList();
-                            int itemIndex = -1;
-                            foreach (var i in items)
-                                itemIndex = MainWindow.Instance.AgentsStorage.IndexOf(i);
-                            var itemToEdit = MainWindow.Instance.AgentsStorage[itemIndex];
-                            itemToEdit.Params.Amount = amount;
-                            itemToEdit.Params.GroupName = groupName;
-                            itemToEdit.Name = algorithmName;
-                            MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
-                        }
+                    foreach (var item in MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName/*GroupNameTxtBox.Text*/).ToList())
+                    {
+                        MainWindow.Instance.DelAgentConfigBtnClick(item);
+                    }
+                    foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
+                    {
+                        string cbID = cb.Name.Split('_').Last();
+                        if (cbID != "")
+                            foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
+                            {
+
+                                var amount = ue.Text;
+
+                                string algorithmName = cb.Text;
+                                var groupName = GroupNameTxtBox.Text;
+                                List<Agent> list = new List<Agent>();
+                                foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents"))
+                                {
+                                    var newAgent = (Agent)rs.Clone();
+                                    newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
+                                    newAgent.Params.Amount = amount;
+                                    newAgent.Params.GroupName = groupName;
+                                    newAgent.Params.ToolTipName = rs.Params.ToolTipName;
+                                    list.Add(newAgent);
+                                    var index = MainWindow.Instance.AgentsStorage.IndexOf(rs);
+                                    //MainWindow.Instance.AddNewAgent(newAgent, -1);
+                                }
+                                foreach (var i in list)
+                                {
+                                    MainWindow.Instance.AddNewAgentInGroup(i, -1, false);
+                                }
+                            }
+                    }
                 }
+                else
+                {
+                    foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
+                    {
+                        string cbID = cb.Name.Split('_').Last();
+                        if (cbID != "")
+                            foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
+                            {
+                                var amount = ue.Text;
+                                string algorithmName = cb.Text;
+                                var groupName = GroupNameTxtBox.Text;
+                                var items = MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == groupName).ToList();
+                                int itemIndex = -1;
+                                foreach (var i in items)
+                                    itemIndex = MainWindow.Instance.AgentsStorage.IndexOf(i);
+                                var itemToEdit = MainWindow.Instance.AgentsStorage[itemIndex];
+                                itemToEdit.Params.Amount = amount;
+                                itemToEdit.Params.GroupName = groupName;
+                                itemToEdit.Name = algorithmName;
+                                MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
+                            }
+                    }
+                }
+                Close();
             }
-            Close();
         }
         private void StratSettings_Loaded(object sender, RoutedEventArgs e)
         {
