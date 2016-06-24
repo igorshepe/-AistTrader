@@ -16,6 +16,11 @@
                 <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type nlogViewer:NlogViewer}}, Path=TimeWidth}"/>
                 <DataGridTextColumn Binding="{Binding FormattedMessage}" Header="Message" FontFamily="Consolas" FontSize="11" FontWeight="Bold" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type nlogViewer:NlogViewer}}, Path=TimeWidth}"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu >
+                    <MenuItem Header="Clear all" Click="MenuItemClearAll_OnClick"  />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
     </Grid>
 </UserControl>

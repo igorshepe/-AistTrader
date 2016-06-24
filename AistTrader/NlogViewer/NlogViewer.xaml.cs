@@ -61,5 +61,9 @@ namespace NlogViewer
                 LogEntries.Insert(0,vm);
             }));
         }
+        private void MenuItemClearAll_OnClick(object sender, RoutedEventArgs e)
+        {
+            LogEntries.Clear();
+        }
     }
 }
