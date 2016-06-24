@@ -54,6 +54,7 @@ namespace AistTrader
         }
         private void InitiateProviderItems()
         {
+            NtpMoexSync();
             StreamReader sr = new StreamReader("Connections.xml");
             try
             {
@@ -319,15 +320,8 @@ namespace AistTrader
                 this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Connected);
                 //this.GuiAsync(() => UpdateProviderListView());
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is active now", connection.ConnectionName));
-                
-                //try
-                //{
-                //    TimeHelper.SyncMarketTime(20000);
-                //}
-                //catch
-                //{
-                //    // ignored
-                //}
+
+
                 if (conn.ConnectionParams.IsDefaulConnection)
                     this.GuiAsync(() => Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Connected.ToString());
             };
