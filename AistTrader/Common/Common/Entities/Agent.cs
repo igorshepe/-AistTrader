@@ -30,7 +30,8 @@ namespace Common.Entities
                 FriendlyName = Params.FriendlyName,
                 ConnectionCount = Params.ConnectionCount,
                 Contracts = Params.Contracts,
-                IsChecked = Params.IsChecked
+                IsChecked = Params.IsChecked,
+                PhantomParams = Params.PhantomParams
             };
             return temp;
         }
