@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 using AistTrader.Annotations;
 using Common.Entities;
@@ -73,17 +76,21 @@ namespace AistTrader
 
         public MainWindow()
         {
+
             String name = Process.GetCurrentProcess().ProcessName;
             if (Process.GetProcesses().Count(p => p.ProcessName == name) > 1)
                 Application.Current.Shutdown();
             Instance = this;
+            DataContext = this;
             ConnectionManager = new AistTraderConnnectionManager();
             AgentConnnectionManager = new AistTraderStrategiesConnnectionManager();
             #region Initialize collections
+
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 this.TimeTextBlock.Text = String.Format("{0:G} (Local)", TimeHelper.Now);
             }, this.Dispatcher);
+            
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
 
@@ -150,6 +157,21 @@ namespace AistTrader
 
             }
         }
+
+        private void NtpMoexSync()
+        {
+            try
+            {
+                TimeHelper.SyncMarketTime(10000);
+            }
+            catch
+            {
+                this.TimeErrorTextBlock.Text = "Error moex time sync";
+                this.TimeErrorTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+                TimeErrorTextBlock.FontWeight = FontWeights.Bold;
+            }
+        }
+
         private void AgentAddConfigMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             TabCtr.SelectedItem = AgentItem;
@@ -171,7 +193,6 @@ namespace AistTrader
             var form = new WhatsNew().ShowDialog();
             form = null;
         }
-
         private void ShowPortfoliosClick(object sender, RoutedEventArgs e)
         {
             ShowOrHide(_portfoliosWindow);

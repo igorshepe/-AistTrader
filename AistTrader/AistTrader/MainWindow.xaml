@@ -115,6 +115,10 @@
 
                 </TextBlock>
                 <Separator Style="{StaticResource MetroStatusBarSeparator}" />
+                <TextBlock Name="TimeErrorTextBlock" Text="" >
+                    
+                </TextBlock>
+                <Separator Style="{StaticResource MetroStatusBarSeparator}" />
                 <StackPanel Name="StackPanelInStatusBar"  Margin="0,-6,0,0" >
                     <Image Name="ImageInStackPanelOfStatusBar" ToolTip="Show log window"  Source="Resources/Images/hide.png" Height="35" Width="35" MouseDown="StasusBarLogImage_OnMouseDown"  RenderTransformOrigin="0.95,0.032" />
                 </StackPanel>
