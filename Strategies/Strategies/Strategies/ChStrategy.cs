@@ -286,7 +286,7 @@ namespace Strategies.Strategies
                     //var trade = MyTrades.Last();
                     var trade = trades.Last();
 
-                    Task.Run(()=>TradesLogger.Info("{0}: Trade price {1}, vol {2}", Name, trade.Trade.Price, trade.Trade.Volume));
+                    Task.Run(()=>TradesLogger.Info("{0}: Trade price {1}, vol {2}, slip {3:0}", Name, trade.Trade.Price, trade.Trade.Volume, trade.Slippage));
                 })
                 .Apply(this);
 
@@ -327,29 +327,34 @@ namespace Strategies.Strategies
                 return null ;
             }
 
-           
 
-           // var marketDepth = GetMarketDepth(Security);
-           // var asksList = marketDepth.Asks;
-           // var bidList = marketDepth.Bids;
-           // // var orderPrice;
 
-           // if (side == Sides.Sell)
-           // {
-           //     bool priceInDepth = bidList.Last().Price >= shrinkPrice && shrinkPrice <= bidList.First().Price;
+            // var marketDepth = GetMarketDepth(Security);
+            // var asksList = marketDepth.Asks;
+            // var bidList = marketDepth.Bids;
+            // // var orderPrice;
 
-           //     Task.Run(()=>TradesLogger.Info(!priceInDepth ? "{0}: Buy LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3} " : "{0}: Buy LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, bidList.First().Price, bidList.Last().Price, shrinkPrice);
-           // }
-           // else
-           // {
-           //     bool priceInDepth = asksList.Last().Price >= shrinkPrice && shrinkPrice <= asksList.First().Price;
+            // if (side == Sides.Sell)
+            // {
+            //     bool priceInDepth = bidList.Last().Price >= shrinkPrice && shrinkPrice <= bidList.First().Price;
 
-           //     Task.Run(()=>TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "{0}: Sell LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, asksList.First().Price, asksList.Last().Price, shrinkPrice);
-           // }
+            //     Task.Run(()=>TradesLogger.Info(!priceInDepth ? "{0}: Buy LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3} " : "{0}: Buy LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, bidList.First().Price, bidList.Last().Price, shrinkPrice);
+            // }
+            // else
+            // {
+            //     bool priceInDepth = asksList.Last().Price >= shrinkPrice && shrinkPrice <= asksList.First().Price;
 
-           //Task.Run(()=>TradesLogger.Info(exit ? "{0}: Exit {1}, {2}" : "{0}: Enter {1}, {2}",Name, asksList[0], bidList[0]);
+            //     Task.Run(()=>TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "{0}: Sell LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, asksList.First().Price, asksList.Last().Price, shrinkPrice);
+            // }
 
-            return this.CreateOrder(side, priceOrder);
+            //Task.Run(()=>TradesLogger.Info(exit ? "{0}: Exit {1}, {2}" : "{0}: Enter {1}, {2}",Name, asksList[0], bidList[0]);
+
+
+            //Task.Run(() => TradesLogger.Info("{0}: Test No Enter", Name));
+            //return null;
+
+
+             return this.CreateOrder(side, priceOrder);
         }
 
         // Критерий продолжения работы правила WhenCandlesFinished
@@ -498,7 +503,7 @@ namespace Strategies.Strategies
                 _enterPosition = true; // Если есть законченная свечка , можно совершать вход в позицию
                 _exitPosition = true; // Если есть законченная свечка , можно совершать выход из позиции
 
-                Task.Run(()=>TradesLogger.Info("{0}: Position = {6}, SlowSMA {1}, FastSMA {2}, Highest {3}, Lowest {4}, Mid {5}", Name, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
+                Task.Run(()=>TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}", Name, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
 
             }
             catch (Exception e)
