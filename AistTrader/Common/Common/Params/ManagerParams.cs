@@ -16,9 +16,12 @@ namespace Common.Params
             Transaction = -1;
             FinalTransaction = -1;
             Tool = security;
+            AgentMangerCurrentStatus = AgentManagerStatus.Stopped;
+            //Command = AgentManagerOperationCommand.Start;
         }
 
         public bool IsConnected { get; set; }
+        public AgentManagerStatus AgentMangerCurrentStatus { get; set; }
         public Common.Entities.Portfolio Portfolio { get; set; }
         public string AgentOrGroup { get; set; }
         //[XmlIgnore]
@@ -26,7 +29,21 @@ namespace Common.Params
         public string Position { get; set; }
         public int Transaction { get; set; }
         public double FinalTransaction { get; set; }
-        public OperationCommand Command { get; set; }
+        public AgentManagerOperationCommand Command { get; set; }
         public bool IsChecked { get; set; }
+
+
+        public enum AgentManagerStatus
+        {
+            Running,
+            Stopped,
+            Starting,
+            Stopping
+        }
+        public enum AgentManagerOperationCommand
+        {
+            Start,
+            Stop
+        };
     }
 }

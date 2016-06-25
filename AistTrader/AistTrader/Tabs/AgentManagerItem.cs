@@ -583,6 +583,7 @@ namespace AistTrader
                         {
                             Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
                             agent.ActualStrategyRunning.Stop();
+                            AgentConnnectionManager.Strategies.Remove(agent);
                         }
                         item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
                         item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped;
@@ -657,7 +658,7 @@ namespace AistTrader
 
             public bool Remove(AistTraderAgentManagerWrapper item)
             {
-                throw new NotImplementedException();
+                return Strategies.Remove(item);
             }
 
             public int Count { get; }

@@ -67,9 +67,20 @@ namespace Common.Params
         Connect,
         Disconnect
     };
+    
     public enum ConnectionType
     {
         [Description("Plaza")]
         Plaza
     };
+    [Serializable]
+    public class ConnectionsPhantomParams
+    {
+        public ConnectionsPhantomParams() { }
+        //public ConnectionsPhantomParams()
+        //{
+           
+        //}
+    
+    }
 }

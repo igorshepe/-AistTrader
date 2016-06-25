@@ -116,7 +116,7 @@
                 </TextBlock>
                 <Separator Style="{StaticResource MetroStatusBarSeparator}" />
                 <TextBlock Name="TimeErrorTextBlock" Text="" >
-                    
+
                 </TextBlock>
                 <Separator Style="{StaticResource MetroStatusBarSeparator}" />
                 <StackPanel Name="StackPanelInStatusBar"  Margin="0,-6,0,0" >
@@ -159,8 +159,8 @@
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
-                                
-                                
+
+
                                 <DataGridTextColumn Header="Connection Count"
                                                     Binding="{Binding Params.ConnectionCount}"
                                                     IsReadOnly="True"/>
@@ -273,7 +273,7 @@
                                 <DataGridTextColumn Header="Connection state"
                                                     Binding="{Binding ConnectionParams.ConnectionState, Mode=TwoWay}" />
                                 <DataGridTemplateColumn Header="Command">
-                                    
+
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Controls:ToggleSwitchButton Name="ConnectionStateSwitch" Checked="ConnectionStateSwitch_OnClick" Unchecked="ConnectionStateSwitch_OnClick"  IsChecked="{Binding Path=ConnectionParams.IsConnected, Mode=OneWay }"></Controls:ToggleSwitchButton>
@@ -283,7 +283,7 @@
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn Header="Is demo connection"
                                                     Binding="{Binding IsDemo}" />
-                                
+
                             </DataGrid.Columns>
                             <DataGrid.ContextMenu>
                                 <ContextMenu >
@@ -396,6 +396,8 @@
                                                     IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Alias"
                                                     Binding="{Binding Alias}"
+                                                    FontSize="13"
+                                                    FontWeight="ExtraBold"
                                                     IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Security"
                                                     Binding="{Binding AgentManagerSettings.Tool}"
@@ -403,6 +405,21 @@
                                 <DataGridTextColumn Header="Code"
                                                     Binding="{Binding AgentManagerSettings.Account.AgentAccount.Code}" 
                                                     IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Status"
+                                                    Binding="{Binding AgentManagerSettings.AgentMangerCurrentStatus}" 
+                                                    FontWeight="ExtraBold"
+                                                    FontSize="13"
+                                                    IsReadOnly="True"/>
+
+                                <DataGridTemplateColumn Header="Command" IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <!--<Controls:ToggleSwitchButton Unchecked="StartStopBtnClickTest" Checked="StartStopBtnClickTest"  Name="AgentManagerStateSwitch" IsChecked="{Binding Path=AgentManagerSettings.IsConnected, Mode=OneWay}" ></Controls:ToggleSwitchButton>-->
+                                            <Button Click="StartStopBtnClick" MinWidth="100" Content="{Binding Path= AgentManagerSettings.Command, Mode=TwoWay}"  HorizontalAlignment="Left" Margin="0,0,0,0"></Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
                                 <DataGridTemplateColumn Header="TS" IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -412,17 +429,6 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-
-
-                                <DataGridTemplateColumn Header="Command" IsReadOnly="True">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Controls:ToggleSwitchButton Unchecked="StartStopBtnClickTest" Checked="StartStopBtnClickTest"  Name="AgentManagerStateSwitch" IsChecked="{Binding Path=AgentManagerSettings.IsConnected, Mode=OneWay}" ></Controls:ToggleSwitchButton>
-                                            <!--<Button Click="StartStopBtnClick" MinWidth="100" Content="{Binding Path= AgentManagerSettings.Command}"  HorizontalAlignment="Right" Margin="0,0,0,0"></Button>-->
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-
                                 <DataGridTextColumn Header="Position"
                                                     Binding="{Binding AgentManagerSettings.Position}"
                                                     IsReadOnly="True"/>
@@ -470,7 +476,7 @@
                                     </GridViewColumn>-->
 
 
-                            
+
                             <DataGrid.GroupStyle>
                                 <GroupStyle>
                                     <GroupStyle.ContainerStyle>
@@ -496,10 +502,10 @@
                             </DataGrid.GroupStyle>
                         </DataGrid>
                         <Grid HorizontalAlignment="Center"
-                              Height="225"
+                              Height="289"
                               VerticalAlignment="Top"
-                              Width="120" 
-                              Margin="0,0,0,0">
+                              Width="111" 
+                              Margin="-8,0,0,0">
                             <Button Content="Add"
                                     Click="AddAgentManagerBtnClick"
                                     Name="AddAgentManagerBtn"
@@ -523,40 +529,41 @@
                                     VerticalAlignment="Top"
                                     Width="100"/>
                             <Button Content="Portfolio"
-                                    Click="ShowPortfoliosClick" 
-                                    Name="ShowPortfolios"
-                                    HorizontalAlignment="Center"
-                                    Margin="4,95,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="100"/>
+                            	Click="ShowPortfoliosClick" 
+                            	x:Name="ShowPortfolios"
+                            	HorizontalAlignment="Center"
+                            	Margin="10,133,1,0"
+                            	VerticalAlignment="Top"
+                            	Width="100"/>
                             <Button Content="Orders"
-                                    Click="ShowOrdersClick" 
-                                    Name="ShowOrders"
-                                    HorizontalAlignment="Center"
-                                    Margin="4,118,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="100"/>
+                            	Click="ShowOrdersClick" 
+                            	x:Name="ShowOrders"
+                            	HorizontalAlignment="Center"
+                            	Margin="10,160,1,0"
+                            	VerticalAlignment="Top"
+                            	Width="100"/>
                             <Button Content="MyTrades"
-                                    Click="ShowMyTradesClick" 
-                                    Name="ShowMyTrades"
-                                    HorizontalAlignment="Center"
-                                    Margin="4,142,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="100"/>
+                            	Click="ShowMyTradesClick" 
+                            	x:Name="ShowMyTrades"
+                            	HorizontalAlignment="Center"
+                            	Margin="10,187,1,0"
+                            	VerticalAlignment="Top"
+                            	Width="100"/>
                             <Button Content="Securities"
-                                    Click="ShowSecuritiesClick" 
-                                    Name="ShowSecurities"
-                                    HorizontalAlignment="Center"
-                                    Margin="4,166,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="100"/>
+                            	Click="ShowSecuritiesClick" 
+                            	x:Name="ShowSecurities"
+                            	HorizontalAlignment="Center"
+                            	Margin="10,214,1,0"
+                            	VerticalAlignment="Top"
+                            	Width="100"/>
                             <Button Content="LogStrategy"
-                                    Click="ShowMonitorWindowClick" 
-                                    Name="ShowMonitorWindow"
-                                    HorizontalAlignment="Center"
-                                    Margin="4,188,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="100"/>
+                            	Click="ShowMonitorWindowClick" 
+                            	x:Name="ShowMonitorWindow"
+                            	HorizontalAlignment="Center"
+                            	Margin="10,241,1,0"
+                            	VerticalAlignment="Top"
+                            	Width="100"/>
+                            <Label x:Name="label" FontSize="9" FontWeight="Bold" Content="TEST PURPOSES ONLY" HorizontalAlignment="Center" Margin="8,110,5,0" VerticalAlignment="Top" Width="98"/>
 
 
 
