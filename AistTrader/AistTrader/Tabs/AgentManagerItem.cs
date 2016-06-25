@@ -266,7 +266,7 @@ namespace AistTrader
                     UpdateAgentManagerListView();
                     return;
                 }
-                agentOrGroup.AgentManagerSettings.Command = OperationCommand.Disconnect;
+                agentOrGroup.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Stop;
                 agentOrGroup.AgentManagerSettings.IsConnected = true;
                 StartAgentOrGroup(agentOrGroup);
             }
@@ -287,7 +287,7 @@ namespace AistTrader
                             AgentConnnectionManager.Strategies.Where(i => i.AgentOrGroupName == agentOrGroup.ToString()).ToList();
                         foreach (var agent in agentsToStop)
                             agent.ActualStrategyRunning.Stop();
-                        if (item != null) item.AgentManagerSettings.Command = OperationCommand.Connect;
+                        if (item != null) item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
                         item.AgentManagerSettings.IsConnected = false;
                     }
                 }
@@ -295,7 +295,7 @@ namespace AistTrader
                 {
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
                     strategyOrGroup.ActualStrategyRunning.Stop();
-                    if (item != null) item.AgentManagerSettings.Command = OperationCommand.Connect;
+                    if (item != null) item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;;
                     item.AgentManagerSettings.IsConnected = false;
                 }
             }
@@ -311,6 +311,12 @@ namespace AistTrader
             }
             else
                 return true;
+        }
+
+        private string ActiveConnectionName(AgentManager agentOrGroupName)
+        {
+            var portfolioName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentOrGroupName.AgentManagerSettings.Portfolio.Name);
+            return portfolioName.Connection.DisplayName;
         }
 
         public void StartAgentOrGroup(AgentManager agentOrGroup)
@@ -526,6 +532,65 @@ namespace AistTrader
                 view.Refresh();
             }
             // throw new NotImplementedException();
+        }
+        private void StartStopBtnClick(object sender, RoutedEventArgs e)
+        {
+            var pressedButton = sender as Button;
+            if (pressedButton.Content.ToString() == ManagerParams.AgentManagerOperationCommand.Start.ToString())
+            {
+                //ON 
+                var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
+                var conName = ActiveConnectionName(agentOrGroup);
+                if (conName != null)
+                    Task.Run(() => Logger.Info("Checking related connection - \"{0}\"..", conName));
+                var isActiveConnection = ActiveConnectionCheck(agentOrGroup);
+                if (!isActiveConnection)
+                {
+                    Task.Run(() => Logger.Info("Related connections - \"{0}\" is not active, can't start with no active connection..", conName));
+                    MessageBox.Show("Related connections is not active, can't start with no active connection.");
+                    var item = AgentManagerCollectionView.Cast<AgentManager>().FirstOrDefault(i => i.Alias == agentOrGroup.Alias);
+                    item.AgentManagerSettings.IsConnected = false;
+                    UpdateAgentManagerListView();
+                    return;
+                }
+                else
+                {
+                    Task.Run(() => Logger.Info("Starting \"{0}\"..", agentOrGroup.Alias));
+                    agentOrGroup.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Starting;
+                    agentOrGroup.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Stop;
+                    //agentOrGroup.AgentManagerSettings.IsConnected = true;
+                    StartAgentOrGroup(agentOrGroup);
+                }
+            }
+            if ((string) pressedButton.Content == ManagerParams.AgentManagerOperationCommand.Stop.ToString())
+            {
+                //OFF
+                var item = (sender as FrameworkElement).DataContext as AgentManager;
+                if (!item.AgentManagerSettings.IsConnected)
+                    return;
+                var agentOrGroup = AgentManagerStorage.FirstOrDefault(i => i.Alias == item.Alias.ToString());
+                //отдельную логику под остановку групп
+                var groupElements = MainWindow.Instance.AgentsStorage.Select(i => i).Where(i => i.Params.GroupName == agentOrGroup.AgentManagerSettings.AgentOrGroup).ToList();
+                if (groupElements.Count >= 2)
+                {
+                    foreach (var agents in groupElements)
+                    {
+                        var agentsToStop =
+                            AgentConnnectionManager.Strategies.Where(i => i.AgentOrGroupName == agentOrGroup.ToString()).ToList();
+                        foreach (var agent in agentsToStop)
+                            agent.ActualStrategyRunning.Stop();
+                        if (item != null) item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
+                        item.AgentManagerSettings.IsConnected = false;
+                    }
+                }
+                else
+                {
+                    var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
+                    strategyOrGroup.ActualStrategyRunning.Stop();
+                    if (item != null) item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
+                    item.AgentManagerSettings.IsConnected = false;
+                }
+            }
         }
 
         #region Aist Trader Agent/Group Manager
