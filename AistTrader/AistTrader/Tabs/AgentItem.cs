@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Xml.Serialization;
 using Common.Entities;
 using Common.Params;
+using Ecng.Common;
 using NLog;
 
 namespace AistTrader
@@ -19,6 +20,7 @@ namespace AistTrader
     {
         public bool AllAgentsChecked { get; set; }
         public bool IsAgentSettingsLoaded;
+        public bool IsGroupWritten;
         private void AgentListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = AgentListView.SelectedItem as Agent;
@@ -135,19 +137,38 @@ namespace AistTrader
                     var agent = i;
                     if (agent.Params.GroupName != "ungrouped agents")
                     {
-                        foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
+                        MessageBoxResult result = MessageBox.Show("Single group member can not be deleted, delete the whole group?", "Delete group", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes)
                         {
-                            try
+                            var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName.ToString());
+                            if (isUsedInAgentManager)
                             {
-                                AgentsStorage.Remove(item);
-                                Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
+                                MessageBox.Show("Group - \"{0}\" can not be deleted, used in agent manager".Put(agent.Params.GroupName) );
+                                return;
                             }
-                            catch (Exception ex)
-                            {
-                                Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
-                            }
+                            var delList = AgentListView.Items.Cast<Agent>().Where(r => r.Params.GroupName == agent.Params.GroupName).ToList();
+                            foreach (var del in delList)
+                                AgentsStorage.Remove(del);
+                            Task.Run(() => Logger.Info("Group - \"{0}\" has been deleted.", agent.Params.GroupName));
+                            SaveAgentSettings();
+                            AllAgentsChecked = false;
                         }
-                        SaveAgentSettings();
+                        else
+                            return;
+                        //foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
+                        //{
+
+                        //    try
+                        //    {
+                        //        AgentsStorage.Remove(item);
+                        //        Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+                        //        Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
+                        //    }
+                        //}
+                        //SaveAgentSettings();
                     }
                     else
                     {
@@ -156,12 +177,14 @@ namespace AistTrader
                         if (isUsedinAnyOtherGroup)
                         {
                             MessageBox.Show("Can not be deleted, used in a group");
+                            return;
                         }
                         var agentItem = AgentListView.SelectedItem as Agent;
                         var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString());
                         if (isUsedInAgentManager)
                         {
                             MessageBox.Show("Can not be deleted, used in agent manager");
+                            return;
                         }
                         else
                         {
@@ -190,9 +213,13 @@ namespace AistTrader
                 }
             }
         }
-        public void DelAgentConfigBtnClick(Agent agent)
+        public void DelAgentConfigBtnClick(Agent agent, string msg)
         {
             AgentsStorage.Remove(agent);
+            if (msg != null)
+            {
+                Task.Run(() => Logger.Info("Agent \"{0}\" {1} - \"{2}\" ", agent.Name, msg,agent.Params.GroupName));
+            }
             SaveAgentSettings();
         }
         private void AgentSettingsStorageChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -203,7 +230,6 @@ namespace AistTrader
             {
                 CreateGroupItemBtn.IsEnabled = false;
                 CreateGroupItemBtn.ToolTip = "Can't create a group with one registred agent";
-
             }
 
         }
@@ -260,12 +286,47 @@ namespace AistTrader
         public void AddNewAgent(Agent agent, int editIndex)
         {
             if (editIndex >= 0 && editIndex < AgentsStorage.Count)
+            {
                 AgentsStorage[editIndex] = agent;
+                //если в членах группы изменился объем
+                if (agent.Params.Amount != agent.Params.PhantomParams.Amount)
+                {
+                    Task.Run(() => Logger.Info("\"{0}\"'s member-\"{1}\" has changed it's amount:\"{2}\" to -> \"{3}\"", agent.Params.GroupName, agent.Name, agent.Params.PhantomParams.Amount, agent.Params.Amount));
+                }
+            }
             else
                 try
                 {
                     AgentsStorage.Add(agent);
                     Task.Run(() => Logger.Info("Successfully added agent - \"{0}\"", agent.Params.FriendlyName));
+                }
+                catch (Exception)
+                {
+                    Task.Run(() => Logger.Info("Error adding agent - \"{0}\"", agent.Params.FriendlyName));
+                }
+            SaveAgentSettings();
+            UpdateAgentListView();
+        }
+        public void AddNewAgentInGroup(Agent agent, int editIndex,bool isNewAddition)
+        {
+            if (editIndex >= 0 && editIndex < AgentsStorage.Count)
+            {
+                if (!IsGroupWritten & agent.Params.GroupName != agent.Params.PhantomParams.GroupName)
+                {
+                    Task.Run(() => Logger.Info("Group \"{0}\" has changed it's name to -> \"{1}\"", agent.Params.PhantomParams.GroupName, agent.Params.GroupName));
+                    IsGroupWritten = true;
+                }
+                AgentsStorage[editIndex] = agent;
+                if (agent.Params.Amount != agent.Params.PhantomParams.Amount)
+                {
+                    Task.Run(() => Logger.Info("\"{0}\"'s member-\"{1}\" has changed it's amount:\"{2}\" to -> \"{3}\"", agent.Params.GroupName, agent.Name, agent.Params.PhantomParams.Amount, agent.Params.Amount));
+                }
+            }
+            else
+                try
+                {
+                    AgentsStorage.Add(agent);
+                    Task.Run(() => Logger.Info("Agent \"{0}\" successfully added to the group \"{1}\"", agent.Params.FriendlyName, agent.Params.GroupName));
                 }
                 catch (Exception)
                 {
