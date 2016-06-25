@@ -546,10 +546,9 @@ namespace AistTrader
                 var isActiveConnection = ActiveConnectionCheck(agentOrGroup);
                 if (!isActiveConnection)
                 {
-                    Task.Run(() => Logger.Info("Related connections - \"{0}\" is not active, can't start with no active connection..", conName));
+                    Task.Run(() => Logger.Error("Related connections - \"{0}\" is not active, can't start with no active connection..", conName));
                     MessageBox.Show("Related connections is not active, can't start with no active connection.");
                     var item = AgentManagerCollectionView.Cast<AgentManager>().FirstOrDefault(i => i.Alias == agentOrGroup.Alias);
-                    item.AgentManagerSettings.IsConnected = false;
                     UpdateAgentManagerListView();
                     return;
                 }
@@ -557,19 +556,22 @@ namespace AistTrader
                 {
                     Task.Run(() => Logger.Info("Starting \"{0}\"..", agentOrGroup.Alias));
                     agentOrGroup.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Starting;
+                    UpdateAgentManagerListView();
                     agentOrGroup.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Stop;
-                    //agentOrGroup.AgentManagerSettings.IsConnected = true;
                     StartAgentOrGroup(agentOrGroup);
+                    agentOrGroup.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Running;
+                    UpdateAgentManagerListView();
                 }
+                UpdateAgentManagerListView();
             }
-            if ((string) pressedButton.Content == ManagerParams.AgentManagerOperationCommand.Stop.ToString())
+            else
             {
                 //OFF
                 var item = (sender as FrameworkElement).DataContext as AgentManager;
-                if (!item.AgentManagerSettings.IsConnected)
-                    return;
+                Task.Run(() => Logger.Info("Stopping - \"{0}\"..", item.Alias));
+                item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopping;
+                UpdateAgentManagerListView();
                 var agentOrGroup = AgentManagerStorage.FirstOrDefault(i => i.Alias == item.Alias.ToString());
-                //отдельную логику под остановку групп
                 var groupElements = MainWindow.Instance.AgentsStorage.Select(i => i).Where(i => i.Params.GroupName == agentOrGroup.AgentManagerSettings.AgentOrGroup).ToList();
                 if (groupElements.Count >= 2)
                 {
@@ -578,18 +580,22 @@ namespace AistTrader
                         var agentsToStop =
                             AgentConnnectionManager.Strategies.Where(i => i.AgentOrGroupName == agentOrGroup.ToString()).ToList();
                         foreach (var agent in agentsToStop)
+                        {
+                            Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
                             agent.ActualStrategyRunning.Stop();
-                        if (item != null) item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
-                        item.AgentManagerSettings.IsConnected = false;
+                        }
+                        item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
+                        item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped;
                     }
                 }
                 else
                 {
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
                     strategyOrGroup.ActualStrategyRunning.Stop();
-                    if (item != null) item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
-                    item.AgentManagerSettings.IsConnected = false;
+                    item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
+                    item.AgentManagerSettings.AgentMangerCurrentStatus =ManagerParams.AgentManagerStatus.Stopped; ;
                 }
+                UpdateAgentManagerListView();
             }
         }
 
