@@ -17,6 +17,7 @@ namespace Common.Params
             FinalTransaction = -1;
             Tool = security;
             AgentMangerCurrentStatus = AgentManagerStatus.Stopped;
+            IsChecked = true;
             //Command = AgentManagerOperationCommand.Start;
         }
 

@@ -447,13 +447,20 @@
                                                     />
 
 
-                                <DataGridCheckBoxColumn Binding="{Binding AgentManagerSettings.IsChecked, Mode=TwoWay}" IsReadOnly="False">
-                                    <DataGridCheckBoxColumn.HeaderTemplate>
-                                        <DataTemplate x:Name="DtCheckAllAgentManagerBox">
-                                            <CheckBox Name ="ChkBoxSelectAllAgentManagerItems" Click="ChkBoxSelectAllAgentManagerItems_OnClick"  IsChecked="{Binding ElementName=MainFrm , Path=AllAgentsChecked, Mode=TwoWay}"  FlowDirection="RightToLeft"></CheckBox>
+                                <DataGridTemplateColumn  IsReadOnly="False">
+                                    <DataGridTemplateColumn.Header>
+                                        <CheckBox Name="ChkBoxSelectAllAgentManagerItems" Unchecked="ChkBoxSelectAllAgentManagerItems_OnChecked" Checked="ChkBoxSelectAllAgentManagerItems_OnChecked" IsChecked="{Binding SelectAll}"></CheckBox>
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox  HorizontalContentAlignment="Center" is IsChecked="{Binding ElementName=MainFrm , Path=AgentManagerSettings.IsChecked, Mode=TwoWay}" HorizontalAlignment="Center"></CheckBox>
                                         </DataTemplate>
-                                    </DataGridCheckBoxColumn.HeaderTemplate>
-                                </DataGridCheckBoxColumn>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+
+
+
 
                             </DataGrid.Columns>
                             <!--<GridViewColumn Width="350" Header="Агент" >

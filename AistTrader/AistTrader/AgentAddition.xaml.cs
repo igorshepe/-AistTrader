@@ -222,8 +222,8 @@ namespace AistTrader
                     agentCompiledName.Append("_"+set.Parametr);
                 }
             }
-
-            var agentParams = new AgentParams(agentFullName, -1, -1, AgentSettings, AlgorithmComboBox.SelectedItem.ToString(), agentCompiledName.ToString(),toolTipName.ToString());
+            var phantomParams = new AgentPhantomParams(agentFullName,null,null);
+            var agentParams = new AgentParams(agentFullName, -1, -1, AgentSettings, AlgorithmComboBox.SelectedItem.ToString(), agentCompiledName.ToString(),toolTipName.ToString(), phantomParams);
             MainWindow.Instance.AddNewAgent(new Agent(/*AlgorithmComboBox.SelectedItem.ToString()*/agentFullName, agentParams), EditIndex);
             agentCompiledName.Clear();
             Close();

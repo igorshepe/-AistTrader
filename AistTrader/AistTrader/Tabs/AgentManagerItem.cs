@@ -32,6 +32,24 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
+        //public bool AllManagerAgentsChecked { get; set; }
+
+        public bool AllManagerAgentsChecked
+        {
+            set
+            {
+                _allManagerAgentsChecked = value;
+
+                OnPropertyChanged(new PropertyChangedEventArgs("AllManagerAgentsChecked"));
+
+            }
+        }
+
+        public bool _allManagerAgentsChecked;
+
+
+
+
         public AistTraderStrategiesConnnectionManager AgentConnnectionManager;
         public readonly PlazaTrader Trader = new PlazaTrader();
         public bool IsAgentManagerSettingsLoaded;
@@ -690,5 +708,33 @@ namespace AistTrader
             }
         }
         #endregion
+
+        private void ChkBoxSelectAllAgentManagerItems_OnChecked(object sender, RoutedEventArgs e)
+        {
+
+            AllManagerAgentsChecked = true;
+
+
+            var list = AgentManagerListView.Items.Cast<AgentManager>().Select(i => i).ToList();
+            foreach (var i in list)
+                i.AgentManagerSettings.IsChecked = true;
+            AgentManagerListView.CommitEdit();
+            AgentManagerListView.CommitEdit();
+            AgentManagerListView.CancelEdit();
+            AgentManagerListView.CancelEdit();
+            ICollectionView view = CollectionViewSource.GetDefaultView(AgentListView.Items);
+            view.Refresh();
+
+
+
+            // определить от какого айтема идет клик
+
+
+        }
+
+        private void ToggleButton_OnChecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
