@@ -278,7 +278,8 @@ namespace AistTrader
                 }
                 else
                 {
-                    sourceFilePath.CopyTo(destFilePathWithFileName.FullName);
+                    if(sourceFilePath.Exists)
+                        sourceFilePath.CopyTo(destFilePathWithFileName.FullName);
                 }
                 
             }

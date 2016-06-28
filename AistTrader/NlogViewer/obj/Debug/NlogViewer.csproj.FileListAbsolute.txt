@@ -6,7 +6,6 @@ C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\bin\Debug\System.Windows.Interac
 C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\bin\Debug\MahApps.Metro.pdb
 C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\bin\Debug\MahApps.Metro.xml
 C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\bin\Debug\NLog.xml
-C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.csprojResolveAssemblyReference.cache
 C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.g.cs
 C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\REPOSITORY\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer_MarkupCompile.cache
