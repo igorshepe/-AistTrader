@@ -453,7 +453,7 @@
                                     </DataGridTemplateColumn.Header>
                                     <DataGridTemplateColumn.CellTemplate >
                                         <DataTemplate>
-                                            <CheckBox  HorizontalContentAlignment="Center" is IsChecked="{Binding ElementName=MainFrm , Path=AgentManagerSettings.IsChecked, Mode=TwoWay}" HorizontalAlignment="Center"></CheckBox>
+                                            <CheckBox  HorizontalContentAlignment="Center" IsChecked="{Binding ElementName=MainFrm , Path=AgentManagerSettings.IsChecked, Mode=TwoWay}" HorizontalAlignment="Center"></CheckBox>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

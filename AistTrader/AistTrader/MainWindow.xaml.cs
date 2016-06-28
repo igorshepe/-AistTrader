@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -72,14 +73,30 @@ namespace AistTrader
 
             }
         }
+        string[] EntitiesFilesNames = { "Agents.xml", "Portfolios.xml", "Connections.xml", "AgentManagerSettings.xml" };
         #endregion
 
         public MainWindow()
         {
-
             String name = Process.GetCurrentProcess().ProcessName;
             if (Process.GetProcesses().Count(p => p.ProcessName == name) > 1)
                 Application.Current.Shutdown();
+
+            string buFilePath =Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string destFilePath = Path.Combine(buFilePath, "AistTrader");
+            if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
+            foreach (var xmlset in EntitiesFilesNames)
+            {
+                FileInfo copyToPath= new FileInfo(Path.Combine(System.Windows.Forms.Application.StartupPath, xmlset));
+                FileInfo locaFilesInfo = new FileInfo(Path.Combine(destFilePath, copyToPath.FullName.Split('\\').Last()));
+                if (!copyToPath.Exists)
+                {
+                    if (locaFilesInfo.Exists)
+                    {
+                        locaFilesInfo .CopyTo(copyToPath.FullName);
+                    }
+                }
+            }
             Instance = this;
             DataContext = this;
             ConnectionManager = new AistTraderConnnectionManager();
@@ -240,7 +257,33 @@ namespace AistTrader
             //_shutdown = result == MessageDialogResult.Affirmative;
 
             //if (_shutdown)
+            BackUpXMLSettings();
             Application.Current.Shutdown();
+        }
+
+        private void BackUpXMLSettings()
+        {
+            string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string destFilePath = Path.Combine(buFilePath, "AistTrader");
+            if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
+
+            foreach (var xmlset in EntitiesFilesNames)
+            {
+                FileInfo sourceFilePath = new FileInfo(Path.Combine(System.Windows.Forms.Application.StartupPath, xmlset));
+                FileInfo destFilePathWithFileName = new FileInfo(Path.Combine(destFilePath, sourceFilePath.FullName.Split('\\').Last()));
+                if (destFilePathWithFileName.Exists)
+                {
+                    if (sourceFilePath.LastWriteTime > destFilePathWithFileName.LastWriteTime)
+                        sourceFilePath.CopyTo(destFilePathWithFileName.FullName, true);
+                }
+                else
+                {
+                    sourceFilePath.CopyTo(destFilePathWithFileName.FullName);
+                }
+                
+            }
+
+            
         }
 
         private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)
