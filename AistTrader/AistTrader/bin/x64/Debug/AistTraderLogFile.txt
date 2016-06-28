@@ -6659,5 +6659,3 @@
 2016-06-16 14:34:53.9270|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/16/2016 14:31:00 +03:00
 2016-06-16 14:34:53.9270|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/16/2016 14:32:00 +03:00
 2016-06-16 14:34:53.9270|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 0, SlowSMA 67506.25000, FastSMA 67508.40000, Highest 67538.00000, Lowest 67455.00000, Mid 67496.50000
-2016-06-29 01:18:25.0196|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
-2016-06-29 01:30:51.1501|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_15_20_20"

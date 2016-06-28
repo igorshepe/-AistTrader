@@ -45,19 +45,16 @@
       <IsChecked>false</IsChecked>
       <Contracts>-1</Contracts>
       <GroupName>ungrouped agents</GroupName>
-      <PhantomParams>
-        <AgentName>ChStrategy 60_10_20_20</AgentName>
-      </PhantomParams>
     </Params>
   </Agent>
   <Agent>
-    <Name>ChStrategy 60_15_20_20</Name>
+    <Name>ChStrategy 60_8_20_20</Name>
     <Params>
       <AgentName>ChStrategy</AgentName>
-      <ToolTipName>TimeFrame-60,FastSma-15,SlowSma-20,Period-20</ToolTipName>
-      <AgentCompiledName>ChStrategy</AgentCompiledName>
+      <ToolTipName>TimeFrame-60,FastSma-8,SlowSma-20,Period-20</ToolTipName>
+      <AgentCompiledName>ChStrategy_8</AgentCompiledName>
       <ConnectionCount>-1</ConnectionCount>
-      <FriendlyName>ChStrategy 60_15_20_20</FriendlyName>
+      <FriendlyName>ChStrategy 60_8_20_20</FriendlyName>
       <SettingsStorage>
         <item>
           <key>
@@ -72,7 +69,7 @@
             <string>FastSma</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:decimal">15</anyType>
+            <anyType xsi:type="xsd:decimal">8</anyType>
           </value>
         </item>
         <item>
@@ -95,9 +92,102 @@
       <IsChecked>false</IsChecked>
       <Contracts>-1</Contracts>
       <GroupName>ungrouped agents</GroupName>
-      <PhantomParams>
-        <AgentName>ChStrategy 60_15_20_20</AgentName>
-      </PhantomParams>
+    </Params>
+  </Agent>
+  <Agent>
+    <Name>ChStrategy 60_10_20_20</Name>
+    <Params>
+      <AgentName>ChStrategy</AgentName>
+      <ToolTipName>TimeFrame-60,FastSma-10,SlowSma-20,Period-20</ToolTipName>
+      <AgentCompiledName>ChStrategy</AgentCompiledName>
+      <ConnectionCount>-1</ConnectionCount>
+      <FriendlyName>ChStrategy 60_10_20_20</FriendlyName>
+      <SettingsStorage>
+        <item>
+          <key>
+            <string>TimeFrame</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:double">60</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>FastSma</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">10</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>SlowSma</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">20</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Period</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">20</anyType>
+          </value>
+        </item>
+      </SettingsStorage>
+      <IsChecked>false</IsChecked>
+      <Contracts>-1</Contracts>
+      <GroupName>ффывыв</GroupName>
+      <Amount>12</Amount>
+    </Params>
+  </Agent>
+  <Agent>
+    <Name>ChStrategy 60_8_20_20</Name>
+    <Params>
+      <AgentName>ChStrategy</AgentName>
+      <ToolTipName>TimeFrame-60,FastSma-8,SlowSma-20,Period-20</ToolTipName>
+      <AgentCompiledName>ChStrategy_8</AgentCompiledName>
+      <ConnectionCount>-1</ConnectionCount>
+      <FriendlyName>ChStrategy 60_8_20_20</FriendlyName>
+      <SettingsStorage>
+        <item>
+          <key>
+            <string>TimeFrame</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:double">60</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>FastSma</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">8</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>SlowSma</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">20</anyType>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Period</string>
+          </key>
+          <value>
+            <anyType xsi:type="xsd:decimal">20</anyType>
+          </value>
+        </item>
+      </SettingsStorage>
+      <IsChecked>false</IsChecked>
+      <Contracts>-1</Contracts>
+      <GroupName>ффывыв</GroupName>
+      <Amount>21</Amount>
     </Params>
   </Agent>
 </ArrayOfAgent>
