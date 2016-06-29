@@ -1,16 +1,108 @@
 <?xml version="1.0"?>
 <ArrayOfConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Connection>
-    <Id>aaaaaaaaaaaaa</Id>
-    <DisplayName>aaaaaaaaaaaaa</DisplayName>
+    <Id>bbbbbbbb</Id>
+    <DisplayName>bbbbbbbb</DisplayName>
     <IsDemo>true</IsDemo>
     <ConnectionParams>
       <IsDefaulConnection>true</IsDefaulConnection>
       <PlazaConnectionParams>
+        <Path>C:\SpectraCGate2</Path>
+        <IpEndPoint>127.0.0.1:4002</IpEndPoint>
+      </PlazaConnectionParams>
+      <Name>bbbbbbbb</Name>
+      <Code>bbbbbbb</Code>
+      <IsConnected>true</IsConnected>
+      <Command>Disconnect</Command>
+      <Funds>308979.00</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>0</NetValue>
+      <VariationMargin>0</VariationMargin>
+      <IsRegistredConnection>true</IsRegistredConnection>
+      <ConnectionState>Connected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+  <Connection>
+    <Id>cccccccc</Id>
+    <DisplayName>cccccccc</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>false</IsDefaulConnection>
+      <PlazaConnectionParams>
+        <Path>C:\SpectraCGate3</Path>
+        <IpEndPoint>127.0.0.1:4003</IpEndPoint>
+      </PlazaConnectionParams>
+      <Name>cccccccc</Name>
+      <Code>ccc</Code>
+      <IsConnected>true</IsConnected>
+      <Command>Disconnect</Command>
+      <Funds>300000.00</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>0</NetValue>
+      <VariationMargin>0</VariationMargin>
+      <IsRegistredConnection>true</IsRegistredConnection>
+      <ConnectionState>Connected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+  <Connection>
+    <Id>dddddddddd</Id>
+    <DisplayName>dddddddddd</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>false</IsDefaulConnection>
+      <PlazaConnectionParams>
+        <Path>C:\SpectraCGate4</Path>
+        <IpEndPoint>127.0.0.1:4004</IpEndPoint>
+      </PlazaConnectionParams>
+      <Name>dddddddddd</Name>
+      <Code>ddddddddd</Code>
+      <IsConnected>true</IsConnected>
+      <Command>Disconnect</Command>
+      <Funds>273009.00</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>0</NetValue>
+      <VariationMargin>0</VariationMargin>
+      <IsRegistredConnection>true</IsRegistredConnection>
+      <ConnectionState>Connected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+  <Connection>
+    <Id>fffffffff</Id>
+    <DisplayName>fffffffff</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>false</IsDefaulConnection>
+      <PlazaConnectionParams>
+        <Path>C:\SpectraCGate5</Path>
+        <IpEndPoint>127.0.0.1:4005</IpEndPoint>
+      </PlazaConnectionParams>
+      <Name>fffffffff</Name>
+      <Code>ffffff</Code>
+      <IsConnected>true</IsConnected>
+      <Command>Disconnect</Command>
+      <Funds>300000.00</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>0</NetValue>
+      <VariationMargin>0</VariationMargin>
+      <IsRegistredConnection>true</IsRegistredConnection>
+      <ConnectionState>Connected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+  <Connection>
+    <Id>aaaaaaa</Id>
+    <DisplayName>aaaaaaa</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>false</IsDefaulConnection>
+      <PlazaConnectionParams>
         <Path>C:\SpectraCGate</Path>
       </PlazaConnectionParams>
-      <Name>aaaaaaaaaaaaa</Name>
-      <Code>aaaaaaaaaa</Code>
+      <Name>aaaaaaa</Name>
+      <Code>aaaaaaa</Code>
       <IsConnected>false</IsConnected>
       <Command>Connect</Command>
       <Funds>-1</Funds>

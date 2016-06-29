@@ -82,18 +82,21 @@ namespace AistTrader
             if (Process.GetProcesses().Count(p => p.ProcessName == name) > 1)
                 Application.Current.Shutdown();
             //string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string buFilePath =Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+
+
+            string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string destFilePath = Path.Combine(buFilePath, "AistTrader");
             if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
             foreach (var xmlset in EntitiesFilesNames)
             {
-                FileInfo copyToPath= new FileInfo(Path.Combine(System.Windows.Forms.Application.StartupPath, xmlset));
+                FileInfo copyToPath = new FileInfo(Path.Combine(System.Windows.Forms.Application.StartupPath, xmlset));
                 FileInfo locaFilesInfo = new FileInfo(Path.Combine(destFilePath, copyToPath.FullName.Split('\\').Last()));
                 if (!copyToPath.Exists)
                 {
                     if (locaFilesInfo.Exists)
                     {
-                        locaFilesInfo .CopyTo(copyToPath.FullName);
+                        locaFilesInfo.CopyTo(copyToPath.FullName);
                     }
                 }
             }
@@ -267,7 +270,7 @@ namespace AistTrader
         private void BackUpXMLSettings()
         {
             string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string destFilePath = Path.Combine(buFilePath, "AistTrader");
+            string destFilePath = Path.Combine(buFilePath, "AistTrader");   
             if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
 
             foreach (var xmlset in EntitiesFilesNames)
@@ -284,17 +287,12 @@ namespace AistTrader
                     if (sourceFilePath.Exists)
                         sourceFilePath.CopyTo(destFilePathWithFileName.FullName);
                 }
-
             }
-
-            
         }
-
         private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/igorshepe/-AistTrader");
         }
-
         private void ConnectionStatusTextBlock_OnToolTipOpening(object sender, ToolTipEventArgs e)
         {
             if (!Instance.ConnectionsStorage.IsEmpty())

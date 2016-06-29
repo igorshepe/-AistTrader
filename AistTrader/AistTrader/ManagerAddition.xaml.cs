@@ -98,11 +98,6 @@ namespace AistTrader
             editMode = true;
             agentManagerToEdit = agent;
 
-
-
-          
-
-
             //SecurityPickerSS.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
             PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             _selectedPortfolio = agent.Name;
@@ -122,6 +117,15 @@ namespace AistTrader
             SecurityPickerSS.SelectedSecurity = conn.Securities.FirstOrDefault(i=>i.Code == agent.Tool);
             conn = null;
             _amount = agent.Amount.ToString();
+            if (agent.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
+            {
+                GroupOrSingleAgentComboBox.IsEnabled = false;
+                PortfolioComboBox.IsEnabled = false;
+                AliasTxtBox.IsEnabled = false;
+                SecurityPickerSS.IsEnabled = false;
+                editMode = true;
+            }
+            
         }
         private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
@@ -135,18 +139,26 @@ namespace AistTrader
                 MessageBox.Show(this, @"Select a security");
                 return;
             }
-            if (AmountTextBox.Text == "")
-            {
-                MessageBox.Show(this, @"Set amount value");
-                return;
-            }
+
             //временная проверка не через автовалидацию
             if (editMode)
             {
-                agentManagerToEdit.Alias= AliasTxtBox.Text;
-                MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
-                agentManagerToEdit = null;
-                Close();
+
+
+                if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
+                {
+                    agentManagerToEdit.Amount = AmountTextBox.Text;
+                    MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
+                    Close();
+                }
+                else
+                {
+                    agentManagerToEdit.Alias = AliasTxtBox.Text;
+                    MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
+                    agentManagerToEdit = null;
+                    Close();
+                }
+                
                 editMode = false;
             }
             else
@@ -169,6 +181,19 @@ namespace AistTrader
             else
 
                 setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity.Code);
+
+
+            if (AmountTextBox.Text == "" && agent.Params.GroupName =="")
+            {
+                MessageBox.Show(this, @"Set amount value");
+                return;
+            }
+            if (AmountTextBox.Text == "" && agent.Params.GroupName == "ungrouped agents")
+            {
+                MessageBox.Show(this, @"Set amount value");
+                return;
+            }
+
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text), EditIndex);
             SecurityPickerSS.SecurityProvider.Dispose();
             SecurityPickerSS.SecurityProvider = null;

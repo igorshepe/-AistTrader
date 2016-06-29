@@ -254,7 +254,7 @@ namespace AistTrader
                     Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
 
                     return;
-
+                    
                 }
                 var item = ConnectionsStorage.Cast<Connection>().Where(i => i.ConnectionParams.PlazaConnectionParams.Path == conn.ConnectionParams.PlazaConnectionParams.Path)
                         .Select(i => i).FirstOrDefault();

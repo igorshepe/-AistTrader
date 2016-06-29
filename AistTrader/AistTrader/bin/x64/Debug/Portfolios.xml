@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <ArrayOfCommonEntitiesPortfolio xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Common.Entities.Portfolio>
-    <Name xmlns="Common.Entities">aaaaaaaa</Name>
+    <Name xmlns="Common.Entities">aaaaaaaaaaaaaaa</Name>
     <Connection xmlns="Common.Entities">
-      <Id>aaaaaaaaaaaaa</Id>
-      <DisplayName>aaaaaaaaaaaaa</DisplayName>
+      <Id>bbbbbbbb</Id>
+      <DisplayName>bbbbbbbb</DisplayName>
       <IsDemo>true</IsDemo>
       <ConnectionParams>
         <IsDefaulConnection>true</IsDefaulConnection>
         <PlazaConnectionParams>
-          <Path>C:\SpectraCGate</Path>
-          <IpEndPoint>127.0.0.1:4001</IpEndPoint>
+          <Path>C:\SpectraCGate2</Path>
+          <IpEndPoint>127.0.0.1:4002</IpEndPoint>
         </PlazaConnectionParams>
-        <Name>aaaaaaaaaaaaa</Name>
-        <Code>aaaaaaaaaa</Code>
+        <Name>bbbbbbbb</Name>
+        <Code>bbbbbbb</Code>
         <IsConnected>true</IsConnected>
         <Command>Disconnect</Command>
-        <Funds>262853.50</Funds>
+        <Funds>308979.00</Funds>
         <AlgorithmCount>-1</AlgorithmCount>
         <Contracts>-1</Contracts>
         <NetValue>0</NetValue>
@@ -25,6 +25,6 @@
         <ConnectionState>Connected</ConnectionState>
       </ConnectionParams>
     </Connection>
-    <Code xmlns="Common.Entities">FZ00D80</Code>
+    <Code xmlns="Common.Entities">FZ00J32</Code>
   </Common.Entities.Portfolio>
 </ArrayOfCommonEntitiesPortfolio>
