@@ -97,6 +97,12 @@ namespace AistTrader
         {
             editMode = true;
             agentManagerToEdit = agent;
+
+
+
+          
+
+
             //SecurityPickerSS.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
             PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             _selectedPortfolio = agent.Name;
@@ -106,7 +112,15 @@ namespace AistTrader
             resultsList.AddRange(results);
             GroupOrSingleAgentComboBox.ItemsSource = resultsList.ToList();
             _selectedGroupOrSingleAgent = agent.AgentManagerSettings.AgentOrGroup;
-            //SecurityPickerSS.SelectedSecurity = agent.Tool;
+
+            string selectedP = (string)_selectedPortfolio;
+            var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == selectedP);
+            GroupOrSingleAgentComboBox.SelectedItem = _selectedGroupOrSingleAgent;
+            var connection = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == selectedPortfolio.Connection.Id);
+            var conn = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
+            SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);
+            SecurityPickerSS.SelectedSecurity = conn.Securities.FirstOrDefault(i=>i.Code == agent.Tool);
+            conn = null;
             _amount = agent.Amount.ToString();
         }
         private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
@@ -114,6 +128,16 @@ namespace AistTrader
             if (AliasTxtBox.Text== "")
             {
                 MessageBox.Show(this, @"Set an alias");
+                return;
+            }
+            if (SecurityPickerSS.SelectedSecurity == null)
+            {
+                MessageBox.Show(this, @"Select a security");
+                return;
+            }
+            if (AmountTextBox.Text == "")
+            {
+                MessageBox.Show(this, @"Set amount value");
                 return;
             }
             //временная проверка не через автовалидацию
@@ -143,6 +167,7 @@ namespace AistTrader
                 setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity.Code);
             }
             else
+
                 setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity.Code);
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text), EditIndex);
             SecurityPickerSS.SecurityProvider.Dispose();
@@ -177,6 +202,7 @@ namespace AistTrader
             var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == selectedP);
             GroupOrSingleAgentComboBox.SelectedItem = _selectedGroupOrSingleAgent;
             var connection =  MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i=>i.Id == selectedPortfolio.Connection.Id);
+            
             if (connection != null)
             {
                 if (connection.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
@@ -188,6 +214,7 @@ namespace AistTrader
                     {
                         var conn= MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
                         SecurityPickerSS.SecurityProvider=  new CollectionSecurityProvider(conn.Securities);
+
                         conn = null;
                     }
                 }

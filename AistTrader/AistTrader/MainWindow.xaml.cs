@@ -81,8 +81,7 @@ namespace AistTrader
             String name = Process.GetCurrentProcess().ProcessName;
             if (Process.GetProcesses().Count(p => p.ProcessName == name) > 1)
                 Application.Current.Shutdown();
-
-            #if DEBUG
+            //string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string buFilePath =Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string destFilePath = Path.Combine(buFilePath, "AistTrader");
             if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
@@ -98,7 +97,6 @@ namespace AistTrader
                     }
                 }
             }
-            #endif 
 
 
 
@@ -262,9 +260,7 @@ namespace AistTrader
             //_shutdown = result == MessageDialogResult.Affirmative;
 
             //if (_shutdown)
-            #if DEBUG
             BackUpXMLSettings();
-            #endif
             Application.Current.Shutdown();
         }
 
