@@ -22,25 +22,25 @@
                            AutoGenerateProperties="False"
                            >
             <xctk:PropertyGrid.PropertyDefinitions>
-                <xctk:PropertyDefinition TargetProperties="DirectIns"/>
-                <xctk:PropertyDefinition TargetProperties="DirectOuts"/>
-                <xctk:PropertyDefinition TargetProperties="AutoOpenBarAction"/>
-                <xctk:PropertyDefinition TargetProperties="AutoCloseBarAction"/>
-                <xctk:PropertyDefinition TargetProperties="IgnorePositionOutOfHistory"/>
-                <xctk:PropertyDefinition TargetProperties="NotifyOnMissedIns"/>
-                <xctk:PropertyDefinition TargetProperties="NotOpenIfGap"/>
-                <xctk:PropertyDefinition TargetProperties="NotifyOnRecount"/>
-                <xctk:PropertyDefinition TargetProperties="VirtualCandleMax"/>
-                <xctk:PropertyDefinition TargetProperties="WaitOnSuccessfulOut"/>
-                <xctk:PropertyDefinition TargetProperties="WaitOnSuccessfulIn"/>
-                <xctk:PropertyDefinition TargetProperties="SimulatePositionSequence"/>
+                <xctk:PropertyDefinition TargetProperties="EnterStart"/>
+                <xctk:PropertyDefinition TargetProperties="ExiteStart"/>
+                <xctk:PropertyDefinition TargetProperties="AutoOpenBar"/>
+                <xctk:PropertyDefinition TargetProperties="AutoCloseBar"/>
+                <xctk:PropertyDefinition TargetProperties="IgnoreHistory"/>
+                <xctk:PropertyDefinition TargetProperties="PostMissingDeal"/>
+                <xctk:PropertyDefinition TargetProperties="NoEnterWaitExit"/>
+                <xctk:PropertyDefinition TargetProperties="NoPostRecalculation"/>
+                <xctk:PropertyDefinition TargetProperties="VirtPosMaxCandles"/>
+                <xctk:PropertyDefinition TargetProperties="WaitLimitExit"/>
+                <xctk:PropertyDefinition TargetProperties="WaitLimitEnter"/>
+                <xctk:PropertyDefinition TargetProperties="PriorityDeal"/>
 
                 <xctk:PropertyDefinition TargetProperties="SlippingInSteps"/>
                 <xctk:PropertyDefinition TargetProperties="SlippingInPercent"/>
-                <xctk:PropertyDefinition TargetProperties="TakeProfitWithNoSlipping"/>
-                <xctk:PropertyDefinition TargetProperties="OpeningWithLimitingOrders"/>
-                <xctk:PropertyDefinition TargetProperties="ByMarketWithFixedPrice"/>
-                <xctk:PropertyDefinition TargetProperties="BadOrdersByMarket"/>
+                <xctk:PropertyDefinition TargetProperties="TakeProfitNoSlip"/>
+                <xctk:PropertyDefinition TargetProperties="LimitDeal"/>
+                <xctk:PropertyDefinition TargetProperties="MarketLimitPrice"/>
+                <xctk:PropertyDefinition TargetProperties="BadDeal"/>
             </xctk:PropertyGrid.PropertyDefinitions>
         </xctk:PropertyGrid>
 

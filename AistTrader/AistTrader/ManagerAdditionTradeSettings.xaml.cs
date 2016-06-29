@@ -25,26 +25,26 @@ namespace AistTrader
         DisplayName("Исполнять входы сразу"),
             PropertyOrder(1)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool DirectIns
+        public bool EnterStart
         {
-            get;
-            set;
+            get { return true; }
+            set { EnterStart = value; } 
         }
 
         [CategoryAttribute("Исполнение агента"),
         DisplayName("Исполнять выходы сразу"),
             PropertyOrder(2)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool DirectOuts
+        public bool ExiteStart
         {
-            get;
-            set;
+            get { return true; }
+            set { ExiteStart = value; }
         }
         [CategoryAttribute("Исполнение агента"),
         DisplayName("Действия автооткрытия(баров)"),
             PropertyOrder(3)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public int AutoOpenBarAction
+        public int AutoOpenBar
         {
             get;
             set;
@@ -53,7 +53,7 @@ namespace AistTrader
         DisplayName("Действия автозакрытия(баров)"),
             PropertyOrder(4)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public int AutoCloseBarAction
+        public int AutoCloseBar
         {
             get;
             set;
@@ -62,25 +62,25 @@ namespace AistTrader
         DisplayName("Игнорировать позиции вне истории"),
             PropertyOrder(5)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool IgnorePositionOutOfHistory
+        public bool IgnoreHistory
         {
-            get;
-            set;
+            get { return true; }
+            set { IgnoreHistory = value; }
         }
         [CategoryAttribute("Исполнение агента"),
         DisplayName("Увед. о проп. входах"),
             PropertyOrder(6)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool NotifyOnMissedIns
+        public bool PostMissingDeal
         {
-            get;
-            set;
+            get { return true; }
+            set { PostMissingDeal = value; }
         }
         [CategoryAttribute("Исполнение агента"),
-        DisplayName("Не открывать, есть есть пропуск выхо.."),
+        DisplayName("Не открывать, если есть пропуск выхо.."),
             PropertyOrder(7)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool NotOpenIfGap
+        public bool NoEnterWaitExit
         {
             get;
             set;
@@ -89,7 +89,7 @@ namespace AistTrader
         DisplayName("Не уведом. пересчет"),
             PropertyOrder(8)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool NotifyOnRecount
+        public bool NoPostRecalculation
         {
             get;
             set;
@@ -98,7 +98,7 @@ namespace AistTrader
         DisplayName("Виртуальная позиция макс. свечей"),
             PropertyOrder(9)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public int VirtualCandleMax
+        public int VirtPosMaxCandles
         {
             get;
             set;
@@ -107,7 +107,7 @@ namespace AistTrader
         DisplayName("Ждать исполнения выхода"),
             PropertyOrder(10)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public int WaitOnSuccessfulOut
+        public int WaitLimitExit
         {
             get;
             set;
@@ -116,7 +116,7 @@ namespace AistTrader
         DisplayName("Ждать исполнения входа"),
             PropertyOrder(11)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public int WaitOnSuccessfulIn
+        public int WaitLimitEnter
         {
             get;
             set;
@@ -125,7 +125,7 @@ namespace AistTrader
         DisplayName("Имит. очередность позиций"),
             PropertyOrder(12)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool SimulatePositionSequence
+        public bool PriorityDeal
         {
             get;
             set;
@@ -153,7 +153,7 @@ namespace AistTrader
         DisplayName("Take profit без проскальзывания"),
             PropertyOrder(3)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool TakeProfitWithNoSlipping
+        public bool TakeProfitNoSlip
         {
             get;
             set;
@@ -162,7 +162,7 @@ namespace AistTrader
         DisplayName("Открытие лимитными заявками"),
             PropertyOrder(4)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool OpeningWithLimitingOrders
+        public bool LimitDeal
         {
             get;
             set;
@@ -171,7 +171,7 @@ namespace AistTrader
         DisplayName("\"По рынку\" с фикс. ценой"),
             PropertyOrder(5)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool ByMarketWithFixedPrice
+        public bool MarketLimitPrice
         {
             get;
             set;
@@ -180,10 +180,10 @@ namespace AistTrader
         DisplayName("\"Плохие\" заявки по рынку"),
             PropertyOrder(6)]
         //DescriptionAttribute("Test Description")] todo: запросить описание
-        public bool BadOrdersByMarket
+        public bool BadDeal
         {
-            get;
-            set;
+            get { return true; }
+            set { BadDeal = value; }
         }
     }
     public partial class ManagerAdditionTradeSettings
