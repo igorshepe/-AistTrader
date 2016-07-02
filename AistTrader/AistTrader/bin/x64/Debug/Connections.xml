@@ -12,15 +12,15 @@
       </PlazaConnectionParams>
       <Name>bbbbbbbb</Name>
       <Code>bbbbbbb</Code>
-      <IsConnected>true</IsConnected>
-      <Command>Disconnect</Command>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
       <Funds>308979.00</Funds>
       <AlgorithmCount>-1</AlgorithmCount>
       <Contracts>-1</Contracts>
       <NetValue>0</NetValue>
       <VariationMargin>0</VariationMargin>
-      <IsRegistredConnection>true</IsRegistredConnection>
-      <ConnectionState>Connected</ConnectionState>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <ConnectionState>Disconnected</ConnectionState>
     </ConnectionParams>
   </Connection>
   <Connection>
@@ -35,15 +35,15 @@
       </PlazaConnectionParams>
       <Name>cccccccc</Name>
       <Code>ccc</Code>
-      <IsConnected>true</IsConnected>
-      <Command>Disconnect</Command>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
       <Funds>300000.00</Funds>
       <AlgorithmCount>-1</AlgorithmCount>
       <Contracts>-1</Contracts>
       <NetValue>0</NetValue>
       <VariationMargin>0</VariationMargin>
-      <IsRegistredConnection>true</IsRegistredConnection>
-      <ConnectionState>Connected</ConnectionState>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <ConnectionState>Disconnected</ConnectionState>
     </ConnectionParams>
   </Connection>
   <Connection>
@@ -58,15 +58,15 @@
       </PlazaConnectionParams>
       <Name>dddddddddd</Name>
       <Code>ddddddddd</Code>
-      <IsConnected>true</IsConnected>
-      <Command>Disconnect</Command>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
       <Funds>273009.00</Funds>
       <AlgorithmCount>-1</AlgorithmCount>
       <Contracts>-1</Contracts>
       <NetValue>0</NetValue>
       <VariationMargin>0</VariationMargin>
-      <IsRegistredConnection>true</IsRegistredConnection>
-      <ConnectionState>Connected</ConnectionState>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <ConnectionState>Disconnected</ConnectionState>
     </ConnectionParams>
   </Connection>
   <Connection>
@@ -81,28 +81,28 @@
       </PlazaConnectionParams>
       <Name>fffffffff</Name>
       <Code>ffffff</Code>
-      <IsConnected>true</IsConnected>
-      <Command>Disconnect</Command>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
       <Funds>300000.00</Funds>
       <AlgorithmCount>-1</AlgorithmCount>
       <Contracts>-1</Contracts>
       <NetValue>0</NetValue>
       <VariationMargin>0</VariationMargin>
-      <IsRegistredConnection>true</IsRegistredConnection>
-      <ConnectionState>Connected</ConnectionState>
+      <IsRegistredConnection>false</IsRegistredConnection>
+      <ConnectionState>Disconnected</ConnectionState>
     </ConnectionParams>
   </Connection>
   <Connection>
-    <Id>aaaaaaa</Id>
-    <DisplayName>aaaaaaa</DisplayName>
+    <Id>vvddfdf</Id>
+    <DisplayName>vvddfdf</DisplayName>
     <IsDemo>true</IsDemo>
     <ConnectionParams>
       <IsDefaulConnection>false</IsDefaulConnection>
       <PlazaConnectionParams>
         <Path>C:\SpectraCGate</Path>
       </PlazaConnectionParams>
-      <Name>aaaaaaa</Name>
-      <Code>aaaaaaa</Code>
+      <Name>vvddfdf</Name>
+      <Code>adfsfsd</Code>
       <IsConnected>false</IsConnected>
       <Command>Connect</Command>
       <Funds>-1</Funds>

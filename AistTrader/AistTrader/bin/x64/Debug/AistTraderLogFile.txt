@@ -10927,3 +10927,7 @@
 2016-06-29 11:29:43.2439|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/28/2016 21:38:00 +03:00
 2016-06-29 11:29:43.2619|INFO|TradesLogger|ChStrategy 60_10_20_20: Historical candles 06/28/2016 21:43:00 +03:00
 2016-06-29 11:29:43.3820|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-07-01 09:21:11.3856|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaa"...
+2016-07-01 09:21:11.3856|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaa" connection were successfully acquired
+2016-07-01 09:21:45.6545|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"vvddfdf"...
+2016-07-01 09:21:45.6545|INFO|AistTrader.MainWindow|IP and port of -"vvddfdf" connection were successfully acquired
