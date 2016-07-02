@@ -98,16 +98,18 @@ namespace AistTrader
                 return selectedItem != null && i.Connection.Id == selectedItem.Id;
             }))
             {
-
                 //var dialog = new BaseMetroDialog(MainFrm.MainFrm); //(BaseMetroDialog)this.Resources["CustomDialogTest"];
                 //await this.ShowMetroDialogAsync(dialog);
-
                 //textBlock.Text = "The dialog will close in 2 seconds.";
-                await Task.Delay(2000);
-
+                //await Task.Delay(2000);
 //                await this.HideMetroDialogAsync(dialog);
                 //MessageBox.Show(this, @"На данном соединении завязан портфель, удаление невозможно!");
                 //return;
+            }
+            if (selectedItem.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
+            {
+                MessageBox.Show(this, @"Can not be deleted, connection is active"); 
+                return;
             }
             MessageBoxResult result = MessageBox.Show("Connection \"{0}\" will be deleted! You sure?".Put(ProviderListView.SelectedItem),"Delete connection", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
