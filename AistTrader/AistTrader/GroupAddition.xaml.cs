@@ -447,6 +447,37 @@ namespace AistTrader
                                     item.Params.GroupName = groupName;
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(item);
                                     MainWindow.Instance.AddNewAgentInGroup(item, index, false);
+                                    //go to agent manager related actions
+                                    var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.Where(i => i.AgentManagerSettings.AgentOrGroup == item.Params.GroupName.ToString()).ToList();
+                                    foreach (var amItem in amItemOnTheFly)
+                                    {
+                                        if (amItem != null && amItem.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
+                                        {
+                                            var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name.EndsWith(item.Name));
+                                            if (runnigStrategy != null)
+                                            {
+                                                var ueAmount = new UnitEditor();
+                                                ueAmount.Text = item.Params.Amount;
+                                                ueAmount.Value = ueAmount.Text.ToUnit();
+                                                decimal calculatedAmount = 0;
+                                                if (ueAmount.Value.Type == UnitTypes.Percent)
+                                                {
+                                                    calculatedAmount = MainWindow.Instance.CalculateAmount(amItem, item);
+                                                    runnigStrategy.ActualStrategyRunning.Volume = /*Convert.ToDecimal(itemToEdit.Params.Amount)*/ calculatedAmount;
+                                                }
+                                                if (ueAmount.Value.Type == UnitTypes.Absolute)
+                                                {
+                                                    calculatedAmount = ueAmount.Value.To<decimal>();
+                                                    runnigStrategy.ActualStrategyRunning.Volume = calculatedAmount;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            //offline
+                                        }
+
+                                    }
                                     newMembersOfCurrentGroup.Add(item);
                                 }
                                 else

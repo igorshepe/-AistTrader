@@ -337,6 +337,28 @@ namespace AistTrader
             return portfolioName.Connection.DisplayName;
         }
 
+        public decimal CalculateAmount(AgentManager am, Agent a)
+        {
+
+            var connectionName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Name);
+            var realConnection = ConnectionManager.Connections.Find(i => { return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName; });
+
+            var amount = new UnitEditor();
+            amount.Text = a.Params.Amount;
+            amount.Value = amount.Text.ToUnit();
+            decimal calculatedAmount = 0;
+
+            var data = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == am.AgentManagerSettings.Portfolio.Connection.Id);
+            var secG = realConnection.Securities.FirstOrDefault(i => i.Code == am.Tool);
+            var secMargSell = data.Securities.FirstOrDefault(i => i.Code == /*agentOrGroup.Tool.Name*/secG.Code);
+            var currValue = data.Portfolios.FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Code).CurrentValue;
+            var percent = amount.Value.Value;
+            var calculatedPercent = (currValue / 100) * percent;
+            //calculatedAmount = calculatedPercent / secMargSell.Volume.Value; //todo вот это значение стало приходить как нулл, уточнить у SS почему
+            //todo - уточнить у Дена по округлению от разряда
+            calculatedAmount = Math.Truncate(calculatedAmount);
+            return calculatedAmount;
+        }
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
             //check whether we work with group or not
@@ -359,25 +381,16 @@ namespace AistTrader
                     decimal calculatedAmount = 0;
                     if (amount.Value.Type == UnitTypes.Percent)
                     {
-                        var data =
-                            MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
-                                i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
-
-
-
+                        var data =MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
                         var secG = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
-
-
-
-                        var secMargSell = data.Securities.FirstOrDefault(i => i.Name == /*agentOrGroup.Tool.Name*/secG.Code).MarginSell;
-                        var currValue =
-                            data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code)
-                                .CurrentValue;
+                        var secMargSell = data.Securities.FirstOrDefault(i => i.Name == /*agentOrGroup.Tool.Name*/secG.Name).MarginSell;
+                        var currValue = data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code).CurrentValue;
                         var percent = amount.Value.Value;
                         var calculatedPercent = (currValue / 100) * percent;
                         calculatedAmount = calculatedPercent / secMargSell.Value;
                         //todo - уточнить у Дена по округлению от разряда
                         calculatedAmount = Math.Truncate(calculatedAmount);
+                        //calculatedAmount = CalculateAmount(agentOrGroup);
                     }
                     if (amount.Value.Type == UnitTypes.Absolute)
                         calculatedAmount = amount.Value.To<decimal>();
@@ -449,7 +462,7 @@ namespace AistTrader
 
 
 
-                    var secS = realConnection.Securities.FirstOrDefault(i => i.Name == agentOrGroup.Tool);
+                    var secS = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
 
                     var secMargSell = data.Securities.FirstOrDefault(i => i.Name == secS.Name).MarginSell;
                     var currValue =
