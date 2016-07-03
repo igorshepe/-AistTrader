@@ -17,7 +17,10 @@ namespace AistTrader
     [Serializable]
     public class AgentSettingParameterProperty
     {
-
+        public AgentSettingParameterProperty()
+        {
+            UseInAgentName = true;
+        }
         public override string ToString()
         {
             return Name;
