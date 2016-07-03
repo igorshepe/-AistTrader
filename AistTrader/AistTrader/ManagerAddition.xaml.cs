@@ -173,6 +173,17 @@ namespace AistTrader
             ManagerParams setting;
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == PortfolioComboBox.SelectedItem.ToString());
             var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+
+            if (agent != null && (AmountTextBox.Text == "" && agent.Params.GroupName == ""))
+            {
+                MessageBox.Show(this, @"Set amount value");
+                return;
+            }
+            if (agent != null && (AmountTextBox.Text == "" && agent.Params.GroupName == "ungrouped agents"))
+            {
+                MessageBox.Show(this, @"Set amount value");
+                return;
+            }
             if (agent == null)
             {
                 agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
@@ -193,6 +204,13 @@ namespace AistTrader
                 MessageBox.Show(this, @"Set amount value");
                 return;
             }
+
+            //string finalAmount;
+            //if (AmountTextBox.Text=="" && agent.Params.GroupName != "ungrouped agents")
+            //{
+            //    finalAmount = agent
+            //}
+
 
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text), EditIndex);
             SecurityPickerSS.SecurityProvider.Dispose();

@@ -646,7 +646,7 @@ namespace AistTrader
 
             public IEnumerator<AistTraderAgentManagerWrapper> GetEnumerator()
             {
-                throw new NotImplementedException();
+                return Strategies.GetEnumerator();
             }
 
             IEnumerator IEnumerable.GetEnumerator()

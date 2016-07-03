@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Common.Entities;
 using Common.Params;
+using DevExpress.Xpf.Grid.Printing;
 using Ecng.Common;
 using StockSharp.Messages;
 using StockSharp.Xaml;
@@ -502,6 +503,14 @@ namespace AistTrader
                                 itemToEdit.Params.GroupName = groupName;
                                 itemToEdit.Name = algorithmName;
                                 MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
+                                //go to agent manager related actions
+                                var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == itemToEdit.Params.GroupName.ToString());
+                                if (amItemOnTheFly != null && amItemOnTheFly.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
+                                {
+                                    var runnigStrategy =MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name.EndsWith(itemToEdit.Name));
+                                    if (runnigStrategy != null)
+                                        runnigStrategy.ActualStrategyRunning.Volume = Convert.ToDecimal(itemToEdit.Params.Amount);
+                                }
                             }
                     }
                 }
