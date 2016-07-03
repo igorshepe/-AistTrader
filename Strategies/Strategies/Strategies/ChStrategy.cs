@@ -144,7 +144,7 @@ namespace Strategies.Strategies
 
 
         public override string Name => (CheckNameGroup());
-
+        
         private string CheckNameGroup()
         {
             var nameStrategy = _nameGroup != "single" ? ($"[{_nameGroup}] {GetFriendlyName()}") : ($"{GetFriendlyName()}");
@@ -157,6 +157,15 @@ namespace Strategies.Strategies
 
             // Вызываем базовую реализацию метода.
             base.OnStarted();
+
+            //TODO: Артём, привет)
+            //задание тебе небольшое по части оптимизации
+            // в этих методах CheckNameGroup,Name,GetFriendlyName поставь брекпоинты и запусти на исполнение стратеги из менеджера агентов, ну или группу агентов.
+            //попробуй придумать альтернативную версию
+
+            // и еще обрати внимание на имя экземляра класса стратеги- на выходе оно получается искаженное- то есть не возвращает настоящее имя стратеги, а еще и добавляет перед именем имя группы.
+            //надо сделать так, что бы мне в платформу при создании экземпляра класса статегии возвращалось ее не искаженное имя.
+
 
 
             Task.Run(()=>TradesLogger.Info("{0}: START",  Name));
