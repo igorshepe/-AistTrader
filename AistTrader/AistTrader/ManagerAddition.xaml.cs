@@ -154,8 +154,13 @@ namespace AistTrader
                         MessageBox.Show(this, @"Set amount value");
                         return;
                     }
-
+                    if (agentManagerToEdit.Amount == AmountTextBox.Text)
+                    {
+                        Close();
+                        return;
+                    }
                     agentManagerToEdit.Amount = AmountTextBox.Text;
+                    //todo: не производить расчёт если значение не поменялось
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
                     decimal amount= MainWindow.Instance.CalculateAmount(agentManagerToEdit);
                     var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name ==agentManagerToEdit.ToString());
