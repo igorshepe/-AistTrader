@@ -147,9 +147,21 @@ namespace AistTrader
 
                 if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                 {
+
+
+                    if (AmountTextBox.Text == "")
+                    {
+                        MessageBox.Show(this, @"Set amount value");
+                        return;
+                    }
+
                     agentManagerToEdit.Amount = AmountTextBox.Text;
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
+                    decimal amount= MainWindow.Instance.CalculateAmount(agentManagerToEdit);
+                    var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name ==agentManagerToEdit.ToString());
+                    if (runnigStrategy != null) runnigStrategy.ActualStrategyRunning.Volume = amount;
                     Close();
+                    return;
                 }
                 else
                 {
