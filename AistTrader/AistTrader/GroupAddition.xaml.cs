@@ -504,13 +504,37 @@ namespace AistTrader
                                 itemToEdit.Name = algorithmName;
                                 MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
                                 //go to agent manager related actions
-                                var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == itemToEdit.Params.GroupName.ToString());
-                                if (amItemOnTheFly != null && amItemOnTheFly.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
+                                var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.Where(i => i.AgentManagerSettings.AgentOrGroup == itemToEdit.Params.GroupName.ToString()).ToList();
+                                foreach (var amItem in amItemOnTheFly)
                                 {
-                                    var runnigStrategy =MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name.EndsWith(itemToEdit.Name));
-                                    if (runnigStrategy != null)
-                                        runnigStrategy.ActualStrategyRunning.Volume = Convert.ToDecimal(itemToEdit.Params.Amount);
+                                    if (amItem != null && amItem.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
+                                    {
+                                        var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name.EndsWith(itemToEdit.Name));
+                                        if (runnigStrategy != null)
+                                        {
+                                            var ueAmount = new UnitEditor();
+                                            ueAmount.Text = itemToEdit.Params.Amount;
+                                            ueAmount.Value = ueAmount.Text.ToUnit();
+                                            decimal calculatedAmount = 0;
+                                            if (ueAmount.Value.Type == UnitTypes.Percent)
+                                            {
+                                                calculatedAmount = MainWindow.Instance.CalculateAmount(amItem, itemToEdit);
+                                                runnigStrategy.ActualStrategyRunning.Volume = /*Convert.ToDecimal(itemToEdit.Params.Amount)*/ calculatedAmount;
+                                            }
+                                            if (ueAmount.Value.Type == UnitTypes.Absolute)
+                                            {
+                                                calculatedAmount = ueAmount.Value.To<decimal>();
+                                                runnigStrategy.ActualStrategyRunning.Volume = calculatedAmount;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //offline
+                                    }
+
                                 }
+                                
                             }
                     }
                 }
