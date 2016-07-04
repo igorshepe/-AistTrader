@@ -111,6 +111,8 @@ namespace AistTrader
             string selectedP = (string)_selectedPortfolio;
             var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == selectedP);
             GroupOrSingleAgentComboBox.SelectedItem = _selectedGroupOrSingleAgent;
+            //ошибка от Артём, при изменения имени портфеля
+
             var connection = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == selectedPortfolio.Connection.Id);
             var conn = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
             SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);

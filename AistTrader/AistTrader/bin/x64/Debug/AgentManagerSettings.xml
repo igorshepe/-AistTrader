@@ -2,18 +2,18 @@
 <ArrayOfAgentManager xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AgentManager>
     <AgentManagerUniqueId>ChStrategy 60_10_20_20</AgentManagerUniqueId>
-    <Name>aaaaaaaaaaaaaa</Name>
+    <Name>bbbbbbbbbbbb</Name>
     <Alias>ChStrategy 60_10_20_20</Alias>
     <Tool>SiU6</Tool>
-    <Amount>15</Amount>
+    <Amount>1%</Amount>
     <AgentManagerSettings>
       <IsConnected>false</IsConnected>
       <AgentMangerCurrentStatus>Running</AgentMangerCurrentStatus>
       <Portfolio>
-        <Name xmlns="Common.Entities">aaaaaaaaaaaaaa</Name>
+        <Name xmlns="Common.Entities">bbbbbbbbbbbb</Name>
         <Connection xmlns="Common.Entities">
-          <Id>aaaaaaaaaaa</Id>
-          <DisplayName>aaaaaaaaaaa</DisplayName>
+          <Id>aaaaaaa</Id>
+          <DisplayName>aaaaaaa</DisplayName>
           <IsDemo>true</IsDemo>
           <ConnectionParams>
             <IsDefaulConnection>true</IsDefaulConnection>
@@ -21,11 +21,11 @@
               <Path>C:\SpectraCGate</Path>
               <IpEndPoint>127.0.0.1:4001</IpEndPoint>
             </PlazaConnectionParams>
-            <Name>aaaaaaaaaaa</Name>
-            <Code>aaaaaaaaa</Code>
+            <Name>aaaaaaa</Name>
+            <Code>aaaa</Code>
             <IsConnected>true</IsConnected>
             <Command>Disconnect</Command>
-            <Funds>246431.50</Funds>
+            <Funds>0</Funds>
             <AlgorithmCount>-1</AlgorithmCount>
             <Contracts>-1</Contracts>
             <NetValue>0</NetValue>
@@ -42,51 +42,6 @@
       <Transaction>-1</Transaction>
       <FinalTransaction>-1</FinalTransaction>
       <Command>Stop</Command>
-      <IsChecked>true</IsChecked>
-    </AgentManagerSettings>
-  </AgentManager>
-  <AgentManager>
-    <AgentManagerUniqueId>111выывы</AgentManagerUniqueId>
-    <Name>aaaaaaaaaaaaaa</Name>
-    <Alias>111выывы</Alias>
-    <Tool>SiU6</Tool>
-    <Amount />
-    <AgentManagerSettings>
-      <IsConnected>false</IsConnected>
-      <AgentMangerCurrentStatus>Stopped</AgentMangerCurrentStatus>
-      <Portfolio>
-        <Name xmlns="Common.Entities">aaaaaaaaaaaaaa</Name>
-        <Connection xmlns="Common.Entities">
-          <Id>aaaaaaaaaaa</Id>
-          <DisplayName>aaaaaaaaaaa</DisplayName>
-          <IsDemo>true</IsDemo>
-          <ConnectionParams>
-            <IsDefaulConnection>true</IsDefaulConnection>
-            <PlazaConnectionParams>
-              <Path>C:\SpectraCGate</Path>
-              <IpEndPoint>127.0.0.1:4001</IpEndPoint>
-            </PlazaConnectionParams>
-            <Name>aaaaaaaaaaa</Name>
-            <Code>aaaaaaaaa</Code>
-            <IsConnected>true</IsConnected>
-            <Command>Disconnect</Command>
-            <Funds>246431.50</Funds>
-            <AlgorithmCount>-1</AlgorithmCount>
-            <Contracts>-1</Contracts>
-            <NetValue>0</NetValue>
-            <VariationMargin>0</VariationMargin>
-            <IsRegistredConnection>true</IsRegistredConnection>
-            <ConnectionState>Connected</ConnectionState>
-          </ConnectionParams>
-        </Connection>
-        <Code xmlns="Common.Entities">FZ00D80</Code>
-      </Portfolio>
-      <AgentOrGroup>111выывы</AgentOrGroup>
-      <Tool>SiU6</Tool>
-      <Position>-1</Position>
-      <Transaction>-1</Transaction>
-      <FinalTransaction>-1</FinalTransaction>
-      <Command>Start</Command>
       <IsChecked>true</IsChecked>
     </AgentManagerSettings>
   </AgentManager>
