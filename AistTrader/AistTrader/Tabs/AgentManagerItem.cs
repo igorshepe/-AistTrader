@@ -653,6 +653,7 @@ namespace AistTrader
                 {
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
                     strategyOrGroup.ActualStrategyRunning.Stop();
+                    AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
                     item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
                     item.AgentManagerSettings.AgentMangerCurrentStatus =ManagerParams.AgentManagerStatus.Stopped; ;
                 }
