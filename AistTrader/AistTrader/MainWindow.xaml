@@ -447,7 +447,7 @@
                                                     />
 
 
-                                <DataGridTemplateColumn  IsReadOnly="False">
+                                <!--<DataGridTemplateColumn  IsReadOnly="False">
                                     <DataGridTemplateColumn.Header>
                                         <CheckBox Name="ChkBoxSelectAllAgentManagerItems" Unchecked="ChkBoxSelectAllAgentManagerItems_OnChecked" Checked="ChkBoxSelectAllAgentManagerItems_OnChecked" IsChecked="{Binding SelectAll}"></CheckBox>
                                     </DataGridTemplateColumn.Header>
@@ -456,7 +456,7 @@
                                             <CheckBox  HorizontalContentAlignment="Center" IsChecked="{Binding ElementName=MainFrm , Path=AgentManagerSettings.IsChecked, Mode=TwoWay}" HorizontalAlignment="Center"></CheckBox>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
+                                </DataGridTemplateColumn>-->
 
 
 
