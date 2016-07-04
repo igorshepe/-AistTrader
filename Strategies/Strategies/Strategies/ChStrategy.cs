@@ -171,7 +171,7 @@ namespace Strategies.Strategies
             Task.Run(()=>TradesLogger.Info("{0}: START",  Name));
 
             // Получаем CandleManager 
-            _candleManager = this.GetCandleManager();
+            _candleManager = this.GetCandleManager();   
 
             // Подписываемся на сделки
             if (!Connector.RegisteredTrades.Contains(Security))

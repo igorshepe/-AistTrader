@@ -337,7 +337,7 @@ namespace AistTrader
             return portfolioName.Connection.DisplayName;
         }
 
-        public decimal CalculateAmount(AgentManager am, Agent a)
+        public decimal? CalculateAmount(AgentManager am, Agent a)
         {
 
             var connectionName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Name);
@@ -346,7 +346,7 @@ namespace AistTrader
             var amount = new UnitEditor();
             amount.Text = a.Params.Amount;
             amount.Value = amount.Text.ToUnit();
-            decimal calculatedAmount = 0;
+            decimal? calculatedAmount = 0;
 
             var data = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == am.AgentManagerSettings.Portfolio.Connection.Id);
             var secG = realConnection.Securities.FirstOrDefault(i => i.Code == am.Tool);
@@ -354,12 +354,14 @@ namespace AistTrader
             var currValue = data.Portfolios.FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Code).CurrentValue;
             var percent = amount.Value.Value;
             var calculatedPercent = (currValue / 100) * percent;
-            //calculatedAmount = calculatedPercent / secMargSell.Volume.Value; //todo вот это значение стало приходить как нулл, уточнить у SS почему
+            calculatedAmount = calculatedPercent / secMargSell.MarginSell; //todo вот это значение стало приходить как нулл, уточнить у SS почему
             //todo - уточнить у Дена по округлению от разряда
-            calculatedAmount = Math.Truncate(calculatedAmount);
+            decimal truncutedAmountValue =(decimal)calculatedAmount;
+            truncutedAmountValue= Math.Truncate(truncutedAmountValue);
+            calculatedAmount = truncutedAmountValue;
             return calculatedAmount;
         }
-        public decimal CalculateAmount(AgentManager am)
+        public decimal? CalculateAmount(AgentManager am)
         {
 
             var connectionName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Name);
@@ -368,7 +370,7 @@ namespace AistTrader
             var amount = new UnitEditor();
             amount.Text = am.Amount;
             amount.Value = amount.Text.ToUnit();
-            decimal calculatedAmount = 0;
+            decimal? calculatedAmount = 0;
 
             var data = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == am.AgentManagerSettings.Portfolio.Connection.Id);
             var secG = realConnection.Securities.FirstOrDefault(i => i.Code == am.Tool);
@@ -376,9 +378,11 @@ namespace AistTrader
             var currValue = data.Portfolios.FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Code).CurrentValue;
             var percent = amount.Value.Value;
             var calculatedPercent = (currValue / 100) * percent;
-            calculatedAmount = calculatedPercent / secMargSell.Volume.Value; //todo вот это значение стало приходить как нулл, уточнить у SS почему
-            //todo - уточнить у Дена по округлению от разряда
-            calculatedAmount = Math.Truncate(calculatedAmount);
+            calculatedAmount = calculatedPercent / secMargSell.MarginSell; //todo вот это значение стало приходить как нулл, уточнить у SS почему
+            decimal truncutedAmountValue = (decimal)calculatedAmount;
+            truncutedAmountValue = Math.Truncate(truncutedAmountValue);
+
+            calculatedAmount = truncutedAmountValue;
             return calculatedAmount;
         }
         public void StartAgentOrGroup(AgentManager agentOrGroup)
@@ -400,7 +404,7 @@ namespace AistTrader
                     var amount = new UnitEditor();
                     amount.Text = groupMember.Params.Amount;
                     amount.Value = amount.Text.ToUnit();
-                    decimal calculatedAmount = 0;
+                    decimal? calculatedAmount = 0;
                     if (amount.Value.Type == UnitTypes.Percent)
                     {
                         var data =MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
@@ -409,9 +413,10 @@ namespace AistTrader
                         var currValue = data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code).CurrentValue;
                         var percent = amount.Value.Value;
                         var calculatedPercent = (currValue / 100) * percent;
-                        calculatedAmount = calculatedPercent / secMargSell.Value;
-                        //todo - уточнить у Дена по округлению от разряда
-                        calculatedAmount = Math.Truncate(calculatedAmount);
+                        calculatedAmount = calculatedPercent / secG.MarginSell; //todo вот это значение стало приходить как нулл, уточнить у SS почему
+                        decimal truncutedAmountValue = (decimal)calculatedAmount;
+                        truncutedAmountValue = Math.Truncate(truncutedAmountValue);
+                        calculatedAmount = truncutedAmountValue;
                         //calculatedAmount = CalculateAmount(agentOrGroup);
                     }
                     if (amount.Value.Type == UnitTypes.Absolute)
@@ -432,7 +437,7 @@ namespace AistTrader
 
                     strategy.Portfolio =realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
                     strategy.Connector = realConnection;
-                    strategy.Volume = calculatedAmount; /*amount.Value.To<decimal>();*/
+                    strategy.Volume =(decimal) calculatedAmount; /*amount.Value.To<decimal>();*/
                     var candleManager = new CandleManager(realConnection);
                     strategy.SetCandleManager(candleManager);
                     strategy.LogLevel = LogLevels.Debug;
@@ -475,7 +480,7 @@ namespace AistTrader
                 var amount = new UnitEditor();
                 amount.Text = agentOrGroup.Amount;
                 amount.Value = amount.Text.ToUnit();
-                decimal calculatedAmount = 0;
+                decimal? calculatedAmount = 0;
                 if (amount.Value.Type == UnitTypes.Percent)
                 {
                     var data =
@@ -492,9 +497,11 @@ namespace AistTrader
                             .CurrentValue;
                     var percent = amount.Value.Value;
                     var calculatedPercent = (currValue / 100) * percent;
-                    calculatedAmount = calculatedPercent / secMargSell.Value;
+                    calculatedAmount = calculatedPercent / secMargSell;
                     //todo - уточнить у Дена по округлению от разряда
-                    calculatedAmount = Math.Truncate(calculatedAmount);
+                    decimal truncutedAmountValue = (decimal)calculatedAmount;
+                    truncutedAmountValue = Math.Truncate(truncutedAmountValue);
+                    calculatedAmount = truncutedAmountValue;
                 }
                 if (amount.Value.Type == UnitTypes.Absolute)
                     calculatedAmount = amount.Value.To<decimal>();
@@ -507,7 +514,7 @@ namespace AistTrader
                 strategy.Portfolio =
                     realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
                 strategy.Connector = realConnection;
-                strategy.Volume = calculatedAmount; /*amount.Value.To<decimal>();*/
+                strategy.Volume = (decimal)calculatedAmount; /*amount.Value.To<decimal>();*/
                 var candleManager = new CandleManager(realConnection);
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;

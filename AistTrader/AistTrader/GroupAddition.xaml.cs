@@ -459,16 +459,16 @@ namespace AistTrader
                                                 var ueAmount = new UnitEditor();
                                                 ueAmount.Text = item.Params.Amount;
                                                 ueAmount.Value = ueAmount.Text.ToUnit();
-                                                decimal calculatedAmount = 0;
+                                                decimal? calculatedAmount = 0;
                                                 if (ueAmount.Value.Type == UnitTypes.Percent)
                                                 {
                                                     calculatedAmount = MainWindow.Instance.CalculateAmount(amItem, item);
-                                                    runnigStrategy.ActualStrategyRunning.Volume = /*Convert.ToDecimal(itemToEdit.Params.Amount)*/ calculatedAmount;
+                                                    runnigStrategy.ActualStrategyRunning.Volume = /*Convert.ToDecimal(itemToEdit.Params.Amount)*/ (decimal)calculatedAmount;
                                                 }
                                                 if (ueAmount.Value.Type == UnitTypes.Absolute)
                                                 {
                                                     calculatedAmount = ueAmount.Value.To<decimal>();
-                                                    runnigStrategy.ActualStrategyRunning.Volume = calculatedAmount;
+                                                    runnigStrategy.ActualStrategyRunning.Volume =(decimal)calculatedAmount;
                                                 }
                                             }
                                         }
@@ -546,16 +546,16 @@ namespace AistTrader
                                             var ueAmount = new UnitEditor();
                                             ueAmount.Text = itemToEdit.Params.Amount;
                                             ueAmount.Value = ueAmount.Text.ToUnit();
-                                            decimal calculatedAmount = 0;
+                                            decimal? calculatedAmount = 0;
                                             if (ueAmount.Value.Type == UnitTypes.Percent)
                                             {
                                                 calculatedAmount = MainWindow.Instance.CalculateAmount(amItem, itemToEdit);
-                                                runnigStrategy.ActualStrategyRunning.Volume = /*Convert.ToDecimal(itemToEdit.Params.Amount)*/ calculatedAmount;
+                                                runnigStrategy.ActualStrategyRunning.Volume = /*Convert.ToDecimal(itemToEdit.Params.Amount)*/ (decimal)calculatedAmount;
                                             }
                                             if (ueAmount.Value.Type == UnitTypes.Absolute)
                                             {
                                                 calculatedAmount = ueAmount.Value.To<decimal>();
-                                                runnigStrategy.ActualStrategyRunning.Volume = calculatedAmount;
+                                                runnigStrategy.ActualStrategyRunning.Volume = (decimal)calculatedAmount;
                                             }
                                         }
                                     }

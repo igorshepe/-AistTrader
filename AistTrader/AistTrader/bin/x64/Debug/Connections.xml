@@ -8,9 +8,32 @@
       <IsDefaulConnection>true</IsDefaulConnection>
       <PlazaConnectionParams>
         <Path>C:\SpectraCGate</Path>
+        <IpEndPoint>127.0.0.1:4001</IpEndPoint>
       </PlazaConnectionParams>
       <Name>aaaaaaaaaaa</Name>
       <Code>aaaaaaaaa</Code>
+      <IsConnected>false</IsConnected>
+      <Command>Connect</Command>
+      <Funds>246431.50</Funds>
+      <AlgorithmCount>-1</AlgorithmCount>
+      <Contracts>-1</Contracts>
+      <NetValue>0</NetValue>
+      <VariationMargin>0</VariationMargin>
+      <IsRegistredConnection>true</IsRegistredConnection>
+      <ConnectionState>Disconnected</ConnectionState>
+    </ConnectionParams>
+  </Connection>
+  <Connection>
+    <Id>vvvvvvvvvvv</Id>
+    <DisplayName>vvvvvvvvvvv</DisplayName>
+    <IsDemo>true</IsDemo>
+    <ConnectionParams>
+      <IsDefaulConnection>false</IsDefaulConnection>
+      <PlazaConnectionParams>
+        <Path>C:\SpectraCGate2</Path>
+      </PlazaConnectionParams>
+      <Name>vvvvvvvvvvv</Name>
+      <Code>vvvvvvv</Code>
       <IsConnected>false</IsConnected>
       <Command>Connect</Command>
       <Funds>-1</Funds>

@@ -145,9 +145,11 @@
       <IsChecked>false</IsChecked>
       <Contracts>-1</Contracts>
       <GroupName>111выывы</GroupName>
-      <Amount>111</Amount>
+      <Amount>13%</Amount>
       <PhantomParams>
         <AgentName>ChStrategy 60_10_20_20</AgentName>
+        <GroupName>111выывы</GroupName>
+        <Amount>11%</Amount>
       </PhantomParams>
     </Params>
   </Agent>
@@ -196,9 +198,11 @@
       <IsChecked>false</IsChecked>
       <Contracts>-1</Contracts>
       <GroupName>111выывы</GroupName>
-      <Amount>2</Amount>
+      <Amount>13</Amount>
       <PhantomParams>
         <AgentName>ChStrategy 60_10_16_20</AgentName>
+        <GroupName>111выывы</GroupName>
+        <Amount>12</Amount>
       </PhantomParams>
     </Params>
   </Agent>

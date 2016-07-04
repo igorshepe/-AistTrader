@@ -162,9 +162,9 @@ namespace AistTrader
                     agentManagerToEdit.Amount = AmountTextBox.Text;
                     //todo: не производить расчёт если значение не поменялось
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
-                    decimal amount= MainWindow.Instance.CalculateAmount(agentManagerToEdit);
+                    decimal? amount= MainWindow.Instance.CalculateAmount(agentManagerToEdit);
                     var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name ==agentManagerToEdit.ToString());
-                    if (runnigStrategy != null) runnigStrategy.ActualStrategyRunning.Volume = amount;
+                    if (runnigStrategy != null) runnigStrategy.ActualStrategyRunning.Volume = (decimal)amount;
                     Close();
                     return;
                 }
