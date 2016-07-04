@@ -46,11 +46,13 @@ namespace Strategies.Strategies
         private bool _enterPosition;
         private Order _registeredOrder;
         private readonly string _nameGroup;
+        private string _nameStrategy;
 
         public ChStrategy()
         {
-            
+
         }
+
         public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup)
         {
             _nameGroup = nameGroup;
@@ -59,7 +61,6 @@ namespace Strategies.Strategies
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
 
             TimeSpan tstest = new TimeSpan(0, 0, int.Parse(obj.ToString()));
-            //TimeSpan ts = TimeSpan.ParseExact(obj.ToString(),"ss", CultureInfo.InvariantCulture);
 
 
             _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, tstest);
@@ -77,7 +78,6 @@ namespace Strategies.Strategies
             _period = this.Param(ChStrategyDefaultSettings.PeriodString, per);
 
 
-
             _indicatorSlowSma.Length = Convert.ToInt32(_slowSma.Value.ToString());
 
 
@@ -88,7 +88,6 @@ namespace Strategies.Strategies
 
 
             _indicatorLowest.Length = Convert.ToInt32(_period.Value.ToString());
-
         }
 
 
@@ -143,24 +142,36 @@ namespace Strategies.Strategies
         }
 
 
-        public override string Name => (CheckNameGroup());
-        
+        public override string Name => GetFriendlyName();
+
+
         private string CheckNameGroup()
+        // проверка состоит ли стратегия в группе, если да, то добавить название группы к имени страты
         {
-            var nameStrategy = _nameGroup != "single" ? ($"[{_nameGroup}] {GetFriendlyName()}") : ($"{GetFriendlyName()}");
+            string nameStrategy;
+
+            if (_nameGroup != "single")
+            {
+                nameStrategy = $"[{_nameGroup}] {GetFriendlyName()}";
+            }
+            else
+            {
+                nameStrategy = GetFriendlyName();
+            }
+
 
             return nameStrategy;
         }
 
         protected override void OnStarted()
         {
+            _nameStrategy = CheckNameGroup();
 
-            // Вызываем базовую реализацию метода.
             base.OnStarted();
 
             //TODO: Артём, привет)
             //задание тебе небольшое по части оптимизации
-            // в этих методах CheckNameGroup,Name,GetFriendlyName поставь брекпоинты и запусти на исполнение стратеги из менеджера агентов, ну или группу агентов.
+            // в этих методах CheckNameGroup,_nameStrategy,GetFriendlyName поставь брекпоинты и запусти на исполнение стратеги из менеджера агентов, ну или группу агентов.
             //попробуй придумать альтернативную версию
 
             // и еще обрати внимание на имя экземляра класса стратеги- на выходе оно получается искаженное- то есть не возвращает настоящее имя стратеги, а еще и добавляет перед именем имя группы.
@@ -168,10 +179,10 @@ namespace Strategies.Strategies
 
 
 
-            Task.Run(()=>TradesLogger.Info("{0}: START",  Name));
+            Task.Run(() => TradesLogger.Info("{0}: START", _nameStrategy));
 
             // Получаем CandleManager 
-            _candleManager = this.GetCandleManager();   
+            _candleManager = this.GetCandleManager();
 
             // Подписываемся на сделки
             if (!Connector.RegisteredTrades.Contains(Security))
@@ -216,7 +227,7 @@ namespace Strategies.Strategies
         {
 
 
-            Task.Run(()=>TradesLogger.Info("{0}: STOP", Name));
+            Task.Run(() => TradesLogger.Info("{0}: STOP", _nameStrategy));
 
 
         }
@@ -231,7 +242,7 @@ namespace Strategies.Strategies
         {
             try
             {
-                Task.Run(()=>TradesLogger.Info("{0}: New order, price {1}, {2}, vol {3}", Name, order.Price, order.Direction, order.VisibleVolume));
+                Task.Run(() => TradesLogger.Info("{0}: New order, price {1}, {2}, vol {3}", _nameStrategy, order.Price, order.Direction, order.VisibleVolume));
                 // Создаем правило на событие отмены заявки
 
 
@@ -240,7 +251,7 @@ namespace Strategies.Strategies
                 {
 
                     _sendOrder = false;
-                    Task.Run(()=>TradesLogger.Info("{0}: Order Canceled", Name));
+                    Task.Run(() => TradesLogger.Info("{0}: Order Canceled", _nameStrategy));
                     // TODO
                 }).Once();
 
@@ -250,7 +261,7 @@ namespace Strategies.Strategies
                     _registeredOrder = order;
                     this.AddInfoLog(o.ToString());
                     // Переводим в рабочее состояние
-                    Task.Run(()=>TradesLogger.Info("{0}: Order {1} Registered", Name, order.TransactionId));
+                    Task.Run(() => TradesLogger.Info("{0}: Order {1} Registered", _nameStrategy, order.TransactionId));
 
                     orderCanceledRule.Apply(this);
                 });
@@ -261,7 +272,7 @@ namespace Strategies.Strategies
                 order.WhenRegisterFailed(Connector).Do((o, of) =>
                 {
                     _sendOrder = false;
-                    Task.Run(()=>TradesLogger.Info("{0}: Order register Failed {1}, {2}", Name, order.TransactionId, of.Error));
+                    Task.Run(() => TradesLogger.Info("{0}: Order register Failed {1}, {2}", _nameStrategy, order.TransactionId, of.Error));
                     this.AddErrorLog(of.Error);
                 })
                 .Apply(this);
@@ -280,7 +291,7 @@ namespace Strategies.Strategies
                         // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                         Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
                         var averagePrice = order.GetAveragePrice(Connector);
-                        Task.Run(()=>TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3}", Name, order.TransactionId, order.Volume, averagePrice));
+                        Task.Run(() => TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3}", _nameStrategy, order.TransactionId, order.Volume, averagePrice));
                         // Удаляет определенное правило
                         // this.Rules.Remove(orderCanceledRule)
                     })
@@ -295,7 +306,7 @@ namespace Strategies.Strategies
                     //var trade = MyTrades.Last();
                     var trade = trades.Last();
 
-                    Task.Run(()=>TradesLogger.Info("{0}: Trade price {1}, vol {2}, slip {3:0}", Name, trade.Trade.Price, trade.Trade.Volume, trade.Slippage));
+                    Task.Run(() => TradesLogger.Info("{0}: Trade price {1}, vol {2}, slip {3:0}", _nameStrategy, trade.Trade.Price, trade.Trade.Volume, trade.Slippage));
                 })
                 .Apply(this);
 
@@ -303,7 +314,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                Task.Run(()=>TradesLogger.Info("{0}: Erorr order {1}",Name, e.Source));
+                Task.Run(() => TradesLogger.Info("{0}: Erorr order {1}", _nameStrategy, e.Source));
                 throw;
             }
 
@@ -323,17 +334,17 @@ namespace Strategies.Strategies
             if (shrinkPrice >= Security.MinPrice && shrinkPrice <= Security.MaxPrice) //проверка на лимитную заявку , сработает ли она на бирже
             {
                 priceOrder = shrinkPrice;
-                Task.Run(()=>TradesLogger.Info("{0}: Limit Price within a predetermined range, Min {1}, Max {2}, LimitPrice {3}", Name, Security.MinPrice,
+                Task.Run(() => TradesLogger.Info("{0}: Limit Price within a predetermined range, Min {1}, Max {2}, LimitPrice {3}", _nameStrategy, Security.MinPrice,
                     Security.MaxPrice, shrinkPrice));
             }
             else if (exit)
             {
-                Task.Run(()=>TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1}, Max {2}, LimitPrice {3}", Name, Security.MinPrice, Security.MaxPrice, shrinkPrice));
+                Task.Run(() => TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1}, Max {2}, LimitPrice {3}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice));
             }
             else
             {
-                Task.Run(()=>TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1}, Max {2}, LimitPrice {3}", Name, Security.MinPrice, Security.MaxPrice, shrinkPrice));
-                return null ;
+                Task.Run(() => TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1}, Max {2}, LimitPrice {3}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice));
+                return null;
             }
 
 
@@ -347,23 +358,23 @@ namespace Strategies.Strategies
             // {
             //     bool priceInDepth = bidList.Last().Price >= shrinkPrice && shrinkPrice <= bidList.First().Price;
 
-            //     Task.Run(()=>TradesLogger.Info(!priceInDepth ? "{0}: Buy LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3} " : "{0}: Buy LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, bidList.First().Price, bidList.Last().Price, shrinkPrice);
+            //     Task.Run(()=>TradesLogger.Info(!priceInDepth ? "{0}: Buy LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3} " : "{0}: Buy LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", _nameStrategy, bidList.First().Price, bidList.Last().Price, shrinkPrice);
             // }
             // else
             // {
             //     bool priceInDepth = asksList.Last().Price >= shrinkPrice && shrinkPrice <= asksList.First().Price;
 
-            //     Task.Run(()=>TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "{0}: Sell LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", Name, asksList.First().Price, asksList.Last().Price, shrinkPrice);
+            //     Task.Run(()=>TradesLogger.Info(!priceInDepth ? "{0}: Sell LimitPrice out of range Depth, First: {1}, Last: {2}, Shrink: {3}" : "{0}: Sell LimitPrice in Depth, First:{1}, Last:{2}, Shrink{3}", _nameStrategy, asksList.First().Price, asksList.Last().Price, shrinkPrice);
             // }
 
-            //Task.Run(()=>TradesLogger.Info(exit ? "{0}: Exit {1}, {2}" : "{0}: Enter {1}, {2}",Name, asksList[0], bidList[0]);
+            //Task.Run(()=>TradesLogger.Info(exit ? "{0}: Exit {1}, {2}" : "{0}: Enter {1}, {2}",_nameStrategy, asksList[0], bidList[0]);
 
 
-            //Task.Run(() => TradesLogger.Info("{0}: Test No Enter", Name));
+            //Task.Run(() => TradesLogger.Info("{0}: Test No Enter", _nameStrategy));
             //return null;
 
 
-             return this.CreateOrder(side, priceOrder);
+            return this.CreateOrder(side, priceOrder);
         }
 
         // Критерий продолжения работы правила WhenCandlesFinished
@@ -404,7 +415,7 @@ namespace Strategies.Strategies
                             _enterPosition = false; // для предотвращения бесконечных входов внутри одной свечки
                             _sellPriceCh = _lowestValue;
                             order = GetOrder(Sides.Sell, _sellPriceCh, false);
-                            Task.Run(()=>TradesLogger.Info("{0}: SE {1}, SSMA {2} > FSMA {3}, Candle_LP {4} <= Lowest {5}", Name,
+                            Task.Run(() => TradesLogger.Info("{0}: SE {1}, SSMA {2} > FSMA {3}, Candle_LP {4} <= Lowest {5}", _nameStrategy,
                                 _sellPriceCh, _ssmaValue, _fsmaValue,
                                 candle.LowPrice, _lowestValue));
                         }
@@ -414,7 +425,7 @@ namespace Strategies.Strategies
                             _enterPosition = false; // для предотвращения бесконечных входов внутри одной свечки
                             _buyPriceCh = _highestValue;
                             order = GetOrder(Sides.Buy, _buyPriceCh, false);
-                            Task.Run(()=>TradesLogger.Info("{0}: LE {1}, SSMA {2} < FSMA {3}, Candle_HP {4} >= Highest {5} ", Name,
+                            Task.Run(() => TradesLogger.Info("{0}: LE {1}, SSMA {2} < FSMA {3}, Candle_HP {4} >= Highest {5} ", _nameStrategy,
                                 _buyPriceCh, _ssmaValue, _fsmaValue,
                                 candle.LowPrice, _highestValue));
                         }
@@ -427,7 +438,7 @@ namespace Strategies.Strategies
                             _enterPosition = false; // блокируем вход и выход в одной свече
                             _midPriceCh = _midChValue;
                             order = GetOrder(Sides.Buy, _midPriceCh, true);
-                            Task.Run(()=>TradesLogger.Info("{0}: SX {1}, Candle_HP {2} > MidCH {3}", Name, _midPriceCh, candle.HighPrice,
+                            Task.Run(() => TradesLogger.Info("{0}: SX {1}, Candle_HP {2} > MidCH {3}", _nameStrategy, _midPriceCh, candle.HighPrice,
                                 _midChValue));
                         }
                     }
@@ -439,7 +450,7 @@ namespace Strategies.Strategies
                             _enterPosition = false; // блокируем вход и выход в одной свече
                             _midPriceCh = _midChValue;
                             order = GetOrder(Sides.Sell, _midPriceCh, true);
-                            Task.Run(()=>TradesLogger.Info("{0}: LX {1}, Candle_LP {2} < MidCH {3}", Name, _midPriceCh, candle.LowPrice,
+                            Task.Run(() => TradesLogger.Info("{0}: LX {1}, Candle_LP {2} < MidCH {3}", _nameStrategy, _midPriceCh, candle.LowPrice,
                                 _midChValue));
                         }
                     }
@@ -451,7 +462,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                Task.Run(()=>TradesLogger.Info("{0}: Erorr check enter or exit position {1}",Name, e.Source));
+                Task.Run(() => TradesLogger.Info("{0}: Erorr check enter or exit position {1}", _nameStrategy, e.Source));
                 throw;
             }
 
@@ -493,13 +504,13 @@ namespace Strategies.Strategies
                         }
                         else
                         {
-                            Task.Run(()=>TradesLogger.Info("{0}: Wait order finish, {1} candles until canceled", Name, _cancelOrderCandle));
+                            Task.Run(() => TradesLogger.Info("{0}: Wait order finish, {1} candles until canceled", _nameStrategy, _cancelOrderCandle));
                             --_cancelOrderCandle;
                         }
 
                     }
                     else
-                        Task.Run(()=>TradesLogger.Info("{0}: Historical candles {1}", Name, candle.OpenTime));
+                        Task.Run(() => TradesLogger.Info("{0}: Historical candles {1}", _nameStrategy, candle.OpenTime));
                     return;
                 }
 
@@ -512,12 +523,12 @@ namespace Strategies.Strategies
                 _enterPosition = true; // Если есть законченная свечка , можно совершать вход в позицию
                 _exitPosition = true; // Если есть законченная свечка , можно совершать выход из позиции
 
-                Task.Run(()=>TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}", Name, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
+                Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
 
             }
             catch (Exception e)
             {
-                Task.Run(()=>TradesLogger.Info("{0}: Error get indicators value: {1}",Name, e.Source));
+                Task.Run(() => TradesLogger.Info("{0}: Error get indicators value: {1}", _nameStrategy, e.Source));
                 throw;
             }
 
