@@ -47,7 +47,7 @@ namespace Strategies.Strategies
         private Order _registeredOrder;
         private readonly string _nameGroup;
         private string _nameStrategy;
-
+        private bool _firstLap = true;
         public ChStrategy()
         {
 
@@ -167,6 +167,10 @@ namespace Strategies.Strategies
         {
             _nameStrategy = CheckNameGroup();
 
+
+
+
+
             base.OnStarted();
 
             //TODO: Артём, привет)
@@ -179,7 +183,7 @@ namespace Strategies.Strategies
 
 
 
-            Task.Run(() => TradesLogger.Info("{0}: START", _nameStrategy));
+            Task.Run(() => TradesLogger.Info("{0}: START, Security: {1}", _nameStrategy, Security.Code));
 
             // Получаем CandleManager 
             _candleManager = this.GetCandleManager();
@@ -242,7 +246,7 @@ namespace Strategies.Strategies
         {
             try
             {
-                Task.Run(() => TradesLogger.Info("{0}: New order, price {1}, {2}, vol {3}", _nameStrategy, order.Price, order.Direction, order.VisibleVolume));
+                Task.Run(() => TradesLogger.Info("{0}: New order, price {1}, {2}, vol {3}, Security: {4}", _nameStrategy, order.Price, order.Direction, order.VisibleVolume, Security.Code));
                 // Создаем правило на событие отмены заявки
 
 
@@ -251,9 +255,12 @@ namespace Strategies.Strategies
                 {
 
                     _sendOrder = false;
-                    Task.Run(() => TradesLogger.Info("{0}: Order Canceled", _nameStrategy));
+                    Task.Run(() => TradesLogger.Info("{0}: Order Canceled, error {1}, Security: {2}", _nameStrategy, o.Messages, Security.Code));
                     // TODO
                 }).Once();
+
+
+
 
                 // Создаем правило на событие регистрации заявки
                 var orderRedisterRule = order.WhenRegistered(Connector).Do(o =>
@@ -261,7 +268,7 @@ namespace Strategies.Strategies
                     _registeredOrder = order;
                     this.AddInfoLog(o.ToString());
                     // Переводим в рабочее состояние
-                    Task.Run(() => TradesLogger.Info("{0}: Order {1} Registered", _nameStrategy, order.TransactionId));
+                    Task.Run(() => TradesLogger.Info("{0}: Order {1} Registered, Security: {2}", _nameStrategy, order.TransactionId, Security.Code));
 
                     orderCanceledRule.Apply(this);
                 });
@@ -272,7 +279,7 @@ namespace Strategies.Strategies
                 order.WhenRegisterFailed(Connector).Do((o, of) =>
                 {
                     _sendOrder = false;
-                    Task.Run(() => TradesLogger.Info("{0}: Order register Failed {1}, {2}", _nameStrategy, order.TransactionId, of.Error));
+                    Task.Run(() => TradesLogger.Info("{0}: Order register Failed {1}, {2}, Security: {3}", _nameStrategy, order.TransactionId, of.Error, Security.Code));
                     this.AddErrorLog(of.Error);
                 })
                 .Apply(this);
@@ -291,7 +298,7 @@ namespace Strategies.Strategies
                         // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                         Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
                         var averagePrice = order.GetAveragePrice(Connector);
-                        Task.Run(() => TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3}", _nameStrategy, order.TransactionId, order.Volume, averagePrice));
+                        Task.Run(() => TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3:0}, Security: {4}", _nameStrategy, order.TransactionId, order.Volume, averagePrice, Security.Code));
                         // Удаляет определенное правило
                         // this.Rules.Remove(orderCanceledRule)
                     })
@@ -306,7 +313,7 @@ namespace Strategies.Strategies
                     //var trade = MyTrades.Last();
                     var trade = trades.Last();
 
-                    Task.Run(() => TradesLogger.Info("{0}: Trade price {1}, vol {2}, slip {3:0}", _nameStrategy, trade.Trade.Price, trade.Trade.Volume, trade.Slippage));
+                    Task.Run(() => TradesLogger.Info("{0}: Trade price {1:0}, vol {2}, slip {3:0}, Security: {4}", _nameStrategy, trade.Trade.Price, trade.Trade.Volume, trade.Slippage, Security.Code));
                 })
                 .Apply(this);
 
@@ -314,9 +321,13 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                Task.Run(() => TradesLogger.Info("{0}: Erorr order {1}", _nameStrategy, e.Source));
+                Task.Run(() => TradesLogger.Info("{0}: Erorr order {1}, Security: {2}", _nameStrategy, e.Source, Security.Code));
                 throw;
             }
+
+
+
+
 
         }
 
@@ -330,16 +341,16 @@ namespace Strategies.Strategies
             if (shrinkPrice >= Security.MinPrice && shrinkPrice <= Security.MaxPrice) //проверка на лимитную заявку , сработает ли она на бирже
             {
                 priceOrder = shrinkPrice;
-                Task.Run(() => TradesLogger.Info("{0}: Limit Price within a predetermined range, Min {1}, Max {2}, LimitPrice {3}", _nameStrategy, Security.MinPrice,
-                    Security.MaxPrice, shrinkPrice));
+                Task.Run(() => TradesLogger.Info("{0}: Limit Price within a predetermined range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4} ", _nameStrategy, Security.MinPrice,
+                    Security.MaxPrice, shrinkPrice, Security.Code));
             }
             else if (exit)
             {
-                Task.Run(() => TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1}, Max {2}, LimitPrice {3}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice));
+                Task.Run(() => TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice, Security.Code));
             }
             else
             {
-                Task.Run(() => TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1}, Max {2}, LimitPrice {3}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice));
+                Task.Run(() => TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice, Security.Code));
                 return null;
             }
 
@@ -411,7 +422,7 @@ namespace Strategies.Strategies
                             _enterPosition = false; // для предотвращения бесконечных входов внутри одной свечки
                             _sellPriceCh = _lowestValue;
                             order = GetOrder(Sides.Sell, _sellPriceCh, false);
-                            Task.Run(() => TradesLogger.Info("{0}: SE {1}, SSMA {2} > FSMA {3}, Candle_LP {4} <= Lowest {5}", _nameStrategy,
+                            Task.Run(() => TradesLogger.Info("{0}: SE {1:0}, SSMA {2:0} > FSMA {3:0}, Candle_LP {4:0} <= Lowest {5:0}", _nameStrategy,
                                 _sellPriceCh, _ssmaValue, _fsmaValue,
                                 candle.LowPrice, _lowestValue));
                         }
@@ -421,7 +432,7 @@ namespace Strategies.Strategies
                             _enterPosition = false; // для предотвращения бесконечных входов внутри одной свечки
                             _buyPriceCh = _highestValue;
                             order = GetOrder(Sides.Buy, _buyPriceCh, false);
-                            Task.Run(() => TradesLogger.Info("{0}: LE {1}, SSMA {2} < FSMA {3}, Candle_HP {4} >= Highest {5} ", _nameStrategy,
+                            Task.Run(() => TradesLogger.Info("{0}: LE {1:0}, SSMA {2:0} < FSMA {3:0}, Candle_HP {4:0} >= Highest {5:0} ", _nameStrategy,
                                 _buyPriceCh, _ssmaValue, _fsmaValue,
                                 candle.LowPrice, _highestValue));
                         }
@@ -434,8 +445,8 @@ namespace Strategies.Strategies
                             _enterPosition = false; // блокируем вход и выход в одной свече
                             _midPriceCh = _midChValue;
                             order = GetOrder(Sides.Buy, _midPriceCh, true);
-                            Task.Run(() => TradesLogger.Info("{0}: SX {1}, Candle_HP {2} > MidCH {3}", _nameStrategy, _midPriceCh, candle.HighPrice,
-                                _midChValue));
+                            Task.Run(() => TradesLogger.Info("{0}: SX {1:0}, Candle_HP {2:0} > MidCH {3:0}, Security: {4} ", _nameStrategy, _midPriceCh, candle.HighPrice,
+                                _midChValue, Security.Code));
                         }
                     }
                     else // Для закрытия длинной позиции
@@ -446,8 +457,8 @@ namespace Strategies.Strategies
                             _enterPosition = false; // блокируем вход и выход в одной свече
                             _midPriceCh = _midChValue;
                             order = GetOrder(Sides.Sell, _midPriceCh, true);
-                            Task.Run(() => TradesLogger.Info("{0}: LX {1}, Candle_LP {2} < MidCH {3}", _nameStrategy, _midPriceCh, candle.LowPrice,
-                                _midChValue));
+                            Task.Run(() => TradesLogger.Info("{0}: LX {1:0}, Candle_LP {2:0} < MidCH {3:0}, Security: {4}", _nameStrategy, _midPriceCh, candle.LowPrice,
+                                _midChValue, Security.Code));
                         }
                     }
 
@@ -466,6 +477,7 @@ namespace Strategies.Strategies
 
         private void GetValueIndicator(Candle candle) // получаем значения индикаторов по факту окончания свечки
         {
+
             try
             {
                 var timeFrame = (TimeSpan)candle.Arg;
@@ -491,7 +503,8 @@ namespace Strategies.Strategies
                         _indicatorLowest.IsFormed
                         )
                     {
-                        if (_cancelOrderCandle == 0) // проверяем когда нужно снять все заявки в случае пропуска правильного входа или выхода
+                        if (_cancelOrderCandle == 0)
+                        // проверяем когда нужно снять все заявки в случае пропуска правильного входа или выхода
                         {
                             CancelActiveOrders();
                             Connector.CancelOrder(_registeredOrder);
@@ -500,16 +513,28 @@ namespace Strategies.Strategies
                         }
                         else
                         {
-                            Task.Run(() => TradesLogger.Info("{0}: Wait order finish, {1} candles until canceled", _nameStrategy, _cancelOrderCandle));
+                            Task.Run(
+                                () =>
+                                    TradesLogger.Info("{0}: Wait order finish, {1} candles until canceled",
+                                        _nameStrategy, _cancelOrderCandle));
                             --_cancelOrderCandle;
                         }
 
                     }
                     else
-                        Task.Run(() => TradesLogger.Info("{0}: Historical candles {1}", _nameStrategy, candle.OpenTime));
+                    {
+                        if (!_firstLap)
+                        {
+                            Task.Run(() => TradesLogger.Info("{0}: Attention! History , COT {1} < Time {2}, SSMA: {3}, FSMA: {4}, Hi: {5}, Low: {6}, SendOrder: {7} ", _nameStrategy, candle.OpenTime.ToString("H:mm:ss"), time.ToString("H:mm:ss"), _indicatorSlowSma.IsFormed, _indicatorFastSma.IsFormed,
+                    _indicatorHighest.IsFormed, _indicatorLowest.IsFormed, _sendOrder));
+                        }
+
+
+                    }
+
                     return;
                 }
-
+                _firstLap = false;
                 _midChValue = (_indicatorLowest.GetCurrentValue() + _indicatorHighest.GetCurrentValue()) / 2;
                 _highestValue = _indicatorHighest.GetCurrentValue();
                 _lowestValue = _indicatorLowest.GetCurrentValue();
