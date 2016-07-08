@@ -338,27 +338,45 @@ namespace Strategies.Strategies
             var bestprice = this.GetMarketPrice(side);
             var priceOrder = bestprice;
 
-            if (shrinkPrice >= Security.MinPrice && shrinkPrice <= Security.MaxPrice) //проверка на лимитную заявку , сработает ли она на бирже
+            var marketDepth = GetMarketDepth(Security); // Загружаем стакан для проверки, входит ли лимитная цена  в его пределы
+
+            if (shrinkPrice <= marketDepth.Asks.Last().Price && shrinkPrice >= marketDepth.Bids.Last().Price) //проверка на лимитную заявку , сработает ли она на бирже
             {
                 priceOrder = shrinkPrice;
-                Task.Run(() => TradesLogger.Info("{0}: Limit Price within a predetermined range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4} ", _nameStrategy, Security.MinPrice,
-                    Security.MaxPrice, shrinkPrice, Security.Code));
+                Task.Run(() => TradesLogger.Info("{0}: Limit Price in marketDepth, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4} ", _nameStrategy, marketDepth.Bids.Last().Price,
+                    marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
             }
             else if (exit)
             {
-                Task.Run(() => TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice, Security.Code));
+                Task.Run(() => TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, marketDepth.Bids.Last().Price,
+                    marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
             }
             else
             {
-                Task.Run(() => TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice, Security.Code));
+                Task.Run(() => TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, marketDepth.Bids.Last().Price,
+                    marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
                 return null;
             }
 
+            //if (shrinkPrice >= Security.MinPrice && shrinkPrice <= Security.MaxPrice) //проверка на лимитную заявку , сработает ли она на бирже
+            //{
+            //    priceOrder = shrinkPrice;
+            //    Task.Run(() => TradesLogger.Info("{0}: Limit Price within a predetermined range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4} ", _nameStrategy, Security.MinPrice,
+            //        Security.MaxPrice, shrinkPrice, Security.Code));
+            //}
+            //else if (exit)
+            //{
+            //    Task.Run(() => TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice, Security.Code));
+            //}
+            //else
+            //{
+            //    Task.Run(() => TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, Security.MinPrice, Security.MaxPrice, shrinkPrice, Security.Code));
+            //    return null;
+            //}
 
 
-            // var marketDepth = GetMarketDepth(Security);
-            // var asksList = marketDepth.Asks;
-            // var bidList = marketDepth.Bids;
+
+
             // // var orderPrice;
 
             // if (side == Sides.Sell)
@@ -379,6 +397,17 @@ namespace Strategies.Strategies
 
             //Task.Run(() => TradesLogger.Info("{0}: Test No Enter", _nameStrategy));
             //return null;
+
+
+
+
+
+            if (exit)
+            {
+                var volExit = Math.Abs(Position); // Обьем всегда положительный, что не сказать про позимцию
+                                                  // var vol = Convert.ToInt32(PositionManager.Positions.First(k => k.Key.Item1.SecurityCode == Security.Code).Value); //Разница только в одном. Если у вас стретегия торгует одновременно несколько контрактов (у меня так). В этом случае мой вариант даст объемы каждого контракта. 
+                return this.CreateOrder(side, priceOrder, volExit);
+            }
 
 
             return this.CreateOrder(side, priceOrder);
