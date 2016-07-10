@@ -530,6 +530,82 @@ namespace AistTrader
                 AgentConnnectionManager.Add(wrapper);
             }
         }
+        public void StartAfterEdit(Agent agentToStartAfterEdit, AgentManager agentManagerToStartAfterEdit)
+        {
+            //single agent after edit logic
+
+            //собираем все необходимое из менеджера запущенных стратегий/групп
+
+
+            var conn = AgentConnnectionManager;
+            var connectionName =AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Name);
+            var portfolio = agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio;
+            var realConnection =
+                ConnectionManager.Connections.Find(i =>
+                {
+                    return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;
+                });
+            var strategyType = HelperStrategies.GetRegistredStrategiesTest(agentToStartAfterEdit.Params.AgentName);
+            SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
+            //var agentName = agentManagerToStartAfterEdit.AgentManagerSettings.AgentOrGroup;
+            //var agent =
+            //    MainWindow.Instance.AgentsStorage.Cast<Agent>().Select(i => i).Where(i => i.Name == agentName).ToList();
+            //var firstOrDefault = agent.FirstOrDefault();
+            //if (firstOrDefault != null) agentSetting = firstOrDefault.Params.SettingsStorage;
+            agentSetting = agentToStartAfterEdit.Params.SettingsStorage;
+            var amount = new UnitEditor();
+            amount.Text = agentToStartAfterEdit.Params.Amount;
+            amount.Value = amount.Text.ToUnit();
+            decimal? calculatedAmount = 0;
+            if (amount.Value.Type == UnitTypes.Percent)
+            {
+                var data =
+                    MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
+                        i => i.ConnectionName == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Connection.Id);
+
+
+
+                var secS = realConnection.Securities.FirstOrDefault(i => i.Code == agentManagerToStartAfterEdit.Tool);
+
+                var secMargSell = data.Securities.FirstOrDefault(i => i.Name == secS.Name).MarginSell;
+                var currValue =
+                    data.Portfolios.FirstOrDefault(i => i.Name == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Code)
+                        .CurrentValue;
+                var percent = amount.Value.Value;
+                var calculatedPercent = (currValue / 100) * percent;
+                calculatedAmount = calculatedPercent / secMargSell;
+                //todo - уточнить у Дена по округлению от разряда
+                decimal truncutedAmountValue = (decimal)calculatedAmount;
+                truncutedAmountValue = Math.Truncate(truncutedAmountValue);
+                calculatedAmount = truncutedAmountValue;
+            }
+            if (amount.Value.Type == UnitTypes.Absolute)
+                calculatedAmount = amount.Value.To<decimal>();
+            string nameGroup = agentManagerToStartAfterEdit.ToString();
+            strategy = new Strategy();
+            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, "single");
+            strategy.DisposeOnStop = true;
+            var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentManagerToStartAfterEdit.Tool);
+            strategy.Security = /*agentOrGroup.AgentManagerSettings.Tool*/convertedSecurity;
+            strategy.Portfolio =
+                realConnection.Portfolios.FirstOrDefault(i => i.Name == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Code);
+            strategy.Connector = realConnection;
+            strategy.Volume = (decimal)calculatedAmount; /*amount.Value.To<decimal>();*/
+            var candleManager = new CandleManager(realConnection);
+            strategy.SetCandleManager(candleManager);
+            strategy.LogLevel = LogLevels.Debug;
+            strategy.Start();
+            // Логирование внутренних событий стратегии для тестов
+            _logManager.Sources.Add(strategy);
+            _logManager.Listeners.Add(
+                new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
+                    DateTime.Now.Day)));
+            _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+            var wrapper = new AistTraderAgentManagerWrapper(agentManagerToStartAfterEdit.Alias, strategy);
+            //var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias,strategy);
+            AgentConnnectionManager.Add(wrapper);
+
+        }
 
         private void ConnectTest_OnClick(object sender, RoutedEventArgs e)
         {
