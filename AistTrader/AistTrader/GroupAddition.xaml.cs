@@ -483,7 +483,8 @@ namespace AistTrader
                                 else
                                 {
                                     List<Agent> list = new List<Agent>();
-                                    foreach (var rs in MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents"))
+                                    var agentStorageCollection =MainWindow.Instance.AgentsStorage.Where(a =>a.Params.FriendlyName == algorithmName &&a.Params.GroupName == "ungrouped agents").ToList();
+                                    foreach (var rs in agentStorageCollection)
                                     {
                                         var newAgent = (Agent)rs.Clone();
                                         newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
@@ -491,12 +492,39 @@ namespace AistTrader
                                         newAgent.Params.GroupName = groupName;
                                         newAgent.Params.ToolTipName = rs.Params.ToolTipName;
                                         list.Add(newAgent);
+
+                                        foreach (var item in MainWindow.Instance.AgentManagerStorage)
+                                        {
+                                            if (item.AgentManagerUniqueId == newAgent.Params.GroupName)
+                                            {
+                                                if (item.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
+                                                {
+
+                                                    var runningAgents = MainWindow.Instance.AgentConnnectionManager;
+                                                    var alreadyRunnig =runningAgents.Any(i =>i.AgentOrGroupName == item.AgentManagerUniqueId && i.ActualStrategyRunning.Name == newAgent.Name);
+                                                    if (alreadyRunnig)
+                                                    {
+                                                        Close();
+                                                    }
+                                                    else
+                                                    {
+                                                        MainWindow.Instance.StartAfterEdit(newAgent, item);
+                                                        MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                                    }
+                                                }
+                                                if (item.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped)
+                                                {
+                                                    MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                                }
+
+                                            }
+                                        }
                                     }
-                                    foreach (var i in list)
-                                    {
-                                        MainWindow.Instance.AddNewAgentInGroup(i, -1, true);
-                                        newMembersOfCurrentGroup.Add(i);
-                                    }
+                                    //foreach (var i in list)
+                                    //{
+                                    //    MainWindow.Instance.AddNewAgentInGroup(i, -1, true);
+                                    //    newMembersOfCurrentGroup.Add(i);
+                                    //}
                                 }
                             }
                     }
