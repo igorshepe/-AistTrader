@@ -179,6 +179,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GroupAdditionSecurityPicker.xaml.cs">
+      <DependentUpon>GroupAdditionSecurityPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManagerAdditionTradeSettings.xaml.cs">
       <DependentUpon>ManagerAdditionTradeSettings.xaml</DependentUpon>
     </Compile>
@@ -226,6 +229,10 @@
     <Compile Include="Tabs\AgentManagerItem.cs" />
     <Compile Include="Tabs\PortfolioItem.cs" />
     <Compile Include="Tabs\ConnectionItem.cs" />
+    <Page Include="GroupAdditionSecurityPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ManagerAdditionTradeSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
