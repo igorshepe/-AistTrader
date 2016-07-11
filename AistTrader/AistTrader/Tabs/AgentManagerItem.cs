@@ -566,8 +566,7 @@ namespace AistTrader
             decimal? calculatedAmount = 0;
             if (amount.Value.Type == UnitTypes.Percent)
             {
-                var data =
-                    MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
+                var data = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(
                         i => i.ConnectionName == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Connection.Id);
 
 
