@@ -721,14 +721,21 @@ namespace AistTrader
                     foreach (var agents in groupElements)
                     {
                         var agentsToStop = AgentConnnectionManager.Strategies.Where(i => i.AgentOrGroupName == agentOrGroup.ToString()).ToList();
+                        
                         foreach (var agent in agentsToStop)
                         {
                             Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
                             agent.ActualStrategyRunning.Stop();
-                            //agent.ActualStrategyRunning.tr
+                            var test = (ChStrategy)agent.ActualStrategyRunning;
                             
+                            var agentInColl = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name== agent.ActualStrategyRunning.Name);
+                            
+
+                            //agentInColl.Params.TransactionId = test.TransactionId;
+
                             AgentConnnectionManager.Strategies.Remove(agent);
                         }
+
                         item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
                         item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped;
                     }

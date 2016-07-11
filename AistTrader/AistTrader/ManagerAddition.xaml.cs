@@ -165,7 +165,7 @@ namespace AistTrader
                         return;
                     }
                     var phantomAmount = AmountTextBox.Text;
-                    Task.Run(() => TradesLogger.Info("Agent \"{0}\"(Portfolio: \"{1}\") has changed it's amount from \"{2}\" to -> \"{3}\"", agentManagerToEdit.Alias,agentManagerToEdit.AgentManagerSettings.Portfolio.Name, agentManagerToEdit.Amount, phantomAmount));
+                    Task.Run(() => TradesLogger.Info("{0} in {1} has changed it's amount from \"{2}\" to -> \"{3}\"", agentManagerToEdit.Alias,agentManagerToEdit.AgentManagerSettings.Portfolio.Name, agentManagerToEdit.Amount, phantomAmount));
                     agentManagerToEdit.Amount = AmountTextBox.Text;
                     //todo: не производить расчёт если значение не поменялось
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);

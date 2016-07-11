@@ -1,5 +1,6 @@
 ﻿using System;
 using Strategies.Common;
+using System.Collections.Generic;
 
 namespace Common.Params
 {
@@ -32,6 +33,7 @@ namespace Common.Params
         //todo : СПРОСИТЬ У SS ЧЕ ЗА ФИНТ С КОНСТРУТОРОМ
         public string Amount { get; set; }
         public AgentPhantomParams PhantomParams { get; set; }
+        public List<long> TransactionId {get;set;}
     }
     public enum AgentWorkMode
     {

@@ -12,7 +12,7 @@ using StockSharp.Logging;
 using StockSharp.Messages;
 using Strategies.Common;
 using Strategies.Settings;
-
+using System.Collections.Generic;
 
 namespace Strategies.Strategies
 {
@@ -143,16 +143,7 @@ namespace Strategies.Strategies
             }
         }
 
-        public long TransactionId
-        {
-            get { return _transactionId; }
-            set
-            {
-                if (value == TransactionId)
-                    return;
-                _transactionId = value;
-            }
-        }
+        public List<long> TransactionIDs = new List<long>();
         public override string Name => GetFriendlyName();
 
 
@@ -176,6 +167,8 @@ namespace Strategies.Strategies
 
         protected override void OnStarted()
         {
+            //var transID = Connector.Orders.FirstOrDefault(i => i.TransactionId == ti);
+            //this.AttachOrder(transID, myTrades);   ???
             _nameStrategy = CheckNameGroup();
 
 
@@ -222,17 +215,14 @@ namespace Strategies.Strategies
         {
             // _candleManager.Stop(_series);
             _isFinish = true;
+            var fix = TransactionIDs;
             CancelActiveOrders();
-
         }
 
         protected override void OnStopped()
         {
-
-
+            var fix = TransactionIDs;
             Task.Run(() => TradesLogger.Info("{0}: STOP", _nameStrategy));
-
-
         }
 
 
@@ -292,7 +282,7 @@ namespace Strategies.Strategies
                     {
                         // "Опускаем" флаг. Теперь в ProcessCandles возобновится отработка логики стратегии
                         _sendOrder = false;
-                        TransactionId = order.TransactionId;
+                        TransactionIDs.Add( order.TransactionId);
                         _cancelOrderCandle = _cancelCandle;
                         // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                         Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
