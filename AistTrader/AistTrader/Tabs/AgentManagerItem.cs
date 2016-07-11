@@ -590,7 +590,7 @@ namespace AistTrader
                 calculatedAmount = amount.Value.To<decimal>();
             string nameGroup = agentManagerToStartAfterEdit.ToString();
             strategy = new Strategy();
-            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, "single");
+            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, nameGroup);
             strategy.DisposeOnStop = true;
             var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentManagerToStartAfterEdit.Tool);
             strategy.Security = /*agentOrGroup.AgentManagerSettings.Tool*/convertedSecurity;
