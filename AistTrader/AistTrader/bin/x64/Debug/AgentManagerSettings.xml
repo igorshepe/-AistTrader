@@ -50,7 +50,7 @@
     <Name>aaaaaappppppppppp</Name>
     <Alias>ChStrategy 60_10_20_20</Alias>
     <Tool>SiU6</Tool>
-    <Amount>22%</Amount>
+    <Amount>12%</Amount>
     <AgentManagerSettings>
       <IsConnected>false</IsConnected>
       <AgentMangerCurrentStatus>Running</AgentMangerCurrentStatus>

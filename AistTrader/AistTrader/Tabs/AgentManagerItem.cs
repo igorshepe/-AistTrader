@@ -347,18 +347,22 @@ namespace AistTrader
             amount.Text = a.Params.Amount;
             amount.Value = amount.Text.ToUnit();
             decimal? calculatedAmount = 0;
-
-            var data = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == am.AgentManagerSettings.Portfolio.Connection.Id);
-            var secG = realConnection.Securities.FirstOrDefault(i => i.Code == am.Tool);
-            var secMargSell = data.Securities.FirstOrDefault(i => i.Code == /*agentOrGroup.Tool.Name*/secG.Code);
-            var currValue = data.Portfolios.FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Code).CurrentValue;
-            var percent = amount.Value.Value;
-            var calculatedPercent = (currValue / 100) * percent;
-            calculatedAmount = calculatedPercent / secMargSell.MarginSell; //todo вот это значение стало приходить как нулл, уточнить у SS почему
-            //todo - уточнить у Дена по округлению от разряда
-            decimal truncutedAmountValue =(decimal)calculatedAmount;
-            truncutedAmountValue= Math.Truncate(truncutedAmountValue);
-            calculatedAmount = truncutedAmountValue;
+            if (amount.Value.Type == UnitTypes.Percent)
+            {
+                var data = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == am.AgentManagerSettings.Portfolio.Connection.Id);
+                var secG = realConnection.Securities.FirstOrDefault(i => i.Code == am.Tool);
+                var secMargSell = data.Securities.FirstOrDefault(i => i.Code == /*agentOrGroup.Tool.Name*/secG.Code);
+                var currValue = data.Portfolios.FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Code).CurrentValue;
+                var percent = amount.Value.Value;
+                var calculatedPercent = (currValue / 100) * percent;
+                calculatedAmount = calculatedPercent / secMargSell.MarginSell; //todo вот это значение стало приходить как нулл, уточнить у SS почему
+                                                                               //todo - уточнить у Дена по округлению от разряда
+                decimal truncutedAmountValue = (decimal)calculatedAmount;
+                truncutedAmountValue = Math.Truncate(truncutedAmountValue);
+                calculatedAmount = truncutedAmountValue;
+            }
+            if (amount.Value.Type == UnitTypes.Absolute)
+                calculatedAmount = amount.Value.To<decimal>();
             return calculatedAmount;
         }
         public decimal? CalculateAmount(AgentManager am)
@@ -371,18 +375,21 @@ namespace AistTrader
             amount.Text = am.Amount;
             amount.Value = amount.Text.ToUnit();
             decimal? calculatedAmount = 0;
-
-            var data = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == am.AgentManagerSettings.Portfolio.Connection.Id);
-            var secG = realConnection.Securities.FirstOrDefault(i => i.Code == am.Tool);
-            var secMargSell = data.Securities.FirstOrDefault(i => i.Code == /*agentOrGroup.Tool.Name*/secG.Code);
-            var currValue = data.Portfolios.FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Code).CurrentValue;
-            var percent = amount.Value.Value;
-            var calculatedPercent = (currValue / 100) * percent;
-            calculatedAmount = calculatedPercent / secMargSell.MarginSell; //todo вот это значение стало приходить как нулл, уточнить у SS почему
-            decimal truncutedAmountValue = (decimal)calculatedAmount;
-            truncutedAmountValue = Math.Truncate(truncutedAmountValue);
-
-            calculatedAmount = truncutedAmountValue;
+            if (amount.Value.Type == UnitTypes.Percent)
+            {
+                var data = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == am.AgentManagerSettings.Portfolio.Connection.Id);
+                var secG = realConnection.Securities.FirstOrDefault(i => i.Code == am.Tool);
+                var secMargSell = data.Securities.FirstOrDefault(i => i.Code == /*agentOrGroup.Tool.Name*/secG.Code);
+                var currValue = data.Portfolios.FirstOrDefault(i => i.Name == am.AgentManagerSettings.Portfolio.Code).CurrentValue;
+                var percent = amount.Value.Value;
+                var calculatedPercent = (currValue / 100) * percent;
+                calculatedAmount = calculatedPercent / secMargSell.MarginSell; //todo вот это значение стало приходить как нулл, уточнить у SS почему
+                decimal truncutedAmountValue = (decimal)calculatedAmount;
+                truncutedAmountValue = Math.Truncate(truncutedAmountValue);
+                calculatedAmount = truncutedAmountValue;
+            }
+            if (amount.Value.Type == UnitTypes.Absolute)
+                calculatedAmount = amount.Value.To<decimal>();
             return calculatedAmount;
         }
         public void StartAgentOrGroup(AgentManager agentOrGroup)
