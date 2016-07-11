@@ -48,6 +48,8 @@ namespace Strategies.Strategies
         private readonly string _nameGroup;
         private string _nameStrategy;
         private bool _firstLap = true;
+        private long _transactionId;
+
         public ChStrategy()
         {
 
@@ -141,6 +143,16 @@ namespace Strategies.Strategies
             }
         }
 
+        public long TransactionId
+        {
+            get { return _transactionId; }
+            set
+            {
+                if (value == TransactionId)
+                    return;
+                _transactionId = value;
+            }
+        }
         public override string Name => GetFriendlyName();
 
 
@@ -167,19 +179,7 @@ namespace Strategies.Strategies
             _nameStrategy = CheckNameGroup();
 
 
-
-
-
             base.OnStarted();
-
-            //TODO: Артём, привет)
-            //задание тебе небольшое по части оптимизации
-            // в этих методах CheckNameGroup,_nameStrategy,GetFriendlyName поставь брекпоинты и запусти на исполнение стратеги из менеджера агентов, ну или группу агентов.
-            //попробуй придумать альтернативную версию
-
-            // и еще обрати внимание на имя экземляра класса стратеги- на выходе оно получается искаженное- то есть не возвращает настоящее имя стратеги, а еще и добавляет перед именем имя группы.
-            //надо сделать так, что бы мне в платформу при создании экземпляра класса статегии возвращалось ее не искаженное имя.
-
 
 
             Task.Run(() => TradesLogger.Info("{0}: START, Security: {1}", _nameStrategy, Security.Code));
@@ -223,7 +223,9 @@ namespace Strategies.Strategies
             // _candleManager.Stop(_series);
             _isFinish = true;
             CancelActiveOrders();
+
         }
+
         protected override void OnStopped()
         {
 
@@ -290,7 +292,7 @@ namespace Strategies.Strategies
                     {
                         // "Опускаем" флаг. Теперь в ProcessCandles возобновится отработка логики стратегии
                         _sendOrder = false;
-
+                        TransactionId = order.TransactionId;
                         _cancelOrderCandle = _cancelCandle;
                         // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                         Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
@@ -309,7 +311,6 @@ namespace Strategies.Strategies
                 {
                     //var trade = MyTrades.Last();
                     var trade = trades.Last();
-                    
 
                     Task.Run(() => TradesLogger.Info("{0}: Trade price {1:0}, vol {2}, slip {3:0}, Security: {4}", _nameStrategy, trade.Trade.Price, trade.Trade.Volume, trade.Slippage, Security.Code));
                 })
@@ -400,9 +401,9 @@ namespace Strategies.Strategies
 
 
 
-            if (exit)
+            if (exit) // Закрываем позицию обьемом (текущим) по стратегии, а не обьемом указанным при запуске стратегии или измененным обьемом во время работы
             {
-                var volExit = Math.Abs(Position); // Обьем всегда положительный, что не сказать про позимцию
+                var volExit = Math.Abs(Position); // Обьем всегда положительный, что не сказать про позимцию, приводим к положительному числу
                                                   // var vol = Convert.ToInt32(PositionManager.Positions.First(k => k.Key.Item1.SecurityCode == Security.Code).Value); //Разница только в одном. Если у вас стретегия торгует одновременно несколько контрактов (у меня так). В этом случае мой вариант даст объемы каждого контракта. 
                 return this.CreateOrder(side, priceOrder, volExit);
             }
