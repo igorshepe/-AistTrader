@@ -23239,3 +23239,83 @@
 2016-07-04 12:07:59.8899|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 0, SlowSMA 65086, FastSMA 65064, Highest 65170, Lowest 65023, Mid 65097
 2016-07-04 12:08:59.7521|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 0, SlowSMA 65086, FastSMA 65068, Highest 65170, Lowest 65023, Mid 65097
 2016-07-04 12:09:18.8378|INFO|AistTrader.MainWindow|Connection - "aaaaaaa" is not active now
+2016-07-11 08:25:41.2823|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaa"...
+2016-07-11 08:25:41.2823|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaa" connection were successfully acquired
+2016-07-11 08:26:35.7630|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaa"...
+2016-07-11 08:26:35.7630|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaa" connection were successfully acquired
+2016-07-11 08:26:37.3753|INFO|AistTrader.MainWindow|Connection - "aaaaaaa" is active now
+2016-07-11 08:26:37.8496|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-11 08:26:38.2260|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaa" were loaded
+2016-07-11 08:30:12.4042|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-07-11 08:30:12.3732|INFO|AistTrader.MainWindow|Agent manager item "bbbbbbbbbbbb" has been deleted
+2016-07-11 08:30:22.1626|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_6_17_20" has been deleted.  Strategies class name: ChStrategy 60_6_17_20.cs
+2016-07-11 08:30:24.3825|INFO|AistTrader.MainWindow|Group - "111?????" has been deleted.
+2016-07-11 08:30:26.5226|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_16_20" has been deleted.  Strategies class name: ChStrategy 60_10_16_20.cs
+2016-07-11 08:30:28.6984|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" has been deleted.  Strategies class name: ChStrategy 60_10_20_20.cs
+2016-07-11 08:31:11.2438|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
+2016-07-11 08:31:19.7627|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 59_10_20_20"
+2016-07-11 08:31:37.2117|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" successfully added to the group "rer1"
+2016-07-11 08:31:37.2287|INFO|AistTrader.MainWindow|Agent "ChStrategy 59_10_20_20" successfully added to the group "rer1"
+2016-07-11 08:31:44.5645|INFO|AistTrader.MainWindow|Group - "rer1" has been deleted.
+2016-07-11 08:32:05.8845|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" successfully added to the group "fdd1"
+2016-07-11 08:32:05.9066|INFO|AistTrader.MainWindow|Agent "ChStrategy 59_10_20_20" successfully added to the group "fdd1"
+2016-07-11 08:32:27.4576|INFO|AistTrader.MainWindow|"fdd1"'s member-"ChStrategy 60_10_20_20" has changed it's amount:"1" to -> "15%"
+2016-07-11 08:32:55.2998|INFO|AistTrader.MainWindow|"fdd1"'s member-"ChStrategy 59_10_20_20" has changed it's amount:"2%" to -> "4%"
+2016-07-11 08:33:08.9762|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaa"...
+2016-07-11 08:33:08.9762|INFO|AistTrader.MainWindow|IP and port of -"aaaaa" connection were successfully acquired
+2016-07-11 08:33:10.6598|INFO|AistTrader.MainWindow|Connection - "aaaaa" is active now
+2016-07-11 08:33:11.0842|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-11 08:33:11.4915|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaa" were loaded
+2016-07-11 08:33:48.5296|INFO|AistTrader.MainWindow|Successfully added agent manager - "aaaaaappppppppppp"
+2016-07-11 08:33:48.5666|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-07-11 08:33:51.8431|INFO|AistTrader.MainWindow|Checking related connection - "aaaaa"..
+2016-07-11 08:33:53.2660|INFO|TradesLogger|[fdd1] ChStrategy 59_10_20_20: START, Security: SiU6
+2016-07-11 08:33:52.4480|INFO|TradesLogger|[fdd1] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-11 08:33:51.8431|INFO|AistTrader.MainWindow|Starting "fdd1"..
+2016-07-11 08:34:43.6228|INFO|AistTrader.MainWindow|Successfully added agent manager - "aaaaaappppppppppp"
+2016-07-11 08:34:43.6709|INFO|AistTrader.MainWindow|Successfully saved manager agent Items
+2016-07-11 08:34:47.2228|INFO|AistTrader.MainWindow|Checking related connection - "aaaaa"..
+2016-07-11 08:34:47.2228|INFO|AistTrader.MainWindow|Starting "ChStrategy 60_10_20_20"..
+2016-07-11 08:34:48.3870|INFO|TradesLogger|ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-11 09:02:51.2975|INFO|AistTrader.MainWindow|IP and port of -"aaaaa" connection were successfully acquired
+2016-07-11 09:02:51.2975|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaa"...
+2016-07-11 09:02:53.0245|INFO|AistTrader.MainWindow|Connection - "aaaaa" is active now
+2016-07-11 09:03:19.9053|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaa"...
+2016-07-11 09:03:19.9053|INFO|AistTrader.MainWindow|IP and port of -"aaaaa" connection were successfully acquired
+2016-07-11 09:03:21.5459|INFO|AistTrader.MainWindow|Connection - "aaaaa" is active now
+2016-07-11 09:03:22.0683|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-11 09:03:22.3535|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaa" were loaded
+2016-07-11 09:04:14.9567|INFO|AistTrader.MainWindow|Checking related connection - "aaaaa"..
+2016-07-11 09:04:16.3345|INFO|TradesLogger|ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-11 09:04:14.9567|INFO|AistTrader.MainWindow|Starting "ChStrategy 60_10_20_20"..
+2016-07-11 09:04:18.5133|INFO|AistTrader.MainWindow|Checking related connection - "aaaaa"..
+2016-07-11 09:04:23.5174|INFO|TradesLogger|[fdd1] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-11 09:04:25.8012|INFO|TradesLogger|[fdd1] ChStrategy 59_10_20_20: START, Security: SiU6
+2016-07-11 09:04:18.5133|INFO|AistTrader.MainWindow|Starting "fdd1"..
+2016-07-11 09:11:09.1859|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaa"...
+2016-07-11 09:11:09.1859|INFO|AistTrader.MainWindow|IP and port of -"aaaaa" connection were successfully acquired
+2016-07-11 09:11:10.9442|INFO|AistTrader.MainWindow|Connection - "aaaaa" is active now
+2016-07-11 09:11:11.3766|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-11 09:11:11.7299|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaa" were loaded
+2016-07-11 09:11:24.5312|INFO|AistTrader.MainWindow|Checking related connection - "aaaaa"..
+2016-07-11 09:11:54.1424|INFO|TradesLogger|ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-11 09:11:26.7083|INFO|AistTrader.MainWindow|Starting "ChStrategy 60_10_20_20"..
+2016-07-11 09:12:51.1148|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 60_10_20_20"..
+2016-07-11 09:12:51.1368|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
+2016-07-11 09:12:57.1064|INFO|AistTrader.MainWindow|Checking related connection - "aaaaa"..
+2016-07-11 09:12:57.5017|INFO|TradesLogger|[fdd1] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-11 09:12:57.1064|INFO|AistTrader.MainWindow|Starting "fdd1"..
+2016-07-11 09:12:57.7769|INFO|TradesLogger|[fdd1] ChStrategy 59_10_20_20: START, Security: SiU6
+2016-07-11 09:30:26.5315|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaa"...
+2016-07-11 09:30:26.5315|INFO|AistTrader.MainWindow|IP and port of -"aaaaa" connection were successfully acquired
+2016-07-11 09:30:28.3360|INFO|AistTrader.MainWindow|Connection - "aaaaa" is active now
+2016-07-11 09:30:28.6652|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaa" were loaded
+2016-07-11 09:30:28.7353|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-11 09:30:32.0672|INFO|AistTrader.MainWindow|Checking related connection - "aaaaa"..
+2016-07-11 09:30:32.0672|INFO|AistTrader.MainWindow|Starting "ChStrategy 60_10_20_20"..
+2016-07-11 09:30:33.4255|INFO|TradesLogger|ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-11 09:44:02.0733|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaa"...
+2016-07-11 09:44:02.0733|INFO|AistTrader.MainWindow|IP and port of -"aaaaa" connection were successfully acquired
+2016-07-11 09:44:03.7965|INFO|AistTrader.MainWindow|Connection - "aaaaa" is active now
+2016-07-11 09:44:04.3179|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-11 09:44:04.5975|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaa" were loaded

@@ -14,6 +14,7 @@ using StockSharp.Algo.Storages;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 using StockSharp.Xaml;
+using System.Threading.Tasks;
 
 namespace AistTrader
 {
@@ -149,7 +150,7 @@ namespace AistTrader
 
                 if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                 {
-
+                    
 
                     if (AmountTextBox.Text == "")
                     {
@@ -161,6 +162,7 @@ namespace AistTrader
                         Close();
                         return;
                     }
+                    //Task.Run(() => Logger.Info("Agent \"{0}\"(Portfolio: \"{1}\") has changed it's amount from \"{2}\" to -> \"{3}\"", agentManagerToEdit.Alias,agentManagerToEdit.AgentManagerSettings.Portfolio.Name, agentManagerToEdit.Amount, AmountTextBox.Text));
                     agentManagerToEdit.Amount = AmountTextBox.Text;
                     //todo: не производить расчёт если значение не поменялось
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);

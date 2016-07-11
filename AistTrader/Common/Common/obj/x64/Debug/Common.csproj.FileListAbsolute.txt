@@ -11,9 +11,9 @@ C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Mess
 C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Plaza.dll
 C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Strategies.dll
 C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\NLog.dll
+C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.Collections.dll
 C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\MoreLinq.dll
 C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.Reflection.dll
-C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.Collections.dll
 C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.Localization.dll
 C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\Ecng.Configuration.dll
 C:\REPOSITORY\-AistTrader\AistTrader\Common\Common\bin\x64\Debug\StockSharp.Localization.dll

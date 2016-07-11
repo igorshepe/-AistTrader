@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <ArrayOfConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Connection>
-    <Id>aaaaaaa</Id>
-    <DisplayName>aaaaaaa</DisplayName>
+    <Id>aaaaa</Id>
+    <DisplayName>aaaaa</DisplayName>
     <IsDemo>true</IsDemo>
     <ConnectionParams>
       <IsDefaulConnection>true</IsDefaulConnection>
       <PlazaConnectionParams>
         <Path>C:\SpectraCGate</Path>
       </PlazaConnectionParams>
-      <Name>aaaaaaa</Name>
+      <Name>aaaaa</Name>
       <Code>aaaa</Code>
       <IsConnected>false</IsConnected>
       <Command>Connect</Command>

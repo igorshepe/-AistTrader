@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <ArrayOfAgentManager xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AgentManager>
-    <AgentManagerUniqueId>ChStrategy 60_10_20_20</AgentManagerUniqueId>
-    <Name>bbbbbbbbbbbb</Name>
-    <Alias>ChStrategy 60_10_20_20</Alias>
+    <AgentManagerUniqueId>fdd1</AgentManagerUniqueId>
+    <Name>aaaaaappppppppppp</Name>
+    <Alias>fdd1</Alias>
     <Tool>SiU6</Tool>
-    <Amount>1%</Amount>
+    <Amount />
     <AgentManagerSettings>
       <IsConnected>false</IsConnected>
-      <AgentMangerCurrentStatus>Running</AgentMangerCurrentStatus>
+      <AgentMangerCurrentStatus>Stopped</AgentMangerCurrentStatus>
       <Portfolio>
-        <Name xmlns="Common.Entities">bbbbbbbbbbbb</Name>
+        <Name xmlns="Common.Entities">aaaaaappppppppppp</Name>
         <Connection xmlns="Common.Entities">
-          <Id>aaaaaaa</Id>
-          <DisplayName>aaaaaaa</DisplayName>
+          <Id>aaaaa</Id>
+          <DisplayName>aaaaa</DisplayName>
           <IsDemo>true</IsDemo>
           <ConnectionParams>
             <IsDefaulConnection>true</IsDefaulConnection>
@@ -21,11 +21,56 @@
               <Path>C:\SpectraCGate</Path>
               <IpEndPoint>127.0.0.1:4001</IpEndPoint>
             </PlazaConnectionParams>
-            <Name>aaaaaaa</Name>
+            <Name>aaaaa</Name>
             <Code>aaaa</Code>
             <IsConnected>true</IsConnected>
             <Command>Disconnect</Command>
-            <Funds>0</Funds>
+            <Funds>238040.50</Funds>
+            <AlgorithmCount>-1</AlgorithmCount>
+            <Contracts>-1</Contracts>
+            <NetValue>0</NetValue>
+            <VariationMargin>0</VariationMargin>
+            <IsRegistredConnection>true</IsRegistredConnection>
+            <ConnectionState>Connected</ConnectionState>
+          </ConnectionParams>
+        </Connection>
+        <Code xmlns="Common.Entities">FZ00D80</Code>
+      </Portfolio>
+      <AgentOrGroup>fdd1</AgentOrGroup>
+      <Tool>SiU6</Tool>
+      <Position>-1</Position>
+      <Transaction>-1</Transaction>
+      <FinalTransaction>-1</FinalTransaction>
+      <Command>Start</Command>
+      <IsChecked>true</IsChecked>
+    </AgentManagerSettings>
+  </AgentManager>
+  <AgentManager>
+    <AgentManagerUniqueId>ChStrategy 60_10_20_20</AgentManagerUniqueId>
+    <Name>aaaaaappppppppppp</Name>
+    <Alias>ChStrategy 60_10_20_20</Alias>
+    <Tool>SiU6</Tool>
+    <Amount>22%</Amount>
+    <AgentManagerSettings>
+      <IsConnected>false</IsConnected>
+      <AgentMangerCurrentStatus>Running</AgentMangerCurrentStatus>
+      <Portfolio>
+        <Name xmlns="Common.Entities">aaaaaappppppppppp</Name>
+        <Connection xmlns="Common.Entities">
+          <Id>aaaaa</Id>
+          <DisplayName>aaaaa</DisplayName>
+          <IsDemo>true</IsDemo>
+          <ConnectionParams>
+            <IsDefaulConnection>true</IsDefaulConnection>
+            <PlazaConnectionParams>
+              <Path>C:\SpectraCGate</Path>
+              <IpEndPoint>127.0.0.1:4001</IpEndPoint>
+            </PlazaConnectionParams>
+            <Name>aaaaa</Name>
+            <Code>aaaa</Code>
+            <IsConnected>true</IsConnected>
+            <Command>Disconnect</Command>
+            <Funds>238040.50</Funds>
             <AlgorithmCount>-1</AlgorithmCount>
             <Contracts>-1</Contracts>
             <NetValue>0</NetValue>

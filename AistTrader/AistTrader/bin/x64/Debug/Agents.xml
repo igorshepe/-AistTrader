@@ -5,7 +5,7 @@
     <Params>
       <AgentName>ChStrategy</AgentName>
       <ToolTipName>TimeFrame-60,FastSma-10,SlowSma-20,Period-20</ToolTipName>
-      <AgentCompiledName>ChStrategy</AgentCompiledName>
+      <AgentCompiledName>ChStrategy_60_10_20_20</AgentCompiledName>
       <ConnectionCount>-1</ConnectionCount>
       <FriendlyName>ChStrategy 60_10_20_20</FriendlyName>
       <SettingsStorage>
@@ -47,24 +47,26 @@
       <GroupName>ungrouped agents</GroupName>
       <PhantomParams>
         <AgentName>ChStrategy 60_10_20_20</AgentName>
+        <GroupName>fdd1</GroupName>
+        <Amount>15%</Amount>
       </PhantomParams>
     </Params>
   </Agent>
   <Agent>
-    <Name>ChStrategy 60_10_16_20</Name>
+    <Name>ChStrategy 59_10_20_20</Name>
     <Params>
       <AgentName>ChStrategy</AgentName>
-      <ToolTipName>TimeFrame-60,FastSma-10,SlowSma-16,Period-20</ToolTipName>
-      <AgentCompiledName>ChStrategy</AgentCompiledName>
+      <ToolTipName>TimeFrame-59,FastSma-10,SlowSma-20,Period-20</ToolTipName>
+      <AgentCompiledName>ChStrategy_59_10_20_20</AgentCompiledName>
       <ConnectionCount>-1</ConnectionCount>
-      <FriendlyName>ChStrategy 60_10_16_20</FriendlyName>
+      <FriendlyName>ChStrategy 59_10_20_20</FriendlyName>
       <SettingsStorage>
         <item>
           <key>
             <string>TimeFrame</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:double">60</anyType>
+            <anyType xsi:type="xsd:double">59</anyType>
           </value>
         </item>
         <item>
@@ -80,7 +82,7 @@
             <string>SlowSma</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:decimal">16</anyType>
+            <anyType xsi:type="xsd:decimal">20</anyType>
           </value>
         </item>
         <item>
@@ -96,7 +98,9 @@
       <Contracts>-1</Contracts>
       <GroupName>ungrouped agents</GroupName>
       <PhantomParams>
-        <AgentName>ChStrategy 60_10_16_20</AgentName>
+        <AgentName>ChStrategy 59_10_20_20</AgentName>
+        <GroupName>fdd1</GroupName>
+        <Amount>2%</Amount>
       </PhantomParams>
     </Params>
   </Agent>
@@ -105,7 +109,7 @@
     <Params>
       <AgentName>ChStrategy</AgentName>
       <ToolTipName>TimeFrame-60,FastSma-10,SlowSma-20,Period-20</ToolTipName>
-      <AgentCompiledName>ChStrategy</AgentCompiledName>
+      <AgentCompiledName>ChStrategy_60_10_20_20</AgentCompiledName>
       <ConnectionCount>-1</ConnectionCount>
       <FriendlyName>ChStrategy 60_10_20_20</FriendlyName>
       <SettingsStorage>
@@ -144,30 +148,30 @@
       </SettingsStorage>
       <IsChecked>false</IsChecked>
       <Contracts>-1</Contracts>
-      <GroupName>111выывы</GroupName>
-      <Amount>13%</Amount>
+      <GroupName>fdd1</GroupName>
+      <Amount>15%</Amount>
       <PhantomParams>
         <AgentName>ChStrategy 60_10_20_20</AgentName>
-        <GroupName>111выывы</GroupName>
-        <Amount>11%</Amount>
+        <GroupName>fdd1</GroupName>
+        <Amount>15%</Amount>
       </PhantomParams>
     </Params>
   </Agent>
   <Agent>
-    <Name>ChStrategy 60_10_16_20</Name>
+    <Name>ChStrategy 59_10_20_20</Name>
     <Params>
       <AgentName>ChStrategy</AgentName>
-      <ToolTipName>TimeFrame-60,FastSma-10,SlowSma-16,Period-20</ToolTipName>
-      <AgentCompiledName>ChStrategy</AgentCompiledName>
+      <ToolTipName>TimeFrame-59,FastSma-10,SlowSma-20,Period-20</ToolTipName>
+      <AgentCompiledName>ChStrategy_59_10_20_20</AgentCompiledName>
       <ConnectionCount>-1</ConnectionCount>
-      <FriendlyName>ChStrategy 60_10_16_20</FriendlyName>
+      <FriendlyName>ChStrategy 59_10_20_20</FriendlyName>
       <SettingsStorage>
         <item>
           <key>
             <string>TimeFrame</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:double">60</anyType>
+            <anyType xsi:type="xsd:double">59</anyType>
           </value>
         </item>
         <item>
@@ -183,7 +187,7 @@
             <string>SlowSma</string>
           </key>
           <value>
-            <anyType xsi:type="xsd:decimal">16</anyType>
+            <anyType xsi:type="xsd:decimal">20</anyType>
           </value>
         </item>
         <item>
@@ -197,62 +201,12 @@
       </SettingsStorage>
       <IsChecked>false</IsChecked>
       <Contracts>-1</Contracts>
-      <GroupName>111выывы</GroupName>
-      <Amount>13</Amount>
+      <GroupName>fdd1</GroupName>
+      <Amount>4%</Amount>
       <PhantomParams>
-        <AgentName>ChStrategy 60_10_16_20</AgentName>
-        <GroupName>111выывы</GroupName>
-        <Amount>12</Amount>
-      </PhantomParams>
-    </Params>
-  </Agent>
-  <Agent>
-    <Name>ChStrategy 60_6_17_20</Name>
-    <Params>
-      <AgentName>ChStrategy</AgentName>
-      <ToolTipName>TimeFrame-60,FastSma-6,SlowSma-17,Period-20</ToolTipName>
-      <AgentCompiledName>ChStrategy_60_6_17_20</AgentCompiledName>
-      <ConnectionCount>-1</ConnectionCount>
-      <FriendlyName>ChStrategy 60_6_17_20</FriendlyName>
-      <SettingsStorage>
-        <item>
-          <key>
-            <string>TimeFrame</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:double">60</anyType>
-          </value>
-        </item>
-        <item>
-          <key>
-            <string>FastSma</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:decimal">6</anyType>
-          </value>
-        </item>
-        <item>
-          <key>
-            <string>SlowSma</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:decimal">17</anyType>
-          </value>
-        </item>
-        <item>
-          <key>
-            <string>Period</string>
-          </key>
-          <value>
-            <anyType xsi:type="xsd:decimal">20</anyType>
-          </value>
-        </item>
-      </SettingsStorage>
-      <IsChecked>false</IsChecked>
-      <Contracts>-1</Contracts>
-      <GroupName>ungrouped agents</GroupName>
-      <PhantomParams>
-        <AgentName>ChStrategy 60_6_17_20</AgentName>
+        <AgentName>ChStrategy 59_10_20_20</AgentName>
+        <GroupName>fdd1</GroupName>
+        <Amount>2%</Amount>
       </PhantomParams>
     </Params>
   </Agent>

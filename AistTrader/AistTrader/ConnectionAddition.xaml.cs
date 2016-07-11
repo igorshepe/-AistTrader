@@ -58,6 +58,7 @@ namespace AistTrader
             InitializeComponent();
             EditIndex = int.MinValue;
             AllPlazaDirectoriesComboBox.ItemsSource = GetAllPlazaDirectories();
+            ConnectionNameTxtBox.Focus();
         }
         private List<string> GetAllPlazaDirectories()
         {
@@ -82,6 +83,7 @@ namespace AistTrader
             InitFields(account);
             DataContext = this;
             EditIndex = editIndex;
+
         }
         private void InitFields(Connection connection)
         {
@@ -96,6 +98,8 @@ namespace AistTrader
             _selectedPath = connection.ConnectionParams.PlazaConnectionParams.Path;
             _originPath = connection.ConnectionParams.PlazaConnectionParams.Path;
             IsDemoChkBox.IsChecked = connection.IsDemo;
+            ConnectionNameTxtBox.Focus();
+            
         }
 
         private bool IsFirtConnectionToBeSetAsDefault()

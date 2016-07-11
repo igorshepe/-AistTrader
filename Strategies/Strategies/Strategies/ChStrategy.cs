@@ -141,7 +141,6 @@ namespace Strategies.Strategies
             }
         }
 
-
         public override string Name => GetFriendlyName();
 
 
@@ -224,9 +223,7 @@ namespace Strategies.Strategies
             // _candleManager.Stop(_series);
             _isFinish = true;
             CancelActiveOrders();
-
         }
-
         protected override void OnStopped()
         {
 
@@ -312,6 +309,7 @@ namespace Strategies.Strategies
                 {
                     //var trade = MyTrades.Last();
                     var trade = trades.Last();
+                    
 
                     Task.Run(() => TradesLogger.Info("{0}: Trade price {1:0}, vol {2}, slip {3:0}, Security: {4}", _nameStrategy, trade.Trade.Price, trade.Trade.Volume, trade.Slippage, Security.Code));
                 })
