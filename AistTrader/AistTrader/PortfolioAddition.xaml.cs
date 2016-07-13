@@ -54,6 +54,7 @@ namespace AistTrader
             DataContext = this;
             EditIndex = int.MinValue;
             LoadParams();
+            ConnectionProviderComboBox.Focus();
         }
         private void LoadParams()
         {
@@ -87,6 +88,7 @@ namespace AistTrader
             _portfolioName = portfolio.Name;
             ConnectionProviderComboBox.IsEnabled = false;
             AccountComboBox.IsEnabled = false;
+            ConnectionProviderComboBox.Focus();
         }
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
