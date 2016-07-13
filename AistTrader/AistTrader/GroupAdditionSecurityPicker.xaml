@@ -8,8 +8,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:xaml="http://schemas.stocksharp.com/xaml"
-		Height="192.315"
-        Width="285"
+		Height="257.607"
+        Width="368.398"
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen"
         FontFamily="Consolas"
@@ -64,17 +64,19 @@
             Name="SecurityPickerSS"
             Margin="5,31,5,0" Height="28" VerticalAlignment="Top" TabIndex="2"
             SelectedSecurity="{Binding  Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+            SecuritySelected="SecurityPickerSS_OnSecuritySelected"
                            
             />
         <Button Content="ОК"
                 HorizontalAlignment="Right"
                 Name="OkBtnClick"
+                
                 Margin="0,0,85,8"
                 Width="75"
-                Click="AddAgentInAgentManagerBtnClick"
+                Click="AttachSecForAgentBtnClick"
                 TabIndex="4" 
                 IsDefault="True" Height="23" VerticalAlignment="Bottom" 
-                IsEnabled="True"
+                IsEnabled="False"
                 />
         <Button Content="Отмена" 
                 HorizontalAlignment="Right"
@@ -83,7 +85,7 @@
                 TabIndex="5" 
                 IsCancel="True"
                 Height="23" VerticalAlignment="Bottom" />
-        <Label x:Name="AgentNameLbl" Content="" HorizontalAlignment="Left" Margin="103,6,0,0" VerticalAlignment="Top" Width="164"/>
+        <Label x:Name="AgentNameLbl" Content="" HorizontalAlignment="Left" Margin="103,6,0,0" VerticalAlignment="Top" Width="247"/>
     </Grid>
 </Window>
 
