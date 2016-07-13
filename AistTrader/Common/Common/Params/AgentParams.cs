@@ -1,6 +1,7 @@
 ﻿using System;
 using Strategies.Common;
 using System.Collections.Generic;
+using StockSharp.BusinessEntities;
 
 namespace Common.Params
 {
@@ -21,6 +22,7 @@ namespace Common.Params
             PhantomParams = phantomParams;
         }
 
+        public string Security { get; set; }
         public string AgentName { get; set; }
         public string ToolTipName { get; set; }
         public string AgentCompiledName { get; set; }
@@ -34,6 +36,7 @@ namespace Common.Params
         public string Amount { get; set; }
         public AgentPhantomParams PhantomParams { get; set; }
         public List<long> TransactionId {get;set;}
+        //public Security Tool { get; set; }
     }
     public enum AgentWorkMode
     {
