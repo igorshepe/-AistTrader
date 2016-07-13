@@ -496,7 +496,7 @@ namespace AistTrader
 
         public IEnumerator<AistTraderConnnectionWrapper> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return Connections.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
