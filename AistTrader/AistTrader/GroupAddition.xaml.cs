@@ -32,6 +32,7 @@ namespace AistTrader
         public int ItemCounter;
         public List<Agent> ItemsToDelete;
         private int removeCount;
+        private int editCount;
         public GroupAddition()
         {
             InitializeComponent();
@@ -427,11 +428,15 @@ namespace AistTrader
 
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
+                        
+                        var x = DynamicGrid.Children.OfType<ComboBox>().ToList();
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
-                                var newItems = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)).ToList();
+                                
+
+                               var newItems = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)).ToList();
                                 var amount = ue.Text;
                                 string algorithmName = cb.Text;
                                 var groupName = GroupNameTxtBox.Text;
@@ -447,13 +452,27 @@ namespace AistTrader
                                     item.Params.Amount = amount;
                                     item.Params.GroupName = groupName;
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(item);
-                                    MainWindow.Instance.AddNewAgentInGroup(item, index, false);
+                                    //to attache sec
+                                    //MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                     //go to agent manager related actions
                                     var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.Where(i => i.AgentManagerSettings.AgentOrGroup == item.Params.GroupName.ToString()).ToList();
                                     foreach (var amItem in amItemOnTheFly)
                                     {
+                                        if (editCount == amItemOnTheFly.Count)
+                                        {
+                                            break;
+                                        }
                                         if (amItem != null && amItem.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                                         {
+                                            if (DynamicGrid.Children.OfType<ComboBox>().ToList().Count < oldItems.Count)
+                                                break;
+                                            var form = new GroupAdditionSecurityPicker(item);
+                                            form.ShowDialog();
+                                            item.Params.Security = form.SelectedSecurity;
+                                            MainWindow.Instance.AddNewAgentInGroup(item, index, false);
+                                            editCount++;
+                                            //go to agent manager related actions
+                                            form = null;
                                             var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name.EndsWith(item.Name));
                                             if (runnigStrategy != null)
                                             {
@@ -476,6 +495,11 @@ namespace AistTrader
                                         else
                                         {
                                             //offline
+                                            //item.Params.Security = 
+                                            //var form = new GroupAdditionSecurityPicker(item);
+                                            //form.ShowDialog();
+                                            //form = null;
+
                                         }
 
                                     }
