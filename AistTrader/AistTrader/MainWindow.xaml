@@ -148,6 +148,7 @@
                               Loaded="AgentListView_Loaded"
                               IsReadOnly="False"
                               CanUserAddRows="False"
+                              CanUserDeleteRows="False"
                               Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn IsReadOnly="True"   Header="Name"

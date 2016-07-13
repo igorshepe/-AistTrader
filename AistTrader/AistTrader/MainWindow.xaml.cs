@@ -131,7 +131,31 @@ namespace AistTrader
             _myTradesWindow.MakeHideable();
             _securitiesWindow.MakeHideable();
             _monitorWindow.MakeHideable();
-#endregion
+            KeyUp += new KeyEventHandler(OKP); // подписываемся на события нажатия клавиш
+            #endregion
+        }
+        public void OKP(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Delete)
+            {
+                if (AgentItem.IsSelected && DelAgentBtn.IsEnabled)
+                {
+                    DeleteAgentBtnClick(sender, e);
+                }
+                else if (AgentManagerItem.IsSelected && DelAgentManagerBtn.IsEnabled)
+                {
+                    DelAgentManagerBtnClick(sender, e);
+                }
+                else if (ProviderItem.IsSelected && DelAgentConnectionBtn.IsEnabled)
+                {
+                    DelAgentConnectionBtnClick(sender, e);
+                }
+                else if (PortfolioItem.IsSelected && DelPortfolioBtn.IsEnabled)
+                {
+                    DelPortfolioBtnClick(sender, e);
+                }
+            }
         }
 
         private void AgentManagerStorage_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
