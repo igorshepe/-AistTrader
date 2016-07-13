@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>\\Hp-server\soft\AistTraderInstall\|\\10.10.10.10\AistShared\AistTrader\Install\|C:\Users\Allen\Desktop\Aist\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>\\10.10.10.10\AistShared\AistTrader\Install\|\\Hp-server\soft\AistTraderInstall\|C:\Users\Allen\Desktop\Aist\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory />
