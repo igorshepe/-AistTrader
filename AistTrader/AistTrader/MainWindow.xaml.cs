@@ -191,7 +191,7 @@ namespace AistTrader
             catch
             {
                 this.TimeErrorTextBlock.Text = "Error moex time sync";
-                this.TimeErrorTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+                //this.TimeErrorTextBlock.Foreground = new SolidColorBrush(Colors.White);
                 TimeErrorTextBlock.FontWeight = FontWeights.Bold;
             }
         }

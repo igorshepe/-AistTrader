@@ -31,6 +31,7 @@ namespace AistTrader
         public AgentWorkMode WorkMode;
         public int ItemCounter;
         public List<Agent> ItemsToDelete;
+        private int removeCount;
         public GroupAddition()
         {
             InitializeComponent();
@@ -530,10 +531,46 @@ namespace AistTrader
                     }
                     foreach (var oldItem in oldItems)
                     {
+                        var ItemsToDeleteCollection = newMembersOfCurrentGroup.Where(i => i != oldItem).ToList();
                         var IsItemToDelete = newMembersOfCurrentGroup.All(i => i != oldItem);
                         if (IsItemToDelete)
-                            MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
-
+                        {
+                            //если данный агент не запущен
+                            var agentToDelete =
+                                MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
+                                    i => i.ActualStrategyRunning.Name == oldItem.Name);
+                            if (agentToDelete == null)
+                            {
+                                MessageBoxResult result = MessageBox.Show("Agent  will be removed from current group".Insert(6, oldItem.Name), "Delete agent from group", MessageBoxButton.OKCancel);
+                                if (result == MessageBoxResult.OK)
+                                {
+                                    MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
+                                    removeCount++;
+                                    if (removeCount == ItemsToDeleteCollection.Count)
+                                    {
+                                        removeCount = 0; //убрать после тестов
+                                        break;
+                                    }
+                                }
+                                if (result == MessageBoxResult.Cancel)
+                                {
+                                    removeCount++;
+                                    if (removeCount == ItemsToDeleteCollection.Count)
+                                    {
+                                        removeCount = 0; //убрать после тестов
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                //если данный агент запущен
+                                //если у удаляемого агента есть позиции - должен быть запрос "(закрыть позиции и удалить) или (ожидать закрытия позиций и затем удалить)", с соответствующим функционалом.
+                                //реализовать данный функционал
+                                agentToDelete.ActualStrategyRunning.Stop();
+                                MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                            }
+                        }
                     }
                 }
                 else
@@ -663,6 +700,7 @@ namespace AistTrader
                 }
                 Close();
             }
+            
         }
         private void StratSettings_Loaded(object sender, RoutedEventArgs e)
         {
