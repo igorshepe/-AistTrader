@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using Common.Params;
 
 namespace Common.Entities
 {
-    [Serializable]
+    [DataContract(Namespace = "")]
     public class Agent : ICloneable
     {
         public Agent() { }
@@ -12,7 +13,9 @@ namespace Common.Entities
             Name = name;
             Params = agentParams;
         }
+        [DataMember()]
         public string Name { get; set; }
+        [DataMember()]
         public AgentParams Params { get; set; }
 
         public override string ToString()
