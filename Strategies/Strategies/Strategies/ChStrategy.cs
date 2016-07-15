@@ -49,6 +49,7 @@ namespace Strategies.Strategies
         private string _nameStrategy;
         private bool _firstLap = true;
         private long _transactionId;
+        private bool _stopStrategy;
 
         public ChStrategy()
         {
@@ -198,7 +199,7 @@ namespace Strategies.Strategies
                 // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
                 .Apply(this);
 
-
+            // создаем правило на любое изменение свечки
             _candleManager // объект, к которому применяется правило
                 .WhenCandlesChanged(_series) // условие (событие) правила
                 .Do(ChekLeSeLxSx) // действия при выполнении условия (событие) правила
@@ -213,10 +214,12 @@ namespace Strategies.Strategies
 
         protected override void OnStopping()
         {
-            // _candleManager.Stop(_series);
+
             _isFinish = true;
             var fix = TransactionIDs;
             CancelActiveOrders();
+            base.OnStopping();
+
         }
 
         protected override void OnStopped()
@@ -225,20 +228,69 @@ namespace Strategies.Strategies
             Task.Run(() => TradesLogger.Info("{0}: STOP", _nameStrategy));
         }
 
+        public void CheckPosExit()
+        {
+            if (_registeredOrder != null)
+            {
+                Connector.CancelOrder(_registeredOrder);
+            }
+            Task.Run(() => TradesLogger.Info("{0}: Check strategy position: {1}", _nameStrategy, Position));
+            if (Position != 0)
+            {
+                Order orderexite = null;
 
+                if (Position > 0)
+                {
+                    var volume = Math.Abs(Position);
+                    orderexite = this.CreateOrder(Sides.Sell, this.GetMarketPrice(Sides.Sell), volume);
+                }
+                else
+                {
+                    var volume = Math.Abs(Position);
+                    orderexite = this.CreateOrder(Sides.Buy, this.GetMarketPrice(Sides.Buy), volume);
+                }
+
+                if (orderexite != null)
+                    OrderProcess(orderexite, true);
+            }
+            else
+            {
+                Stop();
+            }
+
+        }
+
+        public void CheckPosWaitStrExit()
+        {
+            if (_registeredOrder != null)
+            {
+                Connector.CancelOrder(_registeredOrder);
+            }
+
+            if (Position != 0)
+            {
+                _stopStrategy = true;
+                Task.Run(() => TradesLogger.Info("{0}: Waiting position closing: {1}", _nameStrategy, Position));
+            }
+            else
+            {
+                Stop();
+            }
+
+        }
 
         // Обработчик события появления новой завершенной свечи
 
         // 1. Создает правила для заявки
         // 2. Регистрирует заявку
-        private void OrderProcess(Order order)
+        private void OrderProcess(Order order, bool stopStrategy)
         {
             try
             {
-                Task.Run(() => TradesLogger.Info("{0}: New order, price {1}, {2}, vol {3}, Security: {4}", _nameStrategy, order.Price, order.Direction, order.VisibleVolume, Security.Code));
+
+
+                Task.Run(() => TradesLogger.Info("{0}: New order, Market price {1}, {2}, vol {3}, Security: {4}", _nameStrategy, order.Price, order.Direction, order.VisibleVolume, Security.Code));
                 // Создаем правило на событие отмены заявки
-
-
 
                 var orderCanceledRule = order.WhenCanceled(Connector).Do(o =>
                 {
@@ -281,8 +333,9 @@ namespace Strategies.Strategies
                     .Do(o =>
                     {
                         // "Опускаем" флаг. Теперь в ProcessCandles возобновится отработка логики стратегии
-                        _sendOrder = false;
-                        TransactionIDs.Add( order.TransactionId);
+
+
+                        TransactionIDs.Add(order.TransactionId);
                         _cancelOrderCandle = _cancelCandle;
                         // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                         Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
@@ -290,6 +343,17 @@ namespace Strategies.Strategies
                         Task.Run(() => TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3:0}, Security: {4}", _nameStrategy, order.TransactionId, order.Volume, averagePrice, Security.Code));
                         // Удаляет определенное правило
                         // this.Rules.Remove(orderCanceledRule)
+
+                        if (!stopStrategy)
+                        {
+                            _sendOrder = false;
+                        }
+                        else
+                        {
+                            Stop();
+                        }
+
+
                     })
                     .Once()
                     .Apply(this);
@@ -324,28 +388,28 @@ namespace Strategies.Strategies
         private Order GetOrder(Sides side, decimal price, bool exit)
         {
             var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену лимитную до шага цены иснтрумента
-            var bestprice = this.GetMarketPrice(side);
-            var priceOrder = bestprice;
+            var marketPrice = this.GetMarketPrice(side);
+            //var priceOrder = bestprice;
 
-            var marketDepth = GetMarketDepth(Security); // Загружаем стакан для проверки, входит ли лимитная цена  в его пределы
+            // var marketDepth = GetMarketDepth(Security); // Загружаем стакан для проверки, входит ли лимитная цена  в его пределы
 
-            if (shrinkPrice <= marketDepth.Asks.Last().Price && shrinkPrice >= marketDepth.Bids.Last().Price) //проверка на лимитную заявку , сработает ли она на бирже
-            {
-                priceOrder = shrinkPrice;
-                Task.Run(() => TradesLogger.Info("{0}: Limit Price in marketDepth, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4} ", _nameStrategy, marketDepth.Bids.Last().Price,
-                    marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
-            }
-            else if (exit)
-            {
-                Task.Run(() => TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, marketDepth.Bids.Last().Price,
-                    marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
-            }
-            else
-            {
-                Task.Run(() => TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, marketDepth.Bids.Last().Price,
-                    marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
-                return null;
-            }
+            //if (shrinkPrice <= marketDepth.Asks.Last().Price && shrinkPrice >= marketDepth.Bids.Last().Price) //проверка на лимитную заявку , сработает ли она на бирже
+            //{
+            //    priceOrder = shrinkPrice;
+            //    Task.Run(() => TradesLogger.Info("{0}: Limit Price in marketDepth, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4} ", _nameStrategy, marketDepth.Bids.Last().Price,
+            //        marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
+            //}
+            //else if (exit)
+            //{
+            //    Task.Run(() => TradesLogger.Info("{0}: MarketPrice! Exit position. Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, marketDepth.Bids.Last().Price,
+            //        marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
+            //}
+            //else
+            //{
+            //    Task.Run(() => TradesLogger.Info("{0}: Cancel ORDER! Limit price out of range, Min {1:0}, Max {2:0}, LimitPrice {3:0}, Security: {4}", _nameStrategy, marketDepth.Bids.Last().Price,
+            //        marketDepth.Asks.Last().Price, shrinkPrice, Security.Code));
+            //    return null;
+            //}
 
             //if (shrinkPrice >= Security.MinPrice && shrinkPrice <= Security.MaxPrice) //проверка на лимитную заявку , сработает ли она на бирже
             //{
@@ -395,11 +459,11 @@ namespace Strategies.Strategies
             {
                 var volExit = Math.Abs(Position); // Обьем всегда положительный, что не сказать про позимцию, приводим к положительному числу
                                                   // var vol = Convert.ToInt32(PositionManager.Positions.First(k => k.Key.Item1.SecurityCode == Security.Code).Value); //Разница только в одном. Если у вас стретегия торгует одновременно несколько контрактов (у меня так). В этом случае мой вариант даст объемы каждого контракта. 
-                return this.CreateOrder(side, priceOrder, volExit);
+                return this.CreateOrder(side, marketPrice, volExit);
             }
 
 
-            return this.CreateOrder(side, priceOrder);
+            return this.CreateOrder(side, marketPrice);
         }
 
         // Критерий продолжения работы правила WhenCandlesFinished
@@ -483,7 +547,10 @@ namespace Strategies.Strategies
                 }
 
                 if (order != null)
-                    OrderProcess(order);
+                {
+                    OrderProcess(order, _stopStrategy); // проверка на остановку стратегии из группы и ожидание закрытия позиции по стратегии
+                }
+
             }
             catch (Exception e)
             {
