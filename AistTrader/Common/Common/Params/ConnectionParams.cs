@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using StockSharp.BusinessEntities;
 
 namespace Common.Params
 {
-    [Serializable]
+    [DataContract(Namespace = "")]
     public class ConnectionParams
     {
         public ConnectionParams(string name, string code, PlazaConnectionParams connectiong, bool isActive,bool isDefauld)
@@ -73,7 +74,8 @@ namespace Common.Params
         [Description("Plaza")]
         Plaza
     };
-    [Serializable]
+    
+    [DataContract(Namespace = "")]
     public class ConnectionsPhantomParams
     {
         public ConnectionsPhantomParams() { }

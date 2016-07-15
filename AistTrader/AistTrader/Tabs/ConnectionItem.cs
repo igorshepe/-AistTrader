@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -46,37 +47,48 @@ namespace AistTrader
         }
         private void SaveProviderItems()
         {
-            List<Connection> obj = ConnectionsStorage.Select(a => a).ToList();
-            var fStream = new FileStream("Connections.xml", FileMode.Create, FileAccess.Write, FileShare.None);
-            var xmlSerializer = new XmlSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
-            xmlSerializer.Serialize(fStream, obj);
-            fStream.Close();
+            try
+            {
+                List<Connection> obj = ConnectionsStorage.Select(a => a).ToList();
+                using (var fStream = new FileStream("Connections.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
+                    xmlSerializer.WriteObject(fStream, obj);
+                    fStream.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
+            }
         }
         private void InitiateProviderItems()
         {
             NtpMoexSync();
-            StreamReader sr = new StreamReader("Connections.xml");
-            try
+            using (FileStream sr = new FileStream("Connections.xml", FileMode.Open, FileAccess.Read))
             {
-                var xmlSerializer = new XmlSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
-                var connections = (List<Connection>)xmlSerializer.Deserialize(sr);
-                sr.Close();
-                if (connections == null) return;
-                foreach (var rs in connections)
+                try
                 {
-                    ConnectionsStorage.Add(rs);
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
+                    var connections = (List<Connection>)xmlSerializer.ReadObject(sr);
+                    sr.Close();
+                    if (connections == null) return;
+                    foreach (var rs in connections)
+                    {
+                        ConnectionsStorage.Add(rs);
+                    }
+                    ProviderListView.ItemsSource = ConnectionsStorage;
+                    IsProviderSettingsLoaded = true;
                 }
-                ProviderListView.ItemsSource = ConnectionsStorage;
-                IsProviderSettingsLoaded = true;
-            }
-            catch (Exception e)
-            {
-                IsProviderSettingsLoaded = false;
-                sr.Close();
-                Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
-                Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
-                if (e.InnerException.Message == "Root element is missing.")
-                    File.WriteAllText("Connections.xml", string.Empty);
+                catch (Exception e)
+                {
+                    IsProviderSettingsLoaded = false;
+                    sr.Close();
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+                    if (e.InnerException.Message == "Root element is missing.")
+                        File.WriteAllText("Connections.xml", string.Empty);
+                }
             }
             var firstOrDefault = ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.IsDefaulConnection);
             if (firstOrDefault != null)

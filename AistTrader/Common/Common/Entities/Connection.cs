@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using Common.Params;
 
 namespace Common.Entities
 {
-    //ToDO: переименовать соотвественно
-    [Serializable]
+    [DataContract(Namespace = "")]
     public class Connection
     {
         Connection() { }
@@ -15,9 +15,13 @@ namespace Common.Entities
             ConnectionParams = connectionParams;
             IsDemo = isDemo;
         }
+        [DataMember()]
         public string Id { get; set; }
+        [DataMember()]
         public string DisplayName { get; set; }
+        [DataMember()]
         public bool IsDemo { get; set; }
+        [DataMember()]
         public ConnectionParams ConnectionParams { get; set; }
         public override string ToString()
         {
