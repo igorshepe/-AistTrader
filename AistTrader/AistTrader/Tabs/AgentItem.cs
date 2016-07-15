@@ -4,11 +4,12 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Xml.Serialization;
+
 using Common.Entities;
 using Common.Params;
 using Ecng.Common;
@@ -92,8 +93,8 @@ namespace AistTrader
                 List<Agent> obj = AgentsStorage.Select(a => a).ToList();
                 using (var fStream = new FileStream("Agents.xml", FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
-                    xmlSerializer.Serialize(fStream, obj);
+                    DataContractSerializer ser = new DataContractSerializer(typeof(List<Agent>));
+                    ser.WriteObject(fStream, obj);
                     fStream.Close();
                 }
             }
@@ -344,12 +345,12 @@ namespace AistTrader
         }
         public void InitiateAgentSettings()
         {
-            StreamReader sr = new StreamReader("Agents.xml");
+            FileStream fs = new FileStream("Agents.xml", FileMode.Open, FileAccess.Read);
             try
             {
-                var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
-                var agents = (List<Agent>)xmlSerializer.Deserialize(sr);
-                sr.Close();
+                var xmlSerializer = new DataContractSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+                var agents = (List<Agent>)xmlSerializer.ReadObject(fs);
+                fs.Close();
                 if (agents == null) return;
 
                 AgentsStorage.Clear();
@@ -366,7 +367,7 @@ namespace AistTrader
             catch (Exception e)
             {
                 IsAgentSettingsLoaded = false;
-                sr.Close();
+                fs.Close();
                 Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
                 Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
                 if (e.InnerException.Message == "Root element is missing.")
