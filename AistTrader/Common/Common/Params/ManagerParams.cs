@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using StockSharp.BusinessEntities;
 
 namespace Common.Params
 {
-    [Serializable]
+    [DataContract(Namespace = "")]
     public class ManagerParams
     {
         public ManagerParams(){}
