@@ -23,34 +23,49 @@ namespace Common.Params
             VariationMargin = -1;
             ConnectionState = ConnectionStatus.Disconnected;
             IsDefaulConnection = isDefauld;
-        }   
+        }
 
-        
+
         public ConnectionParams(){}
         public override string ToString() { return Name; }
+        [DataMember()]
         public bool IsDefaulConnection { get; set; }
+        [DataMember()]
         public PlazaConnectionParams PlazaConnectionParams { get; set; }
+        [DataMember()]
         public string Name { get; set; }
+        [DataMember()]
         public string Code { get; set; }
+        [DataMember()]
         public string Login { get; set; }
+        [DataMember()]
         public string Password { get; set; }
+        [DataMember()]
         public bool IsConnected { get; set; }
+        [DataMember()]
         public OperationCommand Command { get; set; }
         //TODO: уточнить типы данных
+        [DataMember()]
         public decimal Funds { get; set; }
+        [DataMember()]
         public int AlgorithmCount { get; set; }
+        [DataMember()]
         public int Contracts { get; set; }
+        [DataMember()]
         public decimal NetValue { get; set; }
+        [DataMember()]
         public decimal VariationMargin { get; set; }
+        [DataMember()]
         public bool IsRegistredConnection { get; set; }
 
         //TODO: подключить с новыми исходниками
-        [XmlIgnore]
+        [DataMember()]
         public List<Security> Tools { get; set; }
-        [XmlIgnore]
+        [DataMember()]
         public List<Portfolio> Accounts { get; set; }
-        [XmlIgnore]
+        [DataMember()]
         public Portfolio SelectedAccount { get; set; }
+        [DataMember()]
         public ConnectionStatus ConnectionState { get; set; }
 
         public enum ConnectionStatus

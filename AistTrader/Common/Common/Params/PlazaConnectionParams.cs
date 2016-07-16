@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Common.Params
 {
-    [Serializable]
+    [DataContract(Namespace = "")]
     public class PlazaConnectionParams
     {
         PlazaConnectionParams() { }
@@ -10,7 +11,9 @@ namespace Common.Params
         {
             Path = path;
         }
+        [DataMember()]
         public string Path { get; set; }
+        [DataMember()]
         public string IpEndPoint { get; set; }
     }
 }
