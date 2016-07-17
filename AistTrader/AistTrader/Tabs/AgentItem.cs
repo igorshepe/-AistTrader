@@ -345,34 +345,38 @@ namespace AistTrader
         }
         public void InitiateAgentSettings()
         {
-            FileStream fs = new FileStream("Agents.xml", FileMode.Open, FileAccess.Read);
-            try
+            using (FileStream fs = new FileStream("Agents.xml", FileMode.Open, FileAccess.Read))
             {
-                var xmlSerializer = new DataContractSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
-                var agents = (List<Agent>)xmlSerializer.ReadObject(fs);
-                fs.Close();
-                if (agents == null) return;
-
-                AgentsStorage.Clear();
-                foreach (var rs in agents)
+                try
                 {
-                    AgentsStorage.Add(rs);
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+                    var agents = (List<Agent>)xmlSerializer.ReadObject(fs);
+                    fs.Close();
+                    if (agents == null) return;
+
+                    AgentsStorage.Clear();
+                    foreach (var rs in agents)
+                    {
+                        AgentsStorage.Add(rs);
+                    }
+                    AgentListView.ItemsSource = AgentsStorage;
+                    AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
+                    if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
+                        AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
+                    IsAgentSettingsLoaded = true;
                 }
-                AgentListView.ItemsSource = AgentsStorage;
-                AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
-                if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
-                    AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
-                IsAgentSettingsLoaded = true;
-            }
-            catch (Exception e)
-            {
-                IsAgentSettingsLoaded = false;
-                fs.Close();
-                Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
-                Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
-                if (e.InnerException.Message == "Root element is missing.")
+                catch (Exception e)
+                {
+
                     IsAgentSettingsLoaded = false;
+                    fs.Close();
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+                    if (e.InnerException.Message == "Root element is missing.")
+                        IsAgentSettingsLoaded = false;
+                }
             }
+            
         }
         private void ChkBoxSelectAllAgents_OnClick(object sender, RoutedEventArgs e)
         {

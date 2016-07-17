@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,37 +36,52 @@ namespace AistTrader //todo: идентификаторы портфеля то�
         }
         private void SavePortfolioSettings()
         {
-            List<Common.Entities.Portfolio> obj = AgentPortfolioStorage.Select(a => a).ToList();
-            var fStream = new FileStream("Portfolios.xml", FileMode.Create, FileAccess.Write, FileShare.None);
-            var xmlSerializer = new XmlSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
-            xmlSerializer.Serialize(fStream, obj);
-            fStream.Close();
+            try
+            {
+                List<Common.Entities.Portfolio> obj = AgentPortfolioStorage.Select(a => a).ToList();
+                using (var fStream = new FileStream("Portfolios.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    DataContractSerializer xmlSerializer = new DataContractSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
+                    xmlSerializer.WriteObject(fStream, obj);
+                    fStream.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
+            }
         }
         private void InitiatePortfolioSettings()
         {
-            StreamReader sr = new StreamReader("Portfolios.xml");
-            try
+            using (FileStream fs = new FileStream("Portfolios.xml", FileMode.Open, FileAccess.Read))
             {
-                var xmlSerializer = new XmlSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
-                var portfolios = (List<Common.Entities.Portfolio>)xmlSerializer.Deserialize(sr);
-                sr.Close();
-                if (portfolios == null) return;
-                foreach (var rs in portfolios)
+                
+                try
                 {
-                    AgentPortfolioStorage.Add(rs);
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
+                    var portfolios = (List<Common.Entities.Portfolio>)xmlSerializer.ReadObject(fs);
+                    fs.Close();
+                    if (portfolios == null) return;
+                    foreach (var rs in portfolios)
+                    {
+                        AgentPortfolioStorage.Add(rs);
+                    }
+                    PortfolioListView.ItemsSource = AgentPortfolioStorage;
+                    IsPortfolioSettingsLoaded = true;
                 }
-                PortfolioListView.ItemsSource = AgentPortfolioStorage;
-                IsPortfolioSettingsLoaded = true;
+                catch (Exception e)
+                {
+                    IsPortfolioSettingsLoaded = false;
+                    fs.Close();
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+                    if (e.InnerException.Message == "Root element is missing.")
+                        File.WriteAllText("Portfolios.xml", string.Empty);
+                }
+
             }
-            catch (Exception e)
-            {
-                IsPortfolioSettingsLoaded = false;
-                sr.Close();
-                Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
-                Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
-                if (e.InnerException.Message == "Root element is missing.")
-                    File.WriteAllText("Portfolios.xml", string.Empty);
-            }
+            
+            
         }
         private void AddAgentPortfolioBtnClick(object sender, RoutedEventArgs e)
         {

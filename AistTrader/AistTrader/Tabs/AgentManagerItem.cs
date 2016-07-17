@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -87,7 +88,43 @@ namespace AistTrader
 
         private void InitiateAgentManagerSettings()
         {
-            
+
+
+            //using (StreamReader sr = new StreamReader("AgentManagerSettings.xml"))
+            //{
+            //    DataContractSerializer serializer = new DataContractSerializer(obj.GetType());
+            //    serializer.WriteObject(memoryStream, obj);
+            //    memoryStream.Position = 0;
+            //    return sr.ReadToEnd();
+
+            //}
+
+
+
+
+
+            //using (Stream stream = new MemoryStream())
+            //{
+            //    byte[] data = System.Text.Encoding.UTF8.GetBytes(xml);
+            //    stream.Write(data, 0, data.Length);
+            //    stream.Position = 0;
+            //    DataContractSerializer deserializer = new DataContractSerializer(toType);
+            //    return deserializer.ReadObject(stream);
+            //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             StreamReader sr = new StreamReader("AgentManagerSettings.xml");
             try
             {
@@ -176,24 +213,60 @@ namespace AistTrader
 
         private void SaveAgentManagerSettings()
         {
-            try
+
+
+
+
+
+
+
+
+            //List<AgentManager> objT = AgentManagerStorage.Select(a => a).ToList();
+            //using (MemoryStream memoryStream = new MemoryStream())
+            //using (StreamReader reader = new StreamReader(memoryStream))
+            //{
+            //    DataContractSerializer serializer = new DataContractSerializer(objT.GetType());
+            //    serializer.WriteObject(memoryStream, objT);
+            //    memoryStream.Position = 0;
+            //    reader.ReadToEnd();
+            //}
+
+
+            List<AgentManager> objT = AgentManagerStorage.Select(a => a).ToList();
+            using (var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                List<AgentManager> obj = AgentManagerStorage.Select(a => a).ToList();
-                using (
-                    var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write,
-                        FileShare.None))
-                {
-                    var xmlSerializer = new XmlSerializer(typeof (List<AgentManager>),
-                        new Type[] {typeof (AgentManager)});
-                    xmlSerializer.Serialize(fStream, obj);
-                    fStream.Close();
-                }
-                Task.Run(() => Logger.Info("Successfully saved manager agent Items"));
+                DataContractSerializer ser = new DataContractSerializer(typeof(List<AgentManager>));
+                ser.WriteObject(fStream, objT);
+                
             }
-            catch (Exception ex)
-            {
-                Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
-            }
+
+            //TestClass loadObj;
+            //using (FileStream reader = new FileStream("c:/temp/file.xml",
+            //  FileMode.Open, FileAccess.Read))
+            //{
+            //    DataContractSerializer ser = new DataContractSerializer(typeof(TestClass));
+            //    loadObj = (TestClass)ser.ReadObject(reader);
+            //}
+
+
+
+
+            //try
+            //{
+            //    List<AgentManager> obj = AgentManagerStorage.Select(a => a).ToList();
+            //    using (var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write,FileShare.None))
+            //    {
+            //        var xmlSerializer = new XmlSerializer(typeof (List<AgentManager>),
+            //            new Type[] {typeof (AgentManager)});
+            //        xmlSerializer.Serialize(fStream, obj);
+            //        fStream.Close();
+            //    }
+            //    Task.Run(() => Logger.Info("Successfully saved manager agent Items"));
+            //}
+            //catch (Exception ex)
+            //{
+            //    Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
+            //}
         }
 
         private void AgentManagerListView_OnLoaded(object sender, RoutedEventArgs e)
@@ -723,9 +796,13 @@ namespace AistTrader
                         
                         foreach (var agent in agentsToStop)
                         {
+                            
                             Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
                             agent.ActualStrategyRunning.Stop();
-                            var test = (ChStrategy)agent.ActualStrategyRunning;
+                            
+                            
+                            
+                            var test = agent.ActualStrategyRunning as ChStrategy;
                             
                             var agentInColl = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name== agent.ActualStrategyRunning.Name);
                             
