@@ -23,6 +23,7 @@ namespace Common.Entities
         public bool IsDemo { get; set; }
         [DataMember()]
         public ConnectionParams ConnectionParams { get; set; }
+
         public override string ToString()
         {
             return DisplayName;
