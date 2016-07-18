@@ -39,9 +39,16 @@ namespace AistTrader //todo: идентификаторы портфеля то�
             try
             {
                 List<Common.Entities.Portfolio> obj = AgentPortfolioStorage.Select(a => a).ToList();
+                var tList = new List<Type>();
+                tList.Add(typeof(Common.Entities.Portfolio));
+                tList.Add(typeof(System.TimeZoneInfo));
+                tList.Add(typeof(TimeZoneInfo.AdjustmentRule[]));
+                tList.Add(typeof(TimeZoneInfo.AdjustmentRule));
+                tList.Add(typeof(TimeZoneInfo.TransitionTime));
+                tList.Add(typeof(System.DayOfWeek));
                 using (var fStream = new FileStream("Portfolios.xml", FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    DataContractSerializer xmlSerializer = new DataContractSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
+                    DataContractSerializer xmlSerializer = new DataContractSerializer(typeof(List<Common.Entities.Portfolio>), tList);
                     xmlSerializer.WriteObject(fStream, obj);
                     fStream.Close();
                 }
@@ -55,10 +62,16 @@ namespace AistTrader //todo: идентификаторы портфеля то�
         {
             using (FileStream fs = new FileStream("Portfolios.xml", FileMode.Open, FileAccess.Read))
             {
-                
                 try
                 {
-                    var xmlSerializer = new DataContractSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
+                    var tList = new List<Type>();
+                    tList.Add(typeof(Common.Entities.Portfolio));
+                    tList.Add(typeof(System.TimeZoneInfo));
+                    tList.Add(typeof(TimeZoneInfo.AdjustmentRule[]));
+                    tList.Add(typeof(TimeZoneInfo.AdjustmentRule));
+                    tList.Add(typeof(TimeZoneInfo.TransitionTime));
+                    tList.Add(typeof(System.DayOfWeek));
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Common.Entities.Portfolio>), tList);
                     var portfolios = (List<Common.Entities.Portfolio>)xmlSerializer.ReadObject(fs);
                     fs.Close();
                     if (portfolios == null) return;
