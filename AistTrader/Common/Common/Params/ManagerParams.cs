@@ -21,17 +21,26 @@ namespace Common.Params
             IsChecked = true;
             //Command = AgentManagerOperationCommand.Start;
         }
-
+        [DataMember()]
         public bool IsConnected { get; set; }
+        [DataMember()]
         public AgentManagerStatus AgentMangerCurrentStatus { get; set; }
+        [DataMember()]
         public Common.Entities.Portfolio Portfolio { get; set; }
+        [DataMember()]
         public string AgentOrGroup { get; set; }
+        [DataMember()]
         //[XmlIgnore]
         public string Tool { get; set; }
+        [DataMember()]
         public string Position { get; set; }
+        [DataMember()]
         public int Transaction { get; set; }
+        [DataMember()]
         public double FinalTransaction { get; set; }
+        [DataMember()]
         public AgentManagerOperationCommand Command { get; set; }
+        [DataMember()]
         public bool IsChecked { get; set; }
 
 
