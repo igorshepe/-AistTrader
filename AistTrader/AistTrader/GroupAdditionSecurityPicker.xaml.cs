@@ -34,7 +34,25 @@ namespace AistTrader
         private void LoadParams()
         {
             AgentNameLbl.Content = AgentToEdit.Name;
-            SecurityPickerSS.SecurityProvider =new CollectionSecurityProvider(MainWindow.Instance.ConnectionManager.FirstOrDefault(i => i.ConnectionState == ConnectionStates.Connected).Securities);
+            //todo: вынести в алгоритм добавления
+            var AnyActiveConnection =MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
+            if (AnyActiveConnection)
+            {
+                SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(MainWindow.Instance.ConnectionManager.FirstOrDefault(i => i.ConnectionState == ConnectionStates.Connected).Securities);
+            }
+            else
+            {
+                var firstOrDefault = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.Tools != null);
+                if (firstOrDefault != null)
+                {
+                    SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(firstOrDefault.ConnectionParams.Tools.ToList());
+                }
+                if (firstOrDefault == null)
+                {
+                    MessageBox.Show("No cashed or live securities.");
+                }
+
+            }
         }
 
         private void AttachSecForAgentBtnClick(object sender, RoutedEventArgs e)
@@ -42,10 +60,8 @@ namespace AistTrader
 
             //AgentToEdit.Params.Security= SecurityPickerSS.SelectedSecurity.Code;
             SelectedSecurity = SecurityPickerSS.SelectedSecurity.Code;
-            
-           
-            SecurityPickerSS.SecurityProvider.Dispose();
-            SecurityPickerSS.SecurityProvider = null;
+            //SecurityPickerSS.SecurityProvider.Dispose();
+            //SecurityPickerSS.SecurityProvider = null;
             
             Close();
         }
@@ -54,6 +70,15 @@ namespace AistTrader
             if (SecurityPickerSS.SelectedSecurity != null )
             {
                 OkBtnClick.IsEnabled = true;
+            }
+        }
+
+        private void GroupAdditionSecurityPicker_OnClosing(object sender, CancelEventArgs e)
+        {
+            if (SecurityPickerSS.SelectedSecurity == null)
+            {
+                MessageBox.Show("Security is not selected.");
+                e.Cancel = true;
             }
         }
     }

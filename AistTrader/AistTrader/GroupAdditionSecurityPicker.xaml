@@ -13,6 +13,7 @@
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen"
         FontFamily="Consolas"
+        Closing="GroupAdditionSecurityPicker_OnClosing"
         xmlns:sx="clr-namespace:StockSharp.Xaml;assembly=StockSharp.Xaml"
         >
     <Grid Margin="1,0,1,12">
@@ -84,7 +85,8 @@
                 Width="75"
                 TabIndex="5" 
                 IsCancel="True"
-                Height="23" VerticalAlignment="Bottom" />
+                Height="23" VerticalAlignment="Bottom"
+                IsEnabled="False"/>
         <Label x:Name="AgentNameLbl" Content="" HorizontalAlignment="Left" Margin="103,6,0,0" VerticalAlignment="Top" Width="247"/>
     </Grid>
 </Window>
