@@ -102,6 +102,86 @@ namespace AistTrader
             {
                 Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             }
+            #region obsolete
+            //try
+            //{
+            //    List<Agent> obj = AgentsStorage.Select(a => a).ToList();
+            //    using (var fStream = new FileStream("Agents.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+            //    {
+            //        var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+            //        xmlSerializer.Serialize(fStream, obj);
+            //        fStream.Close();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
+            //}
+            #endregion
+        }
+        public void InitiateAgentSettings()
+        {
+            using (FileStream fs = new FileStream("Agents.xml", FileMode.Open, FileAccess.Read))
+            {
+                try
+                {
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+                    var agents = (List<Agent>)xmlSerializer.ReadObject(fs);
+                    fs.Close();
+                    if (agents == null) return;
+
+                    AgentsStorage.Clear();
+                    foreach (var rs in agents)
+                    {
+                        AgentsStorage.Add(rs);
+                    }
+                    AgentListView.ItemsSource = AgentsStorage;
+                    AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
+                    if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
+                        AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
+                    IsAgentSettingsLoaded = true;
+                }
+                catch (Exception e)
+                {
+
+                    IsAgentSettingsLoaded = false;
+                    fs.Close();
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+                    if (e.InnerException.Message == "Root element is missing.")
+                        IsAgentSettingsLoaded = false;
+                }
+            }
+            #region obsolete
+            //StreamReader sr = new StreamReader("Agents.xml");
+            //try
+            //{
+            //    var xmlSerializer = new XmlSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
+            //    var agents = (List<Agent>)xmlSerializer.Deserialize(sr);
+            //    sr.Close();
+            //    if (agents == null) return;
+
+            //    AgentsStorage.Clear();
+            //    foreach (var rs in agents)
+            //    {
+            //        AgentsStorage.Add(rs);
+            //    }
+            //    AgentListView.ItemsSource = AgentsStorage;
+            //    AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
+            //    if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
+            //        AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
+            //    IsAgentSettingsLoaded = true;
+            //}
+            //catch (Exception e)
+            //{
+            //    IsAgentSettingsLoaded = false;
+            //    sr.Close();
+            //    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+            //    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+            //    if (e.InnerException.Message == "Root element is missing.")
+            //        IsAgentSettingsLoaded = false;
+            //}
+            #endregion
         }
         public void DeleteAgentBtnClick(object sender, RoutedEventArgs e)
          {
@@ -343,41 +423,7 @@ namespace AistTrader
             if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
                 AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
         }
-        public void InitiateAgentSettings()
-        {
-            using (FileStream fs = new FileStream("Agents.xml", FileMode.Open, FileAccess.Read))
-            {
-                try
-                {
-                    var xmlSerializer = new DataContractSerializer(typeof(List<Agent>), new Type[] { typeof(Agent) });
-                    var agents = (List<Agent>)xmlSerializer.ReadObject(fs);
-                    fs.Close();
-                    if (agents == null) return;
-
-                    AgentsStorage.Clear();
-                    foreach (var rs in agents)
-                    {
-                        AgentsStorage.Add(rs);
-                    }
-                    AgentListView.ItemsSource = AgentsStorage;
-                    AgentCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentListView.ItemsSource);
-                    if (AgentCollectionView.GroupDescriptions != null && AgentCollectionView.GroupDescriptions.Count == 0)
-                        AgentCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Params.GroupName"));
-                    IsAgentSettingsLoaded = true;
-                }
-                catch (Exception e)
-                {
-
-                    IsAgentSettingsLoaded = false;
-                    fs.Close();
-                    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
-                    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
-                    if (e.InnerException.Message == "Root element is missing.")
-                        IsAgentSettingsLoaded = false;
-                }
-            }
-            
-        }
+       
         private void ChkBoxSelectAllAgents_OnClick(object sender, RoutedEventArgs e)
         {
             if (AllAgentsChecked == true)

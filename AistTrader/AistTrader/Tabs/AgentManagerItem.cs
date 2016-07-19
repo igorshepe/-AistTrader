@@ -86,53 +86,7 @@ namespace AistTrader
             }
         }
 
-        private void InitiateAgentManagerSettings()
-        {
-
-            using (FileStream fs = new FileStream("AgentManagerSettings.xml", FileMode.Open, FileAccess.Read))
-            {
-                try
-                {
-                    var tList = new List<Type>();
-                    tList.Add(typeof(Common.Entities.Portfolio));
-                    tList.Add(typeof(System.TimeZoneInfo));
-                    tList.Add(typeof(TimeZoneInfo.AdjustmentRule[]));
-                    tList.Add(typeof(TimeZoneInfo.AdjustmentRule));
-                    tList.Add(typeof(TimeZoneInfo.TransitionTime));
-                    tList.Add(typeof(System.DayOfWeek));
-                    var xmlSerializer = new DataContractSerializer(typeof(List<AgentManager>), tList);
-                    var agents = (List<AgentManager>)xmlSerializer.ReadObject(fs);
-                    fs.Close();
-                    if (agents == null) return;
-
-                    AgentManagerStorage.Clear();
-                    foreach (var rs in agents)
-                    {
-                        AgentManagerStorage.Add(rs);
-                    }
-                    AgentManagerListView.ItemsSource = AgentManagerStorage;
-                    AgentManagerCollectionView =
-                        (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-                    if (AgentManagerCollectionView.GroupDescriptions != null &&
-                        AgentManagerCollectionView.GroupDescriptions.Count == 0)
-                        AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
-                    IsAgentManagerSettingsLoaded = true;
-                    SetConnectionCommandStatus();
-                }
-                catch (Exception e)
-                {
-                    IsAgentSettingsLoaded = false;
-                    fs.Close();
-                    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
-                    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
-                    if (e.InnerException.Message == "Root element is missing.")
-                        IsAgentManagerSettingsLoaded = false;
-                }
-
-            }
-            
-            
-        }
+   
 
         private void EditAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
@@ -209,40 +163,16 @@ namespace AistTrader
             {
                 Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             }
-
-
-
-            //List<AgentManager> objT = AgentManagerStorage.Select(a => a).ToList();
-            //using (MemoryStream memoryStream = new MemoryStream())
-            //using (StreamReader reader = new StreamReader(memoryStream))
-            //{
-            //    DataContractSerializer serializer = new DataContractSerializer(objT.GetType());
-            //    serializer.WriteObject(memoryStream, objT);
-            //    memoryStream.Position = 0;
-            //    reader.ReadToEnd();
-            //}
-
-
-
-
-            //TestClass loadObj;
-            //using (FileStream reader = new FileStream("c:/temp/file.xml",
-            //  FileMode.Open, FileAccess.Read))
-            //{
-            //    DataContractSerializer ser = new DataContractSerializer(typeof(TestClass));
-            //    loadObj = (TestClass)ser.ReadObject(reader);
-            //}
-
-
-
-
+            #region obsolete
             //try
             //{
             //    List<AgentManager> obj = AgentManagerStorage.Select(a => a).ToList();
-            //    using (var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write,FileShare.None))
+            //    using (
+            //        var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write,
+            //            FileShare.None))
             //    {
-            //        var xmlSerializer = new XmlSerializer(typeof (List<AgentManager>),
-            //            new Type[] {typeof (AgentManager)});
+            //        var xmlSerializer = new XmlSerializer(typeof(List<AgentManager>),
+            //            new Type[] { typeof(AgentManager) });
             //        xmlSerializer.Serialize(fStream, obj);
             //        fStream.Close();
             //    }
@@ -252,6 +182,86 @@ namespace AistTrader
             //{
             //    Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             //}
+            #endregion
+        }
+        private void InitiateAgentManagerSettings()
+        {
+
+            using (FileStream fs = new FileStream("AgentManagerSettings.xml", FileMode.Open, FileAccess.Read))
+            {
+                try
+                {
+                    var tList = new List<Type>();
+                    tList.Add(typeof(Common.Entities.Portfolio));
+                    tList.Add(typeof(System.TimeZoneInfo));
+                    tList.Add(typeof(TimeZoneInfo.AdjustmentRule[]));
+                    tList.Add(typeof(TimeZoneInfo.AdjustmentRule));
+                    tList.Add(typeof(TimeZoneInfo.TransitionTime));
+                    tList.Add(typeof(System.DayOfWeek));
+                    var xmlSerializer = new DataContractSerializer(typeof(List<AgentManager>), tList);
+                    var agents = (List<AgentManager>)xmlSerializer.ReadObject(fs);
+                    fs.Close();
+                    if (agents == null) return;
+
+                    AgentManagerStorage.Clear();
+                    foreach (var rs in agents)
+                    {
+                        AgentManagerStorage.Add(rs);
+                    }
+                    AgentManagerListView.ItemsSource = AgentManagerStorage;
+                    AgentManagerCollectionView =
+                        (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+                    if (AgentManagerCollectionView.GroupDescriptions != null &&
+                        AgentManagerCollectionView.GroupDescriptions.Count == 0)
+                        AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
+                    IsAgentManagerSettingsLoaded = true;
+                    SetConnectionCommandStatus();
+                }
+                catch (Exception e)
+                {
+                    IsAgentSettingsLoaded = false;
+                    fs.Close();
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+                    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+                    if (e.InnerException.Message == "Root element is missing.")
+                        IsAgentManagerSettingsLoaded = false;
+                }
+
+            }
+            #region obsolete
+            //StreamReader sr = new StreamReader("AgentManagerSettings.xml");
+            //try
+            //{
+            //    var xmlSerializer = new XmlSerializer(typeof(List<AgentManager>), new Type[] { typeof(AgentManager) });
+            //    var agents = (List<AgentManager>)xmlSerializer.Deserialize(sr);
+            //    sr.Close();
+            //    if (agents == null) return;
+
+            //    AgentManagerStorage.Clear();
+            //    foreach (var rs in agents)
+            //    {
+            //        AgentManagerStorage.Add(rs);
+            //    }
+            //    AgentManagerListView.ItemsSource = AgentManagerStorage;
+            //    AgentManagerCollectionView =
+            //        (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+            //    if (AgentManagerCollectionView.GroupDescriptions != null &&
+            //        AgentManagerCollectionView.GroupDescriptions.Count == 0)
+            //        AgentManagerCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
+            //    IsAgentManagerSettingsLoaded = true;
+            //    SetConnectionCommandStatus();
+            //}
+            //catch (Exception e)
+            //{
+            //    IsAgentSettingsLoaded = false;
+            //    sr.Close();
+            //    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+            //    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+            //    if (e.InnerException.Message == "Root element is missing.")
+            //        IsAgentManagerSettingsLoaded = false;
+            //}
+            #endregion
+
         }
 
         private void AgentManagerListView_OnLoaded(object sender, RoutedEventArgs e)

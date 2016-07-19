@@ -57,6 +57,13 @@ namespace AistTrader //todo: идентификаторы портфеля то�
             {
                 Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             }
+            #region obsolete
+            //List<Common.Entities.Portfolio> obj = AgentPortfolioStorage.Select(a => a).ToList();
+            //var fStream = new FileStream("Portfolios.xml", FileMode.Create, FileAccess.Write, FileShare.None);
+            //var xmlSerializer = new XmlSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
+            //xmlSerializer.Serialize(fStream, obj);
+            //fStream.Close();
+            #endregion
         }
         private void InitiatePortfolioSettings()
         {
@@ -91,10 +98,32 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                     if (e.InnerException.Message == "Root element is missing.")
                         File.WriteAllText("Portfolios.xml", string.Empty);
                 }
-
             }
-            
-            
+            #region obsolete
+            //StreamReader sr = new StreamReader("Portfolios.xml");
+            //try
+            //{
+            //    var xmlSerializer = new XmlSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
+            //    var portfolios = (List<Common.Entities.Portfolio>)xmlSerializer.Deserialize(sr);
+            //    sr.Close();
+            //    if (portfolios == null) return;
+            //    foreach (var rs in portfolios)
+            //    {
+            //        AgentPortfolioStorage.Add(rs);
+            //    }
+            //    PortfolioListView.ItemsSource = AgentPortfolioStorage;
+            //    IsPortfolioSettingsLoaded = true;
+            //}
+            //catch (Exception e)
+            //{
+            //    IsPortfolioSettingsLoaded = false;
+            //    sr.Close();
+            //    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+            //    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+            //    if (e.InnerException.Message == "Root element is missing.")
+            //        File.WriteAllText("Portfolios.xml", string.Empty);
+            //}
+            #endregion
         }
         private void AddAgentPortfolioBtnClick(object sender, RoutedEventArgs e)
         {

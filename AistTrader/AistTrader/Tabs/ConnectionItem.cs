@@ -50,9 +50,16 @@ namespace AistTrader
             try
             {
                 List<Connection> obj = ConnectionsStorage.Select(a => a).ToList();
+                var tList = new List<Type>();
+                tList.Add(typeof(Common.Entities.Portfolio));
+                tList.Add(typeof(System.TimeZoneInfo));
+                tList.Add(typeof(TimeZoneInfo.AdjustmentRule[]));
+                tList.Add(typeof(TimeZoneInfo.AdjustmentRule));
+                tList.Add(typeof(TimeZoneInfo.TransitionTime));
+                tList.Add(typeof(System.DayOfWeek));
                 using (var fStream = new FileStream("Connections.xml", FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    var xmlSerializer = new DataContractSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Connection>), tList);
                     xmlSerializer.WriteObject(fStream, obj);
                     fStream.Close();
                 }
@@ -61,6 +68,13 @@ namespace AistTrader
             {
                 Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             }
+            #region obsolete
+            //List<Connection> obj = ConnectionsStorage.Select(a => a).ToList();
+            //var fStream = new FileStream("Connections.xml", FileMode.Create, FileAccess.Write, FileShare.None);
+            //var xmlSerializer = new XmlSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
+            //xmlSerializer.Serialize(fStream, obj);
+            //fStream.Close();
+            #endregion
         }
         private void InitiateProviderItems()
         {
@@ -69,7 +83,14 @@ namespace AistTrader
             {
                 try
                 {
-                    var xmlSerializer = new DataContractSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
+                    var tList = new List<Type>();
+                    tList.Add(typeof(Common.Entities.Portfolio));
+                    tList.Add(typeof(System.TimeZoneInfo));
+                    tList.Add(typeof(TimeZoneInfo.AdjustmentRule[]));
+                    tList.Add(typeof(TimeZoneInfo.AdjustmentRule));
+                    tList.Add(typeof(TimeZoneInfo.TransitionTime));
+                    tList.Add(typeof(System.DayOfWeek));
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Connection>), tList);
                     var connections = (List<Connection>)xmlSerializer.ReadObject(sr);
                     sr.Close();
                     if (connections == null) return;
@@ -95,6 +116,37 @@ namespace AistTrader
                 DefaultConnectionStatusBarText = "Default: " + firstOrDefault.DisplayName;
             else
                 DefaultConnectionStatusBarText = "Default connection is not set";
+            #region obsolete
+            //NtpMoexSync();
+            //StreamReader sr = new StreamReader("Connections.xml");
+            //try
+            //{
+            //    var xmlSerializer = new XmlSerializer(typeof(List<Connection>), new Type[] { typeof(Connection) });
+            //    var connections = (List<Connection>)xmlSerializer.Deserialize(sr);
+            //    sr.Close();
+            //    if (connections == null) return;
+            //    foreach (var rs in connections)
+            //    {
+            //        ConnectionsStorage.Add(rs);
+            //    }
+            //    ProviderListView.ItemsSource = ConnectionsStorage;
+            //    IsProviderSettingsLoaded = true;
+            //}
+            //catch (Exception e)
+            //{
+            //    IsProviderSettingsLoaded = false;
+            //    sr.Close();
+            //    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
+            //    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
+            //    if (e.InnerException.Message == "Root element is missing.")
+            //        File.WriteAllText("Connections.xml", string.Empty);
+            //}
+            //var firstOrDefault = ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.IsDefaulConnection);
+            //if (firstOrDefault != null)
+            //    DefaultConnectionStatusBarText = "Default: " + firstOrDefault.DisplayName;
+            //else
+            //    DefaultConnectionStatusBarText = "Default connection is not set";
+            #endregion
         }
         private void AddAgentConnectionBtnClick(object sender, RoutedEventArgs e)
         {
