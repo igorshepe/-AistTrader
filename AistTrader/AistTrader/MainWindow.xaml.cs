@@ -172,7 +172,7 @@ namespace AistTrader
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.IsRegistredConnection = false);
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>() );
-            Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Tools = new List<Security>());
+            //Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Tools = new List<Security>());
         }
         private void TabCtr_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
