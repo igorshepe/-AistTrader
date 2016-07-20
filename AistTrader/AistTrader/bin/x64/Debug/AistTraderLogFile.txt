@@ -23623,3 +23623,50 @@
 2016-07-11 12:19:00.0994|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 0, SlowSMA 65313, FastSMA 65314, Highest 65332, Lowest 65284, Mid 65308
 2016-07-11 12:19:16.5336|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 60_10_20_20"..
 2016-07-11 12:19:39.3383|INFO|TradesLogger|ChStrategy 60_10_20_20: STOP
+2016-07-19 11:01:49.1273|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaa"...
+2016-07-19 11:01:49.1273|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaa" connection were successfully acquired
+2016-07-19 11:01:53.9129|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaa" is active now
+2016-07-19 11:01:54.4228|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-19 11:01:54.8759|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaa" were loaded
+2016-07-19 11:01:59.0886|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
+2016-07-19 11:02:05.7718|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_12_20_20"
+2016-07-19 11:02:16.2649|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" successfully added to the group "sdsd"
+2016-07-19 11:02:16.2649|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_12_20_20" successfully added to the group "sdsd"
+2016-07-19 11:02:44.7241|INFO|AistTrader.MainWindow|Successfully added agent manager - "asdsdasdsa"
+2016-07-19 11:02:53.2697|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaa"..
+2016-07-19 11:02:53.2697|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-19 11:03:02.0017|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-19 11:03:02.1959|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-19 11:03:03.1827|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64005, FastSMA 64034, Highest 64070, Lowest 63914, Mid 63992
+2016-07-19 11:03:03.3719|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64005, FastSMA 64027, Highest 64070, Lowest 63914, Mid 63992
+2016-07-19 11:03:03.3719|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: LE 64070, SSMA 64005 < FSMA 64034, Candle_HP 64060 >= Highest 64070 
+2016-07-19 11:03:03.3719|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: New order, Market price 66908.00000, Buy, vol 1, Security: SiU6
+2016-07-19 11:03:03.4136|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: LE 64070, SSMA 64005 < FSMA 64027, Candle_HP 64060 >= Highest 64070 
+2016-07-19 11:03:03.4136|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: New order, Market price 66908.00000, Buy, vol 2, Security: SiU6
+2016-07-19 11:03:03.4918|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 39709130 Registered, Security: SiU6
+2016-07-19 11:03:03.5699|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 39709131 Registered, Security: SiU6
+2016-07-19 11:03:03.5855|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Trade price 64070, vol 1, slip 0, Security: SiU6
+2016-07-19 11:03:03.6480|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Trade price 64070, vol 2, slip 0, Security: SiU6
+2016-07-19 11:03:03.6637|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 39709130 finish, vol 1 , averagePrice 64070, Security: SiU6
+2016-07-19 11:03:03.6793|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 39709131 finish, vol 2 , averagePrice 64070, Security: SiU6
+2016-07-19 11:03:18.2617|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_25_20"
+2016-07-19 11:03:37.7054|INFO|TradesLogger|[sdsd] ChStrategy 60_10_25_20: START, Security: SiU6
+2016-07-19 11:03:37.9242|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_25_20" successfully added to the group "sdsd"
+2016-07-19 11:03:38.6231|INFO|TradesLogger|[sdsd] ChStrategy 60_10_25_20: Position = 0, SlowSMA 63989, FastSMA 64034, Highest 64070, Lowest 63914, Mid 63992
+2016-07-19 11:03:38.6231|INFO|TradesLogger|[sdsd] ChStrategy 60_10_25_20: LE 64070, SSMA 63989 < FSMA 64034, Candle_HP 64060 >= Highest 64070 
+2016-07-19 11:03:38.6231|INFO|TradesLogger|[sdsd] ChStrategy 60_10_25_20: New order, Market price 66908.00000, Buy, vol 3, Security: SiU6
+2016-07-19 11:03:38.6700|INFO|TradesLogger|[sdsd] ChStrategy 60_10_25_20: Order 39709132 Registered, Security: SiU6
+2016-07-19 11:03:38.6856|INFO|TradesLogger|[sdsd] ChStrategy 60_10_25_20: Trade price 64065, vol 3, slip 0, Security: SiU6
+2016-07-19 11:03:38.6856|INFO|TradesLogger|[sdsd] ChStrategy 60_10_25_20: Order 39709132 finish, vol 3 , averagePrice 64065, Security: SiU6
+2016-07-20 09:13:13.3077|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_24_20"
+2016-07-20 09:32:21.9674|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_25_20" has been excluded from the group - "sdsd" 
+2016-07-20 09:32:29.7533|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_25_20" has been deleted.  Strategies class name: ChStrategy 60_10_25_20.cs
+2016-07-20 09:32:32.2887|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_24_20" has been deleted.  Strategies class name: ChStrategy 60_10_24_20.cs
+2016-07-20 09:32:51.8912|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 67_17_27_27"
+2016-07-20 09:59:33.9972|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" successfully added to the group "sdsd"
+2016-07-20 10:00:10.5263|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" has been excluded from the group - "sdsd" 
+2016-07-20 10:20:56.3672|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" successfully added to the group "sdsd"
+2016-07-20 10:21:46.4290|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" has been excluded from the group - "sdsd" 
+2016-07-20 10:22:06.5211|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 68_18_28_28"
+2016-07-20 10:22:35.3377|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" successfully added to the group "sdsd"
+2016-07-20 10:22:55.6704|INFO|AistTrader.MainWindow|Agent "ChStrategy 68_18_28_28" successfully added to the group "sdsd"

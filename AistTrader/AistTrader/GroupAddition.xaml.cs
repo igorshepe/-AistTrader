@@ -441,7 +441,6 @@ namespace AistTrader
                                 string algorithmName = cb.Text;
                                 var groupName = GroupNameTxtBox.Text;
                                 var isInCollection = oldItems.Any(i => i.Name == algorithmName);
-
                                 if (oldItems.Any(i => i.Name == algorithmName))
                                 {
                                     var item = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name== algorithmName &&  i.Params.GroupName == OldGroupName);
@@ -494,17 +493,28 @@ namespace AistTrader
                                         else
                                         {
                                             //offline
-                                            //определить
+                                            //определять что сейчас идет удаление элементов группы, что присваение инструмента не требуется!
+                                            //определить что выбранный агент не зарегистрирован в группе, что он реально новый член группы
+                                            if (isInCollection)
+                                                break;
+                                            else
+                                            {
+                                                var anyActiveConnection = MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
+                                                var cashedTools = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.Tools != null);
+                                                if (!anyActiveConnection && cashedTools == null)
+                                                {
+                                                    MessageBox.Show("No cashed or live securities. Securities can not be selected.");
+                                                    Close();
+                                                    return;
+                                                    //todo: добавить инфу в логи о совершенном действии
 
-
-
-                                            var form = new GroupAdditionSecurityPicker(item);
-                                            form.ShowDialog();
-                                            item.Params.Security = form.SelectedSecurity;
-                                            form = null;
-
+                                                    var form = new GroupAdditionSecurityPicker(item);
+                                                    form.ShowDialog();
+                                                    item.Params.Security = form.SelectedSecurity;
+                                                    form = null;
+                                                }
+                                            }
                                         }
-
                                     }
                                     newMembersOfCurrentGroup.Add(item);
                                 }
@@ -542,9 +552,25 @@ namespace AistTrader
                                                 }
                                                 if (item.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped)
                                                 {
-                                                    MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                                    var anyActiveConnection = MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
+                                                    var cashedTools = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.Tools != null);
+                                                    if (!anyActiveConnection && cashedTools == null)
+                                                    {
+                                                        MessageBox.Show("No cashed or live securities. Securities can not be selected.");
+                                                        MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                                        break;
+                                                        //todo: добавить инфу в логи о совершенном действии
+                                                    }
+                                                    if (anyActiveConnection | cashedTools !=null)
+                                                    {
+                                                        var form = new GroupAdditionSecurityPicker(newAgent);
+                                                        form.ShowDialog();
+                                                        newAgent.Params.Security = form.SelectedSecurity;
+                                                        MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                                        form = null;
+                                                        //todo: добавить инфу в логи о совершенном действии
+                                                    }
                                                 }
-
                                             }
                                         }
                                     }

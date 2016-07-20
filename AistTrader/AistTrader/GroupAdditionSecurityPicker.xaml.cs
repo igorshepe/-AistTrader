@@ -51,7 +51,6 @@ namespace AistTrader
                 {
                     MessageBox.Show("No cashed or live securities.");
                 }
-
             }
         }
 
