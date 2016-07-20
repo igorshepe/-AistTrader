@@ -629,7 +629,15 @@ namespace Strategies.Strategies
                 _enterPosition = true; // Если есть законченная свечка , можно совершать вход в позицию
                 _exitPosition = true; // Если есть законченная свечка , можно совершать выход из позиции
 
-                Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
+                if (_stopStrategy)
+                {
+                    Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}. Agent has been removed from the group. It's closing the postion", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
+                    
+                }
+                else
+                {
+                    Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
+                }
 
             }
             catch (Exception e)
