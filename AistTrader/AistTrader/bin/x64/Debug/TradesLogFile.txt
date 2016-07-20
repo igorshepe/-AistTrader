@@ -24020,3 +24020,77 @@
 2016-07-20 13:04:50.8435|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 47057660 finish, vol 2 , averagePrice 64260, Security: SiU6
 2016-07-20 13:04:58.4038|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 1, SlowSMA 64223, FastSMA 64238, Highest 64268, Lowest 64151, Mid 64210
 2016-07-20 13:04:58.4038|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 2, SlowSMA 64223, FastSMA 64234, Highest 64268, Lowest 64151, Mid 64210
+2016-07-20 13:22:43.6978|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 13:22:43.6978|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 13:22:45.3920|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 13:22:45.8225|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 13:22:46.3414|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 13:22:46.4605|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 13:22:46.4605|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 13:22:46.5591|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 13:22:46.6728|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 13:22:46.6798|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 13:23:21.1928|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Check strategy position: 0
+2016-07-20 13:23:23.2962|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: STOP
+2016-07-20 13:23:36.5478|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64255, FastSMA 64243, Highest 64295, Lowest 64185, Mid 64240
+2016-07-20 13:23:36.5478|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64255, FastSMA 64247, Highest 64295, Lowest 64185, Mid 64240
+2016-07-20 13:23:57.9596|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64252, FastSMA 64237, Highest 64295, Lowest 64185, Mid 64240
+2016-07-20 13:23:57.9596|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64252, FastSMA 64243, Highest 64295, Lowest 64185, Mid 64240
+2016-07-20 13:24:54.9316|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" has been excluded from the group - "sdsd" 
+2016-07-20 13:24:57.8505|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64250, FastSMA 64233, Highest 64295, Lowest 64185, Mid 64240
+2016-07-20 13:24:57.8505|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64250, FastSMA 64238, Highest 64295, Lowest 64185, Mid 64240
+2016-07-20 13:26:22.3211|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaa"...
+2016-07-20 13:26:22.3211|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaa" connection were successfully acquired
+2016-07-20 13:26:24.0427|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-07-20 13:26:24.5115|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 13:26:24.9300|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaa" were loaded
+2016-07-20 13:26:38.1431|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_10_20_20"
+2016-07-20 13:26:52.7625|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 67_19_20_20"
+2016-07-20 13:27:12.1300|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 63_13_13_13"
+2016-07-20 13:27:30.9664|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" successfully added to the group "fdfdfdsgropuo"
+2016-07-20 13:27:31.0794|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_19_20_20" successfully added to the group "fdfdfdsgropuo"
+2016-07-20 13:27:49.8080|INFO|AistTrader.MainWindow|Successfully added agent manager - "aaaaaddsdsd"
+2016-07-20 13:28:16.5205|INFO|AistTrader.MainWindow|Agent "ChStrategy 63_13_13_13" successfully added to the group "fdfdfdsgropuo"
+2016-07-20 13:28:37.0970|INFO|AistTrader.MainWindow|Agent "ChStrategy 63_13_13_13" successfully added to the group "fdfdfdsgropuo"
+2016-07-20 13:29:46.2001|INFO|AistTrader.MainWindow|Agent "ChStrategy 63_13_13_13" has been excluded from the group - "fdfdfdsgropuo" 
+2016-07-20 13:29:56.3877|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-07-20 13:30:13.1447|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-07-20 13:30:13.5372|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 13:30:14.0476|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaa" were loaded
+2016-07-20 13:30:17.6091|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaa"..
+2016-07-20 13:30:17.8168|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: START, Security: SiU6
+2016-07-20 13:30:17.7052|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 13:30:17.6091|INFO|AistTrader.MainWindow|Starting "fdfdfdsgropuo"..
+2016-07-20 13:30:17.8308|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 63_13_13_13: START, Security: SiU6
+2016-07-20 13:30:39.3910|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: Position = 0, SlowSMA 64235, FastSMA 64234, Highest 64295, Lowest 64183, Mid 64239
+2016-07-20 13:30:39.3910|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 63_13_13_13: Position = 0, SlowSMA 64221, FastSMA 64221, Highest 64270, Lowest 64183, Mid 64227
+2016-07-20 13:30:39.3910|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64234, FastSMA 64210, Highest 64295, Lowest 64183, Mid 64239
+2016-07-20 13:30:59.8423|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64233, FastSMA 64213, Highest 64295, Lowest 64183, Mid 64239
+2016-07-20 13:31:00.8970|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: Position = 0, SlowSMA 64233, FastSMA 64231, Highest 64295, Lowest 64183, Mid 64239
+2016-07-20 13:31:00.8970|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 63_13_13_13: Position = 0, SlowSMA 64218, FastSMA 64218, Highest 64269, Lowest 64183, Mid 64226
+2016-07-20 13:31:26.4593|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 63_13_13_13: STOP
+2016-07-20 13:31:59.5193|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64231, FastSMA 64213, Highest 64295, Lowest 64183, Mid 64239
+2016-07-20 13:38:28.8581|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-07-20 13:38:29.3600|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 13:38:29.8885|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaa" were loaded
+2016-07-20 13:39:00.1588|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaa"..
+2016-07-20 13:39:00.1588|INFO|AistTrader.MainWindow|Starting "fdfdfdsgropuo"..
+2016-07-20 13:39:00.4218|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: START, Security: SiU6
+2016-07-20 13:39:00.2759|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 13:39:00.6125|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 63_13_13_13: START, Security: SiU6
+2016-07-20 13:39:05.9211|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64215, FastSMA 64215, Highest 64269, Lowest 64183, Mid 64226
+2016-07-20 13:39:06.1098|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: Position = 0, SlowSMA 64218, FastSMA 64215, Highest 64270, Lowest 64183, Mid 64227
+2016-07-20 13:39:06.3149|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 63_13_13_13: Position = 0, SlowSMA 64212, FastSMA 64212, Highest 64238, Lowest 64183, Mid 64211
+2016-07-20 13:39:27.1097|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 63_13_13_13: STOP
+2016-07-20 13:39:27.1207|INFO|AistTrader.MainWindow|Agent "ChStrategy 63_13_13_13" has been excluded from the group - "fdfdfdsgropuo" 
+2016-07-20 13:39:59.6029|INFO|AistTrader.MainWindow|Stopping - "fdfdfdsgropuo"..
+2016-07-20 13:39:59.6029|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 60_10_20_20"..
+2016-07-20 13:39:59.6029|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 67_19_20_20"..
+2016-07-20 13:39:59.6340|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: STOP
+2016-07-20 13:39:59.6029|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: STOP
+2016-07-20 13:40:01.7795|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaa"..
+2016-07-20 13:40:01.7795|INFO|AistTrader.MainWindow|Starting "fdfdfdsgropuo"..
+2016-07-20 13:40:01.7957|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 13:40:01.8307|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: START, Security: SiU6
+2016-07-20 13:40:07.2866|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64213, FastSMA 64215, Highest 64253, Lowest 64183, Mid 64218
+2016-07-20 13:40:07.5734|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: Position = 0, SlowSMA 64215, FastSMA 64213, Highest 64269, Lowest 64183, Mid 64226

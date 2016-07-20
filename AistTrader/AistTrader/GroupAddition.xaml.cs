@@ -655,12 +655,15 @@ namespace AistTrader
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                    MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
+
                                 }
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter)
                                 {
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosWaitStrExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                    MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
                                 }
                             }
                         }
