@@ -12,6 +12,7 @@ using DevExpress.Xpf.Grid.Printing;
 using Ecng.Common;
 using StockSharp.Messages;
 using StockSharp.Xaml;
+using Strategies.Strategies;
 
 namespace AistTrader
 {
@@ -434,9 +435,7 @@ namespace AistTrader
                         if (cbID != "")
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
-                                
-
-                               var newItems = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)).ToList();
+                                var newItems = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)).ToList();
                                 var amount = ue.Text;
                                 string algorithmName = cb.Text;
                                 var groupName = GroupNameTxtBox.Text;
@@ -454,6 +453,8 @@ namespace AistTrader
                                     //to attache sec
                                     //MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                     //go to agent manager related actions
+
+                                    //собираем коллекцию элеметов из менеджера запущенных агентов/групп в менеджере агентов
                                     var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.Where(i => i.AgentManagerSettings.AgentOrGroup == item.Params.GroupName.ToString()).ToList();
                                     foreach (var amItem in amItemOnTheFly)
                                     {
@@ -463,6 +464,7 @@ namespace AistTrader
                                         }
                                         if (amItem != null && amItem.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                                         {
+                                            //если группа запущена, расширение
                                             if (DynamicGrid.Children.OfType<ComboBox>().ToList().Count < oldItems.Count)
                                                 break;
                                             //////var form = new GroupAdditionSecurityPicker(ite/m);
@@ -529,6 +531,28 @@ namespace AistTrader
                                         newAgent.Params.Amount = amount;
                                         newAgent.Params.GroupName = groupName;
                                         newAgent.Params.ToolTipName = rs.Params.ToolTipName;
+
+                                        var anyActiveConnection = MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
+                                        var cashedTools = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.Tools != null);
+                                        if (!anyActiveConnection && cashedTools == null)
+                                        {
+                                            MessageBox.Show("No cashed or live securities. Securities can not be selected.");
+                                            MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                            break;
+                                            //todo: добавить инфу в логи о совершенном действии
+                                        }
+                                        if (anyActiveConnection | cashedTools != null)
+                                        {
+                                            var form = new GroupAdditionSecurityPicker(newAgent);
+                                            form.ShowDialog();
+                                            newAgent.Params.Security = form.SelectedSecurity;
+                                            MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                            form = null;
+                                            //todo: добавить инфу в логи о совершенном действии
+                                        }
+
+
+
                                         list.Add(newAgent);
 
                                         foreach (var item in MainWindow.Instance.AgentManagerStorage)
@@ -542,18 +566,19 @@ namespace AistTrader
                                                     var alreadyRunnig =runningAgents.Any(i =>i.AgentOrGroupName == item.AgentManagerUniqueId && i.ActualStrategyRunning.Name == newAgent.Name);
                                                     if (alreadyRunnig)
                                                     {
+                                                        //??????
                                                         Close();
                                                     }
                                                     else
                                                     {
                                                         MainWindow.Instance.StartAfterEdit(newAgent, item);
-                                                        MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                                        //MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
                                                     }
                                                 }
                                                 if (item.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped)
                                                 {
-                                                    var anyActiveConnection = MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
-                                                    var cashedTools = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.Tools != null);
+                                                    //var anyActiveConnection = MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
+                                                    //var cashedTools = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.Tools != null);
                                                     if (!anyActiveConnection && cashedTools == null)
                                                     {
                                                         MessageBox.Show("No cashed or live securities. Securities can not be selected.");
@@ -620,8 +645,23 @@ namespace AistTrader
                                 //если данный агент запущен
                                 //если у удаляемого агента есть позиции - должен быть запрос "(закрыть позиции и удалить) или (ожидать закрытия позиций и затем удалить)", с соответствующим функционалом.
                                 //реализовать данный функционал
-                                agentToDelete.ActualStrategyRunning.Stop();
-                                MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+
+
+                                var form = new GroupAdditionDeleteMode();
+                                form.ShowDialog();
+                                var selectedMode=  form.SelectedDeleteMode;
+                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete)
+                                {
+                                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                    strat.CheckPosExit();
+                                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                }
+                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter)
+                                {
+                                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                    strat.CheckPosWaitStrExit();
+                                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                }
                             }
                         }
                     }

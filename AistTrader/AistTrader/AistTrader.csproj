@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Aist Trader</ProductName>
     <PublisherName>Aist Trader</PublisherName>
-    <ApplicationRevision>51</ApplicationRevision>
+    <ApplicationRevision>53</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -180,6 +180,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GroupAdditionDeleteMode.xaml.cs">
+      <DependentUpon>GroupAdditionDeleteMode.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupAdditionSecurityPicker.xaml.cs">
       <DependentUpon>GroupAdditionSecurityPicker.xaml</DependentUpon>
     </Compile>
@@ -230,6 +233,10 @@
     <Compile Include="Tabs\AgentManagerItem.cs" />
     <Compile Include="Tabs\PortfolioItem.cs" />
     <Compile Include="Tabs\ConnectionItem.cs" />
+    <Page Include="GroupAdditionDeleteMode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GroupAdditionSecurityPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

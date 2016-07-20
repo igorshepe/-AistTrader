@@ -376,6 +376,7 @@ namespace AistTrader
                 });
                 this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
             };
+            
             connection.PortfolioChanged += portfolio =>
             {
                 var test = portfolio;
@@ -409,6 +410,7 @@ namespace AistTrader
             //TODO: Добавить все эвенты по аналогии с портфелями
             connection.Connect();
             ConnectionManager.Add(connection);
+            
             
 
             #region Trash

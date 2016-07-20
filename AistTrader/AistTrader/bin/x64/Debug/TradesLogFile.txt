@@ -23711,3 +23711,312 @@
 2016-07-20 10:59:07.7583|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" has been excluded from the group - "sdsd" 
 2016-07-20 10:59:09.1139|INFO|AistTrader.MainWindow|Agent "ChStrategy 68_18_28_28" has been excluded from the group - "sdsd" 
 2016-07-20 10:59:43.5397|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" successfully added to the group "sdsd"
+2016-07-20 11:16:51.0856|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaa" is active now
+2016-07-20 11:16:51.5453|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 11:16:52.0077|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaa" were loaded
+2016-07-20 11:17:02.8286|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaa"..
+2016-07-20 11:17:03.0448|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 11:17:03.0981|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 11:17:02.8286|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 11:17:02.9289|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 11:17:11.7354|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64350, FastSMA 64341, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:17:11.7354|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64350, FastSMA 64339, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:17:11.7354|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64349, FastSMA 64345, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:17:58.0927|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64348, FastSMA 64341, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:17:58.0927|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64348, FastSMA 64340, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:18:08.9101|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64349, FastSMA 64343, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:18:58.0332|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64346, FastSMA 64343, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:18:58.0332|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64346, FastSMA 64342, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:19:16.4989|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64350, FastSMA 64342, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:19:57.9605|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64344, FastSMA 64344, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:19:57.9605|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64344, FastSMA 64343, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:20:23.4434|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64350, FastSMA 64341, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:20:57.8993|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64343, FastSMA 64345, Highest 64374, Lowest 64321, Mid 64348
+2016-07-20 11:20:57.8993|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64343, FastSMA 64344, Highest 64374, Lowest 64321, Mid 64348
+2016-07-20 11:21:35.3281|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64350, FastSMA 64341, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:21:58.0211|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64343, FastSMA 64345, Highest 64368, Lowest 64321, Mid 64345
+2016-07-20 11:21:58.0211|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64343, FastSMA 64343, Highest 64368, Lowest 64321, Mid 64345
+2016-07-20 11:22:40.0259|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64351, FastSMA 64341, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:22:58.1845|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64342, FastSMA 64344, Highest 64366, Lowest 64321, Mid 64344
+2016-07-20 11:22:58.1845|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64342, FastSMA 64344, Highest 64366, Lowest 64321, Mid 64344
+2016-07-20 11:23:47.3235|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64350, FastSMA 64341, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:23:58.2027|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64341, FastSMA 64343, Highest 64361, Lowest 64321, Mid 64341
+2016-07-20 11:23:58.2027|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64341, FastSMA 64344, Highest 64361, Lowest 64321, Mid 64341
+2016-07-20 11:24:50.0018|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64349, FastSMA 64341, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:24:58.3160|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64341, FastSMA 64343, Highest 64361, Lowest 64321, Mid 64341
+2016-07-20 11:24:58.3160|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64341, FastSMA 64343, Highest 64361, Lowest 64321, Mid 64341
+2016-07-20 11:25:57.9793|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64342, FastSMA 64345, Highest 64361, Lowest 64321, Mid 64341
+2016-07-20 11:25:57.9793|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64342, FastSMA 64345, Highest 64361, Lowest 64321, Mid 64341
+2016-07-20 11:25:57.9793|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64348, FastSMA 64343, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:26:55.3009|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: LE 64361, SSMA 64342 < FSMA 64345, Candle_HP 64349 >= Highest 64361 
+2016-07-20 11:26:55.3165|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: New order, Market price 66772.00000, Buy, vol 1, Security: SiU6
+2016-07-20 11:26:55.3694|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: LE 64361, SSMA 64342 < FSMA 64345, Candle_HP 64349 >= Highest 64361 
+2016-07-20 11:26:55.3694|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: New order, Market price 66772.00000, Buy, vol 2, Security: SiU6
+2016-07-20 11:26:55.5597|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Trade price 64362, vol 1, slip 0, Security: SiU6
+2016-07-20 11:26:55.5872|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Trade price 64362, vol 2, slip 0, Security: SiU6
+2016-07-20 11:26:55.5872|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609326 Registered, Security: SiU6
+2016-07-20 11:26:55.6185|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609326 finish, vol 1 , averagePrice 64362, Security: SiU6
+2016-07-20 11:26:55.6341|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 40609327 Registered, Security: SiU6
+2016-07-20 11:26:55.6341|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 40609327 finish, vol 2 , averagePrice 64362, Security: SiU6
+2016-07-20 11:26:58.2801|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 1, SlowSMA 64344, FastSMA 64347, Highest 64362, Lowest 64321, Mid 64342
+2016-07-20 11:26:58.2801|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 2, SlowSMA 64344, FastSMA 64346, Highest 64362, Lowest 64321, Mid 64342
+2016-07-20 11:27:04.2679|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64347, FastSMA 64344, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:27:57.8856|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 1, SlowSMA 64345, FastSMA 64348, Highest 64368, Lowest 64329, Mid 64349
+2016-07-20 11:27:57.8856|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 2, SlowSMA 64345, FastSMA 64347, Highest 64368, Lowest 64329, Mid 64349
+2016-07-20 11:28:11.3092|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64346, FastSMA 64345, Highest 64398, Lowest 64321, Mid 64360
+2016-07-20 11:28:12.1734|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: New order, Market price 61020.00000, Sell, vol 1, Security: SiU6
+2016-07-20 11:28:12.1734|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: LX 64349, Candle_LP 64340 < MidCH 64349, Security: SiU6
+2016-07-20 11:28:12.1734|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: New order, Market price 61020.00000, Sell, vol 2, Security: SiU6
+2016-07-20 11:28:12.1734|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: LX 64349, Candle_LP 64340 < MidCH 64349, Security: SiU6
+2016-07-20 11:28:12.2111|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609328 Registered, Security: SiU6
+2016-07-20 11:28:12.2111|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 40609329 Registered, Security: SiU6
+2016-07-20 11:28:12.2268|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Trade price 64340, vol 1, slip 0, Security: SiU6
+2016-07-20 11:28:12.2268|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Trade price 64340, vol 2, slip 0, Security: SiU6
+2016-07-20 11:28:12.2268|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609328 finish, vol 1 , averagePrice 64340, Security: SiU6
+2016-07-20 11:28:12.2268|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 40609329 finish, vol 2 , averagePrice 64340, Security: SiU6
+2016-07-20 11:28:40.8996|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: New order, Market price 61020.00000, Sell, vol 3, Security: SiU6
+2016-07-20 11:28:40.8996|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: SE 64321, SSMA 64346 > FSMA 64345, Candle_LP 64320 <= Lowest 64321
+2016-07-20 11:28:40.9373|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Order 40609330 Registered, Security: SiU6
+2016-07-20 11:28:40.9373|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Trade price 64320, vol 3, slip 4, Security: SiU6
+2016-07-20 11:28:40.9373|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Order 40609330 finish, vol 3 , averagePrice 64320, Security: SiU6
+2016-07-20 11:28:58.7945|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64344, FastSMA 64345, Highest 64368, Lowest 64320, Mid 64344
+2016-07-20 11:28:58.7945|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64344, FastSMA 64346, Highest 64368, Lowest 64320, Mid 64344
+2016-07-20 11:29:18.1928|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = -3, SlowSMA 64343, FastSMA 64344, Highest 64398, Lowest 64318, Mid 64358
+2016-07-20 11:29:58.6057|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64344, FastSMA 64345, Highest 64368, Lowest 64318, Mid 64343
+2016-07-20 11:29:58.6057|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64344, FastSMA 64346, Highest 64368, Lowest 64318, Mid 64343
+2016-07-20 11:30:25.7274|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = -3, SlowSMA 64342, FastSMA 64344, Highest 64398, Lowest 64318, Mid 64358
+2016-07-20 11:30:58.1367|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64344, FastSMA 64343, Highest 64368, Lowest 64318, Mid 64343
+2016-07-20 11:30:58.1367|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64344, FastSMA 64344, Highest 64368, Lowest 64318, Mid 64343
+2016-07-20 11:31:25.5057|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: SE 64318, SSMA 64344 > FSMA 64343, Candle_LP 64318 <= Lowest 64318
+2016-07-20 11:31:25.5057|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: New order, Market price 61020.00000, Sell, vol 1, Security: SiU6
+2016-07-20 11:31:25.5526|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609331 Registered, Security: SiU6
+2016-07-20 11:31:25.5576|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Trade price 64316, vol 1, slip 0, Security: SiU6
+2016-07-20 11:31:25.5576|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609331 finish, vol 1 , averagePrice 64316, Security: SiU6
+2016-07-20 11:31:31.8699|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = -3, SlowSMA 64341, FastSMA 64343, Highest 64368, Lowest 64316, Mid 64342
+2016-07-20 11:31:58.1107|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = -1, SlowSMA 64344, FastSMA 64344, Highest 64368, Lowest 64316, Mid 64342
+2016-07-20 11:31:58.1107|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64344, FastSMA 64343, Highest 64368, Lowest 64316, Mid 64342
+2016-07-20 11:32:40.4805|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = -3, SlowSMA 64341, FastSMA 64341, Highest 64368, Lowest 64316, Mid 64342
+2016-07-20 11:32:48.7966|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: New order, Market price 66772.00000, Buy, vol 1, Security: SiU6
+2016-07-20 11:32:48.7966|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: New order, Market price 66772.00000, Buy, vol 3, Security: SiU6
+2016-07-20 11:32:48.7966|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: SX 64342, Candle_HP 64343 > MidCH 64342, Security: SiU6 
+2016-07-20 11:32:48.7966|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: SX 64342, Candle_HP 64343 > MidCH 64342, Security: SiU6 
+2016-07-20 11:32:48.8387|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609332 Registered, Security: SiU6
+2016-07-20 11:32:48.8387|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Order 40609333 Registered, Security: SiU6
+2016-07-20 11:32:48.8387|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Trade price 64342, vol 1, slip -1, Security: SiU6
+2016-07-20 11:32:48.8387|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Trade price 64341, vol 1, slip -2, Security: SiU6
+2016-07-20 11:32:48.8565|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Trade price 64343, vol 1, slip 0, Security: SiU6
+2016-07-20 11:32:48.8695|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Trade price 64343, vol 1, slip 0, Security: SiU6
+2016-07-20 11:32:48.8695|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609332 finish, vol 1 , averagePrice 64341, Security: SiU6
+2016-07-20 11:32:48.8695|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Order 40609333 finish, vol 3 , averagePrice 64343, Security: SiU6
+2016-07-20 11:32:58.1716|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64343, FastSMA 64343, Highest 64368, Lowest 64316, Mid 64342
+2016-07-20 11:32:58.1716|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64343, FastSMA 64342, Highest 64368, Lowest 64316, Mid 64342
+2016-07-20 11:32:59.3229|INFO|AistTrader.MainWindow|Stopping - "sdsd"..
+2016-07-20 11:32:59.3357|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 60_10_20_20"..
+2016-07-20 11:32:59.3357|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: STOP
+2016-07-20 11:32:59.3357|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 67_17_27_27"..
+2016-07-20 11:32:59.3357|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 60_12_20_20"..
+2016-07-20 11:32:59.3357|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: STOP
+2016-07-20 11:32:59.3700|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: STOP
+2016-07-20 11:33:28.5410|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" has been excluded from the group - "sdsd" 
+2016-07-20 11:35:33.0961|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaa"..
+2016-07-20 11:35:33.0961|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 11:35:33.1182|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 11:35:33.1651|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 11:35:33.6190|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64344, FastSMA 64344, Highest 64368, Lowest 64316, Mid 64342
+2016-07-20 11:35:33.6190|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: LE 64368, SSMA 64344 < FSMA 64344, Candle_HP 64350 >= Highest 64368 
+2016-07-20 11:35:33.6190|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: New order, Market price 66772.00000, Buy, vol 1, Security: SiU6
+2016-07-20 11:35:33.8664|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64344, FastSMA 64344, Highest 64368, Lowest 64316, Mid 64342
+2016-07-20 11:35:33.8664|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: LE 64368, SSMA 64344 < FSMA 64344, Candle_HP 64350 >= Highest 64368 
+2016-07-20 11:35:33.8664|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Trade price 64359, vol 1, slip 0, Security: SiU6
+2016-07-20 11:35:33.8664|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609334 finish, vol 1 , averagePrice 64359, Security: SiU6
+2016-07-20 11:35:33.8664|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: New order, Market price 66772.00000, Buy, vol 2, Security: SiU6
+2016-07-20 11:35:33.8664|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 40609334 Registered, Security: SiU6
+2016-07-20 11:35:33.8977|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 40609335 Registered, Security: SiU6
+2016-07-20 11:35:33.9168|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Trade price 64359, vol 2, slip 0, Security: SiU6
+2016-07-20 11:35:33.9168|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 40609335 finish, vol 2 , averagePrice 64359, Security: SiU6
+2016-07-20 11:35:41.4154|INFO|AistTrader.MainWindow|Stopping - "sdsd"..
+2016-07-20 11:35:41.4154|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 60_12_20_20"..
+2016-07-20 11:35:41.4154|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: STOP
+2016-07-20 11:35:41.4154|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 60_10_20_20"..
+2016-07-20 11:35:41.4154|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: STOP
+2016-07-20 11:38:04.8078|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaa"..
+2016-07-20 11:38:04.8234|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 11:38:04.8078|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 11:38:04.8929|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 11:45:02.8666|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaa" is active now
+2016-07-20 11:45:03.2565|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 11:45:03.6718|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaa" were loaded
+2016-07-20 11:48:47.2322|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaa" is active now
+2016-07-20 11:49:31.3891|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaa" is active now
+2016-07-20 11:51:08.1648|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaa" is active now
+2016-07-20 11:59:14.2382|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 11:59:14.2382|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 11:59:16.0239|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:00:38.3188|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:00:38.3188|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:00:40.0165|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:01:14.2387|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:01:14.2387|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:01:15.9059|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:01:16.2579|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 12:01:16.7771|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 12:01:47.6145|INFO|AistTrader.MainWindow|Agent manager item "asdsdasdsa" has been deleted
+2016-07-20 12:01:54.9897|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:01:54.9897|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:01:56.5659|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:01:56.9301|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 12:01:57.4996|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 12:02:17.1555|INFO|AistTrader.MainWindow|Successfully added agent manager - "aaaaaaaaaaaaaapppppppppppp"
+2016-07-20 12:02:22.9948|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 12:02:23.2330|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 12:02:22.9948|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 12:02:23.0884|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 12:11:37.4554|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:11:37.4544|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:11:39.1356|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:11:39.5197|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 12:11:40.0201|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 12:11:46.3313|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 12:11:46.3313|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 12:11:46.4296|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 12:11:46.5457|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 12:12:08.3319|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64206, FastSMA 64188, Highest 64262, Lowest 64153, Mid 64208
+2016-07-20 12:12:08.3319|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64206, FastSMA 64196, Highest 64262, Lowest 64153, Mid 64208
+2016-07-20 12:13:00.6166|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64206, FastSMA 64188, Highest 64262, Lowest 64153, Mid 64208
+2016-07-20 12:13:56.0829|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 12:13:02.4947|INFO|AistTrader.MainWindow|Agent "ChStrategy 67_17_27_27" successfully added to the group "sdsd"
+2016-07-20 12:13:00.6166|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64206, FastSMA 64194, Highest 64262, Lowest 64153, Mid 64208
+2016-07-20 12:14:11.7159|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64205, FastSMA 64187, Highest 64262, Lowest 64153, Mid 64208
+2016-07-20 12:14:11.7159|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64205, FastSMA 64194, Highest 64262, Lowest 64153, Mid 64208
+2016-07-20 12:14:11.7159|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64221, FastSMA 64204, Highest 64344, Lowest 64153, Mid 64249
+2016-07-20 12:14:58.1450|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64206, FastSMA 64193, Highest 64262, Lowest 64153, Mid 64208
+2016-07-20 12:14:58.1450|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64206, FastSMA 64194, Highest 64262, Lowest 64153, Mid 64208
+2016-07-20 12:15:04.8717|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64217, FastSMA 64204, Highest 64332, Lowest 64153, Mid 64243
+2016-07-20 12:42:53.3290|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:42:53.3290|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:42:55.0136|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:42:55.3970|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 12:42:55.9535|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 12:43:00.8372|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 12:43:00.8372|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 12:43:00.9397|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 12:43:01.0652|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 12:43:01.0932|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 12:43:25.4020|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64125, FastSMA 64125, Highest 64232, Lowest 64060, Mid 64146
+2016-07-20 12:43:25.4020|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64154, FastSMA 64115, Highest 64245, Lowest 64060, Mid 64153
+2016-07-20 12:43:25.4020|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64125, FastSMA 64118, Highest 64232, Lowest 64060, Mid 64146
+2016-07-20 12:44:34.2654|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:44:34.2654|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:44:35.9679|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:44:36.3753|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 12:44:36.8447|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 12:44:39.7095|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 12:44:39.9223|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 12:44:39.7105|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 12:44:39.9313|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 12:44:39.8015|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 12:45:02.6533|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64153, FastSMA 64116, Highest 64245, Lowest 64060, Mid 64153
+2016-07-20 12:45:02.6533|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64124, FastSMA 64145, Highest 64199, Lowest 64060, Mid 64130
+2016-07-20 12:45:02.6533|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64124, FastSMA 64136, Highest 64199, Lowest 64060, Mid 64130
+2016-07-20 12:45:45.9799|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:45:45.9799|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:45:47.3732|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 12:45:47.3732|ERROR|AistTrader.MainWindow|Related connections - "aaaaaaaaaaa" is not active, can't start with no active connection..
+2016-07-20 12:45:47.6204|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:45:48.1016|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 12:45:48.6556|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 12:46:12.2647|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 12:46:12.5198|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 12:46:12.5609|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 12:46:12.3587|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 12:46:12.2647|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 12:46:14.9455|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64126, FastSMA 64157, Highest 64199, Lowest 64060, Mid 64130
+2016-07-20 12:46:14.9455|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64126, FastSMA 64144, Highest 64199, Lowest 64060, Mid 64130
+2016-07-20 12:46:21.3395|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64150, FastSMA 64121, Highest 64245, Lowest 64060, Mid 64153
+2016-07-20 12:54:10.9609|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:54:10.9609|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:54:12.6797|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:54:13.1007|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 12:54:13.7508|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 12:54:15.7651|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 12:54:15.9687|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 12:54:15.8667|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 12:54:15.7651|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 12:54:15.9778|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 12:54:42.5522|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64170, FastSMA 64204, Highest 64234, Lowest 64060, Mid 64147
+2016-07-20 12:54:42.5522|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64147, FastSMA 64171, Highest 64234, Lowest 64060, Mid 64147
+2016-07-20 12:54:42.5522|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64170, FastSMA 64201, Highest 64234, Lowest 64060, Mid 64147
+2016-07-20 12:57:49.9816|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:57:49.9816|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:57:51.7529|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:58:10.2975|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 12:58:10.2975|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 12:58:11.9949|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 12:58:12.7626|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 12:58:13.1862|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 12:58:16.8696|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 12:58:16.9642|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 12:58:17.0815|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 12:58:16.8696|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 12:58:17.0920|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 12:58:39.1964|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64194, FastSMA 64209, Highest 64234, Lowest 64092, Mid 64163
+2016-07-20 12:58:39.1964|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64194, FastSMA 64215, Highest 64234, Lowest 64092, Mid 64163
+2016-07-20 12:58:39.9636|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64158, FastSMA 64197, Highest 64234, Lowest 64060, Mid 64147
+2016-07-20 12:58:46.0438|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: LE 64234, SSMA 64194 < FSMA 64215, Candle_HP 64203 >= Highest 64234 
+2016-07-20 12:58:46.0438|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: New order, Market price 67116.00000, Buy, vol 1, Security: SiU6
+2016-07-20 12:58:46.0993|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: LE 64234, SSMA 64194 < FSMA 64209, Candle_HP 64203 >= Highest 64234 
+2016-07-20 12:58:46.0993|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: New order, Market price 67116.00000, Buy, vol 2, Security: SiU6
+2016-07-20 12:58:46.0993|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: LE 64234, SSMA 64158 < FSMA 64197, Candle_HP 64224 >= Highest 64234 
+2016-07-20 12:58:46.1013|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: New order, Market price 67116.00000, Buy, vol 3, Security: SiU6
+2016-07-20 12:58:46.1671|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Trade price 64234, vol 1, slip 0, Security: SiU6
+2016-07-20 12:58:46.2001|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Trade price 64234, vol 2, slip 0, Security: SiU6
+2016-07-20 12:58:46.2001|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Trade price 64234, vol 3, slip 0, Security: SiU6
+2016-07-20 12:58:46.2001|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 46690300 Registered, Security: SiU6
+2016-07-20 12:58:46.2377|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 46690300 finish, vol 1 , averagePrice 64234, Security: SiU6
+2016-07-20 12:58:46.2467|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 46690301 Registered, Security: SiU6
+2016-07-20 12:58:46.2467|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 46690301 finish, vol 2 , averagePrice 64234, Security: SiU6
+2016-07-20 12:58:46.2467|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Order 46690302 Registered, Security: SiU6
+2016-07-20 12:58:46.2467|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Order 46690302 finish, vol 3 , averagePrice 64234, Security: SiU6
+2016-07-20 12:58:58.2573|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 1, SlowSMA 64198, FastSMA 64215, Highest 64234, Lowest 64107, Mid 64171
+2016-07-20 12:58:58.2573|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 2, SlowSMA 64198, FastSMA 64213, Highest 64234, Lowest 64107, Mid 64171
+2016-07-20 13:02:05.4487|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 13:02:05.4487|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 13:02:07.2164|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 13:02:21.9934|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 13:02:21.9934|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 13:02:23.6884|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 13:02:39.2097|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 13:02:39.2097|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 13:02:40.8432|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 13:02:41.2216|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 13:02:41.8443|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 13:02:44.2858|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 13:02:44.2858|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 13:02:44.4999|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 13:02:44.5069|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 13:02:44.3863|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 13:04:17.6577|INFO|AistTrader.MainWindow|IP and port of -"aaaaaaaaaaa" connection were successfully acquired
+2016-07-20 13:04:17.6577|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"aaaaaaaaaaa"...
+2016-07-20 13:04:19.3570|INFO|AistTrader.MainWindow|Connection - "aaaaaaaaaaa" is active now
+2016-07-20 13:04:19.7750|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-20 13:04:20.2338|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaaaaa" were loaded
+2016-07-20 13:04:21.9566|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaaaaa"..
+2016-07-20 13:04:22.1608|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: START, Security: SiU6
+2016-07-20 13:04:21.9566|INFO|AistTrader.MainWindow|Starting "sdsd"..
+2016-07-20 13:04:22.0507|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-20 13:04:22.1648|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: START, Security: SiU6
+2016-07-20 13:04:50.6453|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64219, FastSMA 64234, Highest 64263, Lowest 64151, Mid 64207
+2016-07-20 13:04:50.6453|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 0, SlowSMA 64219, FastSMA 64231, Highest 64263, Lowest 64151, Mid 64207
+2016-07-20 13:04:50.6533|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: LE 64263, SSMA 64219 < FSMA 64234, Candle_HP 64262 >= Highest 64263 
+2016-07-20 13:04:50.6533|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: New order, Market price 67116.00000, Buy, vol 1, Security: SiU6
+2016-07-20 13:04:50.6993|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: LE 64263, SSMA 64219 < FSMA 64231, Candle_HP 64262 >= Highest 64263 
+2016-07-20 13:04:50.6993|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: New order, Market price 67116.00000, Buy, vol 2, Security: SiU6
+2016-07-20 13:04:50.7109|INFO|TradesLogger|[sdsd] ChStrategy 67_17_27_27: Position = 0, SlowSMA 64189, FastSMA 64220, Highest 64268, Lowest 64060, Mid 64164
+2016-07-20 13:04:50.7764|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 47057659 Registered, Security: SiU6
+2016-07-20 13:04:50.8084|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Trade price 64260, vol 1, slip 0, Security: SiU6
+2016-07-20 13:04:50.8435|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Order 47057659 finish, vol 1 , averagePrice 64260, Security: SiU6
+2016-07-20 13:04:50.8435|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 47057660 Registered, Security: SiU6
+2016-07-20 13:04:50.8435|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Trade price 64260, vol 2, slip 0, Security: SiU6
+2016-07-20 13:04:50.8435|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Order 47057660 finish, vol 2 , averagePrice 64260, Security: SiU6
+2016-07-20 13:04:58.4038|INFO|TradesLogger|[sdsd] ChStrategy 60_10_20_20: Position = 1, SlowSMA 64223, FastSMA 64238, Highest 64268, Lowest 64151, Mid 64210
+2016-07-20 13:04:58.4038|INFO|TradesLogger|[sdsd] ChStrategy 60_12_20_20: Position = 2, SlowSMA 64223, FastSMA 64234, Highest 64268, Lowest 64151, Mid 64210

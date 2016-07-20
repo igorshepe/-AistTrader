@@ -57,5 +57,21 @@ namespace Common.Params
             Stop
         };
 
+        public enum AgentManagerDeleteMode
+        {
+            ClosePositionsAndDelete,
+            WaitForClosingAndDeleteAfter
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
