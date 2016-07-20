@@ -814,6 +814,11 @@ namespace AistTrader
                 else
                 {
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
+
+                    ChStrategy agent =  strategyOrGroup.ActualStrategyRunning as ChStrategy;
+                    //item agent.TransactionIDs;
+
+
                     strategyOrGroup.ActualStrategyRunning.Stop();
                     AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
                     item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;

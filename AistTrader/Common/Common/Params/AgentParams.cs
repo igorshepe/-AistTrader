@@ -25,6 +25,8 @@ namespace Common.Params
         [DataMember()]
         public string Security { get; set; }
         [DataMember()]
+        List<long> TransactionIDs { get; set; }
+        [DataMember()]
         public string AgentName { get; set; }
         [DataMember()]
         public string ToolTipName { get; set; }

@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using StockSharp.BusinessEntities;
+using System.Collections.Generic;
 
 namespace Common.Params
 {
@@ -23,6 +24,7 @@ namespace Common.Params
         }
         [DataMember()]
         public bool IsConnected { get; set; }
+        
         [DataMember()]
         public AgentManagerStatus AgentMangerCurrentStatus { get; set; }
         [DataMember()]
