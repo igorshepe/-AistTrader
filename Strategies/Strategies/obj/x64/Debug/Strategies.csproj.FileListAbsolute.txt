@@ -63,4 +63,3 @@ C:\REPOSITORY\-AistTrader\Strategies\Strategies\bin\x64\Debug\DevExpress.Printin
 C:\REPOSITORY\-AistTrader\Strategies\Strategies\bin\x64\Debug\DevExpress.Xpf.Grid.v15.2.Core.xml
 C:\REPOSITORY\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.dll
 C:\REPOSITORY\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.pdb
-C:\REPOSITORY\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.csprojResolveAssemblyReference.cache

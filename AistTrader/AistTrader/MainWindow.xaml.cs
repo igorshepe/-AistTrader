@@ -287,6 +287,7 @@ namespace AistTrader
             //_shutdown = result == MessageDialogResult.Affirmative;
 
             //if (_shutdown)
+            SaveProviderItems();
             BackUpXMLSettings();
             Application.Current.Shutdown();
         }
