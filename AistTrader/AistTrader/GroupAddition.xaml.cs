@@ -466,13 +466,12 @@ namespace AistTrader
                                         {
                                             if (DynamicGrid.Children.OfType<ComboBox>().ToList().Count < oldItems.Count)
                                                 break;
-                                            var form = new GroupAdditionSecurityPicker(item);
-                                            form.ShowDialog();
-                                            item.Params.Security = form.SelectedSecurity;
+                                            //////var form = new GroupAdditionSecurityPicker(ite/m);
+                                            //////form.ShowDialog();
+                                            //////item.Params.Security = form.SelectedSecurity;
                                             MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                             editCount++;
                                             //go to agent manager related actions
-                                            form = null;
                                             var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name.EndsWith(item.Name));
                                             if (runnigStrategy != null)
                                             {
@@ -495,10 +494,14 @@ namespace AistTrader
                                         else
                                         {
                                             //offline
-                                            //item.Params.Security = 
-                                            //var form = new GroupAdditionSecurityPicker(item);
-                                            //form.ShowDialog();
-                                            //form = null;
+                                            //определить
+
+
+
+                                            var form = new GroupAdditionSecurityPicker(item);
+                                            form.ShowDialog();
+                                            item.Params.Security = form.SelectedSecurity;
+                                            form = null;
 
                                         }
 
