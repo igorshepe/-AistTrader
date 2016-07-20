@@ -34,7 +34,7 @@ namespace AistTrader
         private void LoadParams()
         {
 
-            AgentNameTxtBlock.Text = " " + AgentToEdit.Params.FriendlyName;
+            AgentNameTxtBlock.Text = " " + AgentToEdit.Params.FriendlyName ;
             //todo: вынести в алгоритм добавления
             var AnyActiveConnection =MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
             if (AnyActiveConnection)
