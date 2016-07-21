@@ -8,8 +8,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:xaml="http://schemas.stocksharp.com/xaml"
-		Height="181.198"
-        Width="360.247"
+		Height="179.003"
+        Width="411.822"
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen"
         FontFamily="Consolas"
@@ -41,10 +41,11 @@
                 TabIndex="5" 
                 IsCancel="True"
                 Height="23" VerticalAlignment="Bottom"
-                IsEnabled="False"/>
+                IsEnabled="True"/>
 
-        <RadioButton x:Name="ClosePositionsAndDeleteRb" Content="Close positions and delete" Checked="ClosePositionsAndDeleteRb_Checked" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="WaitAndCloseRb" Content="Wait till positions are closed and delete after" Checked="WaitAndCloseRb_Checked" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="ClosePositionsAndDeleteRb" Content="Close positions and delete" Checked="ClosePositionsAndDeleteRb_Checked" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="WaitAndCloseRb" Content="Wait till positions are closed and delete after" Checked="WaitAndCloseRb_Checked" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="384" Height="20"/>
     </Grid>
 </Window>
 
