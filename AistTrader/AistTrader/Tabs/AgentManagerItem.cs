@@ -543,11 +543,14 @@ namespace AistTrader
                     {
                         return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;
                     });
+                
                 var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
                 SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
                 var agentName = agentOrGroup.AgentManagerSettings.AgentOrGroup;
                 var agent =
                     MainWindow.Instance.AgentsStorage.Cast<Agent>().Select(i => i).Where(i => i.Name == agentName).ToList();
+                //var transactions =
+                //    realConnection.TransactionManager.GetTransactions(agent[0].Params.TransactionIDs.First());
                 var firstOrDefault = agent.FirstOrDefault();
                 if (firstOrDefault != null) agentSetting = firstOrDefault.Params.SettingsStorage;
 
@@ -818,10 +821,15 @@ namespace AistTrader
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
 
                     ChStrategy agent =  strategyOrGroup.ActualStrategyRunning as ChStrategy;
-                    //item agent.TransactionIDs;
+                    var themIDs= agent.TransactionIDs;
+                    var agentInStorage = Instance.AgentsStorage.FirstOrDefault(i => i.Name == agent.Name);
+                    agentInStorage.Params.TransactionId.AddRange(agent.TransactionIDs.ToList());
+
+
 
 
                     strategyOrGroup.ActualStrategyRunning.Stop();
+
                     AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
                     item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
                     item.AgentManagerSettings.AgentMangerCurrentStatus =ManagerParams.AgentManagerStatus.Stopped; ;

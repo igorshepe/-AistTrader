@@ -21,11 +21,12 @@ namespace Common.Params
             AgentCompiledName = compiledName;
             ToolTipName = toolTipName;
             PhantomParams = phantomParams;
+            TransactionIDs = new List<long>( );
         }
         [DataMember()]
         public string Security { get; set; }
         [DataMember()]
-        List<long> TransactionIDs { get; set; }
+        public List<long> TransactionIDs { get; set; }
         [DataMember()]
         public string AgentName { get; set; }
         [DataMember()]
