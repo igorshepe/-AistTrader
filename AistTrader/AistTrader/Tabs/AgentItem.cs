@@ -372,7 +372,7 @@ namespace AistTrader
                 //если в членах группы изменился объем
                 if (agent.Params.Amount != agent.Params.PhantomParams.Amount)
                 {
-                    Task.Run(() => Logger.Info("\"{0}\"'s member-\"{1}\" has changed it's amount:\"{2}\" to -> \"{3}\"", agent.Params.GroupName, agent.Name, agent.Params.PhantomParams.Amount, agent.Params.Amount));
+                    Task.Run(() => Logger.Info("{0} {1}: amount changed, \"{2}\" -> \"{3}\"", agent.Params.GroupName, agent.Name, agent.Params.PhantomParams.Amount, agent.Params.Amount));
                 }
             }
             else
@@ -400,7 +400,7 @@ namespace AistTrader
                 AgentsStorage[editIndex] = agent;
                 if (agent.Params.Amount != agent.Params.PhantomParams.Amount)
                 {
-                    Task.Run(() => Logger.Info("\"{0}\"'s member-\"{1}\" has changed it's amount:\"{2}\" to -> \"{3}\"", agent.Params.GroupName, agent.Name, agent.Params.PhantomParams.Amount, agent.Params.Amount));
+                    Task.Run(() => Logger.Info("{0} {1}: amount changed, \"{2}\" -> \"{3}\"", agent.Params.GroupName, agent.Name, agent.Params.PhantomParams.Amount, agent.Params.Amount));
                 }
             }
             else

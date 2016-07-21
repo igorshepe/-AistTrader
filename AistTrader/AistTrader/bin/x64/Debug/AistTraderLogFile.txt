@@ -24253,3 +24253,17 @@
 2016-07-21 11:20:03.2377|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 60_10_20_20" has changed it's amount:"25" to -> "55"
 2016-07-21 11:20:03.2437|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 67_19_20_20" has changed it's amount:"35" to -> "66"
 2016-07-21 11:20:03.2437|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 63_13_13_13" has changed it's amount:"22" to -> "15"
+2016-07-21 11:23:03.1831|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-07-21 11:23:03.6175|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-21 11:23:04.1169|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaa" were loaded
+2016-07-21 11:29:59.3244|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is not active now
+2016-07-21 11:30:02.2217|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-07-21 11:56:34.0070|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-07-21 11:56:34.4204|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-21 11:56:34.9678|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaa" were loaded
+2016-07-21 11:56:41.3328|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 60_10_20_20" has changed it's amount:"55" to -> "1"
+2016-07-21 11:56:41.3468|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 67_19_20_20" has changed it's amount:"66" to -> "11"
+2016-07-21 11:56:41.3468|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 63_13_13_13" has changed it's amount:"15" to -> "1"
+2016-07-21 12:14:55.6530|INFO|AistTrader.MainWindow|fdfdfdsgropuo ChStrategy 60_10_20_20: amount changed, "1" -> "22"
+2016-07-21 12:14:55.6700|INFO|AistTrader.MainWindow|fdfdfdsgropuo ChStrategy 67_19_20_20: amount changed, "11" -> "22"
+2016-07-21 12:14:55.6700|INFO|AistTrader.MainWindow|fdfdfdsgropuo ChStrategy 63_13_13_13: amount changed, "1" -> "45"
