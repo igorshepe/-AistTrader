@@ -451,7 +451,7 @@ namespace AistTrader
                                     item.Params.GroupName = groupName;
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(item);
                                     //to attache sec
-                                    //MainWindow.Instance.AddNewAgentInGroup(item, index, false);
+                                    MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                     //go to agent manager related actions
 
                                     //проверяем запущена ли группа в менеджере агентов

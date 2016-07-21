@@ -24156,3 +24156,30 @@
 2016-07-20 14:16:51.4362|INFO|TradesLogger|ChStrategy 60_10_20_20: START, Security: SiU6
 2016-07-20 14:16:51.4199|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaa"..
 2016-07-20 14:16:52.7553|INFO|TradesLogger|ChStrategy 60_10_20_20: Position = 0, SlowSMA 64263, FastSMA 64272, Highest 64300, Lowest 64210, Mid 64255
+2016-07-21 11:14:46.2657|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 60_10_20_20" has changed it's amount:"22" to -> "11"
+2016-07-21 11:15:10.1379|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 67_19_20_20" has changed it's amount:"22" to -> "13"
+2016-07-21 11:16:34.6613|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 60_10_20_20" has changed it's amount:"11" to -> "1"
+2016-07-21 11:16:35.4437|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 67_19_20_20" has changed it's amount:"13" to -> "2"
+2016-07-21 11:16:43.3102|INFO|AistTrader.MainWindow|Connection - "aaaaaaaa" is active now
+2016-07-21 11:16:43.7035|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-21 11:16:44.2249|INFO|AistTrader.MainWindow|Portfolios for connection "aaaaaaaa" were loaded
+2016-07-21 11:16:54.8484|INFO|AistTrader.MainWindow|Checking related connection - "aaaaaaaa"..
+2016-07-21 11:16:54.8484|INFO|AistTrader.MainWindow|Starting "fdfdfdsgropuo"..
+2016-07-21 11:16:55.0662|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: START, Security: SiU6
+2016-07-21 11:16:54.9426|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: START, Security: SiU6
+2016-07-21 11:17:04.9450|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64653, FastSMA 64622, Highest 64724, Lowest 64601, Mid 64663
+2016-07-21 11:17:04.9450|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: Position = 0, SlowSMA 64654, FastSMA 64651, Highest 64739, Lowest 64601, Mid 64670
+2016-07-21 11:17:30.8958|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 60_10_20_20" has changed it's amount:"1" to -> "25"
+2016-07-21 11:17:35.9507|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 67_19_20_20" has changed it's amount:"2" to -> "35"
+2016-07-21 11:18:00.2521|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: Position = 0, SlowSMA 64650, FastSMA 64618, Highest 64724, Lowest 64601, Mid 64663
+2016-07-21 11:18:07.7075|INFO|AistTrader.MainWindow|Stopping - "fdfdfdsgropuo"..
+2016-07-21 11:18:07.7295|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 60_10_20_20"..
+2016-07-21 11:18:07.7295|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 60_10_20_20: STOP
+2016-07-21 11:18:07.7465|INFO|AistTrader.MainWindow|Stopping - "ChStrategy 67_19_20_20"..
+2016-07-21 11:18:07.7465|INFO|TradesLogger|[fdfdfdsgropuo] ChStrategy 67_19_20_20: STOP
+2016-07-21 11:18:46.3642|INFO|AistTrader.MainWindow|Agent "ChStrategy 63_13_13_13" successfully added to the group "fdfdfdsgropuo"
+2016-07-21 11:19:05.9073|INFO|AistTrader.MainWindow|Agent "ChStrategy 63_13_13_13" has been excluded from the group - "fdfdfdsgropuo" 
+2016-07-21 11:19:22.7761|INFO|AistTrader.MainWindow|Agent "ChStrategy 63_13_13_13" successfully added to the group "fdfdfdsgropuo"
+2016-07-21 11:20:03.2377|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 60_10_20_20" has changed it's amount:"25" to -> "55"
+2016-07-21 11:20:03.2437|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 67_19_20_20" has changed it's amount:"35" to -> "66"
+2016-07-21 11:20:03.2437|INFO|AistTrader.MainWindow|"fdfdfdsgropuo"'s member-"ChStrategy 63_13_13_13" has changed it's amount:"22" to -> "15"

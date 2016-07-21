@@ -98,7 +98,6 @@ namespace AistTrader
                     }
                 }
             }
-
             Instance = this;
             DataContext = this;
             ConnectionManager = new AistTraderConnnectionManager();
