@@ -506,10 +506,9 @@ namespace AistTrader
 
                     //тест
                     var secutityG = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.AgentManagerSettings.Tool);
-
-
+                    if (!string.IsNullOrEmpty(groupMember.Params.Security))
+                        secutityG = realConnection.Securities.FirstOrDefault(i => i.Code == groupMember.Params.Security);
                     strategy.Security = secutityG;
-
                     strategy.Portfolio =realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
                     strategy.Connector = realConnection;
                     strategy.Volume =(decimal) calculatedAmount; /*amount.Value.To<decimal>();*/
@@ -605,6 +604,7 @@ namespace AistTrader
                 AgentConnnectionManager.Add(wrapper);
             }
         }
+        //todo: переписать метод и стартовать персональные инструменты если они присвоены
         public void StartAfterEdit(Agent agentToStartAfterEdit, AgentManager agentManagerToStartAfterEdit)
         {
             //single agent after edit logic
@@ -660,6 +660,8 @@ namespace AistTrader
             strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, nameGroup);
             strategy.DisposeOnStop = true;
             var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentManagerToStartAfterEdit.Tool);
+            if (!string.IsNullOrEmpty(agentToStartAfterEdit.Params.Security) )
+                convertedSecurity =realConnection.Securities.FirstOrDefault(i => i.Code == agentToStartAfterEdit.Params.Security);
             strategy.Security = /*agentOrGroup.AgentManagerSettings.Tool*/convertedSecurity;
             strategy.Portfolio =
                 realConnection.Portfolios.FirstOrDefault(i => i.Name == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Code);
