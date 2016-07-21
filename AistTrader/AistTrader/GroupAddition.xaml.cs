@@ -454,15 +454,20 @@ namespace AistTrader
                                     //MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                     //go to agent manager related actions
 
-                                    //собираем коллекцию элеметов из менеджера запущенных агентов/групп в менеджере агентов
-                                    var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.Where(i => i.AgentManagerSettings.AgentOrGroup == item.Params.GroupName.ToString()).ToList();
+                                    //проверяем запущена ли группа в менеджере агентов
+                                    //var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.Where(i => i.AgentManagerSettings.AgentOrGroup == item.Params.GroupName.ToString()).ToList();
+                                    var amItemOnTheFly = MainWindow.Instance.AgentConnnectionManager.Strategies.Where(i => i.ActualStrategyRunning.Name == item.Name && i.AgentOrGroupName == item.Params.GroupName).ToList();
+                                    //проход по запущенным агентам в менеджере???
                                     foreach (var amItem in amItemOnTheFly)
                                     {
-                                        if (editCount == amItemOnTheFly.Count)
+
+
+
+                                        if (editCount == oldItems.Count)
                                         {
                                             break;
                                         }
-                                        if (amItem != null && amItem.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
+                                        if (amItem != null)
                                         {
                                             //если группа запущена, расширение
                                             if (DynamicGrid.Children.OfType<ComboBox>().ToList().Count < oldItems.Count)
@@ -470,7 +475,9 @@ namespace AistTrader
                                             //////var form = new GroupAdditionSecurityPicker(ite/m);
                                             //////form.ShowDialog();
                                             //////item.Params.Security = form.SelectedSecurity;
-                                            MainWindow.Instance.AddNewAgentInGroup(item, index, false);
+                                            
+                                            // ???
+                                            //MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                             editCount++;
                                             //go to agent manager related actions
                                             var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name.EndsWith(item.Name));
@@ -482,7 +489,9 @@ namespace AistTrader
                                                 decimal? calculatedAmount = 0;
                                                 if (ueAmount.Value.Type == UnitTypes.Percent)
                                                 {
-                                                    calculatedAmount = MainWindow.Instance.CalculateAmount(amItem, item);
+                                                    var amToCalculateAmount =MainWindow.Instance.AgentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == amItem.AgentOrGroupName);
+
+                                                    calculatedAmount = MainWindow.Instance.CalculateAmount(amToCalculateAmount, item);
                                                     runnigStrategy.ActualStrategyRunning.Volume = /*Convert.ToDecimal(itemToEdit.Params.Amount)*/ (decimal)calculatedAmount;
                                                 }
                                                 if (ueAmount.Value.Type == UnitTypes.Absolute)
@@ -548,13 +557,12 @@ namespace AistTrader
                                             newAgent.Params.Security = form.SelectedSecurity;
                                             MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
                                             form = null;
+                                            //break;
                                             //todo: добавить инфу в логи о совершенном действии
                                         }
 
-
-
                                         list.Add(newAgent);
-
+                                        //проход по всем элементам коллекции менедежера агентов
                                         foreach (var item in MainWindow.Instance.AgentManagerStorage)
                                         {
                                             if (item.AgentManagerUniqueId == newAgent.Params.GroupName)
@@ -577,8 +585,6 @@ namespace AistTrader
                                                 }
                                                 if (item.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped)
                                                 {
-                                                    //var anyActiveConnection = MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
-                                                    //var cashedTools = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.Tools != null);
                                                     if (!anyActiveConnection && cashedTools == null)
                                                     {
                                                         MessageBox.Show("No cashed or live securities. Securities can not be selected.");
@@ -646,19 +652,17 @@ namespace AistTrader
                                 //если у удаляемого агента есть позиции - должен быть запрос "(закрыть позиции и удалить) или (ожидать закрытия позиций и затем удалить)", с соответствующим функционалом.
                                 //реализовать данный функционал
 
-
-                                var form = new GroupAdditionDeleteMode();
+                                var form = new GroupAdditionDeleteMode(oldItem.Name.ToString());
                                 form.ShowDialog();
                                 var selectedMode=  form.SelectedDeleteMode;
-                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete)
+                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                                 {
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                     MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
-
                                 }
-                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter)
+                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                                 {
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosWaitStrExit();
