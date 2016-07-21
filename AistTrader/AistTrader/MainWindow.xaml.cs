@@ -83,25 +83,21 @@ namespace AistTrader
                 Application.Current.Shutdown();
             //string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-
-
-            //string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            //string destFilePath = Path.Combine(buFilePath, "AistTrader");
-            //if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
-            //foreach (var xmlset in EntitiesFilesNames)
-            //{
-            //    FileInfo copyToPath = new FileInfo(Path.Combine(System.Windows.Forms.Application.StartupPath, xmlset));
-            //    FileInfo locaFilesInfo = new FileInfo(Path.Combine(destFilePath, copyToPath.FullName.Split('\\').Last()));
-            //    if (!copyToPath.Exists)
-            //    {
-            //        if (locaFilesInfo.Exists)
-            //        {
-            //            locaFilesInfo.CopyTo(copyToPath.FullName);
-            //        }
-            //    }
-            //}
-
-
+            string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string destFilePath = Path.Combine(buFilePath, "AistTrader");
+            if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
+            foreach (var xmlset in EntitiesFilesNames)
+            {
+                FileInfo copyToPath = new FileInfo(Path.Combine(System.Windows.Forms.Application.StartupPath, xmlset));
+                FileInfo locaFilesInfo = new FileInfo(Path.Combine(destFilePath, copyToPath.FullName.Split('\\').Last()));
+                if (!copyToPath.Exists)
+                {
+                    if (locaFilesInfo.Exists)
+                    {
+                        locaFilesInfo.CopyTo(copyToPath.FullName);
+                    }
+                }
+            }
 
             Instance = this;
             DataContext = this;
