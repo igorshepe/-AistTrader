@@ -592,15 +592,24 @@ namespace AistTrader
                                                         break;
                                                         //todo: добавить инфу в логи о совершенном действии
                                                     }
-                                                    if (anyActiveConnection | cashedTools !=null)
+                                                    var IsInGroupAlready =
+                                                        MainWindow.Instance.AgentsStorage.Any(
+                                                            i =>
+                                                                i.Name == newAgent.Name &&
+                                                                i.Params.GroupName == newAgent.Params.GroupName);
+                                                    if (!IsInGroupAlready)
                                                     {
-                                                        var form = new GroupAdditionSecurityPicker(newAgent);
-                                                        form.ShowDialog();
-                                                        newAgent.Params.Security = form.SelectedSecurity;
-                                                        MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
-                                                        form = null;
-                                                        //todo: добавить инфу в логи о совершенном действии
+                                                        if (anyActiveConnection | cashedTools != null)
+                                                        {
+                                                            var form = new GroupAdditionSecurityPicker(newAgent);
+                                                            form.ShowDialog();
+                                                            newAgent.Params.Security = form.SelectedSecurity;
+                                                            MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                                            form = null;
+                                                            //todo: добавить инфу в логи о совершенном действии
+                                                        }
                                                     }
+                                                    
                                                 }
                                             }
                                         }
