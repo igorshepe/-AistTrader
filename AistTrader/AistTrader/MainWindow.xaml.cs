@@ -28,6 +28,7 @@ using NLog;
 using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 using StockSharp.Xaml;
+using Brushes = System.Drawing.Brushes;
 
 namespace AistTrader
 {
@@ -118,7 +119,9 @@ namespace AistTrader
             DataContext = this;
             ConnectionManager = new AistTraderConnnectionManager();
             AgentConnnectionManager = new AistTraderStrategiesConnnectionManager();
-#region Initialize collections
+
+
+            #region Initialize collections
 
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
@@ -358,14 +361,17 @@ namespace AistTrader
         }
         private void CheckForUpdaterMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            
-
+            Task.Run(() => Logger.Info("Checking for updated.."));
             ApplicationDeployment deploy = ApplicationDeployment.CurrentDeployment;
             UpdateCheckInfo update = deploy.CheckForDetailedUpdate();
             if (deploy.CheckForUpdate())
             {
-                MessageBox.Show("Newer version is available: " + update.AvailableVersion.ToString());
+                Task.Run(() => Logger.Info("Updated found..{0}", update.AvailableVersion.ToString()));
+                Task.Run(() => Logger.Info("Loading data, please wait.."));
+                UpdateMetroProgressBar.Foreground = new SolidColorBrush(Colors.White);
+                UpdateMetroProgressBar.IsIndeterminate = true;
                 deploy.Update();
+                Task.Run(() => Logger.Info("Restarting Aist Trader.."));
                 System.Windows.Forms.Application.Restart();
                 Application.Current.Shutdown();
             }

@@ -21,7 +21,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="AccentColorMenuItemStyle"
-                   TargetType="{x:Type MenuItem}"
+                   TargetType="{x:Type MenuItem}" 
                    BasedOn="{StaticResource MetroMenuItem}">
                 <Setter Property="Command"
                         Value="{Binding ChangeAccentCommand}" />
@@ -118,6 +118,7 @@
 
                 </TextBlock>
                 <Separator Style="{StaticResource MetroStatusBarSeparator}" />
+                <Controls:MetroProgressBar Width="70" Name="UpdateMetroProgressBar" />
                 <TextBlock Name="TimeErrorTextBlock" Text="" >
 
                 </TextBlock>
@@ -574,6 +575,7 @@
                             	Margin="10,241,1,0"
                             	VerticalAlignment="Top"
                             	Width="100"/>
+                            
                             <Label x:Name="label" FontSize="9" FontWeight="Bold" Content="TEST PURPOSES ONLY" HorizontalAlignment="Center" Margin="8,110,5,0" VerticalAlignment="Top" Width="98"/>
 
 
@@ -596,6 +598,7 @@
 
 
                         </Grid>
+                        
                     </Grid>
                 </TabItem>
             </Controls:MetroAnimatedSingleRowTabControl>
