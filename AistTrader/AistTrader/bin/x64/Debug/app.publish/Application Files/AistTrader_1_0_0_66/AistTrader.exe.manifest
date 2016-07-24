@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="AistTrader.exe" version="1.0.0.60" publicKeyToken="dab7ad7eca9e5fbf" language="neutral" processorArchitecture="amd64" type="win32" />
+  <asmv1:assemblyIdentity name="AistTrader.exe" version="1.0.0.66" publicKeyToken="dab7ad7eca9e5fbf" language="neutral" processorArchitecture="amd64" type="win32" />
   <description asmv2:iconFile="Resources\Images\mainIcon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="1831944">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AistTrader.exe" size="1832456">
       <assemblyIdentity name="AistTrader" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oFw4aiBFAEGm1IudCrFonSSjVNNMDydiy2fhMRRbNrY=</dsig:DigestValue>
+        <dsig:DigestValue>O0UOEneCUte1DX9N9USmWnSv2tKi2EZ1yem4/p9Kan4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BCeBA2aDKOEbShVPIrtUmsupR6CM3PewK0iSL358Phg=</dsig:DigestValue>
+        <dsig:DigestValue>0ZVwHpj+bkiv6P2AQoAEI5MTZ1kDdaWGLyPbGhRW4P0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -566,7 +566,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JGgjmS18gJIsOK5YtgZYuP9nUMzP2HUiir2H+0d2Nqc=</dsig:DigestValue>
+        <dsig:DigestValue>o/eT5oAZlj2rh7++FEX3WoszDrW1I+TYIK9MjFdNSCE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -698,7 +698,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>w4smG5+7SEgpCtmSBaUlfiuTvzkU0JiQgpj+mR7sSFY=</dsig:DigestValue>
+        <dsig:DigestValue>9NyQ/5uVQoqGio5eizUXas4LhU/GTigkChbY7G6Tcus=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -753,4 +753,4 @@
       <dsig:DigestValue>2crYNYNd0jx74SgWQuCfY+KAApWizXgNHszJtRigrSs=</dsig:DigestValue>
     </hash>
   </file>
-<publisherIdentity name="CN=INVEST_2-PC\DeveloperMachine" issuerKeyHash="78fdcc610655f0c4ed08afde551dd2de5bbe9fb8" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>J+xjT6AbPcJ9BbTcuFa1/AzMbwh1Yqp1MFVTXPriwEM=</DigestValue></Reference></SignedInfo><SignatureValue>kyDYgNfhGxpbwfBtmjQtv3NLxRDUXks/kYAnJM+1XZDgCsoBZSC5ilS0amhy1e6fz0Pwmez1ldlY+sQDS6y7mZuP4tiC0PTyioFJ2KXgt4Ap/EAolqAmWJuQeQBor/ZpZ4p5Bf1ic3Wi7Xj2QOmgYfhSR4FWBlaxagG0jCoXC3w=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>mSknPqBueOCHc4tzqDZGw9yjwYDkMkTs6IywBCo2f1FWFVv8VupvON/KhvjJx1GCLpWRzV4qZ4lvF2YlDIBSN0qP/g7s46ieQipssaVEjS1Fm5rO1csIBxKAZQMUH3klQGncqK2yHjq3P0co0AyzKW3IyuXqGh51TFPO6FutCDc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="43c0e2fa5c53553075aa6275086fcc0cfcb556b8dcb4057dc23d1ba04f63ec27" Description="" Url=""><as:assemblyIdentity name="AistTrader.exe" version="1.0.0.60" publicKeyToken="dab7ad7eca9e5fbf" language="neutral" processorArchitecture="amd64" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=INVEST_2-PC\DeveloperMachine</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>6hk/LRua8+aXq2MqCVKO0GURNpCpli+yaSxMdxE9rtk=</DigestValue></Reference></SignedInfo><SignatureValue>WhgI99pu/Dke99dpet04MEjexwu0KbAugn0GVpLDaVCzo+C5EaGoJbXywSW0GcnGuVthHkIr5Ks79GtijHfcOyxeB/pYo/D9+X9XT6E+BIC3ayKheJu9tvZ7W/Y5i0rOcG4nrcEB7YCwqvI0mGiJDBLtCEWaYa5pJLI4Raaz34I=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>mSknPqBueOCHc4tzqDZGw9yjwYDkMkTs6IywBCo2f1FWFVv8VupvON/KhvjJx1GCLpWRzV4qZ4lvF2YlDIBSN0qP/g7s46ieQipssaVEjS1Fm5rO1csIBxKAZQMUH3klQGncqK2yHjq3P0co0AyzKW3IyuXqGh51TFPO6FutCDc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICCTCCAXKgAwIBAgIQLe1m7gVhILFHsBm4uB8REzANBgkqhkiG9w0BAQsFADBDMUEwPwYDVQQDHjgASQBOAFYARQBTAFQAXwAyAC0AUABDAFwARABlAHYAZQBsAG8AcABlAHIATQBhAGMAaABpAG4AZTAeFw0xNTExMjYwMjU3MjlaFw0xNjExMjUwODU3MjlaMEMxQTA/BgNVBAMeOABJAE4AVgBFAFMAVABfADIALQBQAEMAXABEAGUAdgBlAGwAbwBwAGUAcgBNAGEAYwBoAGkAbgBlMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZKSc+oG544Idzi3OoNkbD3KPBgOQyROzojLAEKjZ/UVYVW/xW6m8438qG+MnHUYIulZHNXipniW8XZiUMgFI3So/+DuzjqJ5CKmyxpUSNLUWbms7VywgHEoBlAxQfeSVAadyorbIeOrc/RyjQDLMpbcjK5eoaHnVMU87oW60INwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBACLPbD3E+xr5y15XbdzWGUcxiHRp6iBsIcpVvuD+uuuqS6veKtqfrbwcvl2a+1eP+Z7ZRuD22d5Fohb1mg8GETji40WDknpA/kS0bUMfnGRgVK2yiyeVrhKyAi5xc1hmoS/rB6UrIO5RyxdRcBBaJ70cj2voyAKj9EOVMfxhjHck</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+<publisherIdentity name="CN=INVEST_2-PC\DeveloperMachine" issuerKeyHash="78fdcc610655f0c4ed08afde551dd2de5bbe9fb8" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>NuOUHCCvabdJVVsY3eF/3a9Z6tYPSbVHSPZqpMTX2wI=</DigestValue></Reference></SignedInfo><SignatureValue>XqaFpMXKmizfkCzZ0p4UBSEafUqLZKvanACeffzYfrcOG8wzSt2lqJnkHJpy3jNHOzidqImIfjUvdfOZhryIMJ2sm0iNQd0UbYGyvqx/7u/eHPldVVa1900OQ1do0jFW+GQ2qRzWiT8scWIGL4isj7YJNG/Lsc+k9Lq1AVfrkqI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>mSknPqBueOCHc4tzqDZGw9yjwYDkMkTs6IywBCo2f1FWFVv8VupvON/KhvjJx1GCLpWRzV4qZ4lvF2YlDIBSN0qP/g7s46ieQipssaVEjS1Fm5rO1csIBxKAZQMUH3klQGncqK2yHjq3P0co0AyzKW3IyuXqGh51TFPO6FutCDc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="02dbd7c4a46af64847b5490fd6ea59afdd7fe1dd185b5549b769af201c94e336" Description="" Url=""><as:assemblyIdentity name="AistTrader.exe" version="1.0.0.66" publicKeyToken="dab7ad7eca9e5fbf" language="neutral" processorArchitecture="amd64" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=INVEST_2-PC\DeveloperMachine</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>TGrrgmT4Z/jocXZ3jQwPXhFnxauja8iwYGck3/5Io8c=</DigestValue></Reference></SignedInfo><SignatureValue>bjqGdfS0Jtvy41tpcoOC4xR+KMUGLKop2r2Ei1RcAIirRrIe+Mq4LfgxAJFV4MkxAF0zUtFvIb0AzRi0CHvr1J6CH7eRrIlP9JEVXtqLMFVXmi74nQ6llhNl9tpxN8vH7b8lQ142nA+OhaQrujp7nFHycU98cFXCQoOISxz5JSU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>mSknPqBueOCHc4tzqDZGw9yjwYDkMkTs6IywBCo2f1FWFVv8VupvON/KhvjJx1GCLpWRzV4qZ4lvF2YlDIBSN0qP/g7s46ieQipssaVEjS1Fm5rO1csIBxKAZQMUH3klQGncqK2yHjq3P0co0AyzKW3IyuXqGh51TFPO6FutCDc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICCTCCAXKgAwIBAgIQLe1m7gVhILFHsBm4uB8REzANBgkqhkiG9w0BAQsFADBDMUEwPwYDVQQDHjgASQBOAFYARQBTAFQAXwAyAC0AUABDAFwARABlAHYAZQBsAG8AcABlAHIATQBhAGMAaABpAG4AZTAeFw0xNTExMjYwMjU3MjlaFw0xNjExMjUwODU3MjlaMEMxQTA/BgNVBAMeOABJAE4AVgBFAFMAVABfADIALQBQAEMAXABEAGUAdgBlAGwAbwBwAGUAcgBNAGEAYwBoAGkAbgBlMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZKSc+oG544Idzi3OoNkbD3KPBgOQyROzojLAEKjZ/UVYVW/xW6m8438qG+MnHUYIulZHNXipniW8XZiUMgFI3So/+DuzjqJ5CKmyxpUSNLUWbms7VywgHEoBlAxQfeSVAadyorbIeOrc/RyjQDLMpbcjK5eoaHnVMU87oW60INwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBACLPbD3E+xr5y15XbdzWGUcxiHRp6iBsIcpVvuD+uuuqS6veKtqfrbwcvl2a+1eP+Z7ZRuD22d5Fohb1mg8GETji40WDknpA/kS0bUMfnGRgVK2yiyeVrhKyAi5xc1hmoS/rB6UrIO5RyxdRcBBaJ70cj2voyAKj9EOVMfxhjHck</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

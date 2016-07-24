@@ -358,18 +358,17 @@ namespace AistTrader
         }
         private void CheckForUpdaterMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Factory.StartNew(() =>
-            {
-                ApplicationDeployment deploy = ApplicationDeployment.CurrentDeployment;
-                UpdateCheckInfo update = deploy.CheckForDetailedUpdate();
-                if (deploy.CheckForUpdate())
-                {
-                    MessageBox.Show("Newer version is available: " + update.AvailableVersion.ToString());
-                    deploy.Update();
-                    System.Windows.Forms.Application.Restart();
-                }
+            
 
-            });
+            ApplicationDeployment deploy = ApplicationDeployment.CurrentDeployment;
+            UpdateCheckInfo update = deploy.CheckForDetailedUpdate();
+            if (deploy.CheckForUpdate())
+            {
+                MessageBox.Show("Newer version is available: " + update.AvailableVersion.ToString());
+                deploy.Update();
+                System.Windows.Forms.Application.Restart();
+                Application.Current.Shutdown();
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
