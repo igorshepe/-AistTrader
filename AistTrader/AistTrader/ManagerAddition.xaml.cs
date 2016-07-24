@@ -178,6 +178,11 @@ namespace AistTrader
                 }
                 else
                 {
+                    if (AmountTextBox.Text == "")
+                    {
+                        MessageBox.Show(this, @"Set amount value");
+                        return;
+                    }
                     agentManagerToEdit.Alias = AliasTxtBox.Text;
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
                     agentManagerToEdit = null;
