@@ -548,6 +548,8 @@ namespace AistTrader
             SaveProviderItems();
             UpdateProviderListView();
         }
+
+
     }
 
     #region Aist Trader Connection Manager
