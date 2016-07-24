@@ -244,8 +244,16 @@ namespace AistTrader
                 rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
                 if (rowItem.ConnectionParams.IsRegistredConnection)
                     ConnectionManager.Connections[index].Connect();
+                ////else
+                ////    ConnectAccount(item as Connection);
                 else
-                    ConnectAccount(item as Connection);
+                {
+                    Task.Factory.StartNew(() =>
+                    {
+                        ConnectAccount(item as Connection);
+                    });
+
+                }
             }
             else
             {
@@ -335,26 +343,26 @@ namespace AistTrader
             conn.ConnectionParams.Tools = new List<Security>();
             conn.ConnectionParams.IsRegistredConnection = true;
 
-            connection.NewOrders += orders =>
-            {
-                this.GuiAsync(() => _ordersWindow.OrderGrid.Orders.AddRange(orders)); // Для тестов 
-            };
-            connection.NewPositions += positions =>
-            {
-                this.GuiAsync(() => _portfoliosWindow.PortfolioGrid.Positions.AddRange(positions)); // Для тестов 
-            };
-            connection.NewMyTrades  += trades =>
-            {
-                this.GuiAsync(() => _myTradesWindow.TradeGrid.Trades.AddRange(trades)); // Для тестов 
-            };
-            this.GuiAsync(() => _securitiesWindow.SecurityPicker.MarketDataProvider = connection); // Для тестов 
+            //connection.NewOrders += orders =>
+            //{
+            //    this.GuiAsync(() => _ordersWindow.OrderGrid.Orders.AddRange(orders)); // Для тестов 
+            //};
+            //connection.NewPositions += positions =>
+            //{
+            //    this.GuiAsync(() => _portfoliosWindow.PortfolioGrid.Positions.AddRange(positions)); // Для тестов 
+            //};
+            //connection.NewMyTrades  += trades =>
+            //{
+            //    this.GuiAsync(() => _myTradesWindow.TradeGrid.Trades.AddRange(trades)); // Для тестов 
+            //};
+            //this.GuiAsync(() => _securitiesWindow.SecurityPicker.MarketDataProvider = connection); // Для тестов 
 
             connection.NewPortfolios += portfolios =>
             {
                 this.GuiAsync(() => conn.ConnectionParams.Accounts.AddRange(portfolios))/* PortfoliosList.AddRange(portfolios))*/;
                 this.GuiAsync(() => UpdateProviderGridListView(conn));
                 this.GuiAsync(() => Logger.Info("Portfolios for connection \"{0}\" were loaded",connection.ConnectionName));
-                this.GuiAsync(() => _portfoliosWindow.PortfolioGrid.Portfolios.AddRange(portfolios)); // Для тестов 
+                //this.GuiAsync(() => _portfoliosWindow.PortfolioGrid.Portfolios.AddRange(portfolios)); // Для тестов 
                 //try
                 //{
                 //    TimeHelper.SyncMarketTime();
@@ -374,7 +382,7 @@ namespace AistTrader
                         Task.Run(() => Logger.Info("Securities were loaded"));
                     }
                 });
-                this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
+                //this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
             };
             
             connection.PortfolioChanged += portfolio =>

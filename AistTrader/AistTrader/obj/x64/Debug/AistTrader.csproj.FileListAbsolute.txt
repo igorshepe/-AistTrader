@@ -1,4 +1,3 @@
-C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\NLog.config
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.config
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\AistTrader.exe.manifest
@@ -137,4 +136,5 @@ C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.Propert
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.csproj.GenerateResource.Cache
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe.manifest
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.application
+C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.exe
 C:\REPOSITORY\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\AistTrader.pdb
