@@ -5,7 +5,7 @@
         xmlns:nlogViewer="clr-namespace:NlogViewer;assembly=NlogViewer"
         Height="842.5"
         Width="1349"
-        Title="Aist Trader"
+        Title="{Binding MyTitle}"
         x:Name="MainFrm" 
         Icon="Resources/Images/mainIcon.ico"
         WindowStartupLocation="CenterScreen" 

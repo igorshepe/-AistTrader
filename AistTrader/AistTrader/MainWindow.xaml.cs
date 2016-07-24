@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using AistTrader.Annotations;
 using Common.Entities;
-using Common.Params;
+using Common.Params; 
 using Ecng.Collections;
 using Ecng.Common;
 using Ecng.Xaml;
@@ -31,6 +33,20 @@ namespace AistTrader
     public partial class MainWindow: INotifyPropertyChanged
     {
         #region Fields
+
+
+
+        public string MyTitle
+        {
+            get
+            {
+                if (ApplicationDeployment.IsNetworkDeployed)
+                {
+                    return  string.Format("Aist Trader - v{0}", ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4));
+                }
+                return "Aist Trader";
+            }
+        }
 
         public string DefaulConnectionName
         {
@@ -70,12 +86,10 @@ namespace AistTrader
                 _defaultConnectionStatusBarText = value;
 
                 OnPropertyChanged(new PropertyChangedEventArgs("DefaultConnectionStatusBarText"));
-
             }
         }
         string[] EntitiesFilesNames = { "Agents.xml", "Portfolios.xml", "Connections.xml", "AgentManagerSettings.xml" };
         #endregion
-
         public MainWindow()
         {
             String name = Process.GetCurrentProcess().ProcessName;
@@ -99,6 +113,7 @@ namespace AistTrader
                 }
             }
             Instance = this;
+            InitializeComponent();
             DataContext = this;
             ConnectionManager = new AistTraderConnnectionManager();
             AgentConnnectionManager = new AistTraderStrategiesConnnectionManager();
