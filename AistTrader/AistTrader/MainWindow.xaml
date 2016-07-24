@@ -118,7 +118,7 @@
 
                 </TextBlock>
                 <Separator Style="{StaticResource MetroStatusBarSeparator}" />
-                <Controls:MetroProgressBar Width="70" Name="UpdateMetroProgressBar" />
+                <Controls:MetroProgressBar  Name="UpdateMetroProgressBar"  />
                 <TextBlock Name="TimeErrorTextBlock" Text="" >
 
                 </TextBlock>

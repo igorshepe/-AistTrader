@@ -18,7 +18,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using AistTrader.Annotations;
 using Common.Entities;
-using Common.Params; 
+using Common.Params;
 using Ecng.Collections;
 using Ecng.Common;
 using Ecng.Xaml;
@@ -29,6 +29,7 @@ using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 using StockSharp.Xaml;
 using Brushes = System.Drawing.Brushes;
+using System.Threading;
 
 namespace AistTrader
 {
@@ -37,6 +38,7 @@ namespace AistTrader
         #region Fields
 
 
+        
 
         public string MyTitle
         {
@@ -120,6 +122,9 @@ namespace AistTrader
             ConnectionManager = new AistTraderConnnectionManager();
             AgentConnnectionManager = new AistTraderStrategiesConnnectionManager();
 
+            UpdateMetroProgressBar.Visibility = Visibility.Hidden;
+            UpdateMetroProgressBar.Width = 0;
+
 
             #region Initialize collections
 
@@ -146,6 +151,7 @@ namespace AistTrader
             _securitiesWindow.MakeHideable();
             _monitorWindow.MakeHideable();
             KeyUp += new KeyEventHandler(OKP); // подписываемся на события нажатия клавиш
+            
             #endregion
         }
         public void OKP(object sender, KeyEventArgs e)
@@ -361,20 +367,31 @@ namespace AistTrader
         }
         private void CheckForUpdaterMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(() => Logger.Info("Checking for updated.."));
+            Logger.Info("Checking for updates..");
+            
             ApplicationDeployment deploy = ApplicationDeployment.CurrentDeployment;
             UpdateCheckInfo update = deploy.CheckForDetailedUpdate();
+
             if (deploy.CheckForUpdate())
             {
-                Task.Run(() => Logger.Info("Updated found..{0}", update.AvailableVersion.ToString()));
-                Task.Run(() => Logger.Info("Loading data, please wait.."));
+                
+                Logger.Info("Updates found..{0}", update.AvailableVersion.ToString());
+                Logger.Info("Loading data, please wait..");
+                UpdateMetroProgressBar.IsEnabled = true;
+                UpdateMetroProgressBar.Visibility = Visibility.Visible;
+                UpdateMetroProgressBar.Width = 70;
                 UpdateMetroProgressBar.Foreground = new SolidColorBrush(Colors.White);
                 UpdateMetroProgressBar.IsIndeterminate = true;
+                Logger.Info("Restarting Aist Trader..");
+                MessageBox.Show("Aist Trader will be updated to version: " + update.AvailableVersion.ToString());
+
                 deploy.Update();
-                Task.Run(() => Logger.Info("Restarting Aist Trader.."));
+                
                 System.Windows.Forms.Application.Restart();
                 Application.Current.Shutdown();
             }
+            else
+                Logger.Info("Current version is up to date..");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
