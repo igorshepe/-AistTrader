@@ -393,10 +393,8 @@ namespace AistTrader
             {
                 this.GuiAsync(() => conn.ConnectionParams.IsConnected = true);
                 this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Connected);
-                //this.GuiAsync(() => UpdateProviderListView());
+                this.GuiAsync(UpdateProviderListView);
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is active now", connection.ConnectionName));
-
-
                 if (conn.ConnectionParams.IsDefaulConnection)
                     this.GuiAsync(() => Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Connected.ToString());
             };
@@ -404,9 +402,8 @@ namespace AistTrader
             {
                 this.GuiAsync(() => conn.ConnectionParams.IsConnected = false);
                 this.GuiAsync(() => conn.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);   
-                //this.GuiAsync(() => UpdateProviderListView());
+                this.GuiAsync(UpdateProviderListView);
                 this.GuiAsync(() => Logger.Info("Connection - \"{0}\" is not active now", connection.ConnectionName));
-
                 if (conn.ConnectionParams.IsDefaulConnection)
                     this.GuiAsync(() => Instance.ConnectionStatusTextBlock.Text = ConnectionParams.ConnectionStatus.Disconnected.ToString());
             };
@@ -450,6 +447,7 @@ namespace AistTrader
             }
             throw new Exception("Local IP Address Not Found!");
         }
+        #region obsolete
         private void OperationBtnClick(object sender, RoutedEventArgs e)
         {
             if ((sender as Button).Content.ToString() == "Connect")
@@ -481,7 +479,7 @@ namespace AistTrader
                     return rowItem != null && i.ConnectionName == rowItem.DisplayName;
                 });
                 ConnectionManager.Connections[index].Disconnect();
-                
+
                 if (con != null)
                 {
                     //con.Disconnect();
@@ -495,6 +493,8 @@ namespace AistTrader
                 UpdateProviderListView();
             }
         }
+        #endregion
+
         private void ProviderListView_Loaded(object sender, RoutedEventArgs e)
         {
             if (!IsProviderSettingsLoaded & (File.Exists("Connections.xml")) & ConnectionsStorage.Count == 0)
@@ -532,11 +532,6 @@ namespace AistTrader
             //    var item = ProviderListView.SelectedItem as Connection;
             //    DefaultConnectionStatusBarText = "Default: " + item.DisplayName;
             //}
-        }
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
         private void ConnectionsContextMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
