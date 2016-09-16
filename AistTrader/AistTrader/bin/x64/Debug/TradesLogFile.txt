@@ -24388,3 +24388,65 @@
 2016-07-24 16:59:23.4882|INFO|AistTrader.MainWindow|Connection - "ddddddddddddddd" is active now
 2016-07-24 16:59:23.8094|INFO|AistTrader.MainWindow|Securities were loaded
 2016-07-24 16:59:23.8695|INFO|AistTrader.MainWindow|Portfolios for connection "ddddddddddddddd" were loaded
+2016-07-25 11:17:17.5514|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"Plaza1"...
+2016-07-25 11:17:17.5514|INFO|AistTrader.MainWindow|IP and port of -"Plaza1" connection were successfully acquired
+2016-07-25 11:17:17.9224|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"Plaza2"...
+2016-07-25 11:17:17.9224|INFO|AistTrader.MainWindow|IP and port of -"Plaza2" connection were successfully acquired
+2016-07-25 11:17:18.3325|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"Plaza3"...
+2016-07-25 11:17:18.3325|INFO|AistTrader.MainWindow|IP and port of -"Plaza3" connection were successfully acquired
+2016-07-25 11:17:18.6275|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"Plaza4"...
+2016-07-25 11:17:18.6275|INFO|AistTrader.MainWindow|IP and port of -"Plaza4" connection were successfully acquired
+2016-07-25 11:17:18.9165|INFO|AistTrader.MainWindow|Trying to get the ip,port of plaza connection -"Plaza5"...
+2016-07-25 11:17:18.9165|INFO|AistTrader.MainWindow|IP and port of -"Plaza5" connection were successfully acquired
+2016-07-25 11:17:20.1106|INFO|AistTrader.MainWindow|Connection - "Plaza1" is active now
+2016-07-25 11:17:20.0936|INFO|AistTrader.MainWindow|Connection - "Plaza3" is active now
+2016-07-25 11:17:20.0936|INFO|AistTrader.MainWindow|Connection - "Plaza2" is active now
+2016-07-25 11:17:20.0816|INFO|AistTrader.MainWindow|Connection - "Plaza5" is active now
+2016-07-25 11:17:20.0816|INFO|AistTrader.MainWindow|Connection - "Plaza4" is active now
+2016-07-25 11:17:20.4336|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-25 11:17:20.4336|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-25 11:17:20.4896|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-25 11:17:20.4706|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-25 11:17:20.5936|INFO|AistTrader.MainWindow|Securities were loaded
+2016-07-25 11:17:20.7226|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza3" were loaded
+2016-07-25 11:17:20.8946|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza2" were loaded
+2016-07-25 11:17:21.0046|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza4" were loaded
+2016-07-25 11:17:21.1316|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza1" were loaded
+2016-07-25 11:17:21.6056|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza5" were loaded
+2016-07-25 11:17:43.9589|INFO|AistTrader.MainWindow|Connection - "Plaza1" is not active now
+2016-07-25 11:17:44.4710|INFO|AistTrader.MainWindow|Connection - "Plaza2" is not active now
+2016-07-25 11:17:44.6610|INFO|AistTrader.MainWindow|Connection - "Plaza3" is not active now
+2016-07-25 11:17:45.2150|INFO|AistTrader.MainWindow|Connection - "Plaza4" is not active now
+2016-07-25 11:17:45.8960|INFO|AistTrader.MainWindow|Connection - "Plaza5" is not active now
+2016-09-15 12:57:00.8110|INFO|AistTrader.MainWindow|Successfully added agent - "ChStrategy 60_15_20_20"
+2016-09-15 12:57:21.4191|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_10_20_20" successfully added to the group "еееее"
+2016-09-15 12:57:21.4191|INFO|AistTrader.MainWindow|Agent "ChStrategy 60_15_20_20" successfully added to the group "еееее"
+2016-09-15 12:57:58.9613|INFO|AistTrader.MainWindow|Connection - "Plaza1" is active now
+2016-09-15 12:57:58.9613|INFO|AistTrader.MainWindow|Connection - "Plaza2" is active now
+2016-09-15 12:57:59.1513|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-15 13:00:11.5329|INFO|AistTrader.MainWindow|Connection - "Plaza1" is active now
+2016-09-15 13:00:11.7309|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-15 13:00:11.8129|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza1" were loaded
+2016-09-15 13:00:34.9732|INFO|AistTrader.MainWindow|Agent manager item "мвмчмчвм" has been deleted
+2016-09-16 16:30:27.0212|INFO|AistTrader.MainWindow|Connection - "Plaza1" is active now
+2016-09-16 16:30:27.1842|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-16 16:30:27.3723|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza1" were loaded
+2016-09-16 16:35:19.6410|INFO|AistTrader.MainWindow|Connection - "Plaza1" is active now
+2016-09-16 16:35:19.7630|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-16 16:35:19.9000|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza1" were loaded
+2016-09-16 16:37:08.0952|INFO|AistTrader.MainWindow|Connection - "Plaza2" is active now
+2016-09-16 16:37:08.1102|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-16 16:37:08.3162|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza2" were loaded
+2016-09-16 16:38:25.1606|ERROR|AistTrader.MainWindow|Процесс не может получить доступ к файлу "C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\AistTrader\bin\x64\Debug\Connections.xml", так как этот файл используется другим процессом.
+2016-09-16 17:09:57.2958|INFO|AistTrader.MainWindow|Connection - "Plaza2" is active now
+2016-09-16 17:09:57.2388|INFO|AistTrader.MainWindow|Connection - "Plaza1" is active now
+2016-09-16 17:09:57.5248|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-16 17:09:57.5248|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-16 17:09:57.6058|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza2" were loaded
+2016-09-16 17:09:57.6008|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza1" were loaded
+2016-09-16 17:14:05.7490|INFO|AistTrader.MainWindow|Connection - "Plaza1" is active now
+2016-09-16 17:14:05.7190|INFO|AistTrader.MainWindow|Connection - "Plaza2" is active now
+2016-09-16 17:14:05.8950|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-16 17:14:05.8950|INFO|AistTrader.MainWindow|Securities were loaded
+2016-09-16 17:14:05.9970|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza2" were loaded
+2016-09-16 17:14:06.1820|INFO|AistTrader.MainWindow|Portfolios for connection "Plaza1" were loaded

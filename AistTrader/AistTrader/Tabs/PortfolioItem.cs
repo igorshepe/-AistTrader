@@ -20,14 +20,28 @@ namespace AistTrader //todo: идентификаторы портфеля то�
     public partial class MainWindow
     {
         public bool IsPortfolioSettingsLoaded;
-        public void AddNewAgentPortfolio(Common.Entities.Portfolio settings, int editIndex)
+        public bool AddNewAgentPortfolio(Common.Entities.Portfolio settings, int editIndex)
         {
             if (editIndex >= 0 && editIndex < AgentPortfolioStorage.Count)
+            {
                 AgentPortfolioStorage[editIndex] = settings;
+            }
             else
-                AgentPortfolioStorage.Add(settings);
+            {
+                if (!AgentPortfolioStorage.Any(p => p.Name == settings.Name))
+                {
+                    AgentPortfolioStorage.Add(settings);
+                }
+                else
+                {
+                    MessageBox.Show("Portfolio with such name already exists. Choose another name.");
+                    return false;
+                }
+            }
             SavePortfolioSettings();
             UpdatePortfolioListView();
+
+            return true;
         }
         public void UpdatePortfolioListView()
         {

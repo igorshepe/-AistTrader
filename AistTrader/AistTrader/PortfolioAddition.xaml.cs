@@ -99,8 +99,10 @@ namespace AistTrader
             var agentItem = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.DisplayName == connectionProvider.ToString());
             agentItem.ConnectionParams.SelectedAccount = selectedAccount as StockSharp.BusinessEntities.Portfolio;
             connectionProvider = null;
-            MainWindow.Instance.AddNewAgentPortfolio(new Common.Entities.Portfolio(PortfolioNameTxtBox.Text, agentItem, selectedAccount.Name, (StockSharp.BusinessEntities.Portfolio) selectedAccount), EditIndex);
-            Close();
+            if (MainWindow.Instance.AddNewAgentPortfolio(new Common.Entities.Portfolio(PortfolioNameTxtBox.Text, agentItem, selectedAccount.Name, (StockSharp.BusinessEntities.Portfolio)selectedAccount), EditIndex))
+            {
+                Close();
+            }
         }
         public string this[string columnName]
         {
