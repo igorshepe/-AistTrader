@@ -11,6 +11,7 @@
         ResizeMode="NoResize"
         GlowBrush="CadetBlue"
         Icon="Resources/Images/mainIcon.ico">
+
     <Grid>
         <Button Content="Ok"
                 HorizontalAlignment="Left"
@@ -47,18 +48,18 @@
                                     IsReadOnly="False"
                                     Binding="{Binding Parametr, Mode=TwoWay}" />
 
-                <!--<DataGridTemplateColumn Header="Use in name">
+                <DataGridTemplateColumn Header="Use in name">
                     <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <CheckBox HorizontalAlignment="Center" IsChecked="{Binding UseInAgentName, Mode=TwoWay}"></CheckBox>
-                    </DataTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding UseInAgentName, Mode=TwoWay}"></CheckBox>
+                        </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
-                <DataGridCheckBoxColumn Header="Use in name" 
+                </DataGridTemplateColumn>
+                <!--<DataGridCheckBoxColumn Header="Use in name" 
                                         Width="*"
                                         Binding="{Binding UseInAgentName, Mode=TwoWay}"
                                         IsReadOnly="False">
-                </DataGridCheckBoxColumn>
+                </DataGridCheckBoxColumn>-->
 
             </DataGrid.Columns>
         </DataGrid>
