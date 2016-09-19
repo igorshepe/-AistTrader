@@ -24,6 +24,8 @@ namespace AistTrader //todo: идентификаторы портфеля то�
         {
             if (editIndex >= 0 && editIndex < AgentPortfolioStorage.Count)
             {
+                AgentPortfolioStorage.Clear();
+                InitiatePortfolioSettings();
                 AgentPortfolioStorage[editIndex] = settings;
             }
             else
