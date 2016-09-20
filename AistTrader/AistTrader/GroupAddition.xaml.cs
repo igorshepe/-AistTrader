@@ -267,6 +267,9 @@ namespace AistTrader
             }
             else
                 DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
+
+            List<string> excluded = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.SelectedItem != null).Select(c => c.Text).ToList();
+
             var cb = new ComboBox
             {
                 Height = 28,
@@ -274,7 +277,7 @@ namespace AistTrader
                 Width = 280,
                 Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
                 //TODO: дополнить условие выбора.важно после выбора алгоритма
-                ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents").Select(i => i.Params.FriendlyName),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
+                ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents" && !excluded.Any(x => x == i.Name)).Select(i => i.Params.FriendlyName),//NOTE: used for tests-> HelperStrategies.GetStrategies().Select(type => type.Name).ToList(),
                 Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
             };
             cb.SelectionChanged += cb_SelectionChanged;
