@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -50,7 +50,7 @@ namespace Strategies.Common
             Strategy instance;
             if (settingsStorage != null)
             {
-                instance = (Strategy)Activator.CreateInstance(type, settingsStorage, "single");
+                instance = (Strategy)Activator.CreateInstance(type, settingsStorage, "single",new List<long> {0});
             }
             else
             {

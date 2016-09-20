@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Common.Params;
@@ -10,7 +11,7 @@ namespace Common.Entities
     public class AgentManager
     {
         AgentManager() { }
-        public AgentManager(string name, ManagerParams agentManager, string tool, string amount, string alias)
+        public AgentManager(string name, ManagerParams agentManager, string tool, string amount, string alias)// List<long> transactionIdHistory//)
         {
             AgentManagerUniqueId = alias;
             Name = name;
@@ -18,6 +19,8 @@ namespace Common.Entities
             AgentManagerSettings = agentManager;
             Tool = tool;
             Amount = amount;
+           // TransactionIdHistory = new List<long>();
+
         }
         public override string ToString()
         {
@@ -39,6 +42,10 @@ namespace Common.Entities
         public ManagerParams AgentManagerSettings { get; set; }
         [DataMember()]
         public TradeParams TradeParams { get; set; }
+        [DataMember()]
+        public List<long> TransactionIdHistory { get; set; }
+        
+
     }
     [DataContract(Namespace = "")]
     public class TradeParams

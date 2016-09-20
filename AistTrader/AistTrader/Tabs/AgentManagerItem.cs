@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -498,9 +498,9 @@ namespace AistTrader
                         calculatedAmount = amount.Value.To<decimal>();
 
                     string nameGroup = agentOrGroup.ToString();
-
+                    var history = new List<long> { 0 };
                     strategy = new Strategy();
-                    strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, nameGroup);
+                    strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, nameGroup, history);
                     strategy.DisposeOnStop = true;
 
 
@@ -517,10 +517,10 @@ namespace AistTrader
                     strategy.LogLevel = LogLevels.Debug;
                     strategy.Start();
                     // Логирование внутренних событий стратегии для тестов
-                    _logManager.Sources.Add(strategy);
-                    _logManager.Listeners.Add(
-                        new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
-                            DateTime.Now.Day)));
+                    //_logManager.Sources.Add(strategy);
+                    //_logManager.Listeners.Add(
+                    //    new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
+                    //        DateTime.Now.Day)));
                     _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
                     var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                     //var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias,strategy);
@@ -584,7 +584,12 @@ namespace AistTrader
                     calculatedAmount = amount.Value.To<decimal>();
                 string nameGroup = agentOrGroup.ToString();
                 strategy = new Strategy();
-                strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, "single");
+
+                var history = new List<long> {0};
+                if (agentOrGroup.TransactionIdHistory!= null && agentOrGroup.TransactionIdHistory.Count > 1)
+                    history = agentOrGroup.TransactionIdHistory;
+                
+                strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, "single", history);
                 strategy.DisposeOnStop = true;
                 var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
                 strategy.Security = /*agentOrGroup.AgentManagerSettings.Tool*/convertedSecurity;
@@ -594,13 +599,15 @@ namespace AistTrader
                 strategy.Volume = (decimal)calculatedAmount; /*amount.Value.To<decimal>();*/
                 var candleManager = new CandleManager(realConnection);
                 strategy.SetCandleManager(candleManager);
+                
                 strategy.LogLevel = LogLevels.Debug;
+                
                 strategy.Start();
                 // Логирование внутренних событий стратегии для тестов
-                _logManager.Sources.Add(strategy);
-                _logManager.Listeners.Add(
-                    new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
-                        DateTime.Now.Day)));
+                //_logManager.Sources.Add(strategy);
+                //_logManager.Listeners.Add(
+                //    new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
+                //        DateTime.Now.Day)));
                 _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                 //var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias,strategy);
@@ -821,9 +828,25 @@ namespace AistTrader
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
 
                     ChStrategy agent =  strategyOrGroup.ActualStrategyRunning as ChStrategy;
-                    var themIDs= agent.TransactionIDs;
-                    var agentInStorage = Instance.AgentsStorage.FirstOrDefault(i => i.Name == agent.Name);
-                    agentInStorage.Params.TransactionId.AddRange(agent.TransactionIDs.ToList());
+
+                    var themIDs = agent.TransactionIDs;//new List<long>() { 100,200}
+
+                    var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == agent.Name);
+
+                    if(themIDs.Count > 0)
+                    {
+                        if (agentManagerStorage.TransactionIdHistory == null)
+                        {
+                            agentManagerStorage.TransactionIdHistory  = new List<long>();
+                        }
+                            
+                            agentManagerStorage.TransactionIdHistory.AddRange(themIDs);
+                       
+                        
+                    }
+                   
+                    //var agentInStorage = Instance.AgentsStorage.FirstOrDefault(i => i.Name == agent.Name);
+                    //agentInStorage.Params.TransactionId.AddRange(agent.TransactionIDs.ToList());
 
 
 
@@ -834,6 +857,7 @@ namespace AistTrader
                     item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
                     item.AgentManagerSettings.AgentMangerCurrentStatus =ManagerParams.AgentManagerStatus.Stopped; ;
                 }
+                SaveAgentManagerSettings();
                 UpdateAgentManagerListView();
             }
         }

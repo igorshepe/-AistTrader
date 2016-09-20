@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Ecng.Common;
@@ -13,15 +13,21 @@ using StockSharp.Messages;
 using Strategies.Common;
 using Strategies.Settings;
 using System.Collections.Generic;
+using System.IO;
+using Ecng.Collections;
+using StockSharp.Algo.Strategies.Protective;
 
 namespace Strategies.Strategies
 {
     public class ChStrategy : Strategy, IOptionalSettings
 
     {
+          
         private static readonly Logger TradesLogger = NLog.LogManager.GetLogger("TradesLogger");
 
         private ICandleManager _candleManager;
+        private Order _newOrder;
+        
         private bool _sendOrder;
         private CandleSeries _series;
         private bool _isFinish;
@@ -46,19 +52,62 @@ namespace Strategies.Strategies
         private bool _enterPosition;
         private Order _registeredOrder;
         private readonly string _nameGroup;
+        private List<long> _history; 
         private string _nameStrategy;
         private bool _firstLap = true;
         private long _transactionId;
         private bool _stopStrategy;
+        private bool _isOrdersLoaded;
+        private bool _isStopOrdersLoaded;
+
+
+
+
 
         public ChStrategy()
         {
 
         }
 
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup)
+         
+
+        protected override IEnumerable<Order> ProcessNewOrders(IEnumerable<Order> newOrders)
+             
+        {
+            if (_history[0].ToString() == "0")
+            {
+                Task.Run(() => TradesLogger.Info("{0}: Истории ордеров по данной стратегии нет ", _nameStrategy ));
+                return base.ProcessNewOrders(newOrders);
+            }
+           
+
+            return Filter(newOrders);
+        }
+
+        public override void RegisterOrder(Order order)
+        {
+            // отравляем заявку дальше на регистрацию
+            base.RegisterOrder(order);
+
+            TransactionIDs.Add(order.TransactionId);
+            // добавляем новый номер транзакции
+            //File.AppendAllLines("orders_{0}.txt".Put(Name), new[] { order.TransactionId.ToString() });
+        }
+
+        private IEnumerable<Order> Filter(IEnumerable<Order> orders)
+        {
+            // считываем номера транзакций из файла
+            var transactions = _history;
+            var dd = orders.Where(o => transactions.Contains(o.TransactionId));
+            Task.Run(() => TradesLogger.Info("{0}: Есть данные по ордерам , всего ордеров из файла: {1}", _nameStrategy, transactions.Count));
+            Task.Run(() => TradesLogger.Info("{0}: Есть данные по ордерам , всего ордеров после сравенения с биржей: {1}", _nameStrategy, dd.Count()));
+            // находим наши заявки по считанным номерам
+            return dd;
+        }
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup, List<long> history )
         {
             _nameGroup = nameGroup;
+            _history = history;
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
             settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
@@ -166,11 +215,32 @@ namespace Strategies.Strategies
             return nameStrategy;
         }
 
+
+        private void OnNewOrderTrades(IEnumerable<MyTrade> trades)
+        {
+            // для каждой сделки добавляем защитную пару стратегии
+            var protectiveStrategies = trades.Select(t =>
+            {
+                 
+
+                // выставляет стоп-лосс в 20 пунктов
+                var stopLoss = new StopLossStrategy(t, 20);
+
+                return stopLoss;
+            });
+
+            ChildStrategies.AddRange(protectiveStrategies);
+        }
+
+
         protected override void OnStarted()
         {
-            //var transID = Connector.Orders.FirstOrDefault(i => i.TransactionId == ti);
-            //this.AttachOrder(transID, myTrades);   ???
+
+         
             _nameStrategy = CheckNameGroup();
+
+            ProcessNewOrders(Connector.StopOrders) ;
+            ProcessNewOrders(Connector.Orders) ;
 
 
             base.OnStarted();
@@ -190,6 +260,12 @@ namespace Strategies.Strategies
             {
                 WorkingTime = ExchangeBoard.Forts.WorkingTime
             };
+
+            // Подписываемся на события новой сделки для стоплосс
+            //this.WhenNewMyTrades()
+            //  .Do(OnNewOrderTrades)
+            //  .Apply(this);
+             
 
             // создаем правило на появление завершенной свечи
             _candleManager // объект, к которому применяется правило
@@ -215,6 +291,7 @@ namespace Strategies.Strategies
         protected override void OnStopping()
         {
 
+            CancelOrdersWhenStopping = true;
             _isFinish = true;
             var fix = TransactionIDs;
             CancelActiveOrders();
@@ -224,6 +301,7 @@ namespace Strategies.Strategies
 
         protected override void OnStopped()
         {
+            
             var fix = TransactionIDs;
             Task.Run(() => TradesLogger.Info("{0}: STOP", _nameStrategy));
         }
@@ -335,7 +413,7 @@ namespace Strategies.Strategies
                         // "Опускаем" флаг. Теперь в ProcessCandles возобновится отработка логики стратегии
 
 
-                        TransactionIDs.Add(order.TransactionId);
+                        
                         _cancelOrderCandle = _cancelCandle;
                         // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                         Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
@@ -592,7 +670,7 @@ namespace Strategies.Strategies
                         // проверяем когда нужно снять все заявки в случае пропуска правильного входа или выхода
                         {
                             CancelActiveOrders();
-                            Connector.CancelOrder(_registeredOrder);
+                            //Connector.CancelOrder(_registeredOrder);
                             _sendOrder = false;
                             _cancelOrderCandle = _cancelCandle;
                         }
