@@ -355,7 +355,6 @@ namespace AistTrader
         {
             if (WorkMode == AgentWorkMode.Group)
             {
-                //TODO: определить необходимость удаления роу с грида для корректной прорисовки
                 var item = (Label)e.Source;
                 int index = (int)item.GetValue(Grid.RowProperty);
                 var cb = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
@@ -403,7 +402,7 @@ namespace AistTrader
 
             //todo: поменять логику, просто удалять то что нельзя вводить
             var unitItems = DynamicGrid.Children.OfType<UnitEditor>().Select(i => i).ToList();
-            if (!IsEditMode && WorkMode== AgentWorkMode.Single && unitItems.Count==1)
+            if (!IsEditMode && WorkMode == AgentWorkMode.Single && unitItems.Count == 1)
             {
                 MessageBox.Show("Group can not be composed with 1 script");
                 return;
@@ -427,15 +426,15 @@ namespace AistTrader
             }
 
             if (IsEditMode)
-             {
+            {
                 if (WorkMode == AgentWorkMode.Group)
                 {
-                    var oldItems =MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName).ToList();
+                    var oldItems = MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName).ToList();
                     List<Agent> newMembersOfCurrentGroup = new List<Agent>();
 
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
-                        
+
                         var x = DynamicGrid.Children.OfType<ComboBox>().ToList();
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
@@ -448,7 +447,7 @@ namespace AistTrader
                                 var isInCollection = oldItems.Any(i => i.Name == algorithmName);
                                 if (oldItems.Any(i => i.Name == algorithmName))
                                 {
-                                    var item = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name== algorithmName &&  i.Params.GroupName == OldGroupName);
+                                    var item = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name == algorithmName && i.Params.GroupName == OldGroupName);
                                     item.Params.PhantomParams.AgentName = item.Name;
                                     item.Params.PhantomParams.Amount = item.Params.Amount;
                                     item.Params.PhantomParams.GroupName = item.Params.GroupName;
@@ -481,7 +480,7 @@ namespace AistTrader
                                             //////var form = new GroupAdditionSecurityPicker(ite/m);
                                             //////form.ShowDialog();
                                             //////item.Params.Security = form.SelectedSecurity;
-                                            
+
                                             // ???
                                             //MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                             editCount++;
@@ -495,7 +494,7 @@ namespace AistTrader
                                                 decimal? calculatedAmount = 0;
                                                 if (ueAmount.Value.Type == UnitTypes.Percent)
                                                 {
-                                                    var amToCalculateAmount =MainWindow.Instance.AgentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == amItem.AgentOrGroupName);
+                                                    var amToCalculateAmount = MainWindow.Instance.AgentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == amItem.AgentOrGroupName);
 
                                                     calculatedAmount = MainWindow.Instance.CalculateAmount(amToCalculateAmount, item);
                                                     runnigStrategy.ActualStrategyRunning.Volume = /*Convert.ToDecimal(itemToEdit.Params.Amount)*/ (decimal)calculatedAmount;
@@ -503,7 +502,7 @@ namespace AistTrader
                                                 if (ueAmount.Value.Type == UnitTypes.Absolute)
                                                 {
                                                     calculatedAmount = ueAmount.Value.To<decimal>();
-                                                    runnigStrategy.ActualStrategyRunning.Volume =(decimal)calculatedAmount;
+                                                    runnigStrategy.ActualStrategyRunning.Volume = (decimal)calculatedAmount;
                                                 }
                                             }
                                         }
@@ -538,7 +537,7 @@ namespace AistTrader
                                 else
                                 {
                                     List<Agent> list = new List<Agent>();
-                                    var agentStorageCollection =MainWindow.Instance.AgentsStorage.Where(a =>a.Params.FriendlyName == algorithmName &&a.Params.GroupName == "ungrouped agents").ToList();
+                                    var agentStorageCollection = MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == "ungrouped agents").ToList();
                                     foreach (var rs in agentStorageCollection)
                                     {
                                         var newAgent = (Agent)rs.Clone();
@@ -577,7 +576,7 @@ namespace AistTrader
                                                 {
 
                                                     var runningAgents = MainWindow.Instance.AgentConnnectionManager;
-                                                    var alreadyRunnig =runningAgents.Any(i =>i.AgentOrGroupName == item.AgentManagerUniqueId && i.ActualStrategyRunning.Name == newAgent.Name);
+                                                    var alreadyRunnig = runningAgents.Any(i => i.AgentOrGroupName == item.AgentManagerUniqueId && i.ActualStrategyRunning.Name == newAgent.Name);
                                                     if (alreadyRunnig)
                                                     {
                                                         //??????
@@ -615,7 +614,7 @@ namespace AistTrader
                                                             //todo: добавить инфу в логи о совершенном действии
                                                         }
                                                     }
-                                                    
+
                                                 }
                                             }
                                         }
@@ -669,7 +668,7 @@ namespace AistTrader
 
                                 var form = new GroupAdditionDeleteMode(oldItem.Name.ToString());
                                 form.ShowDialog();
-                                var selectedMode=  form.SelectedDeleteMode;
+                                var selectedMode = form.SelectedDeleteMode;
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                                 {
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
@@ -745,7 +744,7 @@ namespace AistTrader
                                     }
 
                                 }
-                                
+
                             }
                     }
                 }
@@ -758,7 +757,7 @@ namespace AistTrader
                 {
                     foreach (var item in MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName/*GroupNameTxtBox.Text*/).ToList())
                     {
-                        MainWindow.Instance.DelAgentConfigBtnClick(item,null);
+                        MainWindow.Instance.DelAgentConfigBtnClick(item, null);
                     }
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
@@ -815,7 +814,7 @@ namespace AistTrader
                 }
                 Close();
             }
-            
+
         }
         private void StratSettings_Loaded(object sender, RoutedEventArgs e)
         {
