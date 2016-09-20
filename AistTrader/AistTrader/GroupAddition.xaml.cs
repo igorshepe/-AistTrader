@@ -357,12 +357,15 @@ namespace AistTrader
             {
                 //TODO: определить необходимость удаления роу с грида для корректной прорисовки
                 var item = (Label)e.Source;
+                int index = (int)item.GetValue(Grid.RowProperty);
                 var cb = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 var tb = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 DynamicGrid.Children.Remove(cb);
                 DynamicGrid.Children.Remove(tb);
                 var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 DynamicGrid.Children.Remove(label);
+
+                DynamicGrid.RowDefinitions.RemoveAt(index);
             }
             else
             {
