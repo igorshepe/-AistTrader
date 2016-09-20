@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\
+C:\Repository\-AistTrader\AistTrader\AistTrader\obj\x64\Debug\
 AistTrader
 none
 false
 
-C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\AistTrader\App.xaml
+C:\Repository\-AistTrader\AistTrader\AistTrader\App.xaml
 181192114235
 1-2138471434
-29497859267
-43-147527097
+29-145432066
+43880379206
 GroupAdditionDeleteMode.xaml;GroupAdditionSecurityPicker.xaml;ManagerAdditionTradeSettings.xaml;Артём-Тест\MyTradesWindow.xaml;Артём-Тест\OrdersWindow.xaml;Артём-Тест\PortfoliosWindow.xaml;Артём-Тест\QuotesWindow.xaml;Resources\Icons.xaml;Артём-Тест\SecuritiesSelectorWindow.xaml;Артём-Тест\SecuritiesWindow.xaml;WhatsNew.xaml;MainWindow.xaml;AgentAddition.xaml;ConnectionAddition.xaml;GroupAddition.xaml;ManagerAddition.xaml;PortfolioAddition.xaml;AgentSettings.xaml;
 
 False
