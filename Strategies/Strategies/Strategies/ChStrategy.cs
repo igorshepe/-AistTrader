@@ -110,9 +110,14 @@ namespace Strategies.Strategies
             _history = history;
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
-            settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
+            bool parsed = settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
 
-            TimeSpan tstest = new TimeSpan(0, 0, int.Parse(obj.ToString()));
+            string[] parts = obj.ToString().Split(":");
+            TimeSpan tstest = parsed
+                ? parts.Length == 3
+                    ? new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]))
+                    : new TimeSpan(0, 0, int.Parse(parts[0]))
+                : new TimeSpan(0, 1, 0);
 
 
             _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, tstest);

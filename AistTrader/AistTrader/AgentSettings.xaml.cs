@@ -48,41 +48,31 @@ namespace AistTrader
         {
             AgentSettingsStorage = new ObservableCollection<object>();
 
-            //SettingsStorage = settingsStorage;
             Settings = settings;
             var type  = settings.GetType();
             
             InitializeComponent();
-            Settings.Load(SettingsStorage);
-            //Type type = typeof (CandleStrategySettings);
+            Settings.Load(settingsStorage ?? SettingsStorage);
             PropertyInfo[] properties = type.GetProperties();   
             foreach (PropertyInfo property in properties)
             {
                 var agentSettingsProperty = new AgentSettingParameterProperty();
                 agentSettingsProperty.Name = property.Name;
-                
+
                 if (property.Name == "TimeFrame")
                 {
                     TimeSpan ts = (TimeSpan)property.GetValue(Settings);
                     agentSettingsProperty.Parametr = (decimal)ts.TotalSeconds;
-
-                   // if (SettingsStorage != null) SettingsStorage.Add(property.Name, ts);
                 }
-                
-                //{
-                    //agentSettingsProperty.Parametr = test;
-                    //                    agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
-                //}
                 else
+                {
                     agentSettingsProperty.Parametr = (decimal)property.GetValue(Settings);
+                }
 
-                //agentSettingsProperty.UseInAgentName = false;
                 AgentSettingsStorage.Add(agentSettingsProperty);
             }
             AgentSettingsDG.ItemsSource = AgentSettingsStorage;
             FillAgentSettings();
-            //SettingsStorage = AgentSettingsStorage;
-
         }
 
         public void FillAgentSettings()
@@ -96,17 +86,17 @@ namespace AistTrader
                     SettingsStorage.Add(sett.Name, TimeFrame.TotalSeconds);
                 }
                 else
+                {
                     SettingsStorage.Add(sett.Name, sett.Parametr);
-                
+                }
             }
-
         }
 
         private void OkButtonClick(object sender, RoutedEventArgs e)
         {
             FillAgentSettings();
             //SettingsStorage = Settings.Save();
-            if (SettingsStorage == null) return;
+            if (SettingsStorage == null) { return; }
             DialogResult = true;
         }
     }

@@ -92,7 +92,9 @@ namespace Strategies.Settings
         public override void Load(SerializableDictionary<string, object> settingsStorage)
         {
             TimeFrame = settingsStorage != null && settingsStorage.ContainsKey(ChStrategyDefaultSettings.TimeFrameString)
-                        ? TimeSpan.Parse((string)settingsStorage[ChStrategyDefaultSettings.TimeFrameString])
+                        ? settingsStorage[ChStrategyDefaultSettings.TimeFrameString] is double
+                            ? TimeSpan.FromSeconds((double)settingsStorage[ChStrategyDefaultSettings.TimeFrameString])
+                            : TimeSpan.Parse((string)settingsStorage[ChStrategyDefaultSettings.TimeFrameString])
                         : ChStrategyDefaultSettings.TimeFrame;
              
             FastSma = settingsStorage != null && settingsStorage.ContainsKey(ChStrategyDefaultSettings.FastSmaString)
