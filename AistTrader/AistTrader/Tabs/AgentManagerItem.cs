@@ -586,7 +586,7 @@ namespace AistTrader
                 strategy = new Strategy();
 
                 var history = new List<long> {0};
-                if (agentOrGroup.TransactionIdHistory!= null && agentOrGroup.TransactionIdHistory.Count > 1)
+                if (agentOrGroup.TransactionIdHistory!= null && agentOrGroup.TransactionIdHistory.Count >= 1)
                     history = agentOrGroup.TransactionIdHistory;
                 
                 strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, "single", history);
