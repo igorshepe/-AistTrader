@@ -335,9 +335,9 @@ namespace AistTrader
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("This configuration is in a group,edit the whole group?", "Group Edit", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes)
-                {
+                //MessageBoxResult result = MessageBox.Show("This configuration is in a group,edit the whole group?", "Group Edit", MessageBoxButton.YesNo);
+                //if (result == MessageBoxResult.Yes)
+                //{
                     var listToEdit = AgentListView.SelectedItems.Cast<Agent>().ToList();
                     foreach (var addQuikWindow in from agentConfigs in listToEdit
                                                   let index = AgentsStorage.IndexOf(agentConfigs)
@@ -348,20 +348,20 @@ namespace AistTrader
                         addQuikWindow.ShowDialog();
                         SaveAgentSettings();
                     }
-                }
-                else if (result == MessageBoxResult.No)
-                {
-                    var listToEdit = AgentListView.SelectedItems.Cast<Agent>().ToList();
-                    foreach (var addQuikWindow in from agentConfigs in listToEdit
-                                                  let index = AgentsStorage.IndexOf(agentConfigs)
-                                                  where index != -1
-                                                  select new GroupAddition(agentConfigs, index, AgentWorkMode.Single))
-                    {
-                        addQuikWindow.Title = "Edit configuration";
-                        addQuikWindow.ShowDialog();
-                        SaveAgentSettings();
-                    }
-                }
+                //}
+                //else if (result == MessageBoxResult.No)
+                //{
+                //    var listToEdit = AgentListView.SelectedItems.Cast<Agent>().ToList();
+                //    foreach (var addQuikWindow in from agentConfigs in listToEdit
+                //                                  let index = AgentsStorage.IndexOf(agentConfigs)
+                //                                  where index != -1
+                //                                  select new GroupAddition(agentConfigs, index, AgentWorkMode.Single))
+                //    {
+                //        addQuikWindow.Title = "Edit configuration";
+                //        addQuikWindow.ShowDialog();
+                //        SaveAgentSettings();
+                //    }
+                //}
             }
         }
         public void AddNewAgent(Agent agent, int editIndex)
