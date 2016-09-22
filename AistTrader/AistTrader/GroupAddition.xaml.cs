@@ -345,7 +345,7 @@ namespace AistTrader
                 {
                     string text = (string)cb.SelectedItem;
                     cb.ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents"
-                        && !excluded.Any(x => x == i.Name) || i.Name == currentTxt && cb == cbox || i.Name == text && cb != cbox).Select(i => i.Params.FriendlyName);
+                        && (!excluded.Any(x => x == i.Name) || i.Name == currentTxt && cb == cbox || i.Name == text && cb != cbox)).Select(i => i.Params.FriendlyName);
                     cb.SelectedIndex = cb.Items.IndexOf(text);
                 }
 
