@@ -336,8 +336,19 @@ namespace AistTrader
         {
             int count = 0;
             var cbox = sender as ComboBox;
+            string currentTxt = (string)cbox.SelectedItem;
             if (cbox.SelectedItem != null)
             {
+                List<string> excluded = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.SelectedItem != null).Select(c => (string)c.SelectedItem).ToList();
+
+                foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
+                {
+                    string text = (string)cb.SelectedItem;
+                    cb.ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents"
+                        && !excluded.Any(x => x == i.Name) || i.Name == currentTxt && cb == cbox || i.Name == text && cb != cbox).Select(i => i.Params.FriendlyName);
+                    cb.SelectedIndex = cb.Items.IndexOf(text);
+                }
+
                 foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name != cbox.Name && c.SelectedItem != null))
                 {
                     if (cb.SelectedItem.ToString() == cbox.SelectedItem.ToString())
@@ -364,7 +375,7 @@ namespace AistTrader
                 var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 DynamicGrid.Children.Remove(label);
 
-                DynamicGrid.RowDefinitions.RemoveAt(index);
+                DynamicGrid.RowDefinitions[index].Height = new GridLength(0);
             }
             else
             {
