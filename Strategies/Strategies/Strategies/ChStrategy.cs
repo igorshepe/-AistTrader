@@ -68,42 +68,8 @@ namespace Strategies.Strategies
         {
 
         }
+        
 
-         
-
-        protected override IEnumerable<Order> ProcessNewOrders(IEnumerable<Order> newOrders)
-             
-        {
-            if (_history[0].ToString() == "0")
-            {
-                Task.Run(() => TradesLogger.Info("{0}: Истории ордеров по данной стратегии нет ", _nameStrategy ));
-                return base.ProcessNewOrders(newOrders);
-            }
-           
-
-            return Filter(newOrders);
-        }
-
-        public override void RegisterOrder(Order order)
-        {
-            // отравляем заявку дальше на регистрацию
-            base.RegisterOrder(order);
-
-            TransactionIDs.Add(order.TransactionId);
-            // добавляем новый номер транзакции
-            //File.AppendAllLines("orders_{0}.txt".Put(Name), new[] { order.TransactionId.ToString() });
-        }
-
-        private IEnumerable<Order> Filter(IEnumerable<Order> orders)
-        {
-            // считываем номера транзакций из файла
-            var transactions = _history;
-            var dd = orders.Where(o => transactions.Contains(o.TransactionId));
-            Task.Run(() => TradesLogger.Info("{0}: Есть данные по ордерам , всего ордеров из файла: {1}", _nameStrategy, transactions.Count));
-            Task.Run(() => TradesLogger.Info("{0}: Есть данные по ордерам , всего ордеров после сравенения с биржей: {1}", _nameStrategy, dd.Count()));
-            // находим наши заявки по считанным номерам
-            return dd;
-        }
         public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup, List<long> history )
         {
             _nameGroup = nameGroup;
@@ -221,37 +187,48 @@ namespace Strategies.Strategies
         }
 
 
-        private void OnNewOrderTrades(IEnumerable<MyTrade> trades)
+        
+        public void GetHistory(IEnumerable<Order> orderConnector )
         {
-            // для каждой сделки добавляем защитную пару стратегии
-            var protectiveStrategies = trades.Select(t =>
+            if (_history[0].ToString() == "0")
             {
-                 
+                Task.Run(() => TradesLogger.Info("{0}: No historical orders", _nameStrategy));
 
-                // выставляет стоп-лосс в 20 пунктов
-                var stopLoss = new StopLossStrategy(t, 20);
+            }
+            else
+            {
+                
+                Task.Run(() => TradesLogger.Info("{0}: historical strategy orders: {1}, Connector orders: {2} ", _nameStrategy, _history.Count, orderConnector.Count()));
+                var orders = orderConnector.Where(o => _history.Contains(o.TransactionId));
 
-                return stopLoss;
-            });
+                if (orders.Any())
+                {
+                    foreach (var order in orders)
+                    {
+                       var trades = Connector.MyTrades.Where(t => t.Order.TransactionId == order.TransactionId);
 
-            ChildStrategies.AddRange(protectiveStrategies);
+                        AttachOrder(order, trades);
+                    }
+                }
+            }
+
         }
-
 
         protected override void OnStarted()
         {
-
+            
          
             _nameStrategy = CheckNameGroup();
 
-            ProcessNewOrders(Connector.StopOrders) ;
-            ProcessNewOrders(Connector.Orders) ;
+            GetHistory(Connector.Orders);
+            //ProcessNewOrders(Connector.StopOrders) ;
+            //ProcessNewOrders(Connector.Orders) ;
 
 
             base.OnStarted();
 
 
-            Task.Run(() => TradesLogger.Info("{0}: START, Security: {1}", _nameStrategy, Security.Code));
+            Task.Run(() => TradesLogger.Info("{0}: START, Security {1}", _nameStrategy, Security.Code));
 
             // Получаем CandleManager 
             _candleManager = this.GetCandleManager();
@@ -372,14 +349,14 @@ namespace Strategies.Strategies
             {
 
 
-                Task.Run(() => TradesLogger.Info("{0}: New order, Market price {1}, {2}, vol {3}, Security: {4}", _nameStrategy, order.Price, order.Direction, order.VisibleVolume, Security.Code));
+                Task.Run(() => TradesLogger.Info("{0}: New order, Market price {1}, {2}, vol {3}, Security {4}", _nameStrategy, order.Price, order.Direction, order.VisibleVolume, Security.Code));
                 // Создаем правило на событие отмены заявки
 
                 var orderCanceledRule = order.WhenCanceled(Connector).Do(o =>
                 {
 
                     _sendOrder = false;
-                    Task.Run(() => TradesLogger.Info("{0}: Order Canceled, error {1}, Security: {2}", _nameStrategy, o.Messages, Security.Code));
+                    Task.Run(() => TradesLogger.Info("{0}: Order Canceled, error {1}, Security {2}", _nameStrategy, o.Messages, Security.Code));
                     // TODO
                 }).Once();
 
@@ -392,7 +369,7 @@ namespace Strategies.Strategies
                     _registeredOrder = order;
                     this.AddInfoLog(o.ToString());
                     // Переводим в рабочее состояние
-                    Task.Run(() => TradesLogger.Info("{0}: Order {1} Registered, Security: {2}", _nameStrategy, order.TransactionId, Security.Code));
+                    Task.Run(() => TradesLogger.Info("{0}: Order {1} Registered, Security {2}", _nameStrategy, order.TransactionId, Security.Code));
 
                     orderCanceledRule.Apply(this);
                 });
@@ -403,7 +380,7 @@ namespace Strategies.Strategies
                 order.WhenRegisterFailed(Connector).Do((o, of) =>
                 {
                     _sendOrder = false;
-                    Task.Run(() => TradesLogger.Info("{0}: Order register Failed {1}, {2}, Security: {3}", _nameStrategy, order.TransactionId, of.Error, Security.Code));
+                    Task.Run(() => TradesLogger.Info("{0}: Order register Failed {1}, {2}, Security {3}", _nameStrategy, order.TransactionId, of.Error, Security.Code));
                     this.AddErrorLog(of.Error);
                 })
                 .Apply(this);
@@ -423,7 +400,8 @@ namespace Strategies.Strategies
                         // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                         Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
                         var averagePrice = order.GetAveragePrice(Connector);
-                        Task.Run(() => TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3:0}, Security: {4}", _nameStrategy, order.TransactionId, order.Volume, averagePrice, Security.Code));
+                        Task.Run(() => TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3:0}, Security {4}, {5}", _nameStrategy, order.TransactionId, order.Volume, averagePrice, Security.Code, order.Direction));
+                        
                         // Удаляет определенное правило
                         // this.Rules.Remove(orderCanceledRule)
 
@@ -436,7 +414,8 @@ namespace Strategies.Strategies
                             Stop();
                         }
 
-
+                        Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}, Security {7}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position, Security.Code));
+                         
                     })
                     .Once()
                     .Apply(this);
@@ -449,7 +428,7 @@ namespace Strategies.Strategies
                     //var trade = MyTrades.Last();
                     var trade = trades.Last();
 
-                    Task.Run(() => TradesLogger.Info("{0}: Trade price {1:0}, vol {2}, slip {3:0}, Security: {4}", _nameStrategy, trade.Trade.Price, trade.Trade.Volume, trade.Slippage, Security.Code));
+                    Task.Run(() => TradesLogger.Info("{0}: Trade price {1:0}, vol {2}, slip {3:0}, Security {4}, {5}", _nameStrategy, trade.Trade.Price, trade.Trade.Volume, trade.Slippage, Security.Code, trade.Trade.OrderDirection));
                 })
                 .Apply(this);
 
@@ -457,7 +436,7 @@ namespace Strategies.Strategies
             }
             catch (Exception e)
             {
-                Task.Run(() => TradesLogger.Info("{0}: Erorr order {1}, Security: {2}", _nameStrategy, e.Source, Security.Code));
+                Task.Run(() => TradesLogger.Info("{0}: Erorr order {1}, Security {2}", _nameStrategy, e.Source, Security.Code));
                 throw;
             }
 
@@ -610,7 +589,7 @@ namespace Strategies.Strategies
                             _enterPosition = false; // блокируем вход и выход в одной свече
                             _midPriceCh = _midChValue;
                             order = GetOrder(Sides.Buy, _midPriceCh, true);
-                            Task.Run(() => TradesLogger.Info("{0}: SX {1:0}, Candle_HP {2:0} > MidCH {3:0}, Security: {4} ", _nameStrategy, _midPriceCh, candle.HighPrice,
+                            Task.Run(() => TradesLogger.Info("{0}: SX {1:0}, Candle_HP {2:0} > MidCH {3:0}, Security {4} ", _nameStrategy, _midPriceCh, candle.HighPrice,
                                 _midChValue, Security.Code));
                         }
                     }
@@ -622,7 +601,7 @@ namespace Strategies.Strategies
                             _enterPosition = false; // блокируем вход и выход в одной свече
                             _midPriceCh = _midChValue;
                             order = GetOrder(Sides.Sell, _midPriceCh, true);
-                            Task.Run(() => TradesLogger.Info("{0}: LX {1:0}, Candle_LP {2:0} < MidCH {3:0}, Security: {4}", _nameStrategy, _midPriceCh, candle.LowPrice,
+                            Task.Run(() => TradesLogger.Info("{0}: LX {1:0}, Candle_LP {2:0} < MidCH {3:0}, Security {4}", _nameStrategy, _midPriceCh, candle.LowPrice,
                                 _midChValue, Security.Code));
                         }
                     }
@@ -719,7 +698,8 @@ namespace Strategies.Strategies
                 }
                 else
                 {
-                    Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
+                    Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}, Security {7}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position, Security.Code));
+
                 }
 
             }
