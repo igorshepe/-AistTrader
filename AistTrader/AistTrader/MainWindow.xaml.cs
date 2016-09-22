@@ -84,7 +84,7 @@ namespace AistTrader
         
         public string DefaultConnectionStatusBarText
         {
-            get { return _defaultConnectionStatusBarText; }
+            get { return string.Format("{0}   {1}", _defaultConnectionStatusBarText, ApplicationDeployment.IsNetworkDeployed ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4) : string.Empty); }
             set
             {
                 _defaultConnectionStatusBarText = value;
