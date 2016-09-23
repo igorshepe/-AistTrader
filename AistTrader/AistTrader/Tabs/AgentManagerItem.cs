@@ -48,7 +48,7 @@ namespace AistTrader
 
         public bool _allManagerAgentsChecked;
 
-
+        private AgentManager currentAgentManager;
 
 
         public AistTraderStrategiesConnnectionManager AgentConnnectionManager;
@@ -402,6 +402,7 @@ namespace AistTrader
         private string ActiveConnectionName(AgentManager agentOrGroupName)
         {
             var portfolioName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentOrGroupName.AgentManagerSettings.Portfolio.Name);
+            //var portfolioName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Connection.DisplayName == agentOrGroupName.AgentManagerSettings.Portfolio.Connection.DisplayName);
             return portfolioName.Connection.DisplayName;
         }
 
@@ -761,7 +762,7 @@ namespace AistTrader
             if (pressedButton.Content.ToString() == ManagerParams.AgentManagerOperationCommand.Start.ToString())
             {
                 //ON 
-                var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
+                var agentOrGroup = currentAgentManager = (sender as FrameworkElement).DataContext as AgentManager;
                 var conName = ActiveConnectionName(agentOrGroup);
                 if (conName != null)
                     Task.Run(() => Logger.Info("Checking related connection - \"{0}\"..", conName));
