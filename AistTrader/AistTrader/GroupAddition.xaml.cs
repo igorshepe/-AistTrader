@@ -20,10 +20,7 @@ namespace AistTrader
     public partial class GroupAddition
     {
         //TODO: добавитть верификацию и реджекс на ввод данных в динамических полях
-
-
         public int RowSetter;
-        // public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public Agent AgentItem;
         public string OldGroupName;
         private int EditIndex { get; set; }
@@ -34,21 +31,18 @@ namespace AistTrader
         public List<Agent> ItemsToDelete;
         private int removeCount;
         private int editCount;
+
         public GroupAddition()
         {
             InitializeComponent();
             EditIndex = int.MinValue;
             WorkMode = AgentWorkMode.Group;
-            //AgentsStorage = new ObservableCollection<Agent>();
-            //LoadSettings();
         }
 
         public GroupAddition(Agent agent, int editIndex, AgentWorkMode editMode)
         {
-            //AgentsStorage = new ObservableCollection<Agent>();
             AgentItem = agent;
             InitializeComponent();
-            //LoadSettings();
             IsEditMode = true;
             IsEnabledConfigBtn = true;
             WorkMode = editMode;
@@ -111,9 +105,13 @@ namespace AistTrader
                 amount.KeyUp += Amount_KeyUp;
 
                 if (IsEditMode && !AgentItem.Params.Amount.IsNull())
+                {
                     amount.Text = AgentItem.Params.Amount.ToString();
+                }
                 if (IsEditMode && !AgentItem.Params.GroupName.IsEmpty())
+                {
                     GroupNameTxtBox.Text = AgentItem.Params.GroupName;
+                }
                 var addDelControl = new Label
                 {
                     Foreground = Brushes.Red,
@@ -129,7 +127,9 @@ namespace AistTrader
                     Name = string.Format("{0}_{1}", "AddDelLabel", RowSetter)
                 };
                 if (IsEditMode)
+                {
                     AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
+                }
                 CreateGroupeBtn.Content = "Save";
                 DynamicGrid.RegisterName(amount.Name, amount);
 
@@ -142,7 +142,7 @@ namespace AistTrader
                 Grid.SetRow(addDelControl, RowSetter);
                 Grid.SetColumn(addDelControl, 2);
 
-                RowSetter++;
+                ++RowSetter;
                 DynamicGrid.Children.Add(cb);
                 DynamicGrid.Children.Add(amount);
                 DynamicGrid.Children.Add(addDelControl);
@@ -160,7 +160,9 @@ namespace AistTrader
                     DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
                 }
                 else
+                {
                     DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
+                }
                 var cb = new ComboBox
                 {
                     Height = 28,
@@ -181,13 +183,17 @@ namespace AistTrader
                     Width = 40,
                     Margin = new Thickness { Left = 0, Top = 5, Right = 0, Bottom = 0 },
                     Name = string.Format("{0}_{1}", "AmountTextBox", RowSetter)
-
                 };
+
                 amount.KeyUp += Amount_KeyUp;
                 if (IsEditMode && !AgentItem.Params.Amount.IsNull())
+                {
                     amount.Text = AgentItem.Params.Amount.ToString();
+                }
                 if (IsEditMode && !AgentItem.Params.GroupName.IsEmpty())
+                {
                     GroupNameTxtBox.Text = AgentItem.Params.GroupName;
+                }
                 var addDelControl = new Label
                 {
                     Foreground = Brushes.Red,
@@ -204,12 +210,18 @@ namespace AistTrader
                 };
                 DynamicGrid.RegisterName(addDelControl.Name, addDelControl);
                 if (RowSetter > 0)
+                {
                     addDelControl.Content = "x";
+                }
                 if (IsEditMode)
+                {
                     AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
+                }
                 CreateGroupeBtn.Content = "Save";
                 if (RowSetter != 0)
+                {
                     addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
+                }
                 DynamicGrid.RegisterName(amount.Name, amount);
 
                 Grid.SetRow(cb, RowSetter);
@@ -221,13 +233,14 @@ namespace AistTrader
                 Grid.SetRow(addDelControl, RowSetter);
                 Grid.SetColumn(addDelControl, 2);
 
-                RowSetter++;
+                ++RowSetter;
                 DynamicGrid.Children.Add(cb);
                 DynamicGrid.Children.Add(amount);
                 DynamicGrid.Children.Add(addDelControl);
                 CreateGroupBtnHelper();
             }
         }
+
         private void Amount_KeyUp(object sender, KeyEventArgs e)
         {
             Regex regex = new Regex(@"^[0-9]+$");
@@ -237,23 +250,21 @@ namespace AistTrader
                 string[] line = editor.Text.Split('%');
                 if (!regex.IsMatch(line.First()))
                 {
-                    //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
-                    editor.Text = "";
+                    editor.Text = string.Empty;
                     return;
-                    // editor.Select(editor.Text.Length, 0);
                 }
             }
+
             if (!editor.Text.EndsWith("%"))
             {
                 if (!regex.IsMatch(editor.Text))
                 {
-                    //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
-                    editor.Text = "";
+                    editor.Text = string.Empty;
                     return;
-                    //editor.Select(editor.Text.Length, 0);
                 }
             }
         }
+
         //TODO: check that method
         private void AddConfigBtnClick(object sender, RoutedEventArgs e)
         {
@@ -266,7 +277,9 @@ namespace AistTrader
                 DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
             }
             else
+            {
                 DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
+            }
 
             List<string> excluded = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.SelectedItem != null).Select(c => c.Text).ToList();
 
@@ -291,7 +304,9 @@ namespace AistTrader
             };
             amount.KeyUp += Amount_KeyUp; ;
             if (IsEditMode && !AgentItem.Params.GroupName.IsEmpty())
+            {
                 GroupNameTxtBox.Text = AgentItem.Params.GroupName;
+            }
             var addDelControl = new Label
             {
                 Foreground = Brushes.Red,
@@ -308,12 +323,18 @@ namespace AistTrader
             };
             DynamicGrid.RegisterName(addDelControl.Name, addDelControl);
             if (RowSetter > 0)
+            {
                 addDelControl.Content = "x";
+            }
             if (IsEditMode)
+            {
                 AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
+            }
             CreateGroupeBtn.Content = "Save";
             if (RowSetter != 0)
+            {
                 addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
+            }
             DynamicGrid.RegisterName(amount.Name, amount);
 
             Grid.SetRow(cb, RowSetter);
@@ -325,7 +346,7 @@ namespace AistTrader
             Grid.SetRow(addDelControl, RowSetter);
             Grid.SetColumn(addDelControl, 2);
 
-            RowSetter++;
+            ++RowSetter;
             DynamicGrid.Children.Add(cb);
             DynamicGrid.Children.Add(amount);
             DynamicGrid.Children.Add(addDelControl);
@@ -352,7 +373,9 @@ namespace AistTrader
                 foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name != cbox.Name && c.SelectedItem != null))
                 {
                     if (cb.SelectedItem.ToString() == cbox.SelectedItem.ToString())
-                        count++;
+                    {
+                        ++count;
+                    }
                     if (count == 1)
                     {
                         MessageBox.Show("Can not add the same script!");
@@ -362,6 +385,7 @@ namespace AistTrader
                 }
             }
         }
+
         void DelDynamicGridControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (WorkMode == AgentWorkMode.Group)
@@ -423,18 +447,6 @@ namespace AistTrader
                 MessageBox.Show("Group can not be composed with 1 script");
                 return;
             }
-            foreach (var i in unitItems)
-            {
-                try
-                {
-                    //i.Value = i.Text.ToUnit();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Incorrect amount value : {0}".Put(i.Text));
-                    return;
-                }
-            }
 
             if (IsEditMode)
             {
@@ -449,6 +461,7 @@ namespace AistTrader
                         var x = DynamicGrid.Children.OfType<ComboBox>().ToList();
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
+                        {
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
                                 var newItems = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)).ToList();
@@ -471,14 +484,10 @@ namespace AistTrader
                                     //go to agent manager related actions
 
                                     //проверяем запущена ли группа в менеджере агентов
-                                    //var amItemOnTheFly = MainWindow.Instance.AgentManagerStorage.Where(i => i.AgentManagerSettings.AgentOrGroup == item.Params.GroupName.ToString()).ToList();
                                     var amItemOnTheFly = MainWindow.Instance.AgentConnnectionManager.Strategies.Where(i => i.ActualStrategyRunning.Name == item.Name && i.AgentOrGroupName == item.Params.GroupName).ToList();
                                     //проход по запущенным агентам в менеджере???
                                     foreach (var amItem in amItemOnTheFly)
                                     {
-
-
-
                                         if (editCount == oldItems.Count)
                                         {
                                             break;
@@ -487,14 +496,10 @@ namespace AistTrader
                                         {
                                             //если группа запущена, расширение
                                             if (DynamicGrid.Children.OfType<ComboBox>().ToList().Count < oldItems.Count)
+                                            {
                                                 break;
-                                            //////var form = new GroupAdditionSecurityPicker(ite/m);
-                                            //////form.ShowDialog();
-                                            //////item.Params.Security = form.SelectedSecurity;
-
-                                            // ???
-                                            //MainWindow.Instance.AddNewAgentInGroup(item, index, false);
-                                            editCount++;
+                                            }
+                                            ++editCount;
                                             //go to agent manager related actions
                                             var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name.EndsWith(item.Name));
                                             if (runnigStrategy != null)
@@ -523,7 +528,9 @@ namespace AistTrader
                                             //определять что сейчас идет удаление элементов группы, что присваение инструмента не требуется!
                                             //определить что выбранный агент не зарегистрирован в группе, что он реально новый член группы
                                             if (isInCollection)
+                                            {
                                                 break;
+                                            }
                                             else
                                             {
                                                 var anyActiveConnection = MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
@@ -534,11 +541,6 @@ namespace AistTrader
                                                     Close();
                                                     return;
                                                     //todo: добавить инфу в логи о совершенном действии
-
-                                                    var form = new GroupAdditionSecurityPicker(item);
-                                                    form.ShowDialog();
-                                                    item.Params.Security = form.SelectedSecurity;
-                                                    form = null;
                                                 }
                                             }
                                         }
@@ -573,7 +575,6 @@ namespace AistTrader
                                             newAgent.Params.Security = form.SelectedSecurity;
                                             MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
                                             form = null;
-                                            //break;
                                             //todo: добавить инфу в логи о совершенном действии
                                         }
 
@@ -590,13 +591,11 @@ namespace AistTrader
                                                     var alreadyRunnig = runningAgents.Any(i => i.AgentOrGroupName == item.AgentManagerUniqueId && i.ActualStrategyRunning.Name == newAgent.Name);
                                                     if (alreadyRunnig)
                                                     {
-                                                        //??????
                                                         Close();
                                                     }
                                                     else
                                                     {
                                                         MainWindow.Instance.StartAfterEdit(newAgent, item);
-                                                        //MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
                                                     }
                                                 }
                                                 if (item.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped)
@@ -625,18 +624,13 @@ namespace AistTrader
                                                             //todo: добавить инфу в логи о совершенном действии
                                                         }
                                                     }
-
                                                 }
                                             }
                                         }
                                     }
-                                    //foreach (var i in list)
-                                    //{
-                                    //    MainWindow.Instance.AddNewAgentInGroup(i, -1, true);
-                                    //    newMembersOfCurrentGroup.Add(i);
-                                    //}
                                 }
                             }
+                        }
                     }
                     foreach (var oldItem in oldItems)
                     {
@@ -654,7 +648,7 @@ namespace AistTrader
                                 if (result == MessageBoxResult.OK)
                                 {
                                     MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
-                                    removeCount++;
+                                    ++removeCount;
                                     if (removeCount == ItemsToDeleteCollection.Count)
                                     {
                                         removeCount = 0; //убрать после тестов
@@ -663,7 +657,7 @@ namespace AistTrader
                                 }
                                 if (result == MessageBoxResult.Cancel)
                                 {
-                                    removeCount++;
+                                    ++removeCount;
                                     if (removeCount == ItemsToDeleteCollection.Count)
                                     {
                                         removeCount = 0; //убрать после тестов
@@ -704,6 +698,7 @@ namespace AistTrader
                     {
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
+                        {
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
                                 var amount = ue.Text;
@@ -713,13 +708,12 @@ namespace AistTrader
 
                                 int itemIndex = -1;
                                 foreach (var i in items)
+                                {
                                     itemIndex = MainWindow.Instance.AgentsStorage.IndexOf(i);
+                                }
                                 var itemToEdit = MainWindow.Instance.AgentsStorage[itemIndex];
-
                                 itemToEdit.Params.PhantomParams.AgentName = itemToEdit.Name;
                                 itemToEdit.Params.PhantomParams.Amount = itemToEdit.Params.Amount;
-                                //itemToEdit.Params.PhantomParams.GroupName = itemToEdit.Params.GroupName;
-
                                 itemToEdit.Params.Amount = amount;
                                 itemToEdit.Params.GroupName = groupName;
                                 itemToEdit.Name = algorithmName;
@@ -749,19 +743,13 @@ namespace AistTrader
                                             }
                                         }
                                     }
-                                    else
-                                    {
-                                        //offline
-                                    }
-
                                 }
-
                             }
+                        }
                     }
                 }
                 Close();
             }
-
             else
             {
                 if (WorkMode == AgentWorkMode.Group)
@@ -774,9 +762,9 @@ namespace AistTrader
                     {
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
+                        {
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
-
                                 var amount = ue.Text;
 
                                 string algorithmName = cb.Text;
@@ -791,13 +779,13 @@ namespace AistTrader
                                     newAgent.Params.ToolTipName = rs.Params.ToolTipName;
                                     list.Add(newAgent);
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(rs);
-                                    //MainWindow.Instance.AddNewAgent(newAgent, -1);
                                 }
                                 foreach (var i in list)
                                 {
                                     MainWindow.Instance.AddNewAgentInGroup(i, -1, false);
                                 }
                             }
+                        }
                     }
                 }
                 else
@@ -806,6 +794,7 @@ namespace AistTrader
                     {
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
+                        {
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
                                 var amount = ue.Text;
@@ -814,31 +803,34 @@ namespace AistTrader
                                 var items = MainWindow.Instance.AgentsStorage.Where(a => a.Params.FriendlyName == algorithmName && a.Params.GroupName == groupName).ToList();
                                 int itemIndex = -1;
                                 foreach (var i in items)
+                                {
                                     itemIndex = MainWindow.Instance.AgentsStorage.IndexOf(i);
+                                }
                                 var itemToEdit = MainWindow.Instance.AgentsStorage[itemIndex];
                                 itemToEdit.Params.Amount = amount;
                                 itemToEdit.Params.GroupName = groupName;
                                 itemToEdit.Name = algorithmName;
                                 MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
                             }
+                        }
                     }
                 }
                 Close();
             }
-
         }
+
         private void StratSettings_Loaded(object sender, RoutedEventArgs e)
         {
             if (!IsEditMode)
+            {
                 AddConfigBtnClick(sender, e);
+            }
             CreateGroupBtnHelper();
         }
+
         private void CreateGroupBtnHelper()
         {
-            if (DynamicGrid.Children.Count == 0)
-                CreateGroupeBtn.IsEnabled = false;
-            else
-                CreateGroupeBtn.IsEnabled = true;
+            CreateGroupeBtn.IsEnabled = DynamicGrid.Children.Count != 0;
         }
     }
 }

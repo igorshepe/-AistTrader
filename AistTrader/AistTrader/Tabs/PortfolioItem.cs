@@ -10,16 +10,17 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Xml.Serialization;
 using Common.Entities;
 using Ecng.Common;
 using NLog;
 
-namespace AistTrader //todo: идентификаторы портфеля тоже в кеше
+//todo: идентификаторы портфеля тоже в кеше
+namespace AistTrader
 {
     public partial class MainWindow
     {
         public bool IsPortfolioSettingsLoaded;
+
         public bool AddNewAgentPortfolio(Common.Entities.Portfolio settings, int editIndex)
         {
             if (editIndex >= 0 && editIndex < AgentPortfolioStorage.Count)
@@ -46,16 +47,18 @@ namespace AistTrader //todo: идентификаторы портфеля то�
 
             return true;
         }
+
         public void UpdatePortfolioListView()
         {
             PortfolioListView.ItemsSource = AgentPortfolioStorage;
             PortfolioCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(PortfolioListView.ItemsSource);
         }
+
         private void SavePortfolioSettings()
         {
             try
             {
-                List<Common.Entities.Portfolio> obj = AgentPortfolioStorage.Select(a => a).ToList();
+                List<Portfolio> obj = AgentPortfolioStorage.Select(a => a).ToList();
                 var tList = new List<Type>();
                 tList.Add(typeof(Common.Entities.Portfolio));
                 tList.Add(typeof(System.TimeZoneInfo));
@@ -65,7 +68,7 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                 tList.Add(typeof(System.DayOfWeek));
                 using (var fStream = new FileStream("Portfolios.xml", FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    DataContractSerializer xmlSerializer = new DataContractSerializer(typeof(List<Common.Entities.Portfolio>), tList);
+                    DataContractSerializer xmlSerializer = new DataContractSerializer(typeof(List<Portfolio>), tList);
                     xmlSerializer.WriteObject(fStream, obj);
                     fStream.Close();
                 }
@@ -74,14 +77,8 @@ namespace AistTrader //todo: идентификаторы портфеля то�
             {
                 Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
             }
-            #region obsolete
-            //List<Common.Entities.Portfolio> obj = AgentPortfolioStorage.Select(a => a).ToList();
-            //var fStream = new FileStream("Portfolios.xml", FileMode.Create, FileAccess.Write, FileShare.None);
-            //var xmlSerializer = new XmlSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
-            //xmlSerializer.Serialize(fStream, obj);
-            //fStream.Close();
-            #endregion
         }
+
         private void InitiatePortfolioSettings()
         {
             using (FileStream fs = new FileStream("Portfolios.xml", FileMode.Open, FileAccess.Read))
@@ -89,16 +86,16 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                 try
                 {
                     var tList = new List<Type>();
-                    tList.Add(typeof(Common.Entities.Portfolio));
-                    tList.Add(typeof(System.TimeZoneInfo));
+                    tList.Add(typeof(Portfolio));
+                    tList.Add(typeof(TimeZoneInfo));
                     tList.Add(typeof(TimeZoneInfo.AdjustmentRule[]));
                     tList.Add(typeof(TimeZoneInfo.AdjustmentRule));
                     tList.Add(typeof(TimeZoneInfo.TransitionTime));
-                    tList.Add(typeof(System.DayOfWeek));
-                    var xmlSerializer = new DataContractSerializer(typeof(List<Common.Entities.Portfolio>), tList);
-                    var portfolios = (List<Common.Entities.Portfolio>)xmlSerializer.ReadObject(fs);
+                    tList.Add(typeof(DayOfWeek));
+                    var xmlSerializer = new DataContractSerializer(typeof(List<Portfolio>), tList);
+                    var portfolios = (List<Portfolio>)xmlSerializer.ReadObject(fs);
                     fs.Close();
-                    if (portfolios == null) return;
+                    if (portfolios == null) { return; }
                     foreach (var rs in portfolios)
                     {
                         AgentPortfolioStorage.Add(rs);
@@ -113,45 +110,24 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                     Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
                     Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
                     if (e.InnerException.Message == "Root element is missing.")
+                    {
                         File.WriteAllText("Portfolios.xml", string.Empty);
+                    }
                 }
             }
-            #region obsolete
-            //StreamReader sr = new StreamReader("Portfolios.xml");
-            //try
-            //{
-            //    var xmlSerializer = new XmlSerializer(typeof(List<Common.Entities.Portfolio>), new Type[] { typeof(Common.Entities.Portfolio) });
-            //    var portfolios = (List<Common.Entities.Portfolio>)xmlSerializer.Deserialize(sr);
-            //    sr.Close();
-            //    if (portfolios == null) return;
-            //    foreach (var rs in portfolios)
-            //    {
-            //        AgentPortfolioStorage.Add(rs);
-            //    }
-            //    PortfolioListView.ItemsSource = AgentPortfolioStorage;
-            //    IsPortfolioSettingsLoaded = true;
-            //}
-            //catch (Exception e)
-            //{
-            //    IsPortfolioSettingsLoaded = false;
-            //    sr.Close();
-            //    Task.Run(() => Logger.Log(LogLevel.Error, e.Message));
-            //    Task.Run(() => Logger.Log(LogLevel.Error, e.InnerException.Message));
-            //    if (e.InnerException.Message == "Root element is missing.")
-            //        File.WriteAllText("Portfolios.xml", string.Empty);
-            //}
-            #endregion
         }
+
         private void AddAgentPortfolioBtnClick(object sender, RoutedEventArgs e)
         {
             var form = new PortfolioAddition();
             form.ShowDialog();
             form = null;
-            //Todo:save settings
+            //Todo: save settings
         }
+
         private void EditPortfolioBtnClick(object sender, RoutedEventArgs e)
         {
-            var listToEdit = PortfolioListView.SelectedItems.Cast<Common.Entities.Portfolio>().ToList();
+            var listToEdit = PortfolioListView.SelectedItems.Cast<Portfolio>().ToList();
             //TODO:переделать
             foreach (var portfolioEditkWindow in from agentSettings in listToEdit
                                                  let index = AgentPortfolioStorage.IndexOf(agentSettings)
@@ -163,11 +139,11 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                 portfolioEditkWindow.Close();
             }
         }
+
         private void DelPortfolioBtnClick(object sender, RoutedEventArgs e)
         {
-
             var selectedPortfolio = PortfolioListView.SelectedItem as Portfolio;
-            if (AgentManagerListView.Items.Cast<Common.Entities.AgentManager>().Any(i =>
+            if (AgentManagerListView.Items.Cast<AgentManager>().Any(i =>
             {
                 return selectedPortfolio != null && i.AgentManagerSettings.Portfolio.Name == selectedPortfolio.Name;
             }))
@@ -177,19 +153,22 @@ namespace AistTrader //todo: идентификаторы портфеля то�
             }
 
             MessageBoxResult result = MessageBox.Show("Portfolio \"{0}\" will be deleted! You sure?".Put(PortfolioListView.SelectedItem), "Delete connection", MessageBoxButton.YesNo);
-            if (result== MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
-                foreach (var item in PortfolioListView.SelectedItems.Cast<Common.Entities.Portfolio>().ToList())
+                foreach (var item in PortfolioListView.SelectedItems.Cast<Portfolio>().ToList())
                 {
                     AgentPortfolioStorage.Remove(item);
                     SavePortfolioSettings();
                 }
             }
         }
+
         private void PortfolioListView_Loaded(object sender, RoutedEventArgs e)
         {
             if (!IsPortfolioSettingsLoaded & (File.Exists("Portfolios.xml")) & AgentPortfolioStorage.Count == 0)
+            {
                 InitiatePortfolioSettings();
+            }
             if (PortfolioListView.Items.Count == 0)
             {
                 DelPortfolioBtn.IsEnabled = false;
@@ -232,8 +211,6 @@ namespace AistTrader //todo: идентификаторы портфеля то�
                 EditPortfolioBtn.IsEnabled = true;
             }
         }
-        
-
     }
 }
     

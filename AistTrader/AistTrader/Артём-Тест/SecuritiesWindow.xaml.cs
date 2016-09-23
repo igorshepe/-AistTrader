@@ -42,8 +42,10 @@ namespace AistTrader
 			var trader = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault();
             if (trader != null)
 			{
-				if (_initialized)
-					trader.MarketDepthsChanged -= TraderOnMarketDepthsChanged;
+                if (_initialized)
+                {
+                    trader.MarketDepthsChanged -= TraderOnMarketDepthsChanged;
+                }
 
 				_quotesWindows.SyncDo(d =>
 				{
@@ -73,8 +75,10 @@ namespace AistTrader
 				Portfolios = new PortfolioDataSource(MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault()),
 			};
 
-			if (newOrder.ShowModal(this))
-				MainWindow.Instance.Trader.RegisterOrder(newOrder.Order);
+            if (newOrder.ShowModal(this))
+            {
+                MainWindow.Instance.Trader.RegisterOrder(newOrder.Order);
+            }
 		}
 
 		private void SecurityPicker_OnSecuritySelected(Security security)
@@ -84,7 +88,6 @@ namespace AistTrader
 
 		private void DepthClick(object sender, RoutedEventArgs e)
 		{
-			//var trader = MainWindow.Instance.Trader;
 		    var trader = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault();
 
             var window = _quotesWindows.SafeAdd(SecurityPicker.SelectedSecurity, security =>
@@ -98,10 +101,14 @@ namespace AistTrader
 				return wnd;
 			});
 
-			if (window.Visibility == Visibility.Visible)
-				window.Hide();
-			else
-				window.Show();
+            if (window.Visibility == Visibility.Visible)
+            {
+                window.Hide();
+            }
+            else
+            {
+                window.Show();
+            }
 
 			if (!_initialized)
 			{
@@ -117,8 +124,10 @@ namespace AistTrader
 			{
 				var wnd = _quotesWindows.TryGetValue(depth.Security);
 
-				if (wnd != null)
-					wnd.DepthCtrl.UpdateDepth(depth);
+                if (wnd != null)
+                {
+                    wnd.DepthCtrl.UpdateDepth(depth);
+                }
 			}
 		}
 	}

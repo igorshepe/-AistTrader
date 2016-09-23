@@ -24,6 +24,7 @@ namespace AistTrader
         public string AgentName { get; set; }
         public bool IsCancelled { get; set; }
         private int EditIndex { get; set; }
+
         public GroupAdditionDeleteMode(string agentName)
         {
             InitializeComponent();
@@ -37,12 +38,17 @@ namespace AistTrader
         {
             textBlock.Text = "Select presented options for: " + AgentName;
         }
+
         private void OkBtnClickEvent(object sender, RoutedEventArgs e)
         {
             if (ClosePositionsAndDeleteRb.IsChecked == true)
+            {
                 SelectedDeleteMode = AgentManagerDeleteMode.ClosePositionsAndDelete;
-            if (WaitAndCloseRb.IsChecked== true)
+            }
+            if (WaitAndCloseRb.IsChecked == true)
+            {
                 SelectedDeleteMode = AgentManagerDeleteMode.WaitForClosingAndDeleteAfter;
+            }
             Close();
             IsCancelled = false;
         }
@@ -51,19 +57,15 @@ namespace AistTrader
         {
             OkBtnClick.IsEnabled = true;
         }
+
         private void WaitAndCloseRb_Checked(object sender, RoutedEventArgs e)
         {
             OkBtnClick.IsEnabled = true;
         }
+
         private void StratSettings_Closing(object sender, CancelEventArgs e)
         {
-            //if (ClosePositionsAndDeleteRb.IsChecked ==false & WaitAndCloseRb.IsChecked == false)
-            //{
-            //    MessageBox.Show("Delete mode is not selected!");
-            //    e.Cancel = true;
-            //}
             IsCancelled = true;
-            //Close();
         }
     }
 }

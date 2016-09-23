@@ -25,31 +25,38 @@ namespace AistTrader
         private bool editMode;
         private string _originPath;
         private Connection connectionToEdit;
+
         public string ConnectionName
         {
             get { return _connectionName; }
             set { _connectionName = value; }
         }
+
         public string Code
         {
             get { return _code; }
             set { _code = value; }
         }
+
         public string ProviderPath
         {
             get { return _providerPath; }
             set { _providerPath = value; }
         }
+
         private Dictionary<string, bool> validProperties = new Dictionary<string, bool>();
+
         public string SelectedPath
         {
             get { return _selectedPath; }
             set { _selectedPath = value; }
         }
+
         public bool IsAdditionMode;
         public string Provider { get; set; }
         public bool NameAlredyInUse;
         public ObservableCollection<Agent> AgentStorage { get; private set; }
+
         #endregion
         public ConnectionAddition()
         {
@@ -60,6 +67,7 @@ namespace AistTrader
             AllPlazaDirectoriesComboBox.ItemsSource = GetAllPlazaDirectories();
             ConnectionNameTxtBox.Focus();
         }
+
         private List<string> GetAllPlazaDirectories()
         {
             List<string> list = new List<string>();
@@ -76,6 +84,7 @@ namespace AistTrader
             list.AddRange(directories);
             return list; 
         }
+
         public ConnectionAddition(Connection account, int editIndex)
         {
             IsAdditionMode = false;
@@ -83,40 +92,28 @@ namespace AistTrader
             InitFields(account);
             DataContext = this;
             EditIndex = editIndex;
-
         }
+
         private void InitFields(Connection connection)
         {
             connectionToEdit = connection;
             editMode = true;
             _connectionName = connection.DisplayName;
             _code = connection.ConnectionParams.Code;
-            //Provider = account.ConnectionParams.PlazaConnectionParams.Type.ToString();
-            //_providerPath= GetAllPlazaDirectories();
             AllPlazaDirectoriesComboBox.ItemsSource = GetAllPlazaDirectories();
-            //AllPlazaDirectoriesComboBox.SelectedItem = account.Connection.ConnectionSettings.Path.ToString();
             _selectedPath = connection.ConnectionParams.PlazaConnectionParams.Path;
             _originPath = connection.ConnectionParams.PlazaConnectionParams.Path;
             IsDemoChkBox.IsChecked = connection.IsDemo;
             ConnectionNameTxtBox.Focus();
-            
         }
 
         private bool IsFirtConnectionToBeSetAsDefault()
         {
-            if (MainWindow.Instance.ConnectionsStorage.Count == 0)
-                return true;
-            else
-                return false;
+            return MainWindow.Instance.ConnectionsStorage.Count == 0;
         }
+
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
-            //    if (!File.Exists(AllPlazaDirectoriesComboBox.SelectedItem + @"\client_router.ini"))
-            //    {
-            //        //TODO: проверка на наличие роутера
-            //        MessageBox.Show(this, @"В выбранной дериктории нет ini файла: {0}.".Put(AllPlazaDirectoriesComboBox.SelectedItem));
-            //        return;
-            //    }
             var terminalConnSettings = new PlazaConnectionParams(AllPlazaDirectoriesComboBox.SelectedItem.ToString());
             var connParams = new ConnectionParams(ConnectionNameTxtBox.Text, ClienCodeTxtBox.Text, terminalConnSettings, false, IsFirtConnectionToBeSetAsDefault());
             if (editMode)
@@ -125,44 +122,34 @@ namespace AistTrader
                 item.DisplayName = ConnectionNameTxtBox.Text;
                 item.ConnectionParams = connParams;
                 MainWindow.Instance.AddNewAgentConnection(connectionToEdit, EditIndex);
-                editMode = false; //todo убрать
+                editMode = false;
+                //todo убрать
                 connectionToEdit = null;
             }
             else
             {
                 MainWindow.Instance.AddNewAgentConnection(new Connection(ConnectionNameTxtBox.Text, connParams, IsDemoChkBox.IsChecked.Value), EditIndex);
                 if (MainWindow.Instance.ProviderCollectionView.Count == 1)
+                {
                     MainWindow.Instance.DefaultConnectionStatusBarText = "Default: " + ConnectionNameTxtBox.Text;
+                }
             }
 
             Close();
         }
+
         private void ConnectionNameTxtBox_KeyDown(object sender, KeyEventArgs e)
         {
-            //string result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(ClienNameTxtBox.Text);
-            //ClienNameTxtBox.Text = result;
-            //ClienNameTxtBox.SelectionStart = ClienNameTxtBox.Text.Length;
         }
+
         private void BtnSelectPath_OnClick(object sender, RoutedEventArgs e)
         {
-            //using (var dlg = new FolderBrowserDialog())
-            //{
-            //    if(!PathToRouter.Text.IsEmpty())
-            //        dlg.SelectedPath = PathToRouter.Text;
-            //    else
-            //        dlg.SelectedPath = @"C:\P2FORTSGate\";
-
-            //    if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //    {
-            //        PathToRouter.Text = dlg.SelectedPath;
-            //    }
-            //}
         }
+
         private void ConnectionNameTxtBox_OnKeyUp(object sender, KeyEventArgs e)
         {
-            //ЗАЧЕМ ЭТО?
-            //var has = Settings.Default.AgentConnection.Cast<AgentConnection>().Any(i => i.Name == ClienNameTxtBox.Text);
         }
+
         public string this[string columnName]
         {
             get
@@ -176,9 +163,6 @@ namespace AistTrader
                     case "Code":
                         validationResult = ValidateCode();
                         break;
-                    //case "Provider":
-                    //    validationResult = ValidateProvider();
-                    //    break;
                     case "ProviderPath":
                         validationResult = ValidateProviderPath();
                         break;
@@ -186,40 +170,31 @@ namespace AistTrader
                         throw new ApplicationException("Unknown Property being validated on Product.");
                 }
                 string error = validationResult;
-                validProperties[columnName] = String.IsNullOrEmpty(error) ? true : false;
+                validProperties[columnName] = string.IsNullOrEmpty(error);
                 if (validProperties.Count == 3)
-                    OkAgentConnectionBtn.IsEnabled = validProperties.Values.All(isValid => isValid);    
+                {
+                    OkAgentConnectionBtn.IsEnabled = validProperties.Values.All(isValid => isValid);
+                }
+
                 return validationResult;
             }
         }
+
         private string ValidateName()
         {
-            if (String.IsNullOrEmpty(this.ConnectionName))
-                return "Enter name";
-            else if (this.ConnectionName.Length < 5)
-                return "Name should be 5 or more simbols long.";
-            else if (NameAlredyInUse)
-                return "This name already in use";
-            else
-                return String.Empty;
+            if (string.IsNullOrEmpty(ConnectionName)) { return "Enter name"; }
+            if (ConnectionName.Length < 5) { return "Name should be 5 or more simbols long."; }
+            if (NameAlredyInUse) { return "This name already in use"; }
+            return string.Empty;
         }
+
         private string ValidateCode()
         {
-            if (String.IsNullOrEmpty(this.Code))
-                return "Enter code";
-            else if (this.Code.Length < 2)
-                return "Code should be 2 or more simbols long";
-            else
-                return String.Empty;
+            if (string.IsNullOrEmpty(Code)) { return "Enter code"; }
+            if (Code.Length < 2) { return "Code should be 2 or more simbols long"; }
+            return string.Empty;
         }
-        //private string ValidateProvider()
-        //{
-        //    //if (ConnectionTypeComboBox.SelectedItem == null)
-        //    //{
-        //    //    return "Не выбран поставщик";
-        //    //}
-        //    //return String.Empty;
-        //}
+
         private string ValidateProviderPath()
         {
             if (AllPlazaDirectoriesComboBox.SelectedItem == null)
@@ -243,15 +218,16 @@ namespace AistTrader
                         return "Selected router already in use!";
                     }
                 }
-
             }
 
-            return String.Empty;
+            return string.Empty;
         }
+
         private bool ValidateProperties()
         {
             return validProperties.Values.All(isValid => isValid);
         }
+
         public string Error { get; private set; }
         //todo: проверить что делает этот метод, поменять ресурс 
         private void ConnectionNameTxtBox_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -259,9 +235,6 @@ namespace AistTrader
             if (IsAdditionMode)
             {
                 var text = ConnectionNameTxtBox.Text;
-                //todo: проработать логику
-                //if (Settings.Default.AgentConnection != null)
-                //    NameAlredyInUse = Settings.Default.AgentConnection.Cast<Connection>().Any(i => i.Name == text);    
             }
         }
     }

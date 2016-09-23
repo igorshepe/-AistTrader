@@ -94,14 +94,14 @@ namespace AistTrader
             var accounts = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             PortfolioComboBox.ItemsSource = accounts;
             accounts = null;
-            AmountTextBox.Text = "";
+            AmountTextBox.Text = string.Empty;
         }
+
         private void InitFields(AgentManager agent)
         {
             editMode = true;
             agentManagerToEdit = agent;
 
-            //SecurityPickerSS.SecurityProvider = new FilterableSecurityProvider(MainWindow.Instance.ConnectionManager.Connections[0]);
             PortfolioComboBox.ItemsSource = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().Select(i => i.Name).ToList();
             _selectedPortfolio = agent.Name;
 
@@ -130,11 +130,11 @@ namespace AistTrader
                 SecurityPickerSS.IsEnabled = false;
                 editMode = true;
             }
-            
         }
+
         private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
-            if (AliasTxtBox.Text== "")
+            if (string.IsNullOrEmpty(AliasTxtBox.Text))
             {
                 MessageBox.Show(this, @"Set an alias");
                 return;
@@ -148,13 +148,9 @@ namespace AistTrader
             //временная проверка не через автовалидацию
             if (editMode)
             {
-
-
                 if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                 {
-
-                    
-                    if (AmountTextBox.Text == "")
+                    if (string.IsNullOrEmpty(AmountTextBox.Text))
                     {
                         MessageBox.Show(this, @"Set amount value");
                         return;
@@ -172,13 +168,16 @@ namespace AistTrader
                     //todo: вот тут проверить с Артёмом возвращаемое значение
                     decimal? amount= MainWindow.Instance.CalculateAmount(agentManagerToEdit);
                     var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name ==agentManagerToEdit.ToString());
-                    if (runnigStrategy != null) runnigStrategy.ActualStrategyRunning.Volume = (decimal)amount;
+                    if (runnigStrategy != null)
+                    {
+                        runnigStrategy.ActualStrategyRunning.Volume = (decimal)amount;
+                    }
                     Close();
                     return;
                 }
                 else
                 {
-                    if (AmountTextBox.Text == "")
+                    if (string.IsNullOrEmpty(AmountTextBox.Text))
                     {
                         MessageBox.Show(this, @"Set amount value");
                         return;
@@ -204,12 +203,12 @@ namespace AistTrader
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == PortfolioComboBox.SelectedItem.ToString());
             var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
 
-            if (agent != null && (AmountTextBox.Text == "" && agent.Params.GroupName == ""))
+            if (agent != null && (string.IsNullOrEmpty(AmountTextBox.Text) && string.IsNullOrEmpty(agent.Params.GroupName)))
             {
                 MessageBox.Show(this, @"Set amount value");
                 return;
             }
-            if (agent != null && (AmountTextBox.Text == "" && agent.Params.GroupName == "ungrouped agents"))
+            if (agent != null && (string.IsNullOrEmpty(AmountTextBox.Text) && agent.Params.GroupName == "ungrouped agents"))
             {
                 MessageBox.Show(this, @"Set amount value");
                 return;
@@ -220,27 +219,20 @@ namespace AistTrader
                 setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity.Code);
             }
             else
-
+            {
                 setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity.Code);
+            }
 
-
-            if (AmountTextBox.Text == "" && agent.Params.GroupName =="")
+            if (string.IsNullOrEmpty(AmountTextBox.Text) && string.IsNullOrEmpty(agent.Params.GroupName))
             {
                 MessageBox.Show(this, @"Set amount value");
                 return;
             }
-            if (AmountTextBox.Text == "" && agent.Params.GroupName == "ungrouped agents")
+            if (string.IsNullOrEmpty(AmountTextBox.Text) && agent.Params.GroupName == "ungrouped agents")
             {
                 MessageBox.Show(this, @"Set amount value");
                 return;
             }
-
-            //string finalAmount;
-            //if (AmountTextBox.Text=="" && agent.Params.GroupName != "ungrouped agents")
-            //{
-            //    finalAmount = agent
-            //}
-
 
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text), EditIndex);
             SecurityPickerSS.SecurityProvider.Dispose();
@@ -248,12 +240,13 @@ namespace AistTrader
             agentPortfolio = null;
             Close();
         }
+
         private void GroupOrSingleAgentComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (GroupOrSingleAgentComboBox.SelectedItem !=null)
             {
                 var result = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any
-                (i => i.Params.GroupName != "ungrouped agents" && i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+                    (i => i.Params.GroupName != "ungrouped agents" && i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
                 if (result)
                 {
                     AmountTextBox.Visibility = Visibility.Collapsed;
@@ -269,6 +262,7 @@ namespace AistTrader
                 AliasTxtBox.Text = GroupOrSingleAgentComboBox.SelectedItem.ToString();
             }
         }
+
         private void PortfolioComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string selectedP = (string)PortfolioComboBox.SelectedItem;
@@ -280,14 +274,10 @@ namespace AistTrader
             {
                 if (connection.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
                 {
-                    if (SecurityPickerSS.SecurityProvider != null)
-                    {
-                    }
-                    else
+                    if (SecurityPickerSS.SecurityProvider == null)
                     {
                         var conn= MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
                         SecurityPickerSS.SecurityProvider=  new CollectionSecurityProvider(conn.Securities);
-
                         conn = null;
                     }
                 }
@@ -295,6 +285,7 @@ namespace AistTrader
             selectedPortfolio = null;
             connection = null;
         }
+
         public string this[string columnName]
         {
             get
@@ -330,7 +321,7 @@ namespace AistTrader
                     {
                         validManagerProperties.Remove("Amount");
                     }
-                    OkBtnClick.IsEnabled = true; /* validManagerProperties.Values.All(isValid => isValid)*/
+                    OkBtnClick.IsEnabled = true;
                     //todo: подключить после тестов;
                 }
                 if (validManagerProperties.Count == 3 & AmountTextBox.Visibility != Visibility.Collapsed)
@@ -350,26 +341,34 @@ namespace AistTrader
 
         private string ValidatePortfolio()
         {
-            if (String.IsNullOrEmpty(Portfolio))
+            if (string.IsNullOrEmpty(Portfolio))
+            {
                 return "Select a portfolio";
-            return String.Empty;
+            }
+            return string.Empty;
         }
+
         private string ValidateAgentOrGroup()
         {
             //TODO: уточнить как обрабатывать уже добавленные агенты и группы агентов
 
-            if (String.IsNullOrEmpty(GroupOrSingleAgent))
+            if (string.IsNullOrEmpty(GroupOrSingleAgent))
+            {
                 return "Select an agent or a group of agents";
-            return String.Empty;
+            }
+            return string.Empty;
         }
+
         private string ValidateTools()
         {
             if (SecurityPickerSS.SelectedSecurity == null)
             {
                 return "Select a security";
             }
+
             return String.Empty;
         }
+
         private string ValidateAmount()
         {
             Regex regex = new Regex(@"^[0-9]+$");
@@ -378,7 +377,7 @@ namespace AistTrader
                 string[] line = Amount.Split('%');
                 if (!regex.IsMatch(line.First()))
                 {
-                    Amount= "";
+                    Amount = string.Empty;
                     return "Digits only or digits with - '%' sign at the end allowed";
                 }
             }
@@ -386,15 +385,17 @@ namespace AistTrader
             {
                 if (!regex.IsMatch(Amount))
                 {
-                    Amount = "";
+                    Amount = string.Empty;
                     return "Digits only or digits with - '%' sign at the end allowed";
                 }
             }
             //TODO: добавить обработку на знаки, которые не допустимы в данном поле
             //так же обработка случая, когда форма скрыта
-            if (String.IsNullOrEmpty(Amount))
+            if (string.IsNullOrEmpty(Amount))
+            {
                 return "Set an amount";
-            return String.Empty;
+            }
+            return string.Empty;
         }
         public string Error { get; private set; }
         private void AmountTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -406,23 +407,20 @@ namespace AistTrader
                 string[] line = editor.Text.Split('%');
                 if (!regex.IsMatch(line.First()))
                 {
-                    //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
                     editor.Text = "";
                     return;
-                    // editor.Select(editor.Text.Length, 0);
                 }
             }
             if (!editor.Text.EndsWith("%"))
             {
                 if (!regex.IsMatch(editor.Text))
                 {
-                    //MessageBox.Show("Возможет ввод только цифр или цифры со знаком % на конце");
-                    editor.Text = "";
+                    editor.Text = string.Empty;
                     return;
-                    //editor.Select(editor.Text.Length, 0);
                 }
             }
         }
+
         private void SecurityPicker_OnSecuritySelected()
         {
             if (SecurityPickerSS.SelectedSecurity != null && PortfolioComboBox.SelectedItem != null && IsGroup)

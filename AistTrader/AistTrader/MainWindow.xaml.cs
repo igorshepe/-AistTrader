@@ -4,12 +4,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Deployment.Application;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,23 +19,15 @@ using Common.Params;
 using Ecng.Collections;
 using Ecng.Common;
 using Ecng.Xaml;
-using MahApps.Metro.Controls.Dialogs;
 using MoreLinq;
 using NLog;
-using StockSharp.BusinessEntities;
-using StockSharp.Messages;
 using StockSharp.Xaml;
-using Brushes = System.Drawing.Brushes;
-using System.Threading;
 
 namespace AistTrader
 {
     public partial class MainWindow: INotifyPropertyChanged
     {
         #region Fields
-
-
-        
 
         public string MyTitle
         {
@@ -60,21 +49,19 @@ namespace AistTrader
             }
             set { } 
         }
+
         public static MainWindow Instance { get; private set; }
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
         public ObservableCollection<Agent> AgentsStorage { get; private set; }
         public ObservableCollection<Connection> ConnectionsStorage { get; private set; }
         public ObservableCollection<Common.Entities.Portfolio> AgentPortfolioStorage { get; private set; }
         public ObservableCollection<AgentManager> AgentManagerStorage { get; private set; }
-
         public CollectionView AgentCollectionView { get; set; }
         public CollectionView ProviderCollectionView { get; set; }
         public CollectionView PortfolioCollectionView { get; set; }
         public CollectionView AgentManagerCollectionView { get; set; }
         private GridLength LogWindowPreviousHight;
-
         private readonly PortfoliosWindow _portfoliosWindow = new PortfoliosWindow();
         private readonly OrdersWindow _ordersWindow = new OrdersWindow();
         private readonly SecuritiesWindow _securitiesWindow = new SecuritiesWindow();
@@ -92,18 +79,23 @@ namespace AistTrader
                 OnPropertyChanged(new PropertyChangedEventArgs("DefaultConnectionStatusBarText"));
             }
         }
+
         string[] EntitiesFilesNames = { "Agents.xml", "Portfolios.xml", "Connections.xml", "AgentManagerSettings.xml" };
         #endregion
         public MainWindow()
         {
-            String name = Process.GetCurrentProcess().ProcessName;
+            string name = Process.GetCurrentProcess().ProcessName;
             if (Process.GetProcesses().Count(p => p.ProcessName == name) > 1)
+            {
                 Application.Current.Shutdown();
-            //string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            }
 
             string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string destFilePath = Path.Combine(buFilePath, "AistTrader");
-            if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
+            if (!Directory.Exists(destFilePath))
+            {
+                Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
+            }
             foreach (var xmlset in EntitiesFilesNames)
             {
                 FileInfo copyToPath = new FileInfo(Path.Combine(System.Windows.Forms.Application.StartupPath, xmlset));
@@ -125,13 +117,12 @@ namespace AistTrader
             UpdateMetroProgressBar.Visibility = Visibility.Hidden;
             UpdateMetroProgressBar.Width = 0;
 
-
             #region Initialize collections
 
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
-                this.TimeTextBlock.Text = String.Format("{0:G} (Local)", TimeHelper.Now);
-            }, this.Dispatcher);
+                TimeTextBlock.Text = String.Format("{0:G} (Local)", TimeHelper.Now);
+            }, Dispatcher);
             
             AgentsStorage = new ObservableCollection<Agent>();
             AgentsStorage.CollectionChanged += AgentSettingsStorageChanged;
@@ -154,6 +145,7 @@ namespace AistTrader
             
             #endregion
         }
+
         public void OKP(object sender, KeyEventArgs e)
         {
 
@@ -180,7 +172,6 @@ namespace AistTrader
 
         private void AgentManagerStorage_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            //throw new NotImplementedException();
         }
 
         private void SetConnectionCommandStatus()
@@ -192,8 +183,8 @@ namespace AistTrader
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.IsRegistredConnection = false);
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.ConnectionState = ConnectionParams.ConnectionStatus.Disconnected);
             Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Accounts = new List<StockSharp.BusinessEntities.Portfolio>() );
-            //Instance.ConnectionsStorage.ForEach(i => i.ConnectionParams.Tools = new List<Security>());
         }
+
         private void TabCtr_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.OriginalSource is TabControl && AgentItem != null && AgentItem.IsSelected)
@@ -207,22 +198,6 @@ namespace AistTrader
             }
             if (e.OriginalSource is TabControl && AgentManagerItem != null && AgentManagerItem.IsSelected)
             {
-
-                //todo: на все коннекты что есть проверка на активное состояние
-
-                //var anyActive = Instance.ConnectionManager.Connections.Any(i=>i.ConnectionState == ConnectionStates.Connected);
-
-
-                //if (!anyActive)
-                //{
-                //    AddAgentManagerBtn.ToolTip = "No active connections, cannot retrieve any securities";
-                //    AddAgentManagerBtn.IsEnabled = false;
-                //}
-                //if (anyActive)
-                //{
-                //    AddAgentManagerBtn.IsEnabled = true;
-                //}
-
             }
         }
 
@@ -234,8 +209,7 @@ namespace AistTrader
             }
             catch
             {
-                this.TimeErrorTextBlock.Text = "Error moex time sync";
-                //this.TimeErrorTextBlock.Foreground = new SolidColorBrush(Colors.White);
+                TimeErrorTextBlock.Text = "Error moex time sync";
                 TimeErrorTextBlock.FontWeight = FontWeights.Bold;
             }
         }
@@ -244,69 +218,72 @@ namespace AistTrader
         {
             TabCtr.SelectedItem = AgentItem;
         }
+
         private void AgentManagerMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             TabCtr.SelectedItem = AgentManagerItem;
         }
+
         private void ProviderManagerMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             TabCtr.SelectedItem = ProviderItem;
         }
+
         private void PortfolioMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             TabCtr.SelectedItem = PortfolioItem;
         }
+
         private void WhatsNewItem_OnClick(object sender, RoutedEventArgs e)
         {
             var form = new WhatsNew().ShowDialog();
             form = null;
         }
+
         private void ShowPortfoliosClick(object sender, RoutedEventArgs e)
         {
             ShowOrHide(_portfoliosWindow);
         }
+
         private void ShowSecuritiesClick(object sender, RoutedEventArgs e)
         {
             ShowOrHide(_securitiesWindow);
         }
+
         private void ShowMyTradesClick(object sender, RoutedEventArgs e)
         {
             ShowOrHide(_myTradesWindow);
         }
+
         private void ShowOrdersClick(object sender, RoutedEventArgs e)
         {
             ShowOrHide(_ordersWindow);
         }
+
         private void ShowMonitorWindowClick(object sender, RoutedEventArgs e)
         {
             ShowOrHide(_monitorWindow);
         }
+
         private static void ShowOrHide(Window window)
         {
             if (window == null)
+            {
                 throw new ArgumentNullException(nameof(window));
+            }
 
             if (window.Visibility == Visibility.Visible)
+            {
                 window.Hide();
+            }
             else
+            {
                 window.Show();
+            }
         }
+
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
-            //e.Cancel = true;
-            //var mySettings = new MetroDialogSettings()
-            //{
-            //    AffirmativeButtonText = "Quit",
-            //    NegativeButtonText = "Cancel",
-            //    AnimateShow = true,
-            //    AnimateHide = false
-            //};
-            //var result = await this.ShowMessageAsync("Quit application?",
-            //    "Sure you want to quit application?",
-            //    MessageDialogStyle.AffirmativeAndNegative, mySettings);
-            //_shutdown = result == MessageDialogResult.Affirmative;
-
-            //if (_shutdown)
             SaveProviderItems();
             BackUpXMLSettings();
             Application.Current.Shutdown();
@@ -315,8 +292,11 @@ namespace AistTrader
         private void BackUpXMLSettings()
         {
             string buFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string destFilePath = Path.Combine(buFilePath, "AistTrader");   
-            if (!Directory.Exists(destFilePath)) Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
+            string destFilePath = Path.Combine(buFilePath, "AistTrader");
+            if (!Directory.Exists(destFilePath))
+            {
+                Directory.CreateDirectory(new Uri(destFilePath).LocalPath);
+            }
 
             foreach (var xmlset in EntitiesFilesNames)
             {
@@ -325,19 +305,25 @@ namespace AistTrader
                 if (destFilePathWithFileName.Exists)
                 {
                     if (sourceFilePath.LastWriteTime > destFilePathWithFileName.LastWriteTime)
+                    {
                         sourceFilePath.CopyTo(destFilePathWithFileName.FullName, true);
+                    }
                 }
                 else
                 {
                     if (sourceFilePath.Exists)
+                    {
                         sourceFilePath.CopyTo(destFilePathWithFileName.FullName);
+                    }
                 }
             }
         }
+
         private void LaunchAppOnGitHub(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/igorshepe/-AistTrader");
+            Process.Start("https://github.com/igorshepe/-AistTrader");
         }
+
         private void ConnectionStatusTextBlock_OnToolTipOpening(object sender, ToolTipEventArgs e)
         {
             if (!Instance.ConnectionsStorage.IsEmpty())
@@ -356,15 +342,14 @@ namespace AistTrader
                     ConnectionStatusTextBlock.ToolTip = "Default connection is not set";
                     ConnectionStatusTextBlock.Text = "Disconnected";
                 }
-
             }
             else
             {
                 ConnectionStatusTextBlock.ToolTip = "Default connection is not set";
                 ConnectionStatusTextBlock.Text = "Disconnected";
             }
-
         }
+
         private void CheckForUpdaterMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             Logger.Info("Checking for updates..");
@@ -374,7 +359,6 @@ namespace AistTrader
 
             if (deploy.CheckForUpdate())
             {
-                
                 Logger.Info("Updates found..{0}", update.AvailableVersion.ToString());
                 Logger.Info("Loading data, please wait..");
                 UpdateMetroProgressBar.IsEnabled = true;
@@ -386,12 +370,14 @@ namespace AistTrader
                 MessageBox.Show("Aist Trader will be updated to version: " + update.AvailableVersion.ToString());
 
                 deploy.Update();
-                
+
                 System.Windows.Forms.Application.Restart();
                 Application.Current.Shutdown();
             }
             else
+            {
                 Logger.Info("Current version is up to date..");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

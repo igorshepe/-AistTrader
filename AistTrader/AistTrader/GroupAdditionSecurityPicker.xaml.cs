@@ -22,6 +22,7 @@ namespace AistTrader
         private Agent AgentToEdit;
         public string SelectedSecurity;
         private int EditIndex { get; set; }
+
         public GroupAdditionSecurityPicker(Agent agent)
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace AistTrader
 
         private void LoadParams()
         {
-            AgentNameTxtBlock.Text = " " + AgentToEdit.Params.FriendlyName ;
+            AgentNameTxtBlock.Text = " " + AgentToEdit.Params.FriendlyName;
             //todo: вынести в алгоритм добавления
             var AnyActiveConnection =MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
             if (AnyActiveConnection)
@@ -56,14 +57,10 @@ namespace AistTrader
 
         private void AttachSecForAgentBtnClick(object sender, RoutedEventArgs e)
         {
-
-            //AgentToEdit.Params.Security= SecurityPickerSS.SelectedSecurity.Code;
             SelectedSecurity = SecurityPickerSS.SelectedSecurity.Code;
-            //SecurityPickerSS.SecurityProvider.Dispose();
-            //SecurityPickerSS.SecurityProvider = null;
-            
             Close();
         }
+
         private void SecurityPickerSS_OnSecuritySelected()
         {
             if (SecurityPickerSS.SelectedSecurity != null )
