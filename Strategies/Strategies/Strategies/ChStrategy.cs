@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Ecng.Common;
@@ -12,10 +14,7 @@ using StockSharp.Logging;
 using StockSharp.Messages;
 using Strategies.Common;
 using Strategies.Settings;
-using System.Collections.Generic;
-using System.IO;
-using Ecng.Collections;
-using StockSharp.Algo.Strategies.Protective;
+using LogManager = NLog.LogManager;
 
 namespace Strategies.Strategies
 {
@@ -23,7 +22,7 @@ namespace Strategies.Strategies
 
     {
           
-        private static readonly Logger TradesLogger = NLog.LogManager.GetLogger("TradesLogger");
+        private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
 
         private ICandleManager _candleManager;
         private Order _newOrder;
@@ -52,13 +51,13 @@ namespace Strategies.Strategies
         private bool _enterPosition;
         private Order _registeredOrder;
         private readonly string _nameGroup;
-        private List<long> _history; 
+        private readonly List<long> _history; 
         private string _nameStrategy;
         private bool _firstLap = true;
-        private long _transactionId;
+        //private long _transactionId;
         private bool _stopStrategy;
-        private bool _isOrdersLoaded;
-        private bool _isStopOrdersLoaded;
+        //private bool _isOrdersLoaded;
+        //private bool _isStopOrdersLoaded;
 
 
 
@@ -101,16 +100,16 @@ namespace Strategies.Strategies
             _period = this.Param(ChStrategyDefaultSettings.PeriodString, per);
 
 
-            _indicatorSlowSma.Length = Convert.ToInt32(_slowSma.Value.ToString());
+            _indicatorSlowSma.Length = Convert.ToInt32(_slowSma.Value.ToString(CultureInfo.InvariantCulture));
 
 
-            _indicatorFastSma.Length = Convert.ToInt32(_fastSma.Value.ToString());
+            _indicatorFastSma.Length = Convert.ToInt32(_fastSma.Value.ToString(CultureInfo.InvariantCulture));
 
 
-            _indicatorHighest.Length = Convert.ToInt32(_period.Value.ToString());
+            _indicatorHighest.Length = Convert.ToInt32(_period.Value.ToString(CultureInfo.InvariantCulture));
 
 
-            _indicatorLowest.Length = Convert.ToInt32(_period.Value.ToString());
+            _indicatorLowest.Length = Convert.ToInt32(_period.Value.ToString(CultureInfo.InvariantCulture));
         }
 
 
@@ -275,7 +274,6 @@ namespace Strategies.Strategies
 
             CancelOrdersWhenStopping = true;
             _isFinish = true;
-            var fix = TransactionIDs;
             CancelActiveOrders();
             base.OnStopping();
 
@@ -283,8 +281,6 @@ namespace Strategies.Strategies
 
         protected override void OnStopped()
         {
-            
-            var fix = TransactionIDs;
             Task.Run(() => TradesLogger.Info("{0}: STOP", _nameStrategy));
         }
 
@@ -297,7 +293,7 @@ namespace Strategies.Strategies
             Task.Run(() => TradesLogger.Info("{0}: Check strategy position: {1}", _nameStrategy, Position));
             if (Position != 0)
             {
-                Order orderexite = null;
+                Order orderexite;
 
                 if (Position > 0)
                 {
@@ -415,7 +411,8 @@ namespace Strategies.Strategies
                         }
 
                         Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}, Security {7}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position, Security.Code));
-                         
+
+                        TransactionIDs.Add(order.TransactionId);
                     })
                     .Once()
                     .Apply(this);
@@ -449,7 +446,7 @@ namespace Strategies.Strategies
         // Возвращает объект заявки с рыночной ценой или лимитной, по заданному направлению
         private Order GetOrder(Sides side, decimal price, bool exit)
         {
-            var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену лимитную до шага цены иснтрумента
+            //var shrinkPrice = Security.ShrinkPrice(price); // Обрезаем цену лимитную до шага цены иснтрумента
             var marketPrice = this.GetMarketPrice(side);
             //var priceOrder = bestprice;
 
