@@ -8,8 +8,6 @@ using System.Windows.Controls;
 using Common.Entities;
 using Common.Params;
 using Ecng.Common;
-using Ecng.ComponentModel;
-using StockSharp.BusinessEntities;
 using StockSharp.Messages;
 using Portfolio = Common.Entities.Portfolio;
 
@@ -18,6 +16,7 @@ namespace AistTrader
     public partial class PortfolioAddition : IDataErrorInfo
     {
         #region Fields
+
         private int EditIndex { get; set; }
         public ObservableCollection<Agent> AgentPortfolioStorage { get; private set; }
         private string _portfolioName;
@@ -56,12 +55,14 @@ namespace AistTrader
             LoadParams();
             ConnectionProviderComboBox.Focus();
         }
+
         private void LoadParams()
         {
             var connections = MainWindow.Instance.ConnectionsStorage.Where(i => i.ConnectionParams.IsConnected).Select(i => i.DisplayName + " (" + i.ConnectionParams.Code + ")").ToList();
             ConnectionProviderComboBox.ItemsSource = connections;
             connections = null;
         }
+
         public PortfolioAddition(Portfolio portfolio, int editIndex)
         {
             _isEditMode = true;
@@ -70,14 +71,17 @@ namespace AistTrader
             EditIndex = editIndex;
             InitFields(portfolio);
         }
+
         private void InitFields(Portfolio portfolio)
         {
             var connNames= MainWindow.Instance.ConnectionManager.Connections.Where(i => i.ConnectionState == ConnectionStates.Connected).Select(i => i.ConnectionName).ToList();
             ConnectionProviderComboBox.ItemsSource = connNames;
             connNames = null;
-            if (ConnectionProviderComboBox.Items.Count ==0)
-                ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ConnectionsStorage.Select(i => i.DisplayName).ToList();    
-            var connections = MainWindow.Instance.ConnectionsStorage.Where(i=>i.Id ==portfolio.Connection.Id).Select(i => i.DisplayName).ToList();
+            if (ConnectionProviderComboBox.Items.Count == 0)
+            {
+                ConnectionProviderComboBox.ItemsSource = MainWindow.Instance.ConnectionsStorage.Select(i => i.DisplayName).ToList();
+            }
+            var connections = MainWindow.Instance.ConnectionsStorage.Where(i => i.Id == portfolio.Connection.Id).Select(i => i.DisplayName).ToList();
             foreach (var i in connections)
             {
                 _selectedRegisteredProvider = i.ToString();
@@ -90,11 +94,14 @@ namespace AistTrader
             AccountComboBox.IsEnabled = false;
             ConnectionProviderComboBox.Focus();
         }
+
         private void OkBtnClick(object sender, RoutedEventArgs e)
         {
             var connectionProvider = ConnectionProviderComboBox.SelectedItem.ToString();
             if (EditIndex == int.MinValue)
-                connectionProvider = connectionProvider.Substring(0,connectionProvider.IndexOf(" (", StringComparison.Ordinal));
+            {
+                connectionProvider = connectionProvider.Substring(0, connectionProvider.IndexOf(" (", StringComparison.Ordinal));
+            }
             var selectedAccount = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connectionProvider)?.Portfolios.First();
             var agentItem = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.DisplayName == connectionProvider.ToString());
             agentItem.ConnectionParams.SelectedAccount = selectedAccount as StockSharp.BusinessEntities.Portfolio;
@@ -104,10 +111,11 @@ namespace AistTrader
                 Close();
             }
         }
+
         public string this[string columnName]
         {
-         get
-         {
+            get
+            {
                 string validationResult = null;
                 switch (columnName)
                 {
@@ -120,53 +128,46 @@ namespace AistTrader
                     case "SelectedAccount":
                         validationResult = ValidateDynamicAccount();
                         break;
-                    //case "ProviderPath":
-                    //    validationResult = ValidateProviderPath();
-                    //    break;
-                    //default:
-                    //    throw new ApplicationException("Unknown Property being validated on Product.");
                 }
                 string error = validationResult;
-                validPortflolioProperties[columnName] = String.IsNullOrEmpty(error) ? true : false;
+                validPortflolioProperties[columnName] = string.IsNullOrEmpty(error);
                 if (validPortflolioProperties.Count == 3)
+                {
                     OkPortfolioBtn.IsEnabled = validPortflolioProperties.Values.All(isValid => isValid);
+                }
                 return validationResult;
             }
         }
+
         private string ValidateRegisteredProvider()
         {
-            if (String.IsNullOrEmpty(this.RegisteredProvider) & ConnectionProviderComboBox.Items.Count > 0)
-            {
-                return "Не выбран поставщик";
-            }
-            if (ConnectionProviderComboBox.Items.Count == 0)
-            {
-                return "Нет активных подключений";
-            }
-            return String.Empty;
+            if (string.IsNullOrEmpty(RegisteredProvider) & ConnectionProviderComboBox.Items.Count > 0) { return "Не выбран поставщик"; }
+            if (ConnectionProviderComboBox.Items.Count == 0) { return "Нет активных подключений"; }
+            return string.Empty;
         }
+        
         private string ValidateDynamicAccount()
         {
-            if (string.IsNullOrEmpty(this.SelectedAccount))
-                return "Счёт не получен или все доступные счета уже задействованы";
-            return String.Empty;
+            if (string.IsNullOrEmpty(SelectedAccount)) { return "Счёт не получен или все доступные счета уже задействованы"; }
+            return string.Empty;
         }
+
         private string ValidatePortfolioName()
         {
-            if (String.IsNullOrEmpty(this.PortfolioName))
-                return "Задайте имя";
-            else if (this.PortfolioName.Length < 5)
-                return "Имя должно содержать не меньше 5 символов.";
-            //else if (NameAlredyInUse)
-            //    return "Данное имя уже используется";
-            return String.Empty;
+            if (string.IsNullOrEmpty(PortfolioName)) { return "Задайте имя"; }
+            if (PortfolioName.Length < 5) { return "Имя должно содержать не меньше 5 символов."; }
+            return string.Empty;
         }
+
         public string Error { get; private set; }
+
         private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = ConnectionProviderComboBox.SelectedItem.ToString();
             if (item.Contains('('))
+            {
                 item = item.Substring(0, item.IndexOf(" (", StringComparison.Ordinal));
+            }
             //Active
             var agent = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.DisplayName == item);
             item = null;

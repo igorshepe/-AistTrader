@@ -10,6 +10,7 @@ namespace Common.Params
     public class AgentParams
     {
         public AgentParams() { }
+
         public AgentParams(string fName, int connectionCount, int contracts, SerializableDictionary<string, object> settingsStorage, string agentName,string compiledName,string toolTipName, AgentPhantomParams phantomParams)
         {
             FriendlyName = fName;
@@ -23,6 +24,7 @@ namespace Common.Params
             PhantomParams = phantomParams;
             TransactionIDs = new List<long>( );
         }
+
         [DataMember()]
         public string Security { get; set; }
         [DataMember()]
@@ -55,6 +57,7 @@ namespace Common.Params
         [DataMember()]
         public Security Tool { get; set; }
     }
+
     public enum AgentWorkMode
     {
         Single,
@@ -65,12 +68,14 @@ namespace Common.Params
     public class AgentPhantomParams
     {
         public AgentPhantomParams() { }
+
         public AgentPhantomParams(string agentName, string groupName, string amount)
         {
             AgentName = agentName;
             GroupName = groupName;
             Amount = amount;
         }
+
         [DataMember()]
         public string AgentName { get; set; }
         [DataMember()]
@@ -78,5 +83,4 @@ namespace Common.Params
         [DataMember()]
         public string Amount { get; set; }
     }
-
 }

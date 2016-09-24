@@ -49,18 +49,17 @@ namespace NlogViewer
                 }
             }
         }
+
         protected void LogReceived(NLog.Common.AsyncLogEventInfo log)
         {
             LogEventViewModel vm = new LogEventViewModel(log.LogEvent);
 
             Dispatcher.Invoke(new Action(() =>
             {
-                //if (LogEntries.Count >= 50)
-                //    LogEntries.RemoveAt(0);
-                
                 LogEntries.Insert(0,vm);
             }));
         }
+
         private void MenuItemClearAll_OnClick(object sender, RoutedEventArgs e)
         {
             LogEntries.Clear();

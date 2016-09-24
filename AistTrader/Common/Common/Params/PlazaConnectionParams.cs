@@ -7,10 +7,12 @@ namespace Common.Params
     public class PlazaConnectionParams
     {
         PlazaConnectionParams() { }
-        public PlazaConnectionParams( string path)
+
+        public PlazaConnectionParams(string path)
         {
             Path = path;
         }
+
         [DataMember()]
         public string Path { get; set; }
         [DataMember()]

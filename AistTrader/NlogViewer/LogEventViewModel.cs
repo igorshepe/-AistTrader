@@ -11,7 +11,6 @@ namespace NlogViewer
         {
             // TODO: Complete member initialization
             this.logEventInfo = logEventInfo;
-
             ToolTip = logEventInfo.FormattedMessage;
             Level = logEventInfo.Level.ToString();  
             FormattedMessage = logEventInfo.FormattedMessage;

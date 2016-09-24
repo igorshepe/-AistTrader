@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using Common.Params;
 
 namespace Common.Entities
@@ -8,6 +7,7 @@ namespace Common.Entities
     public class Connection
     {
         Connection() { }
+
         public Connection(string name, ConnectionParams connectionParams,bool isDemo)
         {
             Id = name;
@@ -15,6 +15,7 @@ namespace Common.Entities
             ConnectionParams = connectionParams;
             IsDemo = isDemo;
         }
+
         [DataMember()]
         public string Id { get; set; }
         [DataMember()]

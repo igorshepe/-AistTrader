@@ -22,6 +22,7 @@ namespace Common.Entities
         {
             return Name;
         }
+
         public object Clone()
         {
             Agent temp = (Agent)MemberwiseClone();

@@ -11,6 +11,7 @@ namespace Common.Entities
     public class AgentManager
     {
         AgentManager() { }
+
         public AgentManager(string name, ManagerParams agentManager, string tool, string amount, string alias)// List<long> transactionIdHistory//)
         {
             AgentManagerUniqueId = alias;
@@ -19,13 +20,13 @@ namespace Common.Entities
             AgentManagerSettings = agentManager;
             Tool = tool;
             Amount = amount;
-           // TransactionIdHistory = new List<long>();
-
         }
+
         public override string ToString()
         {
             return AgentManagerUniqueId;
         }
+
         [DataMember()]
         public string AgentManagerUniqueId { get; set; }
         [DataMember()]
@@ -33,7 +34,6 @@ namespace Common.Entities
         [DataMember()]
         public string Alias { get; set; }
         [DataMember()]
-        //[XmlIgnore]
         public string Tool { get; set; }
         [DataMember()]
         //todo по аналогии дописать конвертер как в группах агетов
@@ -44,9 +44,8 @@ namespace Common.Entities
         public TradeParams TradeParams { get; set; }
         [DataMember()]
         public List<long> TransactionIdHistory { get; set; }
-        
-
     }
+
     [DataContract(Namespace = "")]
     public class TradeParams
     {
@@ -86,7 +85,6 @@ namespace Common.Entities
         public bool ByMarketWithFixedPrice { get; set; }
         [DataMember()]
         public bool BadOrdersByMarket { get; set; }
-        
     }
 }
 

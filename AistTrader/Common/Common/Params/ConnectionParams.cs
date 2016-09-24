@@ -24,7 +24,9 @@ namespace Common.Params
             ConnectionState = ConnectionStatus.Disconnected;
             IsDefaulConnection = isDefauld;
         }
-        public ConnectionParams(){}
+
+        public ConnectionParams() { }
+
         public override string ToString() { return Name; }
         [DataMember()]
         public bool IsDefaulConnection { get; set; }
@@ -55,7 +57,6 @@ namespace Common.Params
         public decimal VariationMargin { get; set; }
         [DataMember()]
         public bool IsRegistredConnection { get; set; }
-
         [DataMember()]
         public List<Security> Tools { get; set; }
         [DataMember()]
@@ -64,6 +65,7 @@ namespace Common.Params
         public Portfolio SelectedAccount { get; set; }
         [DataMember()]
         public ConnectionStatus ConnectionState { get; set; }
+
         public enum ConnectionStatus
         {
             Connected,
@@ -74,7 +76,6 @@ namespace Common.Params
     }
 
     [TypeConverter]
-
     public enum OperationCommand
     {
         Connect,
@@ -91,10 +92,5 @@ namespace Common.Params
     public class ConnectionsPhantomParams
     {
         public ConnectionsPhantomParams() { }
-        //public ConnectionsPhantomParams()
-        //{
-           
-        //}
-    
     }
 }

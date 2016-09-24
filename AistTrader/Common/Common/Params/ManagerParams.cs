@@ -1,16 +1,13 @@
-﻿using System;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
-using StockSharp.BusinessEntities;
-using System.Collections.Generic;
+﻿using System.Runtime.Serialization;
 
 namespace Common.Params
 {
     [DataContract(Namespace = "")]
     public class ManagerParams
     {
-        public ManagerParams(){}
-        public ManagerParams(Common.Entities.Portfolio portfolio, string agent, string security)
+        public ManagerParams() { }
+
+        public ManagerParams(Entities.Portfolio portfolio, string agent, string security)
         {
             Portfolio = portfolio;
             AgentOrGroup = agent;
@@ -20,11 +17,10 @@ namespace Common.Params
             Tool = security;
             AgentMangerCurrentStatus = AgentManagerStatus.Stopped;
             IsChecked = true;
-            //Command = AgentManagerOperationCommand.Start;
         }
+
         [DataMember()]
         public bool IsConnected { get; set; }
-        
         [DataMember()]
         public AgentManagerStatus AgentMangerCurrentStatus { get; set; }
         [DataMember()]
@@ -32,7 +28,6 @@ namespace Common.Params
         [DataMember()]
         public string AgentOrGroup { get; set; }
         [DataMember()]
-        //[XmlIgnore]
         public string Tool { get; set; }
         [DataMember()]
         public string Position { get; set; }
@@ -45,7 +40,6 @@ namespace Common.Params
         [DataMember()]
         public bool IsChecked { get; set; }
 
-
         public enum AgentManagerStatus
         {
             Running,
@@ -53,6 +47,7 @@ namespace Common.Params
             Starting,
             Stopping
         }
+
         public enum AgentManagerOperationCommand
         {
             Start,
@@ -64,16 +59,5 @@ namespace Common.Params
             ClosePositionsAndDelete,
             WaitForClosingAndDeleteAfter
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }
