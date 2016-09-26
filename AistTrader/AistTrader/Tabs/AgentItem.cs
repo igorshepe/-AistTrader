@@ -219,32 +219,24 @@ namespace AistTrader
                             return;
                         }
                         var agentItem = AgentListView.SelectedItem as Agent;
-                        var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString());
-                        if (isUsedInAgentManager)
+
+                        foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
                         {
-                            MessageBox.Show("Can not be deleted, used in agent manager");
-                            return;
-                        }
-                        else
-                        {
-                            foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
+                            MessageBoxResult resultMsg = MessageBox.Show("Selected agent will be permanently deleted! Confirm?", "Delete agent", MessageBoxButton.YesNo);
+                            if (resultMsg == MessageBoxResult.Yes)
                             {
-                                MessageBoxResult resultMsg = MessageBox.Show("Selected agent will be permanently deleted! Confirm?", "Delete agent", MessageBoxButton.YesNo);
-                                if (resultMsg == MessageBoxResult.Yes)
+                                try
                                 {
-                                    try
-                                    {
-                                        AgentsStorage.Remove(item);
-                                        Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
-                                    }
+                                    AgentsStorage.Remove(item);
+                                    Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
+                                }
+                                catch (Exception ex)
+                                {
+                                    Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
                                 }
                             }
-                            SaveAgentSettings();
                         }
+                        SaveAgentSettings();
                     }
                 }
             }
