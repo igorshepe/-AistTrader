@@ -66,7 +66,7 @@ namespace AistTrader
                     try
                     {
                         AgentManagerStorage.Remove(item);
-                        Task.Run(() => Logger.Info("Agent manager item \"{0}\" has been deleted", item.Name));
+                        Task.Run(() => Logger.Info("Agent manager item \"{0}\"/\"{1}\" has been deleted", item.Name, item.Alias));
                         SaveAgentManagerSettings();
                     }
                     catch (Exception ex)
