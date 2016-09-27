@@ -152,7 +152,7 @@ namespace AistTrader
          {
             if (AllAgentsChecked)
             {
-                MessageBoxResult result = MessageBox.Show("All agents will be deleted! Confirm?", "Delete all agents", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("All agents will be deleted! Confirm?", "Delete all agents", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
                 if (result == MessageBoxResult.Yes)
                 {
                     var delList = AgentListView.Items.Cast<Agent>().Select(r => r).ToList();
@@ -186,7 +186,7 @@ namespace AistTrader
                     var agent = i;
                     if (agent.Params.GroupName != "ungrouped agents")
                     {
-                        MessageBoxResult result = MessageBox.Show("Single group member can not be deleted, delete the whole group?", "Delete group", MessageBoxButton.YesNo);
+                        MessageBoxResult result = MessageBox.Show("Single group member can not be deleted, delete the whole group?", "Delete group", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
                         if (result == MessageBoxResult.Yes)
                         {
                             var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName.ToString());
@@ -222,7 +222,7 @@ namespace AistTrader
 
                         foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
                         {
-                            MessageBoxResult resultMsg = MessageBox.Show("Selected agent will be permanently deleted! Confirm?", "Delete agent", MessageBoxButton.YesNo);
+                            MessageBoxResult resultMsg = MessageBox.Show("Selected agent will be permanently deleted! Confirm?", "Delete agent", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
                             if (resultMsg == MessageBoxResult.Yes)
                             {
                                 try

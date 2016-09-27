@@ -644,7 +644,7 @@ namespace AistTrader
                                     i => i.ActualStrategyRunning.Name == oldItem.Name);
                             if (agentToDelete == null)
                             {
-                                MessageBoxResult result = MessageBox.Show("Agent  will be removed from current group".Insert(6, oldItem.Name), "Delete agent from group", MessageBoxButton.OKCancel);
+                                MessageBoxResult result = MessageBox.Show("Agent  will be removed from current group".Insert(6, oldItem.Name), "Delete agent from group", MessageBoxButton.OKCancel, MessageBoxImage.None, MessageBoxResult.Cancel);
                                 if (result == MessageBoxResult.OK)
                                 {
                                     MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");

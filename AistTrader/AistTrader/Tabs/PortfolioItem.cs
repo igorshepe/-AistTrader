@@ -152,7 +152,7 @@ namespace AistTrader
                 return;
             }
 
-            MessageBoxResult result = MessageBox.Show("Portfolio \"{0}\" will be deleted! You sure?".Put(PortfolioListView.SelectedItem), "Delete connection", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Portfolio \"{0}\" will be deleted! You sure?".Put(PortfolioListView.SelectedItem), "Delete connection", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
             if (result == MessageBoxResult.Yes)
             {
                 foreach (var item in PortfolioListView.SelectedItems.Cast<Portfolio>().ToList())

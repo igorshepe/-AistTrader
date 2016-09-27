@@ -139,7 +139,7 @@ namespace AistTrader
                 MessageBox.Show(this, @"Can not be deleted, connection is active"); 
                 return;
             }
-            MessageBoxResult result = MessageBox.Show("Connection \"{0}\" will be deleted! You sure?".Put(ProviderListView.SelectedItem),"Delete connection", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Connection \"{0}\" will be deleted! You sure?".Put(ProviderListView.SelectedItem),"Delete connection", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
             if (result == MessageBoxResult.Yes)
             {
                 foreach (var item in ProviderListView.SelectedItems.Cast<Connection>().ToList())

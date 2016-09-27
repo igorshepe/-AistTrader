@@ -60,7 +60,7 @@ namespace AistTrader
         {
             foreach (var item in AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList())
             {
-                MessageBoxResult resultMsg = MessageBox.Show("Selected agent/group will be permanently deleted! Confirm?", "Delete agent/group", MessageBoxButton.YesNo);
+                MessageBoxResult resultMsg = MessageBox.Show("Selected agent/group will be permanently deleted! Confirm?", "Delete agent/group", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
                 if (resultMsg == MessageBoxResult.Yes)
                 {
                     try
