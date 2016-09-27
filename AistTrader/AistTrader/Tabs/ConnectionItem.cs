@@ -273,6 +273,7 @@ namespace AistTrader
         {
             string ipEndPoint = "";
             bool sLoaded = false;
+            bool oLoaded = false;
 
             if (conn.ConnectionParams.PlazaConnectionParams.IpEndPoint == null)
             {
@@ -323,7 +324,21 @@ namespace AistTrader
                     }
                 });
             };
-            
+
+            var ordersHistory = new List<Order>();
+            connection.NewOrders += orders =>
+            {
+                this.GuiAsync(() =>
+                {
+                    ordersHistory.AddRange(orders);
+                    if (ordersHistory.Count > 1 && !oLoaded)
+                    {
+                        oLoaded = true;
+                        Task.Run(() => Logger.Info("Orders were loaded"));
+                    }
+                });
+            };
+
             connection.PortfolioChanged += portfolio =>
             {
                 var test = portfolio;
