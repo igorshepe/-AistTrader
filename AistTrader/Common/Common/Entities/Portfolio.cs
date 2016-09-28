@@ -9,8 +9,9 @@ namespace Common.Entities
     {
         Portfolio() { }
 
-        public Portfolio(string name, Connection connection,string code, StockSharp.BusinessEntities.Portfolio portfolio)
+        public Portfolio(string name, Connection connection, string code, StockSharp.BusinessEntities.Portfolio portfolio)
         {
+            Id = Guid.NewGuid();
             Name = name;
             Connection = connection;
             Code = code;
@@ -21,6 +22,8 @@ namespace Common.Entities
             return Name;
         }
 
+        [DataMember()]
+        public Guid Id { get; set; }
         [DataMember()]
         public string Name { get; set; }
         [DataMember()]

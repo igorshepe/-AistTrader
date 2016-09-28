@@ -25,10 +25,19 @@ namespace AistTrader
         {
             if (editIndex >= 0 && editIndex < AgentPortfolioStorage.Count)
             {
+                string oldName = AgentPortfolioStorage[editIndex].Name;
                 AgentPortfolioStorage.Clear();
                 InitiatePortfolioSettings();
+                InitiateAgentManagerSettings();
                 AgentPortfolioStorage[editIndex] = settings;
-                currentAgentManager.AgentManagerSettings.Portfolio = settings;
+
+                AgentManager currentAgentManager = AgentManagerStorage.FirstOrDefault(a => a.AgentManagerSettings.Portfolio.Name == oldName);
+                if (currentAgentManager != null)
+                {
+                    currentAgentManager.AgentManagerSettings.Portfolio = settings;
+                }
+                
+                SaveAgentManagerSettings();
             }
             else
             {

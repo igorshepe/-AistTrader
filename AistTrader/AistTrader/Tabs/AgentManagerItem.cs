@@ -41,7 +41,6 @@ namespace AistTrader
         }
 
         public bool _allManagerAgentsChecked;
-        private AgentManager currentAgentManager;
         public AistTraderStrategiesConnnectionManager AgentConnnectionManager;
         public readonly PlazaTrader Trader = new PlazaTrader();
         public bool IsAgentManagerSettingsLoaded;
@@ -247,7 +246,7 @@ namespace AistTrader
                 var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
 
                 if (agentOrGroup.AgentManagerSettings.IsConnected) { return; }
-                var isActiveConnection= ActiveConnectionCheck(agentOrGroup);
+                var isActiveConnection = ActiveConnectionCheck(agentOrGroup);
 
                 //начало логики активации контрола из менеджера агентов
                 if (!isActiveConnection)
@@ -382,8 +381,8 @@ namespace AistTrader
                 //collect all agents
                 foreach (var groupMember in groupElements)
                 {
-                    var connectionName =AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Name);
-                    var realConnection =ConnectionManager.Connections.Find(i =>{return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;});
+                    var connectionName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Name);
+                    var realConnection = ConnectionManager.Connections.Find(i =>{return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;});
                     var strategyType = HelperStrategies.GetRegistredStrategiesTest(groupMember.Name.Split(null).FirstOrDefault());
 
                     var amount = new UnitEditor();
@@ -626,7 +625,7 @@ namespace AistTrader
             if (pressedButton.Content.ToString() == ManagerParams.AgentManagerOperationCommand.Start.ToString())
             {
                 //ON 
-                var agentOrGroup = currentAgentManager = (sender as FrameworkElement).DataContext as AgentManager;
+                var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
                 var conName = ActiveConnectionName(agentOrGroup);
                 if (conName != null)
                 {
