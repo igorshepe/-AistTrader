@@ -320,7 +320,7 @@ namespace AistTrader
                     if (conn.ConnectionParams.Tools.Count > 10 && !sLoaded)
                     {
                         sLoaded = true;
-                        Task.Run(() => Logger.Info("Securities were loaded"));
+                        Task.Run(() => Logger.Info("Securities for connection \"{0}\" were loaded", connection.ConnectionName));
                     }
                 });
             };
@@ -334,7 +334,7 @@ namespace AistTrader
                     if (ordersHistory.Count > 1 && !oLoaded)
                     {
                         oLoaded = true;
-                        Task.Run(() => Logger.Info("Orders were loaded"));
+                        Task.Run(() => Logger.Info("Orders for connection \"{0}\" were loaded", connection.ConnectionName));
                     }
                 });
             };
