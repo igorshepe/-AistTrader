@@ -228,6 +228,16 @@ namespace AistTrader
                                 try
                                 {
                                     AgentsStorage.Remove(item);
+
+                                    for (int j = 0; j < AgentManagerStorage.Count; ++j)
+                                    {
+                                        if (AgentManagerStorage[j].AgentManagerSettings.AgentOrGroup == item.Name)
+                                        {
+                                            AgentManagerStorage.Remove(AgentManagerStorage[j]);
+                                            --j;
+                                        }
+                                    }
+
                                     Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
                                 }
                                 catch (Exception ex)
