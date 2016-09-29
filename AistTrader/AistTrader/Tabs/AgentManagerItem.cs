@@ -196,16 +196,8 @@ namespace AistTrader
             {
                 InitiateAgentManagerSettings();
             }
-            if (AgentManagerListView.Items.Count == 0)
-            {
-                EditAgentManagerBtn.IsEnabled = false;
-                DelAgentManagerBtn.IsEnabled = false;
-            }
-            else
-            {
-                EditAgentManagerBtn.IsEnabled = true;
-                DelAgentManagerBtn.IsEnabled = true;
-            }
+
+            EditAgentManagerBtn.IsEnabled = DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
         }
 
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
@@ -214,16 +206,8 @@ namespace AistTrader
 
         private void AgentManagerListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (AgentManagerListView.Items.Count == 0)
-            {
-                EditAgentManagerBtn.IsEnabled = false;
-                DelAgentManagerBtn.IsEnabled = false;
-            }
-            else
-            {
-                EditAgentManagerBtn.IsEnabled = true;
-                DelAgentManagerBtn.IsEnabled = true;
-            }
+            EditAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
+            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped;
         }
 
         private void AgentManagerTradeSettingsPic_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -705,6 +689,7 @@ namespace AistTrader
                 SaveAgentManagerSettings();
                 UpdateAgentManagerListView();
             }
+            DelAgentManagerBtn.IsEnabled = strategy.ProcessState != StockSharp.Algo.ProcessStates.Started && strategy.ProcessState != StockSharp.Algo.ProcessStates.Stopping;
         }
 
         #region Aist Trader Agent/Group Manager
