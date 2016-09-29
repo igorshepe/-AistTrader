@@ -19,7 +19,6 @@ using LogManager = NLog.LogManager;
 namespace Strategies.Strategies
 {
     public class ChStrategy : Strategy, IOptionalSettings
-
     {
           
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
@@ -67,9 +66,51 @@ namespace Strategies.Strategies
         {
 
         }
-        
 
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup, List<long> history )
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup)
+        {
+            _nameGroup = nameGroup;
+            //_history = history;
+            object obj;
+            //когда меняется выбранный элемент, не меняется набор параметров.
+            bool parsed = settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
+
+            string[] parts = obj.ToString().Split(":");
+            TimeSpan tstest = parsed
+                ? parts.Length == 3
+                    ? new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]))
+                    : new TimeSpan(0, 0, int.Parse(parts[0]))
+                : new TimeSpan(0, 1, 0);
+
+
+            _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, tstest);
+
+            settingsStorage.TryGetValue(ChStrategyDefaultSettings.FastSmaString, out obj);
+            var fs = (decimal)obj;
+            _fastSma = this.Param(ChStrategyDefaultSettings.FastSmaString, fs);
+
+            settingsStorage.TryGetValue(ChStrategyDefaultSettings.SlowSmaString, out obj);
+            var ss = (decimal)obj;
+            _slowSma = this.Param(ChStrategyDefaultSettings.SlowSmaString, ss);
+
+            settingsStorage.TryGetValue(ChStrategyDefaultSettings.PeriodString, out obj);
+            var per = (decimal)obj;
+            _period = this.Param(ChStrategyDefaultSettings.PeriodString, per);
+
+
+            _indicatorSlowSma.Length = Convert.ToInt32(_slowSma.Value.ToString(CultureInfo.InvariantCulture));
+
+
+            _indicatorFastSma.Length = Convert.ToInt32(_fastSma.Value.ToString(CultureInfo.InvariantCulture));
+
+
+            _indicatorHighest.Length = Convert.ToInt32(_period.Value.ToString(CultureInfo.InvariantCulture));
+
+
+            _indicatorLowest.Length = Convert.ToInt32(_period.Value.ToString(CultureInfo.InvariantCulture));
+        }
+
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup, List<long> history)
         {
             _nameGroup = nameGroup;
             _history = history;

@@ -547,7 +547,8 @@ namespace AistTrader
             }
             string nameGroup = agentManagerToStartAfterEdit.ToString();
             strategy = new Strategy();
-            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, nameGroup);
+            List<long> history = new List<long>() { 0 };
+            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, nameGroup, history);
             strategy.DisposeOnStop = true;
             var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentManagerToStartAfterEdit.Tool);
             if (!string.IsNullOrEmpty(agentToStartAfterEdit.Params.Security))
