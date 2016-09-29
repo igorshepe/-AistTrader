@@ -220,29 +220,38 @@ namespace AistTrader
                         }
                         var agentItem = AgentListView.SelectedItem as Agent;
 
-                        foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
+                        var isUsedInAgentManager = AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agentItem.Params.FriendlyName.ToString());
+                        if (isUsedInAgentManager)
                         {
-                            MessageBoxResult resultMsg = MessageBox.Show("Selected agent will be permanently deleted! Confirm?", "Delete agent", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
-                            if (resultMsg == MessageBoxResult.Yes)
+                            MessageBox.Show("Can not be deleted, used in agent manager");
+                            return;
+                        }
+                        else
+                        {
+                            foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
                             {
-                                try
+                                MessageBoxResult resultMsg = MessageBox.Show("Selected agent will be permanently deleted! Confirm?", "Delete agent", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
+                                if (resultMsg == MessageBoxResult.Yes)
                                 {
-                                    AgentsStorage.Remove(item);
-
-                                    for (int j = 0; j < AgentManagerStorage.Count; ++j)
+                                    try
                                     {
-                                        if (AgentManagerStorage[j].AgentManagerSettings.AgentOrGroup == item.Name)
-                                        {
-                                            AgentManagerStorage.Remove(AgentManagerStorage[j]);
-                                            --j;
-                                        }
-                                    }
+                                        AgentsStorage.Remove(item);
 
-                                    Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
-                                }
-                                catch (Exception ex)
-                                {
-                                    Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
+                                        for (int j = 0; j < AgentManagerStorage.Count; ++j)
+                                        {
+                                            if (AgentManagerStorage[j].AgentManagerSettings.AgentOrGroup == item.Name)
+                                            {
+                                                AgentManagerStorage.Remove(AgentManagerStorage[j]);
+                                                --j;
+                                            }
+                                        }
+
+                                        Task.Run(() => Logger.Info("Agent \"{0}\" has been deleted.  Strategies class name: {1}.cs", item.Params.FriendlyName, item.Name));
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
+                                    }
                                 }
                             }
                         }
