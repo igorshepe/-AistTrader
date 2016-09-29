@@ -114,7 +114,7 @@ namespace AistTrader
         public void UpdateAgentManagerListView()
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
-            AgentManagerCollectionView =(CollectionView) CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+            AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
             AgentManagerCollectionView.Refresh();
         }
 
@@ -197,7 +197,8 @@ namespace AistTrader
                 InitiateAgentManagerSettings();
             }
 
-            EditAgentManagerBtn.IsEnabled = DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
+            EditAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
+            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped;
         }
 
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
