@@ -19,13 +19,14 @@ using LogManager = NLog.LogManager;
 namespace Strategies.Strategies
 {
     public class ChStrategy : Strategy, IOptionalSettings
+
     {
-          
+
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
 
         private ICandleManager _candleManager;
-        private Order _newOrder;
-        
+
+
         private bool _sendOrder;
         private CandleSeries _series;
         private bool _isFinish;
@@ -50,13 +51,12 @@ namespace Strategies.Strategies
         private bool _enterPosition;
         private Order _registeredOrder;
         private readonly string _nameGroup;
-        private readonly List<long> _history; 
+        private readonly List<long> _history;
         private string _nameStrategy;
         private bool _firstLap = true;
-        //private long _transactionId;
         private bool _stopStrategy;
-        //private bool _isOrdersLoaded;
-        //private bool _isStopOrdersLoaded;
+        private readonly string _alias;
+        private string _port;
 
 
 
@@ -67,52 +67,12 @@ namespace Strategies.Strategies
 
         }
 
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup)
+
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string[] infoGroup, List<long> history)
         {
-            _nameGroup = nameGroup;
-            //_history = history;
-            object obj;
-            //когда меняется выбранный элемент, не меняется набор параметров.
-            bool parsed = settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
-
-            string[] parts = obj.ToString().Split(":");
-            TimeSpan tstest = parsed
-                ? parts.Length == 3
-                    ? new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]))
-                    : new TimeSpan(0, 0, int.Parse(parts[0]))
-                : new TimeSpan(0, 1, 0);
-
-
-            _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, tstest);
-
-            settingsStorage.TryGetValue(ChStrategyDefaultSettings.FastSmaString, out obj);
-            var fs = (decimal)obj;
-            _fastSma = this.Param(ChStrategyDefaultSettings.FastSmaString, fs);
-
-            settingsStorage.TryGetValue(ChStrategyDefaultSettings.SlowSmaString, out obj);
-            var ss = (decimal)obj;
-            _slowSma = this.Param(ChStrategyDefaultSettings.SlowSmaString, ss);
-
-            settingsStorage.TryGetValue(ChStrategyDefaultSettings.PeriodString, out obj);
-            var per = (decimal)obj;
-            _period = this.Param(ChStrategyDefaultSettings.PeriodString, per);
-
-
-            _indicatorSlowSma.Length = Convert.ToInt32(_slowSma.Value.ToString(CultureInfo.InvariantCulture));
-
-
-            _indicatorFastSma.Length = Convert.ToInt32(_fastSma.Value.ToString(CultureInfo.InvariantCulture));
-
-
-            _indicatorHighest.Length = Convert.ToInt32(_period.Value.ToString(CultureInfo.InvariantCulture));
-
-
-            _indicatorLowest.Length = Convert.ToInt32(_period.Value.ToString(CultureInfo.InvariantCulture));
-        }
-
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup, List<long> history)
-        {
-            _nameGroup = nameGroup;
+            _alias = infoGroup[0];
+            _port = infoGroup[1];
+            _nameGroup = infoGroup[2];
             _history = history;
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
@@ -215,11 +175,11 @@ namespace Strategies.Strategies
 
             if (_nameGroup != "single")
             {
-                nameStrategy = $"[{_nameGroup}] {GetFriendlyName()}";
+                nameStrategy = $"{_port}-[{_nameGroup}] {GetFriendlyName()}";
             }
             else
             {
-                nameStrategy = GetFriendlyName();
+                nameStrategy = $"{_port}- {_alias}";
             }
 
 
@@ -227,8 +187,8 @@ namespace Strategies.Strategies
         }
 
 
-        
-        public void GetHistory(IEnumerable<Order> orderConnector )
+
+        public void GetHistory(IEnumerable<Order> orderConnector)
         {
             if (_history[0].ToString() == "0")
             {
@@ -237,7 +197,7 @@ namespace Strategies.Strategies
             }
             else
             {
-                
+
                 Task.Run(() => TradesLogger.Info("{0}: historical strategy orders: {1}, Connector orders: {2} ", _nameStrategy, _history.Count, orderConnector.Count()));
                 var orders = orderConnector.Where(o => _history.Contains(o.TransactionId));
 
@@ -245,7 +205,7 @@ namespace Strategies.Strategies
                 {
                     foreach (var order in orders)
                     {
-                       var trades = Connector.MyTrades.Where(t => t.Order.TransactionId == order.TransactionId);
+                        var trades = Connector.MyTrades.Where(t => t.Order.TransactionId == order.TransactionId);
 
                         AttachOrder(order, trades);
                     }
@@ -256,8 +216,8 @@ namespace Strategies.Strategies
 
         protected override void OnStarted()
         {
-            
-         
+
+
             _nameStrategy = CheckNameGroup();
 
             GetHistory(Connector.Orders);
@@ -287,7 +247,7 @@ namespace Strategies.Strategies
             //this.WhenNewMyTrades()
             //  .Do(OnNewOrderTrades)
             //  .Apply(this);
-             
+
 
             // создаем правило на появление завершенной свечи
             _candleManager // объект, к которому применяется правило
@@ -432,13 +392,13 @@ namespace Strategies.Strategies
                         // "Опускаем" флаг. Теперь в ProcessCandles возобновится отработка логики стратегии
 
 
-                        
+
                         _cancelOrderCandle = _cancelCandle;
                         // Удаляет все правила, связанные с заявкой (удаление правил по токену)
                         Rules.RemoveRulesByToken(orderMatchedRule.Token, orderMatchedRule);
                         var averagePrice = order.GetAveragePrice(Connector);
                         Task.Run(() => TradesLogger.Info("{0}: Order {1} finish, vol {2} , averagePrice {3:0}, Security {4}, {5}", _nameStrategy, order.TransactionId, order.Volume, averagePrice, Security.Code, order.Direction));
-                        
+
                         // Удаляет определенное правило
                         // this.Rules.Remove(orderCanceledRule)
 
@@ -732,7 +692,7 @@ namespace Strategies.Strategies
                 if (_stopStrategy)
                 {
                     Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}. Agent has been removed from the group. It's closing the postion", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position));
-                    
+
                 }
                 else
                 {
