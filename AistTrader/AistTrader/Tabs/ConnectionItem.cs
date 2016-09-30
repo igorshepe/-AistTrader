@@ -308,12 +308,16 @@ namespace AistTrader
 
             connection.NewPortfolios += portfolios =>
             {
+                this.GuiAsync(() => _portfoliosWindow.PortfolioGrid.Portfolios.AddRange(portfolios)); //для тестов
                 this.GuiAsync(() => conn.ConnectionParams.Accounts.AddRange(portfolios));
                 this.GuiAsync(() => UpdateProviderGridListView(conn));
                 this.GuiAsync(() => Logger.Info("Portfolios for connection \"{0}\" were loaded",connection.ConnectionName));
             };
             connection.NewSecurities += securities =>
             {
+
+                //this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
+
                 this.GuiAsync(() =>
                 {
                     conn.ConnectionParams.Tools.AddRange(securities);
@@ -325,9 +329,16 @@ namespace AistTrader
                 });
             };
 
+            connection.NewPositions += positions =>
+            {
+                _portfoliosWindow.PortfolioGrid.Positions.AddRange(positions); // Для тестов 
+            };
+
             var ordersHistory = new List<Order>();
             connection.NewOrders += orders =>
             {
+                _ordersWindow.OrderGrid.Orders.AddRange(orders); // Для тестов
+
                 this.GuiAsync(() =>
                 {
                     ordersHistory.AddRange(orders);
@@ -339,6 +350,11 @@ namespace AistTrader
                 });
             };
 
+            connection.NewMyTrades += trades =>
+            {
+                _myTradesWindow.TradeGrid.Trades.AddRange(trades); // Для тестов 
+            };
+            _securitiesWindow.SecurityPicker.MarketDataProvider = connection; // Для тестов 
             connection.PortfolioChanged += portfolio =>
             {
                 var test = portfolio;

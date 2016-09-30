@@ -568,7 +568,9 @@
                             	Margin="10,214,1,0"
                             	VerticalAlignment="Top"
                             	Width="100"/>
-                            <Button Content="LogStrategy"
+                            <Button
+                                Visibility="Hidden"
+                                Content="LogStrategy"
                             	Click="ShowMonitorWindowClick" 
                             	x:Name="ShowMonitorWindow"
                             	HorizontalAlignment="Center"

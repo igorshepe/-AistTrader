@@ -419,7 +419,7 @@ namespace AistTrader
                     strategy.LogLevel = LogLevels.Debug;
                     strategy.Start();
                     // Логирование внутренних событий стратегии для тестов
-                    _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+                     
                     var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                     AgentConnnectionManager.Add(wrapper);
                 }
@@ -496,7 +496,7 @@ namespace AistTrader
                 strategy.LogLevel = LogLevels.Debug;
                 strategy.Start();
                 // Логирование внутренних событий стратегии для тестов
-                _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+                
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                 AgentConnnectionManager.Add(wrapper);
             }
@@ -573,7 +573,7 @@ namespace AistTrader
             _logManager.Listeners.Add(
                 new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
                     DateTime.Now.Day)));
-            _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+             
             var wrapper = new AistTraderAgentManagerWrapper(agentManagerToStartAfterEdit.Alias, strategy);
             AgentConnnectionManager.Add(wrapper);
         }
