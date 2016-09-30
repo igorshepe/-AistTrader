@@ -24,7 +24,7 @@ namespace Strategies.Strategies
         private static readonly Logger TradesLogger = LogManager.GetLogger("TradesLogger");
 
         private ICandleManager _candleManager;
-        private Order _newOrder;
+        
         
         private bool _sendOrder;
         private CandleSeries _series;
@@ -53,11 +53,10 @@ namespace Strategies.Strategies
         private readonly List<long> _history; 
         private string _nameStrategy;
         private bool _firstLap = true;
-        //private long _transactionId;
         private bool _stopStrategy;
-        //private bool _isOrdersLoaded;
-        //private bool _isStopOrdersLoaded;
-
+        private readonly string _alias;
+        private string _port;
+         
 
 
 
@@ -67,52 +66,14 @@ namespace Strategies.Strategies
 
         }
 
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup)
+
+
+        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string[] infoGroup, List<long> history)
         {
-            _nameGroup = nameGroup;
-            //_history = history;
-            object obj;
-            //когда меняется выбранный элемент, не меняется набор параметров.
-            bool parsed = settingsStorage.TryGetValue(ChStrategyDefaultSettings.TimeFrameString, out obj);
-
-            string[] parts = obj.ToString().Split(":");
-            TimeSpan tstest = parsed
-                ? parts.Length == 3
-                    ? new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]))
-                    : new TimeSpan(0, 0, int.Parse(parts[0]))
-                : new TimeSpan(0, 1, 0);
-
-
-            _timeFrame = this.Param(ChStrategyDefaultSettings.TimeFrameString, tstest);
-
-            settingsStorage.TryGetValue(ChStrategyDefaultSettings.FastSmaString, out obj);
-            var fs = (decimal)obj;
-            _fastSma = this.Param(ChStrategyDefaultSettings.FastSmaString, fs);
-
-            settingsStorage.TryGetValue(ChStrategyDefaultSettings.SlowSmaString, out obj);
-            var ss = (decimal)obj;
-            _slowSma = this.Param(ChStrategyDefaultSettings.SlowSmaString, ss);
-
-            settingsStorage.TryGetValue(ChStrategyDefaultSettings.PeriodString, out obj);
-            var per = (decimal)obj;
-            _period = this.Param(ChStrategyDefaultSettings.PeriodString, per);
-
-
-            _indicatorSlowSma.Length = Convert.ToInt32(_slowSma.Value.ToString(CultureInfo.InvariantCulture));
-
-
-            _indicatorFastSma.Length = Convert.ToInt32(_fastSma.Value.ToString(CultureInfo.InvariantCulture));
-
-
-            _indicatorHighest.Length = Convert.ToInt32(_period.Value.ToString(CultureInfo.InvariantCulture));
-
-
-            _indicatorLowest.Length = Convert.ToInt32(_period.Value.ToString(CultureInfo.InvariantCulture));
-        }
-
-        public ChStrategy(SerializableDictionary<string, object> settingsStorage, string nameGroup, List<long> history)
-        {
-            _nameGroup = nameGroup;
+             
+            _alias = infoGroup[0];
+            _port = infoGroup[1];
+            _nameGroup = infoGroup[2];
             _history = history;
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
@@ -215,11 +176,11 @@ namespace Strategies.Strategies
 
             if (_nameGroup != "single")
             {
-                nameStrategy = $"[{_nameGroup}] {GetFriendlyName()}";
+                nameStrategy = $"{_port}-[{_nameGroup}] {GetFriendlyName()}";
             }
             else
             {
-                nameStrategy = GetFriendlyName();
+                nameStrategy = $"{_port}- {_alias}";
             }
 
 
