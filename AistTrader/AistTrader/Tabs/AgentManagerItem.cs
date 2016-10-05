@@ -31,6 +31,8 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
+        private bool[] startStopStartedIndexes;
+
         public bool AllManagerAgentsChecked
         {
             set
@@ -111,11 +113,91 @@ namespace AistTrader
             UpdateAgentManagerListView();
         }
 
+        public static IEnumerable<T> FindLogicalChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                foreach (object rawChild in LogicalTreeHelper.GetChildren(depObj))
+                {
+                    if (rawChild is DependencyObject)
+                    {
+                        DependencyObject child = (DependencyObject)rawChild;
+                        if (child is T)
+                        {
+                            yield return (T)child;
+                        }
+
+                        foreach (T childOfChild in FindLogicalChildren<T>(child))
+                        {
+                            yield return childOfChild;
+                        }
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<DataGridRow> GetDataGridRows(DataGrid grid)
+        {
+            var itemsSource = grid.ItemsSource as IEnumerable;
+
+            if (null == itemsSource)
+            {
+                yield return null;
+            }
+
+            //foreach (var item in itemsSource)
+            for (int i = 0, n = grid.Items.Count; i < n; ++i)
+            {
+                var row = grid.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow;
+
+                if (null != row)
+                {
+                    yield return row;
+                }
+            }
+        }
+
+        private void ResetStarted()
+        {
+            if (startStopStartedIndexes == null)
+            {
+                startStopStartedIndexes = new bool[AgentManagerStorage.Count];
+            }
+            if (startStopStartedIndexes.Length != AgentManagerStorage.Count)
+            {
+                bool[] current = new bool[startStopStartedIndexes.Length];
+                for (int i = 0, n = Math.Min(startStopStartedIndexes.Length, AgentManagerStorage.Count); i < n; ++i)
+                {
+                    current[i] = startStopStartedIndexes[i];
+                }
+                startStopStartedIndexes = new bool[AgentManagerStorage.Count];
+                for (int i = 0, n = current.Length; i < n; ++i)
+                {
+                    startStopStartedIndexes[i] = current[i];
+                }
+                for (int i = current.Length, n = AgentManagerStorage.Count; i < n; ++i)
+                {
+                    startStopStartedIndexes[i] = false;
+                }
+            }
+
+            for (int i = 0, n = AgentManagerListView.Items.Count; i < n; ++i)
+            {
+                if (startStopStartedIndexes[i])
+                {
+                    AgentManagerStorage[i].AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Stop;
+                    AgentManagerStorage[i].AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Running;
+                }
+            }
+        }
+
         public void UpdateAgentManagerListView()
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
             AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
             AgentManagerCollectionView.Refresh();
+
+            ResetStarted();
         }
 
         private void SaveAgentManagerSettings()
@@ -198,7 +280,7 @@ namespace AistTrader
             }
 
             EditAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
-            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped;
+            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex || ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
         }
 
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
@@ -208,7 +290,7 @@ namespace AistTrader
         private void AgentManagerListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             EditAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
-            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped;
+            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex || ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
         }
 
         private void AgentManagerTradeSettingsPic_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -608,7 +690,7 @@ namespace AistTrader
         private void StartStopBtnClick(object sender, RoutedEventArgs e)
         {
             var pressedButton = sender as Button;
-            if (pressedButton.Content.ToString() == ManagerParams.AgentManagerOperationCommand.Start.ToString())
+            if (startStopStartedIndexes[AgentManagerListView.SelectedIndex] = (pressedButton.Content.ToString() == ManagerParams.AgentManagerOperationCommand.Start.ToString()))
             {
                 //ON 
                 var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;

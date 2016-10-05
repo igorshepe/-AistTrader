@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using Common.Entities;
 using Ecng.Common;
 using NLog;
+using Common.Params;
 
 //todo: идентификаторы портфеля тоже в кеше
 namespace AistTrader
@@ -21,12 +22,54 @@ namespace AistTrader
     {
         public bool IsPortfolioSettingsLoaded;
 
+        private bool ResetRegisteredPortfolioName(string oldName, string newName)
+        {
+            const string fileName = "AgentManagerSettings.xml";
+
+            if (File.Exists(fileName))
+            {
+                try
+                {
+                    //List<AgentManager> obj = AgentManagerStorage.Select(a => a).ToList();
+                    //var tList = new List<Type>();
+                    //tList.Add(typeof(Common.Entities.Portfolio));
+                    //tList.Add(typeof(System.TimeZoneInfo));
+                    //tList.Add(typeof(TimeZoneInfo.AdjustmentRule[]));
+                    //tList.Add(typeof(TimeZoneInfo.AdjustmentRule));
+                    //tList.Add(typeof(TimeZoneInfo.TransitionTime));
+                    //tList.Add(typeof(System.DayOfWeek));
+                    //using (var fStream = new FileStream("AgentManagerSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                    //{
+                    //DataContractSerializer xmlSerializer = new DataContractSerializer(typeof(List<AgentManager>), tList);
+                    //xmlSerializer.WriteObject(fStream, obj);
+                    //fStream.Close();
+                    //}
+
+                    string content = File.ReadAllText(fileName).
+                        Replace(string.Format("<Name>{0}</Name>", oldName), string.Format("<Name>{0}</Name>", newName)).
+                        Replace(string.Format("Name{0}", oldName), string.Format("Name{0}", newName));
+
+                    File.WriteAllText(fileName, content);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Task.Run(() => Logger.Log(LogLevel.Error, ex.Message));
+                }
+            }
+            return false;
+        }
+
         public bool AddNewAgentPortfolio(Common.Entities.Portfolio settings, int editIndex)
         {
             if (editIndex >= 0 && editIndex < AgentPortfolioStorage.Count)
             {
                 string oldName = AgentPortfolioStorage[editIndex].Name;
                 AgentPortfolioStorage.Clear();
+
+                bool renamed = ResetRegisteredPortfolioName(oldName, settings.Name);
+
                 InitiatePortfolioSettings();
                 InitiateAgentManagerSettings();
                 AgentPortfolioStorage[editIndex] = settings;
@@ -53,6 +96,9 @@ namespace AistTrader
             }
             SavePortfolioSettings();
             UpdatePortfolioListView();
+            UpdateAgentManagerListView();
+
+            ResetStarted();
 
             return true;
         }

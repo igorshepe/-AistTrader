@@ -198,6 +198,8 @@ namespace AistTrader
 
         private void ConnectionStateSwitch_OnClick(object sender, RoutedEventArgs e)
         {
+            ResetStarted();
+
             if ((bool) (sender as ToggleSwitchButton).IsChecked)
             {
                 //ON

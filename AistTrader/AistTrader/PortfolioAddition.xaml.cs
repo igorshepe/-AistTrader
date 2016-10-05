@@ -108,7 +108,14 @@ namespace AistTrader
             connectionProvider = null;
             if (MainWindow.Instance.AddNewAgentPortfolio(new Common.Entities.Portfolio(PortfolioNameTxtBox.Text, agentItem, selectedAccount.Name, (StockSharp.BusinessEntities.Portfolio)selectedAccount), EditIndex))
             {
-                Close();
+                try
+                {
+                    Close();
+                }
+                catch (InvalidOperationException)
+                {
+                    // TODO:
+                }
             }
         }
 
