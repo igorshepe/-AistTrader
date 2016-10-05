@@ -474,10 +474,16 @@ namespace AistTrader
                         calculatedAmount = amount.Value.To<decimal>();
                     }
 
-                    string nameGroup = agentOrGroup.ToString();
+                    //string nameGroup = agentOrGroup.ToString();
                     var history = new List<long> { 0 };
+                    string nameGroup = agentOrGroup.ToString();
+                    var alias = agentOrGroup.Alias;
+                    var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
+                    string[] infoStrategy = { alias, port, nameGroup };
                     strategy = new Strategy();
-                    strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, nameGroup, history);
+                    strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, infoStrategy, history);
+
+
                     strategy.DisposeOnStop = true;
 
                     //тест
@@ -495,7 +501,7 @@ namespace AistTrader
                     strategy.LogLevel = LogLevels.Debug;
                     strategy.Start();
                     // Логирование внутренних событий стратегии для тестов
-                    _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+                     
                     var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                     AgentConnnectionManager.Add(wrapper);
                 }
@@ -545,7 +551,7 @@ namespace AistTrader
                 {
                     calculatedAmount = amount.Value.To<decimal>();
                 }
-                string nameGroup = agentOrGroup.ToString();
+
                 strategy = new Strategy();
 
                 var history = new List<long> {0};
@@ -553,8 +559,14 @@ namespace AistTrader
                 {
                     history = agentOrGroup.TransactionIdHistory;
                 }
+                var nameGroup = "single";
+                var alias = agentOrGroup.Alias;
+                var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
+                string[] infoStrategy = { alias, port, nameGroup };
+
                 
-                strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, "single", history);
+                strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, infoStrategy, history);
+
                 strategy.DisposeOnStop = true;
                 var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
                 strategy.Security = convertedSecurity;
@@ -566,7 +578,7 @@ namespace AistTrader
                 strategy.LogLevel = LogLevels.Debug;
                 strategy.Start();
                 // Логирование внутренних событий стратегии для тестов
-                _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+                
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                 AgentConnnectionManager.Add(wrapper);
             }
@@ -615,7 +627,15 @@ namespace AistTrader
             string nameGroup = agentManagerToStartAfterEdit.ToString();
             strategy = new Strategy();
             List<long> history = new List<long>() { 0 };
-            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, nameGroup, history);
+
+            var alias = agentManagerToStartAfterEdit.Alias;
+            var port = portfolio.Name;
+            string[] infoStrategy = { alias, port, nameGroup };
+
+            strategy = new Strategy();
+            strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, infoStrategy, history);
+
+
             strategy.DisposeOnStop = true;
             var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentManagerToStartAfterEdit.Tool);
             if (!string.IsNullOrEmpty(agentToStartAfterEdit.Params.Security))
@@ -635,7 +655,7 @@ namespace AistTrader
             _logManager.Listeners.Add(
                 new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
                     DateTime.Now.Day)));
-            _logManager.Listeners.Add(new GuiLogListener(_monitorWindow));
+             
             var wrapper = new AistTraderAgentManagerWrapper(agentManagerToStartAfterEdit.Alias, strategy);
             AgentConnnectionManager.Add(wrapper);
         }
