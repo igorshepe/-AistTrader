@@ -92,6 +92,7 @@
     <Compile Include="Entities\Portfolio.cs" />
     <Compile Include="Entities\AgentManager.cs" />
     <Compile Include="Entities\Connection.cs" />
+    <Compile Include="Helpers\UniqueIdentifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Params\ManagerParams.cs" />
     <Compile Include="Params\AgentParams.cs" />
