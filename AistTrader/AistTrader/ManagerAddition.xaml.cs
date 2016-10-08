@@ -150,7 +150,7 @@ namespace AistTrader
             {
                 if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                 {
-                    if (string.IsNullOrEmpty(AmountTextBox.Text))
+                    if (string.IsNullOrEmpty(AmountTextBox.Text) && agent.Params.GroupName == "ungrouped agents")
                     {
                         MessageBox.Show(this, @"Set amount value");
                         return;
@@ -167,7 +167,7 @@ namespace AistTrader
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
                     //todo: вот тут проверить с Артёмом возвращаемое значение
                     decimal? amount= MainWindow.Instance.CalculateAmount(agentManagerToEdit);
-                    var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name ==agentManagerToEdit.ToString());
+                    var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name == agentManagerToEdit.ToString());
                     if (runnigStrategy != null)
                     {
                         runnigStrategy.ActualStrategyRunning.Volume = (decimal)amount;
@@ -177,7 +177,7 @@ namespace AistTrader
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(AmountTextBox.Text))
+                    if (string.IsNullOrEmpty(AmountTextBox.Text) && agent.Params.GroupName == "ungrouped agents")
                     {
                         MessageBox.Show(this, @"Set amount value");
                         return;
