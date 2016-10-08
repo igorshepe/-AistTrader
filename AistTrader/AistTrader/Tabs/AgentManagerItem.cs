@@ -54,6 +54,7 @@ namespace AistTrader
         {
             var form = new ManagerAddition();
             form.ShowDialog();
+            ResetStarted();
             form = null;
         }
 
@@ -157,7 +158,7 @@ namespace AistTrader
             }
         }
 
-        private void ResetStarted()
+        public void ResetStarted()
         {
             if (startStopStartedIndexes == null)
             {
