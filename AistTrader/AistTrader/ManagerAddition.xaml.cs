@@ -148,9 +148,10 @@ namespace AistTrader
             //временная проверка не через автовалидацию
             if (editMode)
             {
+                var agentForEdit = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
                 if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                 {
-                    if (string.IsNullOrEmpty(AmountTextBox.Text) && agent.Params.GroupName == "ungrouped agents")
+                    if (string.IsNullOrEmpty(AmountTextBox.Text) && agentForEdit.Params.GroupName == "ungrouped agents")
                     {
                         MessageBox.Show(this, @"Set amount value");
                         return;
@@ -177,7 +178,7 @@ namespace AistTrader
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(AmountTextBox.Text) && agent.Params.GroupName == "ungrouped agents")
+                    if (string.IsNullOrEmpty(AmountTextBox.Text) && agentForEdit.Params.GroupName == "ungrouped agents")
                     {
                         MessageBox.Show(this, @"Set amount value");
                         return;
