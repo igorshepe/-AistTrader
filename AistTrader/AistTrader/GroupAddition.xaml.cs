@@ -647,6 +647,26 @@ namespace AistTrader
                                 MessageBoxResult result = MessageBox.Show("Agent  will be removed from current group".Insert(6, oldItem.Name), "Delete agent from group", MessageBoxButton.OKCancel, MessageBoxImage.None, MessageBoxResult.Cancel);
                                 if (result == MessageBoxResult.OK)
                                 {
+                                    // To be tested
+                                    var form = new GroupAdditionDeleteMode(oldItem.Name.ToString());
+                                    form.ShowDialog();
+                                    var selectedMode = form.SelectedDeleteMode;
+                                    if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
+                                    {
+                                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                        strat.CheckPosExit();
+                                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                        MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
+                                    }
+                                    if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
+                                    {
+                                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                        strat.CheckPosWaitStrExit();
+                                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                        MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
+                                    }
+                                    //
+
                                     MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
                                     ++removeCount;
                                     if (removeCount == ItemsToDeleteCollection.Count)
