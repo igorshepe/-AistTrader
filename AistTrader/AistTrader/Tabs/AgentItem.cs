@@ -202,8 +202,8 @@ namespace AistTrader
 
                                 var agentToDelete =
                                 MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
-                                    it => it.ActualStrategyRunning.Name == item.Name);
-                                var form = new GroupAdditionDeleteMode(item.Name.ToString());
+                                    it => it.ActualStrategyRunning.Name == del.Name);
+                                var form = new GroupAdditionDeleteMode(del.Name.ToString());
                                 form.ShowDialog();
                                 var selectedMode = form.SelectedDeleteMode;
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
@@ -211,14 +211,14 @@ namespace AistTrader
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
-                                    MainWindow.Instance.DelAgentConfigBtnClick(item, "has been excluded from the group");
+                                    MainWindow.Instance.DelAgentConfigBtnClick(del, "has been excluded from the group");
                                 }
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                                 {
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosWaitStrExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
-                                    MainWindow.Instance.DelAgentConfigBtnClick(item, "has been excluded from the group");
+                                    MainWindow.Instance.DelAgentConfigBtnClick(del, "has been excluded from the group");
                                 }
 
                                 AgentsStorage.Remove(del);
