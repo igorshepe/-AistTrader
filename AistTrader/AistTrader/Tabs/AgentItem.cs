@@ -12,6 +12,7 @@ using System.Windows.Data;
 using Common.Entities;
 using Common.Params;
 using Ecng.Common;
+using Strategies.Strategies;
 using NLog;
 
 namespace AistTrader
@@ -198,6 +199,28 @@ namespace AistTrader
                             var delList = AgentListView.Items.Cast<Agent>().Where(r => r.Params.GroupName == agent.Params.GroupName).ToList();
                             foreach (var del in delList)
                             {
+
+                                var agentToDelete =
+                                MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
+                                    it => it.ActualStrategyRunning.Name == item.Name);
+                                var form = new GroupAdditionDeleteMode(item.Name.ToString());
+                                form.ShowDialog();
+                                var selectedMode = form.SelectedDeleteMode;
+                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
+                                {
+                                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                    strat.CheckPosExit();
+                                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                    MainWindow.Instance.DelAgentConfigBtnClick(item, "has been excluded from the group");
+                                }
+                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
+                                {
+                                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                    strat.CheckPosWaitStrExit();
+                                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                    MainWindow.Instance.DelAgentConfigBtnClick(item, "has been excluded from the group");
+                                }
+
                                 AgentsStorage.Remove(del);
                             }
                             Task.Run(() => Logger.Info("Group - \"{0}\" has been deleted.", agent.Params.GroupName));
@@ -231,6 +254,28 @@ namespace AistTrader
                             foreach (var item in AgentListView.SelectedItems.Cast<Agent>().ToList())
                             {
                                 MessageBoxResult resultMsg = MessageBox.Show("Selected agent will be permanently deleted! Confirm?", "Delete agent", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
+
+                                var agentToDelete =
+                                MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
+                                    it => it.ActualStrategyRunning.Name == item.Name);
+                                var form = new GroupAdditionDeleteMode(item.Name.ToString());
+                                form.ShowDialog();
+                                var selectedMode = form.SelectedDeleteMode;
+                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
+                                {
+                                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                    strat.CheckPosExit();
+                                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                    MainWindow.Instance.DelAgentConfigBtnClick(item, "has been excluded from the group");
+                                }
+                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
+                                {
+                                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                    strat.CheckPosWaitStrExit();
+                                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                    MainWindow.Instance.DelAgentConfigBtnClick(item, "has been excluded from the group");
+                                }
+
                                 if (resultMsg == MessageBoxResult.Yes)
                                 {
                                     try
