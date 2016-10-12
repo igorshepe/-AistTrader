@@ -281,7 +281,7 @@ namespace AistTrader
             }
 
             EditAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
-            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex || ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
+            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
         }
 
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
@@ -291,7 +291,7 @@ namespace AistTrader
         private void AgentManagerListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             EditAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
-            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex || ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
+            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
         }
 
         private void AgentManagerTradeSettingsPic_OnMouseDown(object sender, MouseButtonEventArgs e)
