@@ -710,6 +710,10 @@ namespace AistTrader
 
         private void StartStopBtnClick(object sender, RoutedEventArgs e)
         {
+            if (startStopStartedIndexes == null)
+            {
+                ResetStarted();
+            }
             var pressedButton = sender as Button;
             if (startStopStartedIndexes[AgentManagerListView.SelectedIndex] = (pressedButton.Content.ToString() == ManagerParams.AgentManagerOperationCommand.Start.ToString()))
             {
@@ -725,8 +729,8 @@ namespace AistTrader
                 {
                     Task.Run(() => Logger.Error("Related connections - \"{0}\" is not active, can't start with no active connection..", conName));
                     MessageBox.Show("Related connections is not active, can't start with no active connection.");
-                    var item = AgentManagerCollectionView.Cast<AgentManager>().FirstOrDefault(i => i.Alias == agentOrGroup.Alias);
-                    UpdateAgentManagerListView();
+                    //var item = AgentManagerCollectionView.Cast<AgentManager>().FirstOrDefault(i => i.Alias == agentOrGroup.Alias);
+                    //UpdateAgentManagerListView();
                     return;
                 }
                 else
