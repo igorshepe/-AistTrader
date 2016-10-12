@@ -388,6 +388,8 @@ namespace AistTrader
 
         void DelDynamicGridControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            var delItem = MainWindow.Instance.AgentsStorage.FirstOrDefault(a => ((Label)e.Source).Name == a.Name);
+
             if (WorkMode == AgentWorkMode.Group)
             {
                 var item = (Label)e.Source;
@@ -400,6 +402,28 @@ namespace AistTrader
                 DynamicGrid.Children.Remove(label);
 
                 DynamicGrid.RowDefinitions[index].Height = new GridLength(0);
+
+
+                var agentToDelete =
+                    MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
+                        it => it.ActualStrategyRunning.Name == item.Name);
+                var form = new GroupAdditionDeleteMode(item.Name.ToString());
+                form.ShowDialog();
+                var selectedMode = form.SelectedDeleteMode;
+                if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
+                {
+                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                    strat.CheckPosExit();
+                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                    MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
+                }
+                if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
+                {
+                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                    strat.CheckPosWaitStrExit();
+                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                    MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
+                }
             }
             else
             {
@@ -410,6 +434,28 @@ namespace AistTrader
                 DynamicGrid.Children.Remove(tb);
                 var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 DynamicGrid.Children.Remove(label);
+
+
+                var agentToDelete =
+                    MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
+                        it => it.ActualStrategyRunning.Name == item.Name);
+                var form = new GroupAdditionDeleteMode(item.Name.ToString());
+                form.ShowDialog();
+                var selectedMode = form.SelectedDeleteMode;
+                if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
+                {
+                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                    strat.CheckPosExit();
+                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                    MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
+                }
+                if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
+                {
+                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                    strat.CheckPosWaitStrExit();
+                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                    MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
+                }
             }
         }
 
