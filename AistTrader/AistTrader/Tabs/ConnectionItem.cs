@@ -318,7 +318,10 @@ namespace AistTrader
             connection.NewSecurities += securities =>
             {
 
-                //this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
+                if (conn.ConnectionParams.IsDefaulConnection)
+                {
+                    this.GuiAsync(() => _securitiesWindow.SecurityPicker.Securities.AddRange(securities)); //для тестов
+                }
 
                 this.GuiAsync(() =>
                 {
