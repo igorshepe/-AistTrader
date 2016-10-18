@@ -438,6 +438,7 @@ namespace AistTrader
             return calculatedAmount;
         }
 
+        
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
             //check whether we work with group or not
@@ -475,8 +476,15 @@ namespace AistTrader
                         calculatedAmount = amount.Value.To<decimal>();
                     }
 
-                    //string nameGroup = agentOrGroup.ToString();
+                    
                     var history = new List<long> { 0 };
+                    var historyAgent =agentOrGroup.StrategyInGroup.FirstOrDefault(i=> i.Name == groupMember.Name);
+                    if (historyAgent.TransactionIdHistory.Count >=1)
+                    {
+                        history = historyAgent.TransactionIdHistory;
+                    }
+
+
                     string nameGroup = agentOrGroup.ToString();
                     var alias = agentOrGroup.Alias;
                     var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
@@ -556,9 +564,9 @@ namespace AistTrader
                 strategy = new Strategy();
 
                 var history = new List<long> {0};
-                if (agentOrGroup.TransactionIdHistory != null && agentOrGroup.TransactionIdHistory.Count >= 1)
+                if (agentOrGroup.SingleAgentHistory != null && agentOrGroup.SingleAgentHistory.Count >= 1)
                 {
-                    history = agentOrGroup.TransactionIdHistory;
+                    history = agentOrGroup.SingleAgentHistory;
                 }
                 var nameGroup = "single";
                 var alias = agentOrGroup.Alias;
@@ -762,6 +770,23 @@ namespace AistTrader
                         
                         foreach (var agent in agentsToStop)
                         {
+                            ChStrategy agentHistory =  agent.ActualStrategyRunning as ChStrategy;
+                            var themIDs = agentHistory.TransactionIDs;
+                            var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == agent.AgentOrGroupName);
+
+                            if (themIDs.Count > 0)
+                            {
+                                foreach (var t in agentManagerStorage.StrategyInGroup.Where(t => agentHistory.Name == t.Name))
+                                {
+                                    t.TransactionIdHistory.AddRange(themIDs);
+                                }
+                            }
+
+                            foreach (var t in agentManagerStorage.StrategyInGroup.Where(t => agentHistory.Name == t.Name))
+                            {
+                                t.Position = (int) agentHistory.Position;
+                            }
+
                             Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
                             agent.ActualStrategyRunning.Stop();
                             var test = agent.ActualStrategyRunning as ChStrategy;
@@ -771,6 +796,8 @@ namespace AistTrader
 
                         item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
                         item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped;
+
+                        SaveAgentManagerSettings();
                     }
                 }
                 else
@@ -782,13 +809,16 @@ namespace AistTrader
 
                     if(themIDs.Count > 0)
                     {
-                        if (agentManagerStorage.TransactionIdHistory == null)
+                        if (agentManagerStorage.SingleAgentHistory == null)
                         {
-                            agentManagerStorage.TransactionIdHistory  = new List<long>();
+                            agentManagerStorage.SingleAgentHistory  = new List<long>();
                         }
-                        agentManagerStorage.TransactionIdHistory.AddRange(themIDs);
+                        agentManagerStorage.SingleAgentHistory.AddRange(themIDs);
                     }
-                   
+
+                    agentManagerStorage.SingleAgentPosition = (int) agent.Position;
+
+
                     strategyOrGroup.ActualStrategyRunning.Stop();
                     AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
                     item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;

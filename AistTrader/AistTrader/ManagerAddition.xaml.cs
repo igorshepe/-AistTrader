@@ -5,9 +5,14 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Common.Entities;
 using Common.Params;
+using Ecng.Common;
 using StockSharp.Algo;
+using StockSharp.Algo.Storages;
+using StockSharp.BusinessEntities;
+using StockSharp.Messages;
 using StockSharp.Xaml;
 using System.Threading.Tasks;
 using NLog;
@@ -198,6 +203,10 @@ namespace AistTrader
             ManagerParams setting;
             var agentPortfolio = MainWindow.Instance.AgentPortfolioStorage.Cast<Common.Entities.Portfolio>().FirstOrDefault(i => i.Name == PortfolioComboBox.SelectedItem.ToString());
             var agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+            List<StrategyInGroup> strategyInGroup = null;
+
+
+
 
             if (agent != null && (string.IsNullOrEmpty(AmountTextBox.Text) && string.IsNullOrEmpty(agent.Params.GroupName)))
             {
@@ -211,8 +220,10 @@ namespace AistTrader
             }
             if (agent == null)
             {
-                agent = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+                agent = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
                 setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity.Code);
+                var  agentInGroup= (from t in MainWindow.Instance.AgentsStorage where t.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString() select t.Name).ToList(); // Собираем информацию по стратегиям в группе для сохранения данных по сделкам 
+                strategyInGroup = agentInGroup.Select(t => new StrategyInGroup {Name = t, TransactionIdHistory = new List<long>(), Position = 0}).ToList();
             }
             else
             {
@@ -230,7 +241,9 @@ namespace AistTrader
                 return;
             }
 
-            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text), EditIndex);
+
+
+            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text, strategyInGroup), EditIndex);
             SecurityPickerSS.SecurityProvider.Dispose();
             SecurityPickerSS.SecurityProvider = null;
             agentPortfolio = null;
