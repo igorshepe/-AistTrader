@@ -79,6 +79,7 @@ namespace AistTrader
             {
                 RowSetter = 0;
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(290) });
+                DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(360) });
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(60) });
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
@@ -155,7 +156,7 @@ namespace AistTrader
                 {
                     RowSetter = 0;
                     DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(290) });
-                    DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(60) });
+                    DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(360) });
                     DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
                     DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
                 }
@@ -175,6 +176,21 @@ namespace AistTrader
                     Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
                 };
                 cb.SelectionChanged += cb_SelectionChanged;
+
+                List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
+                MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools));
+
+                var instrument = new ComboBox
+                {
+                    Height = 28,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    Width = 340,
+                    Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
+                    ItemsSource = instruments,
+                    Name = string.Format("{0}_{1}", "InstrumentComboBox", RowSetter)
+                };
+                instrument.SelectionChanged += instrument_SelectionChanged;
+                DynamicGrid.RegisterName(instrument.Name, instrument);
 
                 var amount = new UnitEditor
                 {
@@ -227,16 +243,20 @@ namespace AistTrader
                 Grid.SetRow(cb, RowSetter);
                 Grid.SetColumn(cb, 0);
 
+                Grid.SetRow(instrument, RowSetter);
+                Grid.SetColumn(instrument, 1);
+
                 Grid.SetRow(amount, RowSetter);
-                Grid.SetColumn(amount, 1);
+                Grid.SetColumn(amount, 2);
 
                 Grid.SetRow(addDelControl, RowSetter);
-                Grid.SetColumn(addDelControl, 2);
+                Grid.SetColumn(addDelControl, 3);
 
                 ++RowSetter;
                 DynamicGrid.Children.Add(cb);
                 DynamicGrid.Children.Add(amount);
                 DynamicGrid.Children.Add(addDelControl);
+                DynamicGrid.Children.Add(instrument);
                 CreateGroupBtnHelper();
             }
         }
@@ -272,6 +292,7 @@ namespace AistTrader
             {
                 RowSetter = 0;
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(290) });
+                DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(360) });
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(60) });
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 DynamicGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(33) });
@@ -294,6 +315,22 @@ namespace AistTrader
                 Name = string.Format("{0}_{1}", "AlgorithmComboBox", RowSetter)
             };
             cb.SelectionChanged += cb_SelectionChanged;
+
+            List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
+            MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools));
+            
+            var instrument = new ComboBox
+            {
+                Height = 28,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Width = 340,
+                Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
+                ItemsSource = instruments,
+                Name = string.Format("{0}_{1}", "InstrumentComboBox", RowSetter)
+            };
+            instrument.SelectionChanged += instrument_SelectionChanged;
+            DynamicGrid.RegisterName(instrument.Name, instrument);
+
             var amount = new UnitEditor
             {
                 FontSize = 12,
@@ -340,16 +377,20 @@ namespace AistTrader
             Grid.SetRow(cb, RowSetter);
             Grid.SetColumn(cb, 0);
 
+            Grid.SetRow(instrument, RowSetter);
+            Grid.SetColumn(instrument, 1);
+
             Grid.SetRow(amount, RowSetter);
-            Grid.SetColumn(amount, 1);
+            Grid.SetColumn(amount, 2);
 
             Grid.SetRow(addDelControl, RowSetter);
-            Grid.SetColumn(addDelControl, 2);
+            Grid.SetColumn(addDelControl, 3);
 
             ++RowSetter;
             DynamicGrid.Children.Add(cb);
             DynamicGrid.Children.Add(amount);
             DynamicGrid.Children.Add(addDelControl);
+            DynamicGrid.Children.Add(instrument);
             CreateGroupBtnHelper();
         }
 
@@ -384,6 +425,14 @@ namespace AistTrader
                     }
                 }
             }
+        }
+
+        void instrument_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (Control)e.Source;
+            int index = (int)item.GetValue(Grid.RowProperty);
+            ComboBox cb = (ComboBox)sender;
+            ((Agent)MainWindow.Instance.AgentsStorage[index]).Params.Security = ((StockSharp.BusinessEntities.Security)cb.Items[cb.SelectedIndex]).ShortName;
         }
 
         void DelDynamicGridControl_MouseDown(object sender, MouseButtonEventArgs e)

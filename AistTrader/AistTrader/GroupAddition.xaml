@@ -10,7 +10,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
 		Height="696.26"
-        Width="380.61" 
+        Width="780.61" 
         Icon="Resources/Images/mainIcon.ico"
         Loaded="StratSettings_Loaded"
         GlowBrush="CadetBlue"                    
@@ -22,7 +22,7 @@
                 IsCancel="True" Height="24" VerticalAlignment="Top" />
         <Grid Name="DynamicGrid"
               HorizontalAlignment="Left"
-              Width="369"
+              Width="769"
               Margin="2,32,0,130"/>
         <Button Name="CreateGroupeBtn"
                 Content="Ok"
