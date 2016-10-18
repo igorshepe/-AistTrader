@@ -286,7 +286,7 @@ namespace AistTrader
                     if (SecurityPickerSS.SecurityProvider == null)
                     {
                         var conn= MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
-                        SecurityPickerSS.SecurityProvider=  new CollectionSecurityProvider(conn.Securities);
+                        SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);
                         conn = null;
                     }
                 }

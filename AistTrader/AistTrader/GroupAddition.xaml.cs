@@ -401,9 +401,7 @@ namespace AistTrader
             string currentTxt = (string)cbox.SelectedItem;
             if (cbox.SelectedItem != null)
             {
-                if (cbox.Name.Contains("InstrumentControl")) { return; }
-
-                List<string> excluded = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.SelectedItem != null).Select(c => (string)c.SelectedItem).ToList();
+                List<string> excluded = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.SelectedItem != null).Select(c => c.SelectedItem is string ? (string)c.SelectedItem : ((StockSharp.BusinessEntities.Security)c.SelectedItem).ShortName).ToList();
 
                 foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>().Where(c => !c.Name.Contains("InstrumentComboBox")))
                 {
