@@ -180,7 +180,7 @@ namespace Strategies.Strategies
             }
             else
             {
-                nameStrategy = $"{_port}- {_alias}";
+                nameStrategy = $"{_port}-{_alias}";
             }
 
 
@@ -412,7 +412,11 @@ namespace Strategies.Strategies
                             Stop();
                         }
 
-                        Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}, Security {7}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, Position, Security.Code));
+                       // var positionByOrders = PositionByOrders(this);
+                        var positionByTrades = PositionByTrades(this);
+
+
+                        Task.Run(() => TradesLogger.Info("{0}: Position = {6}, SlowSMA {1:0}, FastSMA {2:0}, Highest {3:0}, Lowest {4:0}, Mid {5:0}, Security {7}", _nameStrategy, _ssmaValue, _fsmaValue, _highestValue, _lowestValue, _midChValue, positionByTrades, Security.Code));
 
                         TransactionIDs.Add(order.TransactionId);
                     })
@@ -443,6 +447,26 @@ namespace Strategies.Strategies
 
 
 
+        }
+
+
+        
+        // Позиция по заявкам
+        public static decimal PositionByOrders(Strategy strategy)
+        {
+            if (strategy.Orders.Any())
+                return strategy.Orders.Sum(o => o.Direction == Sides.Sell ? o.Balance - o.Volume : Math.Abs(o.Balance - o.Volume));
+            return 0;
+        }
+
+        // Позиция по сделкам
+        public static decimal PositionByTrades(Strategy strategy)
+        {
+
+            if (strategy.MyTrades.Any())
+                return strategy.MyTrades.Sum(t => t.Order.Direction == Sides.Sell ? -t.Trade.Volume : t.Trade.Volume);
+
+            return 0;
         }
 
         // Возвращает объект заявки с рыночной ценой или лимитной, по заданному направлению
