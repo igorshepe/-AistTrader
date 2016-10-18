@@ -12,7 +12,7 @@ namespace Common.Entities
     {
         AgentManager() { }
 
-        public AgentManager(string name, ManagerParams agentManager, string tool, string amount, string alias)// List<long> transactionIdHistory//)
+        public AgentManager(string name, ManagerParams agentManager, string tool, string amount, string alias, List<StrategyInGroup> strategyInGroup)// List<long> transactionIdHistory//)
         {
             AgentManagerUniqueId = alias;
             Name = name;
@@ -20,7 +20,10 @@ namespace Common.Entities
             AgentManagerSettings = agentManager;
             Tool = tool;
             Amount = amount;
+            StrategyInGroup = strategyInGroup;
+
         }
+        
 
         public override string ToString()
         {
@@ -43,7 +46,36 @@ namespace Common.Entities
         [DataMember()]
         public TradeParams TradeParams { get; set; }
         [DataMember()]
+        public List<long> SingleAgentHistory { get; set; }
+        [DataMember()]
+        public int SingleAgentPosition { get; set; }
+
+        [DataMember()]
+        public  List<StrategyInGroup> StrategyInGroup { get; set; }
+    }
+
+    [DataContract(Namespace = "")]
+    public class StrategyInGroup
+    {
+        public StrategyInGroup()
+        {
+        }
+
+        public StrategyInGroup(string name, List<long> transactionIdHistory, int position)
+        {
+            Name = name;
+            TransactionIdHistory = transactionIdHistory;
+            Position = position;
+        }
+
+        [DataMember()]
+        public string Name { get; set; }
+
+        [DataMember()]
         public List<long> TransactionIdHistory { get; set; }
+
+        [DataMember()]
+        public int Position { get; set; }
     }
 
     [DataContract(Namespace = "")]
