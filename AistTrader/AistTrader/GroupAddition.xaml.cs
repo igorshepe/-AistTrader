@@ -403,7 +403,7 @@ namespace AistTrader
             {
                 List<string> excluded = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.SelectedItem != null).Select(c => (string)c.SelectedItem).ToList();
 
-                foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
+                foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>().Where(c => !c.Name.Contains("InstrumentComboBox")))
                 {
                     string text = (string)cb.SelectedItem;
                     cb.ItemsSource = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == "ungrouped agents"
@@ -411,7 +411,7 @@ namespace AistTrader
                     cb.SelectedIndex = cb.Items.IndexOf(text);
                 }
 
-                foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name != cbox.Name && c.SelectedItem != null))
+                foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name != cbox.Name && c.SelectedItem != null && !c.Name.Contains("InstrumentComboBox")))
                 {
                     if (cb.SelectedItem.ToString() == cbox.SelectedItem.ToString())
                     {
