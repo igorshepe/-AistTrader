@@ -375,7 +375,7 @@ namespace AistTrader
         {
             if (SecurityPickerSS.SelectedSecurity == null)
             {
-                return "Select a security";
+                //return "Select a security";
             }
 
             return String.Empty;
