@@ -178,7 +178,7 @@ namespace AistTrader
                 cb.SelectionChanged += cb_SelectionChanged;
 
                 List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
-                MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools));
+                MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools ?? new List<StockSharp.BusinessEntities.Security>()));
 
                 var instrument = new ComboBox
                 {
@@ -317,7 +317,7 @@ namespace AistTrader
             cb.SelectionChanged += cb_SelectionChanged;
 
             List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
-            MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools));
+            MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools ?? new List<StockSharp.BusinessEntities.Security>()));
             
             var instrument = new ComboBox
             {
