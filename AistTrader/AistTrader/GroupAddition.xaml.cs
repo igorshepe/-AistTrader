@@ -12,6 +12,7 @@ using DevExpress.Xpf.Grid.Printing;
 using Ecng.Common;
 using StockSharp.Messages;
 using StockSharp.Xaml;
+using StockSharp.Algo;
 using Strategies.Strategies;
 
 namespace AistTrader
@@ -180,16 +181,16 @@ namespace AistTrader
                 List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
                 MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools ?? new List<StockSharp.BusinessEntities.Security>()));
 
-                var instrument = new ComboBox
+                var instrument = new SecurityEditor
                 {
                     Height = 28,
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Width = 340,
                     Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
-                    ItemsSource = instruments,
+                    SecurityProvider = new CollectionSecurityProvider(instruments),
                     Name = string.Format("{0}_{1}", "InstrumentComboBox", RowSetter)
                 };
-                instrument.SelectionChanged += instrument_SelectionChanged;
+                instrument.SecuritySelected += new Action(() => instrument_SelectionChanged(instrument));
                 DynamicGrid.RegisterName(instrument.Name, instrument);
 
                 var amount = new UnitEditor
@@ -319,16 +320,16 @@ namespace AistTrader
             List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
             MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools ?? new List<StockSharp.BusinessEntities.Security>()));
             
-            var instrument = new ComboBox
+            var instrument = new SecurityEditor
             {
                 Height = 28,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Width = 340,
                 Margin = new Thickness { Left = 10, Top = 5, Right = 0, Bottom = 0 },
-                ItemsSource = instruments,
+                SecurityProvider = new CollectionSecurityProvider(instruments),
                 Name = string.Format("{0}_{1}", "InstrumentComboBox", RowSetter)
             };
-            instrument.SelectionChanged += instrument_SelectionChanged;
+            instrument.SecuritySelected += new Action(() => instrument_SelectionChanged(instrument));
             DynamicGrid.RegisterName(instrument.Name, instrument);
 
             var amount = new UnitEditor
@@ -427,12 +428,12 @@ namespace AistTrader
             }
         }
 
-        void instrument_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        void instrument_SelectionChanged(object sender)
         {
-            var item = (Control)e.Source;
+            var item = (Control)sender;
             int index = (int)item.GetValue(Grid.RowProperty);
-            ComboBox cb = (ComboBox)sender;
-            ((Agent)MainWindow.Instance.AgentsStorage[index]).Params.Security = ((StockSharp.BusinessEntities.Security)cb.Items[cb.SelectedIndex]).ShortName;
+            SecurityEditor se = (SecurityEditor)sender;
+            MainWindow.Instance.AgentsStorage[index].Params.Security = se.Text;
         }
 
         void DelDynamicGridControl_MouseDown(object sender, MouseButtonEventArgs e)
