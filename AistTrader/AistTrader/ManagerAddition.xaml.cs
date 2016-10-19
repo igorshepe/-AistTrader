@@ -141,8 +141,8 @@ namespace AistTrader
             }
             if (SecurityPickerSS.SelectedSecurity == null)
             {
-                MessageBox.Show(this, @"Select a security");
-                return;
+                //MessageBox.Show(this, @"Select a security");
+                //return;
             }
 
             //временная проверка не через автовалидацию
@@ -227,7 +227,7 @@ namespace AistTrader
             }
             else
             {
-                setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity.Code);
+                setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity != null ? SecurityPickerSS.SelectedSecurity.Code : string.Empty);
             }
 
             if (string.IsNullOrEmpty(AmountTextBox.Text) && string.IsNullOrEmpty(agent.Params.GroupName))
@@ -244,8 +244,11 @@ namespace AistTrader
 
 
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text, strategyInGroup), EditIndex);
-            SecurityPickerSS.SecurityProvider.Dispose();
-            SecurityPickerSS.SecurityProvider = null;
+            if (SecurityPickerSS.SecurityProvider != null)
+            {
+                SecurityPickerSS.SecurityProvider.Dispose();
+                SecurityPickerSS.SecurityProvider = null;
+            }
             agentPortfolio = null;
             Close();
         }
