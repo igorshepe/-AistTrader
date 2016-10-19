@@ -221,7 +221,7 @@ namespace AistTrader
             if (agent == null)
             {
                 agent = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-                setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity.Code);
+                setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity.Code ?? string.Empty);
                 var  agentInGroup= (from t in MainWindow.Instance.AgentsStorage where t.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString() select t.Name).ToList(); // Собираем информацию по стратегиям в группе для сохранения данных по сделкам 
                 strategyInGroup = agentInGroup.Select(t => new StrategyInGroup {Name = t, TransactionIdHistory = new List<long>(), Position = 0}).ToList();
             }
