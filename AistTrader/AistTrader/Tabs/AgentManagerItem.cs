@@ -805,7 +805,7 @@ namespace AistTrader
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
                     ChStrategy agent =  strategyOrGroup.ActualStrategyRunning as ChStrategy;
                     var themIDs = agent.TransactionIDs;
-                    var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == agent.Name);
+                    var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == strategyOrGroup.AgentOrGroupName);
 
                     if(themIDs.Count > 0)
                     {
