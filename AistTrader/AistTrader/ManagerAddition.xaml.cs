@@ -31,11 +31,11 @@ namespace AistTrader
             get { return _selectedPortfolio; }
             set { _selectedPortfolio = value; }
         }
-        private string _portfolio; 
-        public string Portfolio 
+        private string _portfolio;
+        public string Portfolio
         {
             get { return _portfolio; }
-            set { _portfolio = value; } 
+            set { _portfolio = value; }
         }
         private string _selectedGroupOrSingleAgent;
         public string SelectedGroupOrSingleAgent
@@ -53,7 +53,7 @@ namespace AistTrader
         public string Tools
         {
             get { return _tools; }
-            set { _tools = value; } 
+            set { _tools = value; }
         }
         private string _amount;
         public string Amount
@@ -119,7 +119,7 @@ namespace AistTrader
             var connection = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == selectedPortfolio.Connection.Id);
             var conn = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
             SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);
-            SecurityPickerSS.SelectedSecurity = conn.Securities.FirstOrDefault(i=>i.Code == agent.Tool);
+            SecurityPickerSS.SelectedSecurity = conn.Securities.FirstOrDefault(i => i.Code == agent.Tool);
             conn = null;
             _amount = agent.Amount.ToString();
             if (agent.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
@@ -169,12 +169,12 @@ namespace AistTrader
                         return;
                     }
                     var phantomAmount = AmountTextBox.Text;
-                    Task.Run(() => TradesLogger.Info("{0} in {1} has changed it's amount from \"{2}\" to -> \"{3}\"", agentManagerToEdit.Alias,agentManagerToEdit.AgentManagerSettings.Portfolio.Name, agentManagerToEdit.Amount, phantomAmount));
+                    Task.Run(() => TradesLogger.Info("{0} in {1} has changed it's amount from \"{2}\" to -> \"{3}\"", agentManagerToEdit.Alias, agentManagerToEdit.AgentManagerSettings.Portfolio.Name, agentManagerToEdit.Amount, phantomAmount));
                     agentManagerToEdit.Amount = AmountTextBox.Text;
                     //todo: не производить расчёт если значение не поменялось
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
                     //todo: вот тут проверить с Артёмом возвращаемое значение
-                    decimal? amount= MainWindow.Instance.CalculateAmount(agentManagerToEdit);
+                    decimal? amount = MainWindow.Instance.CalculateAmount(agentManagerToEdit);
                     var runnigStrategy = MainWindow.Instance.AgentConnnectionManager.FirstOrDefault(i => i.ActualStrategyRunning.Name == agentManagerToEdit.ToString());
                     if (runnigStrategy != null)
                     {
@@ -195,7 +195,7 @@ namespace AistTrader
                     agentManagerToEdit = null;
                     Close();
                 }
-                
+
                 editMode = false;
             }
             else
@@ -226,8 +226,8 @@ namespace AistTrader
             {
                 agent = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
                 setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity != null ? SecurityPickerSS.SelectedSecurity.Code : agent.Params.Security);
-                var  agentInGroup= (from t in MainWindow.Instance.AgentsStorage where t.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString() select t.Name).ToList(); // Собираем информацию по стратегиям в группе для сохранения данных по сделкам 
-                strategyInGroup = agentInGroup.Select(t => new StrategyInGroup {Name = t, TransactionIdHistory = new List<long>(), Position = 0}).ToList();
+                var agentInGroup = (from t in MainWindow.Instance.AgentsStorage where t.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString() select t.Name).ToList(); // Собираем информацию по стратегиям в группе для сохранения данных по сделкам 
+                strategyInGroup = agentInGroup.Select(t => new StrategyInGroup { Name = t, TransactionIdHistory = new List<long>(), Position = 0 }).ToList();
             }
             else
             {
@@ -247,7 +247,7 @@ namespace AistTrader
 
 
 
-            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name , setting, setting.Tool,AmountTextBox.Text, AliasTxtBox.Text, strategyInGroup), EditIndex);
+            MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name, setting, setting.Tool, AmountTextBox.Text, AliasTxtBox.Text, strategyInGroup), EditIndex);
             if (SecurityPickerSS.SecurityProvider != null)
             {
                 SecurityPickerSS.SecurityProvider.Dispose();
@@ -259,7 +259,7 @@ namespace AistTrader
 
         private void GroupOrSingleAgentComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (GroupOrSingleAgentComboBox.SelectedItem !=null)
+            if (GroupOrSingleAgentComboBox.SelectedItem != null)
             {
                 var result = MainWindow.Instance.AgentsStorage.Cast<Agent>().Any
                     (i => i.Params.GroupName != "ungrouped agents" && i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
@@ -284,15 +284,15 @@ namespace AistTrader
             string selectedP = (string)PortfolioComboBox.SelectedItem;
             var selectedPortfolio = MainWindow.Instance.AgentPortfolioStorage.FirstOrDefault(i => i.Name == selectedP);
             GroupOrSingleAgentComboBox.SelectedItem = _selectedGroupOrSingleAgent;
-            var connection =  MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i=>i.Id == selectedPortfolio.Connection.Id);
-            
+            var connection = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == selectedPortfolio.Connection.Id);
+
             if (connection != null)
             {
                 if (connection.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
                 {
                     if (SecurityPickerSS.SecurityProvider == null)
                     {
-                        var conn= MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
+                        var conn = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
                         SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);
                         conn = null;
                     }
@@ -330,7 +330,7 @@ namespace AistTrader
                 {
                     if (SecurityPickerSS.SelectedSecurity != null)
                     {
-                        var props= validManagerProperties;
+                        var props = validManagerProperties;
                         validManagerProperties.Remove("Tools");
                     }
                     if (AmountTextBox.Visibility == Visibility.Collapsed)
@@ -444,5 +444,5 @@ namespace AistTrader
                 OkBtnClick.IsEnabled = true;
             }
         }
-    } 
+    }
 }
