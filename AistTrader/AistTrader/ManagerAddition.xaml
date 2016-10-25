@@ -53,12 +53,12 @@
                VerticalAlignment="Top"
                HorizontalAlignment="Left"
                Width="228" />
-        <Label Content="Security:" 
+<!--        <Label Content="Security:" 
                Height="25"
                HorizontalContentAlignment="Left"
                Margin="1,160,0,0"
                VerticalAlignment="Top"
-               HorizontalAlignment="Left" />
+               HorizontalAlignment="Left" /> -->
         <Label Content="Amount"
                Height="25"
                HorizontalContentAlignment="Left"
@@ -100,13 +100,13 @@
                   Loaded="ToolComboBox_OnLoaded"
                   TabIndex="4"  
                   x:FieldModifier="private"/>-->
-        <sx:SecurityEditor
+<!--       <sx:SecurityEditor
             Name="SecurityPickerSS"
             Margin="5,185,5,0" Height="28" VerticalAlignment="Top" TabIndex="2"
             SelectedSecurity="{Binding  Path=Tools, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-            SecuritySelected="SecurityPicker_OnSecuritySelected"
+            SecuritySelected="SecurityPicker_OnSecuritySelected" Loaded="SecurityPickerSS_Loaded"
                            
-            />
+            /> -->
         <xaml:UnitEditor HorizontalAlignment="Left" 
                          Height="22" 
                          Text="{Binding Path=Amount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"

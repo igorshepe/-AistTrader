@@ -118,8 +118,8 @@ namespace AistTrader
 
             var connection = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.Id == selectedPortfolio.Connection.Id);
             var conn = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
-            SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);
-            SecurityPickerSS.SelectedSecurity = conn.Securities.FirstOrDefault(i => i.Code == agent.Tool);
+            //SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);
+            //SecurityPickerSS.SelectedSecurity = conn.Securities.FirstOrDefault(i => i.Code == agent.Tool);
             conn = null;
             _amount = agent.Amount.ToString();
             if (agent.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
@@ -127,7 +127,7 @@ namespace AistTrader
                 GroupOrSingleAgentComboBox.IsEnabled = false;
                 PortfolioComboBox.IsEnabled = false;
                 AliasTxtBox.IsEnabled = false;
-                SecurityPickerSS.IsEnabled = false;
+                //SecurityPickerSS.IsEnabled = false;
                 editMode = true;
             }
         }
@@ -139,7 +139,7 @@ namespace AistTrader
                 MessageBox.Show(this, @"Set an alias");
                 return;
             }
-            if (SecurityPickerSS.SelectedSecurity == null)
+            //if (SecurityPickerSS.SelectedSecurity == null)
             {
                 //MessageBox.Show(this, @"Select a security");
                 //return;
@@ -150,11 +150,11 @@ namespace AistTrader
             {
                 var agentForEdit = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
 
-                if (SecurityPickerSS.SelectedSecurity == null && agentForEdit.Params.GroupName == "ungrouped agents")
-                {
-                    MessageBox.Show(this, @"Select a security");
-                    return;
-                }
+                //if (SecurityPickerSS.SelectedSecurity == null && agentForEdit.Params.GroupName == "ungrouped agents")
+                //{
+                //    MessageBox.Show(this, @"Select a security");
+                //    return;
+                //}
 
                 if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                 {
@@ -225,13 +225,13 @@ namespace AistTrader
             if (agent == null)
             {
                 agent = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-                setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, SecurityPickerSS.SelectedSecurity != null ? SecurityPickerSS.SelectedSecurity.Code : agent.Params.Security);
+                setting = new ManagerParams(agentPortfolio, agent.Params.GroupName, /*SecurityPickerSS.SelectedSecurity != null ? SecurityPickerSS.SelectedSecurity.Code :*/ agent.Params.Security);
                 var agentInGroup = (from t in MainWindow.Instance.AgentsStorage where t.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString() select t.Name).ToList(); // Собираем информацию по стратегиям в группе для сохранения данных по сделкам 
                 strategyInGroup = agentInGroup.Select(t => new StrategyInGroup { Name = t, TransactionIdHistory = new List<long>(), Position = 0 }).ToList();
             }
             else
             {
-                setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, SecurityPickerSS.SelectedSecurity != null ? SecurityPickerSS.SelectedSecurity.Code : agent.Params.Security);
+                setting = new ManagerParams(agentPortfolio, agent.Params.FriendlyName, /*SecurityPickerSS.SelectedSecurity != null ? SecurityPickerSS.SelectedSecurity.Code :*/ agent.Params.Security);
             }
 
             if (string.IsNullOrEmpty(AmountTextBox.Text) && string.IsNullOrEmpty(agent.Params.GroupName))
@@ -248,11 +248,11 @@ namespace AistTrader
 
 
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name, setting, setting.Tool, AmountTextBox.Text, AliasTxtBox.Text, strategyInGroup), EditIndex);
-            if (SecurityPickerSS.SecurityProvider != null)
-            {
-                SecurityPickerSS.SecurityProvider.Dispose();
-                SecurityPickerSS.SecurityProvider = null;
-            }
+            //if (SecurityPickerSS.SecurityProvider != null)
+            //{
+            //    SecurityPickerSS.SecurityProvider.Dispose();
+            //    SecurityPickerSS.SecurityProvider = null;
+            //}
             agentPortfolio = null;
             Close();
         }
@@ -290,12 +290,12 @@ namespace AistTrader
             {
                 if (connection.ConnectionParams.ConnectionState == ConnectionParams.ConnectionStatus.Connected)
                 {
-                    if (SecurityPickerSS.SecurityProvider == null)
-                    {
-                        var conn = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
-                        SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);
-                        conn = null;
-                    }
+                    //if (SecurityPickerSS.SecurityProvider == null)
+                    //{
+                    //    var conn = MainWindow.Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == connection.DisplayName);
+                    //    SecurityPickerSS.SecurityProvider = new CollectionSecurityProvider(conn.Securities);
+                    //    conn = null;
+                    //}
                 }
             }
             selectedPortfolio = null;
@@ -328,7 +328,7 @@ namespace AistTrader
                 validManagerProperties[columnName] = String.IsNullOrEmpty(error) ? true : false;
                 if (validManagerProperties.Count == 4)
                 {
-                    if (SecurityPickerSS.SelectedSecurity != null)
+                    //if (SecurityPickerSS.SelectedSecurity != null)
                     {
                         var props = validManagerProperties;
                         validManagerProperties.Remove("Tools");
@@ -342,7 +342,7 @@ namespace AistTrader
                 }
                 if (validManagerProperties.Count == 3 & AmountTextBox.Visibility != Visibility.Collapsed)
                 {
-                    if (SecurityPickerSS.SelectedSecurity != null)
+                    //if (SecurityPickerSS.SelectedSecurity != null)
                     {
                         var props = validManagerProperties;
                         validManagerProperties.Remove("Tools");
@@ -377,7 +377,7 @@ namespace AistTrader
 
         private string ValidateTools()
         {
-            if (SecurityPickerSS.SelectedSecurity == null)
+            //if (SecurityPickerSS.SelectedSecurity == null)
             {
                 //return "Select a security";
             }
@@ -439,7 +439,7 @@ namespace AistTrader
 
         private void SecurityPicker_OnSecuritySelected()
         {
-            if (SecurityPickerSS.SelectedSecurity != null && PortfolioComboBox.SelectedItem != null && IsGroup)
+            if (/*SecurityPickerSS.SelectedSecurity != null && */ PortfolioComboBox.SelectedItem != null && IsGroup)
             {
                 OkBtnClick.IsEnabled = true;
             }
