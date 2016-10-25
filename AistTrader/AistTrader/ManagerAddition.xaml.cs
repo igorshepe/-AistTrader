@@ -142,9 +142,9 @@ namespace AistTrader
 
         private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
-            var agentForEditEnabled = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-            SecurityPickerSS.IsEnabled = agentForEditEnabled == null || agentForEditEnabled.Params.GroupName == "ungrouped agents";
-            SecurityPickerSS.Visibility = SecurityPickerSS.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
+            //var agentForEditEnabled = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+            //SecurityPickerSS.IsEnabled = agentForEditEnabled == null || agentForEditEnabled.Params.GroupName == "ungrouped agents";
+            //SecurityPickerSS.Visibility = SecurityPickerSS.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
 
             if (string.IsNullOrEmpty(AliasTxtBox.Text))
             {
