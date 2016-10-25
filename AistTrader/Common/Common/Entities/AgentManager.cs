@@ -51,6 +51,9 @@ namespace Common.Entities
         public int SingleAgentPosition { get; set; }
 
         [DataMember()]
+        public List<MyTrade> SingleMyTradesHistory { get; set; }
+
+        [DataMember()]
         public  List<StrategyInGroup> StrategyInGroup { get; set; }
     }
 
@@ -76,6 +79,9 @@ namespace Common.Entities
 
         [DataMember()]
         public int Position { get; set; }
+
+        [DataMember()]
+        public List<MyTrade> MyTradesHistory { get; set; }
     }
 
     [DataContract(Namespace = "")]
