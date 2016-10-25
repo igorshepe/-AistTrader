@@ -75,6 +75,10 @@ namespace AistTrader
             DataContext = this;
             EditIndex = int.MinValue;
             LoadParams();
+
+            //var agentForEditEnabled = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => GroupOrSingleAgentComboBox.SelectedItem != null && i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+            //SecurityPickerSS.IsEnabled = agentForEditEnabled == null || agentForEditEnabled.Params.GroupName == "ungrouped agents";
+            //SecurityPickerSS.Visibility = SecurityPickerSS.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
         }
         public ManagerAddition(AgentManager agent, int editIndex)
         {
@@ -82,6 +86,10 @@ namespace AistTrader
             DataContext = this;
             InitFields(agent);
             EditIndex = editIndex;
+
+            //var agentForEditEnabled = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => GroupOrSingleAgentComboBox.SelectedItem != null && i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+            //SecurityPickerSS.IsEnabled = agentForEditEnabled == null || agentForEditEnabled.Params.GroupName == "ungrouped agents";
+            //SecurityPickerSS.Visibility = SecurityPickerSS.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
         }
         private void LoadParams()
         {
@@ -135,17 +143,18 @@ namespace AistTrader
         private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var agentForEditEnabled = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-            SecurityPickerSS.IsEnabled = agentForEditEnabled.Params.GroupName == "ungrouped agents";
+            SecurityPickerSS.IsEnabled = agentForEditEnabled == null || agentForEditEnabled.Params.GroupName == "ungrouped agents";
+            SecurityPickerSS.Visibility = SecurityPickerSS.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
 
             if (string.IsNullOrEmpty(AliasTxtBox.Text))
             {
                 MessageBox.Show(this, @"Set an alias");
                 return;
             }
-            if (SecurityPickerSS.SelectedSecurity == null)
+            if (SecurityPickerSS.Visibility == Visibility.Visible && SecurityPickerSS.SelectedSecurity == null)
             {
-                //MessageBox.Show(this, @"Select a security");
-                //return;
+                MessageBox.Show(this, @"Select a security");
+                return;
             }
 
             //временная проверка не через автовалидацию
@@ -153,11 +162,11 @@ namespace AistTrader
             {
                 var agentForEdit = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
 
-                if (SecurityPickerSS.SelectedSecurity == null && agentForEdit.Params.GroupName == "ungrouped agents")
-                {
-                    MessageBox.Show(this, @"Select a security");
-                    return;
-                }
+                //if (SecurityPickerSS.SelectedSecurity == null && (agentForEditEnabled == null || agentForEdit.Params.GroupName == "ungrouped agents"))
+                //{
+                //    MessageBox.Show(this, @"Select a security");
+                //    return;
+                //}
 
                 if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                 {
@@ -278,6 +287,7 @@ namespace AistTrader
                     AmountTextBox.Visibility = Visibility.Visible;
                     AmountLbl.Visibility = Visibility.Visible;
                 }
+                SecurityPickerSS.Visibility = SecurityLabel.Visibility = IsGroup ? Visibility.Collapsed : Visibility.Visible;
                 AliasTxtBox.Text = GroupOrSingleAgentComboBox.SelectedItem.ToString();
             }
         }

@@ -53,7 +53,8 @@
                VerticalAlignment="Top"
                HorizontalAlignment="Left"
                Width="228" />
-        <Label Content="Security:" 
+        <Label Name ="SecurityLabel"
+               Content="Security:" 
                Height="25"
                HorizontalContentAlignment="Left"
                Margin="1,160,0,0"
