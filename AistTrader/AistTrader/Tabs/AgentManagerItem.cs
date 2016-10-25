@@ -16,8 +16,10 @@ using Common.Params;
 using Ecng.Common;
 using MahApps.Metro.Controls;
 using NLog;
+using StockSharp.Algo;
 using StockSharp.Algo.Candles;
 using StockSharp.Algo.Strategies;
+using StockSharp.BusinessEntities;
 using StockSharp.Logging;
 using StockSharp.Messages;
 using StockSharp.Plaza;
@@ -477,11 +479,23 @@ namespace AistTrader
                     }
 
                     
-                    var history = new List<long> { 0 };
-                    var historyAgent =agentOrGroup.StrategyInGroup.FirstOrDefault(i=> i.Name == groupMember.Name);
-                    if (historyAgent.TransactionIdHistory.Count >=1)
-                    {
-                        history = historyAgent.TransactionIdHistory;
+                    var history = new List<long>();
+                    var historyAgent = agentOrGroup.StrategyInGroup.FirstOrDefault(i=> i.Name == groupMember.Name);
+                    if (historyAgent.MyTradesHistory != null && historyAgent.MyTradesHistory.Count >= 1)
+                    { 
+                            //history = agentOrGroup.SingleAgentHistory;
+                            foreach (var t in historyAgent.MyTradesHistory)
+                            {
+                                if (history.Count == 0)
+                                {
+                                    history.Add( t.Order.TransactionId);
+                                }
+                                else if (history.Last() != t.Order.TransactionId)
+                                {
+                                    history.Add(t.Order.TransactionId);
+                                }
+                            }
+                         
                     }
 
 
@@ -509,8 +523,12 @@ namespace AistTrader
                     strategy.SetCandleManager(candleManager);
                     strategy.LogLevel = LogLevels.Debug;
                     strategy.Start();
+                    strategy.NewMyTrades += trades =>
+                    {
+                        SaveAgentData(trades, infoStrategy, groupMember.Name);
+                    };
                     // Логирование внутренних событий стратегии для тестов
-                     
+
                     var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                     AgentConnnectionManager.Add(wrapper);
                 }
@@ -563,11 +581,23 @@ namespace AistTrader
 
                 strategy = new Strategy();
 
-                var history = new List<long> {0};
-                if (agentOrGroup.SingleAgentHistory != null && agentOrGroup.SingleAgentHistory.Count >= 1)
-                {
-                    history = agentOrGroup.SingleAgentHistory;
+                var history = new List<long>();
+                if (agentOrGroup.SingleMyTradesHistory != null && agentOrGroup.SingleMyTradesHistory.Count >= 1)
+                { 
+                    //history = agentOrGroup.SingleAgentHistory;
+                    foreach (var t in agentOrGroup.SingleMyTradesHistory)
+                    {
+                        if (history.Count == 0)
+                        {
+                            history.Add( t.Order.TransactionId);
+                        }
+                        else if (history.Last() != t.Order.TransactionId)
+                        {
+                           history.Add((long) t.Order.TransactionId);
+                        }
+                    }
                 }
+
                 var nameGroup = "single";
                 var alias = agentOrGroup.Alias;
                 var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
@@ -586,8 +616,12 @@ namespace AistTrader
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;
                 strategy.Start();
+                strategy.NewMyTrades += trades =>
+                {
+                    SaveAgentData(trades, infoStrategy, agentName);
+                };
                 // Логирование внутренних событий стратегии для тестов
-                
+
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                 AgentConnnectionManager.Add(wrapper);
             }
@@ -784,7 +818,7 @@ namespace AistTrader
 
                             foreach (var t in agentManagerStorage.StrategyInGroup.Where(t => agentHistory.Name == t.Name))
                             {
-                                t.Position = (int) agentHistory.Position;
+                                t.Position = (int)agentHistory.Position;
                             }
 
                             Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
@@ -807,11 +841,11 @@ namespace AistTrader
                     var themIDs = agent.TransactionIDs;
                     var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == strategyOrGroup.AgentOrGroupName);
 
-                    if(themIDs.Count > 0)
+                    if (themIDs.Count > 0)
                     {
                         if (agentManagerStorage.SingleAgentHistory == null)
                         {
-                            agentManagerStorage.SingleAgentHistory  = new List<long>();
+                            agentManagerStorage.SingleAgentHistory = new List<long>();
                         }
                         agentManagerStorage.SingleAgentHistory.AddRange(themIDs);
                     }
@@ -829,6 +863,47 @@ namespace AistTrader
             }
             DelAgentManagerBtn.IsEnabled = strategy.ProcessState != StockSharp.Algo.ProcessStates.Started && strategy.ProcessState != StockSharp.Algo.ProcessStates.Stopping;
         }
+
+
+        public void SaveAgentData(IEnumerable<MyTrade> trades , string[] info, string nameStrategy)
+        {
+            var agentAlias = info[0];
+            var agentGroup = info[2];
+
+            var agentManagerStorage = Instance.AgentManagerStorage;
+            
+
+
+
+            if (agentGroup == "single")
+            {
+                var agentManagerStorageSingle = agentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == agentAlias);
+                if (agentManagerStorageSingle.SingleMyTradesHistory == null)
+                {
+                    agentManagerStorageSingle.SingleMyTradesHistory = new List<MyTrade>();
+                }
+
+                agentManagerStorageSingle.SingleMyTradesHistory.AddRange(trades);
+            }
+            else
+            {
+                var agentManagerStorageGroup = agentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == agentAlias);
+                var strategyStorage =  agentManagerStorageGroup.StrategyInGroup.FirstOrDefault(i => i.Name == nameStrategy);
+                if (strategyStorage.MyTradesHistory == null)
+                {
+                    strategyStorage.MyTradesHistory = new List<MyTrade>();
+                }
+
+                strategyStorage.MyTradesHistory.AddRange(trades);
+
+
+            }
+            
+            SaveAgentManagerSettings();
+             
+             
+
+        } 
 
         #region Aist Trader Agent/Group Manager
 

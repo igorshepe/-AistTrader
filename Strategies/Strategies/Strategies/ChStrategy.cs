@@ -49,14 +49,15 @@ namespace Strategies.Strategies
         private bool _exitPosition;
         private bool _enterPosition;
         private Order _registeredOrder;
-        private readonly string _nameGroup;
         private readonly List<long> _history; 
         private string _nameStrategy;
         private bool _firstLap = true;
         private bool _stopStrategy;
         private readonly string _alias;
         private string _port;
-         
+
+        public readonly string NameGroup;
+
 
 
 
@@ -73,7 +74,7 @@ namespace Strategies.Strategies
              
             _alias = infoGroup[0];
             _port = infoGroup[1];
-            _nameGroup = infoGroup[2];
+            NameGroup = infoGroup[2];
             _history = history;
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
@@ -174,9 +175,9 @@ namespace Strategies.Strategies
         {
             string nameStrategy;
 
-            if (_nameGroup != "single")
+            if (NameGroup != "single")
             {
-                nameStrategy = $"{_port}-[{_nameGroup}] {GetFriendlyName()}";
+                nameStrategy = $"{_port}-[{NameGroup}] {GetFriendlyName()}";
             }
             else
             {
@@ -191,7 +192,7 @@ namespace Strategies.Strategies
         
         public void GetHistory(IEnumerable<Order> orderConnector )
         {
-            if (_history[0].ToString() == "0")
+            if (_history.Count == 0)
             {
                 Task.Run(() => TradesLogger.Info("{0}: No historical orders", _nameStrategy));
 
