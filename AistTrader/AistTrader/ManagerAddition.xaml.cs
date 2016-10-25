@@ -134,6 +134,9 @@ namespace AistTrader
 
         private void AddAgentInAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
+            var agentForEditEnabled = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
+            SecurityPickerSS.IsEnabled = agentForEditEnabled.Params.GroupName == "ungrouped agents";
+
             if (string.IsNullOrEmpty(AliasTxtBox.Text))
             {
                 MessageBox.Show(this, @"Set an alias");
