@@ -22,6 +22,7 @@ namespace AistTrader
         public bool AllAgentsChecked { get; set; }
         public bool IsAgentSettingsLoaded;
         public bool IsGroupWritten;
+
         private void AgentListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = AgentListView.SelectedItem as Agent;
@@ -202,6 +203,7 @@ namespace AistTrader
                                 var agentToDelete = MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(it => it.ActualStrategyRunning.Name == del.Name);
 
                                 var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(inst => inst.AgentOrGroupName == del.Name) as AistTraderAgentManagerWrapper;
+
                                 if (Instance.AgentManagerStorage.Any(inst => inst.Alias == strategyOrGroup.AgentOrGroupName) &&
                                     Instance.AgentManagerStorage.Single(inst => inst.Alias == strategyOrGroup.AgentOrGroupName).SingleAgentPosition != 0)
                                 {

@@ -21,7 +21,6 @@ namespace Common.Entities
             Tool = tool;
             Amount = amount;
             StrategyInGroup = strategyInGroup;
-
         }
         
 

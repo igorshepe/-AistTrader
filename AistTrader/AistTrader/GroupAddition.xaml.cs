@@ -32,12 +32,14 @@ namespace AistTrader
         public List<Agent> ItemsToDelete;
         private int removeCount;
         private int editCount;
+        private List<string> currentSecurities;
 
         public GroupAddition()
         {
             InitializeComponent();
             EditIndex = int.MinValue;
             WorkMode = AgentWorkMode.Group;
+            currentSecurities = new List<string>();
         }
 
         public GroupAddition(Agent agent, int editIndex, AgentWorkMode editMode)
@@ -49,6 +51,7 @@ namespace AistTrader
             WorkMode = editMode;
             InitFields(agent, editMode);
             EditIndex = editIndex;
+            currentSecurities = new List<string>();
         }
 
         private void InitFields(Agent agent, AgentWorkMode editMode)
@@ -428,12 +431,45 @@ namespace AistTrader
             }
         }
 
+        private void ResetCurrentSecurities(int index, string security)
+        {
+            List<string> tmp = new List<string>(currentSecurities.Count);
+            for (int i = 0, n = currentSecurities.Count; i < n; ++i)
+            {
+                tmp.Add(currentSecurities[i]);
+            }
+            if (index < currentSecurities.Count)
+            {
+                currentSecurities[index] = security;
+            }
+            else
+            {
+                currentSecurities = new List<string>(index + 1);
+                for (int i = 0, n = tmp.Count; i < n; ++i)
+                {
+                    currentSecurities.Add(tmp[i]);
+                }
+                for (int i = tmp.Count; i < index + 1; ++i)
+                {
+                    currentSecurities.Add(string.Empty);
+                }
+                currentSecurities[index] = security;
+            }
+        }
+
         void instrument_SelectionChanged(object sender)
         {
             var item = (Control)sender;
             int index = (int)item.GetValue(Grid.RowProperty);
             SecurityEditor se = (SecurityEditor)sender;
-            MainWindow.Instance.AgentsStorage[index].Params.Security = se.Text;
+            ResetCurrentSecurities(index, se.Text);
+
+            //MainWindow.Instance.AgentsStorage[index].Params.Security = se.Text;
+            //var agentManager = MainWindow.Instance.AgentManagerStorage.Where(a => a.Name == MainWindow.Instance.AgentsStorage[index].Name).FirstOrDefault();
+            //if (agentManager != null)
+            //{
+            //    agentManager.Tool = se.Text;
+            //}
         }
 
         void DelDynamicGridControl_MouseDown(object sender, MouseButtonEventArgs e)
@@ -576,6 +612,7 @@ namespace AistTrader
                                     item.Params.GroupName = groupName;
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(item);
                                     //to attache sec
+                                    item.Params.Security = currentSecurities[index - RowSetter];
                                     MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                     //go to agent manager related actions
 
@@ -859,6 +896,7 @@ namespace AistTrader
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
                         {
+                            int curr = 0;
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
                                 var amount = ue.Text;
@@ -872,6 +910,7 @@ namespace AistTrader
                                     newAgent.Params.AgentCompiledName = rs.Params.AgentCompiledName;
                                     newAgent.Params.Amount = amount;
                                     newAgent.Params.GroupName = groupName;
+                                    newAgent.Params.Security = currentSecurities[curr];
                                     newAgent.Params.ToolTipName = rs.Params.ToolTipName;
                                     list.Add(newAgent);
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(rs);
@@ -880,6 +919,8 @@ namespace AistTrader
                                 {
                                     MainWindow.Instance.AddNewAgentInGroup(i, -1, false);
                                 }
+
+                                ++curr;
                             }
                         }
                     }

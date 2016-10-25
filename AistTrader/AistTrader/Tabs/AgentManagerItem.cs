@@ -293,7 +293,7 @@ namespace AistTrader
         private void AgentManagerListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             EditAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
-            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
+            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex && AgentManagerListView.SelectedIndex >= 0 && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
         }
 
         private void AgentManagerTradeSettingsPic_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -463,7 +463,9 @@ namespace AistTrader
                     if (amount.Value.Type == UnitTypes.Percent)
                     {
                         var data = Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
-                        var secG = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
+
+                        var secG = realConnection.Securities.FirstOrDefault(i => i.Code == groupMember.Params.Security/* agentOrGroup.Tool*/);
+
                         var secMargSell = data.Securities.FirstOrDefault(i => i.Name == secG.Name).MarginSell;
                         var currValue = data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code).CurrentValue;
                         var percent = amount.Value.Value;
@@ -483,21 +485,19 @@ namespace AistTrader
                     var historyAgent = agentOrGroup.StrategyInGroup.FirstOrDefault(i=> i.Name == groupMember.Name);
                     if (historyAgent.MyTradesHistory != null && historyAgent.MyTradesHistory.Count >= 1)
                     { 
-                            //history = agentOrGroup.SingleAgentHistory;
-                            foreach (var t in historyAgent.MyTradesHistory)
+                        //history = agentOrGroup.SingleAgentHistory;
+                        foreach (var t in historyAgent.MyTradesHistory)
+                        {
+                            if (history.Count == 0)
                             {
-                                if (history.Count == 0)
-                                {
-                                    history.Add( t.Order.TransactionId);
-                                }
-                                else if (history.Last() != t.Order.TransactionId)
-                                {
-                                    history.Add(t.Order.TransactionId);
-                                }
+                                history.Add( t.Order.TransactionId);
                             }
-                         
+                            else if (history.Last() != t.Order.TransactionId)
+                            {
+                                history.Add(t.Order.TransactionId);
+                            }
+                        } 
                     }
-
 
                     string nameGroup = agentOrGroup.ToString();
                     var alias = agentOrGroup.Alias;
@@ -506,17 +506,19 @@ namespace AistTrader
                     strategy = new Strategy();
                     strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, infoStrategy, history);
 
-
                     strategy.DisposeOnStop = true;
 
                     //тест
-                    var secutityG = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.AgentManagerSettings.Tool);
+
+                    var securityGA = realConnection.Securities.FirstOrDefault(i => i.Id == groupMember.Params.Security);
+
+                    var secutityG = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool/* agentOrGroup.AgentManagerSettings.Tool*/);
                     if (!string.IsNullOrEmpty(groupMember.Params.Security))
                     {
-                        secutityG = realConnection.Securities.FirstOrDefault(i => i.Code == groupMember.Params.Security);
+                        secutityG = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool/* groupMember.Params.Security*/);
                     }
-                    strategy.Security = secutityG;
-                    strategy.Portfolio =realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
+                    strategy.Security = securityGA;
+                    strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
                     strategy.Connector = realConnection;
                     strategy.Volume =(decimal) calculatedAmount;
                     var candleManager = new CandleManager(realConnection);
