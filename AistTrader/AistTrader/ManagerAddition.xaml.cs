@@ -156,13 +156,7 @@ namespace AistTrader
             //временная проверка не через автовалидацию
             if (editMode)
             {
-                var agentForEdit = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-
-                //if (SecurityPickerSS.SelectedSecurity == null && (agentForEditEnabled == null || agentForEdit.Params.GroupName == "ungrouped agents"))
-                //{
-                //    MessageBox.Show(this, @"Select a security");
-                //    return;
-                //}
+                var agentForEdit = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString() || i.Params.GroupName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
 
                 if (agentManagerToEdit.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
                 {
