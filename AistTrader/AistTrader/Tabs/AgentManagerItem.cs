@@ -504,8 +504,7 @@ namespace AistTrader
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
             //check whether we work with group or not
-
-            var groupElements = Instance.AgentsStorage.Select(i=>i).Where(i=>i.Params.GroupName == agentOrGroup.AgentManagerSettings.AgentOrGroup).ToList();
+            var groupElements = Instance.AgentsStorage.Where(i => i.Params.GroupName == agentOrGroup.AgentManagerSettings.AgentOrGroup).ToList();
             if (groupElements.Count >= 2)
             {
                 //ugroup logic
@@ -524,7 +523,7 @@ namespace AistTrader
                     {
                         var data = Instance.ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == agentOrGroup.AgentManagerSettings.Portfolio.Connection.Id);
 
-                        var secG = realConnection.Securities.FirstOrDefault(i => i.Code == groupMember.Params.Security/* agentOrGroup.Tool*/);
+                        var secG = realConnection.Securities.FirstOrDefault(i => i.Id == groupMember.Params.Security);
 
                         var secMargSell = data.Securities.FirstOrDefault(i => i.Name == secG.Name).MarginSell;
                         var currValue = data.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code).CurrentValue;
@@ -539,13 +538,11 @@ namespace AistTrader
                     {
                         calculatedAmount = amount.Value.To<decimal>();
                     }
-
                     
                     var history = new List<long>();
                     var historyAgent = agentOrGroup.StrategyInGroup.FirstOrDefault(i=> i.Name == groupMember.Name);
                     if (historyAgent.MyTradesHistory != null && historyAgent.MyTradesHistory.Count >= 1)
-                    { 
-                        //history = agentOrGroup.SingleAgentHistory;
+                    {
                         foreach (var t in historyAgent.MyTradesHistory)
                         {
                             if (history.Count == 0)
@@ -833,8 +830,6 @@ namespace AistTrader
                 {
                     Task.Run(() => Logger.Error("Related connections - \"{0}\" is not active, can't start with no active connection..", conName));
                     MessageBox.Show("Related connections is not active, can't start with no active connection.");
-                    //var item = AgentManagerCollectionView.Cast<AgentManager>().FirstOrDefault(i => i.Alias == agentOrGroup.Alias);
-                    //UpdateAgentManagerListView();
                     return;
                 }
                 else
