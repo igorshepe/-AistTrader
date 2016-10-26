@@ -75,10 +75,6 @@ namespace AistTrader
             DataContext = this;
             EditIndex = int.MinValue;
             LoadParams();
-
-            //var agentForEditEnabled = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => GroupOrSingleAgentComboBox.SelectedItem != null && i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-            //SecurityPickerSS.IsEnabled = agentForEditEnabled == null || agentForEditEnabled.Params.GroupName == "ungrouped agents";
-            //SecurityPickerSS.Visibility = SecurityPickerSS.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
         }
         public ManagerAddition(AgentManager agent, int editIndex)
         {
@@ -86,10 +82,6 @@ namespace AistTrader
             DataContext = this;
             InitFields(agent);
             EditIndex = editIndex;
-
-            //var agentForEditEnabled = MainWindow.Instance.AgentsStorage.Cast<Agent>().FirstOrDefault(i => GroupOrSingleAgentComboBox.SelectedItem != null && i.Params.FriendlyName == GroupOrSingleAgentComboBox.SelectedItem.ToString());
-            //SecurityPickerSS.IsEnabled = agentForEditEnabled == null || agentForEditEnabled.Params.GroupName == "ungrouped agents";
-            //SecurityPickerSS.Visibility = SecurityPickerSS.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
         }
         private void LoadParams()
         {
@@ -246,8 +238,6 @@ namespace AistTrader
                 MessageBox.Show(this, @"Set amount value");
                 return;
             }
-
-
 
             MainWindow.Instance.AddNewAgentManager(new AgentManager(setting.Portfolio.Name, setting, setting.Tool, AmountTextBox.Text, AliasTxtBox.Text, strategyInGroup), EditIndex);
             if (SecurityPickerSS.SecurityProvider != null)
