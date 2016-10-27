@@ -910,12 +910,13 @@ namespace AistTrader
                     {
                         MainWindow.Instance.DelAgentConfigBtnClick(item, null);
                     }
+                    int curr = 0;
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
                         {
-                            int curr = 0;
+                            
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
                                 var amount = ue.Text;
@@ -938,14 +939,14 @@ namespace AistTrader
                                 {
                                     MainWindow.Instance.AddNewAgentInGroup(i, -1, false);
                                 }
-
-                                ++curr;
                             }
+                            ++curr;
                         }
                     }
                 }
                 else
                 {
+                    int curr = 0;
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
                         string cbID = cb.Name.Split('_').Last();
@@ -966,6 +967,7 @@ namespace AistTrader
                                 itemToEdit.Params.Amount = amount;
                                 itemToEdit.Params.GroupName = groupName;
                                 itemToEdit.Name = algorithmName;
+                                itemToEdit.Params.Security = currentSecurities[curr];
                                 MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
                             }
                         }
