@@ -88,14 +88,14 @@ namespace AistTrader
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
-                                    MainWindow.Instance.DelAgentConfigBtnClick(agent, "has been excluded from the group");
+                                    //MainWindow.Instance.DelAgentConfigBtnClick(agent, "has been excluded from the group");
                                 }
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                                 {
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosWaitStrExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
-                                    MainWindow.Instance.DelAgentConfigBtnClick(agent, "has been excluded from the group");
+                                    //MainWindow.Instance.DelAgentConfigBtnClick(agent, "has been excluded from the group");
                                 }
                                 doDelete = !form.IsCancelled;
                             }
@@ -505,7 +505,6 @@ namespace AistTrader
             }
             return calculatedAmount;
         }
-
         
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
@@ -583,7 +582,7 @@ namespace AistTrader
                     strategy.Security = securityGA;
                     strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Code);
                     strategy.Connector = realConnection;
-                    strategy.Volume =(decimal) calculatedAmount;
+                    strategy.Volume = (decimal)calculatedAmount;
                     var candleManager = new CandleManager(realConnection);
                     strategy.SetCandleManager(candleManager);
                     strategy.LogLevel = LogLevels.Debug;
