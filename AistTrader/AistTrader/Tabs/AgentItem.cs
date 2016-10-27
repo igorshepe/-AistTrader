@@ -204,6 +204,8 @@ namespace AistTrader
 
                                 var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(inst => inst.AgentOrGroupName == del.Name) as AistTraderAgentManagerWrapper;
 
+                                bool doDelete = true;
+
                                 if (Instance.AgentManagerStorage.Any(inst => inst.Alias == strategyOrGroup.AgentOrGroupName) &&
                                     Instance.AgentManagerStorage.Single(inst => inst.Alias == strategyOrGroup.AgentOrGroupName).SingleAgentPosition != 0)
                                 {
@@ -224,9 +226,13 @@ namespace AistTrader
                                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                         MainWindow.Instance.DelAgentConfigBtnClick(del, "has been excluded from the group");
                                     }
+                                    doDelete = !form.IsCancelled;
                                 }
 
-                                AgentsStorage.Remove(del);
+                                if (doDelete)
+                                {
+                                    AgentsStorage.Remove(del);
+                                }
                             }
                             Task.Run(() => Logger.Info("Group - \"{0}\" has been deleted.", agent.Params.GroupName));
                             SaveAgentSettings();
@@ -262,6 +268,8 @@ namespace AistTrader
 
                                 var agentToDelete = MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(it => it.ActualStrategyRunning.Name == item.Name);
 
+                                bool doDelete = true;
+
                                 var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(inst => inst.AgentOrGroupName == item.Name) as AistTraderAgentManagerWrapper;
                                 if (Instance.AgentManagerStorage.Any(inst => inst.Alias == strategyOrGroup.AgentOrGroupName) &&
                                     Instance.AgentManagerStorage.Single(inst => inst.Alias == strategyOrGroup.AgentOrGroupName).SingleAgentPosition != 0)
@@ -283,9 +291,10 @@ namespace AistTrader
                                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                         MainWindow.Instance.DelAgentConfigBtnClick(item, "has been excluded from the group");
                                     }
+                                    doDelete = !form.IsCancelled;
                                 }
 
-                                if (resultMsg == MessageBoxResult.Yes)
+                                if (resultMsg == MessageBoxResult.Yes && doDelete)
                                 {
                                     try
                                     {

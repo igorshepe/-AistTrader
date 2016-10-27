@@ -64,6 +64,7 @@ namespace AistTrader
         {
             foreach (var item in AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList())
             {
+                bool doDelete = true;
                 MessageBoxResult resultMsg = MessageBox.Show("Selected agent/group will be permanently deleted! Confirm?", "Delete agent/group", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
                 if (resultMsg == MessageBoxResult.Yes)
                 {
@@ -96,6 +97,7 @@ namespace AistTrader
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                     MainWindow.Instance.DelAgentConfigBtnClick(agent, "has been excluded from the group");
                                 }
+                                doDelete = !form.IsCancelled;
                             }
                         }
                     }
@@ -124,14 +126,18 @@ namespace AistTrader
                                 MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                 MainWindow.Instance.DelAgentConfigBtnClick(agent, "has been excluded from the group");
                             }
+                            doDelete = !form.IsCancelled;
                         }
                     }
 
                     try
                     {
-                        AgentManagerStorage.Remove(item);
-                        Task.Run(() => Logger.Info("Agent manager item \"{0}\"/\"{1}\" has been deleted", item.Name, item.Alias));
-                        SaveAgentManagerSettings();
+                        if (doDelete)
+                        {
+                            AgentManagerStorage.Remove(item);
+                            Task.Run(() => Logger.Info("Agent manager item \"{0}\"/\"{1}\" has been deleted", item.Name, item.Alias));
+                            SaveAgentManagerSettings();
+                        }
                     }
                     catch (Exception ex)
                     {

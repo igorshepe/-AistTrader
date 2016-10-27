@@ -476,17 +476,11 @@ namespace AistTrader
 
                 var cb = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 var tb = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
-                DynamicGrid.Children.Remove(cb);
-                DynamicGrid.Children.Remove(tb);
-                var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
-                DynamicGrid.Children.Remove(label);
-
-                DynamicGrid.RowDefinitions[index].Height = new GridLength(0);
 
                 var strategyName = (string)cb.SelectedValue;
                 var agentManager = MainWindow.Instance.AgentManagerStorage.Where(am => am.StrategyInGroup.Any(s => s.Name == strategyName) && MainWindow.Instance.AgentsStorage.Any(a => a.Params.GroupName == am.Alias && a.Name == strategyName)).FirstOrDefault();
                 bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
-
+                bool doDelete = true;
                 if (doRequest)
                 {
                     var agentToDelete =
@@ -510,21 +504,32 @@ namespace AistTrader
                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
+                    doDelete = !form.IsCancelled;
+                }
+                if (doDelete)
+                {
+                    DynamicGrid.Children.Remove(cb);
+                    DynamicGrid.Children.Remove(tb);
+                    var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
+                    DynamicGrid.Children.Remove(label);
+
+                    DynamicGrid.RowDefinitions[index].Height = new GridLength(0);
                 }
             }
             else
             {
                 var item = (Label)e.Source;
                 var cb = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
-                DynamicGrid.Children.Remove(cb);
+                //DynamicGrid.Children.Remove(cb);
                 var tb = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
-                DynamicGrid.Children.Remove(tb);
+                //DynamicGrid.Children.Remove(tb);
                 var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
-                DynamicGrid.Children.Remove(label);
+                //DynamicGrid.Children.Remove(label);
 
                 var strategyName = (string)cb.SelectedValue;
                 var agentManager = MainWindow.Instance.AgentManagerStorage.Where(am => am.StrategyInGroup.Any(s => s.Name == strategyName) && MainWindow.Instance.AgentsStorage.Any(a => a.Params.GroupName == am.Alias && a.Name == strategyName)).FirstOrDefault();
                 bool doRequest = agentManager != null && agentManager.SingleAgentPosition != 0;
+                bool doDelete = true;
 
                 if (doRequest)
                 {
@@ -548,6 +553,13 @@ namespace AistTrader
                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
+                    doDelete = !form.IsCancelled;
+                }
+                if (doDelete)
+                {
+                    DynamicGrid.Children.Remove(cb);
+                    DynamicGrid.Children.Remove(tb);
+                    DynamicGrid.Children.Remove(label);
                 }
             }
         }
