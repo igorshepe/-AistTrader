@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using Common.Entities;
 using Common.Params;
+using Common;
 using Ecng.Common;
 using MahApps.Metro.Controls;
 using NLog;
@@ -75,16 +76,17 @@ namespace AistTrader
                         foreach (var strategyInGroup in item.StrategyInGroup)
                         {
                             bool doRequest = strategyInGroup.Position != 0;
+                            var agentToDelete = Instance.AgentConnnectionManager.Strategies.FirstOrDefault(it => it.ActualStrategyRunning.Name == strategyInGroup.Name);
+
                             if (doRequest)
                             {
-                                var agentToDelete = Instance.AgentConnnectionManager.Strategies.FirstOrDefault(it => it.ActualStrategyRunning.Name == strategyInGroup.Name);
-
                                 var form = new GroupAdditionDeleteMode(item.Name.ToString());
                                 form.ShowDialog();
                                 var selectedMode = form.SelectedDeleteMode;
                                 var agent = Instance.AgentsStorage.FirstOrDefault(a => a.Name == strategyInGroup.Name);
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                                 {
+                                    agentToDelete.CloseState = StrategyCloseState.NoWait;
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -92,6 +94,7 @@ namespace AistTrader
                                 }
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                                 {
+                                    agentToDelete.CloseState = StrategyCloseState.Wait;
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosWaitStrExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -99,21 +102,26 @@ namespace AistTrader
                                 }
                                 doDelete = !form.IsCancelled;
                             }
+                            else
+                            {
+                                agentToDelete.CloseState = StrategyCloseState.None;
+                            }
                         }
                     }
                     else
                     {
                         bool doRequest = item.SingleAgentPosition != 0;
+
+                        var agentToDelete = Instance.AgentConnnectionManager.Strategies.FirstOrDefault(it => it.ActualStrategyRunning.Name == item.Name);
                         if (doRequest)
                         {
-                            var agentToDelete = Instance.AgentConnnectionManager.Strategies.FirstOrDefault(it => it.ActualStrategyRunning.Name == item.Name);
-
                             var form = new GroupAdditionDeleteMode(item.Name.ToString());
                             form.ShowDialog();
                             var selectedMode = form.SelectedDeleteMode;
                             var agent = Instance.AgentsStorage.FirstOrDefault(a => a.Name == item.Alias);
                             if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                             {
+                                agentToDelete.CloseState = StrategyCloseState.NoWait;
                                 ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                 strat.CheckPosExit();
                                 MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -121,12 +129,17 @@ namespace AistTrader
                             }
                             if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                             {
+                                agentToDelete.CloseState = StrategyCloseState.Wait;
                                 ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                 strat.CheckPosWaitStrExit();
                                 MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                 MainWindow.Instance.DelAgentConfigBtnClick(agent, "has been excluded from the group");
                             }
                             doDelete = !form.IsCancelled;
+                        }
+                        else
+                        {
+                            agentToDelete.CloseState = StrategyCloseState.None;
                         }
                     }
 
@@ -926,16 +939,12 @@ namespace AistTrader
             DelAgentManagerBtn.IsEnabled = strategy.ProcessState != StockSharp.Algo.ProcessStates.Started && strategy.ProcessState != StockSharp.Algo.ProcessStates.Stopping;
         }
 
-
         public void SaveAgentData(IEnumerable<MyTrade> trades , string[] info, string nameStrategy)
         {
             var agentAlias = info[0];
             var agentGroup = info[2];
 
             var agentManagerStorage = Instance.AgentManagerStorage;
-            
-
-
 
             if (agentGroup == "single")
             {
@@ -957,14 +966,9 @@ namespace AistTrader
                 }
 
                 strategyStorage.MyTradesHistory.AddRange(trades);
-
-
             }
             
             SaveAgentManagerSettings();
-             
-             
-
         } 
 
         #region Aist Trader Agent/Group Manager
@@ -983,6 +987,8 @@ namespace AistTrader
             }
 
             public Strategy ActualStrategyRunning { get; set; }
+
+            public StrategyCloseState CloseState { get; set; }
             public string AgentOrGroupName { get; set; }
         }
 

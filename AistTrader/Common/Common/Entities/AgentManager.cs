@@ -81,6 +81,9 @@ namespace Common.Entities
 
         [DataMember()]
         public List<MyTrade> MyTradesHistory { get; set; }
+
+        [DataMember()]
+        public StrategyCloseState CloseState { get; set; }
     }
 
     [DataContract(Namespace = "")]

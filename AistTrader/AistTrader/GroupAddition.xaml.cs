@@ -501,17 +501,17 @@ namespace AistTrader
                 var agentManager = MainWindow.Instance.AgentManagerStorage.Where(am => am.StrategyInGroup.Any(s => s.Name == strategyName) && MainWindow.Instance.AgentsStorage.Any(a => a.Params.GroupName == am.Alias && a.Name == strategyName)).FirstOrDefault();
                 bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
                 bool doDelete = true;
-                if (doRequest)
-                {
-                    var agentToDelete =
+                var agentToDelete =
                         MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
                             it => it.ActualStrategyRunning.Name == item.Name);
-
+                if (doRequest)
+                {
                     var form = new GroupAdditionDeleteMode(item.Name.ToString());
                     form.ShowDialog();
                     var selectedMode = form.SelectedDeleteMode;
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                     {
+                        agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
                         ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                         strat.CheckPosExit();
                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -519,12 +519,17 @@ namespace AistTrader
                     }
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                     {
+                        agentToDelete.CloseState = Common.StrategyCloseState.Wait;
                         ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                         strat.CheckPosWaitStrExit();
                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
                     doDelete = !form.IsCancelled;
+                }
+                else
+                {
+                    agentToDelete.CloseState = Common.StrategyCloseState.None;
                 }
                 if (doDelete)
                 {
@@ -550,17 +555,17 @@ namespace AistTrader
                 var agentManager = MainWindow.Instance.AgentManagerStorage.Where(am => am.StrategyInGroup.Any(s => s.Name == strategyName) && MainWindow.Instance.AgentsStorage.Any(a => a.Params.GroupName == am.Alias && a.Name == strategyName)).FirstOrDefault();
                 bool doRequest = agentManager != null && agentManager.SingleAgentPosition != 0;
                 bool doDelete = true;
-
+                var agentToDelete =
+                    MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
+                        it => it.ActualStrategyRunning.Name == item.Name);
                 if (doRequest)
                 {
-                    var agentToDelete =
-                        MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
-                            it => it.ActualStrategyRunning.Name == item.Name);
                     var form = new GroupAdditionDeleteMode(item.Name.ToString());
                     form.ShowDialog();
                     var selectedMode = form.SelectedDeleteMode;
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                     {
+                        agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
                         ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                         strat.CheckPosExit();
                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -568,12 +573,17 @@ namespace AistTrader
                     }
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                     {
+                        agentToDelete.CloseState = Common.StrategyCloseState.Wait;
                         ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                         strat.CheckPosWaitStrExit();
                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
                     doDelete = !form.IsCancelled;
+                }
+                else
+                {
+                    agentToDelete.CloseState = Common.StrategyCloseState.None;
                 }
                 if (doDelete)
                 {
@@ -836,6 +846,7 @@ namespace AistTrader
                                         break;
                                     }
                                 }
+                                agentToDelete.CloseState = Common.StrategyCloseState.None;
                             }
                             else
                             {
@@ -848,6 +859,7 @@ namespace AistTrader
                                 var selectedMode = form.SelectedDeleteMode;
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                                 {
+                                    agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -855,6 +867,7 @@ namespace AistTrader
                                 }
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                                 {
+                                    agentToDelete.CloseState = Common.StrategyCloseState.Wait;
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosWaitStrExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);

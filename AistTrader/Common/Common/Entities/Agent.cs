@@ -18,6 +18,9 @@ namespace Common.Entities
         [DataMember()]
         public AgentParams Params { get; set; }
 
+        [DataMember()]
+        public StrategyCloseState CloseState { get; set; }
+
         public override string ToString()
         {
             return Name;

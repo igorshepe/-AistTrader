@@ -214,6 +214,7 @@ namespace AistTrader
                                     var selectedMode = form.SelectedDeleteMode;
                                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                                     {
+                                        agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
                                         ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                         strat.CheckPosExit();
                                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -221,12 +222,17 @@ namespace AistTrader
                                     }
                                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                                     {
+                                        agentToDelete.CloseState = Common.StrategyCloseState.Wait;
                                         ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                         strat.CheckPosWaitStrExit();
                                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                         MainWindow.Instance.DelAgentConfigBtnClick(del, "has been excluded from the group");
                                     }
                                     doDelete = !form.IsCancelled;
+                                }
+                                else
+                                {
+                                    agentToDelete.CloseState = Common.StrategyCloseState.None;
                                 }
 
                                 if (doDelete)
@@ -279,6 +285,7 @@ namespace AistTrader
                                     var selectedMode = form.SelectedDeleteMode;
                                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                                     {
+                                        agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
                                         ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                         strat.CheckPosExit();
                                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -286,12 +293,17 @@ namespace AistTrader
                                     }
                                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                                     {
+                                        agentToDelete.CloseState = Common.StrategyCloseState.Wait;
                                         ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                         strat.CheckPosWaitStrExit();
                                         MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                         MainWindow.Instance.DelAgentConfigBtnClick(item, "has been excluded from the group");
                                     }
                                     doDelete = !form.IsCancelled;
+                                }
+                                else
+                                {
+                                    agentToDelete.CloseState = Common.StrategyCloseState.None;
                                 }
 
                                 if (resultMsg == MessageBoxResult.Yes && doDelete)
