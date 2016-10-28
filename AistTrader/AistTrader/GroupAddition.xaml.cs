@@ -184,6 +184,7 @@ namespace AistTrader
 
                 List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
                 MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools ?? new List<StockSharp.BusinessEntities.Security>()));
+                instruments = instruments.GroupBy(i => i.Id).Select(g => g.First()).ToList();
 
                 var instrument = new SecurityEditor
                 {
@@ -323,7 +324,8 @@ namespace AistTrader
 
             List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
             MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools ?? new List<StockSharp.BusinessEntities.Security>()));
-            
+            instruments = instruments.GroupBy(i => i.Id).Select(g => g.First()).ToList();
+
             var instrument = new SecurityEditor
             {
                 Height = 28,
