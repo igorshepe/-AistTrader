@@ -67,6 +67,7 @@ namespace AistTrader
                     AgentItem = i;
                     AddCongfigurationDuringGroupEdit(editMode);
                 }
+                SetSelectedInstruments(itemsToEdit);
             }
             else if (editMode == AgentWorkMode.Single)
             {
@@ -431,8 +432,25 @@ namespace AistTrader
             }
         }
 
+        private void SetSelectedInstruments(List<Agent> agents)
+        {
+            List<StockSharp.BusinessEntities.Security> instruments = new List<StockSharp.BusinessEntities.Security>();
+            MainWindow.Instance.ConnectionsStorage.Where(c => true).ToList().ForEach(c => instruments.AddRange(c.ConnectionParams.Tools ?? new List<StockSharp.BusinessEntities.Security>()));
+            int i = 0;
+            foreach (SecurityEditor se in DynamicGrid.Children.OfType<SecurityEditor>().Where(c => c.Name.Contains("InstrumentComboBox")))
+            {
+                Agent agent = MainWindow.Instance.AgentsStorage.FirstOrDefault(a => a.Name == agents[i].Name && a.Params.GroupName == agents[i].Params.GroupName);
+                se.Text = agent.Params.Security;
+                ++i;
+            }
+        }
+
         private void ResetCurrentSecurities(int index, string security)
         {
+            if (currentSecurities == null)
+            {
+                currentSecurities = new List<string>();
+            }
             List<string> tmp = new List<string>(currentSecurities.Count);
             for (int i = 0, n = currentSecurities.Count; i < n; ++i)
             {
