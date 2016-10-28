@@ -206,7 +206,7 @@ namespace AistTrader
 
                                 bool doDelete = true;
 
-                                if (Instance.AgentManagerStorage.Any(inst => inst.Alias == strategyOrGroup.AgentOrGroupName) &&
+                                if (strategyOrGroup != null && Instance.AgentManagerStorage.Any(inst => inst.Alias == strategyOrGroup.AgentOrGroupName) &&
                                     Instance.AgentManagerStorage.Single(inst => inst.Alias == strategyOrGroup.AgentOrGroupName).SingleAgentPosition != 0)
                                 {
                                     var form = new GroupAdditionDeleteMode(del.Name.ToString());
