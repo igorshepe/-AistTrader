@@ -631,7 +631,7 @@ namespace AistTrader
                                     item.Params.GroupName = groupName;
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(item);
                                     //to attache sec
-                                    item.Params.Security = currentSecurities[index - RowSetter];
+                                    item.Params.Security = currentSecurities.Count > index - RowSetter ? currentSecurities[index - RowSetter] : null;
                                     MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                     //go to agent manager related actions
 
