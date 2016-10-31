@@ -529,7 +529,10 @@ namespace AistTrader
                 }
                 else
                 {
-                    agentToDelete.CloseState = Common.StrategyCloseState.None;
+                    if (agentToDelete != null)
+                    {
+                        agentToDelete.CloseState = Common.StrategyCloseState.None;
+                    }
                 }
                 if (doDelete)
                 {
@@ -583,7 +586,10 @@ namespace AistTrader
                 }
                 else
                 {
-                    agentToDelete.CloseState = Common.StrategyCloseState.None;
+                    if (agentToDelete != null)
+                    {
+                        agentToDelete.CloseState = Common.StrategyCloseState.None;
+                    }
                 }
                 if (doDelete)
                 {
@@ -846,7 +852,10 @@ namespace AistTrader
                                         break;
                                     }
                                 }
-                                agentToDelete.CloseState = Common.StrategyCloseState.None;
+                                if (agentToDelete != null)
+                                {
+                                    agentToDelete.CloseState = Common.StrategyCloseState.None;
+                                }
                             }
                             else
                             {

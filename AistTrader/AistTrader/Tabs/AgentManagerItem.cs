@@ -104,7 +104,10 @@ namespace AistTrader
                             }
                             else
                             {
-                                agentToDelete.CloseState = StrategyCloseState.None;
+                                if (agentToDelete != null)
+                                {
+                                    agentToDelete.CloseState = StrategyCloseState.None;
+                                }
                             }
                         }
                     }
@@ -139,7 +142,10 @@ namespace AistTrader
                         }
                         else
                         {
-                            agentToDelete.CloseState = StrategyCloseState.None;
+                            if (agentToDelete != null)
+                            {
+                                agentToDelete.CloseState = StrategyCloseState.None;
+                            }
                         }
                     }
 
