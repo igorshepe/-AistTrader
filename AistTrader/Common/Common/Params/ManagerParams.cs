@@ -11,7 +11,7 @@ namespace Common.Params
         {
             Portfolio = portfolio;
             AgentOrGroup = agent;
-            Position = "-1";
+            Position = 0;
             Transaction = -1;
             FinalTransaction = -1;
             Tool = security;
@@ -30,7 +30,7 @@ namespace Common.Params
         [DataMember()]
         public string Tool { get; set; }
         [DataMember()]
-        public string Position { get; set; }
+        public int Position { get; set; }
         [DataMember()]
         public int Transaction { get; set; }
         [DataMember()]
