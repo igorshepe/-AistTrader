@@ -83,6 +83,7 @@ namespace AistTrader
             InitFields(agent);
             EditIndex = editIndex;
         }
+
         private void LoadParams()
         {
             //todo:выбирать для каждого подключения/портфеля свой набор параметров
@@ -95,6 +96,7 @@ namespace AistTrader
             PortfolioComboBox.ItemsSource = accounts;
             accounts = null;
             AmountTextBox.Text = string.Empty;
+            AliasTxtBox.Text = Alias;
         }
 
         private void InitFields(AgentManager agent)
@@ -122,6 +124,7 @@ namespace AistTrader
             SecurityPickerSS.SelectedSecurity = conn.Securities.FirstOrDefault(i => i.Code == agent.Tool);
             conn = null;
             _amount = agent.Amount.ToString();
+            Alias = agent.Alias;
             if (agent.AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Running)
             {
                 GroupOrSingleAgentComboBox.IsEnabled = false;
@@ -268,7 +271,7 @@ namespace AistTrader
                     AmountLbl.Visibility = Visibility.Visible;
                 }
                 SecurityPickerSS.Visibility = SecurityLabel.Visibility = IsGroup ? Visibility.Collapsed : Visibility.Visible;
-                AliasTxtBox.Text = GroupOrSingleAgentComboBox.SelectedItem.ToString();
+                AliasTxtBox.Text = string.IsNullOrEmpty(Alias) ? GroupOrSingleAgentComboBox.SelectedItem.ToString() : Alias;
             }
         }
 
@@ -370,10 +373,10 @@ namespace AistTrader
 
         private string ValidateTools()
         {
-            if (SecurityPickerSS.SelectedSecurity == null)
-            {
-                //return "Select a security";
-            }
+            //if (SecurityPickerSS.SelectedSecurity == null)
+            //{
+            //    return "Select a security";
+            //}
 
             return String.Empty;
         }
