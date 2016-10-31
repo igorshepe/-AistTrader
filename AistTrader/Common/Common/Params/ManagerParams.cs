@@ -12,11 +12,14 @@ namespace Common.Params
             Portfolio = portfolio;
             AgentOrGroup = agent;
             Position = 0;
-            Transaction = -1;
-            FinalTransaction = -1;
+            DayMargin = 0;
+            TotalMargin = 0;
             Tool = security;
             AgentMangerCurrentStatus = AgentManagerStatus.Stopped;
             IsChecked = true;
+            CurrentMargin = 0;
+            TradeEntryPrice = 0;
+            СurrentPrice = 0;
         }
 
         [DataMember()]
@@ -32,9 +35,15 @@ namespace Common.Params
         [DataMember()]
         public int Position { get; set; }
         [DataMember()]
-        public int Transaction { get; set; }
+        public decimal DayMargin { get; set; }
         [DataMember()]
-        public double FinalTransaction { get; set; }
+        public decimal TotalMargin { get; set; }
+        [DataMember()]
+        public decimal CurrentMargin { get; set; }
+        [DataMember()]
+        public decimal TradeEntryPrice { get; set; }
+        [DataMember()]
+        public  decimal СurrentPrice { get; set; }
         [DataMember()]
         public AgentManagerOperationCommand Command { get; set; }
         [DataMember()]

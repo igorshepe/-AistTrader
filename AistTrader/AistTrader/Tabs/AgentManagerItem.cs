@@ -52,7 +52,7 @@ namespace AistTrader
         public bool AllAgentManagerItemsChecked { get; set; }
         Strategy strategy = new Strategy();
         public readonly LogManager _logManager = new LogManager(); // Для логирования внутренних событий стратегии
-
+        private DateTime sec = DateTime.Now;
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var form = new ManagerAddition();
@@ -714,7 +714,7 @@ namespace AistTrader
                 strategy.Start();
 
                 
-
+                 
                 Strategies.Last().NewMyTrades += trades =>
                 {
                     SaveAgentData(trades, infoStrategy, agentName);
@@ -727,8 +727,18 @@ namespace AistTrader
 
                 Strategies.Last().PnLChanged += () =>
                 {
-                    var dd = strategy.PnL;
+                    UpdateMarginData(infoStrategy);
                 };
+
+                
+                //Strategies.Last().ValuesChanged += (security, pairs, arg3, arg4) =>
+                //{
+                //    var sec = security;
+
+                //    UpdateSecurityData(infoStrategy, sec.ClosePrice.Value);
+                //};
+
+
                 // Логирование внутренних событий стратегии для тестов
 
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
@@ -736,7 +746,76 @@ namespace AistTrader
             }
         }
 
+        public void UpdateSecurityData(string[] info, decimal close)
+        {
+            var agentAlias = info[0];
+            var agentGroup = info[2];
+            if (agentGroup == "single")
+            {
+                var actualTime = DateTime.Now;
+
+                var actualStrategy = new ChStrategy();
+                foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias))
+                {
+                    actualStrategy = strategyact;
+                }
+                
+
+                var actualStrategyData =
+                    AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
+                
+                    actualStrategyData.AgentManagerSettings.СurrentPrice = close;
+
+                AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                    AgentManagerListView.ItemsSource = AgentManagerStorage;
+                    AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+                    AgentManagerCollectionView.Refresh();
+
+                   // ResetStarted();
+
+                }));
+
+                //SaveAgentManagerSettings();
+            }
+            }
         
+        public void UpdateMarginData( string[] info)
+        {
+            var agentAlias = info[0];
+            var agentGroup = info[2];
+                
+            if (agentGroup == "single")
+            {
+                var actualStrategy = new ChStrategy();
+                foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias))
+                {
+                    actualStrategy = strategyact;
+                }
+                if (actualStrategy.PnL == 0)
+                    return;
+
+                var actualStrategyData =
+                    AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
+                if (actualStrategyData.AgentManagerSettings.CurrentMargin !=  actualStrategy.PnL)
+                {
+                    actualStrategyData.AgentManagerSettings.CurrentMargin =  actualStrategy.PnL;
+                    actualStrategyData.AgentManagerSettings.TotalMargin = actualStrategyData.AgentManagerSettings.TotalMargin+actualStrategy.PnL;
+                    AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
+                    {
+                        AgentManagerListView.ItemsSource = AgentManagerStorage;
+                        AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+                        AgentManagerCollectionView.Refresh();
+
+                        ResetStarted();
+
+                    }));
+
+                    //SaveAgentManagerSettings();
+                }
+            }
+
+        }
 
 
         public void UpdatePosition( string[] info, string name)
@@ -758,13 +837,16 @@ namespace AistTrader
                 {
                     actualStrategyData.AgentManagerSettings.Position = (int)actualStrategy.Position;
                     actualStrategyData.SingleAgentPosition = (int)actualStrategy.Position;
+                    
+                    IConnector connect =  ConnectionManager.Connections.FirstOrDefault(  i => i.ConnectionName == actualStrategyData.AgentManagerSettings.Portfolio.Connection.DisplayName);
+                    actualStrategyData.AgentManagerSettings.TradeEntryPrice = actualStrategy.Orders.Last().GetAveragePrice(connect);
                     AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
                     {
                         AgentManagerListView.ItemsSource = AgentManagerStorage;
                         AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
                         AgentManagerCollectionView.Refresh();
 
-                       ResetStarted();
+                        ResetStarted();
 
                     }));
 
