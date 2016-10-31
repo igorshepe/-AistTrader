@@ -437,19 +437,21 @@
                                 <DataGridTextColumn Header="Position"
                                                     Binding="{Binding AgentManagerSettings.Position}"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Net value"
-                                                    Binding="{Binding Connection.ConnectionParams.NetValue}"
+                                <DataGridTextColumn Header="Current margin"
+                                                    Binding="{Binding AgentManagerSettings.CurrentMargin}"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Transaction)"
-                                                    Binding="{Binding AgentManagerSettings.Transaction}"
+                                <DataGridTextColumn Header="Day margin"
+                                                    Binding="{Binding AgentManagerSettings.DayMargin}"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Final transaction)"
-                                                    Binding="{Binding AgentManagerSettings.FinalTransaction}"
+                                <DataGridTextColumn Header="Total margin"
+                                                    Binding="{Binding AgentManagerSettings.TotalMargin}"
                                                     IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Current state"
-                                                    Binding="{Binding AgentManagerSettings.Account.AgentAccount.IsActive}"
-                                                    IsReadOnly="True"
-                                                    />
+                                <DataGridTextColumn Header="Trade entry price"
+                                                    Binding="{Binding AgentManagerSettings.TradeEntryPrice}"
+                                                    IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Сurrent price"
+                                                    Binding="{Binding AgentManagerSettings.СurrentPrice}"
+                                                    IsReadOnly="True"/>
 
 
                                 <!--<DataGridTemplateColumn  IsReadOnly="False">
