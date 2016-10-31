@@ -44,7 +44,7 @@ namespace AistTrader
                 OnPropertyChanged(new PropertyChangedEventArgs("AllManagerAgentsChecked"));
             }
         }
-
+        private List<Strategy> Strategies = new List<Strategy>(); // Создаем коллекцию запущенных стратегий
         public bool _allManagerAgentsChecked;
         public AistTraderStrategiesConnnectionManager AgentConnnectionManager;
         public readonly PlazaTrader Trader = new PlazaTrader();
@@ -518,6 +518,7 @@ namespace AistTrader
             }
             return calculatedAmount;
         }
+
         
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
@@ -581,6 +582,8 @@ namespace AistTrader
                     strategy = new Strategy();
                     strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, infoStrategy, history);
 
+                    Strategies.Add(strategy);
+
                     strategy.DisposeOnStop = true;
 
                     //тест
@@ -600,9 +603,16 @@ namespace AistTrader
                     strategy.SetCandleManager(candleManager);
                     strategy.LogLevel = LogLevels.Debug;
                     strategy.Start();
-                    strategy.NewMyTrades += trades =>
+
+
+                    Strategies.Last().NewMyTrades += trades =>
                     {
                         SaveAgentData(trades, infoStrategy, groupMember.Name);
+                    };
+
+                    Strategies.Last().PositionChanged += () =>
+                    {
+                        UpdatePosition(infoStrategy, groupMember.Name);
                     };
                     // Логирование внутренних событий стратегии для тестов
 
@@ -683,6 +693,9 @@ namespace AistTrader
                 
                 strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, infoStrategy, history);
 
+                Strategies.Add(strategy);
+                
+                
                 strategy.DisposeOnStop = true;
                 var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
                 strategy.Security = convertedSecurity;
@@ -693,15 +706,67 @@ namespace AistTrader
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;
                 strategy.Start();
-                strategy.NewMyTrades += trades =>
+
+                
+
+                Strategies.Last().NewMyTrades += trades =>
                 {
                     SaveAgentData(trades, infoStrategy, agentName);
+                };
+
+                Strategies.Last().PositionChanged += () =>
+                {
+                    UpdatePosition(infoStrategy, agentName);
+                };
+
+                Strategies.Last().PnLChanged += () =>
+                {
+                    var dd = strategy.PnL;
                 };
                 // Логирование внутренних событий стратегии для тестов
 
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                 AgentConnnectionManager.Add(wrapper);
             }
+        }
+
+        
+
+
+        public void UpdatePosition( string[] info, string name)
+        {
+            
+            var agentAlias = info[0];
+            var agentGroup = info[2];
+            if (agentGroup == "single")
+            {
+                var actualStrategy = new ChStrategy();
+                foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias))
+                {
+                    actualStrategy = strategyact;
+                }
+
+                var actualStrategyData =
+                    AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
+                if (actualStrategyData.AgentManagerSettings.Position != (int)actualStrategy.Position)
+                {
+                    actualStrategyData.AgentManagerSettings.Position = (int)actualStrategy.Position;
+                    actualStrategyData.SingleAgentPosition = (int)actualStrategy.Position;
+                    AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
+                    {
+                        AgentManagerListView.ItemsSource = AgentManagerStorage;
+                        AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+                        AgentManagerCollectionView.Refresh();
+
+                       ResetStarted();
+
+                    }));
+
+                    SaveAgentManagerSettings();
+                }
+            }
+            
+            
         }
 
         //todo: переписать метод и стартовать персональные инструменты если они присвоены

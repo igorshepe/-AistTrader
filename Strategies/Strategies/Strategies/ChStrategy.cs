@@ -53,7 +53,7 @@ namespace Strategies.Strategies
         private string _nameStrategy;
         private bool _firstLap = true;
         private bool _stopStrategy;
-        private readonly string _alias;
+        public readonly string Alias;
         private string _port;
 
         public readonly string NameGroup;
@@ -72,7 +72,7 @@ namespace Strategies.Strategies
         public ChStrategy(SerializableDictionary<string, object> settingsStorage, string[] infoGroup, List<long> history)
         {
              
-            _alias = infoGroup[0];
+            Alias = infoGroup[0];
             _port = infoGroup[1];
             NameGroup = infoGroup[2];
             _history = history;
@@ -181,7 +181,7 @@ namespace Strategies.Strategies
             }
             else
             {
-                nameStrategy = $"{_port}-{_alias}";
+                nameStrategy = $"{_port}-{Alias}";
             }
 
 
