@@ -52,7 +52,8 @@ namespace AistTrader
         public bool AllAgentManagerItemsChecked { get; set; }
         Strategy strategy = new Strategy();
         public readonly LogManager _logManager = new LogManager(); // Для логирования внутренних событий стратегии
-        private DateTime sec = DateTime.Now;
+         
+        
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var form = new ManagerAddition();
@@ -730,21 +731,27 @@ namespace AistTrader
                     UpdateMarginData(infoStrategy);
                 };
 
-                
-                //Strategies.Last().ValuesChanged += (security, pairs, arg3, arg4) =>
+
+                //Strategies.Last().SecurityChanged += /*(security, pairs, arg3, arg4)*/() =>
                 //{
-                //    var sec = security;
 
-                //    UpdateSecurityData(infoStrategy, sec.ClosePrice.Value);
+                //    //var sec = security;
+                //    //if (sec.Code != "SiZ6")
+                //    //    return;
+                    
+
+                //    //UpdateSecurityData(infoStrategy, sec.ClosePrice.Value);
                 //};
-
-
+                 
                 // Логирование внутренних событий стратегии для тестов
 
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                 AgentConnnectionManager.Add(wrapper);
             }
         }
+
+         
+        
 
         public void UpdateSecurityData(string[] info, decimal close)
         {
@@ -792,15 +799,25 @@ namespace AistTrader
                 {
                     actualStrategy = strategyact;
                 }
-                if (actualStrategy.PnL == 0)
-                    return;
-
+                 
                 var actualStrategyData =
                     AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
+
+                if (actualStrategyData.AgentManagerSettings.TotalMarginList == null)
+                {
+                    actualStrategyData.AgentManagerSettings.TotalMarginList = new List<decimal>();
+                }
+                actualStrategyData.AgentManagerSettings.TotalMarginList.Add(actualStrategy.PnL);
+
+                //if (actualStrategy.PnL == 0)
+                //    return;
                 if (actualStrategyData.AgentManagerSettings.CurrentMargin !=  actualStrategy.PnL)
                 {
                     actualStrategyData.AgentManagerSettings.CurrentMargin =  actualStrategy.PnL;
-                    actualStrategyData.AgentManagerSettings.TotalMargin = actualStrategyData.AgentManagerSettings.TotalMargin+actualStrategy.PnL;
+                    
+
+                    actualStrategyData.AgentManagerSettings.TotalMargin =
+                        actualStrategyData.AgentManagerSettings.TotalMarginList.Sum(i => i);
                     AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
                     {
                         AgentManagerListView.ItemsSource = AgentManagerStorage;
@@ -837,7 +854,11 @@ namespace AistTrader
                 {
                     actualStrategyData.AgentManagerSettings.Position = (int)actualStrategy.Position;
                     actualStrategyData.SingleAgentPosition = (int)actualStrategy.Position;
-                    
+                    if (actualStrategy.Position == 0)
+                    {
+                        actualStrategyData.AgentManagerSettings.CurrentMargin = 0;
+                        actualStrategyData.AgentManagerSettings.TradeEntryPrice = 0;
+                    }
                     IConnector connect =  ConnectionManager.Connections.FirstOrDefault(  i => i.ConnectionName == actualStrategyData.AgentManagerSettings.Portfolio.Connection.DisplayName);
                     actualStrategyData.AgentManagerSettings.TradeEntryPrice = actualStrategy.Orders.Last().GetAveragePrice(connect);
                     AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()

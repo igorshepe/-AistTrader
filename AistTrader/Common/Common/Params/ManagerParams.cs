@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Common.Params
 {
@@ -38,6 +39,9 @@ namespace Common.Params
         public decimal DayMargin { get; set; }
         [DataMember()]
         public decimal TotalMargin { get; set; }
+        [DataMember()]
+        public List<decimal> TotalMarginList { get; set; }
+
         [DataMember()]
         public decimal CurrentMargin { get; set; }
         [DataMember()]
