@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,6 +56,7 @@ namespace Strategies.Strategies
         private bool _stopStrategy;
         public readonly string Alias;
         private string _port;
+        private string _closeState;
 
         public readonly string NameGroup;
 
@@ -75,6 +77,8 @@ namespace Strategies.Strategies
             Alias = infoGroup[0];
             _port = infoGroup[1];
             NameGroup = infoGroup[2];
+            _closeState = infoGroup[3];
+
             _history = history;
             object obj;
             //когда меняется выбранный элемент, не меняется набор параметров.
@@ -249,26 +253,55 @@ namespace Strategies.Strategies
             //this.WhenNewMyTrades()
             //  .Do(OnNewOrderTrades)
             //  .Apply(this);
-             
 
-            // создаем правило на появление завершенной свечи
-            _candleManager // объект, к которому применяется правило
+            if (_closeState == "Wait")
+            {
+                _candleManager // объект, к которому применяется правило
+                   .WhenCandlesFinished(_series) // условие (событие) правила
+                   .Do(GetValueIndicator) // действия при выполнении условия (событие) правила
+                   .Until(FinishCandles)
+                   // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
+                   .Apply(this);
+
+                // создаем правило на любое изменение свечки
+                _candleManager // объект, к которому применяется правило
+                    .WhenCandlesChanged(_series) // условие (событие) правила
+                    .Do(ChekLeSeLxSx) // действия при выполнении условия (событие) правила
+                    .Until(FinishCandles)
+                    // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
+                    .Apply(this);
+
+
+                _candleManager.Start(_series);
+
+                CheckPosWaitStrExit();
+            }
+            else if (_closeState == "NoWait")
+            {
+                CheckPosExit();
+            }
+            else
+            {
+                _candleManager // объект, к которому применяется правило
                 .WhenCandlesFinished(_series) // условие (событие) правила
                 .Do(GetValueIndicator) // действия при выполнении условия (событие) правила
                 .Until(FinishCandles)
                 // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
                 .Apply(this);
 
-            // создаем правило на любое изменение свечки
-            _candleManager // объект, к которому применяется правило
-                .WhenCandlesChanged(_series) // условие (событие) правила
-                .Do(ChekLeSeLxSx) // действия при выполнении условия (событие) правила
-                .Until(FinishCandles)
-                // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
-                .Apply(this);
+                // создаем правило на любое изменение свечки
+                _candleManager // объект, к которому применяется правило
+                    .WhenCandlesChanged(_series) // условие (событие) правила
+                    .Do(ChekLeSeLxSx) // действия при выполнении условия (событие) правила
+                    .Until(FinishCandles)
+                    // модифиатор работы правила. В данном случа правило работает до тех пока, FinishCandles не вернет true
+                    .Apply(this);
 
 
-            _candleManager.Start(_series);
+                _candleManager.Start(_series);
+            }
+            // создаем правило на появление завершенной свечи
+            
 
         }
 

@@ -115,8 +115,8 @@ namespace AistTrader
                         else
                         {
                             bool doRequest = noDelete = item.SingleAgentPosition != 0;
-
-                            var agentToDelete = Instance.AgentManagerStorage.FirstOrDefault(it => it.Name == item.Name);
+                            
+                            var agentToDelete = Instance.AgentManagerStorage.FirstOrDefault(it => it.Alias == item.Alias);
                             if (doRequest)
                             {
                                 var form = new GroupAdditionDeleteMode(item.Name.ToString());
@@ -787,7 +787,8 @@ namespace AistTrader
                 var nameGroup = "single";
                 var alias = agentOrGroup.Alias;
                 var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
-                string[] infoStrategy = { alias, port, nameGroup };
+                var closeState = agentOrGroup.CloseState.ToString();
+                string[] infoStrategy = { alias, port, nameGroup, closeState};
 
                 
                 strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, infoStrategy, history);
