@@ -1128,10 +1128,13 @@ namespace AistTrader
 
         public class AistTraderAgentManagerWrapper
         {
+            private StrategyCloseState strategyCloseState;
+
             public AistTraderAgentManagerWrapper(string name, Strategy strategy)
             {
                 AgentOrGroupName = name;
                 ActualStrategyRunning = strategy;
+                strategyCloseState = StrategyCloseState.None;
             }
 
             public override string ToString()
@@ -1141,7 +1144,30 @@ namespace AistTrader
 
             public Strategy ActualStrategyRunning { get; set; }
 
-            public StrategyCloseState CloseState { get; set; }
+            public StrategyCloseState CloseState
+            {
+                get
+                {
+                    return strategyCloseState;
+                }
+                set
+                {
+                    strategyCloseState = value;
+                    var agentManager = MainWindow.Instance.AgentManagerStorage.FirstOrDefault(a => a.Name == AgentOrGroupName);
+                    if (agentManager != null)
+                    {
+                        agentManager.CloseState = strategyCloseState;
+                        if (agentManager.StrategyInGroup != null && agentManager.StrategyInGroup.Count > 0)
+                        {
+                            var strategyInGroup = agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == AgentOrGroupName);
+                            if (strategyInGroup != null)
+                            {
+                                strategyInGroup.CloseState = strategyCloseState;
+                            }
+                        }
+                    }
+                }
+            }
             public string AgentOrGroupName { get; set; }
         }
 

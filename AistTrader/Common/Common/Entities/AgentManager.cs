@@ -54,6 +54,9 @@ namespace Common.Entities
 
         [DataMember()]
         public  List<StrategyInGroup> StrategyInGroup { get; set; }
+
+        [DataMember()]
+        public StrategyCloseState CloseState { get; set; }
     }
 
     [DataContract(Namespace = "")]
