@@ -187,6 +187,11 @@ namespace AistTrader
                         MessageBox.Show(this, @"Set amount value");
                         return;
                     }
+                    if (MainWindow.Instance.AgentManagerStorage.Any(i => i.Alias == AliasTxtBox.Text))
+                    {
+                        MessageBox.Show(this, @"This alias already in use");
+                        return;
+                    }
                     agentManagerToEdit.Alias = AliasTxtBox.Text;
                     MainWindow.Instance.AddNewAgentManager(agentManagerToEdit, EditIndex);
                     agentManagerToEdit = null;
