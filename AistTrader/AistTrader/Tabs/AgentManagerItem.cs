@@ -115,7 +115,11 @@ namespace AistTrader
                         else
                         {
                             bool doRequest = noDelete = item.SingleAgentPosition != 0;
+<<<<<<< HEAD
                             
+=======
+
+>>>>>>> 6f232b3803dfda9f294858acb34b54f33ac68c42
                             var agentToDelete = Instance.AgentManagerStorage.FirstOrDefault(it => it.Alias == item.Alias);
                             if (doRequest)
                             {
