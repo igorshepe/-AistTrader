@@ -86,7 +86,10 @@ namespace AistTrader
                                 var agent = Instance.AgentsStorage.FirstOrDefault(a => a.Name == strategyInGroup.Name);
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                                 {
-                                    agentToDelete.CloseState = StrategyCloseState.NoWait;
+                                    if (agentToDelete != null)
+                                    {
+                                        agentToDelete.CloseState = StrategyCloseState.NoWait;
+                                    }
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -94,7 +97,10 @@ namespace AistTrader
                                 }
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                                 {
-                                    agentToDelete.CloseState = StrategyCloseState.Wait;
+                                    if (agentToDelete != null)
+                                    {
+                                        agentToDelete.CloseState = StrategyCloseState.Wait;
+                                    }
                                     ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                     strat.CheckPosWaitStrExit();
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -124,7 +130,10 @@ namespace AistTrader
                             var agent = Instance.AgentsStorage.FirstOrDefault(a => a.Name == item.Alias);
                             if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                             {
-                                agentToDelete.CloseState = StrategyCloseState.NoWait;
+                                if (agentToDelete != null)
+                                {
+                                    agentToDelete.CloseState = StrategyCloseState.NoWait;
+                                }
                                 ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                 strat.CheckPosExit();
                                 MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
@@ -132,7 +141,10 @@ namespace AistTrader
                             }
                             if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                             {
-                                agentToDelete.CloseState = StrategyCloseState.Wait;
+                                if (agentToDelete != null)
+                                {
+                                    agentToDelete.CloseState = StrategyCloseState.Wait;
+                                }
                                 ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                                 strat.CheckPosWaitStrExit();
                                 MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
