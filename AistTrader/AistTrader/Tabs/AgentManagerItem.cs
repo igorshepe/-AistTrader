@@ -116,7 +116,7 @@ namespace AistTrader
                         {
                             bool doRequest = noDelete = item.SingleAgentPosition != 0;
 
-                            var agentToDelete = Instance.AgentManagerStorage.FirstOrDefault(it => it.Name == item.Name);
+                            var agentToDelete = Instance.AgentManagerStorage.FirstOrDefault(it => it.Name == item.Alias);
                             if (doRequest)
                             {
                                 var form = new GroupAdditionDeleteMode(item.Name.ToString());
