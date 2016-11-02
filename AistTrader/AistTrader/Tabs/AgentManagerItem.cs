@@ -845,28 +845,17 @@ namespace AistTrader
                     UpdatePosition(infoStrategy, agentName);
                 };
 
-                //Strategies.Last().PositionChanged += () =>
-                //{
-                   
-                //};
-
+                 
                 Strategies.Last().PnLChanged += () =>
                 {
                     UpdateMarginData(infoStrategy);
                 };
 
+                if (closeState != "None")
+                {
+                    Strategies.Last().WhenStopped().Do(() => DeleteAgentAfterClosePos(infoStrategy)).Apply();
+                }
 
-                //Strategies.Last().SecurityChanged += /*(security, pairs, arg3, arg4)*/() =>
-                //{
-
-                //    //var sec = security;
-                //    //if (sec.Code != "SiZ6")
-                //    //    return;
-                    
-
-                //    //UpdateSecurityData(infoStrategy, sec.ClosePrice.Value);
-                //};
-                 
                 // Логирование внутренних событий стратегии для тестов
 
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
@@ -874,8 +863,42 @@ namespace AistTrader
             }
         }
 
-         
-        
+        public void DeleteAgentAfterClosePos(string[] info)
+        {
+            var agentAlias = info[0];
+            var agentGroup = info[2];
+            if (agentGroup == "single")
+            {
+                var item = AgentManagerStorage.FirstOrDefault(i => i.Alias == agentAlias);
+                try
+                {
+                    //strategyOrGroup.ActualStrategyRunning.Stop();
+                    var strategyOrGroup =
+                        AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == agentAlias);
+                    AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
+                    item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
+                    item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped; ;
+                    Dispatcher.Invoke(new Action(() =>
+
+                    {
+                        AgentManagerStorage.Remove(item);
+                        Task.Run(() => Logger.Info("Agent manager item \"{0}\"/\"{1}\" has been deleted", item.Name, item.Alias));
+                        SaveAgentManagerSettings();
+                        UpdateAgentManagerListView();
+
+                    }));
+                    
+                }
+                catch (Exception e)
+                {
+                    Task.Run(() => Logger.Info(e));
+                    throw;
+                }
+
+            }
+
+        }
+
 
         public void UpdateSecurityData(string[] info, decimal close)
         {
