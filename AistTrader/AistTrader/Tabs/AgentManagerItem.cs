@@ -363,7 +363,7 @@ namespace AistTrader
                 startStopStartedIndexes = new bool[AgentManagerStorage.Count];
                 for (int i = 0, j = 0, n = current.Length; i < n; ++i)
                 {
-                    if (deletedIndexes.Contains(i))
+                    if (deletedIndexes.Contains(i) && startStopStartedIndexes.Length > i)
                     {
                         startStopStartedIndexes[j++] = current[i];
                     }
