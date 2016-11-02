@@ -257,6 +257,7 @@ namespace AistTrader
                     }
                 }
             }
+            UpdateAgentManagerListView();
         }
 
         private void EditAgentManagerBtnClick(object sender, RoutedEventArgs e)
@@ -955,7 +956,7 @@ namespace AistTrader
                 {
                     actualStrategyData.AgentManagerSettings.Position = (int) pos/*(int)actualStrategy.Position*/;
                     actualStrategyData.SingleAgentPosition = (int)pos/*(int)actualStrategy.Position*/;
-                    if (actualStrategy.Position == 0)
+                    if (/*actualStrategy.Position*/ pos == 0)
                     {
                         actualStrategyData.AgentManagerSettings.CurrentMargin = 0;
                         actualStrategyData.AgentManagerSettings.TradeEntryPrice = 0;
@@ -1166,10 +1167,10 @@ namespace AistTrader
                                 }
                             }
 
-                            foreach (var t in agentManagerStorage.StrategyInGroup.Where(t => agentHistory.Name == t.Name))
-                            {
-                                t.Position = (int)agentHistory.Position;
-                            }
+                            //foreach (var t in agentManagerStorage.StrategyInGroup.Where(t => agentHistory.Name == t.Name))
+                            //{
+                            //    t.Position = (int)agentHistory.Position;
+                            //}
 
                             Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
                             agent.ActualStrategyRunning.Stop();
@@ -1200,7 +1201,7 @@ namespace AistTrader
                         agentManagerStorage.SingleAgentHistory.AddRange(themIDs);
                     }
 
-                    agentManagerStorage.SingleAgentPosition = (int) agent.Position;
+                    //agentManagerStorage.SingleAgentPosition = (int) agent.Position;
 
 
                     strategyOrGroup.ActualStrategyRunning.Stop();
