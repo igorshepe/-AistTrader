@@ -872,8 +872,12 @@ namespace AistTrader
                 var item = AgentManagerStorage.FirstOrDefault(i => i.Alias == agentAlias);
                 try
                 {
-                    //strategyOrGroup.ActualStrategyRunning.Stop();
+                    if (item.AgentManagerSettings.Position != 0)
+                        return;
+                    
+
                     int index = AgentManagerStorage.IndexOf(item);
+                   
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == agentAlias);
                     AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
                     item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
