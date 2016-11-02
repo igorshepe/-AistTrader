@@ -812,12 +812,13 @@ namespace AistTrader
                 Strategies.Last().NewMyTrades += trades =>
                 {
                     SaveAgentData(trades, infoStrategy, agentName);
-                };
-
-                Strategies.Last().PositionChanged += () =>
-                {
                     UpdatePosition(infoStrategy, agentName);
                 };
+
+                //Strategies.Last().PositionChanged += () =>
+                //{
+                   
+                //};
 
                 Strategies.Last().PnLChanged += () =>
                 {
@@ -926,7 +927,14 @@ namespace AistTrader
             }
 
         }
+        public decimal PositionByTrades(Strategy strategy)
+        {
 
+            if (strategy.MyTrades.Any())
+                return strategy.MyTrades.Sum(t => t.Order.Direction == Sides.Sell ? -t.Trade.Volume : t.Trade.Volume);
+
+            return 0;
+        }
 
         public void UpdatePosition( string[] info, string name)
         {
@@ -940,13 +948,13 @@ namespace AistTrader
                 {
                     actualStrategy = strategyact;
                 }
-
+                var pos = PositionByTrades(actualStrategy);
                 var actualStrategyData =
                     AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
-                if (actualStrategyData.AgentManagerSettings.Position != (int)actualStrategy.Position)
+                if (actualStrategyData.AgentManagerSettings.Position != pos/*(int)actualStrategy.Position*/)
                 {
-                    actualStrategyData.AgentManagerSettings.Position = (int)actualStrategy.Position;
-                    actualStrategyData.SingleAgentPosition = (int)actualStrategy.Position;
+                    actualStrategyData.AgentManagerSettings.Position = (int) pos/*(int)actualStrategy.Position*/;
+                    actualStrategyData.SingleAgentPosition = (int)pos/*(int)actualStrategy.Position*/;
                     if (actualStrategy.Position == 0)
                     {
                         actualStrategyData.AgentManagerSettings.CurrentMargin = 0;

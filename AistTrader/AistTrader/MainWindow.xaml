@@ -452,6 +452,9 @@
                                 <DataGridTextColumn Header="Сurrent price"
                                                     Binding="{Binding AgentManagerSettings.СurrentPrice}"
                                                     IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Сlose state"
+                                                    Binding="{Binding CloseState}"
+                                                    IsReadOnly="True"/>
 
 
                                 <!--<DataGridTemplateColumn  IsReadOnly="False">
