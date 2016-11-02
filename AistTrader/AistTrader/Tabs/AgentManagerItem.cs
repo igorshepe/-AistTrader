@@ -410,7 +410,8 @@ namespace AistTrader
             AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
             AgentManagerCollectionView.Refresh();
 
-            ResetStarted(deletedIndexes);
+           
+
         }
 
         private void SaveAgentManagerSettings()
@@ -709,7 +710,8 @@ namespace AistTrader
                     string nameGroup = agentOrGroup.ToString();
                     var alias = agentOrGroup.Alias;
                     var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
-                    string[] infoStrategy = { alias, port, nameGroup };
+                    var closeState = historyAgent.CloseState.ToString();
+                    string[] infoStrategy = { alias, port, nameGroup,closeState };
                     strategy = new Strategy();
                     strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, infoStrategy, history);
 
