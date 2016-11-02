@@ -64,6 +64,17 @@ namespace AistTrader
 
         public void DelAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
+            List<int> deletedIndexes = new List<int>();
+            List<int> tmpDeletedIndexes = new List<int>();
+
+            foreach (var item in AgentManagerListView.SelectedCells)
+            {
+                int index = (int)item.Column.GetValue(Grid.RowProperty);
+                tmpDeletedIndexes.Add(index);
+            }
+
+            int currentIndex = 0;
+
             foreach (var item in AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList())
             {
                 bool noDelete = true;
@@ -247,6 +258,7 @@ namespace AistTrader
                         if (!noDelete)
                         {
                             AgentManagerStorage.Remove(item);
+                            deletedIndexes.Add(tmpDeletedIndexes[currentIndex++]);
                             Task.Run(() => Logger.Info("Agent manager item \"{0}\"/\"{1}\" has been deleted", item.Name, item.Alias));
                             SaveAgentManagerSettings();
                         }
@@ -257,7 +269,7 @@ namespace AistTrader
                     }
                 }
             }
-            UpdateAgentManagerListView();
+            UpdateAgentManagerListView(deletedIndexes.ToArray());
         }
 
         private void EditAgentManagerBtnClick(object sender, RoutedEventArgs e)
@@ -339,8 +351,27 @@ namespace AistTrader
             }
         }
 
-        public void ResetStarted()
+        public void ResetStarted(int[] deletedIndexes = null)
         {
+            if (deletedIndexes != null)
+            {
+                bool[] current = new bool[startStopStartedIndexes.Length];
+                for (int i = 0, n = Math.Min(startStopStartedIndexes.Length, AgentManagerStorage.Count); i < n; ++i)
+                {
+                    current[i] = startStopStartedIndexes[i];
+                }
+                startStopStartedIndexes = new bool[AgentManagerStorage.Count];
+                for (int i = 0, j = 0, n = current.Length; i < n; ++i)
+                {
+                    if (deletedIndexes.Contains(i))
+                    {
+                        startStopStartedIndexes[j++] = current[i];
+                    }
+                }
+
+                return;
+            }
+
             if (startStopStartedIndexes == null)
             {
                 startStopStartedIndexes = new bool[AgentManagerStorage.Count];
@@ -373,13 +404,13 @@ namespace AistTrader
             }
         }
 
-        public void UpdateAgentManagerListView()
+        public void UpdateAgentManagerListView(int[] deletedIndexes = null)
         {
             AgentManagerListView.ItemsSource = AgentManagerStorage;
             AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
             AgentManagerCollectionView.Refresh();
 
-            ResetStarted();
+            ResetStarted(deletedIndexes);
         }
 
         private void SaveAgentManagerSettings()
@@ -807,8 +838,6 @@ namespace AistTrader
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;
                 strategy.Start();
-
-                
                  
                 Strategies.Last().NewMyTrades += trades =>
                 {
@@ -937,7 +966,7 @@ namespace AistTrader
             return 0;
         }
 
-        public void UpdatePosition( string[] info, string name)
+        public void UpdatePosition(string[] info, string name)
         {
             
             var agentAlias = info[0];
@@ -970,7 +999,6 @@ namespace AistTrader
                         AgentManagerCollectionView.Refresh();
 
                         ResetStarted();
-
                     }));
 
                     SaveAgentManagerSettings();
