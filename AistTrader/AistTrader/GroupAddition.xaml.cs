@@ -853,6 +853,7 @@ namespace AistTrader
                     {
                         var ItemsToDeleteCollection = newMembersOfCurrentGroup.Where(i => i != oldItem).ToList();
                         var IsItemToDelete = newMembersOfCurrentGroup.All(i => i != oldItem);
+                        if (oldItem.CloseState != Common.StrategyCloseState.None) { continue; }
                         if (IsItemToDelete)
                         {
                             //если данный агент не запущен
@@ -892,31 +893,31 @@ namespace AistTrader
                                 //если у удаляемого агента есть позиции - должен быть запрос "(закрыть позиции и удалить) или (ожидать закрытия позиций и затем удалить)", с соответствующим функционалом.
                                 //реализовать данный функционал
 
-                                var form = new GroupAdditionDeleteMode(oldItem.Name.ToString());
-                                form.ShowDialog();
-                                var selectedMode = form.SelectedDeleteMode;
-                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
-                                {
-                                    if (agentToDelete != null)
-                                    {
-                                        agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
-                                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                                        strat.CheckPosExit();
-                                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
-                                    }
-                                    MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
-                                }
-                                if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
-                                {
-                                    if (agentToDelete != null)
-                                    {
-                                        agentToDelete.CloseState = Common.StrategyCloseState.Wait;
-                                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                                        strat.CheckPosWaitStrExit();
-                                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
-                                    }
-                                    MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
-                                }
+                                //var form = new GroupAdditionDeleteMode(oldItem.Name.ToString());
+                                //form.ShowDialog();
+                                //var selectedMode = form.SelectedDeleteMode;
+                                //if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
+                                //{
+                                //    if (agentToDelete != null)
+                                //    {
+                                //        agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
+                                //        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                //        strat.CheckPosExit();
+                                //        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                //    }
+                                //    MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
+                                //}
+                                //if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
+                                //{
+                                //    if (agentToDelete != null)
+                                //    {
+                                //        agentToDelete.CloseState = Common.StrategyCloseState.Wait;
+                                //        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                //        strat.CheckPosWaitStrExit();
+                                //        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                                //    }
+                                //    MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
+                                //}
                             }
                         }
                     }
