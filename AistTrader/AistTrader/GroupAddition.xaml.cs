@@ -59,7 +59,7 @@ namespace AistTrader
             if (editMode == AgentWorkMode.Group)
             {
                 OldGroupName = agent.Params.GroupName;
-                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agent.Params.GroupName).Select(i => i).ToList();
+                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agent.Params.GroupName && i.CloseState == Common.StrategyCloseState.None).ToList();
                 ItemCounter = itemsToEdit.Count;
                 GroupNameTxtBox.IsEnabled = true;
                 foreach (var i in itemsToEdit)
@@ -522,9 +522,9 @@ namespace AistTrader
                             agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
                             ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                             strat.CheckPosExit();
-                            MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                            //MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         }
-                        MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
+                        //MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                     {
@@ -538,9 +538,9 @@ namespace AistTrader
                             agentToDelete.CloseState = Common.StrategyCloseState.Wait;
                             ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
                             strat.CheckPosWaitStrExit();
-                            MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                            //MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         }
-                        MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
+                        //MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
                     doDelete = !form.IsCancelled;
                 }
