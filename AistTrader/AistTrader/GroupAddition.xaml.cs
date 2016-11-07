@@ -499,6 +499,7 @@ namespace AistTrader
 
                 var strategyName = (string)cb.SelectedValue;
                 var agentManager = MainWindow.Instance.AgentManagerStorage.Where(am => am.StrategyInGroup != null && am.StrategyInGroup.Any(s => s.Name == strategyName) && MainWindow.Instance.AgentsStorage.Any(a => a.Params.GroupName == am.Alias && a.Name == strategyName)).FirstOrDefault();
+                var strategyInGroup = agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName);
                 bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
                 bool doDelete = true;
                 var agentToDelete =
@@ -511,6 +512,10 @@ namespace AistTrader
                     var selectedMode = form.SelectedDeleteMode;
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
                     {
+                        if (strategyInGroup != null)
+                        {
+                            strategyInGroup.CloseState = Common.StrategyCloseState.NoWait;
+                        }
                         agentManager.CloseState = Common.StrategyCloseState.NoWait;
                         if (agentToDelete != null)
                         {
@@ -523,6 +528,10 @@ namespace AistTrader
                     }
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
                     {
+                        if (strategyInGroup != null)
+                        {
+                            strategyInGroup.CloseState = Common.StrategyCloseState.Wait;
+                        }
                         agentManager.CloseState = Common.StrategyCloseState.Wait;
                         if (agentToDelete != null)
                         {
@@ -537,6 +546,10 @@ namespace AistTrader
                 }
                 else
                 {
+                    if (strategyInGroup != null)
+                    {
+                        strategyInGroup.CloseState = Common.StrategyCloseState.None;
+                    }
                     if (agentToDelete != null)
                     {
                         agentToDelete.CloseState = Common.StrategyCloseState.None;
