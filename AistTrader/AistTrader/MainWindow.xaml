@@ -435,7 +435,7 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn Header="Position"
-                                                    Binding="{Binding AgentManagerSettings.Position}"
+                                                    Binding="{Binding SingleAgentPosition}"
                                                     IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Current margin"
                                                     Binding="{Binding AgentManagerSettings.CurrentMargin}"
