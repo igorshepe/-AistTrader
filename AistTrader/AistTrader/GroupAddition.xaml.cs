@@ -54,6 +54,7 @@ namespace AistTrader
             InitFields(agent, editMode);
             EditIndex = editIndex;
             currentSecurities = new List<string>();
+            currentStrategiesInGroup = new List<StrategyInGroup>();
         }
 
         private void InitFields(Agent agent, AgentWorkMode editMode)
