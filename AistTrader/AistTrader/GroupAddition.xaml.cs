@@ -515,10 +515,10 @@ namespace AistTrader
                         if (agentToDelete != null)
                         {
                             agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
+                            ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                            strat.CheckPosExit();
+                            MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         }
-                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                        strat.CheckPosExit();
-                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
@@ -527,10 +527,10 @@ namespace AistTrader
                         if (agentToDelete != null)
                         {
                             agentToDelete.CloseState = Common.StrategyCloseState.Wait;
+                            ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                            strat.CheckPosWaitStrExit();
+                            MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         }
-                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                        strat.CheckPosWaitStrExit();
-                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
                     doDelete = !form.IsCancelled;
@@ -580,10 +580,10 @@ namespace AistTrader
                         if (agentToDelete != null)
                         {
                             agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
+                            ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                            strat.CheckPosExit();
+                            MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         }
-                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                        strat.CheckPosExit();
-                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
                     if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
@@ -592,10 +592,10 @@ namespace AistTrader
                         if (agentToDelete != null)
                         {
                             agentToDelete.CloseState = Common.StrategyCloseState.Wait;
+                            ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                            strat.CheckPosWaitStrExit();
+                            MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         }
-                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                        strat.CheckPosWaitStrExit();
-                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                         MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                     }
                     doDelete = !form.IsCancelled;
@@ -887,10 +887,10 @@ namespace AistTrader
                                     if (agentToDelete != null)
                                     {
                                         agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
+                                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                        strat.CheckPosExit();
+                                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                     }
-                                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                                    strat.CheckPosExit();
-                                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                     MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
                                 }
                                 if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
@@ -898,10 +898,10 @@ namespace AistTrader
                                     if (agentToDelete != null)
                                     {
                                         agentToDelete.CloseState = Common.StrategyCloseState.Wait;
+                                        ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                        strat.CheckPosWaitStrExit();
+                                        MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                     }
-                                    ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                                    strat.CheckPosWaitStrExit();
-                                    MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
                                     MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
                                 }
                             }
