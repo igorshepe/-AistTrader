@@ -33,6 +33,7 @@ namespace AistTrader
         private int removeCount;
         private int editCount;
         private List<string> currentSecurities;
+        private List<StrategyInGroup> currentStrategiesInGroup;
 
         public GroupAddition()
         {
@@ -40,6 +41,7 @@ namespace AistTrader
             EditIndex = int.MinValue;
             WorkMode = AgentWorkMode.Group;
             currentSecurities = new List<string>();
+            currentStrategiesInGroup = new List<StrategyInGroup>();
         }
 
         public GroupAddition(Agent agent, int editIndex, AgentWorkMode editMode)
@@ -500,6 +502,7 @@ namespace AistTrader
                 var strategyName = (string)cb.SelectedValue;
                 var agentManager = MainWindow.Instance.AgentManagerStorage.Where(am => am.StrategyInGroup != null && am.StrategyInGroup.Any(s => s.Name == strategyName) && MainWindow.Instance.AgentsStorage.Any(a => a.Params.GroupName == am.Alias && a.Name == strategyName)).FirstOrDefault();
                 var strategyInGroup = agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName);
+                currentStrategiesInGroup.Add(strategyInGroup);
                 bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
                 bool doDelete = true;
                 var agentToDelete =
@@ -853,7 +856,8 @@ namespace AistTrader
                     {
                         var ItemsToDeleteCollection = newMembersOfCurrentGroup.Where(i => i != oldItem).ToList();
                         var IsItemToDelete = newMembersOfCurrentGroup.All(i => i != oldItem);
-                        if (oldItem.CloseState != Common.StrategyCloseState.None) { continue; }
+                        var strategyInGroup = currentStrategiesInGroup.FirstOrDefault(s => s.Name == oldItem.Name);
+                        if (strategyInGroup != null && strategyInGroup.CloseState != Common.StrategyCloseState.None) { continue; }
                         if (IsItemToDelete)
                         {
                             //если данный агент не запущен
