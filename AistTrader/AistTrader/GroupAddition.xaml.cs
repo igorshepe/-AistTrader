@@ -675,8 +675,11 @@ namespace AistTrader
                     var oldItems = MainWindow.Instance.AgentsStorage.Where(a => a.Params.GroupName == OldGroupName).ToList();
                     List<Agent> newMembersOfCurrentGroup = new List<Agent>();
 
+                    int rowIndex = 0;
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
+                        var editor = DynamicGrid.Children.OfType<SecurityEditor>().ToArray()[rowIndex++];
+                        var currentSecurity = editor.Text;
 
                         var x = DynamicGrid.Children.OfType<ComboBox>().ToList();
                         string cbID = cb.Name.Split('_').Last();
@@ -789,15 +792,16 @@ namespace AistTrader
                                             break;
                                             //todo: добавить инфу в логи о совершенном действии
                                         }
-                                        if (anyActiveConnection | cashedTools != null)
-                                        {
-                                            var form = new GroupAdditionSecurityPicker(newAgent);
-                                            form.ShowDialog();
-                                            newAgent.Params.Security = form.SelectedSecurity;
+                                        //if (anyActiveConnection | cashedTools != null)
+                                        //{
+                                        //var form = new GroupAdditionSecurityPicker(newAgent);
+                                        //form.ShowDialog();
+                                        //newAgent.Params.Security = form.SelectedSecurity;
+                                            newAgent.Params.Security = currentSecurity;
                                             MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
-                                            form = null;
+                                            //form = null;
                                             //todo: добавить инфу в логи о совершенном действии
-                                        }
+                                        //}
 
                                         list.Add(newAgent);
                                         //проход по всем элементам коллекции менедежера агентов
