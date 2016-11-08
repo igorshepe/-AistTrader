@@ -703,7 +703,8 @@ namespace AistTrader
                                     item.Params.GroupName = groupName;
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(item);
                                     //to attache sec
-                                    item.Params.Security = currentSecurities.Count > index - RowSetter ? currentSecurities[index - RowSetter] : null;
+                                    item.Params.Security = currentSecurity;
+                                        //currentSecurities.Count > index - RowSetter ? currentSecurities[index - RowSetter] : null;
                                     MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                     //go to agent manager related actions
 
@@ -782,6 +783,7 @@ namespace AistTrader
                                         newAgent.Params.Amount = amount;
                                         newAgent.Params.GroupName = groupName;
                                         newAgent.Params.ToolTipName = rs.Params.ToolTipName;
+                                        newAgent.Params.Security = currentSecurity;
 
                                         var anyActiveConnection = MainWindow.Instance.ConnectionManager.Any(i => i.ConnectionState == ConnectionStates.Connected);
                                         var cashedTools = MainWindow.Instance.ConnectionsStorage.FirstOrDefault(i => i.ConnectionParams.Tools != null);
@@ -935,6 +937,9 @@ namespace AistTrader
                 {
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
+                        var editor = DynamicGrid.Children.OfType<SecurityEditor>().ToArray()[rowIndex++];
+                        var currentSecurity = editor.Text;
+
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
                         {
@@ -955,6 +960,7 @@ namespace AistTrader
                                 itemToEdit.Params.PhantomParams.Amount = itemToEdit.Params.Amount;
                                 itemToEdit.Params.Amount = amount;
                                 itemToEdit.Params.GroupName = groupName;
+                                itemToEdit.Params.Security = currentSecurity;
                                 itemToEdit.Name = algorithmName;
                                 MainWindow.Instance.AddNewAgent(itemToEdit, EditIndex);
                                 //go to agent manager related actions
@@ -1000,6 +1006,9 @@ namespace AistTrader
                     int curr = 0;
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
+                        var editor = DynamicGrid.Children.OfType<SecurityEditor>().ToArray()[rowIndex++];
+                        var currentSecurity = editor.Text;
+
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
                         {
