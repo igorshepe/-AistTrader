@@ -935,6 +935,7 @@ namespace AistTrader
                 }
                 else
                 {
+                    int rowIndex = 0;
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
                         var editor = DynamicGrid.Children.OfType<SecurityEditor>().ToArray()[rowIndex++];
@@ -1004,6 +1005,7 @@ namespace AistTrader
                         MainWindow.Instance.DelAgentConfigBtnClick(item, null);
                     }
                     int curr = 0;
+                    int rowIndex = 0;
                     foreach (ComboBox cb in DynamicGrid.Children.OfType<ComboBox>())
                     {
                         var editor = DynamicGrid.Children.OfType<SecurityEditor>().ToArray()[rowIndex++];
