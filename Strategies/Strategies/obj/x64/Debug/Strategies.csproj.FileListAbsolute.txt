@@ -200,3 +200,4 @@ D:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\DevExpress.Printin
 D:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\DevExpress.Xpf.Grid.v15.2.Core.xml
 D:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.dll
 D:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.pdb
+D:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.csprojResolveAssemblyReference.cache

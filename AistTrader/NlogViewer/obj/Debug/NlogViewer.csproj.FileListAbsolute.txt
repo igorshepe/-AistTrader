@@ -43,7 +43,6 @@ D:\Repository\-AistTrader\AistTrader\NlogViewer\bin\Debug\System.Windows.Interac
 D:\Repository\-AistTrader\AistTrader\NlogViewer\bin\Debug\MahApps.Metro.pdb
 D:\Repository\-AistTrader\AistTrader\NlogViewer\bin\Debug\MahApps.Metro.xml
 D:\Repository\-AistTrader\AistTrader\NlogViewer\bin\Debug\NLog.xml
-D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.csprojResolveAssemblyReference.cache
 D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.g.cs
 D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer_MarkupCompile.cache
@@ -54,3 +53,4 @@ D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.Properties.
 D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.csproj.GenerateResource.Cache
 D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.dll
 D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.pdb
+D:\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.csprojResolveAssemblyReference.cache

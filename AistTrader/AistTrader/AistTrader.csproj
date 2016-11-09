@@ -16,7 +16,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>\\10.10.10.10\AistShared\AistTrader\Install\</PublishUrl>
+    <PublishUrl>\\10.10.10.9\share\AistShared\AistTrader\Install\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Aist Trader</ProductName>
     <PublisherName>Aist Trader</PublisherName>
-    <ApplicationRevision>85</ApplicationRevision>
+    <ApplicationRevision>149</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
