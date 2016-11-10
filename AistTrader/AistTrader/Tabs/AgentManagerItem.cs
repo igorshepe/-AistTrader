@@ -44,7 +44,7 @@ namespace AistTrader
                 OnPropertyChanged(new PropertyChangedEventArgs("AllManagerAgentsChecked"));
             }
         }
-        
+
         public bool _allManagerAgentsChecked;
         public AistTraderStrategiesConnnectionManager AgentConnnectionManager;
         public readonly PlazaTrader Trader = new PlazaTrader();
@@ -52,8 +52,8 @@ namespace AistTrader
         public bool AllAgentManagerItemsChecked { get; set; }
         Strategy strategy = new Strategy();
         public readonly LogManager _logManager = new LogManager(); // Для логирования внутренних событий стратегии
-         
-        
+
+
         private void AddAgentManagerBtnClick(object sender, RoutedEventArgs e)
         {
             var form = new ManagerAddition();
@@ -276,9 +276,9 @@ namespace AistTrader
         {
             var listToEdit = AgentManagerListView.SelectedItems.Cast<AgentManager>().ToList();
             foreach (var addQuikWindow in from agentConfigs in listToEdit
-                let index = AgentManagerStorage.IndexOf(agentConfigs)
-                where index != -1
-                select new ManagerAddition(agentConfigs, index))
+                                          let index = AgentManagerStorage.IndexOf(agentConfigs)
+                                          where index != -1
+                                          select new ManagerAddition(agentConfigs, index))
             {
                 addQuikWindow.Title = "Aist Trader - Edit Configuration";
                 addQuikWindow.ShowDialog();
@@ -409,6 +409,9 @@ namespace AistTrader
             AgentManagerListView.ItemsSource = AgentManagerStorage;
             AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
             AgentManagerCollectionView.Refresh();
+
+
+
         }
 
         private void SaveAgentManagerSettings()
@@ -491,7 +494,7 @@ namespace AistTrader
             }
 
             EditAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0;
-            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && ((sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
+            DelAgentManagerBtn.IsEnabled = AgentManagerListView.Items.Count != 0 && AgentManagerListView.SelectedIndex >= 0 && ((sender is DataGrid) && (sender as DataGrid).Items.Count > AgentManagerListView.SelectedIndex && ((Common.Entities.AgentManager)(((sender as DataGrid).Items[AgentManagerListView.SelectedIndex]))).AgentManagerSettings.AgentMangerCurrentStatus == ManagerParams.AgentManagerStatus.Stopped);
         }
 
         private void TestStrategyStartBtnClick(object sender, RoutedEventArgs e)
@@ -518,7 +521,7 @@ namespace AistTrader
 
         private void StartStopBtnClickTest(object sender, RoutedEventArgs e)
         {
-            if ((bool) (sender as ToggleSwitchButton).IsChecked)
+            if ((bool)(sender as ToggleSwitchButton).IsChecked)
             {
                 //ON 
                 var agentOrGroup = (sender as FrameworkElement).DataContext as AgentManager;
@@ -530,7 +533,7 @@ namespace AistTrader
                 if (!isActiveConnection)
                 {
                     MessageBox.Show("Related connections is not active, can't start with no active connection.");
-                    
+
                     var item = AgentManagerCollectionView.Cast<AgentManager>().FirstOrDefault(i => i.Alias == agentOrGroup.Alias);
                     item.AgentManagerSettings.IsConnected = false;
                     UpdateAgentManagerListView();
@@ -648,7 +651,7 @@ namespace AistTrader
             return calculatedAmount;
         }
 
-        
+
         public void StartAgentOrGroup(AgentManager agentOrGroup)
         {
             //check whether we work with group or not
@@ -660,7 +663,7 @@ namespace AistTrader
                 foreach (var groupMember in groupElements)
                 {
                     var connectionName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentOrGroup.AgentManagerSettings.Portfolio.Name);
-                    var realConnection = ConnectionManager.Connections.Find(i =>{return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;});
+                    var realConnection = ConnectionManager.Connections.Find(i => { return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName; });
                     var strategyType = HelperStrategies.GetRegistredStrategiesTest(groupMember.Name.Split(null).FirstOrDefault());
 
                     var amount = new UnitEditor();
@@ -686,32 +689,32 @@ namespace AistTrader
                     {
                         calculatedAmount = amount.Value.To<decimal>();
                     }
-                    
+
                     var history = new List<long>();
-                    var historyAgent = agentOrGroup.StrategyInGroup.FirstOrDefault(i=> i.Name == groupMember.Name);
+                    var historyAgent = agentOrGroup.StrategyInGroup.FirstOrDefault(i => i.Name == groupMember.Name);
                     if (historyAgent.MyTradesHistory != null && historyAgent.MyTradesHistory.Count >= 1)
                     {
                         foreach (var t in historyAgent.MyTradesHistory)
                         {
                             if (history.Count == 0)
                             {
-                                history.Add( t.Order.TransactionId);
+                                history.Add(t.Order.TransactionId);
                             }
                             else if (history.Last() != t.Order.TransactionId)
                             {
                                 history.Add(t.Order.TransactionId);
                             }
-                        } 
+                        }
                     }
 
                     string nameGroup = agentOrGroup.ToString();
                     var alias = agentOrGroup.Alias;
                     var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
                     var closeState = historyAgent.CloseState.ToString();
-                    string[] infoStrategy = { alias, port, nameGroup,closeState };
+                    string[] infoStrategy = { alias, port, nameGroup, closeState };
                     strategy = new Strategy();
-                    strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, infoStrategy, history);
 
+                    strategy = (Strategy)Activator.CreateInstance(strategyType, groupMember.Params.SettingsStorage, infoStrategy, history);
                     Strategies.Add(strategy);
 
                     strategy.DisposeOnStop = true;
@@ -737,15 +740,18 @@ namespace AistTrader
 
                     Strategies.Last().NewMyTrades += trades =>
                     {
-                       UpdatePosition(infoStrategy, groupMember.Name);
-                       SaveAgentData(trades, infoStrategy, groupMember.Name);
+                        UpdatePosition(infoStrategy, groupMember.Name);
+                        SaveAgentData(trades, infoStrategy, groupMember.Name);
                     };
 
-                    //Strategies.Last().PositionChanged += () =>
-                    //{
-                    //    UpdatePosition(infoStrategy, groupMember.Name);
-                    //};
-                    // Логирование внутренних событий стратегии для тестов
+                    if (closeState != "None")
+                    {
+                        Strategies.Last()
+                            .WhenStopped()
+                            .Do(() => DeleteAgentAfterClosePos(infoStrategy, groupMember.Name))
+                            .Apply();
+                    }
+
 
                     var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
                     AgentConnnectionManager.Add(wrapper);
@@ -763,7 +769,7 @@ namespace AistTrader
                     {
                         return connectionName != null && i.ConnectionName == connectionName.Connection.DisplayName;
                     });
-                
+
                 var strategyType = HelperStrategies.GetRegistredStrategiesTest(strategyName.FirstOrDefault());
                 SerializableDictionary<string, object> agentSetting = new SerializableDictionary<string, object>();
                 var agentName = agentOrGroup.AgentManagerSettings.AgentOrGroup;
@@ -801,17 +807,17 @@ namespace AistTrader
 
                 var history = new List<long>();
                 if (agentOrGroup.SingleMyTradesHistory != null && agentOrGroup.SingleMyTradesHistory.Count >= 1)
-                { 
+                {
                     //history = agentOrGroup.SingleAgentHistory;
                     foreach (var t in agentOrGroup.SingleMyTradesHistory)
                     {
                         if (history.Count == 0)
                         {
-                            history.Add( t.Order.TransactionId);
+                            history.Add(t.Order.TransactionId);
                         }
                         else if (history.Last() != t.Order.TransactionId)
                         {
-                           history.Add((long) t.Order.TransactionId);
+                            history.Add((long)t.Order.TransactionId);
                         }
                     }
                 }
@@ -820,14 +826,14 @@ namespace AistTrader
                 var alias = agentOrGroup.Alias;
                 var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
                 var closeState = agentOrGroup.CloseState.ToString();
-                string[] infoStrategy = { alias, port, nameGroup, closeState};
+                string[] infoStrategy = { alias, port, nameGroup, closeState };
 
-                
+
                 strategy = (Strategy)Activator.CreateInstance(strategyType, agentSetting, infoStrategy, history);
 
                 Strategies.Add(strategy);
-                
-                
+
+
                 strategy.DisposeOnStop = true;
                 var convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentOrGroup.Tool);
                 strategy.Security = convertedSecurity;
@@ -838,14 +844,14 @@ namespace AistTrader
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;
                 strategy.Start();
-                 
+
                 Strategies.Last().NewMyTrades += trades =>
                 {
                     UpdatePosition(infoStrategy, agentName);
                     SaveAgentData(trades, infoStrategy, agentName);
                 };
 
-                 
+
                 Strategies.Last().PnLChanged += () =>
                 {
                     UpdateMarginData(infoStrategy);
@@ -853,7 +859,7 @@ namespace AistTrader
 
                 if (closeState != "None")
                 {
-                    Strategies.Last().WhenStopped().Do(() => DeleteAgentAfterClosePos(infoStrategy)).Apply();
+                    Strategies.Last().WhenStopped().Do(() => DeleteAgentAfterClosePos(infoStrategy, agentName)).Apply();
                 }
 
                 // Логирование внутренних событий стратегии для тестов
@@ -894,10 +900,11 @@ namespace AistTrader
             SaveAgentManagerSettings();
         }
 
-        public void DeleteAgentAfterClosePos(string[] info)
+        public void DeleteAgentAfterClosePos(string[] info, string name)
         {
             var agentAlias = info[0];
             var agentGroup = info[2];
+            var nameStrategy = name;
             if (agentGroup == "single")
             {
                 var item = AgentManagerStorage.FirstOrDefault(i => i.Alias == agentAlias);
@@ -905,19 +912,24 @@ namespace AistTrader
                 {
                     if (item.AgentManagerSettings.Position != 0)
                         return;
-                    
+
 
                     int index = AgentManagerStorage.IndexOf(item);
-                   
-                    var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == agentAlias);
+
+                    var strategyOrGroup =
+                        AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == agentAlias);
                     AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
-                    item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
-                    item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped; ;
+                    item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
+                    ;
+                    item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped;
+                    ;
                     Dispatcher.Invoke(new Action(() =>
 
                     {
                         AgentManagerStorage.Remove(item);
-                        Task.Run(() => Logger.Info("Agent manager item \"{0}\"/\"{1}\" has been deleted", item.Name, item.Alias));
+                        Task.Run(
+                            () =>
+                                Logger.Info("Agent manager item \"{0}\"/\"{1}\" has been deleted", item.Name, item.Alias));
                         SaveAgentManagerSettings();
                         UpdateAgentManagerListView(new int[] { index });
                     }));
@@ -927,6 +939,46 @@ namespace AistTrader
                     Task.Run(() => Logger.Info(e));
                     throw;
                 }
+            }
+            else
+            {
+                var itemGroup = AgentManagerStorage.FirstOrDefault(i => i.Alias == agentAlias);
+                var itemAgent = itemGroup.StrategyInGroup.FirstOrDefault(st => st.Name == nameStrategy);
+
+                var actualStrategy = new ChStrategy();
+                foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias && strategyact2.Name == nameStrategy))
+                {
+                    actualStrategy = strategyact;
+                }
+
+
+                var agentGroupTab =
+                    AgentsStorage.FirstOrDefault(i => i.Name == nameStrategy && i.Params.GroupName == agentGroup);
+
+                try
+                {
+                    Strategies.Remove(actualStrategy);
+                    Dispatcher.Invoke(new Action(() =>
+
+                    {
+                        itemGroup.StrategyInGroup.Remove(itemAgent);
+
+                        AgentsStorage.Remove(agentGroupTab);
+
+                        Task.Run(
+                            () => Logger.Info("Agent item \"{0}\"/\"{1}\" has been deleted", nameStrategy, agentGroup));
+                        UpdateAgentListView();
+                        UpdateAgentManagerListView();
+                    }));
+                }
+                catch (Exception e)
+                {
+
+                    Task.Run(
+                            () =>
+                               Logger.Info(e));
+                }
+
             }
         }
 
@@ -943,12 +995,12 @@ namespace AistTrader
                 {
                     actualStrategy = strategyact;
                 }
-                
+
 
                 var actualStrategyData =
                     AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
-                
-                    actualStrategyData.AgentManagerSettings.СurrentPrice = close;
+
+                actualStrategyData.AgentManagerSettings.СurrentPrice = close;
 
                 AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
                 {
@@ -956,19 +1008,19 @@ namespace AistTrader
                     AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
                     AgentManagerCollectionView.Refresh();
 
-                   // ResetStarted();
+                    // ResetStarted();
 
                 }));
 
                 //SaveAgentManagerSettings();
             }
-            }
-        
-        public void UpdateMarginData( string[] info)
+        }
+
+        public void UpdateMarginData(string[] info)
         {
             var agentAlias = info[0];
             var agentGroup = info[2];
-                
+
             if (agentGroup == "single")
             {
                 var actualStrategy = new ChStrategy();
@@ -976,7 +1028,7 @@ namespace AistTrader
                 {
                     actualStrategy = strategyact;
                 }
-                 
+
                 var actualStrategyData =
                     AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
 
@@ -988,10 +1040,10 @@ namespace AistTrader
 
                 //if (actualStrategy.PnL == 0)
                 //    return;
-                if (actualStrategyData.AgentManagerSettings.CurrentMargin !=  actualStrategy.PnL)
+                if (actualStrategyData.AgentManagerSettings.CurrentMargin != actualStrategy.PnL)
                 {
-                    actualStrategyData.AgentManagerSettings.CurrentMargin =  actualStrategy.PnL;
-                    
+                    actualStrategyData.AgentManagerSettings.CurrentMargin = actualStrategy.PnL;
+
 
                     actualStrategyData.AgentManagerSettings.TotalMargin =
                         actualStrategyData.AgentManagerSettings.TotalMarginList.Sum(i => i);
@@ -1021,7 +1073,7 @@ namespace AistTrader
 
         public void UpdatePosition(string[] info, string name)
         {
-            
+
             var agentAlias = info[0];
             var agentGroup = info[2];
 
@@ -1037,14 +1089,14 @@ namespace AistTrader
                     AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
                 if (actualStrategyData.AgentManagerSettings.Position != pos/*(int)actualStrategy.Position*/)
                 {
-                    actualStrategyData.AgentManagerSettings.Position = (int) pos/*(int)actualStrategy.Position*/;
+                    actualStrategyData.AgentManagerSettings.Position = (int)pos/*(int)actualStrategy.Position*/;
                     actualStrategyData.SingleAgentPosition = (int)pos/*(int)actualStrategy.Position*/;
                     if (/*actualStrategy.Position*/ pos == 0)
                     {
                         actualStrategyData.AgentManagerSettings.CurrentMargin = 0;
                         actualStrategyData.AgentManagerSettings.TradeEntryPrice = 0;
                     }
-                    IConnector connect =  ConnectionManager.Connections.FirstOrDefault(  i => i.ConnectionName == actualStrategyData.AgentManagerSettings.Portfolio.Connection.DisplayName);
+                    IConnector connect = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == actualStrategyData.AgentManagerSettings.Portfolio.Connection.DisplayName);
                     actualStrategyData.AgentManagerSettings.TradeEntryPrice = actualStrategy.Orders.Last().GetAveragePrice(connect);
                     AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
                     {
@@ -1068,7 +1120,7 @@ namespace AistTrader
                 //actualStrategy = Strategies.Where()
                 var pos = PositionByTrades(actualStrategy);
                 var actualStrategyData = AgentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == actualStrategy.Alias)?.StrategyInGroup.FirstOrDefault(st => st.Name == name);
-                actualStrategyData.Position = (int) pos;
+                actualStrategyData.Position = (int)pos;
 
 
                 var groupData = AgentManagerStorage.FirstOrDefault(i => i.AgentManagerUniqueId == actualStrategy.Alias);
@@ -1083,8 +1135,8 @@ namespace AistTrader
                     //ResetStarted();
                 }));
             }
-            
-            
+
+
         }
 
         //todo: переписать метод и стартовать персональные инструменты если они присвоены
@@ -1093,7 +1145,7 @@ namespace AistTrader
             //single agent after edit logic
             //собираем все необходимое из менеджера запущенных стратегий/групп
             var conn = AgentConnnectionManager;
-            var connectionName =AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Name);
+            var connectionName = AgentPortfolioStorage.Cast<Portfolio>().FirstOrDefault(i => i.Name == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Name);
             var portfolio = agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio;
             var realConnection =
                 ConnectionManager.Connections.Find(i =>
@@ -1158,7 +1210,7 @@ namespace AistTrader
             _logManager.Listeners.Add(
                 new FileLogListener("LogStrategy {0}_{1:00}_{2:00}.txt".Put(DateTime.Now.Year, DateTime.Now.Month,
                     DateTime.Now.Day)));
-             
+
             var wrapper = new AistTraderAgentManagerWrapper(agentManagerToStartAfterEdit.Alias, strategy);
             AgentConnnectionManager.Add(wrapper);
         }
@@ -1259,10 +1311,10 @@ namespace AistTrader
                     foreach (var agents in groupElements)
                     {
                         var agentsToStop = AgentConnnectionManager.Strategies.Where(i => i.AgentOrGroupName == agentOrGroup.ToString()).ToList();
-                        
+
                         foreach (var agent in agentsToStop)
                         {
-                            ChStrategy agentHistory =  agent.ActualStrategyRunning as ChStrategy;
+                            ChStrategy agentHistory = agent.ActualStrategyRunning as ChStrategy;
                             var themIDs = agentHistory.TransactionIDs;
                             var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == agent.AgentOrGroupName);
 
@@ -1282,7 +1334,7 @@ namespace AistTrader
                             Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
                             agent.ActualStrategyRunning.Stop();
                             var test = agent.ActualStrategyRunning as ChStrategy;
-                            var agentInColl = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name== agent.ActualStrategyRunning.Name);
+                            var agentInColl = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name == agent.ActualStrategyRunning.Name);
                             AgentConnnectionManager.Strategies.Remove(agent);
                         }
 
@@ -1295,7 +1347,7 @@ namespace AistTrader
                 else
                 {
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
-                    ChStrategy agent =  strategyOrGroup.ActualStrategyRunning as ChStrategy;
+                    ChStrategy agent = strategyOrGroup.ActualStrategyRunning as ChStrategy;
                     var themIDs = agent.TransactionIDs;
                     var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == strategyOrGroup.AgentOrGroupName);
 
@@ -1314,7 +1366,7 @@ namespace AistTrader
                     strategyOrGroup.ActualStrategyRunning.Stop();
                     AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
                     item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
-                    item.AgentManagerSettings.AgentMangerCurrentStatus =ManagerParams.AgentManagerStatus.Stopped; ;
+                    item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped; ;
                 }
                 SaveAgentManagerSettings();
                 UpdateAgentManagerListView();
@@ -1322,7 +1374,7 @@ namespace AistTrader
             DelAgentManagerBtn.IsEnabled = strategy.ProcessState != StockSharp.Algo.ProcessStates.Started && strategy.ProcessState != StockSharp.Algo.ProcessStates.Stopping;
         }
 
-       
+
 
         #region Aist Trader Agent/Group Manager
 
