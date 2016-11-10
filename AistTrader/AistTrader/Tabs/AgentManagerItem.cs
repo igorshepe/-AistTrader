@@ -967,6 +967,8 @@ namespace AistTrader
 
                         Task.Run(
                             () => Logger.Info("Agent item \"{0}\"/\"{1}\" has been deleted", nameStrategy, agentGroup));
+                        SaveAgentManagerSettings();
+                        SaveAgentSettings();
                         UpdateAgentListView();
                     }));
                 }

@@ -415,6 +415,22 @@
                                                     FontWeight="ExtraBold"
                                                     FontSize="13"
                                                     IsReadOnly="True"/>
+                                <DataGridTemplateColumn Header="AgentInGroup" IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DataGrid RowHeaderWidth="0" Background="White" ColumnHeaderHeight="22" RowHeight="22"
+                                ItemsSource="{Binding Path=StrategyInGroup}" AutoGenerateColumns="False" VerticalAlignment="Stretch" 
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" HeadersVisibility="None" HorizontalContentAlignment="Center" >
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" IsReadOnly="True" Width="Auto" />
+                                                    <DataGridTextColumn Binding="{Binding Path=Position}" Header="P" IsReadOnly="True" Width="Auto" />
+                                                    <DataGridTextColumn Binding="{Binding Path=CloseState}" Header="CloseState" IsReadOnly="True" Width="Auto"/>
+
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn> 
 
                                 <DataGridTemplateColumn Header="Command" IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
