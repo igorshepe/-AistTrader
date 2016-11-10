@@ -631,6 +631,8 @@ namespace AistTrader
                     DynamicGrid.Children.Remove(label);
                 }
             }
+
+            MainWindow.Instance.UpdateAgentManagerListView();
         }
 
         private void CreateGroupBtnClick(object sender, RoutedEventArgs e)

@@ -409,9 +409,6 @@ namespace AistTrader
             AgentManagerListView.ItemsSource = AgentManagerStorage;
             AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
             AgentManagerCollectionView.Refresh();
-
-           
-
         }
 
         private void SaveAgentManagerSettings()

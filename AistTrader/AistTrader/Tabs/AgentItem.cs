@@ -352,6 +352,8 @@ namespace AistTrader
                     }
                 }
             }
+
+            MainWindow.Instance.UpdateAgentManagerListView();
         }
 
         public void DelAgentConfigBtnClick(Agent agent, string msg)
