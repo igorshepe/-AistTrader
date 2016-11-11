@@ -502,11 +502,12 @@ namespace AistTrader
 
                 var strategyName = (string)cb.SelectedValue;
 
+                string groupName = GroupNameTxtBox.Text;
                 var agentManager = MainWindow.Instance.AgentManagerStorage.Where(
                     am => am.StrategyInGroup != null && am.StrategyInGroup.Any(s => s.Name == strategyName)
                     && MainWindow.Instance.AgentsStorage.Any(
                         a => a.Params.GroupName == am.Alias && a.Name == strategyName)
-                        && am.Name == OldGroupName).FirstOrDefault();
+                        && am.Name == groupName).FirstOrDefault();
 
                 var strategyInGroup = agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName);
 
