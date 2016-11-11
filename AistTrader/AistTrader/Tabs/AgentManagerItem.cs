@@ -951,18 +951,22 @@ namespace AistTrader
                     actualStrategy = strategyact;
                 }
 
-
-                var agentGroupTab =
-                    AgentsStorage.FirstOrDefault(i => i.Name == nameStrategy && i.Params.GroupName == agentGroup);
+                
 
                 try
                 {
+                    var groupName = itemGroup.AgentManagerSettings.AgentOrGroup;
+                    var agentGroupTab =
+                        AgentsStorage.FirstOrDefault(i => i.Name == nameStrategy && i.Params.GroupName == groupName);
+
                     Strategies.Remove(actualStrategy);
+
+
                     Dispatcher.Invoke(new Action(() =>
 
                     {
                         itemGroup.StrategyInGroup.Remove(itemAgent);
-
+                        
                         AgentsStorage.Remove(agentGroupTab);
 
                         Task.Run(
