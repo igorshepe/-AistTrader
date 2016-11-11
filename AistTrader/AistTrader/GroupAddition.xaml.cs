@@ -62,7 +62,10 @@ namespace AistTrader
             if (editMode == AgentWorkMode.Group)
             {
                 OldGroupName = agent.Params.GroupName;
-                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agent.Params.GroupName && i.CloseState == Common.StrategyCloseState.None).ToList();
+                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agent.Params.GroupName && /*i.CloseState == Common.StrategyCloseState.None*/
+                    (!MainWindow.Instance.AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName) ||
+                    MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.Any(s => s.Name == agent.Name) &&
+                    MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.FirstOrDefault(s => s.Name == agent.Name).CloseState == Common.StrategyCloseState.None)).ToList();
                 ItemCounter = itemsToEdit.Count;
                 GroupNameTxtBox.IsEnabled = true;
                 foreach (var i in itemsToEdit)
