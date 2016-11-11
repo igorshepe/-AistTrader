@@ -62,10 +62,12 @@ namespace AistTrader
             if (editMode == AgentWorkMode.Group)
             {
                 OldGroupName = agent.Params.GroupName;
+
                 var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agent.Params.GroupName && /*i.CloseState == Common.StrategyCloseState.None*/
                     (!MainWindow.Instance.AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName) ||
                     MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.Any(s => s.Name == agent.Name) &&
                     MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.FirstOrDefault(s => s.Name == agent.Name).CloseState == Common.StrategyCloseState.None)).ToList();
+
                 ItemCounter = itemsToEdit.Count;
                 GroupNameTxtBox.IsEnabled = true;
                 foreach (var i in itemsToEdit)
@@ -506,76 +508,82 @@ namespace AistTrader
                 var strategyName = (string)cb.SelectedValue;
 
                 string groupName = GroupNameTxtBox.Text;
-                var agentManager = MainWindow.Instance.AgentManagerStorage.Where(
+                var agentManagers = MainWindow.Instance.AgentManagerStorage.Where(
                     am => am.StrategyInGroup != null && am.StrategyInGroup.Any(s => s.Name == strategyName)
                     && MainWindow.Instance.AgentsStorage.Any(
                         a => a.Params.GroupName == am.AgentManagerSettings.AgentOrGroup && a.Name == strategyName) // was am.Alias
-                        && am.AgentManagerSettings.AgentOrGroup == groupName).FirstOrDefault();
+                        && am.AgentManagerSettings.AgentOrGroup == groupName).ToList();
 
-                var strategyInGroup =
-                    agentManager != null
-                    ? agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName)
-                    : null;
-
-                if (strategyInGroup != null)
-                {
-                    currentStrategiesInGroup.Add(strategyInGroup);
-                }
-                bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
                 bool doDelete = true;
-                var agentToDelete =
-                        MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
-                            it => it.ActualStrategyRunning.Name == item.Name);
-                if (doRequest)
+                foreach (var agentManager in agentManagers)
                 {
-                    var form = new GroupAdditionDeleteMode(item.Name.ToString());
-                    form.ShowDialog();
-                    var selectedMode = form.SelectedDeleteMode;
-                    if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
-                    {
-                        if (strategyInGroup != null)
-                        {
-                            strategyInGroup.CloseState = Common.StrategyCloseState.NoWait;
-                        }
-                        agentManager.CloseState = Common.StrategyCloseState.NoWait;
-                        if (agentToDelete != null)
-                        {
-                            agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
-                            ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                            strat.CheckPosExit();
-                            //MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
-                        }
-                        //MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
-                    }
-                    if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
-                    {
-                        if (strategyInGroup != null)
-                        {
-                            strategyInGroup.CloseState = Common.StrategyCloseState.Wait;
-                        }
-                        agentManager.CloseState = Common.StrategyCloseState.Wait;
-                        if (agentToDelete != null)
-                        {
-                            agentToDelete.CloseState = Common.StrategyCloseState.Wait;
-                            ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
-                            strat.CheckPosWaitStrExit();
-                            //MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
-                        }
-                        //MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
-                    }
-                    doDelete = !form.IsCancelled;
-                }
-                else
-                {
+
+                    var strategyInGroup =
+                        agentManager != null
+                        ? agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName)
+                        : null;
+
                     if (strategyInGroup != null)
                     {
-                        strategyInGroup.CloseState = Common.StrategyCloseState.None;
+                        currentStrategiesInGroup.Add(strategyInGroup);
                     }
-                    if (agentToDelete != null)
+                    bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
+                    
+                    var agentToDelete =
+                            MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
+                                it => it.ActualStrategyRunning.Name == item.Name);
+                    if (doRequest)
                     {
-                        agentToDelete.CloseState = Common.StrategyCloseState.None;
+                        var form = new GroupAdditionDeleteMode(item.Name.ToString());
+                        form.ShowDialog();
+                        var selectedMode = form.SelectedDeleteMode;
+                        if (selectedMode == ManagerParams.AgentManagerDeleteMode.ClosePositionsAndDelete && !form.IsCancelled)
+                        {
+                            if (strategyInGroup != null)
+                            {
+                                strategyInGroup.CloseState = Common.StrategyCloseState.NoWait;
+                            }
+                            agentManager.CloseState = Common.StrategyCloseState.NoWait;
+                            if (agentToDelete != null)
+                            {
+                                agentToDelete.CloseState = Common.StrategyCloseState.NoWait;
+                                ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                strat.CheckPosExit();
+                                //MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                            }
+                            //MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
+                        }
+                        if (selectedMode == ManagerParams.AgentManagerDeleteMode.WaitForClosingAndDeleteAfter && !form.IsCancelled)
+                        {
+                            if (strategyInGroup != null)
+                            {
+                                strategyInGroup.CloseState = Common.StrategyCloseState.Wait;
+                            }
+                            agentManager.CloseState = Common.StrategyCloseState.Wait;
+                            if (agentToDelete != null)
+                            {
+                                agentToDelete.CloseState = Common.StrategyCloseState.Wait;
+                                ChStrategy strat = agentToDelete.ActualStrategyRunning as ChStrategy;
+                                strat.CheckPosWaitStrExit();
+                                //MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(agentToDelete);
+                            }
+                            //MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
+                        }
+                        doDelete &= !form.IsCancelled;
+                    }
+                    else
+                    {
+                        if (strategyInGroup != null)
+                        {
+                            strategyInGroup.CloseState = Common.StrategyCloseState.None;
+                        }
+                        if (agentToDelete != null)
+                        {
+                            agentToDelete.CloseState = Common.StrategyCloseState.None;
+                        }
                     }
                 }
+
                 if (doDelete)
                 {
                     DynamicGrid.Children.Remove(cb);
