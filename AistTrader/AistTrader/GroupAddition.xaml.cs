@@ -501,8 +501,15 @@ namespace AistTrader
                 var tb = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
 
                 var strategyName = (string)cb.SelectedValue;
-                var agentManager = MainWindow.Instance.AgentManagerStorage.Where(am => am.StrategyInGroup != null && am.StrategyInGroup.Any(s => s.Name == strategyName) && MainWindow.Instance.AgentsStorage.Any(a => a.Params.GroupName == am.Alias && a.Name == strategyName)).FirstOrDefault();
+
+                var agentManager = MainWindow.Instance.AgentManagerStorage.Where(
+                    am => am.StrategyInGroup != null && am.StrategyInGroup.Any(s => s.Name == strategyName)
+                    && MainWindow.Instance.AgentsStorage.Any(
+                        a => a.Params.GroupName == am.Alias && a.Name == strategyName)
+                        && am.Name == OldGroupName).FirstOrDefault();
+
                 var strategyInGroup = agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName);
+
                 currentStrategiesInGroup.Add(strategyInGroup);
                 bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
                 bool doDelete = true;
