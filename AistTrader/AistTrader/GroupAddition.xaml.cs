@@ -507,11 +507,17 @@ namespace AistTrader
                     am => am.StrategyInGroup != null && am.StrategyInGroup.Any(s => s.Name == strategyName)
                     && MainWindow.Instance.AgentsStorage.Any(
                         a => a.Params.GroupName == am.Alias && a.Name == strategyName)
-                        && am.Name == groupName).FirstOrDefault();
+                        && am.Alias == groupName).FirstOrDefault();
 
-                var strategyInGroup = agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName);
+                var strategyInGroup =
+                    agentManager != null
+                    ? agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName)
+                    : null;
 
-                currentStrategiesInGroup.Add(strategyInGroup);
+                if (strategyInGroup != null)
+                {
+                    currentStrategiesInGroup.Add(strategyInGroup);
+                }
                 bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
                 bool doDelete = true;
                 var agentToDelete =
@@ -873,7 +879,10 @@ namespace AistTrader
                     {
                         var ItemsToDeleteCollection = newMembersOfCurrentGroup.Where(i => i != oldItem).ToList();
                         var IsItemToDelete = newMembersOfCurrentGroup.All(i => i != oldItem);
-                        var strategyInGroup = currentStrategiesInGroup.FirstOrDefault(s => s.Name == oldItem.Name);
+                        var strategyInGroup =
+                            currentStrategiesInGroup != null
+                            ? currentStrategiesInGroup.FirstOrDefault(s => s.Name == oldItem.Name)
+                            : null;
                         if (strategyInGroup != null && strategyInGroup.CloseState != Common.StrategyCloseState.None) { continue; }
                         if (IsItemToDelete)
                         {
