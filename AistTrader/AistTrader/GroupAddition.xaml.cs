@@ -507,7 +507,7 @@ namespace AistTrader
                     am => am.StrategyInGroup != null && am.StrategyInGroup.Any(s => s.Name == strategyName)
                     && MainWindow.Instance.AgentsStorage.Any(
                         a => a.Params.GroupName == am.Name && a.Name == strategyName) // was am.Alias
-                        && am.Name == groupName).FirstOrDefault();
+                        && am.AgentManagerSettings.AgentOrGroup == groupName).FirstOrDefault();
 
                 var strategyInGroup =
                     agentManager != null
