@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,6 +28,7 @@ namespace AistTrader
     {
         #region Fields
         public bool IsProviderSettingsLoaded;
+        private bool currentConnectionIsConnected = true;
         public  AistTraderConnnectionManager ConnectionManager;
 
         #endregion
@@ -200,8 +202,10 @@ namespace AistTrader
         {
             ResetStarted();
 
-            if ((bool) (sender as ToggleSwitchButton).IsChecked)
+            if ((bool)(sender as ToggleSwitchButton).IsChecked)
             {
+                if (!currentConnectionIsConnected) { return; }
+
                 //ON
                 var item = (sender as FrameworkElement).DataContext;
                 var rowItem = Instance.ConnectionsStorage.FirstOrDefault(i => i == item);
@@ -210,15 +214,21 @@ namespace AistTrader
                     return rowItem != null && i.ConnectionName == rowItem.DisplayName;
                 });
                 rowItem.ConnectionParams.Command = OperationCommand.Disconnect;
+                currentConnectionIsConnected = false;
                 if (rowItem.ConnectionParams.IsRegistredConnection)
                 {
-                    ConnectionManager.Connections[index].Connect();
+                    Task.Factory.StartNew(() =>
+                    {
+                        ConnectionManager.Connections[index].Connect();
+                        currentConnectionIsConnected = true;
+                    });
                 }
                 else
                 {
                     Task.Factory.StartNew(() =>
                     {
                         ConnectAccount(item as Connection);
+                        currentConnectionIsConnected = true;
                     });
                 }
             }
@@ -254,17 +264,17 @@ namespace AistTrader
             var firstOrDefault = item.ConnectionParams.Accounts.FirstOrDefault();
             if (firstOrDefault != null)
             {
-                item.ConnectionParams.VariationMargin = firstOrDefault.VariationMargin;
+                item.ConnectionParams.VariationMargin = firstOrDefault.VariationMargin == null ? 0 : (decimal)firstOrDefault.VariationMargin;
             }
             var orDefault = item.ConnectionParams.Accounts.FirstOrDefault();
             if (orDefault != null)
             {
-                item.ConnectionParams.Funds = orDefault.CurrentValue;
+                item.ConnectionParams.Funds = orDefault.CurrentValue == null ? 0 : (decimal)orDefault.CurrentValue;
             }
             var portfolio = item.ConnectionParams.Accounts.FirstOrDefault();
             if (portfolio != null)
             {
-                item.ConnectionParams.NetValue = portfolio.CurrentPrice;
+                item.ConnectionParams.NetValue = portfolio.CurrentPrice == null ? 0 : (decimal)portfolio.CurrentPrice;
             }
 
             ProviderListView.ItemsSource = ConnectionsStorage;
@@ -477,6 +487,8 @@ namespace AistTrader
         }
 
         public string ConnectionName { get; set; }
+
+        //((PlazaTrader)this).Timeout += null;
     }
 
     public class AistTraderConnnectionManager : IList<AistTraderConnnectionWrapper>, IDisposable
