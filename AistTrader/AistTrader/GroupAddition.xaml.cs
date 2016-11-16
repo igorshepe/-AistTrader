@@ -503,6 +503,7 @@ namespace AistTrader
                 int index = (int)item.GetValue(Grid.RowProperty);
 
                 var cb = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
+                var instr = DynamicGrid.Children.OfType<SecurityEditor>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 var tb = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
 
                 var strategyName = (string)cb.SelectedValue;
@@ -588,6 +589,7 @@ namespace AistTrader
                 {
                     DynamicGrid.Children.Remove(cb);
                     DynamicGrid.Children.Remove(tb);
+                    DynamicGrid.Children.Remove(instr);
                     var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                     DynamicGrid.Children.Remove(label);
 
@@ -598,6 +600,7 @@ namespace AistTrader
             {
                 var item = (Label)e.Source;
                 var cb = DynamicGrid.Children.OfType<ComboBox>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
+                var instr = DynamicGrid.Children.OfType<SecurityEditor>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 //DynamicGrid.Children.Remove(cb);
                 var tb = DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
                 //DynamicGrid.Children.Remove(tb);
@@ -652,6 +655,7 @@ namespace AistTrader
                 if (doDelete)
                 {
                     DynamicGrid.Children.Remove(cb);
+                    DynamicGrid.Children.Remove(instr);
                     DynamicGrid.Children.Remove(tb);
                     DynamicGrid.Children.Remove(label);
                 }
