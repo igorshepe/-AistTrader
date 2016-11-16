@@ -969,6 +969,7 @@ namespace AistTrader
                         
                         AgentsStorage.Remove(agentGroupTab);
                         SaveAgentSettings();
+                        SaveAgentManagerSettings();
 
                         Task.Run(
                             () => Logger.Info($"Agent item  {agentGroup} - {nameStrategy} has been deleted" ));
