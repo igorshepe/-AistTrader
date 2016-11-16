@@ -529,7 +529,7 @@ namespace AistTrader
                         currentStrategiesInGroup.Add(strategyInGroup);
                     }
                     bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
-                    
+
                     var agentToDelete =
                             MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
                                 it => it.ActualStrategyRunning.Name == item.Name);
@@ -735,7 +735,7 @@ namespace AistTrader
                                     var index = MainWindow.Instance.AgentsStorage.IndexOf(item);
                                     //to attache sec
                                     item.Params.Security = currentSecurity;
-                                        //currentSecurities.Count > index - RowSetter ? currentSecurities[index - RowSetter] : null;
+                                    //currentSecurities.Count > index - RowSetter ? currentSecurities[index - RowSetter] : null;
                                     MainWindow.Instance.AddNewAgentInGroup(item, index, false);
                                     //go to agent manager related actions
 
@@ -830,10 +830,10 @@ namespace AistTrader
                                         //var form = new GroupAdditionSecurityPicker(newAgent);
                                         //form.ShowDialog();
                                         //newAgent.Params.Security = form.SelectedSecurity;
-                                            newAgent.Params.Security = currentSecurity;
-                                            MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
-                                            //form = null;
-                                            //todo: добавить инфу в логи о совершенном действии
+                                        newAgent.Params.Security = currentSecurity;
+                                        MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+                                        //form = null;
+                                        //todo: добавить инфу в логи о совершенном действии
                                         //}
 
                                         list.Add(newAgent);
@@ -1048,7 +1048,7 @@ namespace AistTrader
                         string cbID = cb.Name.Split('_').Last();
                         if (cbID != "")
                         {
-                            
+
                             foreach (UnitEditor ue in DynamicGrid.Children.OfType<UnitEditor>().Where(c => c.Name.EndsWith(cbID)))
                             {
                                 var amount = ue.Text;
