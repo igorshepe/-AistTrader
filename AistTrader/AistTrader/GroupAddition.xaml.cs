@@ -907,9 +907,9 @@ namespace AistTrader
                                     i => i.ActualStrategyRunning.Name == oldItem.Name);
                             if (agentToDelete == null)
                             {
-                                MessageBoxResult result = MessageBox.Show("Agent  will be removed from current group".Insert(6, oldItem.Name), "Delete agent from group", MessageBoxButton.OKCancel, MessageBoxImage.None, MessageBoxResult.Cancel);
-                                if (result == MessageBoxResult.OK)
-                                {
+                                //MessageBoxResult result = MessageBox.Show("Agent  will be removed from current group".Insert(6, oldItem.Name), "Delete agent from group", MessageBoxButton.OKCancel, MessageBoxImage.None, MessageBoxResult.Cancel);
+                                //if (result == MessageBoxResult.OK)
+                                //{
                                     MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
                                     ++removeCount;
                                     if (removeCount == ItemsToDeleteCollection.Count)
@@ -917,16 +917,16 @@ namespace AistTrader
                                         removeCount = 0; //убрать после тестов
                                         break;
                                     }
-                                }
-                                if (result == MessageBoxResult.Cancel)
-                                {
-                                    ++removeCount;
-                                    if (removeCount == ItemsToDeleteCollection.Count)
-                                    {
-                                        removeCount = 0; //убрать после тестов
-                                        break;
-                                    }
-                                }
+                                //}
+                                //if (result == MessageBoxResult.Cancel)
+                                //{
+                                //    ++removeCount;
+                                //    if (removeCount == ItemsToDeleteCollection.Count)
+                                //    {
+                                //        removeCount = 0; //убрать после тестов
+                                //        break;
+                                //    }
+                                //}
                                 if (agentToDelete != null)
                                 {
                                     agentToDelete.CloseState = Common.StrategyCloseState.None;
