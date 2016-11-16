@@ -201,3 +201,9 @@ D:\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\DevExpress.Xpf.Gri
 D:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.dll
 D:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.pdb
 D:\Repository\-AistTrader\Strategies\Strategies\obj\x64\Debug\Strategies.csprojResolveAssemblyReference.cache
+C:\Users\Администратор\Desktop\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Algo.Strategies.dll
+C:\Users\Администратор\Desktop\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Licensing.dll
+C:\Users\Администратор\Desktop\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Community.dll
+C:\Users\Администратор\Desktop\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Algo.Strategies.xml
+C:\Users\Администратор\Desktop\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Licensing.xml
+C:\Users\Администратор\Desktop\Repository\-AistTrader\Strategies\Strategies\bin\x64\Debug\StockSharp.Community.xml

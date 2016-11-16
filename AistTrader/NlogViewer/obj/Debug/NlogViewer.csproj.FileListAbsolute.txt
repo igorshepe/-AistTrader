@@ -24,7 +24,6 @@ C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\Nl
 C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\NlogViewer\bin\Debug\MahApps.Metro.pdb
 C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\NlogViewer\bin\Debug\MahApps.Metro.xml
 C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\NlogViewer\bin\Debug\NLog.xml
-C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.csprojResolveAssemblyReference.cache
 C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer.g.cs
 C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Администратор\Desktop\Repository\-AistTrader\AistTrader\NlogViewer\obj\Debug\NlogViewer_MarkupCompile.cache
