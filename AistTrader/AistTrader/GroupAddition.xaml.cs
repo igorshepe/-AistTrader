@@ -515,10 +515,10 @@ namespace AistTrader
                         a => a.Params.GroupName == am.AgentManagerSettings.AgentOrGroup && a.Name == strategyName) // was am.Alias
                         && am.AgentManagerSettings.AgentOrGroup == groupName).ToList();
 
-                bool doDelete = true;
+                //bool doDelete = true;
                 foreach (var agentManager in agentManagers)
                 {
-
+                    bool doDelete = true;
                     var strategyInGroup =
                         agentManager != null
                         ? agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == strategyName)
@@ -528,7 +528,7 @@ namespace AistTrader
                     {
                         currentStrategiesInGroup.Add(strategyInGroup);
                     }
-                    bool doRequest = agentManager != null && agentManager.StrategyInGroup.Any(s => s.Position != 0);
+                    bool doRequest = agentManager != null && agentManager.StrategyInGroup.Where(s => s.Name == strategyName).Any(s => s.Position != 0);
 
                     var agentToDelete =
                             MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(
@@ -570,7 +570,7 @@ namespace AistTrader
                             }
                             //MainWindow.Instance.DelAgentConfigBtnClick(delItem, "has been excluded from the group");
                         }
-                        doDelete &= !form.IsCancelled;
+                        doDelete = !form.IsCancelled; // was &=
                     }
                     else
                     {
@@ -583,18 +583,29 @@ namespace AistTrader
                             agentToDelete.CloseState = Common.StrategyCloseState.None;
                         }
                     }
+
+                    if (doDelete)
+                    {
+                        DynamicGrid.Children.Remove(cb);
+                        DynamicGrid.Children.Remove(tb);
+                        DynamicGrid.Children.Remove(instr);
+                        var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
+                        DynamicGrid.Children.Remove(label);
+
+                        DynamicGrid.RowDefinitions[index].Height = new GridLength(0);
+                    }
                 }
 
-                if (doDelete)
-                {
-                    DynamicGrid.Children.Remove(cb);
-                    DynamicGrid.Children.Remove(tb);
-                    DynamicGrid.Children.Remove(instr);
-                    var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
-                    DynamicGrid.Children.Remove(label);
+                //if (doDelete)
+                //{
+                //    DynamicGrid.Children.Remove(cb);
+                //    DynamicGrid.Children.Remove(tb);
+                //    DynamicGrid.Children.Remove(instr);
+                //    var label = DynamicGrid.Children.OfType<Label>().Where(c => c.Name.EndsWith((item.Name.Split('_').Last()))).Select(c => c).First();
+                //    DynamicGrid.Children.Remove(label);
 
-                    DynamicGrid.RowDefinitions[index].Height = new GridLength(0);
-                }
+                //    DynamicGrid.RowDefinitions[index].Height = new GridLength(0);
+                //}
             }
             else
             {
