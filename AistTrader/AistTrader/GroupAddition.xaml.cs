@@ -239,19 +239,19 @@ namespace AistTrader
                     Name = string.Format("{0}_{1}", "AddDelLabel", RowSetter)
                 };
                 DynamicGrid.RegisterName(addDelControl.Name, addDelControl);
-                if (RowSetter > 0)
-                {
+                //if (RowSetter > 0)
+                //{
                     addDelControl.Content = "x";
-                }
+                //}
                 if (IsEditMode)
                 {
                     AddConfigBtn.IsEnabled = IsEnabledConfigBtn;
                 }
                 CreateGroupeBtn.Content = "Save";
-                if (RowSetter != 0)
-                {
+                //if (RowSetter != 0)
+                //{
                     addDelControl.MouseDown += DelDynamicGridControl_MouseDown;
-                }
+                //}
                 DynamicGrid.RegisterName(amount.Name, amount);
 
                 Grid.SetRow(cb, RowSetter);
@@ -693,11 +693,11 @@ namespace AistTrader
                 MessageBox.Show("Group can not be composed with 1 script");
                 return;
             }
-            if (IsEditMode && WorkMode == AgentWorkMode.Group && unitItems.Count == 1)
-            {
-                MessageBox.Show("Group can not be composed with 1 script");
-                return;
-            }
+            //if (IsEditMode && WorkMode == AgentWorkMode.Group && unitItems.Count == 1)
+            //{
+            //    MessageBox.Show("Group can not be composed with 1 script");
+            //    return;
+            //}
 
             if (IsEditMode)
             {
