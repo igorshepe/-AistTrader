@@ -77,7 +77,7 @@ namespace Strategies.Strategies
             Alias = infoGroup[0];
             _port = infoGroup[1];
             NameGroup = infoGroup[2];
-            _closeState = infoGroup[3];
+            _closeState = infoGroup.Length > 3 ? infoGroup[3] : "None";
 
             _history = history;
             object obj;
