@@ -889,6 +889,7 @@ namespace AistTrader
                             }
                         }
                     }
+                    int delIndex = 0;
                     foreach (var oldItem in oldItems)
                     {
                         var ItemsToDeleteCollection = newMembersOfCurrentGroup.Where(i => i != oldItem).ToList();
@@ -1004,6 +1005,9 @@ namespace AistTrader
                                         removeCount = 0; //убрать после тестов
                                         break;
                                     }
+
+                                    var groupElements = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agentManager.AgentManagerSettings.AgentOrGroup).ToList();
+                                    groupElements.RemoveAt(delIndex);
 
                                     MainWindow.Instance.UpdateAgentManagerListView();
                                 }
