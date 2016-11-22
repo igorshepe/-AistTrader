@@ -441,7 +441,7 @@ namespace AistTrader
             UpdateAgentListView();
         }
 
-        public void AddNewAgentInGroup(Agent agent, int editIndex,bool isNewAddition)
+        public void AddNewAgentInGroup(Agent agent, int editIndex, bool isNewAddition)
         {
             if (editIndex >= 0 && editIndex < AgentsStorage.Count)
             {

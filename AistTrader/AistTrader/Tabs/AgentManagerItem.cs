@@ -692,7 +692,7 @@ namespace AistTrader
 
                     var history = new List<long>();
                     var historyAgent = agentOrGroup.StrategyInGroup.FirstOrDefault(i => i.Name == groupMember.Name);
-                    if (historyAgent.MyTradesHistory != null && historyAgent.MyTradesHistory.Count >= 1)
+                    if (historyAgent != null && historyAgent.MyTradesHistory != null && historyAgent.MyTradesHistory.Count >= 1)
                     {
                         foreach (var t in historyAgent.MyTradesHistory)
                         {
@@ -710,7 +710,7 @@ namespace AistTrader
                     string nameGroup = agentOrGroup.ToString();
                     var alias = agentOrGroup.Alias;
                     var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
-                    var closeState = historyAgent.CloseState.ToString();
+                    var closeState = historyAgent != null ? historyAgent.CloseState.ToString() : "None";
                     string[] infoStrategy = { alias, port, nameGroup, closeState };
                     strategy = new Strategy();
 
@@ -782,7 +782,7 @@ namespace AistTrader
 
                 var amount = new UnitEditor();
                 amount.Text = agentOrGroup.Amount;
-                amount.Value = amount.Text.ToUnit();
+                amount.Value = string.IsNullOrEmpty(amount.Text) ? 0 : amount.Text.ToUnit();
                 decimal? calculatedAmount = 0;
                 if (amount.Value.Type == UnitTypes.Percent)
                 {
@@ -1202,6 +1202,10 @@ namespace AistTrader
             if (!string.IsNullOrEmpty(agentToStartAfterEdit.Params.Security))
             {
                 convertedSecurity = realConnection.Securities.FirstOrDefault(i => i.Code == agentToStartAfterEdit.Params.Security);
+            }
+            if (convertedSecurity == null)
+            {
+                convertedSecurity = realConnection.Securities.FirstOrDefault();
             }
             strategy.Security = convertedSecurity;
             strategy.Portfolio = realConnection.Portfolios.FirstOrDefault(i => i.Name == agentManagerToStartAfterEdit.AgentManagerSettings.Portfolio.Code);

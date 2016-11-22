@@ -63,10 +63,12 @@ namespace AistTrader
             {
                 OldGroupName = agent.Params.GroupName;
 
-                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agent.Params.GroupName && /*i.CloseState == Common.StrategyCloseState.None*/
-                    (!MainWindow.Instance.AgentManagerStorage.Any(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName) ||
-                    MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.Any(s => s.Name == agent.Name) &&
-                    MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.FirstOrDefault(s => s.Name == i.Name).CloseState == Common.StrategyCloseState.None)).ToList();
+                var itemsToEdit = MainWindow.Instance.AgentsStorage.Where(i => i.Params != null && agent.Params != null && i.Params.GroupName == agent.Params.GroupName &&
+                    (!MainWindow.Instance.AgentManagerStorage.Any(am => am.AgentManagerSettings != null && am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName) ||
+                    MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings != null && am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup != null &&
+                    MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings != null && am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.Any(s => s.Name == agent.Name) &&
+                    MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings != null && am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.FirstOrDefault(s => s.Name == i.Name) != null &&
+                    MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings != null && am.AgentManagerSettings.AgentOrGroup == agent.Params.GroupName).StrategyInGroup.FirstOrDefault(s => s.Name == i.Name).CloseState == Common.StrategyCloseState.None)).ToList();
 
                 ItemCounter = itemsToEdit.Count;
                 GroupNameTxtBox.IsEnabled = true;
@@ -831,6 +833,16 @@ namespace AistTrader
                                         //newAgent.Params.Security = form.SelectedSecurity;
                                         newAgent.Params.Security = currentSecurity;
                                         MainWindow.Instance.AddNewAgentInGroup(newAgent, -1, false);
+
+                                        //MainWindow.Instance.AgentsStorage.Add(newAgent);
+                                        var agentOrGroup = MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => am.AgentManagerSettings.AgentOrGroup == newAgent.Params.GroupName);
+                                        if (agentOrGroup != null)
+                                        {
+                                            agentOrGroup.StrategyInGroup.Add(new StrategyInGroup() { CloseState = Common.StrategyCloseState.None, Name = newAgent.Name, Position = 0, MyTradesHistory = new List<StockSharp.BusinessEntities.MyTrade>(), TransactionIdHistory = new List<long>() });
+                                            MainWindow.Instance.StartAgentOrGroup(agentOrGroup);
+                                        }
+                                        MainWindow.Instance.UpdateAgentManagerListView();
+
                                         //form = null;
                                         //todo: добавить инфу в логи о совершенном действии
                                         //}
