@@ -839,7 +839,7 @@ namespace AistTrader
                                         if (agentOrGroup != null)
                                         {
                                             agentOrGroup.StrategyInGroup.Add(new StrategyInGroup() { CloseState = Common.StrategyCloseState.None, Name = newAgent.Name, Position = 0, MyTradesHistory = new List<StockSharp.BusinessEntities.MyTrade>(), TransactionIdHistory = new List<long>() });
-                                            MainWindow.Instance.StartAgentOrGroup(agentOrGroup);
+                                            MainWindow.Instance.StartAgentOrGroup(agentOrGroup, false);
                                         }
                                         MainWindow.Instance.UpdateAgentManagerListView();
 
