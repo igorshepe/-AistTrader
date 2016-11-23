@@ -652,7 +652,7 @@ namespace AistTrader
         }
 
 
-        public void StartAgentOrGroup(AgentManager agentOrGroup)
+        public void StartAgentOrGroup(AgentManager agentOrGroup, bool start = true)
         {
             //check whether we work with group or not
             var groupElements = Instance.AgentsStorage.Where(i => i.Params.GroupName == agentOrGroup.AgentManagerSettings.AgentOrGroup).ToList();
@@ -735,7 +735,10 @@ namespace AistTrader
                     var candleManager = new CandleManager(realConnection);
                     strategy.SetCandleManager(candleManager);
                     strategy.LogLevel = LogLevels.Debug;
-                    strategy.Start();
+                    if (start)
+                    {
+                        strategy.Start();
+                    }
 
 
                     Strategies.Last().NewMyTrades += trades =>
@@ -843,7 +846,10 @@ namespace AistTrader
                 var candleManager = new CandleManager(realConnection);
                 strategy.SetCandleManager(candleManager);
                 strategy.LogLevel = LogLevels.Debug;
-                strategy.Start();
+                if (start)
+                {
+                    strategy.Start();
+                }
 
                 Strategies.Last().NewMyTrades += trades =>
                 {
