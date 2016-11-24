@@ -943,6 +943,36 @@ namespace AistTrader
                                 {
                                     agentToDelete.CloseState = Common.StrategyCloseState.None;
                                 }
+
+                                // Delete from AgentManager
+                                var gName = GroupNameTxtBox.Text;
+                                var agentManager = MainWindow.Instance.AgentManagerStorage.FirstOrDefault(am => gName == am.Alias && am.StrategyInGroup.Any(s => s.Name == oldItem.Name && s.Position == 0));
+                                if (agentManager != null)
+                                {
+                                    var strategy = agentManager.StrategyInGroup.FirstOrDefault(s => s.Name == oldItem.Name && s.Position == 0);
+                                    if (strategy != null)
+                                    {
+                                        agentManager.StrategyInGroup.Remove(strategy);
+                                    }
+                                }
+
+                                MainWindow.Instance.DelAgentConfigBtnClick(oldItem, "has been excluded from the group");
+                                ++removeCount;
+                                if (removeCount == ItemsToDeleteCollection.Count)
+                                {
+                                    removeCount = 0; //убрать после тестов
+                                    break;
+                                }
+
+                                var groupElements = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agentManager.AgentManagerSettings.AgentOrGroup).ToList();
+                                var groupElement = groupElements.FirstOrDefault(el => el.Name == oldItem.Name);
+                                if (groupElement != null)
+                                {
+                                    groupElements.RemoveAt(delIndex);
+                                }
+
+                                MainWindow.Instance.StartAgentOrGroup(agentManager, false);
+                                MainWindow.Instance.UpdateAgentManagerListView();
                             }
                             else
                             {
@@ -1019,12 +1049,18 @@ namespace AistTrader
                                     }
 
                                     var groupElements = MainWindow.Instance.AgentsStorage.Where(i => i.Params.GroupName == agentManager.AgentManagerSettings.AgentOrGroup).ToList();
-                                    groupElements.RemoveAt(delIndex);
+                                    var groupElement = groupElements.FirstOrDefault(el => el.Name == strategyName);
+                                    if (groupElement != null)
+                                    {
+                                        groupElements.RemoveAt(delIndex);
+                                    }
 
+                                    MainWindow.Instance.StartAgentOrGroup(agentManager);
                                     MainWindow.Instance.UpdateAgentManagerListView();
                                 }
                             }
                         }
+                        //++delIndex;
                     }
                 }
                 else
