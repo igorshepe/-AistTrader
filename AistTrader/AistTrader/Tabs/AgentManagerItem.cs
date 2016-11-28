@@ -1023,8 +1023,17 @@ namespace AistTrader
                     {
                         var connect = ConnectionManager.Connections.FirstOrDefault( c =>  c.ConnectionName == agent.AgentManagerSettings.Portfolio.Connection.ConnectionParams.Name);
 
-                        agent.AgentManagerSettings.СurrentPrice =
-                            (decimal) connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool ).LastTrade.Price;
+                        agent.AgentManagerSettings.СurrentPrice =  connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool ).LastTrade.Price;
+
+                        if (agent.AgentManagerSettings.AgentMangerCurrentStatus == 
+                            ManagerParams.AgentManagerStatus.Running && agent.SingleAgentPosition != 0 )
+                        {
+                            agent.AgentManagerSettings.CurrentMargin = (agent.AgentManagerSettings.СurrentPrice -
+                                                                        agent.AgentManagerSettings.TradeEntryPrice)*agent.SingleAgentPosition;
+
+
+                        }
+
                     }
                 }
 
@@ -1068,20 +1077,26 @@ namespace AistTrader
                 //    return;
                 if (actualStrategyData.AgentManagerSettings.CurrentMargin != actualStrategy.PnL)
                 {
-                    actualStrategyData.AgentManagerSettings.CurrentMargin = actualStrategy.PnL;
+                    //actualStrategyData.AgentManagerSettings.CurrentMargin = actualStrategy.PnL;
 
 
                     actualStrategyData.AgentManagerSettings.TotalMargin =
                         actualStrategyData.AgentManagerSettings.TotalMarginList.Sum(i => i);
-                    AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
-                    {
-                        AgentManagerListView.ItemsSource = AgentManagerStorage;
-                        AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-                        AgentManagerCollectionView.Refresh();
 
-                        ResetStarted();
+                    //if (PositionByTrades(actualStrategy) != 0)
+                    //{
+                    //    AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
+                    //    {
+                    //        AgentManagerListView.ItemsSource = AgentManagerStorage;
+                    //        AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+                    //        AgentManagerCollectionView.Refresh();
 
-                    }));
+                    //        ResetStarted();
+
+                    //    }));
+
+                    //}
+                    
 
                     //SaveAgentManagerSettings();
                 }
@@ -1117,13 +1132,16 @@ namespace AistTrader
                 {
                     actualStrategyData.AgentManagerSettings.Position = (int)pos/*(int)actualStrategy.Position*/;
                     actualStrategyData.SingleAgentPosition = (int)pos/*(int)actualStrategy.Position*/;
-                    if (/*actualStrategy.Position*/ pos == 0)
+                    
+                    IConnector connect = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == actualStrategyData.AgentManagerSettings.Portfolio.Connection.DisplayName);
+                    actualStrategyData.AgentManagerSettings.TradeEntryPrice = actualStrategy.Orders.Last().GetAveragePrice(connect);
+
+                    if (pos == 0)
                     {
                         actualStrategyData.AgentManagerSettings.CurrentMargin = 0;
                         actualStrategyData.AgentManagerSettings.TradeEntryPrice = 0;
                     }
-                    IConnector connect = ConnectionManager.Connections.FirstOrDefault(i => i.ConnectionName == actualStrategyData.AgentManagerSettings.Portfolio.Connection.DisplayName);
-                    actualStrategyData.AgentManagerSettings.TradeEntryPrice = actualStrategy.Orders.Last().GetAveragePrice(connect);
+
                     AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
                     {
                         AgentManagerListView.ItemsSource = AgentManagerStorage;
