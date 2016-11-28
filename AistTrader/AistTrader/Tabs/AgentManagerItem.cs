@@ -725,7 +725,7 @@ namespace AistTrader
                     string nameGroup = agentOrGroup.ToString();
                     var alias = agentOrGroup.Alias;
                     var port = agentOrGroup.AgentManagerSettings.Portfolio.Name;
-                    var closeState = historyAgent != null ? historyAgent.CloseState.ToString() : "None";
+                    var closeState = historyAgent != null ? historyAgent.CloseState.ToString() : StrategyCloseState.None.ToString();
                     string[] infoStrategy = { alias, port, nameGroup, closeState };
                     strategy = new Strategy();
 
@@ -762,7 +762,7 @@ namespace AistTrader
                         SaveAgentData(trades, infoStrategy, groupMember.Name);
                     };
 
-                    if (closeState != "None")
+                    if (closeState != StrategyCloseState.None.ToString())
                     {
                         Strategies.Last()
                             .WhenStopped()
@@ -878,7 +878,7 @@ namespace AistTrader
                     UpdateMarginData(infoStrategy);
                 };
 
-                if (closeState != "None")
+                if (closeState != StrategyCloseState.None.ToString())
                 {
                     Strategies.Last().WhenStopped().Do(() => DeleteAgentAfterClosePos(infoStrategy, agentName)).Apply();
                 }
@@ -1024,7 +1024,7 @@ namespace AistTrader
                         var connect = ConnectionManager.Connections.FirstOrDefault( c =>  c.ConnectionName == agent.AgentManagerSettings.Portfolio.Connection.ConnectionParams.Name);
 
                         agent.AgentManagerSettings.СurrentPrice =
-                            (decimal) connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool).LastTrade.Price;
+                            (decimal) connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool ).LastTrade.Price;
                     }
                 }
 
