@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
+using System.Timers;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,6 +35,8 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
+
+        private static Timer aTimer;
         private bool[] startStopStartedIndexes;
         private List<Strategy> Strategies = new List<Strategy>(); // Создаем коллекцию запущенных стратегий
         public bool AllManagerAgentsChecked
@@ -462,6 +465,8 @@ namespace AistTrader
                     {
                         AgentManagerStorage.Add(rs);
                     }
+                    //new AgentManager AgentManagerStorageView;
+
                     AgentManagerListView.ItemsSource = AgentManagerStorage;
                     AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
                     if (AgentManagerCollectionView.GroupDescriptions != null &&
@@ -868,6 +873,18 @@ namespace AistTrader
                     Strategies.Last().WhenStopped().Do(() => DeleteAgentAfterClosePos(infoStrategy, agentName)).Apply();
                 }
 
+                 
+                //aTimer = new System.Timers.Timer();
+                //aTimer.Interval = 2000;
+
+                //// Hook up the Elapsed event for the timer. 
+                //aTimer.Elapsed += UpdateSecurityData;
+
+                //// Have the timer fire repeated events (true is the default)
+                //aTimer.AutoReset = true;
+
+                //// Start the timer
+                //aTimer.Enabled = true;
                 // Логирование внутренних событий стратегии для тестов
 
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
@@ -994,38 +1011,40 @@ namespace AistTrader
             }
         }
 
-        public void UpdateSecurityData(string[] info, decimal close)
+        public void UpdateSecurityData(Object source, System.Timers.ElapsedEventArgs e)
         {
-            var agentAlias = info[0];
-            var agentGroup = info[2];
-            if (agentGroup == "single")
-            {
-                var actualTime = DateTime.Now;
+            var actualStrategyData = AgentManagerStorage;
+            var allStrategy = Strategies;
+            //var agentAlias = info[0];
+            //var agentGroup = info[2];
+            //if (agentGroup == "single")
+            //{
+            //    var actualTime = DateTime.Now;
 
-                var actualStrategy = new ChStrategy();
-                foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias))
-                {
-                    actualStrategy = strategyact;
-                }
+            //    var actualStrategy = new ChStrategy();
+            //    foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias))
+            //    {
+            //        actualStrategy = strategyact;
+            //    }
 
 
-                var actualStrategyData =
-                    AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
+            //    var actualStrategyData =
+            //        AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
 
-                actualStrategyData.AgentManagerSettings.СurrentPrice = close;
+            //    //actualStrategyData.AgentManagerSettings.СurrentPrice = close;
 
-                AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
-                {
-                    AgentManagerListView.ItemsSource = AgentManagerStorage;
-                    AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-                    AgentManagerCollectionView.Refresh();
+            //    AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
+            //    {
+            //        AgentManagerListView.ItemsSource = AgentManagerStorage;
+            //        AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+            //        AgentManagerCollectionView.Refresh();
 
-                    // ResetStarted();
+            //        // ResetStarted();
 
-                }));
+            //    }));
 
-                //SaveAgentManagerSettings();
-            }
+            //    //SaveAgentManagerSettings();
+            //}
         }
 
         public void UpdateMarginData(string[] info)
@@ -1330,57 +1349,30 @@ namespace AistTrader
 
                         foreach (var agent in agentsToStop)
                         {
-                            //ChStrategy agentHistory = agent.ActualStrategyRunning as ChStrategy;
-                            //var themIDs = agentHistory.TransactionIDs;
-                            //var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == agent.AgentOrGroupName);
-
-                            //if (themIDs.Count > 0)
-                            //{
-                            //    foreach (var t in agentManagerStorage.StrategyInGroup.Where(t => agentHistory.Name == t.Name))
-                            //    {
-                            //        t.TransactionIdHistory.AddRange(themIDs);
-                            //    }
-                            //}
-
-                            //foreach (var t in agentManagerStorage.StrategyInGroup.Where(t => agentHistory.Name == t.Name))
-                            //{
-                            //    t.Position = (int)agentHistory.Position;
-                            //}
+                             
 
                             Task.Run(() => Logger.Info("Stopping - \"{0}\"..", agent.ActualStrategyRunning.Name));
                             agent.ActualStrategyRunning.Stop();
                             var test = agent.ActualStrategyRunning as ChStrategy;
                             var agentInColl = MainWindow.Instance.AgentsStorage.FirstOrDefault(i => i.Name == agent.ActualStrategyRunning.Name);
+                            Strategies.Remove(agent.ActualStrategyRunning);
                             AgentConnnectionManager.Strategies.Remove(agent);
                         }
 
                         item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start;
                         item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped;
 
-                       // SaveAgentManagerSettings();
+                       
                     }
                 }
                 else
                 {
                     var strategyOrGroup = AgentConnnectionManager.Strategies.FirstOrDefault(i => i.AgentOrGroupName == item.Alias) as AistTraderAgentManagerWrapper;
-                    //ChStrategy agent = strategyOrGroup.ActualStrategyRunning as ChStrategy;
-                    //var themIDs = agent.TransactionIDs;
-                    //var agentManagerStorage = Instance.AgentManagerStorage.Single(i => i.Alias == strategyOrGroup.AgentOrGroupName);
-
-                    //if (themIDs.Count > 0)
-                    //{
-                    //    if (agentManagerStorage.SingleAgentHistory == null)
-                    //    {
-                    //        agentManagerStorage.SingleAgentHistory = new List<long>();
-                    //    }
-                    //    agentManagerStorage.SingleAgentHistory.AddRange(themIDs);
-                    //}
-
-                    //agentManagerStorage.SingleAgentPosition = (int) agent.Position;
-
-
+                     
                     strategyOrGroup.ActualStrategyRunning.Stop();
+                    
                     AgentConnnectionManager.Strategies.Remove(strategyOrGroup);
+                    Strategies.Remove(strategyOrGroup.ActualStrategyRunning);
                     item.AgentManagerSettings.Command = ManagerParams.AgentManagerOperationCommand.Start; ;
                     item.AgentManagerSettings.AgentMangerCurrentStatus = ManagerParams.AgentManagerStatus.Stopped; ;
                 }
