@@ -488,6 +488,16 @@ namespace AistTrader
                         IsAgentManagerSettingsLoaded = false;
                     }
                 }
+
+
+                // Тестируем автообновление данных по инструментам
+                aTimer = new Timer {Interval = 2000};
+
+                aTimer.Elapsed += UpdateSecurityData;
+
+                aTimer.AutoReset = true;
+
+                aTimer.Enabled = true;
             }
         }
 
@@ -873,18 +883,8 @@ namespace AistTrader
                     Strategies.Last().WhenStopped().Do(() => DeleteAgentAfterClosePos(infoStrategy, agentName)).Apply();
                 }
 
-                 
-                //aTimer = new System.Timers.Timer();
-                //aTimer.Interval = 2000;
 
-                //// Hook up the Elapsed event for the timer. 
-                //aTimer.Elapsed += UpdateSecurityData;
-
-                //// Have the timer fire repeated events (true is the default)
-                //aTimer.AutoReset = true;
-
-                //// Start the timer
-                //aTimer.Enabled = true;
+                
                 // Логирование внутренних событий стратегии для тестов
 
                 var wrapper = new AistTraderAgentManagerWrapper(agentOrGroup.Alias, strategy);
@@ -1013,38 +1013,33 @@ namespace AistTrader
 
         public void UpdateSecurityData(Object source, System.Timers.ElapsedEventArgs e)
         {
-            var actualStrategyData = AgentManagerStorage;
-            var allStrategy = Strategies;
-            //var agentAlias = info[0];
-            //var agentGroup = info[2];
-            //if (agentGroup == "single")
-            //{
-            //    var actualTime = DateTime.Now;
+            if (ConnectionManager.Connections.Any(c => c.ConnectionState == ConnectionStates.Connected ))
+            {
+                var actualStrategyData = AgentManagerStorage;
+                //var allStrategy = Strategies;
+                foreach (var agent in AgentManagerStorage)
+                {
+                    if (agent.StrategyInGroup == null)
+                    {
+                        var connect = ConnectionManager.Connections.FirstOrDefault( c =>  c.ConnectionName == agent.AgentManagerSettings.Portfolio.Connection.ConnectionParams.Name);
 
-            //    var actualStrategy = new ChStrategy();
-            //    foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias))
-            //    {
-            //        actualStrategy = strategyact;
-            //    }
+                        agent.AgentManagerSettings.СurrentPrice =
+                            (decimal) connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool).LastTrade.Price;
+                    }
+                }
 
 
-            //    var actualStrategyData =
-            //        AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
 
-            //    //actualStrategyData.AgentManagerSettings.СurrentPrice = close;
+                AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                    AgentManagerListView.ItemsSource = AgentManagerStorage;
+                    AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
+                    AgentManagerCollectionView.Refresh();
+                }));
+            }
+            
 
-            //    AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
-            //    {
-            //        AgentManagerListView.ItemsSource = AgentManagerStorage;
-            //        AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-            //        AgentManagerCollectionView.Refresh();
 
-            //        // ResetStarted();
-
-            //    }));
-
-            //    //SaveAgentManagerSettings();
-            //}
         }
 
         public void UpdateMarginData(string[] info)
