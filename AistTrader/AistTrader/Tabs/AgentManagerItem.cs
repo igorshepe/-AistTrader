@@ -444,6 +444,15 @@ namespace AistTrader
 
         private void InitiateAgentManagerSettings()
         {
+            // Тестируем автообновление данных по инструментам
+            aTimer = new Timer { Interval = 2000 };
+
+            aTimer.Elapsed += UpdateSecurityData;
+
+            aTimer.AutoReset = true;
+
+            aTimer.Enabled = true;
+
             using (FileStream fs = new FileStream("AgentManagerSettings.xml", FileMode.Open, FileAccess.Read))
             {
                 try
@@ -490,14 +499,7 @@ namespace AistTrader
                 }
 
 
-                // Тестируем автообновление данных по инструментам
-                aTimer = new Timer {Interval = 2000};
-
-                aTimer.Elapsed += UpdateSecurityData;
-
-                aTimer.AutoReset = true;
-
-                aTimer.Enabled = true;
+                
             }
         }
 
@@ -1025,6 +1027,7 @@ namespace AistTrader
 
                         agent.AgentManagerSettings.СurrentPrice =  connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool ).LastTrade.Price;
 
+                         
                         if (agent.AgentManagerSettings.AgentMangerCurrentStatus == 
                             ManagerParams.AgentManagerStatus.Running && agent.SingleAgentPosition != 0 )
                         {
@@ -1071,17 +1074,17 @@ namespace AistTrader
                 {
                     actualStrategyData.AgentManagerSettings.TotalMarginList = new List<decimal>();
                 }
-                actualStrategyData.AgentManagerSettings.TotalMarginList.Add(actualStrategy.PnL);
+                //actualStrategyData.AgentManagerSettings.TotalMarginList.Add(actualStrategy.PnL);
 
                 //if (actualStrategy.PnL == 0)
                 //    return;
                 if (actualStrategyData.AgentManagerSettings.CurrentMargin != actualStrategy.PnL)
                 {
-                    //actualStrategyData.AgentManagerSettings.CurrentMargin = actualStrategy.PnL;
+                    actualStrategyData.AgentManagerSettings.TotalMargin = actualStrategy.PnL;
 
 
-                    actualStrategyData.AgentManagerSettings.TotalMargin =
-                        actualStrategyData.AgentManagerSettings.TotalMarginList.Sum(i => i);
+                    //actualStrategyData.AgentManagerSettings.TotalMargin =
+                    //    actualStrategyData.AgentManagerSettings.TotalMarginList.Sum(i => i);
 
                     //if (PositionByTrades(actualStrategy) != 0)
                     //{
