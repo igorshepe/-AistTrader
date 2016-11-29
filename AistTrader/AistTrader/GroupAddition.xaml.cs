@@ -1037,6 +1037,12 @@ namespace AistTrader
                                         }
                                     }
 
+                                    var strg = MainWindow.Instance.Strategies.FirstOrDefault(s => s.Name == strategyName);
+                                    if (strg != null)
+                                    {
+                                        strg.Stop();
+                                    }
+
                                     var runningAgentToDelete = MainWindow.Instance.AgentConnnectionManager.Strategies.FirstOrDefault(it => it.ActualStrategyRunning.Name == oldItem.Name);
                                     MainWindow.Instance.AgentConnnectionManager.Strategies.Remove(runningAgentToDelete);
 

@@ -38,7 +38,7 @@ namespace AistTrader
 
         private static Timer aTimer;
         private bool[] startStopStartedIndexes;
-        private List<Strategy> Strategies = new List<Strategy>(); // Создаем коллекцию запущенных стратегий
+        public List<Strategy> Strategies = new List<Strategy>(); // Создаем коллекцию запущенных стратегий
         public bool AllManagerAgentsChecked
         {
             set
@@ -893,6 +893,7 @@ namespace AistTrader
                 AgentConnnectionManager.Add(wrapper);
             }
         }
+
         public void SaveAgentData(IEnumerable<MyTrade> trades, string[] info, string nameStrategy)
         {
             var agentAlias = info[0];
