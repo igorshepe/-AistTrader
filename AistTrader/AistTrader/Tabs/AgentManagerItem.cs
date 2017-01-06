@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Threading;
 using Common.Entities;
 using Common.Params;
 using Common;
@@ -35,8 +36,9 @@ namespace AistTrader
 {
     public partial class MainWindow
     {
-
-        private static Timer aTimer;
+        private readonly Dispatcher _dispatcher = Dispatcher.CurrentDispatcher;
+        private Action _update;
+        private static Timer _aTimer = new Timer(500);
         private bool[] startStopStartedIndexes;
         public List<Strategy> Strategies = new List<Strategy>(); // Создаем коллекцию запущенных стратегий
         public bool AllManagerAgentsChecked
@@ -442,16 +444,38 @@ namespace AistTrader
             }
         }
 
+        private void OnIntervalElapsed(object sender, ElapsedEventArgs e)
+        {
+            _dispatcher.Invoke(_update);
+        }
+
+        private void Update()
+        {
+            foreach (var agent in AgentManagerStorage)
+            {
+                var connect = ConnectionManager.Connections.FirstOrDefault(c => c.ConnectionName == agent.AgentManagerSettings.Portfolio.Connection.ConnectionParams.Name);
+
+                agent.AgentManagerSettings.СurrentPrice = connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool).LastTrade.Price;
+            }
+            _aTimer.Start();
+        }
         private void InitiateAgentManagerSettings()
         {
             // Тестируем автообновление данных по инструментам
-            aTimer = new Timer { Interval = 2000 };
+            //_aTimer = new Timer { Interval = 2000 };
 
-            aTimer.Elapsed += UpdateSecurityData;
+            //_aTimer.Elapsed += UpdateSecurityData;
 
-            aTimer.AutoReset = true;
+            //_aTimer.AutoReset = true;
 
-            aTimer.Enabled = true;
+            //_aTimer.Enabled = true;
+
+            _aTimer.Elapsed += OnIntervalElapsed;
+            _update = Update;
+
+            _aTimer.Start();
+
+
 
             using (FileStream fs = new FileStream("AgentManagerSettings.xml", FileMode.Open, FileAccess.Read))
             {
@@ -1538,4 +1562,6 @@ namespace AistTrader
         {
         }
     }
+
+    
 }

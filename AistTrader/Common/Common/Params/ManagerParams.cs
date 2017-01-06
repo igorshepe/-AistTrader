@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 
 namespace Common.Params
 {
     [DataContract(Namespace = "")]
-    public class ManagerParams
+    public class ManagerParams : INotifyPropertyChanged
     {
         public ManagerParams() { }
 
@@ -46,8 +48,8 @@ namespace Common.Params
         public decimal CurrentMargin { get; set; }
         [DataMember()]
         public decimal TradeEntryPrice { get; set; }
-        [DataMember()]
-        public  decimal СurrentPrice { get; set; }
+
+        private decimal _currentPrice;
         [DataMember()]
         public AgentManagerOperationCommand Command { get; set; }
         [DataMember()]
@@ -71,6 +73,28 @@ namespace Common.Params
         {
             ClosePositionsAndDelete,
             WaitForClosingAndDeleteAfter
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [DataMember()]
+        public decimal СurrentPrice
+        {
+            get { return _currentPrice; }
+            set
+            {
+                _currentPrice = value;
+                OnPropertyChanged("СurrentPrice");
+            }
+        }
+
+
+        protected void OnPropertyChanged(string name)
+        {
+            if (null != PropertyChanged)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }
