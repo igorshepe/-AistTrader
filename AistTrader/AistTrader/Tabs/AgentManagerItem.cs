@@ -456,6 +456,16 @@ namespace AistTrader
                 var connect = ConnectionManager.Connections.FirstOrDefault(c => c.ConnectionName == agent.AgentManagerSettings.Portfolio.Connection.ConnectionParams.Name);
 
                 agent.AgentManagerSettings.СurrentPrice = connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool).LastTrade.Price;
+
+                if (agent.AgentManagerSettings.AgentMangerCurrentStatus ==
+                            ManagerParams.AgentManagerStatus.Running && agent.SingleAgentPosition != 0)
+                {
+                    agent.AgentManagerSettings.CurrentMargin = (agent.AgentManagerSettings.СurrentPrice -
+                                                                agent.AgentManagerSettings.TradeEntryPrice) * agent.SingleAgentPosition;
+
+
+                }
+
             }
             _aTimer.Start();
         }

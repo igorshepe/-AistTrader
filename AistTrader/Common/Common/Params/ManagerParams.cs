@@ -43,9 +43,8 @@ namespace Common.Params
         public decimal TotalMargin { get; set; }
         [DataMember()]
         public List<decimal> TotalMarginList { get; set; }
-
-        [DataMember()]
-        public decimal CurrentMargin { get; set; }
+        
+        private decimal _currenMargin;
         [DataMember()]
         public decimal TradeEntryPrice { get; set; }
 
@@ -88,13 +87,20 @@ namespace Common.Params
             }
         }
 
+        [DataMember()]
+        public decimal CurrentMargin
+        {
+            get { return _currenMargin; }
+            set
+            {
+                _currenMargin = value;
+                OnPropertyChanged("CurrentMargin");
+            }
+        }
 
         protected void OnPropertyChanged(string name)
         {
-            if (null != PropertyChanged)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
