@@ -39,11 +39,11 @@ namespace Common.Params
         public int Position { get; set; }
         [DataMember()]
         public decimal DayMargin { get; set; }
-        [DataMember()]
-        public decimal TotalMargin { get; set; }
+        
         [DataMember()]
         public List<decimal> TotalMarginList { get; set; }
-        
+        private decimal _totalMargin;
+
         private decimal _currenMargin;
         [DataMember()]
         public decimal TradeEntryPrice { get; set; }
@@ -95,6 +95,16 @@ namespace Common.Params
             {
                 _currenMargin = value;
                 OnPropertyChanged("CurrentMargin");
+            }
+        }
+
+        [DataMember()]
+        public decimal TotalMargin {
+            get {return _totalMargin; }
+            set {
+                _totalMargin = value;
+                OnPropertyChanged("TotalMargin");
+
             }
         }
 

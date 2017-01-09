@@ -451,23 +451,66 @@ namespace AistTrader
 
         private void Update()
         {
-            foreach (var agent in AgentManagerStorage)
+            if (ConnectionManager.Connections.Any(c => c.ConnectionState == ConnectionStates.Connected))
             {
-                var connect = ConnectionManager.Connections.FirstOrDefault(c => c.ConnectionName == agent.AgentManagerSettings.Portfolio.Connection.ConnectionParams.Name);
 
-                agent.AgentManagerSettings.СurrentPrice = connect.Securities.FirstOrDefault(sec => sec.Code == agent.Tool).LastTrade.Price;
-
-                if (agent.AgentManagerSettings.AgentMangerCurrentStatus ==
-                            ManagerParams.AgentManagerStatus.Running && agent.SingleAgentPosition != 0)
+                foreach (var agent in AgentManagerStorage)
                 {
-                    agent.AgentManagerSettings.CurrentMargin = (agent.AgentManagerSettings.СurrentPrice -
-                                                                agent.AgentManagerSettings.TradeEntryPrice) * agent.SingleAgentPosition;
+                    if (agent.StrategyInGroup == null)
+                    {
+                        var connect = ConnectionManager.Connections.FirstOrDefault(c => c.ConnectionName == agent.AgentManagerSettings.Portfolio.Connection.ConnectionParams.Name);
+
+                        
+                        if (connect.Securities.Any(sec => sec.Code == agent.Tool))
+                        {
+                            agent.AgentManagerSettings.СurrentPrice = connect.Securities.Single(sec => sec.Code == agent.Tool).LastTrade.Price;
+                        }
 
 
+
+
+
+                        if (agent.StrategyInGroup == null && Strategies.Count != 0)
+                        {
+                            var actualStrategy = new ChStrategy();
+                            foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agent.Alias))
+                            {
+                                actualStrategy = strategyact;
+                            }
+
+                            if (actualStrategy.Alias !=null)
+                            {
+                                var actualStrategyData =
+                                AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
+
+                                if (actualStrategyData.AgentManagerSettings.TotalMarginList == null)
+                                {
+                                    actualStrategyData.AgentManagerSettings.TotalMarginList = new List<decimal>();
+                                }
+                                else
+                                {
+                                    actualStrategyData.AgentManagerSettings.TotalMargin = actualStrategy.PnL;
+                                }
+                                
+                            }
+                            
+                        }
+
+
+                        if (agent.AgentManagerSettings.AgentMangerCurrentStatus ==
+                            ManagerParams.AgentManagerStatus.Running && agent.SingleAgentPosition != 0)
+                        {
+                            agent.AgentManagerSettings.CurrentMargin = (agent.AgentManagerSettings.СurrentPrice -
+                                                                        agent.AgentManagerSettings.TradeEntryPrice) * agent.SingleAgentPosition;
+
+
+                        }
+
+                    }
                 }
-
             }
-            _aTimer.Start();
+
+                _aTimer.Start();
         }
         private void InitiateAgentManagerSettings()
         {
@@ -1052,8 +1095,7 @@ namespace AistTrader
         {
             if (ConnectionManager.Connections.Any(c => c.ConnectionState == ConnectionStates.Connected ))
             {
-                var actualStrategyData = AgentManagerStorage;
-                //var allStrategy = Strategies;
+               
                 foreach (var agent in AgentManagerStorage)
                 {
                     if (agent.StrategyInGroup == null)
@@ -1091,54 +1133,32 @@ namespace AistTrader
 
         public void UpdateMarginData(string[] info)
         {
-            var agentAlias = info[0];
-            var agentGroup = info[2];
+            //var agentAlias = info[0];
+            //var agentGroup = info[2];
 
-            if (agentGroup == "single")
-            {
-                var actualStrategy = new ChStrategy();
-                foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias))
-                {
-                    actualStrategy = strategyact;
-                }
+            //if (agentGroup == "single")
+            //{
+            //    var actualStrategy = new ChStrategy();
+            //    foreach (var strategyact in Strategies.Select(st => st as ChStrategy).Where(strategyact2 => strategyact2.Alias == agentAlias))
+            //    {
+            //        actualStrategy = strategyact;
+            //    }
 
-                var actualStrategyData =
-                    AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
+            //    var actualStrategyData =
+            //        AgentManagerStorage.Single(i => i.AgentManagerUniqueId == actualStrategy.Alias);
 
-                if (actualStrategyData.AgentManagerSettings.TotalMarginList == null)
-                {
-                    actualStrategyData.AgentManagerSettings.TotalMarginList = new List<decimal>();
-                }
-                //actualStrategyData.AgentManagerSettings.TotalMarginList.Add(actualStrategy.PnL);
-
-                //if (actualStrategy.PnL == 0)
-                //    return;
-                if (actualStrategyData.AgentManagerSettings.CurrentMargin != actualStrategy.PnL)
-                {
-                    actualStrategyData.AgentManagerSettings.TotalMargin = actualStrategy.PnL;
+            //    if (actualStrategyData.AgentManagerSettings.TotalMarginList == null)
+            //    {
+            //        actualStrategyData.AgentManagerSettings.TotalMarginList = new List<decimal>();
+            //    }
+               
+            //    if (actualStrategyData.AgentManagerSettings.CurrentMargin != actualStrategy.PnL)
+            //    {
+            //        actualStrategyData.AgentManagerSettings.TotalMargin = actualStrategy.PnL;
 
 
-                    //actualStrategyData.AgentManagerSettings.TotalMargin =
-                    //    actualStrategyData.AgentManagerSettings.TotalMarginList.Sum(i => i);
-
-                    //if (PositionByTrades(actualStrategy) != 0)
-                    //{
-                    //    AgentManagerListView.Dispatcher.BeginInvoke(new Action(delegate ()
-                    //    {
-                    //        AgentManagerListView.ItemsSource = AgentManagerStorage;
-                    //        AgentManagerCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(AgentManagerListView.ItemsSource);
-                    //        AgentManagerCollectionView.Refresh();
-
-                    //        ResetStarted();
-
-                    //    }));
-
-                    //}
-                    
-
-                    //SaveAgentManagerSettings();
-                }
-            }
+            //    }
+            //}
 
         }
         public decimal PositionByTrades(Strategy strat)
